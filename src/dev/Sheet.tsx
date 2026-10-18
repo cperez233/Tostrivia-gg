@@ -7,9 +7,10 @@ export default function Sheet() {
         <figure key={a.name} style={{ margin: 0, textAlign: "center", color: "#fff", font: "14px sans-serif" }}>
           <Avatar animal={i} size={160} />
           <figcaption>{a.name}</figcaption>
-          <div style={{ display: "flex", gap: 6, justifyContent: "center", marginTop: 6 }}>
-            <Avatar animal={i} size={44} />
-            <Avatar animal={i} size={28} />
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", alignItems: "center", marginTop: 6 }}>
+            <Avatar animal={i} size={58} />
+            <Avatar animal={i} size={34} />
+            <Avatar animal={i} size={26} />
           </div>
         </figure>
       ))}

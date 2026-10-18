@@ -586,7 +586,7 @@ function Podium({ players, me }: { players: Player[]; me: string }) {
           </span>
           <span className="podium__name">{p.name}</span>
           <span className="podium__meta">
-            {p.correct} aciertos · racha {p.best}
+            {p.correct} {p.correct === 1 ? "acierto" : "aciertos"} · racha {p.best}
           </span>
           <span className="podium__pts">{fmt(p.score)}</span>
         </motion.li>

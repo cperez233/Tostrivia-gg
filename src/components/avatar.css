@@ -1,0 +1,28 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.avatar {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* chico: medallón con la cara, sin los adornos de la calcomanía */
+.avatar--face {
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink);
+}
+.avatar--face img {
+  transform: scale(1.6) translateY(5%);
+}
+/* sobre papel claro el borde blanco de la calcomanía se perdería: una sombra corta la despega */
+.panel .avatar:not(.avatar--face) img {
+  filter: drop-shadow(0 1px 1.5px rgba(18, 17, 16, 0.45));
+}

@@ -12,10 +12,10 @@ export default function Og() {
       </div>
       <p style={{ position: "relative", fontFamily: "var(--display)", fontSize: 50, color: "var(--hanko)", lineHeight: 1.1 }}>Anime, videojuegos y cultura general.</p>
       <p style={{ position: "relative", fontSize: 28, color: "var(--on-ink-2)", fontWeight: 700 }}>Gira la ruleta, responde contra el reloj y juega con hasta 10 amigos.</p>
-      <div style={{ position: "relative", display: "flex", gap: 10, marginTop: 18 }}>
+      <div style={{ position: "relative", display: "flex", gap: 4, marginTop: 14 }}>
         {ANIMALS.map((a, i) => (
           <span key={a.name} style={{ transform: `translateY(${i % 2 ? 10 : 0}px) rotate(${(i % 3) * 4 - 4}deg)` }}>
-            <Avatar animal={i} size={78} />
+            <Avatar animal={i} size={86} />
           </span>
         ))}
       </div>

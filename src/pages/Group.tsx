@@ -45,7 +45,7 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
               transition={{ type: "spring", stiffness: 420, damping: 16, delay: 0.15 + i * 0.045 }}
             >
               <span className="parade__bob anim-bob" style={{ "--d": `${BOB[i]}s`, "--delay": `${-i * 0.7}s` } as React.CSSProperties}>
-                <Avatar animal={i} size={64} />
+                <Avatar animal={i} size={84} />
               </span>
             </motion.li>
           ))}
