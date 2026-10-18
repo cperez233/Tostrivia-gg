@@ -425,7 +425,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
             <div>
               <dt>Puesto</dt>
               <dd>
-                {place}.º de {sorted.length}
+                {place} de {sorted.length}
               </dd>
             </div>
           )}

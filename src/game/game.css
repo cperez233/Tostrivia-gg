@@ -37,12 +37,40 @@
 .game__exit svg {
   transition: transform 0.2s var(--ease);
 }
+.game__top > * {
+  min-width: 0;
+}
 .game__cat {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   min-width: 0;
-  justify-self: center;
+}
+@media (max-width: 480px) {
+  .game__top {
+    gap: 8px;
+    padding: 8px 12px;
+  }
+  .game__exit span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .game__exit {
+    min-width: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  .game__cat-tone {
+    width: 22px;
+    height: 22px;
+  }
+  .game__cat-name {
+    font-size: 15px;
+  }
 }
 .game__cat-tone {
   width: 28px;

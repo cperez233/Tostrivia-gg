@@ -1,6 +1,16 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
    Tostrivia: revista shōnen impresa. Papel prensa, tinta negra, tramas y un sello bermellón. */
 
+/* katakana de las onomatopeyas (un solo corte de Dela Gothic One, no el set japonés completo) */
+@font-face {
+  font-family: "Dela Gothic One";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("@fontsource/dela-gothic-one/files/dela-gothic-one-119-400-normal.woff2") format("woff2");
+  unicode-range: U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e;
+}
+
 :root {
   --paper: #eeeeea;
   --paper-2: #e2e2dc;

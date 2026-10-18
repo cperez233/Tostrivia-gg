@@ -61,6 +61,9 @@
   display: grid;
   gap: var(--gutter);
 }
+.lobby__grid > * {
+  min-width: 0;
+}
 .lobby__code {
   padding: 18px 20px;
   display: grid;
@@ -71,7 +74,7 @@
 .lobby__codetext {
   display: flex;
   gap: 0.08em;
-  font-size: clamp(3.4rem, 2rem + 8vw, 6.4rem);
+  font-size: clamp(2.9rem, 1.2rem + 8vw, 6.4rem);
   line-height: 1.05;
   letter-spacing: 0.04em;
 }
