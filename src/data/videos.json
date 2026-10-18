@@ -1,11 +1,46 @@
 {
-  "generatedAt": "2026-10-18T05:43:57.602Z",
+  "generatedAt": "2026-10-18T07:01:19.333Z",
   "videos": {
+    "aot-op-guren": {
+      "id": "8OkpRK2_gVs",
+      "title": "Attack on Titan Opening 1 | Feuerroter Pfeil und Bogen",
+      "channel": "Crunchyroll",
+      "durationSec": 93,
+      "checkedAt": "2026-10-18"
+    },
+    "aot-op-rumbling": {
+      "id": "EtjQVqXUPHo",
+      "title": "Attack on Titan Final Season Opening 2 | The Rumbling by SiM",
+      "channel": "Crunchyroll",
+      "durationSec": 105,
+      "checkedAt": "2026-10-18"
+    },
+    "bebop-op-tank": {
+      "id": "UFFa0QoHWvE",
+      "title": "Tank!",
+      "channel": "SEATBELTS - Topic",
+      "durationSec": 211,
+      "checkedAt": "2026-10-18"
+    },
     "bleach-op-asterisk": {
       "id": "wW9TwZdWpjw",
       "title": "OPENING 1 | BLEACH | Asterisk by ORANGE RANGE | VIZ",
       "channel": "vizmedia",
       "durationSec": 96,
+      "checkedAt": "2026-10-18"
+    },
+    "bleach-op-scar": {
+      "id": "pb_fwnVamdI",
+      "title": "スカー / キタニタツヤ - Scar / Tatsuya Kitani",
+      "channel": "キタニタツヤ / Tatsuya Kitani",
+      "durationSec": 261,
+      "checkedAt": "2026-10-18"
+    },
+    "cg-op-colors": {
+      "id": "FUH9S44D1BM",
+      "title": "FLOW - Colors",
+      "channel": "FLOWofficialVEVO",
+      "durationSec": 222,
       "checkedAt": "2026-10-18"
     },
     "cine-ost-jurassic": {
@@ -15,11 +50,32 @@
       "durationSec": 333,
       "checkedAt": "2026-10-18"
     },
+    "csm-op-kickback": {
+      "id": "dFlDRhvM4L0",
+      "title": "『チェンソーマン』ノンクレジットオープニング / CHAINSAW MAN  Opening│米津玄師 「KICK BACK」",
+      "channel": "MAPPA CHANNEL",
+      "durationSec": 90,
+      "checkedAt": "2026-10-18"
+    },
+    "dandadan-op-otonoke": {
+      "id": "a4na2opArGY",
+      "title": "DAN DA DAN Opening | Otonoke by Creepy Nuts",
+      "channel": "Crunchyroll",
+      "durationSec": 101,
+      "checkedAt": "2026-10-18"
+    },
     "db-op-chala": {
       "id": "oXUZVj7I2H8",
       "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
       "channel": "IGN",
       "durationSec": 124,
+      "checkedAt": "2026-10-18"
+    },
+    "db-op-makafushigi": {
+      "id": "Mmbc8E6rAmM",
+      "title": "Makafushigi Adventure (FULL VERSION/VERSION LONGUE) Lyrics/Paroles",
+      "channel": "user-5508",
+      "durationSec": 233,
       "checkedAt": "2026-10-18"
     },
     "dn-op-theworld": {
@@ -29,11 +85,53 @@
       "durationSec": 242,
       "checkedAt": "2026-10-18"
     },
+    "dn-op-whatsup": {
+      "id": "BTevuW9xeuE",
+      "title": "「Creditless」Death Note OP / Opening 2「UHD 60FPS」",
+      "channel": "TriaxFx",
+      "durationSec": 93,
+      "checkedAt": "2026-10-18"
+    },
+    "eva-op-thesis": {
+      "id": "o6wtDPVkKqI",
+      "title": "「残酷な天使のテーゼ」MUSIC VIDEO（HDver.）/Zankoku na Tenshi no Te-ze“The Cruel Angel's Thesis”",
+      "channel": "KING RECORDS",
+      "durationSec": 244,
+      "checkedAt": "2026-10-18"
+    },
+    "fma-op-again": {
+      "id": "FM3aJQzqV90",
+      "title": "Yui [Again] Fullmetal Alchemist: Brotherhood Opening 1 [Kan/Rom/Eng Lyrics]",
+      "channel": "TASNIM",
+      "durationSec": 258,
+      "checkedAt": "2026-10-18"
+    },
+    "fma-op-goldentime": {
+      "id": "IdjAdBs0Dz0",
+      "title": "FMA Brotherhood Opening 3 | Golden Time Lover | Sub Español.",
+      "channel": "CafeRojizo",
+      "durationSec": 329,
+      "checkedAt": "2026-10-18"
+    },
+    "frieren-op-yuusha": {
+      "id": "OIBODIPC_8Y",
+      "title": "YOASOBI「勇者」 Official Music Video／TVアニメ『葬送のフリーレン』オープニングテーマ",
+      "channel": "YOASOBI",
+      "durationSec": 204,
+      "checkedAt": "2026-10-18"
+    },
     "genshin-tr-raiden": {
       "id": "mvrW4aKwAXw",
       "title": "Character Demo - \"Raiden Shogun: Judgment of Euthymia\" | Genshin Impact",
       "channel": "Genshin Impact",
       "durationSec": 163,
+      "checkedAt": "2026-10-18"
+    },
+    "haikyuu-op-imagination": {
+      "id": "XS-N8KfZ5EU",
+      "title": "Haikyu!! - Opening 1 | Imagination",
+      "channel": "Crunchyroll",
+      "durationSec": 100,
       "checkedAt": "2026-10-18"
     },
     "hk-ost-cityoftears": {
@@ -46,6 +144,13 @@
     "hxh-ed-justawake": {
       "id": "ELuVDnlB8PE",
       "title": "Hunter X Hunter - Ending 1 | Just Awake",
+      "channel": "Crunchyroll",
+      "durationSec": 91,
+      "checkedAt": "2026-10-18"
+    },
+    "hxh-op-departure": {
+      "id": "faqmNf_fZlE",
+      "title": "Hunter X Hunter Opening 1 | Departure!",
       "channel": "Crunchyroll",
       "durationSec": 91,
       "checkedAt": "2026-10-18"
@@ -78,6 +183,13 @@
       "durationSec": 93,
       "checkedAt": "2026-10-18"
     },
+    "kimetsu-op-gurenge": {
+      "id": "EZ4yTJuUmZE",
+      "title": "LISA Gurenge (From Kimetsu No Yaiba) (Official Video)",
+      "channel": "KNYMusicChannelVEVO",
+      "durationSec": 235,
+      "checkedAt": "2026-10-18"
+    },
     "kimetsu-op-zankyou": {
       "id": "tLQLa6lM3Us",
       "title": "Aimer「Zankyosanka」MUSIC VIDEO（Demon Slayer:Kimetsu no Yaiba Entertainment District Arc Theme Song）",
@@ -90,6 +202,27 @@
       "title": "Imagine Dragons & JID - Enemy (from the series Arcane: League of Legends) | Official Music Video",
       "channel": "League of Legends",
       "durationSec": 214,
+      "checkedAt": "2026-10-18"
+    },
+    "mario-ost-jumpup": {
+      "id": "e9r5hx47kxM",
+      "title": "Super Mario Odyssey - Jump Up, Super Star!",
+      "channel": "MuttonBashers",
+      "durationSec": 250,
+      "checkedAt": "2026-10-18"
+    },
+    "mha-op-theday": {
+      "id": "yu0HjPzFYnY",
+      "title": "My Hero Academia Opening 1 | The Day",
+      "channel": "Crunchyroll",
+      "durationSec": 91,
+      "checkedAt": "2026-10-18"
+    },
+    "mob-op-99": {
+      "id": "Bw-5Lka7gPE",
+      "title": "Mob Psycho 100 Opening | 99",
+      "channel": "Crunchyroll",
+      "durationSec": 101,
       "checkedAt": "2026-10-18"
     },
     "musica-despacito": {
@@ -127,11 +260,67 @@
       "durationSec": 112,
       "checkedAt": "2026-10-18"
     },
+    "opm-op-thehero": {
+      "id": "atxYe-nOa9w",
+      "title": "One Punch Man - Official Opening - The Hero!! Set Fire to the Furious Fist",
+      "channel": "animelab",
+      "durationSec": 90,
+      "checkedAt": "2026-10-18"
+    },
+    "pokemon-ost-wildbattle": {
+      "id": "Fupfr_eVLPo",
+      "title": "Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ)",
+      "channel": "Pokeli",
+      "durationSec": 180,
+      "checkedAt": "2026-10-18"
+    },
+    "pokemon-tr-sv": {
+      "id": "dAQBo9BGRdA",
+      "title": "Pokémon Scarlet & Pokémon Violet – Overview Trailer – Nintendo Switch",
+      "channel": "Nintendo of America",
+      "durationSec": 331,
+      "checkedAt": "2026-10-18"
+    },
+    "solo-op-level": {
+      "id": "C0zMWogztQs",
+      "title": "Solo Leveling Season 2 -Arise from the Shadow- Opening | \"ReawakeR\" by LiSA feat Felix of Stray Kids",
+      "channel": "Crunchyroll",
+      "durationSec": 101,
+      "checkedAt": "2026-10-18"
+    },
     "sonic-ost-greenhill": {
       "id": "G-i8HYi1QH0",
       "title": "Sonic The Hedgehog OST - Green Hill Zone",
       "channel": "Hanternos",
       "durationSec": 142,
+      "checkedAt": "2026-10-18"
+    },
+    "spy-op-mixednuts": {
+      "id": "CbH2F0kXgTY",
+      "title": "OFFICIAL HIGE DANDISM - MIXED NUTS [ Official Video ]",
+      "channel": "Official髭男dism",
+      "durationSec": 230,
+      "checkedAt": "2026-10-18"
+    },
+    "tg-op-unravel": {
+      "id": "7aMOurgDB-o",
+      "title": "Tokyo Ghoul Opening | \"Unravel\" by TK from Ling Toshite Sigure",
+      "channel": "Crunchyroll",
+      "durationSec": 93,
+      "checkedAt": "2026-10-18"
+    },
+    "zelda-ost-gerudo": {
+      "id": "0hEYvdMoF2g",
+      "title": "Gerudo Valley - The Legend of Zelda: Ocarina Of Time",
+      "channel": "Halo2playa",
+      "durationSec": 176,
+      "checkedAt": "2026-10-18"
+    },
+    "zelda-tr-totk": {
+      "id": "uHGShqcAHlQ",
+      "title": "The Legend of Zelda: Tears of the Kingdom – Official Trailer #3",
+      "channel": "Nintendo of America",
+      "durationSec": 235,
       "checkedAt": "2026-10-18"
     }
   }
