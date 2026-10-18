@@ -1,0 +1,456 @@
+{
+  "_doc": "Clave -> búsqueda en YouTube. scripts/fetch-videos.mjs resuelve cada clave a un videoId embebible y lo guarda en src/data/videos.json. 'must': palabras que deben aparecer en el título (basta una de cada grupo separado por |). 'min'/'max': duración aceptada en segundos.",
+  "jojo-op-sonochi": {
+    "q": "JoJo's Bizarre Adventure opening 1 Sono Chi no Sadame creditless",
+    "must": [
+      "sono chi|sadame|opening 1|op 1"
+    ]
+  },
+  "jojo-op-greatdays": {
+    "q": "JoJo Diamond is Unbreakable opening Great Days creditless",
+    "must": [
+      "great days"
+    ]
+  },
+  "naruto-op-bluebird": {
+    "q": "Naruto Shippuden opening 3 Blue Bird creditless",
+    "must": [
+      "blue bird|bluebird"
+    ]
+  },
+  "naruto-op-silhouette": {
+    "q": "Naruto Shippuden opening 16 Silhouette KANA-BOON creditless",
+    "must": [
+      "silhouette"
+    ]
+  },
+  "db-op-chala": {
+    "q": "Dragon Ball Z opening 1 Cha-La Head-Cha-La Hironobu Kageyama",
+    "must": [
+      "cha"
+    ],
+    "alt": [
+      "DBZ opening Cha la head cha la HD"
+    ]
+  },
+  "db-op-makafushigi": {
+    "q": "Dragon Ball opening Makafushigi Adventure Hiroki Takahashi",
+    "must": [
+      "makafushigi|mystical adventure"
+    ]
+  },
+  "op-op-weare": {
+    "q": "One Piece opening 1 We Are! creditless",
+    "must": [
+      "we are"
+    ]
+  },
+  "op-op-overthetop": {
+    "q": "One Piece opening 22 Over the Top Hiroshi Kitadani",
+    "must": [
+      "over the top"
+    ]
+  },
+  "bleach-op-asterisk": {
+    "q": "Bleach opening 1 Asterisk Orange Range",
+    "must": [
+      "asterisk"
+    ]
+  },
+  "bleach-op-scar": {
+    "q": "Bleach Thousand-Year Blood War opening Scar creditless",
+    "must": [
+      "scar"
+    ]
+  },
+  "hxh-op-departure": {
+    "q": "Hunter x Hunter 2011 opening Departure creditless",
+    "must": [
+      "departure"
+    ]
+  },
+  "hxh-ed-justawake": {
+    "q": "Hunter x Hunter 2011 ending 1 Just Awake Fear and Loathing in Las Vegas",
+    "must": [
+      "just awake"
+    ]
+  },
+  "fma-op-again": {
+    "q": "Fullmetal Alchemist Brotherhood opening 1 Again YUI creditless",
+    "must": [
+      "again"
+    ]
+  },
+  "fma-op-goldentime": {
+    "q": "Fullmetal Alchemist Brotherhood opening 3 Golden Time Lover",
+    "must": [
+      "golden time"
+    ]
+  },
+  "kimetsu-op-gurenge": {
+    "q": "Demon Slayer opening Gurenge LiSA creditless",
+    "must": [
+      "gurenge"
+    ]
+  },
+  "kimetsu-op-zankyou": {
+    "q": "Demon Slayer Entertainment District Arc opening Zankyosanka Aimer",
+    "must": [
+      "zankyo|zankyou|残響"
+    ]
+  },
+  "jjk-op-kaikai": {
+    "q": "Jujutsu Kaisen opening 1 Kaikai Kitan Eve creditless",
+    "must": [
+      "kaikai|kitan"
+    ]
+  },
+  "jjk-op-specialz": {
+    "q": "Jujutsu Kaisen season 2 opening SPECIALZ King Gnu creditless",
+    "must": [
+      "specialz"
+    ]
+  },
+  "csm-op-kickback": {
+    "q": "Chainsaw Man opening KICK BACK Kenshi Yonezu creditless",
+    "must": [
+      "kick back"
+    ]
+  },
+  "mha-op-theday": {
+    "q": "My Hero Academia opening 1 The Day Porno Graffitti creditless",
+    "must": [
+      "the day"
+    ]
+  },
+  "mha-op-peacesign": {
+    "q": "My Hero Academia opening 2 Peace Sign Kenshi Yonezu creditless",
+    "must": [
+      "peace sign"
+    ]
+  },
+  "spy-op-mixednuts": {
+    "q": "Spy x Family opening Mixed Nuts Official HIGE DANdism creditless",
+    "must": [
+      "mixed nuts"
+    ]
+  },
+  "frieren-op-yuusha": {
+    "q": "Frieren opening Yuusha YOASOBI creditless",
+    "must": [
+      "yuusha|yusha|勇者|the brave"
+    ]
+  },
+  "solo-op-level": {
+    "q": "Solo Leveling opening LEveL SawanoHiroyuki TOMORROW X TOGETHER creditless",
+    "must": [
+      "level"
+    ]
+  },
+  "dandadan-op-otonoke": {
+    "q": "Dandadan opening Otonoke Creepy Nuts creditless",
+    "must": [
+      "otonoke|オトノケ"
+    ]
+  },
+  "aot-op-guren": {
+    "q": "Attack on Titan opening 1 Guren no Yumiya creditless",
+    "must": [
+      "guren|feuerroter|opening 1"
+    ]
+  },
+  "aot-op-rumbling": {
+    "q": "Attack on Titan Final Season Part 2 opening The Rumbling SiM creditless",
+    "must": [
+      "rumbling"
+    ]
+  },
+  "dn-op-theworld": {
+    "q": "Death Note opening 1 The World Nightmare",
+    "must": [
+      "the world|opening 1"
+    ]
+  },
+  "dn-op-whatsup": {
+    "q": "Death Note opening 2 What's up people Maximum the Hormone",
+    "must": [
+      "what's up|whats up|opening 2"
+    ]
+  },
+  "opm-op-thehero": {
+    "q": "One Punch Man opening The Hero JAM Project creditless",
+    "must": [
+      "hero"
+    ]
+  },
+  "eva-op-thesis": {
+    "q": "Neon Genesis Evangelion opening A Cruel Angel's Thesis",
+    "must": [
+      "thesis|zankoku|残酷|opening"
+    ]
+  },
+  "bebop-op-tank": {
+    "q": "Cowboy Bebop opening Tank! Seatbelts",
+    "must": [
+      "tank"
+    ]
+  },
+  "cg-op-colors": {
+    "q": "Code Geass opening 1 Colors FLOW",
+    "must": [
+      "colors"
+    ]
+  },
+  "tg-op-unravel": {
+    "q": "Tokyo Ghoul opening Unravel TK creditless",
+    "must": [
+      "unravel"
+    ]
+  },
+  "mob-op-99": {
+    "q": "Mob Psycho 100 opening 99 MOB CHOIR creditless",
+    "must": [
+      "99|opening"
+    ]
+  },
+  "haikyuu-op-imagination": {
+    "q": "Haikyuu opening 1 Imagination SPYAIR creditless",
+    "must": [
+      "imagination"
+    ]
+  },
+  "zelda-ost-gerudo": {
+    "q": "Gerudo Valley Ocarina of Time music",
+    "must": [
+      "gerudo"
+    ]
+  },
+  "zelda-tr-totk": {
+    "q": "The Legend of Zelda Tears of the Kingdom final trailer Nintendo Switch",
+    "must": [
+      "tears of the kingdom"
+    ]
+  },
+  "pokemon-ost-wildbattle": {
+    "q": "Pokemon Red Blue wild pokemon battle music",
+    "must": [
+      "battle"
+    ]
+  },
+  "pokemon-tr-sv": {
+    "q": "Pokemon Scarlet Pokemon Violet announcement trailer",
+    "must": [
+      "scarlet|violet"
+    ]
+  },
+  "mario-ost-jumpup": {
+    "q": "Jump Up, Super Star! Super Mario Odyssey",
+    "must": [
+      "jump up"
+    ]
+  },
+  "mario-tr-wonder": {
+    "q": "Super Mario Bros. Wonder Nintendo Direct reveal trailer",
+    "must": [
+      "wonder"
+    ]
+  },
+  "sonic-ost-greenhill": {
+    "q": "Sonic the Hedgehog Green Hill Zone music",
+    "must": [
+      "green hill"
+    ]
+  },
+  "smash-tr-sora": {
+    "q": "Super Smash Bros Ultimate Sora reveal trailer",
+    "must": [
+      "sora"
+    ]
+  },
+  "smash-ost-lifelight": {
+    "q": "Lifelight Super Smash Bros Ultimate main theme",
+    "must": [
+      "lifelight"
+    ]
+  },
+  "hk-ost-cityoftears": {
+    "q": "Hollow Knight City of Tears soundtrack",
+    "must": [
+      "city of tears"
+    ]
+  },
+  "pelea-ost-guile": {
+    "q": "Street Fighter II Guile's theme",
+    "must": [
+      "guile"
+    ]
+  },
+  "pelea-tr-tekken8": {
+    "q": "Tekken 8 reveal trailer",
+    "must": [
+      "tekken 8"
+    ]
+  },
+  "gta-tr-vi": {
+    "q": "Grand Theft Auto VI Trailer 1 Rockstar Games",
+    "must": [
+      "vi|6"
+    ]
+  },
+  "gta-ost-sa": {
+    "q": "GTA San Andreas theme song",
+    "must": [
+      "san andreas"
+    ]
+  },
+  "rdr-ost-faraway": {
+    "q": "Red Dead Redemption Far Away Jose Gonzalez Mexico",
+    "must": [
+      "far away"
+    ]
+  },
+  "rdr-ost-thatstheway": {
+    "q": "Red Dead Redemption 2 That's the Way It Is Daniel Lanois",
+    "must": [
+      "that's the way|thats the way"
+    ]
+  },
+  "witcher-ost-wolven": {
+    "q": "The Witcher 3 The Wolven Storm Priscilla's Song",
+    "must": [
+      "wolven|priscilla"
+    ]
+  },
+  "witcher-tr-killing": {
+    "q": "The Witcher 3 Wild Hunt Killing Monsters cinematic trailer",
+    "must": [
+      "killing monsters"
+    ]
+  },
+  "souls-ost-gwyn": {
+    "q": "Dark Souls Gwyn Lord of Cinder theme",
+    "must": [
+      "gwyn"
+    ]
+  },
+  "souls-tr-erdtree": {
+    "q": "Elden Ring Shadow of the Erdtree official gameplay reveal trailer",
+    "must": [
+      "erdtree"
+    ]
+  },
+  "gow-ost-main": {
+    "q": "God of War 2018 main theme Bear McCreary",
+    "must": [
+      "god of war"
+    ]
+  },
+  "tlou-ost-main": {
+    "q": "The Last of Us main theme Gustavo Santaolalla",
+    "must": [
+      "last of us"
+    ]
+  },
+  "halo-ost-theme": {
+    "q": "Halo theme Mjolnir Mix Martin O'Donnell",
+    "must": [
+      "halo"
+    ]
+  },
+  "ff-ost-onewinged": {
+    "q": "Final Fantasy VII One-Winged Angel original soundtrack",
+    "must": [
+      "one-winged|one winged"
+    ]
+  },
+  "ff-ost-zanarkand": {
+    "q": "Final Fantasy X To Zanarkand",
+    "must": [
+      "zanarkand"
+    ]
+  },
+  "re-ost-saferoom": {
+    "q": "Resident Evil save room theme safe haven",
+    "must": [
+      "save|safe"
+    ]
+  },
+  "mgs-ost-snakeeater": {
+    "q": "Metal Gear Solid 3 Snake Eater song Cynthia Harrell",
+    "must": [
+      "snake eater"
+    ]
+  },
+  "cyber-ost-neverfade": {
+    "q": "Cyberpunk 2077 Never Fade Away Samurai",
+    "must": [
+      "never fade away"
+    ]
+  },
+  "mc-ost-sweden": {
+    "q": "C418 Sweden Minecraft Volume Alpha",
+    "must": [
+      "sweden"
+    ]
+  },
+  "lol-ost-warriors": {
+    "q": "Warriors Imagine Dragons Worlds 2014 League of Legends",
+    "must": [
+      "warriors"
+    ]
+  },
+  "lol-ost-enemy": {
+    "q": "Imagine Dragons JID Enemy Arcane League of Legends",
+    "must": [
+      "enemy"
+    ]
+  },
+  "genshin-tr-raiden": {
+    "q": "Genshin Impact Character Demo Raiden Shogun Judgment of Euthymia",
+    "must": [
+      "raiden"
+    ]
+  },
+  "genshin-tr-hutao": {
+    "q": "Genshin Impact Character Demo Hu Tao Let the Show Begin",
+    "must": [
+      "hu tao"
+    ]
+  },
+  "valorant-tr-neon": {
+    "q": "VALORANT Neon agent trailer",
+    "must": [
+      "neon"
+    ]
+  },
+  "ow-tr-dragons": {
+    "q": "Overwatch animated short Dragons",
+    "must": [
+      "dragons"
+    ]
+  },
+  "musica-queen-bohemian": {
+    "q": "Queen Bohemian Rhapsody official video",
+    "must": [
+      "bohemian"
+    ]
+  },
+  "musica-despacito": {
+    "q": "Luis Fonsi Despacito ft. Daddy Yankee official video",
+    "must": [
+      "despacito"
+    ]
+  },
+  "cine-ost-jurassic": {
+    "q": "Jurassic Park theme John Williams",
+    "must": [
+      "jurassic"
+    ]
+  },
+  "cine-ost-starwars": {
+    "q": "Star Wars main title theme John Williams",
+    "must": [
+      "star wars"
+    ]
+  }
+}

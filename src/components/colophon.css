@@ -1,0 +1,114 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.colophon {
+  padding: 24px 0 calc(28px + var(--safe-b));
+  border-top: var(--border);
+}
+.colophon__in {
+  display: grid;
+  gap: 18px;
+}
+.colophon__box {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: 18px 18px 20px;
+  border: var(--border);
+  outline: 1.5px solid var(--ink);
+  outline-offset: 5px;
+  margin: 6px;
+}
+.colophon__title {
+  display: grid;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: var(--border-thin);
+  padding-right: 90px;
+}
+.colophon__name {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 1.2rem + 2.4vw, 2.8rem);
+  line-height: 1.1;
+}
+.colophon__ed {
+  font-weight: 700;
+  font-size: 15px;
+}
+.colophon__rows {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.colophon__rows div {
+  display: grid;
+  gap: 0 18px;
+}
+.colophon__rows dt {
+  font-weight: 900;
+  font-size: 14px;
+}
+.colophon__rows dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ink-2);
+  max-width: 70ch;
+}
+@media (min-width: 760px) {
+  .colophon__box {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    padding: 26px 28px;
+    column-gap: 40px;
+  }
+  .colophon__title {
+    border-bottom: 0;
+    border-right: var(--border-thin);
+    padding: 0 24px 0 0;
+    align-content: start;
+  }
+  .colophon__rows div {
+    grid-template-columns: 100px 1fr;
+  }
+  .colophon__nav {
+    grid-column: 1 / -1;
+  }
+}
+.colophon__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+  padding-top: 12px;
+  border-top: var(--border-thin);
+}
+.colophon__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  text-decoration-color: var(--hanko);
+  text-underline-offset: 4px;
+}
+.colophon__stamp {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+}
+.colophon__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 18px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+.colophon__credit a {
+  display: inline-block;
+  padding: 12px 0;
+  margin: -12px 0;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(13, 13, 13, 0.25);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.colophon__credit a:hover {
+  text-decoration-color: currentColor;
+}
