@@ -717,3 +717,24 @@
     animation: none;
   }
 }
+
+/* en escritorio, la pregunta de video va al lado del recuadro para que todo quepa en una pantalla */
+@media (min-width: 1000px) {
+  .game__body.has-media .qpanel {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 28px;
+    align-items: start;
+  }
+  .game__body.has-media .qpanel__meta,
+  .game__body.has-media .qpanel__q {
+    grid-column: 1;
+  }
+  .game__body.has-media .qpanel .stage {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+  }
+  .game__body.has-media .qpanel__source {
+    grid-column: 1;
+  }
+}
