@@ -6,7 +6,7 @@ import { BANK } from "../data/bank";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
 
 export const MAX_PLAYERS = 10;
-const MEDIA_WAIT_MS = 16_000; // tiempo máximo para que el video empiece a sonar en todos
+const MEDIA_WAIT_MS = 21_000; // tiempo máximo para que el video empiece a sonar en todos
 const GRACE_MS = 700; // margen de red para respuestas que llegan justo al final
 const AUTO_NEXT_MS = 7_000; // en grupo, la revelación pasa sola
 

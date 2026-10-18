@@ -89,19 +89,39 @@
 .eq.is-paused span {
   animation-play-state: paused;
 }
+/* el botón cubre el recuadro pero no recibe el toque: lo recibe el iframe de debajo */
 .stage__tap {
   position: absolute;
+  inset: 0;
   z-index: 6;
-  left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  pointer-events: none;
 }
-.stage__tap:active {
-  transform: translateX(-50%) scale(0.97);
+.stage[data-state="blocked"] .stage__shield,
+.stage[data-state="blocked"] .stage__cover {
+  pointer-events: none;
+}
+.stage__tap-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: var(--hanko);
+  color: var(--on-ink);
+  border: var(--border);
+  font-family: var(--display);
+  font-size: 16px;
+  box-shadow: var(--lift-2);
+  animation: tremble 0.6s linear 2;
 }
 @media (hover: hover) and (pointer: fine) {
-  .stage__tap:hover {
-    transform: translateX(-50%) translateY(-2px);
+  /* en escritorio el clic sí puede llegar al botón: la API acepta playVideo con activación previa */
+  .stage__tap {
+    pointer-events: auto;
+    cursor: pointer;
   }
 }
 .stage__loading {

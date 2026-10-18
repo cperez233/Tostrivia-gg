@@ -20,7 +20,7 @@ interface Props {
   onError: (reason: string) => void;
 }
 
-const START_TIMEOUT = 13_000;
+const START_TIMEOUT = 18_000;
 
 export default function MediaStage({ media, videoId, revealed, onPlaying, onError }: Props) {
   const host = useRef<HTMLDivElement>(null);
@@ -172,11 +172,15 @@ export default function MediaStage({ media, videoId, revealed, onPlaying, onErro
         )}
 
         {state === "blocked" && (
-          <button type="button" className="stage__tap btn btn--hanko" onClick={tapToPlay}>
-            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
-              <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
-            </svg>
-            Toca para escuchar
+          // iOS y algunos Android solo dejan sonar si el toque cae en el propio reproductor:
+          // la portada deja pasar el toque al iframe sin destaparlo
+          <button type="button" className="stage__tap" onClick={tapToPlay}>
+            <span className="stage__tap-pill">
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+                <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
+              </svg>
+              Toca aquí para escuchar
+            </span>
           </button>
         )}
         {state === "loading" && media.m !== "audio" && <div className="stage__loading">Cargando video…</div>}
