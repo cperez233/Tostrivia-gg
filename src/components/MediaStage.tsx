@@ -84,9 +84,17 @@ export default function MediaStage({ media, videoId, revealed, onPlaying, onErro
                 setState("playing");
                 cb.current.onPlaying();
                 // bucle manual sobre el fragmento: end solo vale en la primera pasada
+                // y vigilancia de atascos: "reproduciendo" pero sin avanzar 5 s cuenta como fallo
+                let lastT = -1;
+                let stuckSince = Date.now();
                 loop = setInterval(() => {
                   try {
-                    if (player && player.getCurrentTime() >= media.e - 0.15) player.seekTo(media.s, true);
+                    if (!player) return;
+                    const t = player.getCurrentTime();
+                    if (t >= media.e - 0.15) player.seekTo(media.s, true);
+                    if (Math.abs(t - lastT) > 0.05 || player.getPlayerState() === 2) stuckSince = Date.now();
+                    else if (Date.now() - stuckSince > 5000) fail("el video se quedó atascado");
+                    lastT = t;
                   } catch {
                     /* el reproductor ya no existe */
                   }

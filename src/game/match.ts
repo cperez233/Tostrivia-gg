@@ -212,7 +212,9 @@ export class Match {
     if (status === "error") {
       this.mediaFailed.add(pid);
       if (this.s.phase === "loading") return this.replaceCurrent();
-      // si falla a mitad de pregunta en un invitado, queda excusado (no pierde la racha)
+      // a mitad de pregunta: si es en el anfitrión (o jugando solo) se cambia para todos;
+      // si es en un invitado, ese invitado queda excusado y no pierde la racha
+      if (this.s.phase === "question" && (pid === this.s.hostId || this.s.mode === "solo") && this.answers.size === 0) return this.replaceCurrent();
       return;
     }
     if (this.s.mediaReady.includes(pid)) return;
