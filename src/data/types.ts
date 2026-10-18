@@ -35,31 +35,36 @@ export interface Question {
 
 export type FamilyId =
   | "cultura"
-  | "leyenda"
-  | "nueva"
-  | "culto"
+  | "clasicos"
+  | "d2010"
+  | "nuevos"
   | "oido"
-  | "nintendo"
-  | "aaa"
-  | "online";
+  | "aventura"
+  | "rol"
+  | "mundo"
+  | "accion"
+  | "shooter"
+  | "versus";
 
-export type Tone = "dots" | "lines" | "bigdots" | "cross" | "hlines" | "checker" | "vlines" | "grid";
+/** las cuatro pestañas de arriba: cada familia pertenece a una */
+export type GroupId = "anime" | "juegos" | "cultura" | "oido";
 
 export interface Family {
   id: FamilyId;
+  group: GroupId;
   name: string;
-  /** nombre corto para la ruleta */
-  wheel: string;
-  tone: Tone;
-  blurb: string;
 }
 
 export interface Category {
   id: string;
   name: string;
+  /** nombre corto para la ruleta y las fichas pequeñas */
+  short: string;
   family: FamilyId;
-  /** una línea, qué cubre */
-  blurb: string;
+  /** clave de video (videos.json) cuya miniatura hace de portada; varias = mosaico */
+  cover: string | string[];
+  /** punto de interés horizontal de la portada, 0 a 100 */
+  focus?: number;
   /** onomatopeya decorativa (aria-hidden) */
   sfx?: string;
 }

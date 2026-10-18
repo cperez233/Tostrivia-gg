@@ -1,94 +1,16 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * La ruleta: una viñeta circular dividida en 8 familias, cada una con su trama.
- * Gira hacia el resultado que ya decidió quien la hizo girar (así todos en la sala ven lo mismo).
+ * La ruleta: cada gajo es una categoría del mazo, con su portada. El mazo cambia con el filtro.
+ * Gira hacia el gajo que ya decidió quien la hizo girar (así todos en la sala ven lo mismo).
  */
-import { useEffect, useRef, useState } from "react";
-import { animate, motion, useMotionValue, useReducedMotion } from "framer-motion";
-import { FAMILIES, categoriesOf } from "../data/categories";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform, useVelocity } from "framer-motion";
+import { CATEGORY_BY_ID } from "../data/categories";
+import { coversOf } from "../lib/covers";
 import type { Spin } from "../game/match";
-import type { FamilyId, Tone } from "../data/types";
-import { Seal } from "./Seal";
 import "./wheel.css";
 
-const N = FAMILIES.length;
-const SLICE = 360 / N;
-
-export function makeSpin(only?: FamilyId[]): Spin {
-  const fams = only?.length ? FAMILIES.filter((f) => only.includes(f.id)) : FAMILIES;
-  const fam = fams[Math.floor(Math.random() * fams.length)];
-  const cats = categoriesOf(fam.id);
-  const cat = cats[Math.floor(Math.random() * cats.length)];
-  return { family: fam.id, cat: cat.id, nonce: Math.floor(Math.random() * 1e9) };
-}
-
-function polar(r: number, deg: number) {
-  const a = ((deg - 90) * Math.PI) / 180;
-  return [50 + r * Math.cos(a), 50 + r * Math.sin(a)];
-}
-function slicePath(i: number) {
-  const [x1, y1] = polar(48, i * SLICE);
-  const [x2, y2] = polar(48, (i + 1) * SLICE);
-  return `M50 50 L${x1} ${y1} A48 48 0 0 1 ${x2} ${y2} Z`;
-}
-
-function TonePattern({ id, tone }: { id: string; tone: Tone }) {
-  const ink = "#0d0d0d";
-  switch (tone) {
-    case "dots":
-      return (
-        <pattern id={id} width="2.2" height="2.2" patternUnits="userSpaceOnUse">
-          <circle cx="1.1" cy="1.1" r=".42" fill={ink} />
-        </pattern>
-      );
-    case "bigdots":
-      return (
-        <pattern id={id} width="3.6" height="3.6" patternUnits="userSpaceOnUse">
-          <circle cx="1.8" cy="1.8" r=".95" fill={ink} />
-        </pattern>
-      );
-    case "lines":
-      return (
-        <pattern id={id} width="2" height="2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width=".5" height="2" fill={ink} />
-        </pattern>
-      );
-    case "cross":
-      return (
-        <pattern id={id} width="2.4" height="2.4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width=".35" height="2.4" fill={ink} />
-          <rect width="2.4" height=".35" fill={ink} />
-        </pattern>
-      );
-    case "hlines":
-      return (
-        <pattern id={id} width="2" height="2" patternUnits="userSpaceOnUse">
-          <rect width="2" height=".55" fill={ink} />
-        </pattern>
-      );
-    case "vlines":
-      return (
-        <pattern id={id} width="2.3" height="2.3" patternUnits="userSpaceOnUse">
-          <rect width=".55" height="2.3" fill={ink} />
-        </pattern>
-      );
-    case "checker":
-      return (
-        <pattern id={id} width="3.2" height="3.2" patternUnits="userSpaceOnUse">
-          <rect width="1.6" height="1.6" fill={ink} />
-          <rect x="1.6" y="1.6" width="1.6" height="1.6" fill={ink} />
-        </pattern>
-      );
-    case "grid":
-      return (
-        <pattern id={id} width="3" height="3" patternUnits="userSpaceOnUse">
-          <rect width="3" height=".4" fill={ink} />
-          <rect width=".4" height="3" fill={ink} />
-        </pattern>
-      );
-  }
-}
-
 interface Props {
+  deck: string[];
   spin: Spin | null;
   /** solo quien manda puede girar */
   canSpin: boolean;
@@ -97,114 +19,180 @@ interface Props {
   size?: "hero" | "compact";
 }
 
-export default function Wheel({ spin, canSpin, onRequest, onLanded, size = "hero" }: Props) {
+const FS = 3.8;
+/** del borde al botón central caben unas 28 unidades */
+const MAXLEN = 23;
+
+function polar(r: number, deg: number) {
+  const a = ((deg - 90) * Math.PI) / 180;
+  return [50 + r * Math.cos(a), 50 + r * Math.sin(a)] as const;
+}
+
+/** gajo centrado arriba (0°); cada gajo se dibuja así y luego se rota */
+function topWedge(n: number, r = 48) {
+  const half = 180 / n;
+  const [x1, y1] = polar(r, -half);
+  const [x2, y2] = polar(r, half);
+  return `M50 50 L${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2} Z`;
+}
+
+export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size = "hero" }: Props) {
   const rot = useMotionValue(0);
+  const vel = useVelocity(rot);
+  const blur = useTransform(vel, (v) => Math.min(0.85, Math.abs(v) / 1400));
   const reduce = useReducedMotion();
   const [spinning, setSpinning] = useState(false);
-  const [landed, setLanded] = useState<FamilyId | null>(null);
+  const [landed, setLanded] = useState<number | null>(null);
+  const pointer = useRef<SVGSVGElement>(null);
   const lastNonce = useRef<number | null>(null);
+  const lastIdx = useRef(0);
   const landedCb = useRef(onLanded);
   landedCb.current = onLanded;
+
+  const n = Math.max(1, deck.length);
+  const slice = 360 / n;
+  const deckKey = deck.join(",");
+  const clipId = `wedge-${size}-${n}`;
+
+  // el puntero da un golpecito cada vez que pasa un borde
+  useMotionValueEvent(rot, "change", (v) => {
+    const i = Math.round((((-v % 360) + 360) % 360) / slice) % n;
+    if (i !== lastIdx.current) {
+      lastIdx.current = i;
+      if (pointer.current && !reduce) animate(pointer.current, { rotate: [-18, 0] }, { duration: 0.16, ease: "easeOut" });
+    }
+  });
+
+  // mazo nuevo: la rueda se recoge un poco y vuelve
+  useEffect(() => {
+    setLanded(null);
+  }, [deckKey]);
 
   useEffect(() => {
     if (!spin || spin.nonce === lastNonce.current) return;
     lastNonce.current = spin.nonce;
-    const i = FAMILIES.findIndex((f) => f.id === spin.family);
-    const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * SLICE * 0.6;
-    const center = i * SLICE + SLICE / 2;
+    if (deck[spin.index] !== spin.cat) return;
+    const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * slice * 0.6;
     const cur = rot.get();
     const base = cur + 360 * 5;
-    const desired = (((360 - center + jitter) % 360) + 360) % 360;
-    const target = base + ((desired - (base % 360) + 360) % 360);
+    const desired = (((-spin.index * slice + jitter) % 360) + 360) % 360;
+    const target = base + ((desired - (((base % 360) + 360) % 360) + 360) % 360);
     setLanded(null);
     setSpinning(true);
     const controls = animate(rot, target, {
-      duration: reduce ? 0 : 4.2,
-      ease: [0.12, 0.62, 0.08, 1],
+      duration: reduce ? 0 : 4.4,
+      ease: [0.15, 0.6, 0.08, 1],
       onComplete: () => {
         setSpinning(false);
-        setLanded(spin.family as FamilyId);
+        setLanded(spin.index);
         landedCb.current?.(spin);
       },
     });
     return () => controls.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [spin, rot, reduce]);
 
-  return (
-    <div className={`wheel wheel--${size} ${spinning ? "is-spinning" : ""}`}>
-      <svg className="wheel__speed" viewBox="0 0 100 100" aria-hidden>
-        {Array.from({ length: 48 }, (_, k) => {
-          const [x1, y1] = polar(51, k * 7.5);
-          const [x2, y2] = polar(k % 3 === 0 ? 70 : 62, k * 7.5);
-          return <line key={k} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--ink)" strokeWidth={k % 2 ? 0.5 : 0.9} />;
-        })}
-      </svg>
+  const wedges = useMemo(
+    () =>
+      deck.map((id, i) => {
+        const c = CATEGORY_BY_ID[id];
+        const img = coversOf(c)[0];
+        const focus = (Array.isArray(c.cover) ? 50 : (c.focus ?? 50)) / 100;
+        // la imagen cubre la caja del gajo (y 2..50); en 16:9 la hqdefault trae franjas que quedan fuera
+        const h = img?.wide ? 64 : 48;
+        const w = img?.wide ? 85.3 : 64;
+        const cw = img?.wide ? 85.3 : 64;
+        const x = Math.min(25, Math.max(75 - cw, 50 - focus * cw));
+        return { id, c, img, i, x, y: img?.wide ? -6 : 2, w, h };
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [deckKey],
+  );
 
-      <motion.div className="wheel__disc" style={{ rotate: rot }}>
-        <svg viewBox="0 0 100 100" role="img" aria-label="Ruleta de categorías">
+  return (
+    <div className={`wheel wheel--${size} ${spinning ? "is-spinning" : ""} ${landed != null ? "has-landed" : ""}`}>
+      <motion.div
+        key={deckKey}
+        className="wheel__disc"
+        style={{ rotate: rot }}
+        initial={reduce ? false : { scale: 0.86, opacity: 0.4 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 260, damping: 18 }}
+      >
+        <svg viewBox="0 0 100 100" role="img" aria-label={`Ruleta con ${deck.map((d) => CATEGORY_BY_ID[d]?.name).join(", ")}`}>
           <defs>
-            {FAMILIES.map((f) => (
-              <TonePattern key={f.id} id={`tone-${f.id}`} tone={f.tone} />
-            ))}
+            <clipPath id={clipId}>
+              <path d={topWedge(n, 48.6)} />
+            </clipPath>
           </defs>
-          <circle cx="50" cy="50" r="49.2" fill="var(--paper)" stroke="var(--ink)" strokeWidth="1.6" />
-          {FAMILIES.map((f, i) => {
-            const on = landed === f.id;
-            return (
-              <g key={f.id}>
-                <path d={slicePath(i)} fill="var(--paper)" />
-                <path d={slicePath(i)} fill={on ? "var(--ink)" : `url(#tone-${f.id})`} opacity={on ? 1 : 0.75} />
-                <path d={slicePath(i)} fill="none" stroke="var(--ink)" strokeWidth=".9" />
+          <circle cx="50" cy="50" r="49.4" fill="var(--ink)" />
+          {wedges.map((w, k) => (
+            <motion.g
+              key={`${w.id}-${k}`}
+              transform={`rotate(${k * slice} 50 50)`}
+              initial={reduce ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.04 * k, duration: 0.3 }}
+            >
+              <g clipPath={`url(#${clipId})`}>
+                <rect x="0" y="0" width="100" height="52" fill="var(--paper)" />
+                {w.img && <image href={w.img.hq} x={w.x} y={w.y} width={w.w} height={w.h} preserveAspectRatio="none" />}
+                {landed != null && landed !== k && <rect x="0" y="0" width="100" height="52" fill="var(--ink)" opacity=".55" />}
               </g>
-            );
+              <path d={topWedge(n, 48.6)} fill="none" stroke="var(--ink)" strokeWidth="1.1" />
+              <text
+                x="0"
+                y="0"
+                transform="translate(50 12.4) rotate(90)"
+                textAnchor="start"
+                dominantBaseline="central"
+                fontFamily="Dela Gothic One, sans-serif"
+                fontSize={FS}
+                {...(w.c.short.length * FS * 0.95 > MAXLEN ? { textLength: MAXLEN, lengthAdjust: "spacingAndGlyphs" } : {})}
+                fill={landed === k ? "var(--signal)" : "var(--paper)"}
+                stroke="var(--ink)"
+                strokeWidth="1.5"
+                strokeLinejoin="round"
+                paintOrder="stroke"
+              >
+                {w.c.short}
+              </text>
+            </motion.g>
+          ))}
+          {landed != null && <path d={topWedge(n, 47.6)} fill="none" stroke="var(--signal)" strokeWidth="1.6" transform={`rotate(${landed * slice} 50 50)`} />}
+          <circle cx="50" cy="50" r="48.8" fill="none" stroke="var(--ink)" strokeWidth="1.8" />
+          {Array.from({ length: n * 3 }, (_, k) => {
+            const [x, y] = polar(46.6, (k * 360) / (n * 3));
+            return <circle key={k} cx={x} cy={y} r={k % 3 === 0 ? 0.9 : 0.5} fill="var(--paper)" />;
           })}
-          {FAMILIES.map((f, i) => {
-            const mid = i * SLICE + SLICE / 2;
-            const [x, y] = polar(31, mid);
-            const on = landed === f.id;
-            const w = Math.max(14, f.wheel.length * 3.25 + 4);
-            const turn = mid < 180 ? mid - 90 : mid + 90;
-            return (
-              <g key={`l-${f.id}`} transform={`translate(${x} ${y}) rotate(${turn})`}>
-                <rect x={-w / 2} y="-3.6" width={w} height="7.2" fill={on ? "var(--hanko)" : "var(--paper)"} stroke="var(--ink)" strokeWidth=".6" />
-                <text
-                  x="0"
-                  y=".2"
-                  textAnchor="middle"
-                  dominantBaseline="central"
-                  fontFamily="Dela Gothic One, sans-serif"
-                  fontSize="4.1"
-                  fill={on ? "var(--paper)" : "var(--ink)"}
-                >
-                  {f.wheel}
-                </text>
-              </g>
-            );
-          })}
-          <circle cx="50" cy="50" r="10.5" fill="var(--paper)" stroke="var(--ink)" strokeWidth="1.4" />
         </svg>
       </motion.div>
 
-      {/* el puntero es el sello */}
+      {/* líneas de velocidad sobre la rueda mientras gira rápido */}
+      <motion.div className="wheel__blur" style={{ opacity: blur }} aria-hidden />
+
+      {/* el puntero es el sello: da un golpecito en cada borde */}
       <div className="wheel__pointer" aria-hidden>
-        <svg viewBox="0 0 40 52" width="40" height="52">
+        <svg ref={pointer} viewBox="0 0 40 52" width="40" height="52">
           <path d="M4 2h32v30L20 50 4 32z" fill="var(--hanko)" stroke="var(--ink)" strokeWidth="3" strokeLinejoin="round" />
-          <text x="20" y="19" textAnchor="middle" dominantBaseline="central" fontFamily="Dela Gothic One" fontSize="17" fill="var(--paper)">
+          <text x="20" y="18" textAnchor="middle" dominantBaseline="central" fontFamily="Dela Gothic One" fontSize="16" fill="var(--paper)">
             T
           </text>
         </svg>
       </div>
 
-      <button
+      <motion.button
         type="button"
         className="wheel__hub"
         onClick={onRequest}
         disabled={!canSpin || spinning}
         aria-label={spinning ? "Girando" : "Girar la ruleta"}
+        whileTap={canSpin && !spinning ? { scale: 0.9 } : undefined}
+        whileHover={canSpin && !spinning ? { scale: 1.06, rotate: -4 } : undefined}
+        transition={{ type: "spring", stiffness: 500, damping: 20 }}
       >
-        <Seal text={spinning ? "…" : "¿?"} size={size === "hero" ? 76 : 56} variant={0} />
-        <span className="wheel__hub-label">{spinning ? "Gira…" : canSpin ? "Girar" : "Espera"}</span>
-      </button>
+        <span className={`wheel__hub-face ${!canSpin && !spinning ? "is-wait" : ""}`}>{spinning ? "…" : canSpin ? "Gira" : "Espera"}</span>
+      </motion.button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 .wheel {
   position: relative;
-  width: min(100%, 560px);
+  width: 100%;
   aspect-ratio: 1;
   margin-inline: auto;
 }
@@ -10,82 +10,98 @@
 }
 .wheel__disc {
   position: absolute;
-  inset: 7%;
+  inset: 4%;
   will-change: transform;
   border-radius: 50%;
-  box-shadow: var(--lift-2);
+  box-shadow: 0 0 0 4px var(--paper), 0 0 0 8px var(--ink);
+}
+/* la sombra va fuera del disco: si girara con él, daría vueltas */
+.wheel::before {
+  content: "";
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  box-shadow: 7px 9px 0 8px var(--hanko);
 }
 .wheel__disc svg {
   display: block;
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
-.wheel__speed {
+/* líneas de velocidad: un anillo de trazos que se nota solo cuando la rueda va rápido */
+.wheel__blur {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.35s var(--ease);
-}
-.wheel.is-spinning .wheel__speed {
-  opacity: 1;
+  inset: 4%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgba(244, 241, 232, 0.55) 0deg 0.6deg, transparent 0.6deg 4deg);
+  -webkit-mask: radial-gradient(circle, transparent 24%, #000 25%, #000 70%, transparent 71%);
+  mask: radial-gradient(circle, transparent 24%, #000 25%, #000 70%, transparent 71%);
 }
 .wheel__pointer {
   position: absolute;
-  top: 1%;
   left: 50%;
-  transform: translateX(-50%);
+  top: -1%;
   z-index: 3;
-  filter: none;
+  transform: translateX(-50%);
+  filter: drop-shadow(3px 3px 0 var(--ink));
 }
-.wheel.is-spinning .wheel__pointer svg {
-  animation: tick 0.11s linear infinite alternate;
-  transform-origin: 50% 0;
-}
-@keyframes tick {
-  from {
-    transform: rotate(-9deg);
-  }
-  to {
-    transform: rotate(7deg);
-  }
+.wheel__pointer svg {
+  display: block;
+  transform-origin: 50% 10%;
 }
 .wheel__hub {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
   z-index: 2;
+  width: 21%;
+  aspect-ratio: 1;
+  margin: -10.5% 0 0 -10.5%;
+  border-radius: 50%;
+  border: 4px solid var(--ink);
+  background: var(--hanko);
+  color: var(--ink);
+  box-shadow: 0 0 0 4px var(--paper), 5px 6px 0 4px var(--ink);
   display: grid;
-  justify-items: center;
-  gap: 2px;
+  place-items: center;
   padding: 0;
-  border: 0;
-  background: none;
-  transition: transform 0.15s var(--ease);
 }
-.wheel__hub-label {
+.wheel__hub::after {
+  /* área de toque generosa: el botón es grande, pero en la sala compacta baja de 80 px */
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+}
+.wheel__hub-face {
   font-family: var(--display);
-  font-size: 15px;
+  font-size: clamp(16px, 4.6cqi, 30px);
   line-height: 1;
-  background: var(--paper);
-  border: var(--border-thin);
-  padding: 4px 8px 5px;
+  letter-spacing: 0.02em;
 }
-@media (hover: hover) and (pointer: fine) {
-  .wheel__hub:not([disabled]):hover {
-    transform: translate(-50%, -50%) scale(1.06) rotate(-4deg);
-  }
+.wheel {
+  container-type: inline-size;
 }
-.wheel__hub:not([disabled]):active {
-  transform: translate(-50%, -50%) scale(0.94);
+.wheel__hub-face {
+  font-size: 5.4cqi;
+}
+.wheel__hub-face.is-wait {
+  font-size: 3.4cqi;
 }
 .wheel__hub[disabled] {
   cursor: default;
+  background: var(--paper-2);
+}
+.wheel.is-spinning .wheel__hub-face.is-wait {
+  font-size: 3.4cqi;
+}
+.wheel__hub[disabled] {
+  background: var(--hanko);
 }
 @media (prefers-reduced-motion: reduce) {
-  .wheel.is-spinning .wheel__pointer svg {
-    animation: none;
+  .wheel__blur {
+    display: none;
   }
 }

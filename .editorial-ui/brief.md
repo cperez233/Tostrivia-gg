@@ -1,31 +1,31 @@
 # Brief (editorial-ui)
 
 Project: Tostrivia-gg
-Page: home + juego + sala (app de trivia)
+Page: ruleta + categorías + en grupo + sala + partida (app de trivia), segunda versión
 Date: 2026-10-18
 
 ## Direction (step 2)
-World: revista shōnen semanal impresa: papel prensa, tinta negra, tramas de semitono (screentone), líneas cinéticas, viñetas con borde grueso, onomatopeyas, el sello hanko del editor.
-Palette: bg #EEEEEA, ink #0D0D0D, accent #E2401C
-Display font: Dela Gothic One (gótica japonesa pesada, se lee como onomatopeya de manga)
-Text font: Zen Kaku Gothic New (gótica japonesa de texto, Latin limpio)
-Navigation: Split top bar → compact on scroll (logo-sello a la izquierda, "Jugar en grupo" y "Unirse a sala" a la derecha); en celular barra compacta con un solo botón de sala
-Hero content: la ruleta misma (herramienta), una viñeta circular entramada que se gira
-Composition: Tool because lo primero que hace quien llega es girar la ruleta y el resultado (la categoría) es el protagonista; rejected Cover (no hay una escena propia que mostrar), Type window (el nombre no dice nada del juego), Index list (queda como sección de categorías debajo).
-Candidates: 1) Tool: la ruleta-viñeta gira bajo un titular corto y el sector ganador se sella en bermellón; 2) Index list: filas de títulos de anime/juegos en Dela Gothic que muestran su trama detrás; 3) Scatter collage: viñetas inclinadas de distintas categorías apiladas como recortes de revista.
+World: la página de pelea del manga shōnen y la portada a color de la revista: medianiles negros entre viñetas blancas, líneas cinéticas, onomatopeyas enormes, el "impact frame" del anime (un cuadro invertido en el golpe), tramas de semitono y el sello del editor.
+Palette: bg #121110 (medianil de tinta), paper #F4F1E8, accent #FF4B1F (bermellón hanko); señal #FFD23F (amarillo de portada) solo para racha y puntos
+Display font: Dela Gothic One (gótica japonesa pesada; lleva las onomatopeyas en katakana y el español)
+Text font: Zen Kaku Gothic New
+Navigation: Bottom dock (mobile-first, also desktop): en celular un dock abajo con Ruleta, Categorías y En grupo; en escritorio la misma tríada arriba con un bloque de tinta que se desliza; cada cambio es un barrido de líneas cinéticas en la dirección del destino
+Hero content: la ruleta misma, ahora con la imagen de cada categoría en su gajo
+Composition: Tool because la ruleta es el juego y su resultado (la categoría con su imagen) es el protagonista; rejected Cover (la imagen grande sería de una sola serie y el juego tiene 57), Scatter collage (compite con la ruleta; queda como recurso en Categorías), Type window (el nombre no dice nada del juego).
+Candidates: 1) Tool: escenario negro con líneas cinéticas, ruleta gigante con imágenes por gajo, el resultado entra de golpe como viñeta; 2) Scatter collage: viñetas inclinadas con portadas de cada categoría que se apilan; 3) Cover: una portada a sangre que cambia con el filtro y un titular abajo.
 Split test: n/a
-Footer composition: An object from the world: el colofón (okuzuke) de un tomo de manga, con título, edición, "impreso en", créditos y el sello
-Motif: el sello hanko bermellón (logo, puntero de la ruleta, sello de acierto, puntaje final, colofón, 404)
-Name: proper name, because "Tostrivia" es un nombre propio (Tostu + trivia) que no describe el juego; el mundo sale de la actividad (anime, manga, juegos).
-Repeats: none (no history)
-Previous pages read: none found (repo vacío)
-Galleries: skipped because es una app de juego con tema elegido por el usuario (manga/anime); la referencia es el propio medio impreso
-Story: Gira la ruleta, responde 10 preguntas contra el reloj (algunas con el opening sonando a ciegas) y compara tu racha con hasta 9 amigos en una sala.
+Footer composition: Sign-off note: una sola línea (aviso de fans y firma); el juego no necesita colofón
+Motif: el sello hanko bermellón (logo, puntero de la ruleta, botón de girar, sello de acierto, rango final, 404). Los jugadores son animales chibi (uno por raza), no el motivo.
+Name: proper name, because "Tostrivia" es Tostu + trivia; el mundo sale de la actividad (manga, anime, juegos).
+Repeats: Tool, Dela Gothic One, rojo: es el mismo sitio y el dueño no objetó la ruleta ni la tipografía; lo que cambia es el impacto (escenario negro, imágenes, movimiento), la navegación y el pie.
+Previous pages read: la versión 1 de este mismo repo (papel gris, ruleta de tramas, colofón largo); el dueño la encontró plana y con demasiado texto.
+Galleries: skipped because el tema lo eligió el dueño (manga/anime) y la referencia es el propio medio
+Story: Gira, cae una serie o un juego, aciertas contra el reloj y le ganas a tus amigos en la sala.
 
 ## Facts (step 3)
-Given by the user: categorías (cultura general, 16 animes, 7+ juegos), 10 preguntas por partida, 4 opciones, temporizador, racha, puntaje, grupal hasta 10, preguntas de video con start/end, todo en español.
-Placeholders to mark: ninguno de negocio; los videos dependen del JSON generado por el script.
-Not invented: no hay precios, usuarios, ranking global ni reseñas.
+Given by the user: categorías (cultura general, animes, videojuegos), 10 preguntas, 4 opciones, reloj, racha, puntaje, grupo hasta 10, preguntas con video, avatares de animales chibi (una raza por jugador), imágenes de los temas, menos texto.
+Placeholders to mark: ninguno.
+Not invented: no hay precios, usuarios, ranking global ni reseñas. Las imágenes son miniaturas de videos oficiales de YouTube (cargadas desde i.ytimg.com), no archivos propios.
 
 ## Flags
-Flags: interactive, error-pages
+Flags: interactive, error-pages, multipage, photos

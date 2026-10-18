@@ -19,8 +19,12 @@ console.info(
 );
 
 installRipple();
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+const root = createRoot(document.getElementById("root")!);
+if (import.meta.env.DEV && location.hash === "#hoja") import("./dev/Sheet").then(({ default: Sheet }) => root.render(<Sheet />));
+else if (import.meta.env.DEV && location.hash === "#og") import("./dev/Og").then(({ default: Og }) => root.render(<Og />));
+else
+  root.render(
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );

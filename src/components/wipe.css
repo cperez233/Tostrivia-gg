@@ -1,0 +1,41 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
+  background: var(--paper);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.wipe__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.wipe__slash {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 50%;
+  height: clamp(84px, 16vw, 190px);
+  margin-top: calc(clamp(84px, 16vw, 190px) / -2);
+  background: var(--hanko);
+  transform-origin: right center;
+  rotate: -4deg;
+  border-block: 4px solid var(--ink);
+}
+.wipe__label {
+  position: relative;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 1rem + 8vw, 8rem);
+  line-height: 1.1;
+  color: var(--paper);
+  -webkit-text-stroke: 0;
+  text-shadow: 4px 4px 0 var(--ink), -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink);
+  white-space: nowrap;
+  padding-inline: 16px;
+}

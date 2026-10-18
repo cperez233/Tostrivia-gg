@@ -3,6 +3,7 @@
  * y es la única fuente de verdad: los invitados solo reciben fotos (Snapshot) del estado.
  */
 import { BANK } from "../data/bank";
+import { ANIMAL_COUNT } from "../components/Avatar";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
 
 export const MAX_PLAYERS = 10;
@@ -34,8 +35,9 @@ export interface Pick {
 }
 
 export interface Spin {
-  family: string;
   cat: string;
+  /** gajo del mazo en el que cae */
+  index: number;
   nonce: number;
 }
 
@@ -46,6 +48,8 @@ export interface Snapshot {
   hostId: string;
   cat: string | null;
   spin: Spin | null;
+  /** gajos de la ruleta (ids de categoría) */
+  deck: string[];
   seed: number;
   ids: string[];
   index: number;
@@ -87,6 +91,7 @@ export class Match {
       hostId: host.id,
       cat: null,
       spin: null,
+      deck: [],
       seed: 0,
       ids: [],
       index: -1,
@@ -123,12 +128,22 @@ export class Match {
   join(p: { id: string; name: string; seal: number }): "ok" | "full" {
     const existing = this.s.players.find((x) => x.id === p.id);
     if (existing) {
-      this.emit({ players: this.s.players.map((x) => (x.id === p.id ? { ...x, name: p.name, seal: p.seal, online: true } : x)) });
+      const seal = this.freeAnimal(p.seal, p.id);
+      this.emit({ players: this.s.players.map((x) => (x.id === p.id ? { ...x, name: p.name, seal, online: true } : x)) });
       return "ok";
     }
     if (this.s.players.filter((x) => x.online).length >= MAX_PLAYERS) return "full";
-    this.emit({ players: [...this.s.players, newPlayer(p)] });
+    this.emit({ players: [...this.s.players, newPlayer({ ...p, seal: this.freeAnimal(p.seal, p.id) })] });
     return "ok";
+  }
+  /** una raza por jugador: si el animal ya lo tiene otro, le toca el siguiente libre */
+  private freeAnimal(want: number, id: string) {
+    const taken = new Set(this.s.players.filter((x) => x.id !== id).map((x) => x.seal));
+    for (let k = 0; k < ANIMAL_COUNT; k++) {
+      const a = (want + k) % ANIMAL_COUNT;
+      if (!taken.has(a)) return a;
+    }
+    return want;
   }
   setOnline(id: string, online: boolean) {
     if (!this.s.players.some((p) => p.id === id)) return;
@@ -146,6 +161,9 @@ export class Match {
   }
 
   /* ───────── categoría ───────── */
+  setDeck(deck: string[]) {
+    this.emit({ deck, spin: null });
+  }
   setSpin(spin: Spin) {
     this.emit({ spin, cat: spin.cat });
   }

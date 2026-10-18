@@ -1,41 +1,47 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * 404: el sello cae sobre una página en blanco y se queda torcido, sin nada que sellar.
+ * 404: el sello cae sobre una viñeta vacía y se queda torcido, sin nada que sellar.
  */
 import { motion } from "framer-motion";
-import { Logo, Seal } from "../components/Seal";
+import { Seal } from "../components/Seal";
+import { FocusLines } from "../components/Wipe";
+import type { Tab } from "../components/Nav";
 
-export default function NotFound({ onHome }: { onHome: () => void }) {
+export default function NotFound({ onGo }: { onGo: (t: Tab) => void }) {
+  const link = (t: Tab) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    onGo(t);
+  };
   return (
-    <div className="nf wrap">
-      <a href="/" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label="Ir al inicio">
-        <Logo size={36} />
-      </a>
+    <main className="nf wrap">
       <div className="nf__grid">
         <div className="nf__copy">
           <p className="label">Error 404</p>
           <h1 className="nf__title">Esta página no está en el tomo.</h1>
-          <p>La dirección no existe o la sala que buscabas ya se cerró. Estas sí existen:</p>
+          <p className="muted">La dirección no existe o la sala que buscabas ya se cerró.</p>
           <nav className="nf__links" aria-label="Páginas">
-            <a href="/#categorias">Categorías</a>
-            <a href="/#grupo">Jugar en grupo</a>
-            <a href="/#reglas">Reglas</a>
+            <a href="/categorias" onClick={link("cats")}>
+              Categorías
+            </a>
+            <a href="/grupo" onClick={link("group")}>
+              Jugar en grupo
+            </a>
           </nav>
-          <button type="button" className="btn btn--hanko" onClick={onHome}>
+          <a href="/" className="btn btn--hanko" onClick={link("home")}>
             Volver a la ruleta
-          </button>
+          </a>
         </div>
-        <div className="nf__page panel tone-dots" aria-hidden>
-          <div className="nf__blank" />
+        <div className="nf__page panel" aria-hidden>
+          <FocusLines className="nf__lines" />
           <motion.span
             className="nf__seal"
-            initial={{ y: -120, rotate: 0, opacity: 0 }}
-            animate={{ y: 0, rotate: [0, -14, -8], opacity: 1 }}
+            initial={{ y: -160, rotate: 0, opacity: 0 }}
+            animate={{ y: 0, rotate: [0, -16, -8], opacity: 1 }}
             transition={{ duration: 0.9, times: [0, 0.6, 1], ease: [0.22, 1, 0.36, 1] }}
           >
             <Seal text="?" size={120} />
           </motion.span>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

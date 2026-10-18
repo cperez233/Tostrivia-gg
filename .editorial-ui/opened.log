@@ -10,3 +10,17 @@
 {"t":"2026-10-18T05:29:24.004Z","kind":"pattern","numbers":[25,38,79,53]}
 {"t":"2026-10-18T06:46:38.655Z","kind":"ref","name":"verification-notes","mode":"full"}
 {"t":"2026-10-18T06:46:38.700Z","kind":"ref","name":"feel-and-craft","mode":"full"}
+{"t":"2026-10-18T19:42:00.244Z","kind":"ref","name":"motion-index","mode":"full"}
+{"t":"2026-10-18T19:42:04.435Z","kind":"ref","name":"multi-page-and-states","mode":"full"}
+{"t":"2026-10-18T19:42:08.763Z","kind":"ref","name":"images","mode":"full"}
+{"t":"2026-10-18T19:42:14.329Z","kind":"pattern","numbers":[37,71,25,7,5]}
+{"t":"2026-10-18T20:19:07.979Z","kind":"ref","name":"hero-compositions","mode":"mark"}
+{"t":"2026-10-18T20:19:08.022Z","kind":"ref","name":"navigation-patterns","mode":"mark"}
+{"t":"2026-10-18T20:19:08.057Z","kind":"ref","name":"footer-compositions","mode":"mark"}
+{"t":"2026-10-18T20:19:08.100Z","kind":"ref","name":"copy-guide","mode":"mark"}
+{"t":"2026-10-18T20:19:08.141Z","kind":"ref","name":"signature","mode":"mark"}
+{"t":"2026-10-18T20:19:08.176Z","kind":"ref","name":"mobile-performance","mode":"mark"}
+{"t":"2026-10-18T20:19:08.216Z","kind":"ref","name":"error-pages","mode":"mark"}
+{"t":"2026-10-18T20:19:08.247Z","kind":"ref","name":"feel-and-craft","mode":"mark"}
+{"t":"2026-10-18T20:19:08.281Z","kind":"ref","name":"verification-notes","mode":"mark"}
+{"t":"2026-10-18T20:19:08.310Z","kind":"ref","name":"art-direction","mode":"mark"}

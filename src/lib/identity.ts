@@ -30,8 +30,8 @@ export function myId() {
 
 export function savedProfile(): { name: string; seal: number } {
   const name = get(ls, "tostrivia:name") || "";
-  const seal = Number(get(ls, "tostrivia:seal") ?? Math.floor(Math.random() * 10));
-  return { name, seal: Number.isFinite(seal) ? Math.min(9, Math.max(0, seal)) : 0 };
+  const seal = Number(get(ls, "tostrivia:seal") ?? Math.floor(Math.random() * 12));
+  return { name, seal: Number.isFinite(seal) ? Math.min(11, Math.max(0, seal)) : 0 };
 }
 
 export function saveProfile(name: string, seal: number) {

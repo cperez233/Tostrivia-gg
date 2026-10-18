@@ -1,0 +1,125 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--ink);
+  border-bottom: 2px solid var(--ink-3);
+}
+.topnav__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 64px;
+}
+.topnav__logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: none;
+}
+.topnav__tabs {
+  display: none;
+  gap: 4px;
+}
+.topnav__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  font-family: var(--display);
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--on-ink-2);
+  transition: color 0.2s;
+}
+.topnav__tab::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 6px;
+  height: 3px;
+  background: var(--hanko);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.3s var(--ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .topnav__tab:not(.is-on):hover {
+    color: var(--on-ink);
+  }
+  .topnav__tab:not(.is-on):hover::after {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.topnav__tab.is-on {
+  color: var(--ink);
+}
+.topnav__pill {
+  position: absolute;
+  inset: 4px 0;
+  background: var(--paper);
+  transform: skewX(-10deg);
+  box-shadow: 4px 4px 0 var(--hanko);
+}
+.topnav__label {
+  position: relative;
+}
+
+/* celular: dock abajo */
+.dock {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: calc(10px + var(--safe-b));
+  z-index: 60;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--paper);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 0 0 0 2px var(--paper), 5px 6px 0 2px var(--hanko);
+}
+.dock__item {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 1px;
+  min-height: 58px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.1;
+}
+.dock__item + .dock__item {
+  border-left: 2px solid var(--ink);
+}
+.dock__pill {
+  position: absolute;
+  inset: 0;
+  background: var(--hanko);
+}
+.dock__icon,
+.dock__label {
+  position: relative;
+}
+.dock__icon svg {
+  display: block;
+}
+@media (min-width: 900px) {
+  .topnav__tabs {
+    display: flex;
+  }
+  .dock {
+    display: none;
+  }
+}
+@media (max-width: 899.98px) {
+  :root {
+    --dock-h: calc(84px + var(--safe-b));
+  }
+}

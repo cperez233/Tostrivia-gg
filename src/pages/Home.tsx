@@ -1,385 +1,211 @@
-/* editorial-ui · Cristian Pérez · cristianperez.me */
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { CATEGORIES, CATEGORY_BY_ID, FAMILIES, FAMILY_BY_ID, categoriesOf } from "../data/categories";
-import { BANK, countFor } from "../data/bank";
-import type { FamilyId } from "../data/types";
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * La ruleta: el filtro arma el mazo, la rueda gira y la categoría que cae entra de golpe.
+ */
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion, useAnimate, useReducedMotion } from "framer-motion";
+import { CATEGORY_BY_ID, FAMILY_BY_ID } from "../data/categories";
 import type { Spin } from "../game/match";
+import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
 import Wheel from "../components/Wheel";
-import { Logo, Seal } from "../components/Seal";
-import Colophon from "../components/Colophon";
-import ProfilePicker from "../components/ProfilePicker";
-import { normalizeCode } from "../net/client";
-import { savedProfile } from "../lib/identity";
+import { Cover } from "../components/Cover";
+import { FocusLines } from "../components/Wipe";
+import { newSeed } from "../lib/rng";
+import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import "./home.css";
-
-type Filter = "todo" | "anime" | "juegos" | "cultura";
-const FILTERS: { id: Filter; label: string }[] = [
-  { id: "todo", label: "Todo" },
-  { id: "anime", label: "Anime" },
-  { id: "juegos", label: "Juegos" },
-  { id: "cultura", label: "Cultura" },
-];
-const FILTER_FAMS: Record<Filter, FamilyId[]> = {
-  todo: FAMILIES.map((f) => f.id),
-  anime: ["leyenda", "nueva", "culto", "oido"],
-  juegos: ["nintendo", "aaa", "online", "oido"],
-  cultura: ["cultura"],
-};
-function eligible(f: Filter) {
-  return CATEGORIES.filter(
-    (c) =>
-      FILTER_FAMS[f].includes(c.family) &&
-      (f !== "anime" || c.id !== "soundtracks") &&
-      (f !== "juegos" || c.id !== "openings") &&
-      (BANK.byCat[c.id]?.length ?? 0) >= 10,
-  );
-}
 
 interface Props {
   onPlay: (cat: string) => void;
-  onHost: (name: string, seal: number) => void;
-  onJoin: (code: string) => void;
 }
 
-export default function Home({ onPlay, onHost, onJoin }: Props) {
+const SFX = ["ドン", "ドドド", "バン", "ゴゴゴ"];
+
+export default function Home({ onPlay }: Props) {
+  const reduce = useReducedMotion();
+  const arena = usePauseOffscreen<HTMLElement>();
+  const [filter, setFilter] = useState<Filter>("todo");
+  const [seed, setSeed] = useState(() => newSeed());
+  const deck = useMemo(() => makeDeck(filter, seed), [filter, seed]);
   const [spin, setSpin] = useState<Spin | null>(null);
   const [landed, setLanded] = useState<Spin | null>(null);
-  const [filter, setFilter] = useState<Filter>("todo");
+  const [hits, setHits] = useState(0);
+  const spinning = !!spin && landed?.nonce !== spin.nonce;
+  const [scope, shake] = useAnimate();
 
   const doSpin = () => {
-    const pool = eligible(filter);
-    const cat = pool[Math.floor(Math.random() * pool.length)];
+    if (spinning) return;
     setLanded(null);
-    setSpin({ family: cat.family, cat: cat.id, nonce: Math.floor(Math.random() * 1e9) });
+    setSpin(makeSpin(deck));
+  };
+  const pick = (f: Filter) => {
+    if (spinning) return;
+    setSpin(null);
+    setLanded(null);
+    if (f === filter) setSeed(newSeed());
+    setFilter(f);
+  };
+  const reshuffle = () => {
+    if (spinning) return;
+    setSpin(null);
+    setLanded(null);
+    setSeed(newSeed());
+  };
+  const onLanded = (s: Spin) => {
+    setLanded(s);
+    setHits((h) => h + 1);
+    if (!reduce && scope.current) shake(scope.current, { x: [0, -10, 9, -6, 4, 0], y: [0, 6, -5, 3, -1, 0] }, { duration: 0.38, ease: "easeOut" });
   };
 
-  const totals = useMemo(() => {
-    const qs = Object.values(BANK.byId);
-    return { q: qs.length, v: qs.filter((q) => q.media).length, c: CATEGORIES.filter((c) => BANK.byCat[c.id]?.length).length };
-  }, []);
-
-  return (
-    <>
-      <TopBar onHost={() => document.getElementById("grupo")?.scrollIntoView({ behavior: "smooth", block: "start" })} />
-      <main id="inicio">
-        <section className="hero wrap" aria-labelledby="hero-t">
-          <div className="hero__head panel">
-            <p className="label">Trivia de anime, videojuegos y cultura general</p>
-            <h1 id="hero-t" className="hero__title">
-              Gira, responde y no rompas la racha.
-            </h1>
-            <p className="hero__lead">
-              Diez preguntas por partida y veinte segundos para cada una. En las de video suena el opening con la pantalla tapada; la imagen se revela cuando respondes.
-            </p>
-          </div>
-
-          <div className="hero__wheel panel">
-            <div className="hero__filter" role="radiogroup" aria-label="Qué entra en la ruleta">
-              {FILTERS.map((f) => (
-                <button
-                  key={f.id}
-                  type="button"
-                  role="radio"
-                  aria-checked={filter === f.id}
-                  className={`seg ${filter === f.id ? "is-on" : ""}`}
-                  onClick={() => setFilter(f.id)}
-                >
-                  {filter === f.id && <motion.span layoutId="seg-pill" className="seg__pill" transition={{ type: "spring", stiffness: 500, damping: 38 }} />}
-                  <span className="seg__label">{f.label}</span>
-                </button>
-              ))}
-            </div>
-            <Wheel spin={spin} canSpin onRequest={doSpin} onLanded={setLanded} />
-          </div>
-
-          <ResultPanel spin={spin} landed={landed} onPlay={onPlay} onSpin={doSpin} />
-        </section>
-
-        <CategoryIndex onPlay={onPlay} totals={totals} />
-        <GroupSection onHost={onHost} onJoin={onJoin} />
-        <Rules />
-      </main>
-      <Colophon totals={totals} />
-    </>
-  );
-}
-
-function TopBar({ onHost }: { onHost: () => void }) {
-  const { scrollY } = useScroll();
-  const [compact, setCompact] = useState(false);
-  useMotionValueEvent(scrollY, "change", (v) => setCompact(v > 40));
-  return (
-    <header className={`topbar ${compact ? "is-compact" : ""}`}>
-      <div className="topbar__in wrap">
-        <a href="/" className="topbar__logo" aria-label="Tostrivia, inicio">
-          <Logo size={compact ? 34 : 40} />
-        </a>
-        <nav className="topbar__nav" aria-label="Secciones">
-          <a href="#categorias">Categorías</a>
-          <a href="#grupo">En grupo</a>
-          <a href="#reglas">Reglas</a>
-        </nav>
-        <button type="button" className="btn btn--small" onClick={onHost}>
-          Jugar en grupo
-        </button>
-      </div>
-    </header>
-  );
-}
-
-function ResultPanel({ spin, landed, onPlay, onSpin }: { spin: Spin | null; landed: Spin | null; onPlay: (c: string) => void; onSpin: () => void }) {
   const cat = landed ? CATEGORY_BY_ID[landed.cat] : null;
-  const fam = cat ? FAMILY_BY_ID[cat.family] : null;
-  const count = cat ? countFor(cat.id) : null;
-  const spinning = !!spin && !landed;
+
   return (
-    <div className={`hero__result panel ${cat ? "has-result" : ""}`} aria-live="polite">
-      <AnimatePresence mode="wait">
-        {!spin && (
-          <motion.div key="idle" className="result__idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <p className="result__kicker">Toca el centro de la ruleta</p>
-            <p className="result__help">
-              Cae en una de las ocho familias y luego en una categoría. Si prefieres elegir, están todas{" "}
-              <a className="link" href="#categorias">
-                aquí abajo
-              </a>
-              .
-            </p>
-            <span className="result__sfx sfx" aria-hidden>
-              ドドド
-            </span>
-          </motion.div>
-        )}
-        {spinning && spin && (
-          <motion.div key={`spin-${spin.nonce}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <p className="result__kicker">Girando…</p>
-            <Reel family={spin.family as FamilyId} target={spin.cat} />
-          </motion.div>
-        )}
-        {cat && fam && count && (
-          <motion.div key={`res-${landed!.nonce}`} className="result__done" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <p className="result__kicker">
-              Te tocó · <span className="muted">{fam.name}</span>
-            </p>
-            <motion.h2
-              className="result__name"
-              initial={{ scale: 1.25, rotate: -3, opacity: 0 }}
-              animate={{ scale: 1, rotate: 0, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 420, damping: 20 }}
-            >
-              {cat.name}
-            </motion.h2>
-            <p className="result__blurb">{cat.blurb}</p>
-            <p className="result__meta">
-              {count.total} preguntas{count.media ? ` · ${count.media} con video` : ""}
-            </p>
-            <div className="result__actions">
-              <button type="button" className="btn btn--hanko" onClick={() => onPlay(cat.id)}>
-                Jugar {cat.name.length > 18 ? "" : cat.name}
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
-                </svg>
-              </button>
-              <button type="button" className="btn btn--paper" onClick={onSpin}>
-                Girar otra vez
-              </button>
-            </div>
-            <motion.span
-              className="result__stamp"
-              aria-hidden
-              initial={{ scale: 2, opacity: 0, rotate: 10 }}
-              animate={{ scale: 1, opacity: 1, rotate: -12 }}
-              transition={{ delay: 0.15, type: "spring", stiffness: 500, damping: 16 }}
-            >
-              <Seal text="¡!" size={64} variant={0} />
-            </motion.span>
+    <main ref={arena} className="arena" id="inicio">
+      <FocusLines className={`arena__lines anim-spin ${spinning ? "is-fast" : ""}`} />
+
+      {/* el golpe: un cuadro invertido y la pantalla tiembla, como en el anime */}
+      <AnimatePresence>
+        {hits > 0 && !reduce && landed && (
+          <motion.div key={hits} className="impact" aria-hidden initial={{ opacity: 1 }} animate={{ opacity: [1, 1, 0] }} transition={{ duration: 0.34, times: [0, 0.4, 1] }}>
+            <FocusLines className="impact__lines" />
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
-  );
-}
 
-/** carrete que repasa las categorías de la familia mientras gira la ruleta */
-function Reel({ family, target }: { family: FamilyId; target: string }) {
-  const cats = categoriesOf(family);
-  const list = [...cats, ...cats, ...cats, ...cats].map((c) => c.name);
-  const idx = cats.length * 3 + cats.findIndex((c) => c.id === target);
-  return (
-    <div className="reel" aria-hidden>
-      <motion.ul initial={{ y: 0 }} animate={{ y: `-${idx * 1.3}em` }} transition={{ duration: 4, ease: [0.12, 0.62, 0.08, 1] }}>
-        {list.map((n, i) => (
-          <li key={i}>{n}</li>
-        ))}
-      </motion.ul>
-    </div>
-  );
-}
-
-function CategoryIndex({ onPlay, totals }: { onPlay: (c: string) => void; totals: { q: number; v: number; c: number } }) {
-  const [fam, setFam] = useState<FamilyId>("leyenda");
-  const family = FAMILY_BY_ID[fam];
-  const cats = categoriesOf(fam).filter((c) => (BANK.byCat[c.id]?.length ?? 0) > 0);
-  return (
-    <section id="categorias" className="cats wrap" aria-labelledby="cats-t">
-      <div className="cats__head">
-        <p className="label">Elige tú</p>
-        <h2 id="cats-t" className="section-title">
-          {totals.c} categorías, {totals.q.toLocaleString("es-CO")} preguntas.
-        </h2>
-        <p className="section-lead">
-          {totals.v} preguntas tienen video: openings, bandas sonoras y tráileres que se oyen o se ven difuminados.
-        </p>
-      </div>
-
-      <div className="tabs" role="tablist" aria-label="Familias">
-        {FAMILIES.map((f) => (
-          <button key={f.id} type="button" role="tab" aria-selected={fam === f.id} className={`tab ${fam === f.id ? "is-on" : ""}`} onClick={() => setFam(f.id)}>
-            <span className={`tab__tone tone-${f.tone}`} aria-hidden />
-            <span className="tab__label">{f.name}</span>
-            {fam === f.id && <motion.span layoutId="tab-ink" className="tab__ink" transition={{ type: "spring", stiffness: 520, damping: 40 }} />}
-          </button>
-        ))}
-      </div>
-
-      <div className="cats__body" role="tabpanel" aria-label={family.name}>
-        <p className="cats__blurb">{family.blurb}</p>
-        <ul className="rows">
-          <AnimatePresence initial={false} mode="popLayout">
-            {cats.map((c, i) => {
-              const n = countFor(c.id);
-              return (
-                <motion.li
-                  key={c.id}
-                  layout
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0, transition: { delay: i * 0.035, duration: 0.3 } }}
-                  exit={{ opacity: 0, transition: { duration: 0.12 } }}
+      <div ref={scope} className="arena__in wrap">
+        <div className="arena__head">
+          <h1 className="arena__title">
+            {["Gira", "la ruleta."].map((w, i) => (
+              <span className="arena__line" key={w}>
+                <motion.span
+                  initial={reduce ? false : { y: "110%", rotate: 4 }}
+                  animate={{ y: 0, rotate: 0 }}
+                  transition={{ delay: 0.1 + i * 0.09, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <button type="button" className="row" onClick={() => onPlay(c.id)}>
-                    <span className={`row__sweep tone-${family.tone}`} aria-hidden />
-                    <span className="row__name">{c.name}</span>
-                    <span className="row__blurb">{c.blurb}</span>
-                    <span className="row__meta">
-                      {n.total} preguntas{n.media ? ` · ${n.media} con video` : ""}
-                    </span>
-                    <span className="row__go" aria-hidden>
-                      Jugar
-                      <svg width="16" height="16" viewBox="0 0 24 24">
-                        <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
-                      </svg>
-                    </span>
-                    {c.sfx && (
-                      <span className="row__sfx sfx" aria-hidden>
-                        {c.sfx}
-                      </span>
-                    )}
-                  </button>
-                </motion.li>
-              );
-            })}
-          </AnimatePresence>
-        </ul>
-      </div>
-    </section>
-  );
-}
+                  {w}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+          <p className="arena__sub">Diez preguntas, veinte segundos cada una.</p>
 
-function GroupSection({ onHost, onJoin }: { onHost: (name: string, seal: number) => void; onJoin: (code: string) => void }) {
-  const [profile, setProfile] = useState(savedProfile);
-  const [code, setCode] = useState("");
-  const [err, setErr] = useState<string | null>(null);
-  useEffect(() => setErr(null), [code, profile.name]);
-  const host = () => {
-    if (!profile.name.trim()) return setErr("Escribe tu nombre para que los demás te reconozcan.");
-    onHost(profile.name.trim(), profile.seal);
-  };
-  const join = (e: React.FormEvent) => {
-    e.preventDefault();
-    const c = normalizeCode(code);
-    if (c.length !== 5) return setErr("El código de sala tiene 5 letras o números.");
-    onJoin(c);
-  };
-  return (
-    <section id="grupo" className="group" aria-labelledby="group-t">
-      <div className="group__in wrap">
-        <div className="group__copy">
-          <p className="label label--on-ink">En grupo</p>
-          <h2 id="group-t" className="section-title">
-            Una sala, hasta 10 celulares.
-          </h2>
-          <p className="section-lead">
-            Creas la sala, compartes el código y cada quien juega desde su celular. Todos ven la misma pregunta al mismo tiempo y el marcador se mueve al revelar la respuesta.
-          </p>
-          <p className="group__fine">
-            La sala vive en el navegador de quien la crea: si lo cierra, la partida termina. Los celulares se conectan entre sí directamente; no guardamos nombres ni puntajes.
-          </p>
-        </div>
-        <div className="group__form panel">
-          <ProfilePicker value={profile} onChange={setProfile} />
-          <button type="button" className="btn btn--hanko btn--block" onClick={host}>
-            Crear sala
-          </button>
-          <div className="group__or" aria-hidden>
-            <span>o entra a una</span>
+          <div className="filters" role="radiogroup" aria-label="Qué entra en la ruleta">
+            {FILTERS.map((f) => (
+              <button key={f.id} type="button" role="radio" aria-checked={filter === f.id} className={`filter ${filter === f.id ? "is-on" : ""}`} onClick={() => pick(f.id)} disabled={spinning && filter !== f.id}>
+                {filter === f.id && <motion.span layoutId="filter-pill" className="filter__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
+                <span className="filter__label">{f.label}</span>
+              </button>
+            ))}
           </div>
-          <form className="group__join" onSubmit={join}>
-            <div className="field">
-              <label htmlFor="code">Código de sala</label>
-              <input
-                id="code"
-                className="input input--code"
-                value={code}
-                onChange={(e) => setCode(normalizeCode(e.target.value))}
-                placeholder="ABCDE"
-                autoComplete="off"
-                autoCapitalize="characters"
-                spellCheck={false}
-                inputMode="text"
-                maxLength={5}
-              />
-            </div>
-            <button type="submit" className="btn btn--block">
-              Entrar
+        </div>
+
+        <div className="arena__wheel">
+          <Wheel deck={deck} spin={spin} canSpin onRequest={doSpin} onLanded={onLanded} />
+          {filter !== "cultura" && filter !== "oido" && (
+            <button type="button" className="reshuffle" onClick={reshuffle} disabled={spinning} aria-label="Poner otras categorías en la rueda">
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
+                <path d="M3 7h4c4 0 6 10 10 10h4M3 17h4c1.6 0 2.8-1.6 4-3.6M13 9.6C14.2 7.6 15.4 7 17 7h4M18 4l3 3-3 3M18 14l3 3-3 3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Otras
             </button>
-          </form>
-          {err && (
-            <p className="form-err" role="alert">
-              {err}
-            </p>
           )}
+          <AnimatePresence>
+            {landed && cat && !reduce && (
+              <motion.span
+                key={`sfx-${hits}`}
+                className="arena__sfx sfx"
+                aria-hidden
+                initial={{ scale: 2.2, opacity: 0, rotate: -18 }}
+                animate={{ scale: 1, opacity: 1, rotate: -10 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 520, damping: 14 }}
+              >
+                {cat.sfx && cat.sfx !== "♪" ? cat.sfx : SFX[hits % SFX.length]}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div className="arena__side" aria-live="polite">
+          <AnimatePresence mode="wait">
+            {cat && landed ? (
+              <Result key={`r-${landed.nonce}`} cat={cat.id} onPlay={() => onPlay(cat.id)} onAgain={doSpin} onClose={() => setLanded(null)} />
+            ) : (
+              <Deal key={`d-${deck.join()}`} deck={deck} spinning={spinning} />
+            )}
+          </AnimatePresence>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 
-function Rules() {
-  const rows: [string, string][] = [
-    ["Partida", "10 preguntas de la categoría que elijas, de fácil a difícil."],
-    ["Tiempo", "20 segundos por pregunta. En las de video son 25 y el reloj arranca cuando empieza a sonar."],
-    ["Puntos", "Fácil 100, media 150, difícil 200, más hasta 100 por responder rápido."],
-    ["Racha", "×1,5 desde 3 aciertos seguidos y ×2 desde 5. Fallar o quedarte sin tiempo la reinicia."],
-    ["Videos", "Se reproduce solo un fragmento. Si un video no carga, la pregunta se cambia por otra y la partida sigue."],
-    ["Teclado", "En computador puedes responder con 1, 2, 3 y 4, y pasar con Enter."],
+/** antes de girar: tres portadas del mazo, tiradas sobre la mesa */
+function Deal({ deck, spinning }: { deck: string[]; spinning: boolean }) {
+  const reduce = useReducedMotion();
+  const three = deck.filter((d, i) => deck.indexOf(d) === i).slice(0, 3);
+  const pose = [
+    { r: -7, x: 0, y: 0 },
+    { r: 5, x: 18, y: 26 },
+    { r: -2, x: -12, y: 52 },
   ];
   return (
-    <section id="reglas" className="rules wrap" aria-labelledby="rules-t">
-      <div className="rules__head">
-        <p className="label">Reglas</p>
-        <h2 id="rules-t" className="section-title">
-          Cómo se cuentan los puntos.
-        </h2>
-      </div>
-      <dl className="rules__list">
-        {rows.map(([k, v]) => (
-          <div key={k}>
-            <dt>{k}</dt>
-            <dd>{v}</dd>
-          </div>
+    <motion.div className="deal" exit={{ opacity: 0, x: 40 }} transition={{ duration: 0.2 }}>
+      <p className="sr-only">{spinning ? "Girando…" : ""}</p>
+      <div className="deal__pile" aria-hidden>
+        {three.map((id, i) => (
+          <motion.div
+            key={id}
+            className="deal__card"
+            style={{ zIndex: 3 - i }}
+            initial={reduce ? false : { x: 160, y: -40, rotate: 30, opacity: 0 }}
+            animate={{ x: pose[i].x, y: pose[i].y, rotate: pose[i].r, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.06 * i }}
+          >
+            <Cover cat={CATEGORY_BY_ID[id]} />
+            <span className="deal__name">{CATEGORY_BY_ID[id].short}</span>
+          </motion.div>
         ))}
-      </dl>
-    </section>
+      </div>
+    </motion.div>
+  );
+}
+
+function Result({ cat, onPlay, onAgain, onClose }: { cat: string; onPlay: () => void; onAgain: () => void; onClose: () => void }) {
+  const reduce = useReducedMotion();
+  const c = CATEGORY_BY_ID[cat];
+  return (
+    <motion.section
+      className="result panel"
+      aria-labelledby="result-t"
+      initial={reduce ? { opacity: 0 } : { scale: 1.35, rotate: -8, opacity: 0, y: 30 }}
+      animate={{ scale: 1, rotate: -1.5, opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 40, transition: { duration: 0.18 } }}
+      transition={{ type: "spring", stiffness: 420, damping: 20 }}
+    >
+      <div className="result__cover">
+        <Cover cat={c} big eager />
+        <span className="result__fam">{FAMILY_BY_ID[c.family].name}</span>
+      </div>
+      <div className="result__body">
+        <h2 id="result-t" className="result__name">
+          {c.name}
+        </h2>
+        <div className="result__actions">
+          <button type="button" className="btn btn--hanko" onClick={onPlay} ref={(el) => el?.focus({ preventScroll: true })}>
+            Jugar
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
+            </svg>
+          </button>
+          <button type="button" className="btn btn--small result__again" onClick={onAgain}>
+            Girar otra vez
+          </button>
+        </div>
+      </div>
+      <button type="button" className="result__close" onClick={onClose} aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3" />
+        </svg>
+      </button>
+    </motion.section>
   );
 }

@@ -2,13 +2,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BANK, videoFor } from "../data/bank";
-import { CATEGORY_BY_ID, FAMILY_BY_ID } from "../data/categories";
+import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
 import type { Player, Snapshot } from "./match";
 import { multiplier } from "./round";
 import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
-import { Seal } from "../components/Seal";
+import { Avatar } from "../components/Avatar";
+import { Cover } from "../components/Cover";
+import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
 import "./game.css";
 
@@ -25,7 +27,7 @@ interface Props {
 export default function GameScreen({ client, snap, at, onExit }: Props) {
   const q = snap.qid ? BANK.byId[snap.qid] : null;
   const cat = snap.cat ? CATEGORY_BY_ID[snap.cat] : null;
-  const fam = cat ? FAMILY_BY_ID[cat.family] : null;
+  const reduce = useReducedMotion();
   const me = snap.players.find((p) => p.id === client.me.id);
   const key = `${snap.index}:${snap.qid}`;
   const [pick, setPick] = useState<{ key: string; choice: number } | null>(null);
@@ -56,6 +58,18 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  // al revelar, si la correcta quedó debajo del borde (pasa en celular con video), se acerca a la vista
+  useEffect(() => {
+    if (snap.phase !== "reveal") return;
+    const t = setTimeout(() => {
+      const el = document.querySelector(".opt--correct");
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.bottom > innerHeight - 90 || r.top < 60) el.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    }, 450);
+    return () => clearTimeout(t);
+  }, [snap.phase, key, reduce]);
+
   const video = q?.media ? videoFor(q.media.k) : undefined;
   const reveal = snap.phase === "reveal" ? snap.reveal : null;
   const mine = reveal?.picks[client.me.id];
@@ -75,12 +89,32 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           <span>Salir</span>
         </button>
         <div className="game__cat">
-          <span className={`game__cat-tone tone-${fam?.tone}`} aria-hidden />
+          <span className="game__cat-img">
+            <Cover cat={cat} />
+          </span>
           <span className="game__cat-name">{cat.name}</span>
         </div>
-        <div className="game__score" aria-label={`Puntaje ${me?.score ?? 0}`}>
-          <RollingNumber value={me?.score ?? 0} />
-          <span className="game__score-unit">pts</span>
+        <div className="game__right">
+          <AnimatePresence>
+            {me && me.streak >= 2 && (
+              <motion.span
+                key="streak"
+                className={`game__streak ${me.streak >= 5 ? "is-x2" : me.streak >= 3 ? "is-x15" : ""}`}
+                initial={{ scale: 0.4, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.4, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 600, damping: 20 }}
+                aria-label={`Racha de ${me.streak}`}
+              >
+                <Flame />
+                {me.streak}
+              </motion.span>
+            )}
+          </AnimatePresence>
+          <div className="game__score" aria-label={`Puntaje ${me?.score ?? 0}`}>
+            <RollingNumber value={me?.score ?? 0} />
+            <span className="game__score-unit">pts</span>
+          </div>
         </div>
       </header>
 
@@ -102,15 +136,15 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <motion.div
               key={key}
               className="qpanel"
-              initial={{ opacity: 0, x: 40, rotate: 0.6 }}
-              animate={{ opacity: 1, x: 0, rotate: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              initial={reduce ? { opacity: 0 } : { opacity: 0, x: 90, rotate: 3, scale: 0.96 }}
+              animate={{ opacity: 1, x: 0, rotate: -0.5, scale: 1 }}
+              exit={reduce ? { opacity: 0 } : { opacity: 0, x: -90, rotate: -3, transition: { duration: 0.22 } }}
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
             >
               <div className="qpanel__meta">
                 <span className="qpanel__n">
-                  {snap.index + 1}
-                  <span className="muted">/{snap.ids.length}</span>
+                  Pregunta {snap.index + 1}
+                  <span className="qpanel__of"> de {snap.ids.length}</span>
                 </span>
                 <span className="qpanel__diff" aria-label={`Dificultad ${DIFF[q.d]}`}>
                   {[1, 2, 3].map((d) => (
@@ -119,12 +153,6 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                   {DIFF[q.d]}
                 </span>
                 {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && <span className="qpanel__from">De {CATEGORY_BY_ID[q.cat].name}</span>}
-                {me && me.streak >= 2 && snap.phase !== "reveal" && (
-                  <span className="qpanel__streak">
-                    Racha {me.streak}
-                    {multiplier(me.streak + 1) > 1 && <b> · ×{String(multiplier(me.streak + 1)).replace(".", ",")}</b>}
-                  </span>
-                )}
               </div>
               <h1 className="qpanel__q">{q.q}</h1>
 
@@ -160,10 +188,16 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                     onClick={() => answer(i)}
                     disabled={snap.phase !== "question" || myPick != null}
                     aria-pressed={isMine || undefined}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    whileTap={snap.phase === "question" && myPick == null ? { scale: 0.97 } : undefined}
+                    initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, rotate: i % 2 ? 1.5 : -1.5 }}
+                    animate={
+                      state === "wrong" && !reduce
+                        ? { opacity: 1, y: 0, rotate: 0, x: [0, -12, 10, -7, 5, 0] }
+                        : state === "correct" && !reduce
+                          ? { opacity: 1, y: 0, rotate: 0, scale: [1, 1.05, 1] }
+                          : { opacity: 1, y: 0, rotate: 0 }
+                    }
+                    transition={state === "wrong" || state === "correct" ? { duration: 0.42 } : { delay: 0.12 + 0.06 * i, type: "spring", stiffness: 420, damping: 26 }}
+                    whileTap={snap.phase === "question" && myPick == null ? { scale: 0.96 } : undefined}
                   >
                     <span className="opt__letter" aria-hidden>
                       {LETTERS[i]}
@@ -174,7 +208,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                     {who.length > 0 && (
                       <span className="opt__who" aria-label={`Eligieron: ${who.map((p) => p.name).join(", ")}`}>
                         {who.slice(0, 5).map((p) => (
-                          <Seal key={p.id} text={p.name} variant={p.seal} size={22} />
+                          <Avatar key={p.id} animal={p.seal} size={26} />
                         ))}
                         {who.length > 5 && <span>+{who.length - 5}</span>}
                       </span>
@@ -216,13 +250,24 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
       </main>
 
       <AnimatePresence>
+        {reveal && mine?.ok && !reduce && (
+          <motion.div key={`flash-${key}`} className="game__flash" aria-hidden initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.32, ease: "easeIn" }}>
+            <FocusLines className="game__flash-lines" />
+          </motion.div>
+        )}
+        {reveal && mine?.ok && (mine.streak === 3 || mine.streak === 5 || mine.streak === 10) && (
+          <StreakBanner key={`streak-${key}`} streak={mine.streak} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {confirmExit && (
           <motion.div className="dialog" role="dialog" aria-modal="true" aria-labelledby="exit-t" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div className="dialog__card panel" initial={{ y: 30, rotate: -1 }} animate={{ y: 0, rotate: 0 }}>
               <h2 id="exit-t">¿Salir de la partida?</h2>
               <p>{client.isHost && snap.mode === "group" ? "Eres el anfitrión: si sales, la sala se cierra para todos." : "Se pierde el puntaje de esta ronda."}</p>
               <div className="dialog__actions">
-                <button type="button" className="btn btn--paper" onClick={() => setConfirmExit(false)} autoFocus>
+                <button type="button" className="btn" onClick={() => setConfirmExit(false)} autoFocus>
                   Seguir jugando
                 </button>
                 <button type="button" className="btn" onClick={onExit}>
@@ -259,6 +304,15 @@ function Stamp({ ok }: { ok?: boolean }) {
   );
 }
 
+function Flame() {
+  return (
+    <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden>
+      <path d="M8 1c1 3.4 5.6 5 5.6 10A5.6 5.6 0 0 1 2.4 11c0-2.4 1.2-3.8 2.4-4.8.2 1.6.9 2.6 1.8 3C6.4 6 7 3.4 8 1z" fill="currentColor" stroke="var(--ink)" strokeWidth="1.6" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** veredicto: la onomatopeya entra de golpe sobre líneas de concentración */
 function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number; choice: number | null; excused?: boolean } }) {
   const reduce = useReducedMotion();
   const word = pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!";
@@ -272,14 +326,33 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
   return (
     <motion.div
       className={`verdict ${pick.ok ? "is-ok" : "is-bad"}`}
-      initial={reduce ? { opacity: 0 } : { scale: 0.6, rotate: -6, opacity: 0 }}
-      animate={{ scale: 1, rotate: -2, opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ type: "spring", stiffness: 420, damping: 16 }}
+      initial={reduce ? { opacity: 0 } : { scale: 1.6, rotate: -10, opacity: 0 }}
+      animate={{ scale: 1, rotate: -2.5, opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.15 } }}
+      transition={{ type: "spring", stiffness: 520, damping: 17 }}
       role="status"
     >
+      <FocusLines className="verdict__lines" />
       <span className="verdict__word">{word}</span>
       <span className="verdict__sub">{sub}</span>
+    </motion.div>
+  );
+}
+
+/** cuando la racha sube el multiplicador, una franja cruza la pantalla */
+function StreakBanner({ streak }: { streak: number }) {
+  const reduce = useReducedMotion();
+  const text = streak >= 10 ? "¡Diez seguidas!" : streak >= 5 ? "¡Racha ×2!" : "¡Racha ×1,5!";
+  if (reduce) return null;
+  return (
+    <motion.div
+      className="streakband"
+      aria-hidden
+      initial={{ x: "110%", rotate: -6 }}
+      animate={{ x: ["110%", "0%", "0%", "-110%"] }}
+      transition={{ duration: 1.5, times: [0, 0.22, 0.75, 1], ease: [0.76, 0, 0.24, 1] }}
+    >
+      <span>{text}</span>
     </motion.div>
   );
 }
@@ -338,7 +411,7 @@ function Board({ snap, me }: { snap: Snapshot; me: string }) {
         {sorted.map((p, i) => (
           <motion.li layout key={p.id} className={`${p.id === me ? "is-me" : ""} ${p.online ? "" : "is-off"}`} transition={{ type: "spring", stiffness: 400, damping: 34 }}>
             <span className="board__rank">{i + 1}</span>
-            <Seal text={p.name} variant={p.seal} size={30} />
+            <Avatar animal={p.seal} size={34} />
             <span className="board__name">{p.name}</span>
             {snap.phase === "question" && snap.answered.includes(p.id) && <span className="board__done" aria-label="Respondió">✓</span>}
             {snap.phase === "reveal" && snap.reveal?.picks[p.id] && (
@@ -389,7 +462,13 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
 
   return (
     <div className="final">
-      <div className="final__speed" aria-hidden />
+      {cat && (
+        <span className="final__bg" aria-hidden>
+          <Cover cat={cat} big />
+        </span>
+      )}
+      <FocusLines className="final__lines anim-spin" />
+      {scaled >= 6 && <Shards />}
       <motion.div className="final__inner wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
         <p className="final__eyebrow">Fin de la ronda · {cat?.name}</p>
         <div className="final__hero">
@@ -451,7 +530,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
             </button>
           )}
           {!client.isHost && <p className="final__wait">Esperando a que el anfitrión arme otra ronda…</p>}
-          <button type="button" className="btn btn--paper" onClick={share}>
+          <button type="button" className="btn" onClick={share}>
             {copied ? "Copiado" : "Compartir resultado"}
           </button>
           <button type="button" className="link final__home" onClick={onExit}>
@@ -463,6 +542,33 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   );
 }
 
+/** papelitos de tinta que caen una vez cuando la ronda salió bien (fijos, sin azar) */
+const SHARDS = Array.from({ length: 18 }, (_, i) => ({
+  x: (i * 37) % 100,
+  d: 1.6 + ((i * 13) % 10) / 10,
+  delay: ((i * 7) % 10) / 14,
+  r: ((i * 53) % 360) - 180,
+  c: ["var(--hanko)", "var(--signal)", "var(--paper)"][i % 3],
+  w: 10 + ((i * 5) % 12),
+}));
+function Shards() {
+  const reduce = useReducedMotion();
+  if (reduce) return null;
+  return (
+    <div className="shards" aria-hidden>
+      {SHARDS.map((p, i) => (
+        <motion.span
+          key={i}
+          style={{ left: `${p.x}%`, width: p.w, height: p.w * 0.6, background: p.c }}
+          initial={{ y: -40, rotate: 0, opacity: 1 }}
+          animate={{ y: "105vh", rotate: p.r * 3, opacity: [1, 1, 0] }}
+          transition={{ duration: p.d + 1, delay: 0.5 + p.delay, ease: [0.3, 0.1, 0.6, 1] }}
+        />
+      ))}
+    </div>
+  );
+}
+
 function Podium({ players, me }: { players: Player[]; me: string }) {
   return (
     <ol className="podium">
@@ -470,12 +576,14 @@ function Podium({ players, me }: { players: Player[]; me: string }) {
         <motion.li
           key={p.id}
           className={`${i < 3 ? `is-top is-${i + 1}` : ""} ${p.id === me ? "is-me" : ""}`}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 + i * 0.08 }}
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.7 + i * 0.09, type: "spring", stiffness: 420, damping: 20 }}
         >
           <span className="podium__n">{i + 1}</span>
-          <Seal text={p.name} variant={p.seal} size={36} />
+          <span className="podium__face">
+            <Avatar animal={p.seal} size={i === 0 ? 56 : 44} />
+          </span>
           <span className="podium__name">{p.name}</span>
           <span className="podium__meta">
             {p.correct} aciertos · racha {p.best}

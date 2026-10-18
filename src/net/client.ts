@@ -28,6 +28,7 @@ export interface GameClient {
   next(): void;
   start(seed: number): void;
   setSpin(spin: Spin): void;
+  setDeck(deck: string[]): void;
   setCategory(cat: string): void;
   backToLobby(): void;
   kick(id: string): void;
@@ -109,6 +110,9 @@ export class LocalClient implements GameClient {
   }
   start(seed: number) {
     this.match.start(seed);
+  }
+  setDeck(deck: string[]) {
+    this.match.setDeck(deck);
   }
   setSpin(spin: Spin) {
     this.match.setSpin(spin);
@@ -335,6 +339,7 @@ export class GuestClient implements GameClient {
   next() {}
   start() {}
   setSpin() {}
+  setDeck() {}
   setCategory() {}
   backToLobby() {}
   kick() {}
@@ -364,7 +369,7 @@ function sanitizeMe(me: unknown): Me | null {
   const m = me as Record<string, unknown>;
   const id = typeof m.id === "string" ? m.id.slice(0, 40) : "";
   const name = typeof m.name === "string" ? m.name.replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 18) : "";
-  const seal = Number.isInteger(m.seal) ? Math.min(9, Math.max(0, m.seal as number)) : 0;
+  const seal = Number.isInteger(m.seal) ? Math.min(11, Math.max(0, m.seal as number)) : 0;
   if (!id || !name) return null;
   return { id, name, seal };
 }

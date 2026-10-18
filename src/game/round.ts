@@ -1,6 +1,6 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import { BANK } from "../data/bank";
-import { CATEGORIES } from "../data/categories";
+import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import type { Question } from "../data/types";
 import { rng, shuffle } from "../lib/rng";
 
@@ -48,8 +48,8 @@ export function textBackups(cat: string, seed: number): string[] {
   const own = (BANK.byCat[cat] || []).filter((q) => !q.media);
   let pool = own;
   if (own.length < 10) {
-    const fams = cat === "openings" ? ["leyenda", "nueva", "culto"] : cat === "soundtracks" ? ["nintendo", "aaa", "online"] : [];
-    pool = CATEGORIES.filter((c) => fams.includes(c.family)).flatMap((c) => (BANK.byCat[c.id] || []).filter((q) => !q.media));
+    const side = cat === "openings" ? "anime" : cat === "soundtracks" ? "juegos" : null;
+    pool = CATEGORIES.filter((c) => side && FAMILY_BY_ID[c.family].group === side).flatMap((c) => (BANK.byCat[c.id] || []).filter((q) => !q.media));
   }
   return shuffle(pool, rand)
     .sort((a, b) => a.d - b.d)

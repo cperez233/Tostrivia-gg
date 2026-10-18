@@ -1,6 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import { useId } from "react";
-import { Seal } from "./Seal";
+import { motion } from "framer-motion";
+import { ANIMALS, Avatar } from "./Avatar";
 import { saveProfile } from "../lib/identity";
 
 interface Props {
@@ -17,7 +18,7 @@ export default function ProfilePicker({ value, onChange }: Props) {
   return (
     <div className="profile">
       <div className="field">
-        <label htmlFor={`${id}-name`}>Tu nombre en la sala</label>
+        <label htmlFor={`${id}-name`}>Tu nombre</label>
         <input
           id={`${id}-name`}
           className="input"
@@ -29,16 +30,24 @@ export default function ProfilePicker({ value, onChange }: Props) {
           enterKeyHint="done"
         />
       </div>
-      <fieldset className="profile__seals">
-        <legend>Tu sello</legend>
+      <fieldset className="profile__animals">
+        <legend>
+          Tu animal <span className="profile__chosen">{ANIMALS[value.seal]?.name}</span>
+        </legend>
         <div className="profile__grid">
-          {Array.from({ length: 10 }, (_, i) => (
-            <label key={i} className={`profile__seal ${value.seal === i ? "is-on" : ""}`}>
-              <input type="radio" name={`${id}-seal`} className="sr-only" checked={value.seal === i} onChange={() => set({ ...value, seal: i })} />
-              <Seal text={value.name || "?"} variant={i} size={40} />
-              <span className="sr-only">Sello {i + 1}</span>
-            </label>
-          ))}
+          {ANIMALS.map((a, i) => {
+            const on = value.seal === i;
+            return (
+              <label key={a.name} className={`profile__animal ${on ? "is-on" : ""}`}>
+                <input type="radio" name={`${id}-animal`} className="sr-only" checked={on} onChange={() => set({ ...value, seal: i })} />
+                {on && <motion.span layoutId={`${id}-ring`} className="profile__ring" transition={{ type: "spring", stiffness: 520, damping: 36 }} />}
+                <motion.span className="profile__face" animate={on ? { y: [0, -7, 0], rotate: [0, -6, 0] } : { y: 0, rotate: 0 }} transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}>
+                  <Avatar animal={i} size={52} />
+                </motion.span>
+                <span className="sr-only">{a.name}</span>
+              </label>
+            );
+          })}
         </div>
       </fieldset>
     </div>

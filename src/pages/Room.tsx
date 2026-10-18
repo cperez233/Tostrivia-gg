@@ -1,18 +1,21 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Una partida en marcha (solo o en grupo). En grupo, la fase "lobby" es la sala de espera.
  */
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { GameClient, NetStatus } from "../net/client";
 import type { Snapshot } from "../game/match";
 import { MAX_PLAYERS } from "../game/match";
 import { useGame } from "../game/useGame";
 import GameScreen from "../game/GameScreen";
-import Wheel, { makeSpin } from "../components/Wheel";
-import { Logo, Seal } from "../components/Seal";
+import Wheel from "../components/Wheel";
+import { Logo } from "../components/Seal";
+import { Avatar, animalName } from "../components/Avatar";
+import { Cover } from "../components/Cover";
 import { CATEGORIES, CATEGORY_BY_ID, FAMILIES, FAMILY_BY_ID } from "../data/categories";
-import { BANK } from "../data/bank";
+import { FILTERS, makeDeck, makeSpin, playable, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
+import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import "./room.css";
 
 export default function Room({ client, onExit }: { client: GameClient; onExit: () => void }) {
@@ -26,7 +29,7 @@ const NET_TEXT: Record<NetStatus, [string, string]> = {
   connecting: ["Conectando…", "Abriendo la línea con la sala."],
   open: ["", ""],
   lost: ["Se perdió la conexión", "No llegan datos del anfitrión. Si vuelve en unos segundos, seguimos donde íbamos."],
-  closed: ["La sala se cerró", "El anfitrión salió o cerró la pestaña. Puedes crear una sala nueva desde el inicio."],
+  closed: ["La sala se cerró", "El anfitrión salió o cerró la pestaña. Puedes crear una sala nueva."],
   full: ["La sala está llena", `Ya hay ${MAX_PLAYERS} personas jugando. Pídele al anfitrión que abra otra.`],
   missing: ["No encontramos esa sala", "Revisa el código. Si el anfitrión cerró la pestaña, la sala ya no existe."],
   error: ["No se pudo conectar", "La red bloqueó la conexión entre navegadores o el servidor de enlace no respondió. Prueba con otra red o vuelve a intentarlo."],
@@ -40,9 +43,11 @@ function NetState({ status, code, onExit }: { status: NetStatus; code: string | 
       <motion.div className="netstate__card panel" initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
         {status === "connecting" && (
           <div className="netstate__dots" aria-hidden>
-            <span className="anim-dot" />
-            <span className="anim-dot" />
-            <span className="anim-dot" />
+            {[0, 5, 10].map((a) => (
+              <span key={a} className="anim-hop">
+                <Avatar animal={a} size={40} />
+              </span>
+            ))}
           </div>
         )}
         <h1>{t}</h1>
@@ -57,13 +62,32 @@ function NetState({ status, code, onExit }: { status: NetStatus; code: string | 
 }
 
 function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; onExit: () => void }) {
+  const reduce = useReducedMotion();
+  const rosterRef = usePauseOffscreen<HTMLUListElement>();
   const [copied, setCopied] = useState(false);
+  const [filter, setFilter] = useState<Filter>("todo");
   const link = `${location.origin}/sala/${client.code}`;
   const host = snap.players.find((p) => p.id === snap.hostId);
   const cat = snap.cat ? CATEGORY_BY_ID[snap.cat] : null;
   const online = snap.players.filter((p) => p.online);
   const [landed, setLanded] = useState<number | null>(null);
-  const spinShown = snap.spin && landed !== snap.spin.nonce;
+  const spinShown = !!snap.spin && landed !== snap.spin.nonce;
+  const deck = snap.deck.length ? snap.deck : makeDeck("todo", 1);
+
+  // el anfitrión arma el primer mazo al abrir la sala
+  const dealt = useRef(false);
+  useEffect(() => {
+    if (client.isHost && !snap.deck.length && !dealt.current) {
+      dealt.current = true;
+      client.setDeck(makeDeck("todo", newSeed()));
+    }
+  }, [client, snap.deck.length]);
+
+  const pickFilter = (f: Filter) => {
+    if (spinShown) return;
+    setFilter(f);
+    client.setDeck(makeDeck(f, newSeed()));
+  };
 
   const share = async () => {
     const text = `Entra a mi sala de Tostrivia. Código ${client.code}`;
@@ -83,7 +107,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
     <div className="lobby">
       <header className="lobby__top wrap">
         <Logo size={34} />
-        <button type="button" className="link" onClick={onExit}>
+        <button type="button" className="btn btn--ghost btn--small" onClick={onExit}>
           {client.isHost ? "Cerrar sala" : "Salir"}
         </button>
       </header>
@@ -93,82 +117,104 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
           <p className="label">Código de la sala</p>
           <h1 id="code-t" className="lobby__codetext" aria-label={`Código ${client.code?.split("").join(" ")}`}>
             {client.code?.split("").map((ch, i) => (
-              <motion.span key={i} initial={{ y: 30, opacity: 0, rotate: -8 }} animate={{ y: 0, opacity: 1, rotate: 0 }} transition={{ delay: 0.05 * i, type: "spring", stiffness: 500, damping: 22 }}>
+              <motion.span key={i} initial={reduce ? false : { y: 40, opacity: 0, rotate: -14, scale: 1.4 }} animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }} transition={{ delay: 0.25 + 0.07 * i, type: "spring", stiffness: 520, damping: 18 }}>
                 {ch}
               </motion.span>
             ))}
           </h1>
           <p className="lobby__link">{link.replace(/^https?:\/\//, "")}</p>
-          <div className="lobby__actions">
-            <button type="button" className="btn btn--small" onClick={share}>
-              {copied ? "Enlace copiado" : "Compartir enlace"}
-            </button>
-          </div>
+          <button type="button" className="btn btn--hanko btn--small lobby__share" onClick={share}>
+            {copied ? "Enlace copiado" : "Compartir enlace"}
+          </button>
         </section>
 
-        <section className="lobby__roster panel" aria-labelledby="roster-t">
+        <section className="lobby__roster" aria-labelledby="roster-t">
           <div className="lobby__roster-head">
             <h2 id="roster-t">Jugadores</h2>
             <span className="lobby__count">
               {online.length}/{MAX_PLAYERS}
             </span>
           </div>
-          <ul className="roster">
-            {snap.players.map((p) => (
-              <motion.li key={p.id} layout initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: p.online ? 1 : 0.4 }} transition={{ type: "spring", stiffness: 480, damping: 24 }}>
-                <Seal text={p.name} variant={p.seal} size={44} />
-                <span className="roster__name">
-                  {p.name}
-                  {p.id === client.me.id && <span className="muted"> (tú)</span>}
-                </span>
-                <span className="roster__tag">{p.id === snap.hostId ? "anfitrión" : p.online ? "" : "desconectado"}</span>
-                {client.isHost && p.id !== snap.hostId && (
-                  <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={`Sacar a ${p.name}`}>
-                    ✕
-                  </button>
-                )}
-              </motion.li>
-            ))}
-            {Array.from({ length: Math.max(0, Math.min(3, MAX_PLAYERS - snap.players.length)) }, (_, i) => (
-              <li key={`empty-${i}`} className="roster__empty" aria-hidden>
-                <span />
-                <span>Lugar libre</span>
+          <ul ref={rosterRef} className="roster">
+            <AnimatePresence initial={false}>
+              {snap.players.map((p, i) => (
+                <motion.li
+                  key={p.id}
+                  layout
+                  className={`${p.online ? "" : "is-off"} ${p.id === client.me.id ? "is-me" : ""}`}
+                  initial={{ scale: 0.5, opacity: 0, y: 30 }}
+                  animate={{ scale: 1, opacity: p.online ? 1 : 0.45, y: 0 }}
+                  exit={{ scale: 0.6, opacity: 0 }}
+                  transition={{ type: "spring", stiffness: 480, damping: 22 }}
+                >
+                  <span className="roster__face anim-bob" style={{ "--d": `${5.3 + ((i * 1.37) % 3.4)}s`, "--delay": `${-i * 0.9}s` } as React.CSSProperties}>
+                    <Avatar animal={p.seal} size={58} title={animalName(p.seal)} />
+                  </span>
+                  <span className="roster__name">{p.name}</span>
+                  <span className="roster__tag">{p.id === snap.hostId ? "Anfitrión" : p.id === client.me.id ? "Tú" : p.online ? "" : "Desconectado"}</span>
+                  {client.isHost && p.id !== snap.hostId && (
+                    <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={`Sacar a ${p.name}`}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden>
+                        <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" />
+                      </svg>
+                    </button>
+                  )}
+                </motion.li>
+              ))}
+            </AnimatePresence>
+            {snap.players.length < MAX_PLAYERS && (
+              <li className="roster__empty" aria-hidden>
+                <span className="roster__hole">?</span>
+                <span>Esperando…</span>
               </li>
-            ))}
+            )}
           </ul>
         </section>
 
-        <section className="lobby__cat panel" aria-labelledby="cat-t">
-          <h2 id="cat-t">Categoría</h2>
-          <Wheel
-            size="compact"
-            spin={snap.spin}
-            canSpin={client.isHost}
-            onRequest={() => client.setSpin(makeSpin())}
-            onLanded={(s) => setLanded(s.nonce)}
-          />
+        <section className="lobby__cat" aria-labelledby="cat-t">
+          <h2 id="cat-t" className="sr-only">
+            Categoría
+          </h2>
+          {client.isHost && (
+            <div className="filters lobby__filters" role="radiogroup" aria-label="Qué entra en la ruleta">
+              {FILTERS.map((f) => (
+                <button key={f.id} type="button" role="radio" aria-checked={filter === f.id} className={`filter ${filter === f.id ? "is-on" : ""}`} onClick={() => pickFilter(f.id)} disabled={spinShown}>
+                  {filter === f.id && <motion.span layoutId="lobby-filter" className="filter__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
+                  <span className="filter__label">{f.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          <Wheel size="compact" deck={deck} spin={snap.spin} canSpin={client.isHost} onRequest={() => client.setSpin(makeSpin(deck))} onLanded={(s) => setLanded(s.nonce)} />
           <div className="lobby__chosen" aria-live="polite">
-            {cat && !spinShown ? (
-              <>
-                <p className="muted">{FAMILY_BY_ID[cat.family].name}</p>
-                <p className="lobby__catname">{cat.name}</p>
-              </>
-            ) : spinShown ? (
-              <p className="lobby__catname">Girando…</p>
-            ) : (
-              <p className="muted">{client.isHost ? "Gira la ruleta o elige de la lista." : `${host?.name ?? "El anfitrión"} está eligiendo la categoría.`}</p>
-            )}
+            <AnimatePresence mode="wait">
+              {cat && !spinShown ? (
+                <motion.div key={cat.id} className="lobby__pick panel" initial={reduce ? false : { scale: 1.3, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ type: "spring", stiffness: 420, damping: 20 }}>
+                  <span className="lobby__pick-img">
+                    <Cover cat={cat} />
+                  </span>
+                  <span>
+                    <span className="lobby__pick-fam">{FAMILY_BY_ID[cat.family].name}</span>
+                    <span className="lobby__catname">{cat.name}</span>
+                  </span>
+                </motion.div>
+              ) : (
+                <motion.p key="wait" className="lobby__waiting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  {spinShown ? "Girando…" : client.isHost ? "Gira la ruleta o elige de la lista." : `${host?.name ?? "El anfitrión"} está eligiendo la categoría.`}
+                </motion.p>
+              )}
+            </AnimatePresence>
           </div>
           {client.isHost && (
-            <div className="field">
+            <div className="field lobby__select">
               <label htmlFor="cat-select">O elige de la lista</label>
               <select id="cat-select" className="input select" value={snap.cat ?? ""} onChange={(e) => e.target.value && client.setCategory(e.target.value)}>
                 <option value="">Elegir categoría…</option>
                 {FAMILIES.map((f) => (
                   <optgroup key={f.id} label={f.name}>
-                    {CATEGORIES.filter((c) => c.family === f.id && (BANK.byCat[c.id]?.length ?? 0) >= 10).map((c) => (
+                    {CATEGORIES.filter((c) => c.family === f.id && playable(c.id)).map((c) => (
                       <option key={c.id} value={c.id}>
-                        {c.name} ({BANK.byCat[c.id].length})
+                        {c.name}
                       </option>
                     ))}
                   </optgroup>
@@ -183,13 +229,13 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
         <div className="wrap lobby__dock-in">
           {client.isHost ? (
             <>
-              <p className="lobby__hint">{!cat ? "Falta elegir la categoría." : online.length < 2 ? "Puedes empezar solo o esperar a que entren más." : `Listos ${online.length}.`}</p>
-              <button type="button" className="btn btn--hanko" disabled={!cat || !!spinShown} onClick={() => client.start(newSeed())}>
-                Empezar partida
+              <p className="lobby__hint">{!cat ? "Falta la categoría." : online.length < 2 ? "Puedes empezar solo o esperar a los demás." : `Listos: ${online.length}.`}</p>
+              <button type="button" className="btn btn--hanko" disabled={!cat || spinShown} onClick={() => client.start(newSeed())}>
+                Empezar
               </button>
             </>
           ) : (
-            <p className="lobby__hint">Esperando a que {host?.name ?? "el anfitrión"} empiece la partida…</p>
+            <p className="lobby__hint">Esperando a que {host?.name ?? "el anfitrión"} empiece…</p>
           )}
         </div>
       </div>

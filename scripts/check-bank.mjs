@@ -21,7 +21,7 @@ const file = fs.readdirSync(out).find((f) => f.endsWith(".js"));
 const { BANK } = await import(path.join(out, file));
 const sources = JSON.parse(fs.readFileSync(path.join(root, "src/data/video-sources.json"), "utf8"));
 const catsSrc = fs.readFileSync(path.join(root, "src/data/categories.ts"), "utf8");
-const catIds = [...catsSrc.matchAll(/\{ id: "([a-z0-9]+)", name: "([^"]+)", family: "([a-z]+)"/g)].map((m) => ({ id: m[1], name: m[2], family: m[3] }));
+const catIds = [...catsSrc.matchAll(/\{ id: "([a-z0-9]+)", name: "([^"]+)", short: "[^"]+", family: "([a-z0-9]+)"/g)].map((m) => ({ id: m[1], name: m[2], family: m[3] }));
 
 let problems = 0;
 const warn = (m) => {
