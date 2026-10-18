@@ -1,5 +1,5 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Portada de una categoría: una miniatura oficial, o un mosaico de cuatro en "Al oído".
+ * Portada de una categoría: una miniatura oficial, o un mosaico de cuatro en Openings y OST gaming.
  */
 import { memo, useState } from "react";
 import type { Category } from "../data/types";

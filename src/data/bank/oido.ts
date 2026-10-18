@@ -1,5 +1,5 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Al oído: todas las preguntas suenan. Formato: [dificultad, pregunta, correcta, mala, mala, mala, media]
+ * Openings (anime) y OST gaming (juegos): todas las preguntas suenan. Formato: [dificultad, pregunta, correcta, mala, mala, mala, media]
  */
 import type { RawQuestion } from "../types";
 

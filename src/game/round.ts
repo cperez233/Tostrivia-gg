@@ -18,7 +18,7 @@ export function buildRound(cat: string, seed: number) {
   const text = pool.filter((q) => !q.media);
 
   const picked: Question[] = [];
-  // variedad: 1 a 3 preguntas de video en categorías normales, todas en las de "Al oído"
+  // variedad: 1 a 3 preguntas de video en categorías normales, todas en Openings y OST gaming
   if (!audioOnly) picked.push(...media.slice(0, Math.min(media.length, 1 + Math.floor(rand() * 3))));
   const want = { 1: 3, 2: 4, 3: 3 } as Record<number, number>;
   for (const q of picked) want[q.d] = Math.max(0, want[q.d] - 1);
@@ -42,7 +42,7 @@ export function buildRound(cat: string, seed: number) {
   return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id) };
 }
 
-/** Preguntas sin video para cuando YouTube no responde. En "Al oído" se toman de su lado (anime o juegos). */
+/** Preguntas sin video para cuando YouTube no responde. En Openings y OST gaming se toman de su lado (anime o juegos). */
 export function textBackups(cat: string, seed: number): string[] {
   const rand = rng(seed ^ 0x5bd1e995);
   const own = (BANK.byCat[cat] || []).filter((q) => !q.media);

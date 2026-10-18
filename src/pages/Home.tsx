@@ -99,7 +99,7 @@ export default function Home({ onPlay }: Props) {
 
         <div className="arena__wheel">
           <Wheel deck={deck} spin={spin} canSpin onRequest={doSpin} onLanded={onLanded} />
-          {filter !== "cultura" && filter !== "oido" && (
+          {filter !== "cultura" && (
             <button type="button" className="reshuffle" onClick={reshuffle} disabled={spinning} aria-label="Poner otras categorías en la rueda">
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
                 <path d="M3 7h4c4 0 6 10 10 10h4M3 17h4c1.6 0 2.8-1.6 4-3.6M13 9.6C14.2 7.6 15.4 7 17 7h4M18 4l3 3-3 3M18 14l3 3-3 3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />

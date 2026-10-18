@@ -36,7 +36,7 @@ for (const c of catIds) {
   const d = [1, 2, 3].map((x) => list.filter((q) => q.d === x).length).join("/");
   const min = c.family === "cultura" ? 15 : 20;
   console.log(`${c.name.padEnd(30)} ${String(list.length).padStart(5)}  ${String(list.filter((q) => q.media).length).padStart(5)}  ${d.padStart(7)}  ${missing}`);
-  if (list.length < min && c.family !== "oido") warn(`${c.id}: ${list.length} activas (< ${min})`);
+  if (list.length < min && !["openings", "ost"].includes(c.family)) warn(`${c.id}: ${list.length} activas (< ${min})`);
   for (const q of list) {
     const set = new Set(q.o.map((o) => o.trim().toLowerCase()));
     if (set.size !== 4) warn(`${q.id}: opciones repetidas → ${q.o.join(" | ")}`);

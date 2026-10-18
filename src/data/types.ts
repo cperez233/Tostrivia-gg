@@ -38,7 +38,8 @@ export type FamilyId =
   | "clasicos"
   | "d2010"
   | "nuevos"
-  | "oido"
+  | "openings"
+  | "ost"
   | "aventura"
   | "rol"
   | "mundo"
@@ -46,8 +47,8 @@ export type FamilyId =
   | "shooter"
   | "versus";
 
-/** las cuatro pestañas de arriba: cada familia pertenece a una */
-export type GroupId = "anime" | "juegos" | "cultura" | "oido";
+/** las tres pestañas de arriba: cada familia pertenece a una */
+export type GroupId = "anime" | "juegos" | "cultura";
 
 export interface Family {
   id: FamilyId;

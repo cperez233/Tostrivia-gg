@@ -1,30 +1,33 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Familias: anime por año de estreno del anime; juegos por género.
+ * Familias: anime por año de estreno del anime; juegos por género. Los openings van con anime y el OST con juegos.
  */
 import type { Category, Family, FamilyId, GroupId } from "./types";
 
 export const GROUPS: { id: GroupId; name: string }[] = [
   { id: "anime", name: "Anime" },
   { id: "juegos", name: "Videojuegos" },
-  { id: "oido", name: "Al oído" },
   { id: "cultura", name: "Cultura general" },
 ];
 
 export const FAMILIES: Family[] = [
+  { id: "openings", group: "anime", name: "Openings" },
   { id: "clasicos", group: "anime", name: "Clásicos" },
   { id: "d2010", group: "anime", name: "Los de la década de 2010" },
   { id: "nuevos", group: "anime", name: "De 2020 para acá" },
+  { id: "ost", group: "juegos", name: "OST gaming" },
   { id: "aventura", group: "juegos", name: "Aventura y plataformas" },
   { id: "rol", group: "juegos", name: "Rol" },
   { id: "mundo", group: "juegos", name: "Mundo abierto y sandbox" },
   { id: "accion", group: "juegos", name: "Acción" },
   { id: "shooter", group: "juegos", name: "Shooters" },
   { id: "versus", group: "juegos", name: "Pelea y MOBA" },
-  { id: "oido", group: "oido", name: "Adivina por la música" },
   { id: "cultura", group: "cultura", name: "Cultura general" },
 ];
 
 export const CATEGORIES: Category[] = [
+  // Openings: todas las preguntas suenan
+  { id: "openings", name: "Openings de anime", short: "Openings", family: "openings", cover: ["jojo-op-sonochi", "aot-op-guren", "kimetsu-op-gurenge", "op-op-weare"], sfx: "♪" },
+
   // Anime clásico: el anime se estrenó antes de 2010
   { id: "dragonball", name: "Dragon Ball", short: "Dragon Ball", family: "clasicos", cover: "db-op-chala", focus: 72, sfx: "ドドド" },
   { id: "onepiece", name: "One Piece", short: "One Piece", family: "clasicos", cover: "op-op-weare", focus: 64, sfx: "ドン" },
@@ -54,6 +57,9 @@ export const CATEGORIES: Category[] = [
   { id: "frieren", name: "Frieren", short: "Frieren", family: "nuevos", cover: "frieren-op-yuusha", focus: 62, sfx: "シン" },
   { id: "sololeveling", name: "Solo Leveling", short: "Solo Leveling", family: "nuevos", cover: "solo-op-level", focus: 50, sfx: "ゴゴ" },
   { id: "dandadan", name: "Dandadan", short: "Dandadan", family: "nuevos", cover: "dandadan-op-otonoke", focus: 38, sfx: "ダダン" },
+
+  // OST gaming: todas las preguntas suenan
+  { id: "soundtracks", name: "Música de videojuegos", short: "OST gaming", family: "ost", cover: ["rdr-ost-thatstheway", "mario-ost-jumpup", "hk-ost-cityoftears", "sonic-ost-greenhill"], sfx: "♪" },
 
   // Aventura y plataformas
   { id: "mario", name: "Super Mario", short: "Mario", family: "aventura", cover: "mario-tr-wonder", focus: 56 },
@@ -91,10 +97,6 @@ export const CATEGORIES: Category[] = [
   { id: "smash", name: "Super Smash Bros.", short: "Smash", family: "versus", cover: "smash-tr-sora", focus: 56 },
   { id: "pelea", name: "Juegos de pelea", short: "Pelea", family: "versus", cover: "pelea-ost-guile", focus: 55 },
   { id: "lol", name: "League of Legends", short: "LoL", family: "versus", cover: "lol-ost-enemy", focus: 60 },
-
-  // Al oído
-  { id: "openings", name: "Openings de anime", short: "Openings", family: "oido", cover: ["jojo-op-sonochi", "aot-op-guren", "kimetsu-op-gurenge", "op-op-weare"], sfx: "♪" },
-  { id: "soundtracks", name: "Música de videojuegos", short: "OST gamer", family: "oido", cover: ["rdr-ost-thatstheway", "mario-ost-jumpup", "hk-ost-cityoftears", "sonic-ost-greenhill"], sfx: "♪" },
 
   // Cultura general
   { id: "historia", name: "Historia", short: "Historia", family: "cultura", cover: "cover-historia", focus: 50 },
