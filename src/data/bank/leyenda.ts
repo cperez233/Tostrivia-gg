@@ -54,7 +54,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Cuántas colas tiene Gyūki, la bestia de Killer B?", "Ocho", "Siete", "Nueve", "Seis"],
     [3, "¿Qué técnica prohibida devuelve a los muertos a combatir?", "Edo Tensei", "Kotoamatsukami", "Izanagi", "Shiki Fūjin"],
     [2, "¿Cómo se llama este opening de Naruto Shippuden?", "Blue Bird", "Silhouette", "Sign", "Hero's Come Back!!", { k: "naruto-op-bluebird", m: "audio", s: 2, e: 23 }],
-    [2, "¿Cómo se llama este opening?", "Silhouette", "Blue Bird", "Sign", "Kanashimi wo Yasashisa ni", { k: "naruto-op-silhouette", m: "audio", s: 4, e: 26 }],
+    [2, "¿Cómo se llama este opening?", "Silhouette", "Blue Bird", "Sign", "Kanashimi wo Yasashisa ni", { k: "naruto-op-silhouette", m: "audio", s: 30, e: 52 }],
   ],
   dragonball: [
     [1, "¿Cómo se llama el protagonista de Dragon Ball?", "Goku", "Vegeta", "Gohan", "Krilin"],
@@ -80,7 +80,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Cómo se llama el hermano mayor de Freezer?", "Cooler", "King Cold", "Frost", "Zarbon"],
     [3, "¿Qué técnica aprende Goku en el planeta Yardrat?", "La Teletransportación", "El Kaiōken", "La Genki Dama", "El Masenko"],
     [1, "¿Cómo se llama esta canción?", "Cha-La Head-Cha-La", "Makafushigi Adventure", "Dan Dan Kokoro Hikareteku", "We Gotta Power", { k: "db-op-chala", m: "audio", s: 8, e: 30 }],
-    [2, "Suena el opening del primer Dragon Ball. ¿Cómo se llama?", "Makafushigi Adventure!", "Cha-La Head-Cha-La", "Romantic Ageru yo", "Dan Dan Kokoro Hikareteku", { k: "db-op-makafushigi", m: "audio", s: 2, e: 23 }],
+    [2, "Suena el opening del primer Dragon Ball. ¿Cómo se llama?", "Makafushigi Adventure!", "Cha-La Head-Cha-La", "Romantic Ageru yo", "Dan Dan Kokoro Hikareteku", { k: "db-op-makafushigi", m: "audio", s: 30, e: 52 }],
   ],
   onepiece: [
     [1, "¿Con qué nombre conocimos durante años la fruta del diablo de Luffy?", "Gomu Gomu no Mi", "Mera Mera no Mi", "Bara Bara no Mi", "Ope Ope no Mi"],
@@ -132,7 +132,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Cómo se llama la zanpakutō de Rukia?", "Sode no Shirayuki", "Zabimaru", "Benihime", "Minazuki"],
     [3, "¿Cómo se llama el bankai final de Ichigo en la saga de los Arrancar?", "Tensa Zangetsu", "Senbonzakura Kageyoshi", "Kokujō Tengen Myō'ō", "Ryūjin Jakka"],
     [1, "¿Cómo se llama este opening de Bleach?", "Asterisk", "Scar", "Tonight, Tonight, Tonight", "D-tecnoLife", { k: "bleach-op-asterisk", m: "audio", s: 2, e: 23 }],
-    [2, "¿De qué arco es este opening de Bleach?", "La Guerra Sangrienta de los Mil Años", "El rescate en la Sociedad de Almas", "Hueco Mundo", "Los Bount", { k: "bleach-op-scar", m: "audio", s: 2, e: 23 }],
+    [2, "¿De qué arco es este opening de Bleach?", "La Guerra Sangrienta de los Mil Años", "El rescate en la Sociedad de Almas", "Hueco Mundo", "Los Bount", { k: "bleach-op-scar", m: "audio", s: 30, e: 52 }],
   ],
   hxh: [
     [1, "¿Cómo se llama el protagonista de Hunter x Hunter?", "Gon Freecss", "Killua Zoldyck", "Kurapika", "Leorio Paradinight"],
@@ -183,8 +183,8 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿A qué edad se convirtió Edward en alquimista estatal?", "12 años", "15 años", "10 años", "18 años"],
     [3, "¿Cuál es el título de alquimista de Alex Louis Armstrong?", "El Alquimista del Brazo Fuerte", "El Alquimista Carmesí", "El Alquimista de Hierro", "El Alquimista de Hielo"],
     [3, "¿Quién creó a los homúnculos?", "Father", "Van Hohenheim", "Dante", "Scar"],
-    [1, "¿Cómo se llama este opening de Brotherhood?", "Again", "Golden Time Lover", "Hologram", "Period", { k: "fma-op-again", m: "audio", s: 2, e: 23 }],
-    [2, "¿Cómo se llama este opening?", "Golden Time Lover", "Again", "Rain", "Ready Steady Go", { k: "fma-op-goldentime", m: "audio", s: 2, e: 23 }],
+    [1, "¿Cómo se llama este opening de Brotherhood?", "Again", "Golden Time Lover", "Hologram", "Period", { k: "fma-op-again", m: "audio", s: 30, e: 52 }],
+    [2, "¿Cómo se llama este opening?", "Golden Time Lover", "Again", "Rain", "Ready Steady Go", { k: "fma-op-goldentime", m: "audio", s: 30, e: 52 }],
   ],
 };
 

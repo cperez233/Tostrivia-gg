@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T07:01:19.333Z",
+  "generatedAt": "2026-10-18T07:02:27.673Z",
   "videos": {
     "aot-op-guren": {
       "id": "8OkpRK2_gVs",
@@ -50,11 +50,25 @@
       "durationSec": 333,
       "checkedAt": "2026-10-18"
     },
+    "cine-ost-starwars": {
+      "id": "_D0ZQPqeJkk",
+      "title": "Star Wars Main Theme (Full)",
+      "channel": "Coltsrock56",
+      "durationSec": 352,
+      "checkedAt": "2026-10-18"
+    },
     "csm-op-kickback": {
       "id": "dFlDRhvM4L0",
       "title": "『チェンソーマン』ノンクレジットオープニング / CHAINSAW MAN  Opening│米津玄師 「KICK BACK」",
       "channel": "MAPPA CHANNEL",
       "durationSec": 90,
+      "checkedAt": "2026-10-18"
+    },
+    "cyber-ost-neverfade": {
+      "id": "pzVZKmoNfxs",
+      "title": "サイバーパンク2077 — 『Never Fade Away』 by SAMURAI (Refused)",
+      "channel": "CD PROJEKT RED JAPAN",
+      "durationSec": 191,
       "checkedAt": "2026-10-18"
     },
     "dandadan-op-otonoke": {
@@ -99,6 +113,20 @@
       "durationSec": 244,
       "checkedAt": "2026-10-18"
     },
+    "ff-ost-onewinged": {
+      "id": "IYMTzLxGv3M",
+      "title": "[Video Soundtrack] One Winged Angel [FINAL FANTASY VII]",
+      "channel": "SQUARE ENIX MUSIC Channel",
+      "durationSec": 441,
+      "checkedAt": "2026-10-18"
+    },
+    "ff-ost-zanarkand": {
+      "id": "QQq0zv_JXEk",
+      "title": "Zanarkand (FINAL FANTASY X Original Soundtrack) 【Audio】",
+      "channel": "SQUARE ENIX MUSIC Channel",
+      "durationSec": 185,
+      "checkedAt": "2026-10-18"
+    },
     "fma-op-again": {
       "id": "FM3aJQzqV90",
       "title": "Yui [Again] Fullmetal Alchemist: Brotherhood Opening 1 [Kan/Rom/Eng Lyrics]",
@@ -120,6 +148,13 @@
       "durationSec": 204,
       "checkedAt": "2026-10-18"
     },
+    "genshin-tr-hutao": {
+      "id": "qrH9vMZBwAk",
+      "title": "Character Demo - \"Hu Tao: Let the Living Beware\" | Genshin Impact",
+      "channel": "Genshin Impact",
+      "durationSec": 101,
+      "checkedAt": "2026-10-18"
+    },
     "genshin-tr-raiden": {
       "id": "mvrW4aKwAXw",
       "title": "Character Demo - \"Raiden Shogun: Judgment of Euthymia\" | Genshin Impact",
@@ -127,11 +162,39 @@
       "durationSec": 163,
       "checkedAt": "2026-10-18"
     },
+    "gow-ost-main": {
+      "id": "jpyVfd8TyoI",
+      "title": "Bear McCreary - God of War (Main Theme) | God of War (PlayStation Soundtrack)",
+      "channel": "SonySoundtracksVEVO",
+      "durationSec": 249,
+      "checkedAt": "2026-10-18"
+    },
+    "gta-ost-sa": {
+      "id": "7qfbi3HACV8",
+      "title": "Grand Theft Auto: San Andreas (Official Theme Song)",
+      "channel": "Michael Hunter - Topic",
+      "durationSec": 89,
+      "checkedAt": "2026-10-18"
+    },
+    "gta-tr-vi": {
+      "id": "QdBZY2fkU-0",
+      "title": "Grand Theft Auto VI Trailer 1",
+      "channel": "Rockstar Games",
+      "durationSec": 91,
+      "checkedAt": "2026-10-18"
+    },
     "haikyuu-op-imagination": {
       "id": "XS-N8KfZ5EU",
       "title": "Haikyu!! - Opening 1 | Imagination",
       "channel": "Crunchyroll",
       "durationSec": 100,
+      "checkedAt": "2026-10-18"
+    },
+    "halo-ost-theme": {
+      "id": "DOZLSho2o-M",
+      "title": "Halo",
+      "channel": "Halo - Topic",
+      "durationSec": 263,
       "checkedAt": "2026-10-18"
     },
     "hk-ost-cityoftears": {
@@ -204,11 +267,46 @@
       "durationSec": 214,
       "checkedAt": "2026-10-18"
     },
+    "lol-ost-warriors": {
+      "id": "wPQEeBAXou0",
+      "title": "Imagine Dragons - Warriors (Official Lyric Video)",
+      "channel": "ImagineDragonsVEVO",
+      "durationSec": 171,
+      "checkedAt": "2026-10-18"
+    },
     "mario-ost-jumpup": {
       "id": "e9r5hx47kxM",
       "title": "Super Mario Odyssey - Jump Up, Super Star!",
       "channel": "MuttonBashers",
       "durationSec": 250,
+      "checkedAt": "2026-10-18"
+    },
+    "mario-tr-wonder": {
+      "id": "JStAYvbeSHc",
+      "title": "Super Mario Bros. Wonder - Nintendo Direct 6.21.2023",
+      "channel": "Nintendo of America",
+      "durationSec": 159,
+      "checkedAt": "2026-10-18"
+    },
+    "mc-ost-sweden": {
+      "id": "xIQrC4CerB8",
+      "title": "Minecraft Volume Alpha - 18 - Sweden",
+      "channel": "C418",
+      "durationSec": 216,
+      "checkedAt": "2026-10-18"
+    },
+    "mgs-ost-snakeeater": {
+      "id": "m2OR_JaXDaM",
+      "title": "Snake Eater",
+      "channel": "Release - Topic",
+      "durationSec": 178,
+      "checkedAt": "2026-10-18"
+    },
+    "mha-op-peacesign": {
+      "id": "9aJVr5tTTWk",
+      "title": "米津玄師 - ピースサイン , Kenshi Yonezu - Peace Sign",
+      "channel": "Kenshi Yonezu  米津玄師",
+      "durationSec": 265,
       "checkedAt": "2026-10-18"
     },
     "mha-op-theday": {
@@ -230,6 +328,13 @@
       "title": "Luis Fonsi - Despacito ft. Daddy Yankee",
       "channel": "LuisFonsiVEVO",
       "durationSec": 282,
+      "checkedAt": "2026-10-18"
+    },
+    "musica-queen-bohemian": {
+      "id": "fJ9rUzIMcZQ",
+      "title": "Queen – Bohemian Rhapsody (Official Video Remastered)",
+      "channel": "Queen Official",
+      "durationSec": 360,
       "checkedAt": "2026-10-18"
     },
     "naruto-op-bluebird": {
@@ -267,6 +372,27 @@
       "durationSec": 90,
       "checkedAt": "2026-10-18"
     },
+    "ow-tr-dragons": {
+      "id": "KOkn872Cvdg",
+      "title": "Overwatch Soundtrack - Dragons Animated Short Theme 2",
+      "channel": "Overwatch",
+      "durationSec": 179,
+      "checkedAt": "2026-10-18"
+    },
+    "pelea-ost-guile": {
+      "id": "bshQ0KyBqgk",
+      "title": "Guile's Theme | Street Fighter (Original Motion Picture Soundtrack)",
+      "channel": "SonySoundtracksVEVO",
+      "durationSec": 168,
+      "checkedAt": "2026-10-18"
+    },
+    "pelea-tr-tekken8": {
+      "id": "2hPuRQz6IlM",
+      "title": "Tekken 8 - State of Play Sep 2022 Announcement Trailer | PS5 Games",
+      "channel": "PlayStation",
+      "durationSec": 113,
+      "checkedAt": "2026-10-18"
+    },
     "pokemon-ost-wildbattle": {
       "id": "Fupfr_eVLPo",
       "title": "Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ)",
@@ -279,6 +405,41 @@
       "title": "Pokémon Scarlet & Pokémon Violet – Overview Trailer – Nintendo Switch",
       "channel": "Nintendo of America",
       "durationSec": 331,
+      "checkedAt": "2026-10-18"
+    },
+    "rdr-ost-faraway": {
+      "id": "_7i-GJTXFaA",
+      "title": "Live Performance of \"Far Away\" by Jose Gonzalez",
+      "channel": "Rockstar Games",
+      "durationSec": 150,
+      "checkedAt": "2026-10-18"
+    },
+    "rdr-ost-thatstheway": {
+      "id": "gJ7KotqY5xY",
+      "title": "Red Dead Redemption 2 Official Soundtrack - That's The Way It Is",
+      "channel": "Arthur Morgan",
+      "durationSec": 192,
+      "checkedAt": "2026-10-18"
+    },
+    "re-ost-saferoom": {
+      "id": "dLX6reRrD88",
+      "title": "Resident Evil Remake Soundtrack \"Save Heaven\"",
+      "channel": "zero19923",
+      "durationSec": 190,
+      "checkedAt": "2026-10-18"
+    },
+    "smash-ost-lifelight": {
+      "id": "EhgDibw7vB4",
+      "title": "Super Smash Bros. Ultimate Main Theme - Lifelight",
+      "channel": "Super Smash Bros.",
+      "durationSec": 230,
+      "checkedAt": "2026-10-18"
+    },
+    "smash-tr-sora": {
+      "id": "243SBEaD0A4",
+      "title": "Super Smash Bros. Ultimate Official Sora Reveal Trailer + Gameplay",
+      "channel": "GameSpot",
+      "durationSec": 241,
       "checkedAt": "2026-10-18"
     },
     "solo-op-level": {
@@ -295,6 +456,20 @@
       "durationSec": 142,
       "checkedAt": "2026-10-18"
     },
+    "souls-ost-gwyn": {
+      "id": "3bqLGebDRIY",
+      "title": "Gwyn, Lord of Cinder",
+      "channel": "Motoi Sakuraba - Topic",
+      "durationSec": 219,
+      "checkedAt": "2026-10-18"
+    },
+    "souls-tr-erdtree": {
+      "id": "qLZenOn7WUo",
+      "title": "ELDEN RING Shadow of the Erdtree | Official Gameplay Reveal Trailer",
+      "channel": "BANDAI NAMCO Europe",
+      "durationSec": 187,
+      "checkedAt": "2026-10-18"
+    },
     "spy-op-mixednuts": {
       "id": "CbH2F0kXgTY",
       "title": "OFFICIAL HIGE DANDISM - MIXED NUTS [ Official Video ]",
@@ -307,6 +482,34 @@
       "title": "Tokyo Ghoul Opening | \"Unravel\" by TK from Ling Toshite Sigure",
       "channel": "Crunchyroll",
       "durationSec": 93,
+      "checkedAt": "2026-10-18"
+    },
+    "tlou-ost-main": {
+      "id": "Pt1pOY3_W64",
+      "title": "Gustavo Santaolalla - The Last of Us (Main Theme) | The Last of Us (Video Game Soundtrack)",
+      "channel": "SonySoundtracksVEVO",
+      "durationSec": 186,
+      "checkedAt": "2026-10-18"
+    },
+    "valorant-tr-neon": {
+      "id": "dtx8CgjRmqE",
+      "title": "Spark - Neon Agent Trailer // VALORANT",
+      "channel": "VALORANT",
+      "durationSec": 165,
+      "checkedAt": "2026-10-18"
+    },
+    "witcher-ost-wolven": {
+      "id": "1mDt0yar_ko",
+      "title": "WitcherCon | Marcin Przybyłowicz & Percival feat. Monika Kuczera | Wolven Storm",
+      "channel": "The Witcher",
+      "durationSec": 195,
+      "checkedAt": "2026-10-18"
+    },
+    "witcher-tr-killing": {
+      "id": "c0i88t0Kacs",
+      "title": "The Witcher 3: Wild Hunt - Killing Monsters Cinematic Trailer",
+      "channel": "The Witcher",
+      "durationSec": 165,
       "checkedAt": "2026-10-18"
     },
     "zelda-ost-gerudo": {

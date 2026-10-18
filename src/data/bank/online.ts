@@ -149,7 +149,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Qué monje ómnico flota y lanza orbes?", "Zenyatta", "Ramattra", "Bastion", "Echo"],
     [3, "¿Cómo se llama la guerra entre humanos y robots?", "La Crisis Ómnica", "La Gran Rebelión", "La Guerra de las Máquinas", "El Levantamiento Talon"],
     [3, "¿Qué heroína egipcia vuela con un traje de combate?", "Pharah", "Ana", "Echo", "Mercy"],
-    [2, "¿Quiénes protagonizan este corto animado difuminado?", "Hanzo y Genji", "Junkrat y Roadhog", "Ana y Pharah", "Reinhardt y Brigitte", { k: "ow-tr-dragons", m: "blur", s: 20, e: 45 }],
+    [2, "Esta música es de un corto animado de Overwatch. ¿Quiénes lo protagonizan?", "Hanzo y Genji", "Junkrat y Roadhog", "Ana y Pharah", "Reinhardt y Brigitte", { k: "ow-tr-dragons", m: "audio", s: 10, e: 35 }],
   ],
   cod: [
     [1, "¿Qué empresa publica Call of Duty?", "Activision", "Electronic Arts", "Ubisoft", "Epic Games"],

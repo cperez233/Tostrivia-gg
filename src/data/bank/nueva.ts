@@ -27,7 +27,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Qué Luna Superior pelea con abanicos de hielo?", "Doma", "Akaza", "Kokushibo", "Nakime"],
     [3, "¿De qué color es la espada nichirin de Tanjiro?", "Negra", "Azul", "Amarilla", "Verde"],
     [3, "¿Qué demonios hermanos son la Luna Superior Seis en el Distrito Rojo?", "Daki y Gyutaro", "Rui y su familia", "Enmu y Kyogai", "Hantengu y Gyokko"],
-    [1, "¿Cómo se llama este opening de Demon Slayer?", "Gurenge", "Akeboshi", "Zankyosanka", "Kizuna no Kiseki", { k: "kimetsu-op-gurenge", m: "audio", s: 2, e: 23 }],
+    [1, "¿Cómo se llama este opening de Demon Slayer?", "Gurenge", "Akeboshi", "Zankyosanka", "Kizuna no Kiseki", { k: "kimetsu-op-gurenge", m: "audio", s: 30, e: 52 }],
     [2, "¿De qué arco es este opening?", "El Distrito Rojo", "El Tren Infinito", "La Aldea de los Herreros", "El entrenamiento de los Pilares", { k: "kimetsu-op-zankyou", m: "audio", s: 20, e: 44 }],
   ],
   jjk: [
@@ -104,7 +104,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Con qué porcentaje de One For All empieza Deku a usar el Full Cowl?", "5 %", "20 %", "50 %", "100 %"],
     [3, "¿Qué heroína profesional tiene orejas de conejo?", "Mirko", "Mt. Lady", "Ryukyu", "Nejire Hado"],
     [1, "¿Cómo se llama este opening de My Hero Academia?", "The Day", "Peace Sign", "Odd Future", "Sora ni Utaeba", { k: "mha-op-theday", m: "audio", s: 2, e: 23 }],
-    [2, "¿Cómo se llama este opening?", "Peace Sign", "The Day", "Make My Story", "Polaris", { k: "mha-op-peacesign", m: "audio", s: 2, e: 23 }],
+    [2, "¿Cómo se llama este opening?", "Peace Sign", "The Day", "Make My Story", "Polaris", { k: "mha-op-peacesign", m: "audio", s: 30, e: 52 }],
   ],
   spyfamily: [
     [1, "¿Cuál es el nombre en clave de Loid Forger?", "Twilight", "Thorn Princess", "Nightfall", "Daybreak"],
@@ -129,7 +129,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Qué reciben los alumnos de Eden por portarse mal?", "Rayos Tonitrus", "Estrellas Stella", "Sellos rojos", "Puntos negros"],
     [3, "¿Quién es el autor de Spy x Family?", "Tatsuya Endo", "Tatsuki Fujimoto", "Yūki Tabata", "Kohei Horikoshi"],
     [3, "¿Quién supervisa a Loid dentro de WISE?", "Sylvia Sherwood, la Manejadora", "Fiona Frost", "Henry Henderson", "Donovan Desmond"],
-    [2, "¿Quién interpreta este opening?", "Official HIGE DANdism", "Gen Hoshino", "King Gnu", "YOASOBI", { k: "spy-op-mixednuts", m: "audio", s: 2, e: 23 }],
+    [2, "¿Quién interpreta este opening?", "Official HIGE DANdism", "Gen Hoshino", "King Gnu", "YOASOBI", { k: "spy-op-mixednuts", m: "audio", s: 30, e: 52 }],
   ],
   frieren: [
     [1, "¿Qué raza es Frieren?", "Elfa", "Humana", "Enana", "Demonio"],
@@ -153,7 +153,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Qué estudio animó Frieren?", "Madhouse", "MAPPA", "Ufotable", "Wit Studio"],
     [3, "¿Qué le regala Stark a Fern en su cumpleaños?", "Un brazalete", "Un libro de hechizos", "Un báculo", "Un vestido"],
     [3, "¿Cuál era el arma de Himmel?", "Una espada", "Un arco", "Un hacha", "Un báculo"],
-    [2, "¿Quién interpreta este opening de Frieren?", "YOASOBI", "Aimer", "LiSA", "Ado", { k: "frieren-op-yuusha", m: "audio", s: 2, e: 23 }],
+    [2, "¿Quién interpreta este opening de Frieren?", "YOASOBI", "Aimer", "LiSA", "Ado", { k: "frieren-op-yuusha", m: "audio", s: 30, e: 52 }],
   ],
   sololeveling: [
     [1, "¿Cómo se llama el protagonista de Solo Leveling?", "Sung Jinwoo", "Cha Hae-in", "Go Gunhee", "Yoo Jinho"],
@@ -177,7 +177,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Quién escribió la novela original?", "Chugong", "Dubu", "SIU", "Yongje Park"],
     [3, "¿Quién preside la Asociación de Cazadores de Corea?", "Go Gunhee", "Woo Jinchul", "Choi Jong-in", "Thomas Andre"],
     [3, "¿Cómo se llama el padre de Jinwoo?", "Sung Il-hwan", "Sung Jin-ho", "Go Gunhee", "Yoo Myung-han"],
-    [2, "¿Cómo se llama este opening de Solo Leveling?", "LEveL", "KICK BACK", "SPECIALZ", "Bling-Bang-Bang-Born", { k: "solo-op-level", m: "audio", s: 2, e: 23 }],
+    [2, "Este opening es de la segunda temporada. ¿Cómo se llama?", "ReawakeR", "LEveL", "KICK BACK", "SPECIALZ", { k: "solo-op-level", m: "audio", s: 2, e: 23 }],
   ],
   dandadan: [
     [1, "¿Quiénes protagonizan Dandadan?", "Momo Ayase y Okarun", "Yuji y Megumi", "Denji y Power", "Anya y Damian"],

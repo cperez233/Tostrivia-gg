@@ -104,7 +104,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Cómo se llama la última película de la saga Rebuild?", "Evangelion: 3.0+1.0 Thrice Upon a Time", "Evangelion: 4.44 Final", "The End of Evangelion", "Evangelion: 2.22 You Can (Not) Advance"],
     [3, "¿Quién es la científica jefa de NERV?", "Ritsuko Akagi", "Maya Ibuki", "Misato Katsuragi", "Naoko Akagi"],
     [3, "¿Cómo se llaman los tres superordenadores de NERV?", "MAGI", "SEELE", "Gehirn", "Lilin"],
-    [1, "¿Cómo se llama este opening?", "A Cruel Angel's Thesis", "Fly Me to the Moon", "Soul's Refrain", "Beautiful World", { k: "eva-op-thesis", m: "audio", s: 2, e: 23 }],
+    [1, "¿Cómo se llama este opening?", "A Cruel Angel's Thesis", "Fly Me to the Moon", "Soul's Refrain", "Beautiful World", { k: "eva-op-thesis", m: "audio", s: 30, e: 52 }],
   ],
   bebop: [
     [1, "¿Cómo se llama el protagonista de Cowboy Bebop?", "Spike Spiegel", "Jet Black", "Vicious", "Edward"],
@@ -154,7 +154,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Qué orden le da Lelouch a Suzaku con el Geass?", "¡Vive!", "¡Obedéceme!", "¡Olvídame!", "¡Muere!"],
     [3, "¿Qué estudio animó Code Geass?", "Sunrise", "Bones", "Madhouse", "Production I.G"],
     [3, "¿Cómo se llama el hermano menor falso que le asignan a Lelouch en R2?", "Rolo Lamperouge", "Rivalz", "Gino Weinberg", "Clovis"],
-    [2, "¿Cómo se llama este opening de Code Geass?", "COLORS", "Hitomi no Tsubasa", "Kaidoku Funō", "World End", { k: "cg-op-colors", m: "audio", s: 2, e: 23 }],
+    [2, "¿Cómo se llama este opening de Code Geass?", "COLORS", "Hitomi no Tsubasa", "Kaidoku Funō", "World End", { k: "cg-op-colors", m: "audio", s: 30, e: 52 }],
   ],
   tokyoghoul: [
     [1, "¿Cómo se llama el protagonista de Tokyo Ghoul?", "Ken Kaneki", "Touka Kirishima", "Hideyoshi Nagachika", "Shuu Tsukiyama"],

@@ -124,9 +124,12 @@
     ]
   },
   "mha-op-peacesign": {
-    "q": "My Hero Academia opening 2 Peace Sign Kenshi Yonezu creditless",
+    "q": "Boku no Hero Academia opening 2 Peace Sign",
     "must": [
       "peace sign"
+    ],
+    "alt": [
+      "Kenshi Yonezu Peace Sign"
     ]
   },
   "spy-op-mixednuts": {
@@ -412,9 +415,12 @@
     ]
   },
   "genshin-tr-hutao": {
-    "q": "Genshin Impact Character Demo Hu Tao Let the Show Begin",
+    "q": "Character Demo Hu Tao Genshin Impact",
     "must": [
       "hu tao"
+    ],
+    "alt": [
+      "Genshin Impact Hu Tao Let the Show Begin trailer"
     ]
   },
   "valorant-tr-neon": {
@@ -424,9 +430,13 @@
     ]
   },
   "ow-tr-dragons": {
-    "q": "Overwatch animated short Dragons",
+    "q": "Overwatch Animated Short Dragons Blizzard Entertainment",
     "must": [
-      "dragons"
+      "dragons",
+      "animated short"
+    ],
+    "alt": [
+      "Overwatch Dragons animated short official"
     ]
   },
   "musica-queen-bohemian": {

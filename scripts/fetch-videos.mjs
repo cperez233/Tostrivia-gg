@@ -82,7 +82,7 @@ const OFFICIAL = [
 const BANNED = [
   "cover", "reaction", "reaccion", "react", "nightcore", "remix", "8 bit", "8-bit", "1 hour", "10 hours", "1 hora",
   "slowed", "sped up", "tutorial", "karaoke", "guitar", "drum", "fandub", "lyrics prank", "amv", "mashup",
-  "ranking", "top 10", "top 20", "tier list", "loop", "extended", "earrape", "bass boosted", "ost compilation",
+  "ranking", "dank", "parody", "parodia", "leak", "leaked", "top 10", "top 20", "tier list", "loop", "extended", "earrape", "bass boosted", "ost compilation",
   "full album", "playlist", "explained", "analysis", "breakdown", "theme was", "music theory", "vs", "piano tutorial", "meme", "short", "shorts",
 ];
 
