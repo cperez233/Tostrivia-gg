@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T15:06:03.200Z",
+  "generatedAt": "2026-10-19T18:32:30.479Z",
   "videos": {
     "ac-tr-nh": {
       "id": "_3YNL0OWio0",
@@ -2637,6 +2637,21 @@
           "title": "Fnaf 4 nightmare jumpscare",
           "channel": "Joshua King",
           "durationSec": 10
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-granny": {
+      "id": "Df7NZwRqFDI",
+      "title": "Granny Remake New Jumpscare Scene! [New Update]",
+      "channel": "Sophynity",
+      "durationSec": 12,
+      "alt": [
+        {
+          "id": "GGh3inr1qx0",
+          "title": "Granny Jumpscare: Hide under the Bed",
+          "channel": "Calvin's 2nd Channel",
+          "durationSec": 20
         }
       ],
       "checkedAt": "2026-10-19"
