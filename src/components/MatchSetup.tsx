@@ -1,5 +1,5 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * El personalizador de partidas: Vanilla o Poderes a la vista, y debajo un resumen de las reglas
+ * El personalizador de partidas: Estándar o Poderes a la vista, y debajo un resumen de las reglas
  * (preguntas, tiempo, multiplicador, dificultad, racha) que se abre para cambiarlas.
  * Lo usan la ruleta y Categorías (al jugar solo) y la sala (lo cambia el anfitrión, los demás lo ven).
  */

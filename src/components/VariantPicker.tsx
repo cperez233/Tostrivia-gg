@@ -1,5 +1,5 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Vanilla o Poderes: dos botones y una línea que dice qué cambia.
+ * Estándar o Poderes: dos botones y una línea que dice qué cambia.
  */
 import { VARIANTS, VARIANT_TEXT, type Variant } from "../game/powers";
 import { t } from "../i18n";

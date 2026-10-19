@@ -308,7 +308,7 @@ export const EN: Record<string, string> = {
   // modo poderes (src/game/powers.ts)
   "Modo de juego": "Game mode",
   Modo: "Mode",
-  Vanilla: "Vanilla",
+  Estándar: "Standard",
   "Solo preguntas, reloj y racha.": "Just questions, the clock and your streak.",
   Poderes: "Powers",
   "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3.": "Shells, dice, mushrooms and more. Earn powers with 3-answer streaks.",

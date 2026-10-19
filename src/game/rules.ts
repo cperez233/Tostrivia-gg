@@ -1,6 +1,6 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Reglas de la partida que se pueden personalizar: cuántas preguntas, cuánto tiempo, multiplicador de
- * puntos, dificultad y si la racha multiplica. El modo (Vanilla o Poderes) va aparte, en powers.ts.
+ * puntos, dificultad y si la racha multiplica. El modo (Estándar o Poderes) va aparte, en powers.ts.
  * Las elige quien juega solo o el anfitrión; viajan en la foto del estado, así que los invitados las ven igual.
  */
 

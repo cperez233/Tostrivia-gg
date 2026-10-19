@@ -1,7 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Modo Poderes, al estilo de los juegos de fiesta: cada jugador arranca con un poder y gana más
  * con cada racha de 3 o tras fallar tres seguidas. En grupo, el que va atrás recibe los poderes más fuertes.
- * Se usa uno por pregunta, antes de responder (el Bloque ? no cuenta). Vanilla es la partida de siempre.
+ * Se usa uno por pregunta, antes de responder (el Bloque ? no cuenta). Estándar es la partida de siempre.
  * Los textos están todos aquí (POWER_TEXT, VARIANT_TEXT, POWER_LINES) para poder traducirlos en un solo sitio.
  */
 import { t } from "../i18n";
@@ -200,7 +200,7 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
 };
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
-  vanilla: text("Vanilla", "Solo preguntas, reloj y racha."),
+  vanilla: text("Estándar", "Solo preguntas, reloj y racha."),
   powers: text("Poderes", "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3."),
 };
 
