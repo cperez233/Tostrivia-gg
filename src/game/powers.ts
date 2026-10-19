@@ -5,6 +5,7 @@
  * Los textos están todos aquí (POWER_TEXT, VARIANT_TEXT, POWER_LINES) para poder traducirlos en un solo sitio.
  */
 import { t } from "../i18n";
+import { random, weightedIndex } from "../lib/rng";
 
 export type Variant = "vanilla" | "powers";
 export const VARIANTS: Variant[] = ["vanilla", "powers"];
@@ -262,21 +263,21 @@ export const POWER_LINES = {
 export const isPower = (x: unknown): x is PowerId => typeof x === "string" && x in POWER_TEXT;
 export const isVariant = (x: unknown): x is Variant => x === "vanilla" || x === "powers";
 
-/** un poder al azar; en grupo, al que va atrás le salen más seguido los fuertes */
-export function drawPower(mode: "solo" | "group", behind = false, rand: () => number = Math.random): PowerId {
+/**
+ * Un poder al azar; en grupo, al que va atrás le salen más seguido los fuertes.
+ * Los que ya tiene en la mano pesan menos, para que no le salgan tres iguales.
+ */
+export function drawPower(mode: "solo" | "group", behind = false, rand: () => number = random, hand: readonly PowerId[] = []): PowerId {
   const pool = mode === "group" && behind && rand() < 0.5 ? COMEBACK : POOL[mode];
-  return weighted(pool, rand);
+  return weighted(pool, rand, hand);
 }
 
-function weighted(pool: PowerId[], rand: () => number): PowerId {
-  const total = pool.reduce((n, p) => n + WEIGHT[p], 0);
-  let r = rand() * total;
-  for (const p of pool) if ((r -= WEIGHT[p]) < 0) return p;
-  return pool[pool.length - 1];
+function weighted(pool: PowerId[], rand: () => number, hand: readonly PowerId[] = []): PowerId {
+  return pool[weightedIndex(pool.map((p) => WEIGHT[p] * (hand.includes(p) ? 0.25 : 1)), rand)];
 }
 
-/** mano inicial: dos distintos */
-export function startHand(mode: "solo" | "group", rand: () => number = Math.random): PowerId[] {
+/** mano inicial: distintos */
+export function startHand(mode: "solo" | "group", rand: () => number = random): PowerId[] {
   const pool = POOL[mode].slice();
   const out: PowerId[] = [];
   while (out.length < START_HAND && pool.length) out.push(pool.splice(pool.indexOf(weighted(pool, rand)), 1)[0]);

@@ -7,6 +7,8 @@
 import type { DataConnection, Peer as PeerType, PeerOptions } from "peerjs";
 import { Match, type Snapshot, type Spin } from "../game/match";
 import { isPower, type PowerId, type Variant } from "../game/powers";
+import type { Rules } from "../game/rules";
+import { randomInt } from "../lib/rng";
 
 export type NetStatus = "connecting" | "open" | "lost" | "closed" | "full" | "missing" | "error";
 
@@ -47,6 +49,8 @@ export interface GameClient {
   setDeck(deck: string[]): void;
   setCategory(cat: string): void;
   setVariant(v: Variant): void;
+  /** reglas de la partida (solo quien juega solo o el anfitrión) */
+  setRules(r: Rules): void;
   backToLobby(): void;
   kick(id: string): void;
   leave(): void;
@@ -79,7 +83,7 @@ const CHAT_KEEP = 60;
 
 const PREFIX = "tostrivia-v1-";
 const ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
-export const newCode = () => Array.from({ length: 5 }, () => ALPHABET[Math.floor(Math.random() * ALPHABET.length)]).join("");
+export const newCode = () => Array.from({ length: 5 }, () => ALPHABET[randomInt(ALPHABET.length)]).join("");
 export const normalizeCode = (c: string) => c.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 5);
 
 function peerOptions(): PeerOptions {
@@ -159,6 +163,9 @@ export class LocalClient implements GameClient {
   }
   setVariant(v: Variant) {
     this.match.setVariant(v);
+  }
+  setRules(r: Rules) {
+    this.match.setRules(r);
   }
   backToLobby() {
     this.match.backToLobby();
@@ -451,6 +458,7 @@ export class GuestClient implements GameClient {
   setDeck() {}
   setCategory() {}
   setVariant() {}
+  setRules() {}
   backToLobby() {}
   kick() {}
   leave() {

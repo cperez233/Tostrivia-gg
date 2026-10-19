@@ -4,7 +4,8 @@
  */
 import { BANK, videoFor } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
-import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, multiplier, optionOrder, pointsFor, SPEED_POINTS, textBackups } from "./round";
+import { TEXT_MS, buildRound, durationFor, multiplier, optionOrder, pointsFor, SPEED_POINTS, textBackups } from "./round";
+import { DEFAULT_RULES, cleanRules, type Rules } from "./rules";
 import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 import {
@@ -32,7 +33,7 @@ import {
   type PowerId,
   type Variant,
 } from "./powers";
-import { shuffle } from "../lib/rng";
+import { random, randomInt, shuffle } from "../lib/rng";
 
 export const MAX_PLAYERS = 10;
 const MEDIA_WAIT_MS = 33_000; // tiempo máximo para que el video empiece a sonar en todos
@@ -116,6 +117,8 @@ export interface Snapshot {
   mode: "solo" | "group";
   /** vanilla: la partida de siempre; powers: con poderes (src/game/powers.ts) */
   variant: Variant;
+  /** cuántas preguntas, tiempo, multiplicador, dificultad y racha (src/game/rules.ts) */
+  rules: Rules;
   phase: Phase;
   hostId: string;
   cat: string | null;
@@ -168,6 +171,7 @@ export class Match {
       v: 0,
       mode,
       variant: "vanilla",
+      rules: { ...DEFAULT_RULES },
       phase: "lobby",
       hostId: host.id,
       cat: null,
@@ -258,6 +262,11 @@ export class Match {
     if (this.s.phase !== "lobby" && this.s.phase !== "final") return;
     this.emit({ variant });
   }
+  /** las reglas también: se cambian entre partidas */
+  setRules(rules: Rules) {
+    if (this.s.phase !== "lobby" && this.s.phase !== "final") return;
+    this.emit({ rules: cleanRules(rules) });
+  }
 
   /* ───────── flujo ───────── */
   start(seed: number) {
@@ -270,7 +279,7 @@ export class Match {
       pruneTo(c, new Set((BANK.byCat[c] || []).map((q) => q.id)));
       seenIn(c).forEach((id) => seen.add(id));
     }
-    const { ids, reserves, restart } = buildRound(cat, seed, seen);
+    const { ids, reserves, restart } = buildRound(cat, seed, seen, this.s.rules);
     // ya salieron todas: esta ronda abre la vuelta siguiente
     if (restart) parts.forEach(restartCycle);
     this.reserves = reserves;
@@ -293,7 +302,7 @@ export class Match {
 
   private goTo(index: number) {
     this.clearTimers();
-    if (index >= this.s.ids.length || index >= ROUND_SIZE) {
+    if (index >= this.s.ids.length) {
       this.emit({ phase: "final", qid: null, reveal: null, notice: null });
       return;
     }
@@ -302,7 +311,7 @@ export class Match {
     this.answers.clear();
     this.mediaFailed.clear();
     const order = optionOrder(qid, this.s.seed);
-    const duration = q.media ? MEDIA_MS : TEXT_MS;
+    const duration = durationFor(this.s.rules, !!q.media);
     if (q.media && this.mediaFails >= this.failLimit) {
       // YouTube ya falló dos veces: no se hace esperar a nadie otra vez
       return this.replaceAt(index, "YouTube no responde en esta red. Seguimos con preguntas sin video.", true);
@@ -432,8 +441,8 @@ export class Match {
       const pick: Pick = { choice: a ? a.choice : null, ok, gained: 0, streak, ms: a?.ms ?? this.s.duration, excused };
       const frac = a ? Math.max(0, Math.min(1, 1 - a.ms / this.s.duration)) : 0;
       if (ok) {
-        pick.gained = pointsFor(q.d, frac, streak);
-        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - SPEED_POINTS) * frac * multiplier(streak));
+        pick.gained = pointsFor(q.d, frac, streak, this.s.rules);
+        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - SPEED_POINTS) * frac * multiplier(streak, this.s.rules));
         if (power === "star") pick.bonus = Math.round(pick.gained * (STAR_MULT - 1));
         if (power === "double") pick.bonus = pick.gained;
       } else if (!excused && power === "double") pick.bonus = -DOUBLE_RISK;
@@ -514,7 +523,7 @@ export class Match {
         const earn = pick.ok && pick.streak % EARN_EVERY === 0;
         const comfort = cold >= COLD_EVERY;
         if ((earn || comfort) && hand.length < MAX_HAND) {
-          pick.earned = drawPower(this.s.mode, behind);
+          pick.earned = drawPower(this.s.mode, behind, random, hand);
           if (!earn) pick.consolation = true;
           hand = [...hand, pick.earned];
         }
@@ -542,7 +551,7 @@ export class Match {
       const behind = order.findIndex((x) => x.id === pid) >= Math.ceil(order.length / 2);
       const prize: PowerId[] = [];
       while (prize.length < 2) {
-        const d = drawPower(this.s.mode, behind);
+        const d = drawPower(this.s.mode, behind, random, [...hand, ...prize]);
         if (d !== "mystery") prize.push(d);
       }
       const full = [...hand, ...prize].slice(0, MAX_HAND);
@@ -552,16 +561,16 @@ export class Match {
     const use: PowerUse = { p: power, at: now };
     if (power === "banana") use.after = this.answers.size;
     let fx = this.s.fx;
-    if (power === "dice") use.roll = 1 + Math.floor(Math.random() * 6);
+    if (power === "dice") use.roll = 1 + randomInt(6);
     else if (power === "half") {
       const wrong = [0, 1, 2, 3].filter((i) => this.s.order[i] !== 0);
-      use.cut = shuffle(wrong, Math.random).slice(0, 2);
+      use.cut = shuffle(wrong, random).slice(0, 2);
     } else if ((FX_POWERS as PowerId[]).includes(power)) {
       const kind = power as FxId;
       // el Susto llega cuando menos lo esperan; con screamer, un poco más tarde para que el video alcance a cargar
       const clips = kind === "scare" ? SCARE_KEYS.filter((k) => videoFor(k)) : [];
-      const clip = clips.length ? clips[Math.floor(Math.random() * clips.length)] : undefined;
-      const from = kind !== "scare" ? now : now + (clip ? 3000 + Math.floor(Math.random() * 3000) : 1000 + Math.floor(Math.random() * 2500));
+      const clip = clips.length ? clips[randomInt(clips.length)] : undefined;
+      const from = kind !== "scare" ? now : now + (clip ? 3000 + randomInt(3000) : 1000 + randomInt(2500));
       const until = from + (clip ? SCARE_CLIP_MS : FX_MS[kind]);
       fx = { ...fx };
       for (const p of this.active()) {

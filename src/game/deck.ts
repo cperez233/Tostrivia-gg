@@ -4,7 +4,7 @@
 import { playable } from "./mix";
 import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import type { GroupId } from "../data/types";
-import { rng, shuffle } from "../lib/rng";
+import { randomInt, rng, shuffle, weightedIndex } from "../lib/rng";
 import type { Spin } from "./match";
 
 export type Filter = "todo" | GroupId;
@@ -42,7 +42,39 @@ export function makeDeck(filter: Filter, seed: number): string[] {
   return [a[0], j[0], s[0], a[1], c, j[1], a[2], s[1], j[2], o].filter(Boolean);
 }
 
+const RECENT_KEY = "tostrivia:spins";
+const RECENT_KEEP = 6;
+let recentMem: string[] = [];
+function recentSpins(): string[] {
+  try {
+    const list = JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]");
+    if (Array.isArray(list)) return list.filter((x): x is string => typeof x === "string").slice(0, RECENT_KEEP);
+  } catch {
+    /* sin almacenamiento: se usa la memoria de esta pestaña */
+  }
+  return recentMem;
+}
+function remember(cat: string) {
+  recentMem = [cat, ...recentSpins().filter((c) => c !== cat)].slice(0, RECENT_KEEP);
+  try {
+    localStorage.setItem(RECENT_KEY, JSON.stringify(recentMem));
+  } catch {
+    /* no se recuerda entre visitas */
+  }
+}
+
+/**
+ * Hacia dónde cae la ruleta. Azar criptográfico y con memoria: la categoría que acaba de salir casi
+ * nunca repite y las de los últimos giros pesan menos, para que no se sienta que siempre cae lo mismo.
+ * Si el mazo es todo de lo reciente, cae en cualquiera.
+ */
 export function makeSpin(deck: string[]): Spin {
-  const index = Math.floor(Math.random() * deck.length);
-  return { cat: deck[index], index, nonce: Math.floor(Math.random() * 1e9) };
+  const recent = recentSpins();
+  const weights = deck.map((c) => {
+    const k = recent.indexOf(c);
+    return k < 0 ? 1 : k === 0 ? 0.08 : k < 3 ? 0.35 : 0.7;
+  });
+  const index = weightedIndex(weights);
+  remember(deck[index]);
+  return { cat: deck[index], index, nonce: randomInt(1e9) };
 }

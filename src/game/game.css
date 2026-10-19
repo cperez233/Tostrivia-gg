@@ -182,6 +182,13 @@
   border-color: var(--paper);
   background: var(--paper);
 }
+/* partidas largas: más casillas, menos aire entre ellas */
+.progress--long {
+  gap: 2px;
+}
+.progress--long li {
+  border-width: 1px;
+}
 
 /* temporizador: la barra se quema hacia la izquierda */
 .timer {

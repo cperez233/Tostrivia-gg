@@ -346,19 +346,21 @@
   }
 }
 
-/* modo de juego: el anfitrión lo elige, los demás lo ven */
+/* personalizador: el anfitrión lo cambia, los demás ven el resumen */
+.lobby__cat .setup {
+  justify-items: center;
+  text-align: center;
+}
+.lobby__cat .setup__bar {
+  justify-content: center;
+}
+.lobby__cat .setup__panel {
+  justify-items: center;
+}
 .lobby__cat .variant {
   justify-items: center;
   text-align: center;
 }
-.lobby__variant {
-  margin: 0;
-  max-width: 420px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--on-ink-2);
-}
-.lobby__variant .label {
-  margin-right: 6px;
+.lobby__cat .setup__reset {
+  justify-self: center;
 }

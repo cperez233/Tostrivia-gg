@@ -73,9 +73,11 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     if (!spin || spin.nonce === lastNonce.current) return;
     lastNonce.current = spin.nonce;
     if (deck[spin.index] !== spin.cat) return;
-    const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * slice * 0.6;
+    // dónde cae dentro del gajo y cuántas vueltas da salen del nonce: igual en todos los celulares, distinto en cada giro
+    const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * slice * 0.7;
+    const turns = 4 + (Math.floor(spin.nonce / 1000) % 3);
     const cur = rot.get();
-    const base = cur + 360 * 5;
+    const base = cur + 360 * turns;
     const desired = (((-spin.index * slice + jitter) % 360) + 360) % 360;
     const target = base + ((desired - (((base % 360) + 360) % 360) + 360) % 360);
     setLanded(null);

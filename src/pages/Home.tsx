@@ -12,8 +12,7 @@ import { Cover } from "../components/Cover";
 import { FocusLines } from "../components/Wipe";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
-import VariantPicker from "../components/VariantPicker";
-import { saveVariant, savedVariant, type Variant } from "../game/powers";
+import { SoloSetup } from "../components/MatchSetup";
 import "./home.css";
 import { t } from "../i18n";
 
@@ -34,11 +33,6 @@ export default function Home({ onPlay }: Props) {
   const [hits, setHits] = useState(0);
   const spinning = !!spin && landed?.nonce !== spin.nonce;
   const [scope, shake] = useAnimate();
-  const [variant, setVariant] = useState<Variant>(savedVariant);
-  const pickVariant = (v: Variant) => {
-    setVariant(v);
-    saveVariant(v);
-  };
 
   const doSpin = () => {
     if (spinning) return;
@@ -94,7 +88,7 @@ export default function Home({ onPlay }: Props) {
               </span>
             ))}
           </h1>
-          <p className="arena__sub">{t("Diez preguntas, veinte segundos cada una.")}</p>
+          <p className="arena__sub">{t("Gira, juega y arma la partida a tu gusto.")}</p>
 
           <div className="filters" role="radiogroup" aria-label={t("Qué entra en la ruleta")}>
             {FILTERS.map((f) => (
@@ -104,7 +98,7 @@ export default function Home({ onPlay }: Props) {
               </button>
             ))}
           </div>
-          <VariantPicker idp="home" value={variant} onChange={pickVariant} />
+          <SoloSetup idp="home" />
           <button type="button" className="arena__azar" onClick={() => onPlay(randomId(filter))} disabled={spinning}>
             {t("Sin ruleta:")} {describe(randomId(filter))?.name}
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>

@@ -8,6 +8,7 @@ import type { GameClient } from "../net/client";
 import type { Pick, Player, Snapshot } from "./match";
 import { POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
 import { multiplier } from "./round";
+import { DEFAULT_RULES } from "./rules";
 import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
 import { Avatar } from "../components/Avatar";
@@ -16,7 +17,7 @@ import { describe } from "./mix";
 import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
 import Ceremony from "./Ceremony";
-import { rng, shuffle } from "../lib/rng";
+import { newSeed, rng, shuffle } from "../lib/rng";
 import "./game.css";
 import "./ceremony.css";
 import { localizeQuestion, locale, t } from "../i18n";
@@ -36,6 +37,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const reduce = useReducedMotion();
   const me = snap.players.find((p) => p.id === client.me.id);
+  const rules = snap.rules ?? DEFAULT_RULES;
   const key = `${snap.index}:${snap.qid}`;
   const [pick, setPick] = useState<{ key: string; choice: number } | null>(null);
   const myPick = pick?.key === key ? pick.choice : null;
@@ -125,13 +127,18 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           </span>
           <span className="game__cat-name">{cat.name}</span>
           {snap.variant === "powers" && <span className="game__variant">{VARIANT_TEXT.powers.name}</span>}
+          {rules.mult !== 1 && (
+            <span className="game__variant game__mult" aria-label={t("Puntos ×{n}", { n: rules.mult.toLocaleString(locale()) })}>
+              ×{rules.mult.toLocaleString(locale())}
+            </span>
+          )}
         </div>
         <div className="game__right">
           <AnimatePresence>
             {me && me.streak >= 2 && (
               <motion.span
                 key="streak"
-                className={`game__streak ${me.streak >= 5 ? "is-x2" : me.streak >= 3 ? "is-x15" : ""}`}
+                className={`game__streak ${!rules.streak ? "" : me.streak >= 5 ? "is-x2" : me.streak >= 3 ? "is-x15" : ""}`}
                 initial={{ scale: 0.4, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.4, opacity: 0 }}
@@ -291,7 +298,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             )}
           </div>
 
-          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf)} />}</AnimatePresence>
+          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf)} streakOn={rules.streak} />}</AnimatePresence>
 
           {reveal && (
             <div className="game__next">
@@ -316,7 +323,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <FocusLines className="game__flash-lines" />
           </motion.div>
         )}
-        {reveal && mine?.ok && (mine.streak === 3 || mine.streak === 5 || mine.streak === 8 || mine.streak === 10) && (
+        {reveal && mine?.ok && rules.streak && (mine.streak === 3 || mine.streak === 5 || mine.streak === 8 || mine.streak === 10) && (
           <StreakBanner key={`streak-${key}`} streak={mine.streak} />
         )}
       </AnimatePresence>
@@ -630,14 +637,14 @@ function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): st
 }
 
 /** veredicto: la onomatopeya entra de golpe sobre líneas de concentración */
-function Verdict({ pick, notes = [] }: { pick: Pick; notes?: string[] }) {
+function Verdict({ pick, notes = [], streakOn = true }: { pick: Pick; notes?: string[]; streakOn?: boolean }) {
   const reduce = useReducedMotion();
   const word = t(pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!");
   const sub = pick.ok
-    ? t("+{n} puntos", { n: fmt(pick.gained) }) + (pick.streak >= 2 ? ` · ${t("racha de {n}", { n: pick.streak })} (×${multiplier(pick.streak).toLocaleString(locale())})` : "")
+    ? t("+{n} puntos", { n: fmt(pick.gained) }) + (pick.streak >= 2 && streakOn ? ` · ${t("racha de {n}", { n: pick.streak })} (×${multiplier(pick.streak).toLocaleString(locale())})` : "")
     : pick.excused
       ? t("El video no cargó en tu celular: tu racha se mantiene.")
-      : pick.shielded
+      : pick.shielded || !streakOn
         ? pick.choice == null
           ? t("No respondiste a tiempo.")
           : t("Esta no era.")
@@ -720,7 +727,7 @@ function Progress({ snap, me }: { snap: Snapshot; me: string }) {
   if (snap.phase === "reveal" && snap.reveal) hist.current[snap.index] = snap.reveal.picks[me]?.ok ? "ok" : "bad";
   if (snap.index === 0 && snap.phase !== "reveal") hist.current = {};
   return (
-    <ol className="progress" aria-label={t("Pregunta {a} de {b}", { a: snap.index + 1, b: snap.ids.length })}>
+    <ol className={`progress ${snap.ids.length > 15 ? "progress--long" : ""}`} aria-label={t("Pregunta {a} de {b}", { a: snap.index + 1, b: snap.ids.length })}>
       {snap.ids.map((_, i) => (
         <li key={i} className={`${hist.current[i] ?? ""} ${i === snap.index ? "is-now" : ""}`} />
       ))}
@@ -808,7 +815,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const [copied, setCopied] = useState(false);
   // en grupo primero va el podio animado; desde ahí se puede ver el detalle de cada uno
   const [details, setDetails] = useState(snap.mode !== "group");
-  const again = () => client.start(Math.floor(Math.random() * 2 ** 31));
+  const again = () => client.start(newSeed());
   const groupActions = client.isHost ? (
     <>
       <button type="button" className="btn btn--hanko" onClick={again}>
