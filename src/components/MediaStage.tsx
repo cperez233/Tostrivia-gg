@@ -1,7 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Reproduce solo el fragmento [s, e] de un video de YouTube.
  *  - audio: el video queda tapado por una viñeta; se oye y se revela al responder.
- *  - blur:  se ve muy difuminado; se aclara al responder.
+ *  - blur:  se ve difuminado pero se distingue, y se va aclarando solo mientras corre el reloj; se aclara del todo al responder.
  *  - clip:  se ve, con la franja del título tapada para no regalar la respuesta.
  * Si un video falla (YouTube no deja insertarlo, lo borraron…) prueba el siguiente de respaldo;
  * solo cuando no queda ninguno, o la API no carga o nada arranca a tiempo, avisa con onError
@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import type { Media } from "../data/types";
 import type { VideoCandidate } from "../data/bank";
 import { loadYouTube, YT_ERRORS, type YTPlayer } from "../lib/youtube";
+import { maskMediaSession } from "../lib/mediaSession";
 import "./media.css";
 import { t } from "../i18n";
 
@@ -20,6 +21,8 @@ interface Props {
   /** el principal primero y luego los de respaldo */
   videos: VideoCandidate[];
   revealed: boolean;
+  /** lo que dura la pregunta: el difuminado se va aclarando a ese ritmo */
+  seconds?: number;
   onPlaying: () => void;
   onError: (reason: string) => void;
   /** cuál de los videos se está usando (cambia si entra uno de respaldo) */
@@ -29,7 +32,11 @@ interface Props {
 // con internet lento el reproductor tarda; la partida espera un poco más (MEDIA_WAIT_MS en match.ts)
 const START_TIMEOUT = 30_000;
 
-export default function MediaStage({ media, videos, revealed, onPlaying, onError, onVideo }: Props) {
+/** del primer vistazo (se ven formas y colores, no detalles) a casi nítido justo antes de que se acabe el tiempo */
+const BLUR_FROM = "blur(9px) saturate(0.75)";
+const BLUR_TO = "blur(2.5px) saturate(1)";
+
+export default function MediaStage({ media, videos, revealed, seconds = 20, onPlaying, onError, onVideo }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"loading" | "blocked" | "playing" | "failed">("loading");
   const playerRef = useRef<YTPlayer | null>(null);
@@ -50,6 +57,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
       cb.current.onError(reason);
     };
     const startTimer = setTimeout(() => !started && fail("no arrancó a tiempo"), START_TIMEOUT);
+    const unmask = maskMediaSession();
 
     let attempt = 0;
     // fragmento ajustado a lo que dura este video (los de respaldo pueden ser un poco más cortos)
@@ -152,6 +160,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
 
     return () => {
       dead = true;
+      unmask();
       clearTimeout(startTimer);
       if (blockedTimer) clearTimeout(blockedTimer);
       if (loop) clearInterval(loop);
@@ -181,10 +190,20 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
   return (
     <div className={`stage stage--${media.m} ${revealed ? "is-revealed" : ""}`} data-state={state}>
       <div className="stage__frame">
-        <div
+        <motion.div
           className="stage__video"
           ref={host}
-          style={media.m === "blur" ? { filter: hidden ? "blur(22px) grayscale(1) contrast(1.3)" : "none", transform: hidden ? "scale(1.18)" : "none" } : undefined}
+          initial={false}
+          animate={
+            media.m !== "blur"
+              ? undefined
+              : revealed
+                ? { filter: "blur(0px) saturate(1)", scale: 1 }
+                : state === "playing"
+                  ? { filter: BLUR_TO, scale: 1.04 }
+                  : { filter: BLUR_FROM, scale: 1.04 }
+          }
+          transition={revealed ? { duration: 0.7, ease: [0.22, 1, 0.36, 1] } : state === "playing" ? { filter: { duration: seconds, ease: "linear" }, scale: { duration: 0.4 } } : { duration: 0.3 }}
         />
         {/* capa que impide tocar el video (pausar, abrir YouTube) */}
         <div className="stage__shield" aria-hidden />

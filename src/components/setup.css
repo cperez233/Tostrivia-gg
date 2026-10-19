@@ -7,49 +7,94 @@
   max-width: 520px;
 }
 .setup__bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 12px;
+  display: grid;
+  gap: 10px;
+  width: 100%;
 }
-.setup__sum {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--on-ink-2);
-  text-wrap: pretty;
-}
+/* el botón grande: se ve a la legua que aquí se arma la partida */
 .setup__toggle {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 0 14px;
-  border: 2px solid var(--paper);
-  background: none;
-  color: var(--on-ink);
-  font-weight: 900;
-  font-size: 14px;
-  white-space: nowrap;
-  transition: background 0.15s, color 0.15s;
-}
-.setup__toggle.is-open,
-.setup__toggle:not(:disabled):hover {
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 58px;
+  padding: 0 20px;
+  border: 3px solid var(--ink);
   background: var(--paper);
   color: var(--ink);
+  font-family: var(--display);
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 5px 5px 0 var(--signal);
+  transition: background 0.2s, box-shadow 0.15s var(--ease), translate 0.15s var(--ease);
+}
+.setup__toggle.is-open {
+  background: var(--signal);
+  box-shadow: 5px 5px 0 var(--hanko);
+}
+@media (hover: hover) and (pointer: fine) {
+  .setup__toggle:not(:disabled):hover {
+    translate: -2px -2px;
+    box-shadow: 7px 7px 0 var(--signal);
+  }
+  .setup__toggle.is-open:not(:disabled):hover {
+    box-shadow: 7px 7px 0 var(--hanko);
+  }
 }
 .setup__toggle:disabled {
   opacity: 0.5;
   cursor: default;
+  box-shadow: none;
+}
+.setup__icon {
+  flex-shrink: 0;
+  overflow: visible;
+}
+.setup__toggle-text {
+  min-width: 0;
+}
+.setup__chev {
+  flex-shrink: 0;
+  margin-left: 2px;
+}
+.setup__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.setup__chip {
+  padding: 5px 10px;
+  border: 2px solid var(--ink-line);
+  background: var(--ink-2);
+  color: var(--on-ink-2);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+/* el panel se despliega: el cajón recorta, el panel lleva el borde */
+.setup__drawer {
+  width: 100%;
+  overflow: hidden;
+  padding: 0 6px 6px 0;
+  margin: 0 -6px -6px 0;
 }
 .setup__panel {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   width: 100%;
-  padding: 14px;
+  padding: 16px 14px 14px;
   border: 2px solid var(--ink-line);
+  border-left: 5px solid var(--signal);
   background: var(--ink-2);
-  box-shadow: var(--lift-1);
+  box-shadow: 4px 4px 0 var(--hanko);
 }
 .setup__row {
   display: grid;
@@ -70,9 +115,10 @@
   max-width: 100%;
 }
 .setup__opt {
+  position: relative;
   flex: 1 0 auto;
-  min-height: 40px;
-  min-width: 44px;
+  min-height: 44px;
+  min-width: 48px;
   padding: 0 12px;
   border: 0;
   background: none;
@@ -87,9 +133,16 @@
   box-shadow: inset 2px 0 0 var(--ink-line);
 }
 .setup__opt.is-on {
-  background: var(--signal);
   color: var(--ink);
   box-shadow: none;
+}
+.setup__pill {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+}
+.setup__opt-text {
+  position: relative;
 }
 .setup__opt:disabled {
   opacity: 0.5;

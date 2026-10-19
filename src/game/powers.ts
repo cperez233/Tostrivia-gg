@@ -201,7 +201,7 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
   vanilla: text("Estándar", "Solo preguntas, reloj y racha."),
-  powers: text("Poderes", "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3."),
+  powers: text("Locura", "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3."),
 };
 
 const FX_TEXT: Record<FxId, string> = {

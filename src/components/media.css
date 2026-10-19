@@ -16,7 +16,6 @@
 .stage__video {
   position: absolute;
   inset: 0;
-  transition: filter 0.9s var(--ease), transform 0.9s var(--ease);
 }
 .stage__video iframe {
   width: 100%;

@@ -4,7 +4,7 @@
  * Lo usan la ruleta y Categorías (al jugar solo) y la sala (lo cambia el anfitrión, los demás lo ven).
  */
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import VariantPicker from "./VariantPicker";
 import { VARIANT_TEXT, saveVariant, savedVariant, type Variant } from "../game/powers";
 import { COUNTS, DEFAULT_RULES, DIFFS, MEDIA_EXTRA, MULTS, TIMES, isDefault, saveRules, savedRules, type Difficulty, type Rules } from "../game/rules";
@@ -35,6 +35,18 @@ export function rulesSummary(r: Rules) {
   return out.join(" · ");
 }
 
+/** las reglas como fichas sueltas: la que cambia entra de golpe */
+export function rulesChips(r: Rules) {
+  const out = [t("{n} preguntas", { n: r.count }), t("{n} s por pregunta", { n: r.time })];
+  if (r.mult !== 1) out.push(t("puntos ×{n}", { n: num(r.mult) }));
+  out.push(r.diff === "mix" ? t("dificultad mixta") : t(DIFF_NAME[r.diff]));
+  if (!r.streak) out.push(t("sin racha"));
+  return out;
+}
+
+const PANEL = { hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } } };
+const ROW = { hidden: { opacity: 0, x: -18 }, show: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 420, damping: 30 } } };
+
 export default function MatchSetup({ variant, rules, onVariant, onRules, disabled, readOnly, idp }: Props) {
   useLang();
   const reduce = useReducedMotion();
@@ -58,10 +70,7 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
     <div className="setup">
       <VariantPicker idp={idp} value={variant} onChange={(v) => onVariant?.(v)} disabled={disabled} />
       <div className="setup__bar">
-        <p className="setup__sum" id={`${idp}-rules-sum`}>
-          {rulesSummary(rules)}
-        </p>
-        <button
+        <motion.button
           type="button"
           className={`setup__toggle ${open ? "is-open" : ""}`}
           aria-expanded={open}
@@ -69,66 +78,101 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
           aria-describedby={`${idp}-rules-sum`}
           onClick={() => setOpen((o) => !o)}
           disabled={disabled}
+          whileTap={disabled ? undefined : { scale: 0.96, x: 2, y: 2 }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
-            <path d="M4 7h10M18 7h2M4 17h2M10 17h10" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" />
-            <circle cx="16" cy="7" r="2.4" fill="none" stroke="currentColor" strokeWidth="2.4" />
-            <circle cx="8" cy="17" r="2.4" fill="none" stroke="currentColor" strokeWidth="2.4" />
-          </svg>
-          {open ? t("Listo") : t("Personalizar")}
-        </button>
+          <Sliders open={open} />
+          <span className="setup__toggle-text">{open ? t("Listo") : t("Personalizar")}</span>
+          <motion.svg className="setup__chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden animate={{ rotate: open ? 180 : 0 }} transition={{ type: "spring", stiffness: 380, damping: 22 }}>
+            <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
+          </motion.svg>
+        </motion.button>
+        <p className="sr-only" id={`${idp}-rules-sum`}>
+          {rulesSummary(rules)}
+        </p>
+        <ul className="setup__chips" aria-hidden>
+          <AnimatePresence initial={false} mode="popLayout">
+            {rulesChips(rules).map((c) => (
+              <motion.li
+                key={c}
+                layout={!reduce}
+                className="setup__chip"
+                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.4, rotate: -8 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.4 }}
+                transition={{ type: "spring", stiffness: 520, damping: 24 }}
+              >
+                {c}
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </ul>
       </div>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
             key="rules"
             id={`${idp}-rules`}
-            className="setup__panel"
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="setup__drawer"
+            initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
+            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Row idp={idp} id="count" label={t("Preguntas")} list={COUNTS} value={rules.count} name={(n) => String(n)} onPick={(v) => set("count", v)} disabled={disabled} />
-            <Row
-              idp={idp}
-              id="time"
-              label={t("Tiempo por pregunta")}
-              hint={t("Las de video tienen {n} s más.", { n: MEDIA_EXTRA })}
-              list={TIMES}
-              value={rules.time}
-              name={(n) => `${n} s`}
-              onPick={(v) => set("time", v)}
-              disabled={disabled}
-            />
-            <Row
-              idp={idp}
-              id="mult"
-              label={t("Multiplicador de puntos")}
-              hint={t("Multiplica lo que gana cada acierto.")}
-              list={MULTS}
-              value={rules.mult}
-              name={(n) => `×${num(n)}`}
-              onPick={(v) => set("mult", v)}
-              disabled={disabled}
-            />
-            <Row<Difficulty> idp={idp} id="diff" label={t("Dificultad")} list={DIFFS} value={rules.diff} name={(d) => t(DIFF_NAME[d])} onPick={(v) => set("diff", v)} disabled={disabled} />
-            <Row<boolean>
-              idp={idp}
-              id="streak"
-              label={t("Racha")}
-              hint={rules.streak ? t("Acertar seguido multiplica: ×1,25 con 2, ×1,5 con 3, ×2 con 5 y ×3 con 8.") : t("Cada acierto vale lo mismo, vayas como vayas.")}
-              list={[true, false]}
-              value={rules.streak}
-              name={(on) => (on ? t("Multiplica") : t("Sin racha"))}
-              onPick={(v) => set("streak", v)}
-              disabled={disabled}
-            />
-            {!isDefault(rules) && (
-              <button type="button" className="setup__reset" onClick={() => onRules?.({ ...DEFAULT_RULES })} disabled={disabled}>
-                {t("Volver a lo normal")}
-              </button>
-            )}
+            <motion.div className="setup__panel" variants={PANEL} initial="hidden" animate="show">
+              <LayoutGroup id={`${idp}-rules-pills`}>
+                <Row idp={idp} id="count" label={t("Preguntas")} list={COUNTS} value={rules.count} name={(n) => String(n)} onPick={(v) => set("count", v)} disabled={disabled} />
+                <Row
+                  idp={idp}
+                  id="time"
+                  label={t("Tiempo por pregunta")}
+                  hint={t("Las de video tienen {n} s más.", { n: MEDIA_EXTRA })}
+                  list={TIMES}
+                  value={rules.time}
+                  name={(n) => `${n} s`}
+                  onPick={(v) => set("time", v)}
+                  disabled={disabled}
+                />
+                <Row
+                  idp={idp}
+                  id="mult"
+                  label={t("Multiplicador de puntos")}
+                  hint={t("Multiplica lo que gana cada acierto.")}
+                  list={MULTS}
+                  value={rules.mult}
+                  name={(n) => `×${num(n)}`}
+                  onPick={(v) => set("mult", v)}
+                  disabled={disabled}
+                />
+                <Row<Difficulty> idp={idp} id="diff" label={t("Dificultad")} list={DIFFS} value={rules.diff} name={(d) => t(DIFF_NAME[d])} onPick={(v) => set("diff", v)} disabled={disabled} />
+                <Row<boolean>
+                  idp={idp}
+                  id="streak"
+                  label={t("Racha")}
+                  hint={rules.streak ? t("Acertar seguido multiplica: ×1,25 con 2, ×1,5 con 3, ×2 con 5 y ×3 con 8.") : t("Cada acierto vale lo mismo, vayas como vayas.")}
+                  list={[true, false]}
+                  value={rules.streak}
+                  name={(on) => (on ? t("Multiplica") : t("Sin racha"))}
+                  onPick={(v) => set("streak", v)}
+                  disabled={disabled}
+                />
+              </LayoutGroup>
+              <AnimatePresence initial={false}>
+                {!isDefault(rules) && (
+                  <motion.button
+                    key="reset"
+                    type="button"
+                    className="setup__reset"
+                    onClick={() => onRules?.({ ...DEFAULT_RULES })}
+                    disabled={disabled}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                  >
+                    {t("Volver a lo normal")}
+                  </motion.button>
+                )}
+              </AnimatePresence>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -182,22 +226,47 @@ function Row<T extends string | number | boolean>({
   const lid = `${idp}-${id}-l`;
   const hid = `${idp}-${id}-h`;
   return (
-    <div className="setup__row">
+    <motion.div className="setup__row" variants={ROW}>
       <p className="setup__label" id={lid}>
         {label}
       </p>
       <div className="setup__opts" role="radiogroup" aria-labelledby={lid} aria-describedby={hint ? hid : undefined}>
         {list.map((v) => (
-          <button key={String(v)} type="button" role="radio" aria-checked={value === v} className={`setup__opt ${value === v ? "is-on" : ""}`} onClick={() => onPick(v)} disabled={disabled}>
-            {name(v)}
-          </button>
+          <motion.button
+            key={String(v)}
+            type="button"
+            role="radio"
+            aria-checked={value === v}
+            className={`setup__opt ${value === v ? "is-on" : ""}`}
+            onClick={() => onPick(v)}
+            disabled={disabled}
+            whileTap={disabled ? undefined : { scale: 0.88 }}
+          >
+            {value === v && <motion.span layoutId={`${idp}-${id}-pill`} className="setup__pill" transition={{ type: "spring", stiffness: 520, damping: 34 }} />}
+            <span className="setup__opt-text">{name(v)}</span>
+          </motion.button>
         ))}
       </div>
-      {hint && (
-        <p className="setup__hint" id={hid}>
-          {hint}
-        </p>
-      )}
-    </div>
+      <AnimatePresence mode="wait" initial={false}>
+        {hint && (
+          <motion.p key={hint} className="setup__hint" id={hid} initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.16 }}>
+            {hint}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
+
+/** el icono de los controles: al abrir, las perillas se corren */
+function Sliders({ open }: { open: boolean }) {
+  const spring = { type: "spring" as const, stiffness: 380, damping: 18 };
+  return (
+    <svg className="setup__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden>
+      <path d="M3 7h18M3 17h18" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" />
+      <motion.circle r="3" fill="var(--hanko)" stroke="currentColor" strokeWidth="2.4" cy="7" initial={false} animate={{ cx: open ? 17 : 8 }} transition={spring} />
+      <motion.circle r="3" fill="var(--signal)" stroke="currentColor" strokeWidth="2.4" cy="17" initial={false} animate={{ cx: open ? 7 : 16 }} transition={spring} />
+    </svg>
+  );
+}
+

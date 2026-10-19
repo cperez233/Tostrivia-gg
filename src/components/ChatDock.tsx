@@ -9,6 +9,9 @@ import { Avatar } from "./Avatar";
 import "./chat.css";
 import { t } from "../i18n";
 
+/** cuánto flota una reacción antes de desvanecerse del todo */
+const FLOAT_MS = 4200;
+
 interface Float {
   id: string;
   body: string;
@@ -36,7 +39,7 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
       if (m.kind === "emote") {
         const f = { id: m.id, body: m.body, seal: m.seal, name: m.pid === client.me.id ? t("Tú") : m.name, x: 8 + Math.random() * 64 };
         setFloats((l) => [...l.slice(-14), f]);
-        setTimeout(() => setFloats((l) => l.filter((x) => x.id !== f.id)), 2600);
+        setTimeout(() => setFloats((l) => l.filter((x) => x.id !== f.id)), FLOAT_MS + 300);
         return;
       }
       setMsgs(client.chatLog().slice());
@@ -82,8 +85,8 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
               className="float"
               style={{ right: `${f.x}px` }}
               initial={{ y: 0, opacity: 0, scale: 0.4 }}
-              animate={reduce ? { opacity: [0, 1, 1, 0] } : { y: -260, opacity: [0, 1, 1, 0], scale: [0.4, 1.25, 1, 1], rotate: [0, -8, 6, 0] }}
-              transition={{ duration: 2.4, ease: "easeOut" }}
+              animate={reduce ? { opacity: [0, 1, 1, 0] } : { y: -300, opacity: [0, 1, 1, 0], scale: [0.4, 1.25, 1, 1], rotate: [0, -8, 6, 0] }}
+              transition={{ duration: FLOAT_MS / 1000, ease: "easeOut", opacity: { duration: FLOAT_MS / 1000, times: [0, 0.08, 0.8, 1] }, scale: { duration: 0.6, times: [0, 0.4, 0.7, 1] }, rotate: { duration: 0.9 } }}
             >
               <span className="float__emo">{f.body}</span>
               <span className="float__who">

@@ -12,6 +12,7 @@
   background: var(--ink-2);
 }
 .variant__opt {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27,8 +28,15 @@
   transition: background 0.15s, color 0.15s;
 }
 .variant__opt.is-on {
-  background: var(--signal);
   color: var(--ink);
+}
+.variant__pill {
+  position: absolute;
+  inset: 0;
+  background: var(--signal);
+}
+.variant__name {
+  position: relative;
 }
 .variant__opt[disabled] {
   cursor: default;

@@ -9,6 +9,7 @@ import { MAX_PLAYERS } from "../game/match";
 import { useGame } from "../game/useGame";
 import GameScreen from "../game/GameScreen";
 import Wheel from "../components/Wheel";
+import Reshuffle from "../components/Reshuffle";
 import { Logo } from "../components/Seal";
 import { Avatar, animalName } from "../components/Avatar";
 import { Cover } from "../components/Cover";
@@ -102,6 +103,10 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
     if (spinShown) return;
     setFilter(f);
     client.setDeck(makeDeck(f, newSeed()));
+  };
+
+  const reshuffle = () => {
+    if (!spinShown) client.setDeck(makeDeck(filter, newSeed()));
   };
 
   const share = async () => {
@@ -200,7 +205,10 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
               ))}
             </div>
           )}
-          <Wheel size="compact" deck={deck} spin={snap.spin} canSpin={client.isHost} onRequest={() => client.setSpin(makeSpin(deck))} onLanded={(s) => setLanded(s.nonce)} />
+          <div className="wheelbox">
+            <Wheel size="compact" deck={deck} spin={snap.spin} canSpin={client.isHost} onRequest={() => client.setSpin(makeSpin(deck))} onLanded={(s) => setLanded(s.nonce)} />
+            {client.isHost && filter !== "cultura" && <Reshuffle onClick={reshuffle} disabled={spinShown} />}
+          </div>
           <div className="lobby__chosen" aria-live="polite">
             <AnimatePresence mode="wait">
               {cat && !spinShown ? (

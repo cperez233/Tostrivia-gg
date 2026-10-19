@@ -41,7 +41,7 @@ export const EN: Record<string, string> = {
   Cultura: "Trivia",
   "Sin ruleta:": "Skip the wheel:",
   "Poner otras categorías en la rueda": "Put other categories on the wheel",
-  Otras: "Shuffle",
+  Cambiar: "Shuffle",
   "Girando…": "Spinning…",
   Girando: "Spinning",
   "Girar la ruleta": "Spin the wheel",
@@ -277,7 +277,6 @@ export const EN: Record<string, string> = {
   "fragmento de {s} s en bucle": "{s}s clip on loop",
 
   // final
-  "Jugar otra": "Play again",
   "Esperando a que el anfitrión arranque otra…": "Waiting for the host to start another one…",
   "Hice {pts} puntos en {cat} en Tostrivia ({ok}/{total}, mejor racha {best}). ¿Me ganas?": "I scored {pts} points in {cat} on Tostrivia ({ok}/{total}, best streak {best}). Can you beat me?",
   "Fin de la ronda": "End of round",
@@ -287,7 +286,7 @@ export const EN: Record<string, string> = {
   Puesto: "Place",
   "{a} de {b}": "{a} of {b}",
   "Preguntas cambiadas": "Questions swapped",
-  "Otra ronda de {c}": "Another round of {c}",
+  "Otra ronda": "Another round",
   "Ver el podio": "See the podium",
   Copiado: "Copied",
   "Compartir resultado": "Share result",
@@ -310,6 +309,7 @@ export const EN: Record<string, string> = {
   Modo: "Mode",
   Estándar: "Standard",
   "Solo preguntas, reloj y racha.": "Just questions, the clock and your streak.",
+  Locura: "Mayhem",
   Poderes: "Powers",
   "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3.": "Shells, dice, mushrooms and more. Earn powers with 3-answer streaks.",
   "No respondiste a tiempo.": "You didn't answer in time.",

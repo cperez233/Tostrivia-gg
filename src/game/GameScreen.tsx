@@ -203,6 +203,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                   videos={[video, ...(video.alt ?? [])]}
                   onVideo={(v) => setPlayed({ key, v })}
                   revealed={snap.phase === "reveal"}
+                  seconds={snap.duration / 1000}
                   onPlaying={() => client.media(snap.index, "playing")}
                   onError={() => client.media(snap.index, "error")}
                 />
@@ -819,7 +820,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const groupActions = client.isHost ? (
     <>
       <button type="button" className="btn btn--hanko" onClick={again}>
-        {t("Jugar otra")}
+        {t("Otra ronda")}
       </button>
       <button type="button" className="btn" onClick={() => client.backToLobby()}>
         {t("Cambiar categoría")}
@@ -907,7 +908,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
         <div className="final__actions">
           {client.isHost && snap.mode === "solo" && (
             <button type="button" className="btn btn--hanko" onClick={again}>
-              {t("Otra ronda de {c}", { c: cat?.name ?? "" })}
+              {t("Otra ronda")}
             </button>
           )}
           {snap.mode === "group" && groupActions}

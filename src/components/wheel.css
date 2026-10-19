@@ -105,3 +105,35 @@
     display: none;
   }
 }
+
+/* "Cambiar": otras categorías en la rueda (la ruleta y la sala) */
+.reshuffle {
+  position: absolute;
+  left: 0;
+  bottom: 2%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 15px;
+  box-shadow: 3px 3px 0 var(--hanko);
+}
+.reshuffle[disabled] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.wheelbox {
+  position: relative;
+  width: min(100%, 340px);
+  margin-inline: auto;
+}
+.wheelbox .wheel--compact {
+  width: 100%;
+}
