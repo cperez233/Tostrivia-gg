@@ -42,6 +42,8 @@ for (const c of catIds) {
     if (set.size !== 4) warn(`${q.id}: opciones repetidas → ${q.o.join(" | ")}`);
     if (q.media && !sources[q.media.k]) warn(`${q.id}: clave ${q.media.k} sin fuente`);
     if (q.media && q.media.e - q.media.s < 8) warn(`${q.id}: fragmento muy corto`);
+    // la respuesta no debe estar escrita en la pregunta
+    if (!q.visual && q.o[0].length >= 4 && q.q.toLowerCase().includes(q.o[0].toLowerCase())) console.log(`  ! ${q.id}: ¿la pregunta ya dice la respuesta? → ${q.q}`);
     if (q.q.length > 140) warn(`${q.id}: pregunta larga (${q.q.length})`);
   }
 }

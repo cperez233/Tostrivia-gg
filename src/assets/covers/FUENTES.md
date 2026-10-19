@@ -100,3 +100,46 @@ Las fotos de Cultura general vienen de Wikimedia Commons con licencias libres (l
 | Piratas del Caribe | Póster en TMDB: https://www.themoviedb.org/movie/22 |
 | Jurassic Park | Póster en TMDB: https://www.themoviedb.org/movie/329 |
 | Clásicos de Disney | Collage de pósters en TMDB: El rey león (8587), Aladdín (812), La sirenita (10144) y Frozen (109445) |
+| Dr. Stone | Póster en TMDB: https://www.themoviedb.org/tv/86031 |
+| Black Clover | Póster en TMDB: https://www.themoviedb.org/tv/73223 |
+| Steins;Gate | Póster en TMDB: https://www.themoviedb.org/tv/42509 |
+| Oshi no Ko | Póster en TMDB: https://www.themoviedb.org/tv/203737 |
+| Digimon | Póster en TMDB: https://www.themoviedb.org/tv/31654 |
+| Yu-Gi-Oh! | Póster en TMDB: https://www.themoviedb.org/tv/902 |
+| Kaguya-sama | Póster en TMDB: https://www.themoviedb.org/tv/83121 |
+| Re:Zero | Póster en TMDB: https://www.themoviedb.org/tv/65942 |
+| KonoSuba | Póster en TMDB: https://www.themoviedb.org/tv/65844 |
+| Cyberpunk: Edgerunners | Póster en TMDB: https://www.themoviedb.org/tv/105248 |
+| Rick y Morty | Póster en TMDB: https://www.themoviedb.org/tv/60625 |
+| Bob Esponja | Póster en TMDB: https://www.themoviedb.org/tv/387 |
+| Gravity Falls | Póster en TMDB: https://www.themoviedb.org/tv/40075 |
+| Hora de Aventura | Póster en TMDB: https://www.themoviedb.org/tv/15260 |
+| El juego del calamar | Póster en TMDB: https://www.themoviedb.org/tv/93405 |
+| Narcos | Póster en TMDB: https://www.themoviedb.org/tv/63351 |
+| Yo soy Betty, la fea | Póster en TMDB: https://www.themoviedb.org/tv/16286 |
+| South Park | Póster en TMDB: https://www.themoviedb.org/tv/2190 |
+| Studio Ghibli (El viaje de Chihiro) | Póster en TMDB: https://www.themoviedb.org/movie/129 |
+| Matrix | Póster en TMDB: https://www.themoviedb.org/movie/603 |
+| Indiana Jones (En busca del arca perdida) | Póster en TMDB: https://www.themoviedb.org/movie/85 |
+| Christopher Nolan (El origen) | Póster en TMDB: https://www.themoviedb.org/movie/27205 |
+| Slam Dunk | Póster en TMDB: https://www.themoviedb.org/tv/42573 |
+| Yu Yu Hakusho | Póster en TMDB: https://www.themoviedb.org/tv/30669 |
+| Inuyasha | Póster en TMDB: https://www.themoviedb.org/tv/35610 |
+| Samurái X | Póster en TMDB: https://www.themoviedb.org/tv/28136 |
+| Ranma ½ | Póster en TMDB: https://www.themoviedb.org/tv/57706 |
+| Doraemon | Póster en TMDB: https://www.themoviedb.org/tv/65733 |
+| Bocchi the Rock! | Póster en TMDB: https://www.themoviedb.org/tv/119100 |
+| The Boys | Póster en TMDB: https://www.themoviedb.org/tv/76479 |
+| La casa del dragón | Póster en TMDB: https://www.themoviedb.org/tv/94997 |
+| Cómo conocí a vuestra madre | Póster en TMDB: https://www.themoviedb.org/tv/1100 |
+| Brooklyn Nine-Nine | Póster en TMDB: https://www.themoviedb.org/tv/48891 |
+| Undertale | Steam app 391540 (library 600x900) |
+| Fallout | Steam app 377160 (library 600x900) |
+| Skyrim | Steam app 489830 (library 600x900) |
+| Stardew Valley | Steam app 413150 (library 600x900) |
+| Terraria | Steam app 105600 (library 600x900) |
+| Among Us | Steam app 945360 (library 600x900) |
+| Hades | Steam app 1145360 (library 600x900) |
+| Portal | Steam app 620 (library 600x900) |
+| Cuphead | Steam app 268910 (library 600x900) |
+| Los Sims | Steam app 1222670 (library 600x900) |

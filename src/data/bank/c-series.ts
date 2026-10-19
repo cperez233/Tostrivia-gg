@@ -153,7 +153,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo se llama el espíritu sin rostro de El viaje de Chihiro?","Sin Cara (Kaonashi)","Haku","Yubaba","Boh"],
     [2,"¿Cómo se llama el demonio de fuego de El castillo ambulante?","Calcifer","Jiji","Howl","Markl"],
     [2,"¿Cómo se llama el gato negro de Kiki?","Jiji","Totoro","Calcifer","Muta"],
-    [2,"¿Cómo se llama el gatobús que aparece en Mi vecino Totoro?","Gatobús","Nekobús","Tren fantasma","Autobús mágico"],
+    [2,"¿Qué medio de transporte con forma de gato aparece en Mi vecino Totoro?","Gatobús","Nekobús","Tren fantasma","Autobús mágico"],
     [2,"¿Qué película trata de un pez que quiere convertirse en niña?","Ponyo","Kiki","Chihiro","Arrietty"],
     [2,"¿Cómo se llama la película de Ghibli de 2023 que ganó un Óscar?","El niño y la garza","El viento se levanta","Cuando Marnie estaba allí","Arrietty"],
     [3,"¿Qué película de Takahata de 1988 narra la historia de dos hermanos en la guerra?","La tumba de las luciérnagas","Mi vecino Totoro","Recuerdos del ayer","Pompoko"],

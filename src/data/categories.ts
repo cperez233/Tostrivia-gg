@@ -55,6 +55,12 @@ export const CATEGORIES: Category[] = [
   { id: "fairytail", name: "Fairy Tail", short: "Fairy Tail", family: "clasicos", sfx: "ボォ" },
   { id: "digimon", name: "Digimon", short: "Digimon", family: "clasicos", sfx: "ピコ" },
   { id: "yugioh", name: "Yu-Gi-Oh!", short: "Yu-Gi-Oh!", family: "clasicos", sfx: "ドロー" },
+  { id: "slamdunk", name: "Slam Dunk", short: "Slam Dunk", family: "clasicos", sfx: "ダム" },
+  { id: "yuyuhakusho", name: "Yu Yu Hakusho", short: "Yu Yu Hakusho", family: "clasicos", sfx: "バキ" },
+  { id: "inuyasha", name: "Inuyasha", short: "Inuyasha", family: "clasicos", sfx: "ザシュ" },
+  { id: "rurouni", name: "Samurái X (Rurouni Kenshin)", short: "Samurái X", family: "clasicos", sfx: "シャキン" },
+  { id: "ranma", name: "Ranma ½", short: "Ranma ½", family: "clasicos", sfx: "ドタバタ" },
+  { id: "doraemon", name: "Doraemon", short: "Doraemon", family: "clasicos", sfx: "ポン" },
 
   // Década de 2010
   { id: "jojo", name: "JoJo's Bizarre Adventure", short: "JoJo", family: "d2010", sfx: "ゴゴゴ" },
@@ -83,6 +89,7 @@ export const CATEGORIES: Category[] = [
   { id: "dandadan", name: "Dandadan", short: "Dandadan", family: "nuevos", sfx: "ダダン" },
   { id: "bluelock", name: "Blue Lock", short: "Blue Lock", family: "nuevos", sfx: "ドン" },
   { id: "oshinoko", name: "Oshi no Ko", short: "Oshi no Ko", family: "nuevos", sfx: "キラ" },
+  { id: "bocchi", name: "Bocchi the Rock!", short: "Bocchi", family: "nuevos", sfx: "ジャーン" },
   { id: "edgerunners", name: "Cyberpunk: Edgerunners", short: "Edgerunners", family: "nuevos", sfx: "ダダ" },
 
   // OST gaming: todas las preguntas suenan
@@ -169,6 +176,10 @@ export const CATEGORIES: Category[] = [
   { id: "squidgame", name: "El juego del calamar", short: "Calamar", family: "series" },
   { id: "narcos", name: "Narcos", short: "Narcos", family: "series" },
   { id: "betty", name: "Yo soy Betty, la fea", short: "Betty la fea", family: "series" },
+  { id: "theboys", name: "The Boys", short: "The Boys", family: "series" },
+  { id: "hotd", name: "La casa del dragón", short: "Casa del dragón", family: "series" },
+  { id: "himym", name: "Cómo conocí a vuestra madre", short: "HIMYM", family: "series" },
+  { id: "brooklyn99", name: "Brooklyn Nine-Nine", short: "Brooklyn 99", family: "series" },
 
   // Películas
   { id: "starwars", name: "Star Wars", short: "Star Wars", family: "peliculas" },

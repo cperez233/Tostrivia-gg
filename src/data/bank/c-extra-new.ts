@@ -26,7 +26,7 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   amongus: [
     [2,"¿Qué sabotaje, si no se arregla a tiempo, hace ganar a los impostores?","El reactor","Las luces","Las puertas","Las cámaras"],
-    [2,"¿Qué sala del Skeld tiene las cámaras de seguridad?","Seguridad","Cafetería","Motores","Navegación"],
+    [2,"¿En qué sala del Skeld puedes vigilar a los demás con cámaras?","Seguridad","Cafetería","Motores","Navegación"],
     [3,"¿Cuántos jugadores admite como máximo una partida?","15","10","20","8"],
     [3,"¿Cuántos impostores puede haber como máximo?","Tres","Dos","Cuatro","Uno"],
     [2,"¿En qué año se hizo viral Among Us?","2020","2018","2022","2019"],
@@ -122,6 +122,15 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Quién es la novia de Armando al comienzo, de la alta sociedad?","Marcela Valencia","Aura María","Patricia Fernández","Lucía"],
     [2,"¿En qué ciudad ocurre la historia?","Bogotá","Medellín","Cali","Cartagena"],
     [3,"¿Qué plataforma estrenó en 2024 la secuela \"la historia continúa\"?","Prime Video","Netflix","Disney+","HBO Max"],
+  ],
+  ranma: [
+    [3,"¿Cómo se llama la anciana amazona, abuela de Shampoo?","Cologne","Happosai","Kodachi","Nabiki"],
+  ],
+  bocchi: [
+    [2,"¿Quién dirige el local STARRY y es la hermana mayor de Nijika?","Seika Ijichi","Kikuri Hiroi","Ikuyo Kita","PA-san"],
+  ],
+  mcu: [
+    [1,"¿Cómo se llama el árbol humanoide de los Guardianes de la Galaxia?","Groot","Rocket","Drax","Mantis"],
   ],
 };
 

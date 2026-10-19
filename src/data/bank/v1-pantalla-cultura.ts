@@ -70,7 +70,6 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   mcu: [
     [1, "¿Qué superhéroe se transforma en un gigante verde cuando se enoja?", "Hulk", "Ant-Man", "Visión", "Drax"],
-    [1, "¿Cómo se llama el árbol que solo dice «Yo soy Groot»?", "Groot", "Rocket", "Drax", "Mantis"],
     [2, "¿Qué actriz interpreta a Black Widow?", "Scarlett Johansson", "Elizabeth Olsen", "Brie Larson", "Zoe Saldaña"],
     [2, "¿Cómo se llama el exladrón que se convierte en Ant-Man?", "Scott Lang", "Hank Pym", "Peter Quill", "Clint Barton"],
     [3, "¿Cómo se llama la inteligencia artificial de Tony Stark antes de Viernes?", "JARVIS", "EDITH", "Karen", "Ultrón"],

@@ -2,13 +2,13 @@
 
 Trivia en español de anime, videojuegos, series, películas y cultura general. Gira la ruleta, responde 10 preguntas contra el reloj y no rompas la racha. Algunas preguntas suenan antes de verse: el opening empieza con la pantalla tapada y la imagen se revela al responder. Se juega solo o en sala con hasta 10 personas, cada una desde su celular.
 
-- **93 categorías y 2.714 preguntas (235 con video)**: 30 animes (con Openings) agrupados por año de estreno, 32 sagas de videojuegos (con OST gaming) agrupadas por género, 12 series, 11 sagas de películas y 6 de cultura general (historia, geografía, ciencia, deportes, cine, música). En Openings y OST gaming todas las preguntas suenan.
+- **139 categorías y más de 4.000 preguntas (235 con video)**: 49 de anime (con Openings y "Adivina el póster"), 44 de videojuegos (con OST gaming y "Adivina la portada"), 40 de series y películas (con "Adivina la serie o película por su póster") y 6 de cultura general. En Openings y OST gaming todas las preguntas suenan. Hay 1.000 preguntas nuevas con su versión en inglés (se escriben en `content/`, ver más abajo).
 - **Ruleta**: el filtro (Todo, Anime, Juegos, Series y pelis, Cultura) arma los gajos; cada gajo lleva el póster de su categoría. En Anime siempre sale Openings y en Juegos, OST gaming. En sala, el anfitrión elige el filtro y todos ven la misma rueda.
 - **Jugadores**: cada persona elige uno de 12 animales chibi (capibara, shiba, corgi, pug, husky, salchicha, gato naranja, gato negro, siamés, bulldog, panda rojo y ajolote). En una sala no se repite raza: si ya está tomada, le toca la siguiente libre.
 - **Varias categorías a la vez**: en Categorías, "Varias a la vez" deja marcar las que quieras (por ejemplo JoJo, Breaking Bad y Deportes) y salen preguntas de todas, intercaladas. Cada pestaña tiene su versión al azar (Anime al azar, Videojuegos al azar…) y hay un "Todo al azar". En sala, el anfitrión elige con el mismo explorador (pestañas, al azar y "Varias a la vez") en una hoja a pantalla completa. Los ids viajan como texto (`azar-anime`, `mix-breakingbad.deportes.jojo`) y se resuelven en `src/game/mix.ts`.
 - **En grupo**: marcador en vivo (al lado en pantalla grande, en una franja fija arriba en celular) con quién ya respondió y lo que sumó cada uno; chat y emotes que pasan por el anfitrión (`src/components/ChatDock.tsx`, protocolo en `src/net/client.ts`); y al final un podio que se arma de a uno (`src/game/Ceremony.tsx`) con "Jugar otra" y "Cambiar categoría".
 - **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
-- **Personalizador de partidas** (`src/components/MatchSetup.tsx`, reglas en `src/game/rules.ts`): debajo de Estándar/Poderes, "Personalizar" abre las reglas. Por defecto, 10 preguntas (3 fáciles, 4 medias, 3 difíciles), 20 s cada una y 25 s las de video (el reloj arranca cuando empieza a sonar).
+- **Personalizador de partidas** (`src/components/MatchSetup.tsx`, reglas en `src/game/rules.ts`): debajo de Estándar/Locura, "Personalizar" (botón grande, con fichas que muestran las reglas y un panel que se despliega) abre las reglas. Por defecto, 10 preguntas (3 fáciles, 4 medias, 3 difíciles), 20 s cada una y 25 s las de video (el reloj arranca cuando empieza a sonar).
   - **Preguntas**: 5, 10, 15, 20 o 30. Si la categoría tiene menos, la ronda queda del tamaño de la categoría.
   - **Tiempo por pregunta**: 10, 15, 20, 30 o 45 s (las de video, 5 s más).
   - **Multiplicador de puntos**: ×1, ×1,5, ×2, ×3 o ×5 sobre lo que gana cada acierto (los poderes suman y restan lo que dice su carta).
@@ -17,8 +17,8 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - Las temáticas se eligen como siempre: la ruleta, una categoría o "Varias a la vez" en Categorías y en la sala. Al jugar solo, lo elegido se recuerda en el navegador; en sala lo elige el anfitrión, viaja en la foto del estado y los invitados ven el resumen.
 - **Azar**: semillas, ruleta, dados y poderes usan el generador criptográfico del navegador (`random()` en `src/lib/rng.ts`). La ruleta recuerda los últimos 6 giros: la que acaba de salir casi nunca repite y las recientes pesan menos (`makeSpin` en `src/game/deck.ts`); también varía cuántas vueltas da. Dentro de cada dificultad las preguntas salen en orden al azar sin sesgo, y los poderes que ya tienes en la mano salen menos.
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 200 por rapidez. **Racha**: ×1,25 con 2 aciertos seguidos, ×1,5 desde 3, ×2 desde 5 y ×3 desde 8.
-- **Modos**: Estándar (la partida de siempre) o Poderes. Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
-- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 1 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 3 en la mano, como en Mario Kart). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo, Cambiazo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
+- **Modos**: Estándar (la partida de siempre) o Locura (el modo con poderes). Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
+- **Locura y sus poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 1 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 3 en la mano, como en Mario Kart). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo, Cambiazo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
   - ✂️ **50/50**: tacha dos opciones malas.
   - 🎰 **Doble o nada**: ×2 si aciertas, −300 si fallas.
   - 🎲 **Dado**: +100 por punto del dado si aciertas, −50 por punto si fallas.
@@ -47,7 +47,22 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - 🔤 **Trabalenguas** (grupo): las letras de cada palabra de las opciones se revuelven, 7 s.
   - 💡 **Corto circuito** (grupo): la pantalla de los demás parpadea, 6 s.
 - **Qué tan seguido sale cada poder**: los más fuertes son raros. Caparazón azul y Cambiazo pesan 1; Boo, Estrella, Bloque ? y Rayo, 2; Doble o nada, Caparazón rojo, Susto, Niebla, Mareo, Fiesta, Trabalenguas y Corto circuito, 3; el resto, 4 (`WEIGHT` en `src/game/powers.ts`).
-- **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
+- **Preguntas que no son solo texto** (`src/components/Visuals.tsx`, tipos en `src/data/types.ts`):
+  - **Emojis**: los emojis de la primera línea de la pregunta se sueltan uno a uno ("🦁👑🌅 ¿Qué película es?").
+  - **Frases en globo de cómic**: "¿Quién lo dijo?" con la frase en un globo.
+  - **Adivina el póster / la portada**: una categoría por lado (anime, juegos, series y películas) armada con las portadas que ya hay. Cada póster sale tres veces: borroso, pixelado o un detalle que se aleja, y se va aclarando mientras corre el reloj (sin llegar a mostrar el título impreso); al responder se ve entero. Se arman solas en `src/data/bank/index.ts` y se traducen solas.
+- **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado, se va aclarando con el reloj sin llegar a ser ilegible) y `clip` (visible, con la franja del título tapada).
+
+## Agregar preguntas
+
+Las preguntas nuevas se escriben una sola vez, en español y en inglés, en `content/*.mjs`:
+
+```js
+[1, "¿Quién es el protagonista de Dr. Stone?", "Senku Ishigami", "Taiju Oki", "Tsukasa Shishio", "Gen Asagiri",
+  ["Who is the protagonist of Dr. Stone?", null, null, null, null]],   // null = igual que en español
+```
+
+La última posición puede ser un video (`{ k, m, s, e }`) o una clase visual (`{ v: "emoji" }`, `{ v: "quote" }`). `npm run content` escribe `src/data/bank/c-*.ts` (lo que usa el juego) y suma las traducciones a `src/i18n/questions.en.json`. Una categoría nueva se agrega en `src/data/categories.ts` con su póster en `src/assets/covers`.
 
 ## Correr en local
 
@@ -87,6 +102,10 @@ npm run videos:sin-key -- --all   # revisa todas las claves, cambia las que ya n
 - Las preguntas cuyo video no se ha resuelto se omiten automáticamente; el resto de la categoría sigue funcionando.
 - Cada clave puede traer videos de respaldo (`alt` en videos.json). Si YouTube no deja reproducir el principal (las disqueras suelen bloquear la inserción), el reproductor prueba el siguiente antes de cambiar la pregunta. En Openings y OST gaming la partida insiste hasta 4 fallos antes de pasar a preguntas sin video.
 - Después de correrlo, haz commit de `src/data/videos.json` y Vercel desplegará los videos nuevos.
+
+### Lo que se ve en el centro de notificaciones
+
+En el celular, el reproductor de YouTube publica el título del video en el centro de notificaciones y en la pantalla de bloqueo (o sea, la respuesta). Mientras hay un video en la partida, la página publica su propia ficha genérica ("Tostrivia · ???") con la Media Session API (`src/lib/mediaSession.ts`). Es lo mejor que deja hacer el navegador: el reproductor vive en un iframe y cada navegador decide qué ficha muestra, así que puede no taparlo del todo en algunos celulares.
 
 ### Si un video falla en la web
 

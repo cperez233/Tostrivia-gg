@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "videos": "node scripts/fetch-videos.mjs",
     "videos:sin-key": "node scripts/find-videos.mjs",
+    "content": "node scripts/build-content.mjs",
     "check:bank": "node scripts/check-bank.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
     "peer:local": "peerjs --port 9000 --path /tostrivia"

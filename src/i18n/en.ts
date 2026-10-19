@@ -91,6 +91,17 @@ export const EN: Record<string, string> = {
   Películas: "Movies",
 
   // nombres de categorías que cambian en inglés
+  "Samurái X (Rurouni Kenshin)": "Rurouni Kenshin (Samurai X)",
+  "Samurái X": "Samurai X",
+  "La casa del dragón": "House of the Dragon",
+  "Casa del dragón": "House of the Dragon",
+  "Cómo conocí a vuestra madre": "How I Met Your Mother",
+  "El juego del calamar": "Squid Game",
+  Calamar: "Squid Game",
+  "Hora de Aventura": "Adventure Time",
+  "Bob Esponja": "SpongeBob SquarePants",
+  "Rick y Morty": "Rick and Morty",
+  "Los Sims": "The Sims",
   "Openings de anime": "Anime openings",
   "Adivina el póster": "Guess the poster",
   "Adivina la portada": "Guess the cover",

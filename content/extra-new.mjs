@@ -25,7 +25,7 @@ export default {
 
   amongus: [
     [2, "¿Qué sabotaje, si no se arregla a tiempo, hace ganar a los impostores?", "El reactor", "Las luces", "Las puertas", "Las cámaras", ["Which sabotage, if not fixed in time, makes the impostors win?", "The reactor", "The lights", "The doors", "The cameras"]],
-    [2, "¿Qué sala del Skeld tiene las cámaras de seguridad?", "Seguridad", "Cafetería", "Motores", "Navegación", ["Which room in the Skeld has the security cameras?", "Security", "Cafeteria", "Engines", "Navigation"]],
+    [2, "¿En qué sala del Skeld puedes vigilar a los demás con cámaras?", "Seguridad", "Cafetería", "Motores", "Navegación", ["In which room of the Skeld can you watch the others with cameras?", "Security", "Cafeteria", "Engines", "Navigation"]],
     [3, "¿Cuántos jugadores admite como máximo una partida?", "15", "10", "20", "8", ["What is the maximum number of players in a game?", N, N, N, N]],
     [3, "¿Cuántos impostores puede haber como máximo?", "Tres", "Dos", "Cuatro", "Uno", ["What is the maximum number of impostors?", "Three", "Two", "Four", "One"]],
     [2, "¿En qué año se hizo viral Among Us?", "2020", "2018", "2022", "2019", ["In what year did Among Us go viral?", N, N, N, N]],
@@ -136,4 +136,16 @@ export default {
     [3, "¿Qué plataforma estrenó en 2024 la secuela \"la historia continúa\"?", "Prime Video", "Netflix", "Disney+", "HBO Max", ["Which platform premiered the 2024 sequel \"the story continues\"?", N, N, N, N]],
   ],
 
+
+  ranma: [
+    [3, "¿Cómo se llama la anciana amazona, abuela de Shampoo?", "Cologne", "Happosai", "Kodachi", "Nabiki", ["What is Shampoo's grandmother, the elderly Amazon, called?", N, N, N, N]],
+  ],
+
+  bocchi: [
+    [2, "¿Quién dirige el local STARRY y es la hermana mayor de Nijika?", "Seika Ijichi", "Kikuri Hiroi", "Ikuyo Kita", "PA-san", ["Who runs the venue STARRY and is Nijika's older sister?", N, N, N, N]],
+  ],
+
+  mcu: [
+    [1, "¿Cómo se llama el árbol humanoide de los Guardianes de la Galaxia?", "Groot", "Rocket", "Drax", "Mantis", ["What is the humanoid tree of the Guardians of the Galaxy called?", N, N, N, N]],
+  ],
 };

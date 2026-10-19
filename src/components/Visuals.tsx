@@ -82,6 +82,9 @@ const BLUR_TO = 5;
 const ZOOM_FROM = 4.6;
 const ZOOM_TO = 2.3;
 
+/** pósters con el título en medio o arriba: el detalle se centra donde no se lee (x %, y %) */
+const ZOOM_AT: Record<string, [number, number]> = { friends: [50, 62], jurassic: [50, 20], fortnite: [50, 64], gta: [50, 86], gow: [50, 84], starwars: [50, 30], got: [50, 40] };
+
 interface PosterProps {
   id: string;
   fx: PosterFx;
@@ -100,8 +103,7 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
   const running = startAt > 0 && !revealed;
   // dónde cae el recorte del detalle: arriba y al medio, lejos del título
   const h = useMemo(() => hash(`${id}:${qkey}`), [id, qkey]);
-  const ox = 22 + (h % 56);
-  const oy = 20 + ((h >> 8) % 30);
+  const [ox, oy] = ZOOM_AT[id] ?? [22 + (h % 56), 20 + ((h >> 8) % 30)];
   // lo que falta del reloj en el momento en que empieza la transición
   const left = useMemo(() => (running ? Math.max(0.2, (startAt + duration - Date.now()) / 1000) : 0), [running, startAt, duration]);
   const instant = reduce ? { duration: 0 } : undefined;
