@@ -31,7 +31,8 @@ function key(q, o) {
   return h.toString(36);
 }
 
-const pending = Object.values(BANK.byId).filter((q) => !questions[key(q.q, q.o)]);
+// Adivina el póster se traduce solo (la pregunta y los nombres están en src/i18n/en.ts)
+const pending = Object.values(BANK.byId).filter((q) => q.visual?.v !== "poster" && !questions[key(q.q, q.o)]);
 const total = Object.keys(BANK.byId).length;
 console.log(`Preguntas: ${total - pending.length}/${total} traducidas`);
 for (const q of pending.slice(0, 20)) console.log(`  ✗ [${q.cat}] ${q.q}`);

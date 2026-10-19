@@ -16,12 +16,21 @@ export interface Media {
 }
 
 /**
- * Formato compacto de autor: [dificultad, pregunta, correcta, mala1, mala2, mala3, media?]
+ * Preguntas que no son solo texto (todas llevan sus 4 opciones de siempre):
+ *  - emoji:  la primera línea de la pregunta son emojis que se van soltando uno a uno ("🦁👑\n¿Qué película es?")
+ *  - quote:  la primera línea es una frase que sale en un globo de cómic ("“Yo seré el Rey…”\n¿Quién lo dijo?")
+ *  - poster: el póster de una categoría que se va aclarando mientras corre el reloj (pixel, zoom o desenfoque)
+ */
+export type PosterFx = "pixel" | "zoom" | "blur";
+export type Visual = { v: "emoji" } | { v: "quote" } | { v: "poster"; id: string; fx: PosterFx };
+
+/**
+ * Formato compacto de autor: [dificultad, pregunta, correcta, mala1, mala2, mala3, media o visual?]
  * La correcta siempre va primero; el orden se baraja en la partida.
  */
 export type RawQuestion =
   | [Difficulty, string, string, string, string, string]
-  | [Difficulty, string, string, string, string, string, Media];
+  | [Difficulty, string, string, string, string, string, Media | Visual];
 
 export interface Question {
   id: string;
@@ -31,6 +40,7 @@ export interface Question {
   /** opciones; la 0 es la correcta */
   o: [string, string, string, string];
   media?: Media;
+  visual?: Visual;
 }
 
 export type FamilyId =
@@ -39,7 +49,9 @@ export type FamilyId =
   | "d2010"
   | "nuevos"
   | "openings"
+  | "portadaAnime"
   | "ost"
+  | "portadaJuegos"
   | "aventura"
   | "rol"
   | "mundo"
@@ -47,6 +59,7 @@ export type FamilyId =
   | "shooter"
   | "versus"
   | "series"
+  | "portadaSeries"
   | "peliculas";
 
 /** las cuatro pestañas de arriba: cada familia pertenece a una */

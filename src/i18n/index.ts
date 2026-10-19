@@ -98,8 +98,11 @@ export function questionKey(q: string, o: readonly string[]) {
 }
 
 /** pregunta y opciones en el idioma actual (mismo orden: la 0 sigue siendo la correcta) */
-export function localizeQuestion<T extends { q: string; o: [string, string, string, string] }>(question: T): T {
-  if (lang !== "en" || !questionsEn) return question;
+export function localizeQuestion<T extends { q: string; o: [string, string, string, string]; visual?: { v: string } }>(question: T): T {
+  if (lang !== "en") return question;
+  // Adivina el póster: la pregunta y los nombres de las categorías ya están en el diccionario de la interfaz
+  if (question.visual?.v === "poster") return { ...question, q: t(question.q), o: question.o.map((n) => t(n)) as T["o"] };
+  if (!questionsEn) return question;
   const tr = questionsEn[questionKey(question.q, question.o)];
   if (!tr) return question;
   return { ...question, q: tr[0], o: [tr[1], tr[2], tr[3], tr[4]] };

@@ -11,6 +11,7 @@ import { multiplier } from "./round";
 import { DEFAULT_RULES } from "./rules";
 import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
+import { PosterStage, QuestionText } from "../components/Visuals";
 import { Avatar } from "../components/Avatar";
 import { Cover } from "../components/Cover";
 import { describe } from "./mix";
@@ -170,7 +171,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         )}
       </AnimatePresence>
 
-      <main className={`game__body ${q.media ? "has-media" : ""} ${fxOn && fx ? `fx-${fx.p}` : ""}`}>
+      <main className={`game__body ${q.media || q.visual?.v === "poster" ? "has-media" : ""} ${fxOn && fx ? `fx-${fx.p}` : ""}`}>
         <section className="game__main">
           <AnimatePresence mode="wait">
             <motion.div
@@ -194,7 +195,10 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                 </span>
                 {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && <span className="qpanel__from">{t("De {c}", { c: CATEGORY_BY_ID[q.cat].name })}</span>}
               </div>
-              <h1 className="qpanel__q">{q.q}</h1>
+              <QuestionText q={q.q} visual={q.visual} />
+              {q.visual?.v === "poster" && (
+                <PosterStage key={`poster-${key}`} id={q.visual.id} fx={q.visual.fx} startAt={snap.phase === "question" ? localStart : 0} duration={snap.duration} revealed={snap.phase === "reveal"} qkey={q.id} />
+              )}
 
               {q.media && video && (
                 <MediaStage

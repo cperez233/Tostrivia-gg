@@ -14,16 +14,19 @@ export const GROUPS: { id: GroupId; name: string }[] = [
 
 export const FAMILIES: Family[] = [
   { id: "openings", group: "anime", name: "Openings" },
+  { id: "portadaAnime", group: "anime", name: "Adivina el póster" },
   { id: "clasicos", group: "anime", name: "Clásicos" },
   { id: "d2010", group: "anime", name: "Los de la década de 2010" },
   { id: "nuevos", group: "anime", name: "De 2020 para acá" },
   { id: "ost", group: "juegos", name: "OST gaming" },
+  { id: "portadaJuegos", group: "juegos", name: "Adivina la portada" },
   { id: "aventura", group: "juegos", name: "Aventura y plataformas" },
   { id: "rol", group: "juegos", name: "Rol" },
   { id: "mundo", group: "juegos", name: "Mundo abierto y sandbox" },
   { id: "accion", group: "juegos", name: "Acción" },
   { id: "shooter", group: "juegos", name: "Shooters" },
-  { id: "versus", group: "juegos", name: "Pelea y MOBA" },
+  { id: "versus", group: "juegos", name: "Pelea, MOBA y multijugador" },
+  { id: "portadaSeries", group: "series", name: "Adivina el póster" },
   { id: "series", group: "series", name: "Series" },
   { id: "peliculas", group: "series", name: "Películas" },
   { id: "cultura", group: "cultura", name: "Cultura general" },
@@ -32,6 +35,9 @@ export const FAMILIES: Family[] = [
 export const CATEGORIES: Category[] = [
   // Openings: todas las preguntas suenan
   { id: "openings", name: "Openings de anime", short: "Openings", family: "openings", mosaic: ["jojo", "aot", "kimetsu", "onepiece"], sfx: "♪" },
+
+  // Adivina el póster: el póster se va aclarando mientras corre el reloj
+  { id: "posteranime", name: "Adivina el anime por su póster", short: "Póster anime", family: "portadaAnime", mosaic: ["naruto", "jjk", "mha", "dragonball"], sfx: "？！" },
 
   // Anime clásico: el anime se estrenó antes de 2010
   { id: "dragonball", name: "Dragon Ball", short: "Dragon Ball", family: "clasicos", sfx: "ドドド" },
@@ -47,6 +53,8 @@ export const CATEGORIES: Category[] = [
   { id: "saintseiya", name: "Los Caballeros del Zodiaco", short: "Caballeros", family: "clasicos", sfx: "ゴゴ" },
   { id: "sailormoon", name: "Sailor Moon", short: "Sailor Moon", family: "clasicos", sfx: "キラ" },
   { id: "fairytail", name: "Fairy Tail", short: "Fairy Tail", family: "clasicos", sfx: "ボォ" },
+  { id: "digimon", name: "Digimon", short: "Digimon", family: "clasicos", sfx: "ピコ" },
+  { id: "yugioh", name: "Yu-Gi-Oh!", short: "Yu-Gi-Oh!", family: "clasicos", sfx: "ドロー" },
 
   // Década de 2010
   { id: "jojo", name: "JoJo's Bizarre Adventure", short: "JoJo", family: "d2010", sfx: "ゴゴゴ" },
@@ -59,6 +67,12 @@ export const CATEGORIES: Category[] = [
   { id: "kimetsu", name: "Demon Slayer", short: "Kimetsu", family: "d2010", sfx: "シュ" },
   { id: "sao", name: "Sword Art Online", short: "SAO", family: "d2010", sfx: "キン" },
   { id: "vinland", name: "Vinland Saga", short: "Vinland", family: "d2010", sfx: "ザッ" },
+  { id: "drstone", name: "Dr. Stone", short: "Dr. Stone", family: "d2010", sfx: "ボン" },
+  { id: "blackclover", name: "Black Clover", short: "Black Clover", family: "d2010", sfx: "ゴゴ" },
+  { id: "steinsgate", name: "Steins;Gate", short: "Steins;Gate", family: "d2010", sfx: "ピッ" },
+  { id: "rezero", name: "Re:Zero", short: "Re:Zero", family: "d2010", sfx: "ドクン" },
+  { id: "konosuba", name: "KonoSuba", short: "KonoSuba", family: "d2010", sfx: "ドカーン" },
+  { id: "kaguya", name: "Kaguya-sama: Love Is War", short: "Kaguya-sama", family: "d2010", sfx: "ドキ" },
 
   // De 2020 para acá
   { id: "jjk", name: "Jujutsu Kaisen", short: "Jujutsu", family: "nuevos", sfx: "ズン" },
@@ -68,9 +82,14 @@ export const CATEGORIES: Category[] = [
   { id: "sololeveling", name: "Solo Leveling", short: "Solo Leveling", family: "nuevos", sfx: "ゴゴ" },
   { id: "dandadan", name: "Dandadan", short: "Dandadan", family: "nuevos", sfx: "ダダン" },
   { id: "bluelock", name: "Blue Lock", short: "Blue Lock", family: "nuevos", sfx: "ドン" },
+  { id: "oshinoko", name: "Oshi no Ko", short: "Oshi no Ko", family: "nuevos", sfx: "キラ" },
+  { id: "edgerunners", name: "Cyberpunk: Edgerunners", short: "Edgerunners", family: "nuevos", sfx: "ダダ" },
 
   // OST gaming: todas las preguntas suenan
   { id: "soundtracks", name: "Música de videojuegos", short: "OST gaming", family: "ost", mosaic: ["rdr", "mario", "hollowknight", "sonic"], sfx: "♪" },
+
+  // Adivina la portada: la carátula se va aclarando mientras corre el reloj
+  { id: "posterjuegos", name: "Adivina el juego por su portada", short: "Portada juegos", family: "portadaJuegos", mosaic: ["zelda", "gta", "fortnite", "pokemon"], sfx: "？！" },
 
   // Aventura y plataformas
   { id: "mario", name: "Super Mario", short: "Mario", family: "aventura" },
@@ -78,6 +97,8 @@ export const CATEGORIES: Category[] = [
   { id: "sonic", name: "Sonic", short: "Sonic", family: "aventura" },
   { id: "hollowknight", name: "Hollow Knight", short: "Hollow Knight", family: "aventura" },
   { id: "crash", name: "Crash Bandicoot", short: "Crash", family: "aventura" },
+  { id: "portal", name: "Portal", short: "Portal", family: "aventura" },
+  { id: "cuphead", name: "Cuphead", short: "Cuphead", family: "aventura" },
 
   // Rol
   { id: "pokemon", name: "Pokémon", short: "Pokémon", family: "rol" },
@@ -88,6 +109,9 @@ export const CATEGORIES: Category[] = [
   { id: "cyberpunk", name: "Cyberpunk 2077", short: "Cyberpunk", family: "rol" },
   { id: "kingdomhearts", name: "Kingdom Hearts", short: "Kingdom Hearts", family: "rol" },
   { id: "persona", name: "Persona", short: "Persona", family: "rol" },
+  { id: "undertale", name: "Undertale", short: "Undertale", family: "rol" },
+  { id: "fallout", name: "Fallout", short: "Fallout", family: "rol" },
+  { id: "skyrim", name: "Skyrim (The Elder Scrolls)", short: "Skyrim", family: "rol" },
 
   // Mundo abierto y sandbox
   { id: "gta", name: "Grand Theft Auto", short: "GTA", family: "mundo" },
@@ -95,6 +119,9 @@ export const CATEGORIES: Category[] = [
   { id: "minecraft", name: "Minecraft", short: "Minecraft", family: "mundo" },
   { id: "assassins", name: "Assassin's Creed", short: "Assassin's", family: "mundo" },
   { id: "animalcrossing", name: "Animal Crossing", short: "Animal Crossing", family: "mundo" },
+  { id: "stardew", name: "Stardew Valley", short: "Stardew", family: "mundo" },
+  { id: "terraria", name: "Terraria", short: "Terraria", family: "mundo" },
+  { id: "sims", name: "Los Sims", short: "Los Sims", family: "mundo" },
 
   // Acción
   { id: "gow", name: "God of War", short: "God of War", family: "accion" },
@@ -102,6 +129,7 @@ export const CATEGORIES: Category[] = [
   { id: "re", name: "Resident Evil", short: "Resident Evil", family: "accion" },
   { id: "mgs", name: "Metal Gear Solid", short: "Metal Gear", family: "accion" },
   { id: "spiderman", name: "Marvel's Spider-Man", short: "Spider-Man", family: "accion" },
+  { id: "hades", name: "Hades", short: "Hades", family: "accion" },
 
   // Shooters
   { id: "halo", name: "Halo", short: "Halo", family: "shooter" },
@@ -115,6 +143,10 @@ export const CATEGORIES: Category[] = [
   { id: "smash", name: "Super Smash Bros.", short: "Smash", family: "versus" },
   { id: "pelea", name: "Juegos de pelea", short: "Pelea", family: "versus" },
   { id: "lol", name: "League of Legends", short: "LoL", family: "versus" },
+  { id: "amongus", name: "Among Us", short: "Among Us", family: "versus" },
+
+  // Adivina el póster de series y películas
+  { id: "posterseries", name: "Adivina la serie o película por su póster", short: "Póster series", family: "portadaSeries", mosaic: ["got", "breakingbad", "starwars", "simpsons"], sfx: "？！" },
 
   // Series
   { id: "simpsons", name: "Los Simpson", short: "Los Simpson", family: "series" },
@@ -129,6 +161,14 @@ export const CATEGORIES: Category[] = [
   { id: "merlina", name: "Merlina", short: "Merlina", family: "series" },
   { id: "avatar", name: "Avatar: la leyenda de Aang", short: "Avatar", family: "series" },
   { id: "peaky", name: "Peaky Blinders", short: "Peaky Blinders", family: "series" },
+  { id: "rickmorty", name: "Rick y Morty", short: "Rick y Morty", family: "series" },
+  { id: "bobesponja", name: "Bob Esponja", short: "Bob Esponja", family: "series" },
+  { id: "gravityfalls", name: "Gravity Falls", short: "Gravity Falls", family: "series" },
+  { id: "adventuretime", name: "Hora de Aventura", short: "Hora de Aventura", family: "series" },
+  { id: "southpark", name: "South Park", short: "South Park", family: "series" },
+  { id: "squidgame", name: "El juego del calamar", short: "Calamar", family: "series" },
+  { id: "narcos", name: "Narcos", short: "Narcos", family: "series" },
+  { id: "betty", name: "Yo soy Betty, la fea", short: "Betty la fea", family: "series" },
 
   // Películas
   { id: "starwars", name: "Star Wars", short: "Star Wars", family: "peliculas" },
@@ -142,6 +182,10 @@ export const CATEGORIES: Category[] = [
   { id: "batman", name: "Batman en el cine", short: "Batman", family: "peliculas" },
   { id: "piratas", name: "Piratas del Caribe", short: "Piratas", family: "peliculas" },
   { id: "jurassic", name: "Jurassic Park", short: "Jurassic Park", family: "peliculas" },
+  { id: "ghibli", name: "Studio Ghibli", short: "Ghibli", family: "peliculas" },
+  { id: "matrix", name: "Matrix", short: "Matrix", family: "peliculas" },
+  { id: "indiana", name: "Indiana Jones", short: "Indiana Jones", family: "peliculas" },
+  { id: "nolan", name: "Christopher Nolan", short: "Nolan", family: "peliculas" },
 
   // Cultura general
   { id: "historia", name: "Historia", short: "Historia", family: "cultura" },
@@ -151,6 +195,9 @@ export const CATEGORIES: Category[] = [
   { id: "cine", name: "Cine", short: "Cine", family: "cultura" },
   { id: "musica", name: "Música", short: "Música", family: "cultura" },
 ];
+
+/** nombres en español, tal cual se escribieron (los de arriba pasan a leerse en el idioma de la interfaz) */
+export const NAME_ES: Record<string, string> = Object.fromEntries(CATEGORIES.map((c) => [c.id, c.name]));
 
 export const CATEGORY_BY_ID: Record<string, Category> = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));
 export const FAMILY_BY_ID = Object.fromEntries(FAMILIES.map((f) => [f.id, f])) as Record<FamilyId, Family>;

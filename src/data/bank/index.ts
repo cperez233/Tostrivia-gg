@@ -1,5 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
-import type { Question, RawQuestion } from "../types";
+import type { Difficulty, Media, PosterFx, Question, RawQuestion, Visual } from "../types";
+import { CATEGORIES, FAMILY_BY_ID, NAME_ES } from "../categories";
+import { rng, shuffle } from "../../lib/rng";
 import videosFile from "../videos.json";
 import cultura from "./cultura";
 import leyenda from "./leyenda";
@@ -41,9 +43,44 @@ export function videoFor(key: string): ResolvedVideo | undefined {
 
 // varios archivos pueden aportar a la misma categoría: se suman, no se pisan
 const RAW: Record<string, RawQuestion[]> = {};
-for (const part of [cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra, conVideo, v1PantallaCultura, v1Series, v1Peliculas, v1Anime, v1Juegos, v1Video]) {
+// lo que genera scripts/build-content.mjs (preguntas en español e inglés escritas en content/)
+const GENERATED = Object.values(import.meta.glob<{ default: Record<string, RawQuestion[]> }>("./c-*.ts", { eager: true })).map((m) => m.default);
+for (const part of [...GENERATED, cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra, conVideo, v1PantallaCultura, v1Series, v1Peliculas, v1Anime, v1Juegos, v1Video]) {
   for (const [cat, list] of Object.entries(part)) (RAW[cat] ??= []).push(...list);
 }
+
+/**
+ * Adivina el póster: una pregunta por póster y por efecto (pixelado, detalle o borroso), armadas aquí con las
+ * portadas que ya hay. Cada lado (anime, juegos, series y películas) tiene su categoría.
+ */
+const POSTER_CATS = { anime: "posteranime", juegos: "posterjuegos", series: "posterseries" } as const;
+const POSTER_Q: Record<keyof typeof POSTER_CATS, Record<PosterFx, string>> = {
+  anime: { blur: "¿De qué anime es este póster borroso?", pixel: "¿De qué anime es este póster pixelado?", zoom: "¿De qué anime es este detalle de su póster?" },
+  juegos: { blur: "¿De qué juego es esta portada borrosa?", pixel: "¿De qué juego es esta portada pixelada?", zoom: "¿De qué juego es este detalle de su portada?" },
+  series: { blur: "¿De qué serie o película es este póster borroso?", pixel: "¿De qué serie o película es este póster pixelado?", zoom: "¿De qué serie o película es este detalle de su póster?" },
+};
+/** categorías que no son una sola obra (el póster no tiene una respuesta única) */
+const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu"]);
+const POSTER_D: Record<PosterFx, Difficulty> = { blur: 1, pixel: 2, zoom: 3 };
+
+function posterQuestions(): Record<string, RawQuestion[]> {
+  const out: Record<string, RawQuestion[]> = {};
+  for (const side of Object.keys(POSTER_CATS) as (keyof typeof POSTER_CATS)[]) {
+    // solo las que tienen póster propio (no mosaico) y preguntas de sobra para que valga la pena
+    const pool = CATEGORIES.filter((c) => FAMILY_BY_ID[c.family].group === side && !c.mosaic && !NO_POSTER.has(c.id) && (RAW[c.id]?.length ?? 0) >= 10);
+    const list: RawQuestion[] = [];
+    for (const c of pool) {
+      for (const fx of ["blur", "pixel", "zoom"] as PosterFx[]) {
+        const rand = rng([...`${c.id}|${fx}`].reduce((h, ch) => Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0, 2166136261));
+        const bad = shuffle(pool.filter((x) => x.id !== c.id), rand).slice(0, 3);
+        list.push([POSTER_D[fx], POSTER_Q[side][fx], NAME_ES[c.id], NAME_ES[bad[0].id], NAME_ES[bad[1].id], NAME_ES[bad[2].id], { v: "poster", id: c.id, fx }]);
+      }
+    }
+    out[POSTER_CATS[side]] = list;
+  }
+  return out;
+}
+for (const [cat, list] of Object.entries(posterQuestions())) (RAW[cat] ??= []).push(...list);
 
 /** id estable que sale del contenido: reordenar o sumar preguntas no cambia el de las demás (el historial lo usa) */
 function stableId(cat: string, q: string, answer: string, media?: string) {
@@ -66,10 +103,12 @@ function build(): Bank {
   for (const [cat, list] of Object.entries(RAW)) {
     byCat[cat] = [];
     list.forEach((r) => {
-      const [d, q, a, b, c, e, media] = r as [RawQuestion[0], string, string, string, string, string, RawQuestion[6]];
-      let id = stableId(cat, q, a, media?.k);
+      const [d, q, a, b, c, e, extra] = r as [RawQuestion[0], string, string, string, string, string, Media | Visual | undefined];
+      const media = extra && "k" in extra ? extra : undefined;
+      const visual = extra && "v" in extra ? extra : undefined;
+      let id = stableId(cat, q, a, media?.k ?? (visual?.v === "poster" ? `${visual.id}:${visual.fx}` : undefined));
       while (byId[id]) id += "x";
-      const question: Question = { id, cat, d, q, o: [a, b, c, e], media: media || undefined };
+      const question: Question = { id, cat, d, q, o: [a, b, c, e], media: media || undefined, visual };
       if (media) {
         const v = VIDEOS[media.k];
         if (!v) {

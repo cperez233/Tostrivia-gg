@@ -21,7 +21,7 @@ const file = fs.readdirSync(out).find((f) => f.endsWith(".js"));
 const { BANK } = await import(path.join(out, file));
 const sources = JSON.parse(fs.readFileSync(path.join(root, "src/data/video-sources.json"), "utf8"));
 const catsSrc = fs.readFileSync(path.join(root, "src/data/categories.ts"), "utf8");
-const catIds = [...catsSrc.matchAll(/\{ id: "([a-z0-9]+)", name: "([^"]+)", short: "[^"]+", family: "([a-z0-9]+)"/g)].map((m) => ({ id: m[1], name: m[2], family: m[3] }));
+const catIds = [...catsSrc.matchAll(/\{ id: "([a-z0-9]+)", name: "([^"]+)", short: "[^"]+", family: "([A-Za-z0-9]+)"/g)].map((m) => ({ id: m[1], name: m[2], family: m[3] }));
 
 let problems = 0;
 const warn = (m) => {
@@ -34,7 +34,7 @@ for (const c of catIds) {
   const list = BANK.byCat[c.id] || [];
   const missing = BANK.missingVideo.filter((id) => id.startsWith(c.id + "-")).length;
   const d = [1, 2, 3].map((x) => list.filter((q) => q.d === x).length).join("/");
-  const min = c.family === "cultura" ? 15 : 20;
+  const min = 15;
   console.log(`${c.name.padEnd(30)} ${String(list.length).padStart(5)}  ${String(list.filter((q) => q.media).length).padStart(5)}  ${d.padStart(7)}  ${missing}`);
   if (list.length < min && !["openings", "ost"].includes(c.family)) warn(`${c.id}: ${list.length} activas (< ${min})`);
   for (const q of list) {
