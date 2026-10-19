@@ -58,7 +58,7 @@ export default function Categories({ onPlay }: { onPlay: (cat: string) => void }
                   )}
                   <ul className="fam__grid">
                     {list.map((c, i) => (
-                      <Tile key={c.id} c={c} i={i} onPlay={onPlay} />
+                      <Tile key={c.id} c={c} i={i} big={i === 0 && list.length >= 4} onPlay={onPlay} />
                     ))}
                   </ul>
                 </section>
@@ -71,10 +71,9 @@ export default function Categories({ onPlay }: { onPlay: (cat: string) => void }
   );
 }
 
-function Tile({ c, i, onPlay }: { c: Category; i: number; onPlay: (cat: string) => void }) {
+// una viñeta grande por familia, como en la página de un manga (si la familia tiene con qué rodearla)
+function Tile({ c, i, big, onPlay }: { c: Category; i: number; big: boolean; onPlay: (cat: string) => void }) {
   const reduce = useReducedMotion();
-  // una viñeta grande por familia, como en la página de un manga
-  const big = i === 0;
   // se observa el <li> sin recortar; la viñeta de adentro es la que se destapa (regla 17)
   const ref = useRef<HTMLLIElement>(null);
   const seen = useInView(ref, { once: true, amount: 0.15 });

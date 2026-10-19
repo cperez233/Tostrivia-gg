@@ -1,10 +1,11 @@
 # Tostrivia
 
-Trivia en español de anime, videojuegos y cultura general. Gira la ruleta, responde 10 preguntas contra el reloj y no rompas la racha. Algunas preguntas suenan antes de verse: el opening empieza con la pantalla tapada y la imagen se revela al responder. Se juega solo o en sala con hasta 10 personas, cada una desde su celular.
+Trivia en español de anime, videojuegos, series, películas y cultura general. Gira la ruleta, responde 10 preguntas contra el reloj y no rompas la racha. Algunas preguntas suenan antes de verse: el opening empieza con la pantalla tapada y la imagen se revela al responder. Se juega solo o en sala con hasta 10 personas, cada una desde su celular.
 
-- **57 categorías**: cultura general (historia, geografía, ciencia, deportes, cine, música), 24 animes agrupados por año de estreno del anime (clásicos, década de 2010, de 2020 para acá), 25 sagas de videojuegos agrupadas por género (aventura y plataformas, rol, mundo abierto y sandbox, acción, shooters, pelea y MOBA). Anime trae además "Openings" y juegos "OST gaming", donde todas las preguntas suenan.
-- **Ruleta**: el filtro (Todo, Anime, Juegos, Cultura) arma los gajos; cada gajo lleva la imagen de su categoría. En Anime siempre sale el gajo de Openings y en Juegos el de OST gaming. En sala, el anfitrión elige el filtro y todos ven la misma rueda.
+- **81 categorías y 1.865 preguntas**: 30 animes (con Openings) agrupados por año de estreno, 32 sagas de videojuegos (con OST gaming) agrupadas por género, 6 series, 5 sagas de películas y 6 de cultura general (historia, geografía, ciencia, deportes, cine, música). En Openings y OST gaming todas las preguntas suenan.
+- **Ruleta**: el filtro (Todo, Anime, Juegos, Series y pelis, Cultura) arma los gajos; cada gajo lleva el póster de su categoría. En Anime siempre sale Openings y en Juegos, OST gaming. En sala, el anfitrión elige el filtro y todos ven la misma rueda.
 - **Jugadores**: cada persona elige uno de 12 animales chibi (capibara, shiba, corgi, pug, husky, salchicha, gato naranja, gato negro, siamés, bulldog, panda rojo y ajolote). En una sala no se repite raza: si ya está tomada, le toca la siguiente libre.
+- **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
@@ -27,7 +28,7 @@ El repo ya trae `vercel.json` (framework Vite, salida `dist`, reescritura SPA pa
 
 La web en producción **no lleva ninguna API key**. Solo reproduce, con el IFrame Player de YouTube, los `videoId` ya verificados que están en `src/data/videos.json`.
 
-Las imágenes de las categorías son las miniaturas de esos mismos videos oficiales (`i.ytimg.com/vi/ID/...`), cargadas desde YouTube; no hay archivos de imagen de terceros en el repo. Cada categoría dice qué clave usa en `cover` dentro de `src/data/categories.ts` (las claves `cover-*` existen solo para eso).
+Las portadas son el póster, la carátula o el arte de caja oficial de cada serie, película o juego, recortados a 2:3 y guardados en `src/assets/covers` (600×900 y 300×450 en WebP). De dónde salió cada una está en `src/assets/covers/FUENTES.md`.
 
 ## Videos: el script de YouTube (solo en tu máquina)
 
@@ -60,7 +61,9 @@ Las salas usan WebRTC con [PeerJS](https://peerjs.com/). La sala vive en el nave
 ## Estructura
 
 ```
-src/data/categories.ts      familias, categorías y su portada
+src/data/categories.ts      familias y categorías
+src/assets/covers/          póster de cada categoría (FUENTES.md dice de dónde salió)
+src/lib/history.ts          historial de preguntas vistas por categoría
 src/data/bank/*.ts          preguntas: [dificultad, pregunta, correcta, mala, mala, mala, media?]
 src/data/video-sources.json clave de video -> búsqueda para el script
 src/data/videos.json        clave -> videoId verificado (lo escribe el script)

@@ -650,8 +650,9 @@ button {
   color: var(--on-ink);
   font-weight: 900;
   font-size: 14px;
-  line-height: 1;
-  white-space: nowrap;
+  line-height: 1.05;
+  /* en celular "Series y pelis" baja a dos líneas en vez de cortarse */
+  text-wrap: balance;
   transition: border-color 0.2s, color 0.2s, transform 0.12s var(--ease);
 }
 .filter:active {
