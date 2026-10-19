@@ -4,7 +4,8 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BANK, videoFor, type VideoCandidate } from "../data/bank";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
-import type { Player, Snapshot } from "./match";
+import type { Pick, Player, Snapshot } from "./match";
+import { POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
 import { multiplier } from "./round";
 import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
@@ -43,8 +44,22 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   const localStart = starts.current.get(key) ?? 0;
   const deadline = localStart + snap.duration;
 
+  // modo Poderes: lo que usé en esta pregunta y la tinta que me echaron
+  const used = snap.used?.[client.me.id];
+  const cut = (snap.phase === "question" && used?.cut) || [];
+  const ink = snap.phase === "question" ? snap.ink?.[client.me.id] : undefined;
+  const inkUntil = ink ? localStart + ink.until : 0;
+  const [, setTick] = useState(0);
+  const inked = !!ink && Date.now() < inkUntil;
+  useEffect(() => {
+    if (!inked) return;
+    const t = setTimeout(() => setTick((n) => n + 1), Math.max(0, inkUntil - Date.now()) + 30);
+    return () => clearTimeout(t);
+  }, [inked, inkUntil]);
+  const nameOf = (pid: string) => snap.players.find((p) => p.id === pid)?.name ?? "?";
+
   const answer = (i: number) => {
-    if (snap.phase !== "question" || myPick != null) return;
+    if (snap.phase !== "question" || myPick != null || cut.includes(i) || inked) return;
     setPick({ key, choice: i });
     client.answer(snap.index, i, Math.max(0, Date.now() - localStart));
   };
@@ -99,6 +114,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <Cover cat={cat} sizes="30px" />
           </span>
           <span className="game__cat-name">{cat.name}</span>
+          {snap.variant === "powers" && <span className="game__variant">{VARIANT_TEXT.powers.name}</span>}
         </div>
         <div className="game__right">
           <AnimatePresence>
@@ -182,50 +198,71 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             </motion.div>
           </AnimatePresence>
 
-          <ol className="opts" aria-label="Opciones">
-            {snap.order.map((orig, i) => {
-              const isCorrect = reveal && reveal.correct === i;
-              const isMine = myPick === i || (mine && mine.choice === i);
-              const state = reveal ? (isCorrect ? "correct" : isMine ? "wrong" : "dim") : isMine ? "picked" : "idle";
-              const who = reveal ? online.filter((p) => reveal.picks[p.id]?.choice === i && p.id !== client.me.id) : [];
-              return (
-                <li key={`${key}-${i}`}>
-                  <motion.button
-                    type="button"
-                    className={`opt opt--${state}`}
-                    onClick={() => answer(i)}
-                    disabled={snap.phase !== "question" || myPick != null}
-                    aria-pressed={isMine || undefined}
-                    initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, rotate: i % 2 ? 1.5 : -1.5 }}
-                    animate={
-                      state === "wrong" && !reduce
-                        ? { opacity: 1, y: 0, rotate: 0, x: [0, -12, 10, -7, 5, 0] }
-                        : state === "correct" && !reduce
-                          ? { opacity: 1, y: 0, rotate: 0, scale: [1, 1.05, 1] }
-                          : { opacity: 1, y: 0, rotate: 0 }
-                    }
-                    transition={state === "wrong" || state === "correct" ? { duration: 0.42 } : { delay: 0.12 + 0.06 * i, type: "spring", stiffness: 420, damping: 26 }}
-                    whileTap={snap.phase === "question" && myPick == null ? { scale: 0.96 } : undefined}
-                  >
-                    <span className="opt__letter" aria-hidden>
-                      {LETTERS[i]}
-                    </span>
-                    <span className="opt__text">{q.o[orig]}</span>
-                    {state === "correct" && <Stamp ok />}
-                    {state === "wrong" && <Stamp />}
-                    {who.length > 0 && (
-                      <span className="opt__who" aria-label={`Eligieron: ${who.map((p) => p.name).join(", ")}`}>
-                        {who.slice(0, 5).map((p) => (
-                          <Avatar key={p.id} animal={p.seal} size={26} />
-                        ))}
-                        {who.length > 5 && <span>+{who.length - 5}</span>}
+          <div className="opts-wrap">
+            <ol className="opts" aria-label="Opciones">
+              {snap.order.map((orig, i) => {
+                const isCorrect = reveal && reveal.correct === i;
+                const isMine = myPick === i || (mine && mine.choice === i);
+                const isCut = cut.includes(i);
+                const state = reveal ? (isCorrect ? "correct" : isMine ? "wrong" : "dim") : isMine ? "picked" : isCut ? "cut" : "idle";
+                const who = reveal ? online.filter((p) => reveal.picks[p.id]?.choice === i && p.id !== client.me.id) : [];
+                return (
+                  <li key={`${key}-${i}`}>
+                    <motion.button
+                      type="button"
+                      className={`opt opt--${state}`}
+                      onClick={() => answer(i)}
+                      disabled={snap.phase !== "question" || myPick != null || isCut || inked}
+                      aria-pressed={isMine || undefined}
+                      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, rotate: i % 2 ? 1.5 : -1.5 }}
+                      animate={
+                        state === "wrong" && !reduce
+                          ? { opacity: 1, y: 0, rotate: 0, x: [0, -12, 10, -7, 5, 0] }
+                          : state === "correct" && !reduce
+                            ? { opacity: 1, y: 0, rotate: 0, scale: [1, 1.05, 1] }
+                            : { opacity: 1, y: 0, rotate: 0 }
+                      }
+                      transition={state === "wrong" || state === "correct" ? { duration: 0.42 } : { delay: 0.12 + 0.06 * i, type: "spring", stiffness: 420, damping: 26 }}
+                      whileTap={snap.phase === "question" && myPick == null ? { scale: 0.96 } : undefined}
+                    >
+                      <span className="opt__letter" aria-hidden>
+                        {LETTERS[i]}
                       </span>
-                    )}
-                  </motion.button>
-                </li>
-              );
-            })}
-          </ol>
+                      <span className="opt__text">{q.o[orig]}</span>
+                      {state === "correct" && <Stamp ok />}
+                      {state === "wrong" && <Stamp />}
+                      {who.length > 0 && (
+                        <span className="opt__who" aria-label={`Eligieron: ${who.map((p) => p.name).join(", ")}`}>
+                          {who.slice(0, 5).map((p) => (
+                            <Avatar key={p.id} animal={p.seal} size={26} />
+                          ))}
+                          {who.length > 5 && <span>+{who.length - 5}</span>}
+                        </span>
+                      )}
+                    </motion.button>
+                  </li>
+                );
+              })}
+            </ol>
+            <AnimatePresence>
+              {inked && ink && (
+                <motion.div key="ink" className="ink" role="status" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <span className="ink__text">
+                    {POWER_ICON.ink} {POWER_LINES.inked(nameOf(ink.by))}
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {snap.variant === "powers" && me && snap.phase !== "reveal" && (
+            <PowerBar
+              hand={me.powers ?? []}
+              used={used?.p}
+              disabled={snap.phase !== "question" || myPick != null || !!used}
+              onUse={(p) => client.power(snap.index, p)}
+            />
+          )}
 
           <div className="game__status" aria-live="polite">
             {snap.phase === "loading" && q.media && (
@@ -238,7 +275,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             )}
           </div>
 
-          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} />}</AnimatePresence>
+          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, nameOf)} />}</AnimatePresence>
 
           {reveal && (
             <div className="game__next">
@@ -320,17 +357,69 @@ function Flame() {
   );
 }
 
+/** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
+function PowerBar({ hand, used, disabled, onUse }: { hand: PowerId[]; used?: PowerId; disabled: boolean; onUse: (p: PowerId) => void }) {
+  return (
+    <section className="powers" aria-label={POWER_LINES.label}>
+      <p className="powers__label">
+        <span aria-hidden>⚡</span> {used ? POWER_LINES.used(POWER_TEXT[used].name) : POWER_LINES.label}
+      </p>
+      {hand.length === 0 && !used && <p className="powers__empty">{POWER_LINES.empty}</p>}
+      <ul className="powers__hand">
+        {hand.map((p, i) => (
+          <li key={`${p}-${i}`}>
+            <motion.button
+              type="button"
+              className="power"
+              onClick={() => onUse(p)}
+              disabled={disabled}
+              title={POWER_TEXT[p].desc}
+              aria-label={`${POWER_TEXT[p].name}: ${POWER_TEXT[p].desc}`}
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              whileTap={disabled ? undefined : { scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 520, damping: 22 }}
+            >
+              <span className="power__icon" aria-hidden>
+                {POWER_ICON[p]}
+              </span>
+              <span className="power__name">{POWER_TEXT[p].name}</span>
+              <span className="power__desc">{POWER_TEXT[p].desc}</span>
+            </motion.button>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** lo que pasó con los poderes en esta pregunta, en frases cortas para el veredicto */
+function powerNotes(pick: Pick, nameOf: (pid: string) => string): string[] {
+  const out: string[] = [];
+  if (pick.power === "double") out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
+  if (pick.shielded) out.push(POWER_LINES.shielded);
+  if (pick.stole) out.push(POWER_LINES.stole(pick.stole.pts, nameOf(pick.stole.from)));
+  for (const r of pick.robbed ?? []) out.push(POWER_LINES.robbed(r.pts, nameOf(r.by)));
+  for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(nameOf(b)));
+  if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${POWER_LINES.earned(POWER_TEXT[pick.earned].name)}`);
+  return out;
+}
+
 /** veredicto: la onomatopeya entra de golpe sobre líneas de concentración */
-function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number; choice: number | null; excused?: boolean } }) {
+function Verdict({ pick, notes = [] }: { pick: Pick; notes?: string[] }) {
   const reduce = useReducedMotion();
   const word = pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!";
   const sub = pick.ok
     ? `+${fmt(pick.gained)} puntos${pick.streak >= 3 ? ` · racha de ${pick.streak} (×${String(multiplier(pick.streak)).replace(".", ",")})` : ""}`
     : pick.excused
       ? "El video no cargó en tu celular: tu racha se mantiene."
-      : pick.choice == null
-        ? "No respondiste a tiempo. La racha vuelve a cero."
-        : "La racha vuelve a cero.";
+      : pick.shielded
+        ? pick.choice == null
+          ? "No respondiste a tiempo."
+          : "Esta no era."
+        : pick.choice == null
+          ? "No respondiste a tiempo. La racha vuelve a cero."
+          : "La racha vuelve a cero.";
   return (
     <motion.div
       className={`verdict ${pick.ok ? "is-ok" : "is-bad"}`}
@@ -343,6 +432,11 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
       <FocusLines className="verdict__lines" />
       <span className="verdict__word">{word}</span>
       <span className="verdict__sub">{sub}</span>
+      {notes.map((n) => (
+        <span key={n} className="verdict__power">
+          {n}
+        </span>
+      ))}
     </motion.div>
   );
 }
@@ -432,7 +526,7 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
             <span className="strip__name">{p.id === me ? "Tú" : p.name}</span>
             <span className="strip__pts">
               {fmt(p.score)}
-              {pick && <span className={`strip__delta ${pick.ok ? "is-ok" : ""}`}>{pick.ok ? `+${pick.gained}` : "+0"}</span>}
+              {pick && <span className={`strip__delta ${pick.gained > 0 ? "is-ok" : ""}`}>{signed(pick.gained)}</span>}
             </span>
           </motion.li>
         );
@@ -440,6 +534,9 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
     </ol>
   );
 }
+
+/** +150, −100 o 0: en modo Poderes también se pueden perder puntos */
+const signed = (n: number) => (n > 0 ? `+${fmt(n)}` : n < 0 ? `−${fmt(-n)}` : "0");
 
 function Board({ snap, me }: { snap: Snapshot; me: string }) {
   const sorted = useMemo(() => [...snap.players].sort((a, b) => b.score - a.score), [snap.players]);
@@ -454,9 +551,7 @@ function Board({ snap, me }: { snap: Snapshot; me: string }) {
             <span className="board__name">{p.name}</span>
             {snap.phase === "question" && snap.answered.includes(p.id) && <span className="board__done" aria-label="Respondió">✓</span>}
             {snap.phase === "reveal" && snap.reveal?.picks[p.id] && (
-              <span className={`board__delta ${snap.reveal.picks[p.id].ok ? "is-ok" : ""}`}>
-                {snap.reveal.picks[p.id].ok ? `+${snap.reveal.picks[p.id].gained}` : "0"}
-              </span>
+              <span className={`board__delta ${snap.reveal.picks[p.id].gained > 0 ? "is-ok" : ""}`}>{signed(snap.reveal.picks[p.id].gained)}</span>
             )}
             <span className="board__pts">{fmt(p.score)}</span>
           </motion.li>

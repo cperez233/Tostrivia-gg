@@ -12,6 +12,8 @@ import { Cover } from "../components/Cover";
 import { FocusLines } from "../components/Wipe";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
+import VariantPicker from "../components/VariantPicker";
+import { saveVariant, savedVariant, type Variant } from "../game/powers";
 import "./home.css";
 
 interface Props {
@@ -31,6 +33,11 @@ export default function Home({ onPlay }: Props) {
   const [hits, setHits] = useState(0);
   const spinning = !!spin && landed?.nonce !== spin.nonce;
   const [scope, shake] = useAnimate();
+  const [variant, setVariant] = useState<Variant>(savedVariant);
+  const pickVariant = (v: Variant) => {
+    setVariant(v);
+    saveVariant(v);
+  };
 
   const doSpin = () => {
     if (spinning) return;
@@ -96,6 +103,7 @@ export default function Home({ onPlay }: Props) {
               </button>
             ))}
           </div>
+          <VariantPicker idp="home" value={variant} onChange={pickVariant} />
           <button type="button" className="arena__azar" onClick={() => onPlay(randomId(filter))} disabled={spinning}>
             Sin ruleta: {describe(randomId(filter))?.name}
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>

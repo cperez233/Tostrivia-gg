@@ -7,6 +7,8 @@ import { ANIMAL_COUNT } from "../components/Avatar";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
 import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
+import { DOUBLE_RISK, EARN_EVERY, INK_MS, MAX_HAND, POOL, POWER_LINES, STEAL_PTS, drawPower, startHand, type PowerId, type Variant } from "./powers";
+import { shuffle } from "../lib/rng";
 
 export const MAX_PLAYERS = 10;
 const MEDIA_WAIT_MS = 21_000; // tiempo máximo para que el video empiece a sonar en todos
@@ -24,6 +26,8 @@ export interface Player {
   best: number;
   correct: number;
   online: boolean;
+  /** modo Poderes: los que tiene en la mano */
+  powers: PowerId[];
 }
 
 export interface Pick {
@@ -34,6 +38,23 @@ export interface Pick {
   ms: number;
   /** el video no cargó en su dispositivo: no pierde la racha */
   excused?: boolean;
+  /* modo Poderes */
+  power?: PowerId;
+  /** poder que ganó con esta racha */
+  earned?: PowerId;
+  /** falló con escudo y conservó la racha */
+  shielded?: boolean;
+  stole?: { from: string; pts: number };
+  robbed?: { by: string; pts: number }[];
+  /** robos que frenó su escudo (ids de quien intentó) */
+  blocked?: string[];
+}
+
+/** poder usado en la pregunta actual */
+export interface PowerUse {
+  p: PowerId;
+  /** 50/50: opciones (índice en pantalla) que quedan tachadas */
+  cut?: number[];
 }
 
 export interface Spin {
@@ -46,6 +67,8 @@ export interface Spin {
 export interface Snapshot {
   v: number;
   mode: "solo" | "group";
+  /** vanilla: la partida de siempre; powers: con poderes (src/game/powers.ts) */
+  variant: Variant;
   phase: Phase;
   hostId: string;
   cat: string | null;
@@ -66,6 +89,10 @@ export interface Snapshot {
   players: Player[];
   notice: string | null;
   replaced: number;
+  /** poderes usados en la pregunta actual, por jugador */
+  used: Record<string, PowerUse>;
+  /** Tinta: hasta cuándo (ms desde que arrancó el reloj) tiene tapadas las opciones cada jugador, y quién se la echó */
+  ink: Record<string, { by: string; until: number }>;
 }
 
 type Listener = (s: Snapshot) => void;
@@ -91,6 +118,7 @@ export class Match {
     this.s = {
       v: 0,
       mode,
+      variant: "vanilla",
       phase: "lobby",
       hostId: host.id,
       cat: null,
@@ -109,6 +137,8 @@ export class Match {
       players: [newPlayer(host)],
       notice: null,
       replaced: 0,
+      used: {},
+      ink: {},
     };
   }
 
@@ -174,6 +204,11 @@ export class Match {
   setCategory(cat: string) {
     this.emit({ cat, spin: null });
   }
+  /** se cambia entre partidas, no a mitad de una */
+  setVariant(variant: Variant) {
+    if (this.s.phase !== "lobby" && this.s.phase !== "final") return;
+    this.emit({ variant });
+  }
 
   /* ───────── flujo ───────── */
   start(seed: number) {
@@ -199,7 +234,9 @@ export class Match {
       index: -1,
       replaced: 0,
       notice: null,
-      players: this.s.players.filter((p) => p.online).map((p) => ({ ...p, score: 0, streak: 0, best: 0, correct: 0 })),
+      players: this.s.players
+        .filter((p) => p.online)
+        .map((p) => ({ ...p, score: 0, streak: 0, best: 0, correct: 0, powers: this.s.variant === "powers" ? startHand(this.s.mode) : [] })),
     });
     this.goTo(0);
   }
@@ -221,10 +258,10 @@ export class Match {
       return this.replaceAt(index, "YouTube no responde en esta red. Seguimos con preguntas sin video.", true);
     }
     if (q.media) {
-      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null });
+      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, ink: {} });
       this.waitTimer = setTimeout(() => this.mediaTimeout(), MEDIA_WAIT_MS);
     } else {
-      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null });
+      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, ink: {} });
       this.beginQuestion();
     }
   }
@@ -310,6 +347,9 @@ export class Match {
     if (this.s.phase !== "question" || index !== this.s.index || this.answers.has(pid)) return;
     if (!this.s.players.some((p) => p.id === pid)) return;
     const hostMs = Date.now() - this.startedAt;
+    // con tinta encima no se puede responder (el celular ya lo bloquea; esto es por si acaso)
+    const ink = this.s.ink[pid];
+    if (ink && hostMs < ink.until - GRACE_MS) return;
     // el invitado mide su propio tiempo; se acepta si no es absurdo frente al reloj del anfitrión
     const ms = clientMs != null && clientMs >= 0 && clientMs <= hostMs + 1500 ? clientMs : hostMs;
     this.answers.set(pid, { choice, ms: Math.min(ms, this.s.duration) });
@@ -329,17 +369,102 @@ export class Match {
     const q = BANK.byId[this.s.qid];
     const correctDisplay = this.s.order.indexOf(0);
     const picks: Record<string, Pick> = {};
-    const players = this.s.players.map((p) => {
+    const powers = this.s.variant === "powers";
+    // primero lo de cada uno; los robos se cobran después, con el marcador de antes de esta pregunta
+    for (const p of this.s.players) {
       const a = this.answers.get(p.id);
       const ok = !!a && this.s.order[a.choice] === 0;
       const excused = !a && this.mediaFailed.has(p.id);
-      const streak = ok ? p.streak + 1 : excused ? p.streak : 0;
-      const gained = ok ? pointsFor(q.d, 1 - a!.ms / this.s.duration, streak) : 0;
+      const power = powers ? this.s.used[p.id]?.p : undefined;
+      const shield = power === "shield";
+      const streak = ok ? p.streak + 1 : excused || shield ? p.streak : 0;
+      let gained = ok ? pointsFor(q.d, 1 - a!.ms / this.s.duration, streak) : 0;
+      if (power === "double") gained = ok ? gained * 2 : excused ? 0 : -DOUBLE_RISK;
       picks[p.id] = { choice: a ? a.choice : null, ok, gained, streak, ms: a?.ms ?? this.s.duration, excused };
-      return { ...p, score: p.score + gained, streak, best: Math.max(p.best, streak), correct: p.correct + (ok ? 1 : 0) };
+      if (power) {
+        picks[p.id].power = power;
+        if (shield && !ok && !excused && p.streak > 0) picks[p.id].shielded = true;
+      }
+    }
+    if (powers) {
+      const ranking = [...this.s.players].sort((a, b) => b.score - a.score);
+      for (const p of this.s.players) {
+        const mine = picks[p.id];
+        if (mine.power !== "steal" || !mine.ok) continue;
+        const target = ranking.find((x) => x.id !== p.id);
+        if (!target) continue;
+        const theirs = picks[target.id];
+        if (theirs.power === "shield") {
+          theirs.blocked = [...(theirs.blocked ?? []), p.id];
+          continue;
+        }
+        const pts = Math.min(STEAL_PTS, Math.max(0, target.score + theirs.gained));
+        if (!pts) continue;
+        theirs.gained -= pts;
+        theirs.robbed = [...(theirs.robbed ?? []), { by: p.id, pts }];
+        mine.gained += pts;
+        mine.stole = { from: target.id, pts };
+      }
+    }
+    const players = this.s.players.map((p) => {
+      const pick = picks[p.id];
+      const score = Math.max(0, p.score + pick.gained);
+      pick.gained = score - p.score;
+      let hand = p.powers;
+      if (powers && pick.ok && pick.streak % EARN_EVERY === 0 && hand.length < MAX_HAND) {
+        pick.earned = drawPower(this.s.mode);
+        hand = [...hand, pick.earned];
+      }
+      return { ...p, score, streak: pick.streak, best: Math.max(p.best, pick.streak), correct: p.correct + (pick.ok ? 1 : 0), powers: hand };
     });
     this.emit({ phase: "reveal", reveal: { correct: correctDisplay, picks }, players });
     if (this.s.mode === "group") this.nextTimer = setTimeout(() => this.next(), AUTO_NEXT_MS + (q.media ? 2500 : 0));
+  }
+
+  /** modo Poderes: uno por pregunta, antes de responder */
+  usePower(pid: string, index: number, power: PowerId) {
+    if (this.s.variant !== "powers" || this.s.phase !== "question" || index !== this.s.index) return;
+    if (this.answers.has(pid) || this.s.used[pid] || !POOL[this.s.mode].includes(power)) return;
+    const player = this.s.players.find((p) => p.id === pid);
+    if (!player || !player.powers.includes(power)) return;
+    const hand = player.powers.slice();
+    hand.splice(hand.indexOf(power), 1);
+    const players = this.s.players.map((p) => (p.id === pid ? { ...p, powers: hand } : p));
+    if (power === "swap") return this.swapCurrent(players);
+    const use: PowerUse = { p: power };
+    let ink = this.s.ink;
+    if (power === "half") {
+      const wrong = [0, 1, 2, 3].filter((i) => this.s.order[i] !== 0);
+      use.cut = shuffle(wrong, Math.random).slice(0, 2);
+    } else if (power === "ink") {
+      const until = Date.now() - this.startedAt + INK_MS;
+      ink = { ...ink };
+      for (const p of this.active()) if (p.id !== pid && !this.answers.has(p.id) && this.s.used[p.id]?.p !== "shield") ink[p.id] = { by: pid, until };
+    } else if (power === "shield" && ink[pid]) {
+      ink = { ...ink };
+      delete ink[pid];
+    }
+    this.emit({ players, used: { ...this.s.used, [pid]: use }, ink });
+  }
+
+  /** Cambio (solo): otra pregunta, mejor sin video y de la misma dificultad */
+  private swapCurrent(players: Player[]) {
+    const now = this.s.qid ? BANK.byId[this.s.qid] : null;
+    const taken = new Set(this.s.ids);
+    const text = (id: string) => !BANK.byId[id].media && !taken.has(id);
+    let i = this.reserves.findIndex((id) => text(id) && BANK.byId[id].d === now?.d);
+    if (i < 0) i = this.reserves.findIndex(text);
+    let next = i >= 0 ? this.reserves.splice(i, 1)[0] : undefined;
+    if (!next) {
+      const j = this.backups.findIndex(text);
+      if (j >= 0) next = this.backups.splice(j, 1)[0];
+    }
+    // no hay con qué cambiarla: el poder no se gasta
+    if (!next) return;
+    const ids = this.s.ids.slice();
+    ids[this.s.index] = next;
+    this.emit({ ids, players, notice: POWER_LINES.swapped });
+    this.goTo(this.s.index);
   }
 
   next() {
@@ -367,5 +492,5 @@ export class Match {
 }
 
 function newPlayer(p: { id: string; name: string; seal: number }): Player {
-  return { id: p.id, name: p.name, seal: p.seal, score: 0, streak: 0, best: 0, correct: 0, online: true };
+  return { id: p.id, name: p.name, seal: p.seal, score: 0, streak: 0, best: 0, correct: 0, online: true, powers: [] };
 }

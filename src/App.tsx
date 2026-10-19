@@ -16,6 +16,7 @@ import ProfilePicker from "./components/ProfilePicker";
 import Nav, { TABS, type Tab } from "./components/Nav";
 import Foot from "./components/Foot";
 import Wipe, { type WipeState } from "./components/Wipe";
+import { savedVariant } from "./game/powers";
 
 type View =
   | { k: "home" }
@@ -134,6 +135,7 @@ export default function App() {
   const playSolo = (cat: string) => {
     const c = new LocalClient(myself());
     c.setCategory(cat);
+    c.setVariant(savedVariant());
     c.start(newSeed());
     go({ k: "room", client: c }, location.pathname.startsWith("/jugar/") ? "/" : null, { label: describe(cat)?.short ?? "¡A jugar!" });
   };

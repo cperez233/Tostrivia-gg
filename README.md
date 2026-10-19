@@ -10,6 +10,14 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
+- **Modos**: Vanilla (la partida de siempre) o Poderes. Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
+- **Poderes**: cada jugador arranca con 2 al azar y gana uno más cada vez que su racha llega a 3, 6, 9 (máximo 3 en la mano). Se usa uno por pregunta, antes de responder. Todos los textos están en `src/game/powers.ts`.
+  - ✂️ **50/50**: tacha dos opciones malas.
+  - 🎲 **Doble o nada**: ×2 si aciertas, −100 si fallas.
+  - 🛡️ **Escudo**: si fallas no pierdes la racha, y te cubre de Robo y Tinta.
+  - 🔄 **Cambio** (solo): cambia la pregunta por otra sin video, de la misma dificultad si hay.
+  - 🦝 **Robo** (grupo): si aciertas, le quitas 150 puntos al que va primero (o al segundo si el primero eres tú).
+  - 🖋️ **Tinta** (grupo): tapa las opciones de los demás durante 5 s.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local
