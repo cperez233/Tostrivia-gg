@@ -63,6 +63,18 @@ const POSTER_Q: Record<keyof typeof POSTER_CATS, Record<PosterFx, string>> = {
 const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu"]);
 const POSTER_D: Record<PosterFx, Difficulty> = { blur: 1, pixel: 2, zoom: 3 };
 
+/**
+ * Ajustes de dificultad hechos a mano (src/data/bank/rerate/*.json), por si una pregunta pesa distinto de lo que dice su archivo:
+ *   d:    { idDePregunta: 1|2|3 }
+ *   fame: { categoria: 1|2|3 }  qué tan famosa es la obra (1 mainstream, 3 de nicho); mueve la dificultad de sus pósters
+ */
+const RERATE: { d: Record<string, Difficulty>; fame: Record<string, number> } = { d: {}, fame: {} };
+for (const m of Object.values(import.meta.glob<{ default: { d?: Record<string, Difficulty>; fame?: Record<string, number> } }>("./rerate/*.json", { eager: true }))) {
+  Object.assign(RERATE.d, m.default.d);
+  Object.assign(RERATE.fame, m.default.fame);
+}
+const posterD = (cat: string, fx: PosterFx) => Math.min(3, Math.max(1, POSTER_D[fx] + (RERATE.fame[cat] ?? 2) - 2)) as Difficulty;
+
 function posterQuestions(): Record<string, RawQuestion[]> {
   const out: Record<string, RawQuestion[]> = {};
   for (const side of Object.keys(POSTER_CATS) as (keyof typeof POSTER_CATS)[]) {
@@ -73,7 +85,7 @@ function posterQuestions(): Record<string, RawQuestion[]> {
       for (const fx of ["blur", "pixel", "zoom"] as PosterFx[]) {
         const rand = rng([...`${c.id}|${fx}`].reduce((h, ch) => Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0, 2166136261));
         const bad = shuffle(pool.filter((x) => x.id !== c.id), rand).slice(0, 3);
-        list.push([POSTER_D[fx], POSTER_Q[side][fx], NAME_ES[c.id], NAME_ES[bad[0].id], NAME_ES[bad[1].id], NAME_ES[bad[2].id], { v: "poster", id: c.id, fx }]);
+        list.push([posterD(c.id, fx), POSTER_Q[side][fx], NAME_ES[c.id], NAME_ES[bad[0].id], NAME_ES[bad[1].id], NAME_ES[bad[2].id], { v: "poster", id: c.id, fx }]);
       }
     }
     out[POSTER_CATS[side]] = list;
@@ -108,7 +120,7 @@ function build(): Bank {
       const visual = extra && "v" in extra ? extra : undefined;
       let id = stableId(cat, q, a, media?.k ?? (visual?.v === "poster" ? `${visual.id}:${visual.fx}` : undefined));
       while (byId[id]) id += "x";
-      const question: Question = { id, cat, d, q, o: [a, b, c, e], media: media || undefined, visual };
+      const question: Question = { id, cat, d: RERATE.d[id] ?? d, q, o: [a, b, c, e], media: media || undefined, visual };
       if (media) {
         const v = VIDEOS[media.k];
         if (!v) {
