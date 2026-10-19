@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "videos": "node scripts/fetch-videos.mjs",
+    "videos:sin-key": "node scripts/find-videos.mjs",
     "check:bank": "node scripts/check-bank.mjs",
     "peer:local": "peerjs --port 9000 --path /tostrivia"
   },

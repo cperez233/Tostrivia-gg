@@ -9,8 +9,7 @@ import NotFound from "./pages/NotFound";
 import { GuestClient, HostClient, LocalClient, normalizeCode, type GameClient } from "./net/client";
 import { me as myself, savedProfile } from "./lib/identity";
 import { newSeed } from "./lib/rng";
-import { CATEGORY_BY_ID, FAMILY_BY_ID } from "./data/categories";
-import { BANK } from "./data/bank";
+import { describe, isValidCat } from "./game/mix";
 import { Logo } from "./components/Seal";
 import { Cover } from "./components/Cover";
 import ProfilePicker from "./components/ProfilePicker";
@@ -30,8 +29,8 @@ type View =
 function fromPath(path: string): View {
   const sala = path.match(/^\/sala\/([A-Za-z0-9]{5})\/?$/);
   if (sala) return { k: "join", code: normalizeCode(sala[1]) };
-  const jugar = path.match(/^\/jugar\/([a-z0-9-]+)\/?$/);
-  if (jugar && BANK.byCat[jugar[1]]?.length) return { k: "solo-start", cat: jugar[1] };
+  const jugar = path.match(/^\/jugar\/([a-z0-9.-]+)\/?$/);
+  if (jugar && isValidCat(jugar[1])) return { k: "solo-start", cat: jugar[1] };
   if (path === "/" || path === "/index.html" || path === "") return { k: "home" };
   if (/^\/categorias\/?$/.test(path)) return { k: "cats" };
   if (/^\/grupo\/?$/.test(path)) return { k: "group" };
@@ -136,7 +135,7 @@ export default function App() {
     const c = new LocalClient(myself());
     c.setCategory(cat);
     c.start(newSeed());
-    go({ k: "room", client: c }, location.pathname.startsWith("/jugar/") ? "/" : null, { label: CATEGORY_BY_ID[cat]?.short ?? "¡A jugar!" });
+    go({ k: "room", client: c }, location.pathname.startsWith("/jugar/") ? "/" : null, { label: describe(cat)?.short ?? "¡A jugar!" });
   };
 
   const host = async (name: string, seal: number) => {
@@ -219,7 +218,8 @@ function JoinScreen({ code, onJoin, onHome }: { code: string; onJoin: (name: str
 }
 
 function SoloStart({ cat, onPlay, onHome }: { cat: string; onPlay: () => void; onHome: () => void }) {
-  const c = CATEGORY_BY_ID[cat];
+  const info = describe(cat)!;
+  const c = info.cover;
   return (
     <div className="solo wrap">
       <a href="/categorias" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label="Ver las categorías">
@@ -229,7 +229,7 @@ function SoloStart({ cat, onPlay, onHome }: { cat: string; onPlay: () => void; o
         <div className="solo__cover">
           <Cover cat={c} sizes="min(100vw, 520px)" backdrop eager />
         </div>
-        <p className="label">Te retaron · {FAMILY_BY_ID[c.family].name}</p>
+        <p className="label">Te retaron · {info.label}</p>
         <h1 className="solo__title">{c.name}</h1>
         <button type="button" className="btn btn--hanko btn--block" onClick={onPlay} autoFocus>
           Aceptar el reto

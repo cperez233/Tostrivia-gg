@@ -12,7 +12,9 @@ import Wheel from "../components/Wheel";
 import { Logo } from "../components/Seal";
 import { Avatar, animalName } from "../components/Avatar";
 import { Cover } from "../components/Cover";
-import { CATEGORIES, CATEGORY_BY_ID, FAMILIES, FAMILY_BY_ID } from "../data/categories";
+import { CATEGORIES, FAMILIES, GROUPS } from "../data/categories";
+import { describe, mixId, randomId } from "../game/mix";
+import MixPicker from "../components/MixPicker";
 import { FILTERS, makeDeck, makeSpin, playable, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
@@ -65,10 +67,12 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   const reduce = useReducedMotion();
   const rosterRef = usePauseOffscreen<HTMLUListElement>();
   const [copied, setCopied] = useState(false);
+  const [mixing, setMixing] = useState(false);
   const [filter, setFilter] = useState<Filter>("todo");
   const link = `${location.origin}/sala/${client.code}`;
   const host = snap.players.find((p) => p.id === snap.hostId);
-  const cat = snap.cat ? CATEGORY_BY_ID[snap.cat] : null;
+  const info = snap.cat ? describe(snap.cat) : null;
+  const cat = info?.cover ?? null;
   const online = snap.players.filter((p) => p.online);
   const [landed, setLanded] = useState<number | null>(null);
   const spinShown = !!snap.spin && landed !== snap.spin.nonce;
@@ -189,12 +193,12 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
           <div className="lobby__chosen" aria-live="polite">
             <AnimatePresence mode="wait">
               {cat && !spinShown ? (
-                <motion.div key={cat.id} className="lobby__pick panel" initial={reduce ? false : { scale: 1.3, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ type: "spring", stiffness: 420, damping: 20 }}>
+                <motion.div key={snap.cat} className="lobby__pick panel" initial={reduce ? false : { scale: 1.3, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ type: "spring", stiffness: 420, damping: 20 }}>
                   <span className="lobby__pick-img">
                     <Cover cat={cat} sizes="64px" />
                   </span>
                   <span>
-                    <span className="lobby__pick-fam">{FAMILY_BY_ID[cat.family].name}</span>
+                    <span className="lobby__pick-fam">{info?.label}</span>
                     <span className="lobby__catname">{cat.name}</span>
                   </span>
                 </motion.div>
@@ -210,6 +214,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
               <label htmlFor="cat-select">O elige de la lista</label>
               <select id="cat-select" className="input select" value={snap.cat ?? ""} onChange={(e) => e.target.value && client.setCategory(e.target.value)}>
                 <option value="">Elegir categoría…</option>
+                {snap.cat?.startsWith("mix-") && <option value={snap.cat}>{info?.name}</option>}
+                <optgroup label="Al azar">
+                  {[...GROUPS.map((g) => g.id), "todo" as const].map((g) => (
+                    <option key={g} value={randomId(g)}>
+                      {describe(randomId(g))?.name}
+                    </option>
+                  ))}
+                </optgroup>
                 {FAMILIES.map((f) => (
                   <optgroup key={f.id} label={f.name}>
                     {CATEGORIES.filter((c) => c.family === f.id && playable(c.id)).map((c) => (
@@ -220,6 +232,18 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                   </optgroup>
                 ))}
               </select>
+              <button type="button" className="btn btn--small lobby__mix" onClick={() => setMixing(true)} disabled={spinShown}>
+                Mezclar varias categorías
+              </button>
+              <MixPicker
+                open={mixing}
+                current={snap.cat}
+                onClose={() => setMixing(false)}
+                onPick={(cats) => {
+                  setMixing(false);
+                  client.setCategory(mixId(cats));
+                }}
+              />
             </div>
           )}
         </section>

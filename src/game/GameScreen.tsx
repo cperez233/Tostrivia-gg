@@ -10,6 +10,7 @@ import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
 import { Avatar } from "../components/Avatar";
 import { Cover } from "../components/Cover";
+import { describe } from "./mix";
 import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
 import "./game.css";
@@ -26,7 +27,7 @@ interface Props {
 
 export default function GameScreen({ client, snap, at, onExit }: Props) {
   const q = snap.qid ? BANK.byId[snap.qid] : null;
-  const cat = snap.cat ? CATEGORY_BY_ID[snap.cat] : null;
+  const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const reduce = useReducedMotion();
   const me = snap.players.find((p) => p.id === client.me.id);
   const key = `${snap.index}:${snap.qid}`;
@@ -442,7 +443,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const correct = me?.correct ?? 0;
   const scaled = total ? Math.round((correct / total) * 10) : 0;
   const rank = RANKS.find(([min]) => scaled >= min)!;
-  const cat = snap.cat ? CATEGORY_BY_ID[snap.cat] : null;
+  const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const place = sorted.findIndex((p) => p.id === client.me.id) + 1;
   const [copied, setCopied] = useState(false);
 

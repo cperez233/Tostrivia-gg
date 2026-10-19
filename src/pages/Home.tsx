@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useAnimate, useReducedMotion } from "framer-mo
 import { CATEGORY_BY_ID, FAMILY_BY_ID } from "../data/categories";
 import type { Spin } from "../game/match";
 import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
+import { describe, randomId } from "../game/mix";
 import Wheel from "../components/Wheel";
 import { Cover } from "../components/Cover";
 import { FocusLines } from "../components/Wipe";
@@ -95,6 +96,12 @@ export default function Home({ onPlay }: Props) {
               </button>
             ))}
           </div>
+          <button type="button" className="arena__azar" onClick={() => onPlay(randomId(filter))} disabled={spinning}>
+            Sin ruleta: {describe(randomId(filter))?.name}
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
+            </svg>
+          </button>
         </div>
 
         <div className="arena__wheel">

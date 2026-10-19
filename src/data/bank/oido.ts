@@ -29,7 +29,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, OP, "Cowboy Bebop", "Samurai Champloo", "Trigun", "Lupin III", { k: "bebop-op-tank", m: "audio", s: 40, e: 62 }],
     [3, OP, "Code Geass", "Gundam 00", "Eureka Seven", "Guilty Crown", { k: "cg-op-colors", m: "audio", s: 60, e: 82 }],
     [3, OP, "Haikyuu!!", "Kuroko no Basket", "Blue Lock", "Yowamushi Pedal", { k: "haikyuu-op-imagination", m: "audio", s: 30, e: 52 }],
-    [3, OP, "Solo Leveling", "The Eminence in Shadow", "Tower of God", "Overlord", { k: "solo-op-level", m: "audio", s: 30, e: 52 }],
+    [3, OP, "Solo Leveling", "The Eminence in Shadow", "Tower of God", "Overlord", { k: "solo-op-reawaker", m: "audio", s: 30, e: 52 }],
     [3, OP, "Dandadan", "Mashle", "Hell's Paradise", "Kaiju No. 8", { k: "dandadan-op-otonoke", m: "audio", s: 30, e: 52 }],
     [3, OP, "Mob Psycho 100", "One Punch Man", "Gintama", "Saiki Kusuo", { k: "mob-op-99", m: "audio", s: 30, e: 52 }],
     [3, "Esto es un ending. ¿De qué anime es?", "Hunter x Hunter (2011)", "Yu Yu Hakusho", "Black Clover", "Fairy Tail", { k: "hxh-ed-justawake", m: "audio", s: 30, e: 52 }],

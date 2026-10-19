@@ -144,12 +144,6 @@
       "yuusha|yusha|勇者|the brave"
     ]
   },
-  "solo-op-level": {
-    "q": "Solo Leveling opening LEveL SawanoHiroyuki TOMORROW X TOGETHER creditless",
-    "must": [
-      "level"
-    ]
-  },
   "dandadan-op-otonoke": {
     "q": "Dandadan opening Otonoke Creepy Nuts creditless",
     "must": [
@@ -461,6 +455,301 @@
     "q": "Star Wars main title theme John Williams",
     "must": [
       "star wars"
+    ]
+  },
+  "saintseiya-op-pegasus": {
+    "q": "Saint Seiya opening 1 Pegasus Fantasy original HD",
+    "must": [
+      "pegasus fantasy"
+    ],
+    "alt": [
+      "Los Caballeros del Zodiaco opening Pegasus Fantasy japones"
+    ]
+  },
+  "saintseiya-op-soldier": {
+    "q": "Saint Seiya opening 2 Soldier Dream",
+    "must": [
+      "soldier dream"
+    ]
+  },
+  "sailormoon-op-moonlight": {
+    "q": "Sailor Moon opening Moonlight Densetsu",
+    "must": [
+      "moonlight densetsu|moonlight legend"
+    ]
+  },
+  "sailormoon-op-starsong": {
+    "q": "Sailor Moon Sailor Stars opening Sailor Star Song",
+    "must": [
+      "sailor star song"
+    ]
+  },
+  "fairytail-op-snowfairy": {
+    "q": "Fairy Tail opening 1 Snow Fairy FUNKIST",
+    "must": [
+      "snow fairy"
+    ]
+  },
+  "fairytail-ost-main": {
+    "q": "Fairy Tail Main Theme original soundtrack Yasuharu Takanashi",
+    "must": [
+      "main theme|fairy tail theme|メインテーマ"
+    ],
+    "min": 60
+  },
+  "sao-op-crossing": {
+    "q": "Sword Art Online opening crossing field LiSA",
+    "must": [
+      "crossing field"
+    ]
+  },
+  "sao-op-adamas": {
+    "q": "Sword Art Online Alicization opening ADAMAS LiSA",
+    "must": [
+      "adamas"
+    ]
+  },
+  "vinland-op-mukanjyo": {
+    "q": "Vinland Saga opening 1 MUKANJYO Survive Said The Prophet",
+    "must": [
+      "mukanjyo"
+    ]
+  },
+  "vinland-ed-torches": {
+    "q": "Vinland Saga ending Torches Aimer",
+    "must": [
+      "torches"
+    ]
+  },
+  "bluelock-op-chaos": {
+    "q": "Blue Lock opening Chaos ga Kiwamaru UNISON SQUARE GARDEN",
+    "must": [
+      "chaos ga kiwamaru|カオスが極まる"
+    ]
+  },
+  "bluelock-op-judgement": {
+    "q": "Blue Lock opening 2 judgement ASH DA HERO",
+    "must": [
+      "judgement"
+    ]
+  },
+  "assassins-ost-ezio": {
+    "q": "Assassin's Creed 2 Ezio's Family Jesper Kyd",
+    "must": [
+      "ezio's family|ezios family|ezio family"
+    ]
+  },
+  "assassins-tr-valhalla": {
+    "q": "Assassin's Creed Valhalla cinematic world premiere trailer",
+    "must": [
+      "valhalla"
+    ],
+    "max": 420
+  },
+  "kh-ost-simple": {
+    "q": "Kingdom Hearts Simple and Clean opening Utada",
+    "must": [
+      "simple and clean"
+    ]
+  },
+  "kh-ost-dearly": {
+    "q": "Kingdom Hearts Dearly Beloved Yoko Shimomura",
+    "must": [
+      "dearly beloved"
+    ]
+  },
+  "persona-ost-lastsurprise": {
+    "q": "Persona 5 OST Last Surprise Shoji Meguro",
+    "must": [
+      "last surprise"
+    ],
+    "ban": [
+      "orbit",
+      "royal",
+      "remix"
+    ]
+  },
+  "persona-ost-reachout": {
+    "q": "Persona 4 Reach Out To The Truth",
+    "must": [
+      "reach out to the truth"
+    ]
+  },
+  "crash-ost-nsanity": {
+    "q": "Crash Bandicoot N. Sanity Beach music",
+    "must": [
+      "n. sanity beach|n sanity beach|n.sanity beach"
+    ]
+  },
+  "crash-tr-4": {
+    "q": "Crash Bandicoot 4 It's About Time announce trailer",
+    "must": [
+      "it's about time|its about time"
+    ],
+    "max": 420
+  },
+  "spiderman-tr-2": {
+    "q": "Marvel's Spider-Man 2 story trailer PS5",
+    "must": [
+      "spider-man 2|spiderman 2"
+    ],
+    "max": 420
+  },
+  "spiderman-ost-main": {
+    "q": "Marvel's Spider-Man PS4 main theme John Paesano",
+    "must": [
+      "theme"
+    ],
+    "min": 60
+  },
+  "ac-tr-nh": {
+    "q": "Animal Crossing New Horizons trailer Nintendo Switch",
+    "must": [
+      "new horizons"
+    ],
+    "max": 420
+  },
+  "cs-tr-cs2": {
+    "q": "Counter-Strike 2 official trailer",
+    "must": [
+      "counter-strike 2|cs2|counter strike 2"
+    ],
+    "max": 420
+  },
+  "simpsons-intro": {
+    "q": "The Simpsons opening intro theme",
+    "must": [
+      "intro|opening|theme"
+    ],
+    "min": 30,
+    "max": 200
+  },
+  "bb-intro": {
+    "q": "Breaking Bad intro title sequence",
+    "must": [
+      "intro|opening|title"
+    ],
+    "min": 15,
+    "max": 120
+  },
+  "got-intro": {
+    "q": "Game of Thrones main title theme opening HBO",
+    "must": [
+      "main title|opening|intro|theme"
+    ],
+    "min": 60,
+    "max": 300
+  },
+  "st-intro": {
+    "q": "Stranger Things main title theme Kyle Dixon Michael Stein",
+    "must": [
+      "stranger things"
+    ],
+    "min": 40,
+    "max": 300
+  },
+  "st-runningup": {
+    "q": "Kate Bush Running Up That Hill official",
+    "must": [
+      "running up that hill"
+    ]
+  },
+  "friends-theme": {
+    "q": "Friends opening theme I'll Be There For You The Rembrandts",
+    "must": [
+      "i'll be there for you|ill be there for you|friends"
+    ],
+    "min": 30,
+    "max": 300
+  },
+  "lcdp-bellaciao": {
+    "q": "La Casa de Papel Bella Ciao",
+    "must": [
+      "bella ciao"
+    ],
+    "min": 40,
+    "max": 300
+  },
+  "lcdp-intro": {
+    "q": "Cecilia Krull My Life Is Going On La Casa de Papel",
+    "must": [
+      "my life is going on"
+    ]
+  },
+  "sw-ost-main": {
+    "q": "Star Wars Main Title John Williams",
+    "must": [
+      "main title|main theme"
+    ],
+    "min": 60
+  },
+  "sw-ost-imperial": {
+    "q": "Star Wars The Imperial March Darth Vader's Theme John Williams",
+    "must": [
+      "imperial march"
+    ]
+  },
+  "sw-ost-duel": {
+    "q": "Star Wars Duel of the Fates John Williams",
+    "must": [
+      "duel of the fates"
+    ]
+  },
+  "hp-ost-hedwig": {
+    "q": "Harry Potter Hedwig's Theme John Williams",
+    "must": [
+      "hedwig"
+    ]
+  },
+  "hp-tr-deathly2": {
+    "q": "Harry Potter and the Deathly Hallows Part 2 official trailer",
+    "must": [
+      "part 2|parte 2"
+    ],
+    "max": 420
+  },
+  "mcu-tr-endgame": {
+    "q": "Avengers Endgame official trailer Marvel",
+    "must": [
+      "endgame"
+    ],
+    "max": 420
+  },
+  "mcu-ost-avengers": {
+    "q": "The Avengers theme Alan Silvestri",
+    "must": [
+      "avengers"
+    ],
+    "min": 60
+  },
+  "lotr-ost-shire": {
+    "q": "Lord of the Rings Concerning Hobbits Howard Shore",
+    "must": [
+      "concerning hobbits|the shire"
+    ]
+  },
+  "lotr-ost-mayit": {
+    "q": "Enya May It Be Lord of the Rings",
+    "must": [
+      "may it be"
+    ]
+  },
+  "pixar-ost-friend": {
+    "q": "Randy Newman You've Got a Friend in Me Toy Story",
+    "must": [
+      "friend in me"
+    ]
+  },
+  "pixar-ost-married": {
+    "q": "Up Married Life Michael Giacchino",
+    "must": [
+      "married life"
+    ]
+  },
+  "solo-op-reawaker": {
+    "q": "Solo Leveling Season 2 opening ReawakeR LiSA creditless",
+    "must": [
+      "reawaker"
     ]
   }
 }

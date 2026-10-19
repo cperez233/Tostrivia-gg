@@ -17,6 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { defaultMax, score as rank, seconds } from "./video-rules.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCES = path.join(root, "src/data/video-sources.json");
@@ -66,52 +67,6 @@ async function api(endpoint, params, cost) {
   return body;
 }
 
-const norm = (s) =>
-  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’`]/g, "'");
-
-const OFFICIAL = [
-  "crunchyroll", "vizmedia", "viz media", "aniplex", "toho animation", "tohoanimation", "mappa", "ufotable",
-  "funimation", "netflix anime", "kadokawa", "toei animation", "muse asia", "ani-one", "pony canyon",
-  "sony music", "lisa official", "king gnu", "yoasobi", "kenshi yonezu", "米津玄師", "official hige dandism",
-  "nintendo", "playstation", "xbox", "rockstar games", "cd projekt red", "the witcher", "bandai namco",
-  "riot games", "league of legends", "valorant", "genshin impact", "overwatch", "blizzard", "sega", "sonic the hedgehog",
-  "capcom", "fromsoftware", "square enix", "konami", "minecraft", "c418", "epic games", "fortnite",
-  "queen official", "luisfonsivevo", "vevo", "imagine dragons", "jamproject", "warner bros", "universal pictures",
-  "star wars", "lucasfilm", "halo", "bethesda", "seatbelts", "flying dog", "victor entertainment",
-];
-const BANNED = [
-  "cover", "reaction", "reaccion", "react", "nightcore", "remix", "8 bit", "8-bit", "1 hour", "10 hours", "1 hora",
-  "slowed", "sped up", "tutorial", "karaoke", "guitar", "drum", "fandub", "lyrics prank", "amv", "mashup",
-  "ranking", "dank", "parody", "parodia", "leak", "leaked", "top 10", "top 20", "tier list", "loop", "extended", "earrape", "bass boosted", "ost compilation",
-  "full album", "playlist", "explained", "analysis", "breakdown", "theme was", "music theory", "vs", "piano tutorial", "meme", "short", "shorts",
-];
-
-function score(v, src) {
-  const t = norm(v.snippet.title);
-  const ch = norm(v.snippet.channelTitle);
-  let s = 0;
-  for (const group of src.must || []) {
-    const ok = group.split("|").some((w) => t.includes(norm(w)));
-    if (!ok) return -Infinity;
-    s += 3;
-  }
-  const word = (w) => new RegExp(`(^|[^a-z0-9])${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^a-z0-9]|$)`);
-  if (BANNED.some((b) => word(b).test(t) && !norm(src.q).includes(b))) return -Infinity;
-  if (OFFICIAL.some((o) => ch.includes(o))) s += 6;
-  if (/creditless|textless|official|oficial|non-credit|clean/.test(t)) s += 2;
-  s += Math.log10(Number(v.statistics?.viewCount || 1));
-  return s;
-}
-
-/** ISO 8601 PT#H#M#S -> segundos */
-function seconds(iso = "") {
-  const m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-  return m ? (+m[1] || 0) * 3600 + (+m[2] || 0) * 60 + (+m[3] || 0) : 0;
-}
-
-/** openings y endings: versión TV o videoclip; nada de análisis de 10 minutos */
-const defaultMax = (src) => (/opening|ending/i.test(src.q) ? 330 : /trailer|short/i.test(src.q) ? 400 : 600);
-
 /** Comprobaciones que pidió el dueño: embebible, público, sin restricción de edad ni bloqueo en CO. */
 function verdict(v, src) {
   if (!v.status?.embeddable) return "no embebible";
@@ -143,7 +98,7 @@ async function resolve(key, src) {
     const ids = (r.items || []).map((i) => i.id.videoId).filter(Boolean);
     const vids = await details(ids);
     const ranked = vids
-      .map((v) => ({ v, why: verdict(v, src), s: score(v, src) }))
+      .map((v) => ({ v, why: verdict(v, src), s: rank({ title: v.snippet.title, channel: v.snippet.channelTitle, views: v.statistics?.viewCount }, src) }))
       .filter((x) => {
         if (x.why) log(`   descartado ${x.v.id} (${x.why}): ${x.v.snippet.title}`);
         return !x.why && Number.isFinite(x.s);

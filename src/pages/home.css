@@ -297,3 +297,26 @@
     border-right: 3px solid var(--ink);
   }
 }
+/* atajo: jugar todo el filtro al azar sin girar */
+.arena__azar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  border-bottom: 3px solid var(--hanko);
+  background: none;
+  color: var(--on-ink);
+  font-weight: 800;
+  font-size: 15px;
+}
+.arena__azar:disabled {
+  opacity: 0.5;
+}
+@media (hover: hover) and (pointer: fine) {
+  .arena__azar:not(:disabled):hover {
+    color: var(--signal);
+  }
+}

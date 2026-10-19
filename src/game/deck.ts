@@ -1,7 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Qué gajos lleva la ruleta según el filtro. El anfitrión arma el mazo y lo reparte en la foto del estado.
  */
-import { BANK } from "../data/bank";
+import { playable } from "./mix";
 import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import type { GroupId } from "../data/types";
 import { rng, shuffle } from "../lib/rng";
@@ -17,7 +17,7 @@ export const FILTERS: { id: Filter; label: string }[] = [
   { id: "cultura", label: "Cultura" },
 ];
 
-export const playable = (cat: string) => (BANK.byCat[cat]?.length ?? 0) >= 10;
+export { playable };
 const poolOf = (g: GroupId) => CATEGORIES.filter((c) => FAMILY_BY_ID[c.family].group === g && playable(c.id)).map((c) => c.id);
 
 /** la categoría de música de cada lado: siempre tiene gajo en su rueda */

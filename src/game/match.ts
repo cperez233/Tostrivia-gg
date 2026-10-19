@@ -5,6 +5,7 @@
 import { BANK } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
+import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 
 export const MAX_PLAYERS = 10;
@@ -176,10 +177,16 @@ export class Match {
   start(seed: number) {
     if (!this.s.cat) return;
     const cat = this.s.cat;
-    pruneTo(cat, new Set((BANK.byCat[cat] || []).map((q) => q.id)));
-    const { ids, reserves, restart } = buildRound(cat, seed, seenIn(cat));
-    // ya salieron todas las de la categoría: esta ronda abre la vuelta siguiente
-    if (restart) restartCycle(cat);
+    // en una mezcla, el historial es el de cada categoría que la forma
+    const parts = partsOf(cat);
+    const seen = new Set<string>();
+    for (const c of parts) {
+      pruneTo(c, new Set((BANK.byCat[c] || []).map((q) => q.id)));
+      seenIn(c).forEach((id) => seen.add(id));
+    }
+    const { ids, reserves, restart } = buildRound(cat, seed, seen);
+    // ya salieron todas: esta ronda abre la vuelta siguiente
+    if (restart) parts.forEach(restartCycle);
     this.reserves = reserves;
     this.backups = textBackups(this.s.cat, seed).filter((id) => !ids.includes(id));
     this.mediaFails = 0;

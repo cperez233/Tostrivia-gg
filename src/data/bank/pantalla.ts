@@ -150,7 +150,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1, "¿Cómo se llama la nave de Han Solo?", "El Halcón Milenario", "La Estrella de la Muerte", "El Destructor Estelar", "El Ala-X"],
     [1, "¿Qué arma usan los Jedi?", "El sable de luz", "El bláster", "El arco láser", "La vibrocuchilla"],
     [1, "¿Cómo se llama el pequeño maestro Jedi de 900 años?", "Yoda", "Mace Windu", "Qui-Gon Jinn", "Plo Koon"],
-    [1, "¿Qué le revela Vader a Luke en El Imperio contraataca?", "Que es su padre", "Que tiene una hermana", "Que Obi-Wan está vivo", "Que el Emperador es su abuelo"],
+    [1, "¿Quién es la hermana gemela de Luke Skywalker?", "Leia Organa", "Padmé Amidala", "Rey", "Mon Mothma"],
     [1, "¿Quién creó y dirigió la primera película?", "George Lucas", "Steven Spielberg", "J. J. Abrams", "Ridley Scott"],
     [1, "¿Cómo se llama el copiloto peludo de Han Solo?", "Chewbacca", "Jabba", "Greedo", "Wicket"],
     [1, "¿Qué droide dorado domina millones de formas de comunicación?", "C-3PO", "R2-D2", "BB-8", "K-2SO"],
@@ -229,7 +229,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2, "¿Quién es el heredero del trono de Gondor?", "Aragorn", "Boromir", "Faramir", "Théoden"],
     [2, "¿Qué elfo forma parte de la Comunidad?", "Legolas", "Elrond", "Haldir", "Glorfindel"],
     [2, "¿Qué enano forma parte de la Comunidad?", "Gimli", "Thorin", "Balin", "Glóin"],
-    [2, "¿Qué criatura enfrentan en las Minas de Moria?", "Un Balrog", "Un dragón", "Una araña gigante", "Un troll de las nieves"],
+    [2, "¿Qué reino de los hombres gobierna el rey Théoden?", "Rohan", "Gondor", "Arnor", "Dale"],
     [2, "¿Qué película de la trilogía ganó 11 Óscar?", "El retorno del rey", "La comunidad del anillo", "Las dos torres", "Un viaje inesperado"],
     [2, "¿Cómo se llamaba Gollum antes de que el Anillo lo transformara?", "Sméagol", "Déagol", "Bilbo", "Fredegar"],
     [2, "¿Qué criaturas árbol atacan Isengard?", "Los ents", "Los huargos", "Los mûmakil", "Los uruk-hai"],
@@ -258,7 +258,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Cómo se llama la lámpara que aparece en el logo de Pixar?", "Luxo Jr.", "Lumi", "Pixie", "Lampy"],
     [3, "¿Quién dirigió Toy Story?", "John Lasseter", "Pete Docter", "Brad Bird", "Andrew Stanton"],
     [3, "¿Qué chef famoso inspira a Remy en Ratatouille?", "Auguste Gusteau", "Anton Ego", "Skinner", "Alfredo Linguini"],
-    [3, "¿Cómo se llama el niño dueño de los juguetes en Toy Story?", "Andy", "Sid", "Bonnie", "Al"],
+    [3, "¿Qué película fue la primera de Pixar en ganar el Óscar a mejor película animada?", "Buscando a Nemo", "Monsters, Inc.", "Los Increíbles", "Ratatouille"],
   ],
 };
 

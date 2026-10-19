@@ -10,7 +10,12 @@ export default defineConfig({
     assetsInlineLimit: 0,
     rollupOptions: {
       output: {
-        manualChunks: { motion: ["framer-motion"], peer: ["peerjs"] },
+        manualChunks(id) {
+          if (id.includes("node_modules/framer-motion")) return "motion";
+          if (id.includes("node_modules/peerjs")) return "peer";
+          // el banco cambia seguido: en su propio archivo, el resto del código sigue en caché
+          if (id.includes("/src/data/bank/") || id.endsWith("/src/data/videos.json")) return "bank";
+        },
       },
     },
   },

@@ -1,6 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import { BANK } from "../data/bank";
 import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
+import { partsOf } from "./mix";
 import type { Question } from "../data/types";
 import { rng, shuffle } from "../lib/rng";
 
@@ -16,7 +17,7 @@ export const BASE_POINTS = { 1: 100, 2: 150, 3: 200 } as const;
  */
 export function buildRound(cat: string, seed: number, seen: Set<string> = new Set()) {
   const rand = rng(seed);
-  const pool = shuffle(BANK.byCat[cat] || [], rand);
+  const pool = poolFor(cat, rand);
   const audioOnly = pool.length > 0 && pool.every((q) => q.media);
   const fresh = pool.filter((q) => !seen.has(q.id));
   const restart = fresh.length < ROUND_SIZE;
@@ -36,6 +37,17 @@ export function buildRound(cat: string, seed: number, seen: Set<string> = new Se
   const byFreshness = [...fresh, ...pool.filter((q) => seen.has(q.id))];
   const reserves = byFreshness.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, 6);
   return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id), restart };
+}
+
+/**
+ * Las preguntas de una categoría, barajadas. En una mezcla se intercalan sus categorías (una de cada una,
+ * en orden al azar) para que la ronda no quede llena de la que más preguntas tiene.
+ */
+export function poolFor(cat: string, rand: () => number): Question[] {
+  const lists = shuffle(partsOf(cat), rand).map((c) => shuffle(BANK.byCat[c] || [], rand));
+  const out: Question[] = [];
+  for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) out.push(l[i]);
+  return out;
 }
 
 /** hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad (3/4/3 en una ronda completa) */
@@ -65,7 +77,7 @@ function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boole
 /** Preguntas sin video para cuando YouTube no responde. En Openings y OST gaming se toman de su lado (anime o juegos). */
 export function textBackups(cat: string, seed: number): string[] {
   const rand = rng(seed ^ 0x5bd1e995);
-  const own = (BANK.byCat[cat] || []).filter((q) => !q.media);
+  const own = partsOf(cat).flatMap((c) => BANK.byCat[c] || []).filter((q) => !q.media);
   let pool = own;
   if (own.length < 10) {
     const side = cat === "openings" ? "anime" : cat === "soundtracks" ? "juegos" : null;

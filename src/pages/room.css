@@ -283,3 +283,6 @@
     grid-area: cat;
   }
 }
+.lobby__mix {
+  margin-top: 8px;
+}
