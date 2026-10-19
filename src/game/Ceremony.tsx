@@ -7,6 +7,7 @@ import { AnimatePresence, animate, motion, useReducedMotion } from "framer-motio
 import type { Player } from "./match";
 import { Avatar } from "../components/Avatar";
 import { FocusLines } from "../components/Wipe";
+import { locale, t } from "../i18n";
 
 interface Props {
   players: Player[];
@@ -21,7 +22,7 @@ const AT = { third: 0.9, second: 2.3, drum: 3.5, first: 4.9, done: 6.4 };
 
 export default function Ceremony({ players, me, actions, onDetails }: Props) {
   const reduce = useReducedMotion();
-  const [t, setT] = useState(reduce ? 99 : 0);
+  const [time, setT] = useState(reduce ? 99 : 0);
   useEffect(() => {
     if (reduce) return;
     const start = performance.now();
@@ -38,35 +39,35 @@ export default function Ceremony({ players, me, actions, onDetails }: Props) {
 
   const [first, second, third] = players;
   const rest = players.slice(3);
-  const done = t >= AT.done;
+  const done = time >= AT.done;
   const mine = players.findIndex((p) => p.id === me) + 1;
 
   return (
     <div className="ceremony">
-      <FocusLines className={`ceremony__lines anim-spin ${t >= AT.first ? "is-on" : ""}`} />
+      <FocusLines className={`ceremony__lines anim-spin ${time >= AT.first ? "is-on" : ""}`} />
       <div className="ceremony__in wrap">
         <motion.h1 className="ceremony__title" initial={reduce ? false : { y: -30, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
-          Resultados
+          {t("Resultados")}
         </motion.h1>
 
         <AnimatePresence>
-          {t >= AT.drum && t < AT.first && (
+          {time >= AT.drum && time < AT.first && (
             <motion.p key="drum" className="ceremony__drum" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: [0.6, 1.08, 1], opacity: 1 }} exit={{ opacity: 0, scale: 1.3 }} transition={{ duration: 0.5 }}>
-              Y el primer lugar es…
+              {t("Y el primer lugar es…")}
             </motion.p>
           )}
         </AnimatePresence>
 
-        <ol className="stands" aria-label="Podio">
+        <ol className="stands" aria-label={t("Podio")}>
           {/* orden visual: segundo, primero, tercero */}
-          {second && <Stand p={second} n={2} show={t >= AT.second} me={me} />}
-          {first && <Stand p={first} n={1} show={t >= AT.first} me={me} />}
-          {third && <Stand p={third} n={3} show={t >= AT.third} me={me} />}
+          {second && <Stand p={second} n={2} show={time >= AT.second} me={me} />}
+          {first && <Stand p={first} n={1} show={time >= AT.first} me={me} />}
+          {third && <Stand p={third} n={3} show={time >= AT.third} me={me} />}
         </ol>
 
         {!done && (
           <button type="button" className="link ceremony__skip" onClick={skip}>
-            Saltar
+            {t("Saltar")}
           </button>
         )}
 
@@ -80,16 +81,16 @@ export default function Ceremony({ players, me, actions, onDetails }: Props) {
                       <span className="ceremony__restn">{i + 4}</span>
                       <Avatar animal={p.seal} size={30} />
                       <span className="ceremony__restname">{p.name}</span>
-                      <span className="ceremony__restpts">{p.score.toLocaleString("es-CO")}</span>
+                      <span className="ceremony__restpts">{p.score.toLocaleString(locale())}</span>
                     </li>
                   ))}
                 </ol>
               )}
-              <p className="ceremony__mine">{mine === 1 ? "¡Ganaste la ronda!" : `Quedaste de ${mine}.º`}</p>
+              <p className="ceremony__mine">{mine === 1 ? t("¡Ganaste la ronda!") : t("Quedaste de {n}.º", { n: mine })}</p>
               <div className="ceremony__actions">
                 {actions}
                 <button type="button" className="btn btn--ghost" onClick={onDetails}>
-                  Ver mis resultados
+                  {t("Ver mis resultados")}
                 </button>
               </div>
             </motion.div>
@@ -109,7 +110,7 @@ function Stand({ p, n, show, me }: { p: Player; n: 1 | 2 | 3; show: boolean; me:
     return () => c.stop();
   }, [show, p.score, n, reduce]);
   return (
-    <li className={`stand stand--${n} ${p.id === me ? "is-me" : ""}`} aria-label={`${n}.º ${p.name}, ${p.score} puntos`}>
+    <li className={`stand stand--${n} ${p.id === me ? "is-me" : ""}`} aria-label={t("{n}.º {name}, {pts} puntos", { n, name: p.name, pts: p.score })}>
       <div className="stand__who">
         <AnimatePresence>
           {show && (
@@ -125,10 +126,10 @@ function Stand({ p, n, show, me }: { p: Player; n: 1 | 2 | 3; show: boolean; me:
                 </motion.span>
               )}
               <Avatar animal={p.seal} size={n === 1 ? 84 : 64} />
-              <span className="stand__name">{p.id === me ? `${p.name} (tú)` : p.name}</span>
-              <span className="stand__pts">{pts.toLocaleString("es-CO")}</span>
+              <span className="stand__name">{p.id === me ? t("{name} (tú)", { name: p.name }) : p.name}</span>
+              <span className="stand__pts">{pts.toLocaleString(locale())}</span>
               <span className="stand__meta">
-                {p.correct} {p.correct === 1 ? "acierto" : "aciertos"}
+                {p.correct} {p.correct === 1 ? t("acierto") : t("aciertos")}
               </span>
             </motion.div>
           )}

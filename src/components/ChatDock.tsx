@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EMOTES, type ChatMsg, type GameClient } from "../net/client";
 import { Avatar } from "./Avatar";
 import "./chat.css";
+import { t } from "../i18n";
 
 interface Float {
   id: string;
@@ -33,7 +34,7 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
     let toastTimer: ReturnType<typeof setTimeout> | undefined;
     const off = client.onChat((m) => {
       if (m.kind === "emote") {
-        const f = { id: m.id, body: m.body, seal: m.seal, name: m.pid === client.me.id ? "Tú" : m.name, x: 8 + Math.random() * 64 };
+        const f = { id: m.id, body: m.body, seal: m.seal, name: m.pid === client.me.id ? t("Tú") : m.name, x: 8 + Math.random() * 64 };
         setFloats((l) => [...l.slice(-14), f]);
         setTimeout(() => setFloats((l) => l.filter((x) => x.id !== f.id)), 2600);
         return;
@@ -116,9 +117,9 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
 
         <AnimatePresence>
           {tray && (
-            <motion.div className="emotes" role="group" aria-label="Emotes" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}>
+            <motion.div className="emotes" role="group" aria-label={t("Emotes")} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 20 }}>
               {EMOTES.map((e) => (
-                <motion.button key={e} type="button" whileTap={{ scale: 1.4 }} className="emotes__b" onClick={() => client.react(e)} aria-label={`Mandar ${e}`}>
+                <motion.button key={e} type="button" whileTap={{ scale: 1.4 }} className="emotes__b" onClick={() => client.react(e)} aria-label={t("Mandar {e}", { e })}>
                   {e}
                 </motion.button>
               ))}
@@ -127,14 +128,14 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
         </AnimatePresence>
 
         <div className="chatdock__btns">
-          <button type="button" className={`chatdock__btn ${tray ? "is-on" : ""}`} onClick={() => setTray((t) => !t)} aria-expanded={tray} aria-label="Emotes">
+          <button type="button" className={`chatdock__btn ${tray ? "is-on" : ""}`} onClick={() => setTray((t) => !t)} aria-expanded={tray} aria-label={t("Emotes")}>
             <span aria-hidden>😀</span>
           </button>
           <button type="button" className={`chatdock__btn chatdock__btn--chat ${open ? "is-on" : ""}`} onClick={toggle} aria-expanded={open} aria-controls="chat-panel">
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
               <path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
             </svg>
-            Chat
+            {t("Chat")}
             {unread > 0 && <span className="chatdock__badge">{unread > 9 ? "9+" : unread}</span>}
           </button>
         </div>
@@ -145,27 +146,27 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
           <motion.section
             id="chat-panel"
             className={`chatpanel chatpanel--${place}`}
-            aria-label="Chat de la sala"
+            aria-label={t("Chat de la sala")}
             initial={reduce ? { opacity: 0 } : { y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={reduce ? { opacity: 0 } : { y: 30, opacity: 0 }}
             transition={{ type: "spring", stiffness: 420, damping: 34 }}
           >
             <header className="chatpanel__head">
-              <h2>Chat</h2>
-              <button type="button" className="chatpanel__close" onClick={toggle} aria-label="Cerrar el chat">
+              <h2>{t("Chat")}</h2>
+              <button type="button" className="chatpanel__close" onClick={toggle} aria-label={t("Cerrar el chat")}>
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
                   <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3" />
                 </svg>
               </button>
             </header>
             <ol ref={list} className="chatpanel__list" aria-live="polite">
-              {msgs.length === 0 && <li className="chatpanel__empty">Nadie ha escrito todavía. Rompe el hielo.</li>}
+              {msgs.length === 0 && <li className="chatpanel__empty">{t("Nadie ha escrito todavía. Rompe el hielo.")}</li>}
               {msgs.map((m) => (
                 <li key={m.id} className={`msg ${m.pid === client.me.id ? "is-me" : ""}`}>
                   <Avatar animal={m.seal} size={28} />
                   <div className="msg__body">
-                    <span className="msg__name">{m.pid === client.me.id ? "Tú" : m.name}</span>
+                    <span className="msg__name">{m.pid === client.me.id ? t("Tú") : m.name}</span>
                     <p>{m.body}</p>
                   </div>
                 </li>
@@ -173,11 +174,11 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
             </ol>
             <form className="chatpanel__form" onSubmit={send}>
               <label htmlFor="chat-input" className="sr-only">
-                Mensaje
+                {t("Mensaje")}
               </label>
-              <input id="chat-input" className="input chatpanel__input" value={text} onChange={(e) => setText(e.target.value)} maxLength={140} placeholder="Escribe algo…" autoComplete="off" enterKeyHint="send" />
+              <input id="chat-input" className="input chatpanel__input" value={text} onChange={(e) => setText(e.target.value)} maxLength={140} placeholder={t("Escribe algo…")} autoComplete="off" enterKeyHint="send" />
               <button type="submit" className="btn btn--hanko btn--small" disabled={!text.trim()}>
-                Enviar
+                {t("Enviar")}
               </button>
             </form>
           </motion.section>

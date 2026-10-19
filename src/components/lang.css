@@ -1,0 +1,38 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.lang {
+  display: inline-flex;
+  border: 2px solid var(--ink-3);
+}
+/* en escritorio las pestañas se corren a la derecha y el selector queda al final */
+.topnav__tabs {
+  margin-left: auto;
+}
+.lang__opt {
+  position: relative;
+  min-width: 44px;
+  min-height: 40px;
+  padding: 0 10px;
+  font-family: var(--display);
+  font-size: 14px;
+  color: var(--on-ink-2);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.lang__opt.is-on {
+  color: var(--ink);
+}
+@media (hover: hover) and (pointer: fine) {
+  .lang__opt:not(.is-on):hover {
+    color: var(--on-ink);
+  }
+}
+.lang__pill {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+}
+.lang__label {
+  position: relative;
+}

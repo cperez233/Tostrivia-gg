@@ -8,6 +8,7 @@ import { CATEGORY_BY_ID } from "../data/categories";
 import { coversOf } from "../lib/covers";
 import type { Spin } from "../game/match";
 import "./wheel.css";
+import { t } from "../i18n";
 
 interface Props {
   deck: string[];
@@ -182,12 +183,12 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
         className="wheel__hub"
         onClick={onRequest}
         disabled={!canSpin || spinning}
-        aria-label={spinning ? "Girando" : "Girar la ruleta"}
+        aria-label={spinning ? t("Girando") : t("Girar la ruleta")}
         whileTap={canSpin && !spinning ? { scale: 0.9 } : undefined}
         whileHover={canSpin && !spinning ? { scale: 1.06, rotate: -4 } : undefined}
         transition={{ type: "spring", stiffness: 500, damping: 20 }}
       >
-        <span className={`wheel__hub-face ${!canSpin && !spinning ? "is-wait" : ""}`}>{spinning ? "…" : canSpin ? "Gira" : "Espera"}</span>
+        <span className={`wheel__hub-face ${!canSpin && !spinning ? "is-wait" : ""}`}>{spinning ? "…" : canSpin ? t("Gira") : t("Espera")}</span>
       </motion.button>
     </div>
   );

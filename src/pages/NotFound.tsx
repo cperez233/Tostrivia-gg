@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Seal } from "../components/Seal";
 import { FocusLines } from "../components/Wipe";
 import type { Tab } from "../components/Nav";
+import { t } from "../i18n";
 
 export default function NotFound({ onGo }: { onGo: (t: Tab) => void }) {
   const link = (t: Tab) => (e: React.MouseEvent) => {
@@ -15,19 +16,19 @@ export default function NotFound({ onGo }: { onGo: (t: Tab) => void }) {
     <main className="nf wrap">
       <div className="nf__grid">
         <div className="nf__copy">
-          <p className="label">Error 404</p>
-          <h1 className="nf__title">Esta página no está en el tomo.</h1>
-          <p className="muted">La dirección no existe o la sala que buscabas ya se cerró.</p>
-          <nav className="nf__links" aria-label="Páginas">
+          <p className="label">{t("Error 404")}</p>
+          <h1 className="nf__title">{t("Esta página no está en el tomo.")}</h1>
+          <p className="muted">{t("La dirección no existe o la sala que buscabas ya se cerró.")}</p>
+          <nav className="nf__links" aria-label={t("Páginas")}>
             <a href="/categorias" onClick={link("cats")}>
-              Categorías
+              {t("Categorías")}
             </a>
             <a href="/grupo" onClick={link("group")}>
-              Jugar en grupo
+              {t("Jugar en grupo")}
             </a>
           </nav>
           <a href="/" className="btn btn--hanko" onClick={link("home")}>
-            Volver a la ruleta
+            {t("Volver a la ruleta")}
           </a>
         </div>
         <div className="nf__page panel" aria-hidden>

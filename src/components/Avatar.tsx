@@ -16,6 +16,7 @@ import bulldog from "../assets/animals/bulldog.webp";
 import pandaRojo from "../assets/animals/panda-rojo.webp";
 import ajolote from "../assets/animals/ajolote.webp";
 import "./avatar.css";
+import { translateFields } from "../i18n";
 
 export interface Animal {
   name: string;
@@ -38,6 +39,9 @@ export const ANIMALS: Animal[] = [
   { name: "Panda rojo", src: pandaRojo, tint: "#FFD9C6" },
   { name: "Ajolote", src: ajolote, tint: "#FFE0EC" },
 ];
+
+// el nombre de cada animal sale en el idioma de la interfaz
+for (const a of ANIMALS) translateFields(a, ["name"]);
 
 export const ANIMAL_COUNT = ANIMALS.length;
 const pick = (i: number) => ANIMALS[((i % ANIMAL_COUNT) + ANIMAL_COUNT) % ANIMAL_COUNT];

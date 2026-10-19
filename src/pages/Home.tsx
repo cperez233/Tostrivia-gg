@@ -13,6 +13,7 @@ import { FocusLines } from "../components/Wipe";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import "./home.css";
+import { t } from "../i18n";
 
 interface Props {
   onPlay: (cat: string) => void;
@@ -74,7 +75,7 @@ export default function Home({ onPlay }: Props) {
       <div ref={scope} className="arena__in wrap">
         <div className="arena__head">
           <h1 className="arena__title">
-            {["Gira", "la ruleta."].map((w, i) => (
+            {[t("Gira"), t("la ruleta.")].map((w, i) => (
               <span className="arena__line" key={w}>
                 <motion.span
                   initial={reduce ? false : { y: "110%", rotate: 4 }}
@@ -86,18 +87,18 @@ export default function Home({ onPlay }: Props) {
               </span>
             ))}
           </h1>
-          <p className="arena__sub">Diez preguntas, veinte segundos cada una.</p>
+          <p className="arena__sub">{t("Diez preguntas, veinte segundos cada una.")}</p>
 
-          <div className="filters" role="radiogroup" aria-label="Qué entra en la ruleta">
+          <div className="filters" role="radiogroup" aria-label={t("Qué entra en la ruleta")}>
             {FILTERS.map((f) => (
               <button key={f.id} type="button" role="radio" aria-checked={filter === f.id} className={`filter ${filter === f.id ? "is-on" : ""}`} onClick={() => pick(f.id)} disabled={spinning && filter !== f.id}>
                 {filter === f.id && <motion.span layoutId="filter-pill" className="filter__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
-                <span className="filter__label">{f.label}</span>
+                <span className="filter__label">{t(f.label)}</span>
               </button>
             ))}
           </div>
           <button type="button" className="arena__azar" onClick={() => onPlay(randomId(filter))} disabled={spinning}>
-            Sin ruleta: {describe(randomId(filter))?.name}
+            {t("Sin ruleta:")} {describe(randomId(filter))?.name}
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
               <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
             </svg>
@@ -107,11 +108,11 @@ export default function Home({ onPlay }: Props) {
         <div className="arena__wheel">
           <Wheel deck={deck} spin={spin} canSpin onRequest={doSpin} onLanded={onLanded} />
           {filter !== "cultura" && (
-            <button type="button" className="reshuffle" onClick={reshuffle} disabled={spinning} aria-label="Poner otras categorías en la rueda">
+            <button type="button" className="reshuffle" onClick={reshuffle} disabled={spinning} aria-label={t("Poner otras categorías en la rueda")}>
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
                 <path d="M3 7h4c4 0 6 10 10 10h4M3 17h4c1.6 0 2.8-1.6 4-3.6M13 9.6C14.2 7.6 15.4 7 17 7h4M18 4l3 3-3 3M18 14l3 3-3 3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              Otras
+              {t("Otras")}
             </button>
           )}
           <AnimatePresence>
@@ -156,7 +157,7 @@ function Deal({ deck, spinning }: { deck: string[]; spinning: boolean }) {
   ];
   return (
     <motion.div className="deal" exit={{ opacity: 0, x: 40 }} transition={{ duration: 0.2 }}>
-      <p className="sr-only">{spinning ? "Girando…" : ""}</p>
+      <p className="sr-only">{spinning ? t("Girando…") : ""}</p>
       <div className="deal__pile" aria-hidden>
         {three.map((id, i) => (
           <motion.div
@@ -198,17 +199,17 @@ function Result({ cat, onPlay, onAgain, onClose }: { cat: string; onPlay: () => 
         </h2>
         <div className="result__actions">
           <button type="button" className="btn btn--hanko" onClick={onPlay} ref={(el) => el?.focus({ preventScroll: true })}>
-            Jugar
+            {t("Jugar")}
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
               <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
             </svg>
           </button>
           <button type="button" className="btn btn--small result__again" onClick={onAgain}>
-            Girar otra vez
+            {t("Girar otra vez")}
           </button>
         </div>
       </div>
-      <button type="button" className="result__close" onClick={onClose} aria-label="Cerrar">
+      <button type="button" className="result__close" onClick={onClose} aria-label={t("Cerrar")}>
         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
           <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3" />
         </svg>

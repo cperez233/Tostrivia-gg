@@ -1,5 +1,6 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import type { Me } from "../net/client";
+import { t } from "../i18n";
 
 const get = (store: Storage | undefined, k: string) => {
   try {
@@ -41,5 +42,5 @@ export function saveProfile(name: string, seal: number) {
 
 export function me(name?: string, seal?: number): Me {
   const p = savedProfile();
-  return { id: myId(), name: (name ?? p.name).trim() || "Jugador", seal: seal ?? p.seal };
+  return { id: myId(), name: (name ?? p.name).trim() || t("Jugador"), seal: seal ?? p.seal };
 }
