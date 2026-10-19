@@ -10,6 +10,36 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 200 por rapidez. **Racha**: ×1,25 con 2 aciertos seguidos, ×1,5 desde 3, ×2 desde 5 y ×3 desde 8.
+- **Modos**: Vanilla (la partida de siempre) o Poderes. Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
+- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 1 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 3 en la mano, como en Mario Kart). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo, Cambiazo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
+  - ✂️ **50/50**: tacha dos opciones malas.
+  - 🎰 **Doble o nada**: ×2 si aciertas, −300 si fallas.
+  - 🎲 **Dado**: +100 por punto del dado si aciertas, −50 por punto si fallas.
+  - 🍄 **Hongo**: el bono por rapidez sube de 100 a 500.
+  - ⭐ **Estrella**: ×2 si aciertas y ningún ataque te toca.
+  - 🛡️ **Escudo**: si fallas no pierdes la racha y te cubre de ataques.
+  - ❓ **Bloque ?**: te da dos poderes al azar.
+  - 🔄 **Cambio** (solo): cambia la pregunta por otra sin video, de la misma dificultad si hay.
+  - 👻 **Boo** (grupo): si aciertas, le robas 400 al que va primero.
+  - 🔴 **Caparazón rojo** (grupo): −400 al que va justo delante de ti.
+  - 🔵 **Caparazón azul** (grupo): −600 al primero; si el primero eres tú, te pega a ti.
+  - ⚡ **Rayo** (grupo): −200 a todos los demás.
+  - 🦑 **Tinta** (grupo): tapa las opciones de los demás durante 5 s.
+  - 😱 **Susto** (grupo): un screamer de un juego de terror (FNAF, Poppy Playtime, Granny, Baldi, Doors, Slender…) a pantalla completa y con sonido en la pantalla de los demás, unos segundos después de usarlo. Los videos salen de YouTube como los de las preguntas: las claves `scare-*` de `src/data/video-sources.json` se resuelven con `npm run videos:sin-key` y solo se usan las que quedaron verificadas. Si no hay ninguna o el video no alcanza a cargar, sale el susto propio (cara, chillido sintetizado y vibración).
+  - 🌀 **Revoltijo** (grupo): las opciones de los demás cambian de lugar cada segundo durante 6 s.
+  - 🙃 **De cabeza** (grupo): la pantalla de los demás se voltea 6 s.
+  - 🔁 **Cambiazo** (grupo): cambias tu puntaje con el que va justo delante de ti (al final de la pregunta).
+  - 🍌 **Plátano** (grupo): el primero que responda después de que lo tiras pierde 300.
+  - 🔦 **Apagón** (grupo): la pantalla de los demás se va a negro y solo ven con una linterna que sigue el dedo, 7 s.
+  - 🪞 **Espejo** (grupo): la pantalla de los demás se ve al revés de izquierda a derecha, 7 s.
+  - 🫨 **Terremoto** (grupo): la pantalla de los demás tiembla 6 s.
+  - 🐜 **Hormiga** (grupo): las opciones de los demás se encogen, 7 s.
+  - 🌫️ **Niebla** (grupo): los demás ven todo borroso, 6 s.
+  - 😵‍💫 **Mareo** (grupo): la pantalla de los demás da vueltas, 6 s.
+  - 🎉 **Fiesta** (grupo): lluvia de confeti y globos con corneta en la pantalla de los demás, 6 s.
+  - 🔤 **Trabalenguas** (grupo): las letras de cada palabra de las opciones se revuelven, 7 s.
+  - 💡 **Corto circuito** (grupo): la pantalla de los demás parpadea, 6 s.
+- **Qué tan seguido sale cada poder**: los más fuertes son raros. Caparazón azul y Cambiazo pesan 1; Boo, Estrella, Bloque ? y Rayo, 2; Doble o nada, Caparazón rojo, Susto, Niebla, Mareo, Fiesta, Trabalenguas y Corto circuito, 3; el resto, 4 (`WEIGHT` en `src/game/powers.ts`).
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local

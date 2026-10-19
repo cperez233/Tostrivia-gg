@@ -2,9 +2,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BANK, videoFor, type VideoCandidate } from "../data/bank";
+import { loadYouTube, type YTNamespace, type YTPlayer } from "../lib/youtube";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
-import type { Player, Snapshot } from "./match";
+import type { Pick, Player, Snapshot } from "./match";
+import { POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
 import { multiplier } from "./round";
 import { fmt } from "./useGame";
 import MediaStage from "../components/MediaStage";
@@ -14,6 +16,7 @@ import { describe } from "./mix";
 import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
 import Ceremony from "./Ceremony";
+import { rng, shuffle } from "../lib/rng";
 import "./game.css";
 import "./ceremony.css";
 import { localizeQuestion, locale, t } from "../i18n";
@@ -44,8 +47,29 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   const localStart = starts.current.get(key) ?? 0;
   const deadline = localStart + snap.duration;
 
+  // modo Poderes: lo que usé en esta pregunta y lo que me echaron encima (Tinta, Susto, Revoltijo, De cabeza)
+  const used = snap.used?.[client.me.id];
+  const cut = (snap.phase === "question" && used?.cut) || [];
+  const fx = snap.phase === "question" ? snap.fx?.[client.me.id] : undefined;
+  const fxFrom = fx ? localStart + fx.from : 0;
+  const fxUntil = fx ? localStart + fx.until : 0;
+  const [tick, setTick] = useState(0);
+  const now = Date.now();
+  const fxOn = !!fx && now >= fxFrom && now < fxUntil;
+  const fxPending = !!fx && now < fxUntil;
+  useEffect(() => {
+    if (!fxPending) return;
+    // el Revoltijo mueve las opciones cada poco; los demás solo esperan a empezar o terminar
+    const next = fxOn && fx?.p === "shuffle" ? 750 : Math.max(0, (Date.now() < fxFrom ? fxFrom : fxUntil) - Date.now()) + 30;
+    const t = setTimeout(() => setTick((n) => n + 1), next);
+    return () => clearTimeout(t);
+  }, [fxPending, fxOn, fxFrom, fxUntil, fx?.p, tick]);
+  const inked = fxOn && fx?.p === "ink";
+  const shuffled = fxOn && fx?.p === "shuffle" ? shuffle([0, 1, 2, 3], rng(Math.floor(now / 750))) : null;
+  const nameOf = (pid: string) => snap.players.find((p) => p.id === pid)?.name ?? "?";
+
   const answer = (i: number) => {
-    if (snap.phase !== "question" || myPick != null) return;
+    if (snap.phase !== "question" || myPick != null || cut.includes(i) || inked) return;
     setPick({ key, choice: i });
     client.answer(snap.index, i, Math.max(0, Date.now() - localStart));
   };
@@ -100,6 +124,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <Cover cat={cat} sizes="30px" />
           </span>
           <span className="game__cat-name">{cat.name}</span>
+          {snap.variant === "powers" && <span className="game__variant">{VARIANT_TEXT.powers.name}</span>}
         </div>
         <div className="game__right">
           <AnimatePresence>
@@ -138,7 +163,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         )}
       </AnimatePresence>
 
-      <main className={`game__body ${q.media ? "has-media" : ""}`}>
+      <main className={`game__body ${q.media ? "has-media" : ""} ${fxOn && fx ? `fx-${fx.p}` : ""}`}>
         <section className="game__main">
           <AnimatePresence mode="wait">
             <motion.div
@@ -183,52 +208,79 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             </motion.div>
           </AnimatePresence>
 
-          <ol className="opts" aria-label={t("Opciones")}>
-            {snap.order.map((orig, i) => {
-              const isCorrect = reveal && reveal.correct === i;
-              const isMine = myPick === i || (mine && mine.choice === i);
-              const state = reveal ? (isCorrect ? "correct" : isMine ? "wrong" : "dim") : isMine ? "picked" : "idle";
-              const who = reveal ? online.filter((p) => reveal.picks[p.id]?.choice === i && p.id !== client.me.id) : [];
-              return (
-                <li key={`${key}-${i}`}>
-                  <motion.button
-                    type="button"
-                    className={`opt opt--${state}`}
-                    onClick={() => answer(i)}
-                    disabled={snap.phase !== "question" || myPick != null}
-                    aria-pressed={isMine || undefined}
-                    initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, rotate: i % 2 ? 1.5 : -1.5 }}
-                    animate={
-                      state === "wrong" && !reduce
-                        ? { opacity: 1, y: 0, rotate: 0, x: [0, -12, 10, -7, 5, 0] }
-                        : state === "correct" && !reduce
-                          ? { opacity: 1, y: 0, rotate: 0, scale: [1, 1.05, 1] }
-                          : { opacity: 1, y: 0, rotate: 0 }
-                    }
-                    transition={state === "wrong" || state === "correct" ? { duration: 0.42 } : { delay: 0.12 + 0.06 * i, type: "spring", stiffness: 420, damping: 26 }}
-                    whileTap={snap.phase === "question" && myPick == null ? { scale: 0.96 } : undefined}
-                  >
-                    <span className="opt__letter" aria-hidden>
-                      {LETTERS[i]}
-                    </span>
-                    <span className="opt__text">{q.o[orig]}</span>
-                    {state === "correct" && <Stamp ok />}
-                    {state === "wrong" && <Stamp />}
-                    {who.length > 0 && (
-                      <span className="opt__who" aria-label={t("Eligieron: {list}", { list: who.map((p) => p.name).join(", ") })}>
-                        {who.slice(0, 5).map((p) => (
-                          <Avatar key={p.id} animal={p.seal} size={26} />
-                        ))}
-                        {who.length > 5 && <span>+{who.length - 5}</span>}
+          <div className="opts-wrap">
+            <ol className="opts" aria-label={t("Opciones")}>
+              {snap.order.map((orig, i) => {
+                const isCorrect = reveal && reveal.correct === i;
+                const isMine = myPick === i || (mine && mine.choice === i);
+                const isCut = cut.includes(i);
+                const state = reveal ? (isCorrect ? "correct" : isMine ? "wrong" : "dim") : isMine ? "picked" : isCut ? "cut" : "idle";
+                const who = reveal ? online.filter((p) => reveal.picks[p.id]?.choice === i && p.id !== client.me.id) : [];
+                return (
+                  <li key={`${key}-${i}`} style={shuffled ? { order: shuffled[i] } : undefined}>
+                    <motion.button
+                      type="button"
+                      className={`opt opt--${state}`}
+                      onClick={() => answer(i)}
+                      disabled={snap.phase !== "question" || myPick != null || isCut || inked}
+                      aria-pressed={isMine || undefined}
+                      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, rotate: i % 2 ? 1.5 : -1.5 }}
+                      animate={
+                        state === "wrong" && !reduce
+                          ? { opacity: 1, y: 0, rotate: 0, x: [0, -12, 10, -7, 5, 0] }
+                          : state === "correct" && !reduce
+                            ? { opacity: 1, y: 0, rotate: 0, scale: [1, 1.05, 1] }
+                            : { opacity: 1, y: 0, rotate: 0 }
+                      }
+                      transition={state === "wrong" || state === "correct" ? { duration: 0.42 } : { delay: 0.12 + 0.06 * i, type: "spring", stiffness: 420, damping: 26 }}
+                      whileTap={snap.phase === "question" && myPick == null ? { scale: 0.96 } : undefined}
+                    >
+                      <span className="opt__letter" aria-hidden>
+                        {LETTERS[i]}
                       </span>
-                    )}
-                  </motion.button>
-                </li>
-              );
-            })}
-          </ol>
+                      <span className="opt__text">{fxOn && fx?.p === "scramble" && !reveal ? jumble(q.o[orig]) : q.o[orig]}</span>
+                      {state === "correct" && <Stamp ok />}
+                      {state === "wrong" && <Stamp />}
+                      {who.length > 0 && (
+                        <span className="opt__who" aria-label={t("Eligieron: {list}", { list: who.map((p) => p.name).join(", ") })}>
+                          {who.slice(0, 5).map((p) => (
+                            <Avatar key={p.id} animal={p.seal} size={26} />
+                          ))}
+                          {who.length > 5 && <span>+{who.length - 5}</span>}
+                        </span>
+                      )}
+                    </motion.button>
+                  </li>
+                );
+              })}
+            </ol>
+            <AnimatePresence>
+              {inked && fx && (
+                <motion.div key="ink" className="ink" role="status" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <span className="ink__text">
+                    {POWER_ICON.ink} {POWER_LINES.inked(nameOf(fx.by))}
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {snap.variant === "powers" && me && snap.phase !== "reveal" && (
+            <PowerBar
+              hand={me.powers ?? []}
+              used={used?.p}
+              closed={snap.phase !== "question" || myPick != null}
+              spent={!!used}
+              onUse={(p) => client.power(snap.index, p)}
+            />
+          )}
 
           <div className="game__status" aria-live="polite">
+            {fxOn && fx && fx.p !== "ink" && fx.p !== "scare" && (
+              <p className="game__fx">
+                {POWER_ICON[fx.p]} {POWER_LINES.fx(fx.p, nameOf(fx.by))}
+              </p>
+            )}
             {snap.phase === "loading" && q.media && (
               <p>{snap.mode === "group" ? t("Preparando el video en todos los celulares ({a}/{b})…", { a: snap.mediaReady.length, b: online.length }) : t("Preparando el video…")}</p>
             )}
@@ -239,7 +291,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             )}
           </div>
 
-          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} />}</AnimatePresence>
+          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf)} />}</AnimatePresence>
 
           {reveal && (
             <div className="game__next">
@@ -268,6 +320,15 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           <StreakBanner key={`streak-${key}`} streak={mine.streak} />
         )}
       </AnimatePresence>
+
+      {/* con screamer se monta antes, escondido, para que el video ya esté cargado cuando toque */}
+      {fxPending && fx?.p === "scare" && fx.clip ? (
+        <ScareClip key={`clip-${key}`} clip={fx.clip} at={fxFrom} until={fxUntil} who={nameOf(fx.by)} />
+      ) : (
+        <AnimatePresence>{fxOn && fx?.p === "scare" && <Scare key={`scare-${key}`} who={nameOf(fx.by)} />}</AnimatePresence>
+      )}
+      {fxOn && fx?.p === "dark" && <Blackout />}
+      {fxOn && fx?.p === "party" && <Party key={`party-${key}`} />}
 
       <AnimatePresence>
         {confirmExit && (
@@ -321,17 +382,268 @@ function Flame() {
   );
 }
 
+/** Trabalenguas: cada palabra con sus letras revueltas (siempre igual para la misma palabra) */
+function jumble(text: string) {
+  return text.replace(/\p{L}{3,}/gu, (w) => {
+    let h = 0;
+    for (const ch of w) h = Math.imul(h ^ ch.codePointAt(0)!, 2654435761) >>> 0;
+    const out = shuffle([...w], rng(h || 1)).join("");
+    return out === w ? [...w].reverse().join("") : out;
+  });
+}
+
+/** Fiesta: lluvia de confeti y globos con corneta */
+const PARTY = Array.from({ length: 36 }, (_, i) => ({
+  e: ["🎉", "🎊", "🎈", "🥳", "🪅", "🎂"][i % 6],
+  x: (i * 29) % 100,
+  d: 1.6 + ((i * 7) % 10) / 6,
+  delay: ((i * 13) % 20) / 10,
+  s: 28 + ((i * 11) % 36),
+}));
+function Party() {
+  useEffect(() => {
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new Ctx();
+      const t = ctx.currentTime;
+      for (const [i, f] of [440, 554, 660].entries()) {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "square";
+        o.frequency.setValueAtTime(f, t + i * 0.18);
+        o.frequency.linearRampToValueAtTime(f * 1.06, t + i * 0.18 + 0.15);
+        g.gain.setValueAtTime(0.0001, t + i * 0.18);
+        g.gain.exponentialRampToValueAtTime(0.12, t + i * 0.18 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.18 + 0.3);
+        o.connect(g).connect(ctx.destination);
+        o.start(t + i * 0.18);
+        o.stop(t + i * 0.18 + 0.32);
+      }
+      setTimeout(() => ctx.close(), 1200);
+    } catch {
+      /* sin audio */
+    }
+  }, []);
+  return (
+    <div className="party" aria-hidden>
+      {PARTY.map((p, i) => (
+        <span key={i} style={{ left: `${p.x}%`, fontSize: p.s, animationDuration: `${p.d}s`, animationDelay: `${p.delay}s` }}>
+          {p.e}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/** Apagón: todo negro menos el círculo de la linterna, que sigue al dedo o al mouse */
+function Blackout() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const move = (e: PointerEvent) => {
+      ref.current?.style.setProperty("--x", `${e.clientX}px`);
+      ref.current?.style.setProperty("--y", `${e.clientY}px`);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerdown", move);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerdown", move);
+    };
+  }, []);
+  return <div ref={ref} className="blackout" aria-hidden />;
+}
+
+/**
+ * Susto con screamer: el video de YouTube se carga escondido apenas llega el poder y salta a pantalla completa
+ * con sonido en el momento `at`. Si no alcanzó a cargar o YouTube falla, sale el susto propio.
+ */
+function ScareClip({ clip, at, until, who }: { clip: string; at: number; until: number; who: string }) {
+  const host = useRef<HTMLDivElement>(null);
+  const [stage, setStage] = useState<"wait" | "show" | "fallback" | "done">("wait");
+  const player = useRef<YTPlayer | null>(null);
+  const ready = useRef(false);
+  useEffect(() => {
+    const v = videoFor(clip);
+    const ids = v ? [v.id, ...(v.alt ?? []).map((a) => a.id)] : [];
+    let dead = false;
+    let attempt = 0;
+    const mount = (YT: YTNamespace) => {
+      if (dead || !host.current || attempt >= ids.length) return;
+      host.current.innerHTML = "";
+      const el = document.createElement("div");
+      host.current.appendChild(el);
+      player.current = new YT.Player(el, {
+        videoId: ids[attempt],
+        width: "100%",
+        height: "100%",
+        playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, rel: 0, origin: window.location.origin },
+        events: {
+          onReady: () => {
+            ready.current = true;
+          },
+          onError: () => {
+            ready.current = false;
+            attempt++;
+            mount(YT);
+          },
+        },
+      });
+    };
+    if (ids.length) loadYouTube().then(mount, () => undefined);
+    const go = setTimeout(() => {
+      if (dead) return;
+      const p = player.current;
+      if (!ready.current || !p) return setStage("fallback");
+      try {
+        p.unMute();
+        p.setVolume(100);
+        p.seekTo(0, true);
+        p.playVideo();
+        setStage("show");
+      } catch {
+        setStage("fallback");
+      }
+    }, Math.max(0, at - Date.now()));
+    const end = setTimeout(() => setStage("done"), Math.max(0, until - Date.now()));
+    return () => {
+      dead = true;
+      clearTimeout(go);
+      clearTimeout(end);
+      try {
+        player.current?.destroy();
+      } catch {
+        /* ya no existe */
+      }
+    };
+  }, [clip, at, until]);
+  return (
+    <>
+      <div className={`scare-clip ${stage === "show" ? "is-on" : ""}`} aria-hidden={stage !== "show"}>
+        <div ref={host} className="scare-clip__video" />
+        {stage === "show" && <span className="scare__who scare-clip__who">{POWER_LINES.scare(who)}</span>}
+      </div>
+      <AnimatePresence>{stage === "fallback" && <Scare key="fallback" who={who} />}</AnimatePresence>
+    </>
+  );
+}
+
+/** Susto: la pantalla se va a negro, sale la cara y suena un chillido corto */
+function Scare({ who }: { who: string }) {
+  const reduce = useReducedMotion();
+  useEffect(() => {
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new Ctx();
+      const t = ctx.currentTime;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.35, t + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+      gain.connect(ctx.destination);
+      for (const [type, f0, f1] of [["sawtooth", 180, 1400], ["square", 230, 1100]] as const) {
+        const o = ctx.createOscillator();
+        o.type = type;
+        o.frequency.setValueAtTime(f0, t);
+        o.frequency.exponentialRampToValueAtTime(f1, t + 0.25);
+        o.frequency.exponentialRampToValueAtTime(f0 * 2, t + 0.9);
+        o.connect(gain);
+        o.start(t);
+        o.stop(t + 0.95);
+      }
+      setTimeout(() => ctx.close(), 1200);
+    } catch {
+      /* sin audio: queda el susto visual */
+    }
+    navigator.vibrate?.([120, 60, 220]);
+  }, []);
+  return (
+    <motion.div className="scare" role="alert" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.25 } }} transition={{ duration: 0.04 }}>
+      <motion.span
+        className="scare__face"
+        aria-hidden
+        initial={{ scale: 0.3 }}
+        animate={reduce ? { scale: 1 } : { scale: [0.3, 1.25, 1.1], x: [0, -18, 14, -10, 8, 0], rotate: [0, -6, 5, -3, 0] }}
+        transition={{ duration: 0.45 }}
+      >
+        👹
+      </motion.span>
+      <span className="scare__word">¡BU!</span>
+      <span className="scare__who">{POWER_LINES.scare(who)}</span>
+    </motion.div>
+  );
+}
+
+/** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
+function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; onUse: (p: PowerId) => void }) {
+  return (
+    <section className="powers" aria-label={POWER_LINES.label}>
+      <p className="powers__label">
+        <span aria-hidden>⚡</span> {used ? POWER_LINES.used(POWER_TEXT[used].name) : POWER_LINES.label}
+      </p>
+      {hand.length === 0 && !used && <p className="powers__empty">{POWER_LINES.empty}</p>}
+      <ul className="powers__hand">
+        {hand.map((p, i) => {
+          // el Bloque ? se puede abrir aunque ya hayas usado otro
+          const disabled = closed || (spent && p !== "mystery");
+          return (
+            <li key={`${p}-${i}`}>
+              <motion.button
+                type="button"
+                className="power"
+                onClick={() => onUse(p)}
+                disabled={disabled}
+                title={POWER_TEXT[p].desc}
+                aria-label={`${POWER_TEXT[p].name}: ${POWER_TEXT[p].desc}`}
+                initial={{ scale: 0.6, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileTap={disabled ? undefined : { scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 520, damping: 22 }}
+              >
+                <span className="power__icon" aria-hidden>
+                  {POWER_ICON[p]}
+                </span>
+                <span className="power__name">{POWER_TEXT[p].name}</span>
+                <span className="power__desc">{POWER_TEXT[p].desc}</span>
+              </motion.button>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+/** lo que pasó con los poderes en esta pregunta, en frases cortas para el veredicto */
+function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): string[] {
+  const out: string[] = [];
+  if (pick.power === "double" && pick.bonus) out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
+  if (pick.power === "dice" && pick.roll) out.push(`${POWER_ICON.dice} ${POWER_LINES.dice(pick.roll, pick.bonus ?? 0)}`);
+  if (pick.power === "mushroom" && pick.bonus) out.push(`${POWER_ICON.mushroom} ${POWER_LINES.mushroom(pick.bonus)}`);
+  if (pick.power === "star" && pick.bonus) out.push(`${POWER_ICON.star} ${POWER_LINES.star}`);
+  if (pick.shielded) out.push(POWER_LINES.shielded);
+  for (const d of pick.dealt ?? []) out.push(d.p === "swapScore" ? POWER_LINES.swappedUp(nameOf(d.to), d.pts) : POWER_LINES.dealt(d.p, nameOf(d.to), d.pts));
+  for (const h of pick.hits ?? [])
+    out.push(h.p === "swapScore" ? POWER_LINES.swappedDown(nameOf(h.by), h.pts) : h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
+  for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(b.p, nameOf(b.by), b.with));
+  if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${(pick.consolation ? POWER_LINES.consolation : POWER_LINES.earned)(POWER_TEXT[pick.earned].name)}`);
+  return out;
+}
+
 /** veredicto: la onomatopeya entra de golpe sobre líneas de concentración */
-function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number; choice: number | null; excused?: boolean } }) {
+function Verdict({ pick, notes = [] }: { pick: Pick; notes?: string[] }) {
   const reduce = useReducedMotion();
   const word = t(pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!");
   const sub = pick.ok
     ? t("+{n} puntos", { n: fmt(pick.gained) }) + (pick.streak >= 2 ? ` · ${t("racha de {n}", { n: pick.streak })} (×${multiplier(pick.streak).toLocaleString(locale())})` : "")
     : pick.excused
       ? t("El video no cargó en tu celular: tu racha se mantiene.")
-      : pick.choice == null
-        ? t("No respondiste a tiempo. La racha vuelve a cero.")
-        : t("La racha vuelve a cero.");
+      : pick.shielded
+        ? pick.choice == null
+          ? t("No respondiste a tiempo.")
+          : t("Esta no era.")
+        : pick.choice == null
+          ? t("No respondiste a tiempo. La racha vuelve a cero.")
+          : t("La racha vuelve a cero.");
   return (
     <motion.div
       className={`verdict ${pick.ok ? "is-ok" : "is-bad"}`}
@@ -344,6 +656,11 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
       <FocusLines className="verdict__lines" />
       <span className="verdict__word">{word}</span>
       <span className="verdict__sub">{sub}</span>
+      {notes.slice(0, 4).map((n) => (
+        <span key={n} className="verdict__power">
+          {n}
+        </span>
+      ))}
     </motion.div>
   );
 }
@@ -433,7 +750,7 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
             <span className="strip__name">{p.id === me ? t("Tú") : p.name}</span>
             <span className="strip__pts">
               {fmt(p.score)}
-              {pick && <span className={`strip__delta ${pick.ok ? "is-ok" : ""}`}>{pick.ok ? `+${pick.gained}` : "+0"}</span>}
+              {pick && <span className={`strip__delta ${pick.gained > 0 ? "is-ok" : ""}`}>{signed(pick.gained)}</span>}
             </span>
           </motion.li>
         );
@@ -441,6 +758,9 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
     </ol>
   );
 }
+
+/** +150, −100 o 0: en modo Poderes también se pueden perder puntos */
+const signed = (n: number) => (n > 0 ? `+${fmt(n)}` : n < 0 ? `−${fmt(-n)}` : "0");
 
 function Board({ snap, me }: { snap: Snapshot; me: string }) {
   const sorted = useMemo(() => [...snap.players].sort((a, b) => b.score - a.score), [snap.players]);
@@ -455,9 +775,7 @@ function Board({ snap, me }: { snap: Snapshot; me: string }) {
             <span className="board__name">{p.name}</span>
             {snap.phase === "question" && snap.answered.includes(p.id) && <span className="board__done" aria-label={t("Respondió")}>✓</span>}
             {snap.phase === "reveal" && snap.reveal?.picks[p.id] && (
-              <span className={`board__delta ${snap.reveal.picks[p.id].ok ? "is-ok" : ""}`}>
-                {snap.reveal.picks[p.id].ok ? `+${snap.reveal.picks[p.id].gained}` : "0"}
-              </span>
+              <span className={`board__delta ${snap.reveal.picks[p.id].gained > 0 ? "is-ok" : ""}`}>{signed(snap.reveal.picks[p.id].gained)}</span>
             )}
             <span className="board__pts">{fmt(p.score)}</span>
           </motion.li>

@@ -18,6 +18,8 @@ import ChatDock from "../components/ChatDock";
 import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
+import VariantPicker from "../components/VariantPicker";
+import { VARIANT_TEXT } from "../game/powers";
 import "./room.css";
 import { t } from "../i18n";
 
@@ -217,6 +219,13 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
               )}
             </AnimatePresence>
           </div>
+          {client.isHost ? (
+            <VariantPicker idp="lobby" value={snap.variant} onChange={(v) => client.setVariant(v)} disabled={spinShown} />
+          ) : (
+            <p className="lobby__variant">
+              <span className="label">Modo</span> {VARIANT_TEXT[snap.variant].name} · {VARIANT_TEXT[snap.variant].desc}
+            </p>
+          )}
           {client.isHost && (
             <>
               <button type="button" className="btn lobby__choose" onClick={() => setChoosing(true)} disabled={spinShown}>
