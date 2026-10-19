@@ -33,8 +33,8 @@ interface Props {
 const START_TIMEOUT = 30_000;
 
 /** del primer vistazo (se ven formas y colores, no detalles) a casi nítido justo antes de que se acabe el tiempo */
-const BLUR_FROM = "blur(9px) saturate(0.75)";
-const BLUR_TO = "blur(2.5px) saturate(1)";
+const BLUR_FROM = "blur(5px) saturate(0.9)";
+const BLUR_TO = "blur(1.5px) saturate(1)";
 
 export default function MediaStage({ media, videos, revealed, seconds = 20, onPlaying, onError, onVideo }: Props) {
   const host = useRef<HTMLDivElement>(null);
