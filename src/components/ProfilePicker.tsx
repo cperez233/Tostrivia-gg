@@ -3,6 +3,7 @@ import { useId } from "react";
 import { motion } from "framer-motion";
 import { ANIMALS, Avatar } from "./Avatar";
 import { saveProfile } from "../lib/identity";
+import { t } from "../i18n";
 
 interface Props {
   value: { name: string; seal: number };
@@ -18,13 +19,13 @@ export default function ProfilePicker({ value, onChange }: Props) {
   return (
     <div className="profile">
       <div className="field">
-        <label htmlFor={`${id}-name`}>Tu nombre</label>
+        <label htmlFor={`${id}-name`}>{t("Tu nombre")}</label>
         <input
           id={`${id}-name`}
           className="input"
           value={value.name}
           onChange={(e) => set({ ...value, name: e.target.value.slice(0, 18) })}
-          placeholder="Ej. Kakarot_23"
+          placeholder={t("Ej. Kakarot_23")}
           autoComplete="nickname"
           maxLength={18}
           enterKeyHint="done"
@@ -32,7 +33,7 @@ export default function ProfilePicker({ value, onChange }: Props) {
       </div>
       <fieldset className="profile__animals">
         <legend>
-          Tu animal <span className="profile__chosen">{ANIMALS[value.seal]?.name}</span>
+          {t("Tu animal")} <span className="profile__chosen">{ANIMALS[value.seal]?.name}</span>
         </legend>
         <div className="profile__grid">
           {ANIMALS.map((a, i) => {

@@ -16,6 +16,7 @@ import RollingNumber from "../components/RollingNumber";
 import Ceremony from "./Ceremony";
 import "./game.css";
 import "./ceremony.css";
+import { localizeQuestion, locale, t } from "../i18n";
 
 const LETTERS = ["A", "B", "C", "D"];
 const DIFF = { 1: "Fácil", 2: "Media", 3: "Difícil" } as const;
@@ -28,7 +29,7 @@ interface Props {
 }
 
 export default function GameScreen({ client, snap, at, onExit }: Props) {
-  const q = snap.qid ? BANK.byId[snap.qid] : null;
+  const q = snap.qid && BANK.byId[snap.qid] ? localizeQuestion(BANK.byId[snap.qid]) : null;
   const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const reduce = useReducedMotion();
   const me = snap.players.find((p) => p.id === client.me.id);
@@ -88,11 +89,11 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   return (
     <div className="game">
       <header className="game__top">
-        <button type="button" className="game__exit" onClick={() => setConfirmExit(true)} aria-label="Salir de la partida">
+        <button type="button" className="game__exit" onClick={() => setConfirmExit(true)} aria-label={t("Salir de la partida")}>
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
             <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
           </svg>
-          <span>Salir</span>
+          <span>{t("Salir")}</span>
         </button>
         <div className="game__cat">
           <span className="game__cat-img">
@@ -110,16 +111,16 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.4, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 600, damping: 20 }}
-                aria-label={`Racha de ${me.streak}`}
+                aria-label={t("Racha de {n}", { n: me.streak })}
               >
                 <Flame />
                 {me.streak}
               </motion.span>
             )}
           </AnimatePresence>
-          <div className="game__score" aria-label={`Puntaje ${me?.score ?? 0}`}>
+          <div className="game__score" aria-label={t("Puntaje {n}", { n: me?.score ?? 0 })}>
             <RollingNumber value={me?.score ?? 0} />
-            <span className="game__score-unit">pts</span>
+            <span className="game__score-unit">{t("pts")}</span>
           </div>
         </div>
       </header>
@@ -132,7 +133,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
       <AnimatePresence>
         {snap.notice && (
           <motion.p className="game__notice" role="status" initial={{ y: -12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ opacity: 0 }}>
-            {snap.notice}
+            {t(snap.notice)}
           </motion.p>
         )}
       </AnimatePresence>
@@ -150,16 +151,16 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             >
               <div className="qpanel__meta">
                 <span className="qpanel__n">
-                  Pregunta {snap.index + 1}
-                  <span className="qpanel__of"> de {snap.ids.length}</span>
+                  {t("Pregunta {n}", { n: snap.index + 1 })}
+                  <span className="qpanel__of"> {t("de {n}", { n: snap.ids.length })}</span>
                 </span>
-                <span className="qpanel__diff" aria-label={`Dificultad ${DIFF[q.d]}`}>
+                <span className="qpanel__diff" aria-label={t("Dificultad {d}", { d: t(DIFF[q.d]) })}>
                   {[1, 2, 3].map((d) => (
                     <i key={d} className={d <= q.d ? "on" : ""} />
                   ))}
-                  {DIFF[q.d]}
+                  {t(DIFF[q.d])}
                 </span>
-                {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && <span className="qpanel__from">De {CATEGORY_BY_ID[q.cat].name}</span>}
+                {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && <span className="qpanel__from">{t("De {c}", { c: CATEGORY_BY_ID[q.cat].name })}</span>}
               </div>
               <h1 className="qpanel__q">{q.q}</h1>
 
@@ -176,13 +177,13 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
               )}
               {q.media && snap.phase === "reveal" && shown && (
                 <p className="qpanel__source">
-                  Sonó: <b>{shown.title}</b> <span className="muted">· {shown.channel}</span>
+                  {t("Sonó:")} <b>{shown.title}</b> <span className="muted">· {shown.channel}</span>
                 </p>
               )}
             </motion.div>
           </AnimatePresence>
 
-          <ol className="opts" aria-label="Opciones">
+          <ol className="opts" aria-label={t("Opciones")}>
             {snap.order.map((orig, i) => {
               const isCorrect = reveal && reveal.correct === i;
               const isMine = myPick === i || (mine && mine.choice === i);
@@ -214,7 +215,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                     {state === "correct" && <Stamp ok />}
                     {state === "wrong" && <Stamp />}
                     {who.length > 0 && (
-                      <span className="opt__who" aria-label={`Eligieron: ${who.map((p) => p.name).join(", ")}`}>
+                      <span className="opt__who" aria-label={t("Eligieron: {list}", { list: who.map((p) => p.name).join(", ") })}>
                         {who.slice(0, 5).map((p) => (
                           <Avatar key={p.id} animal={p.seal} size={26} />
                         ))}
@@ -229,11 +230,11 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
 
           <div className="game__status" aria-live="polite">
             {snap.phase === "loading" && q.media && (
-              <p>{snap.mode === "group" ? `Preparando el video en todos los celulares (${snap.mediaReady.length}/${online.length})…` : "Preparando el video…"}</p>
+              <p>{snap.mode === "group" ? t("Preparando el video en todos los celulares ({a}/{b})…", { a: snap.mediaReady.length, b: online.length }) : t("Preparando el video…")}</p>
             )}
             {snap.phase === "question" && myPick != null && snap.mode === "group" && (
               <p>
-                Respondiste. Faltan {Math.max(0, online.length - answeredCount)} de {online.length}.
+                {t("Respondiste. Faltan {a} de {b}.", { a: Math.max(0, online.length - answeredCount), b: online.length })}
               </p>
             )}
           </div>
@@ -244,11 +245,11 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <div className="game__next">
               {client.isHost ? (
                 <button type="button" className="btn btn--hanko" onClick={() => client.next()} autoFocus>
-                  {snap.index + 1 >= snap.ids.length ? "Ver resultado" : "Siguiente pregunta"}
+                  {snap.index + 1 >= snap.ids.length ? t("Ver resultado") : t("Siguiente pregunta")}
                   <Arrow />
                 </button>
               ) : (
-                <p className="muted">El anfitrión pasa a la siguiente en unos segundos…</p>
+                <p className="muted">{t("El anfitrión pasa a la siguiente en unos segundos…")}</p>
               )}
             </div>
           )}
@@ -272,14 +273,14 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         {confirmExit && (
           <motion.div className="dialog" role="dialog" aria-modal="true" aria-labelledby="exit-t" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <motion.div className="dialog__card panel" initial={{ y: 30, rotate: -1 }} animate={{ y: 0, rotate: 0 }}>
-              <h2 id="exit-t">¿Salir de la partida?</h2>
-              <p>{client.isHost && snap.mode === "group" ? "Eres el anfitrión: si sales, la sala se cierra para todos." : "Se pierde el puntaje de esta ronda."}</p>
+              <h2 id="exit-t">{t("¿Salir de la partida?")}</h2>
+              <p>{client.isHost && snap.mode === "group" ? t("Eres el anfitrión: si sales, la sala se cierra para todos.") : t("Se pierde el puntaje de esta ronda.")}</p>
               <div className="dialog__actions">
                 <button type="button" className="btn" onClick={() => setConfirmExit(false)} autoFocus>
-                  Seguir jugando
+                  {t("Seguir jugando")}
                 </button>
                 <button type="button" className="btn" onClick={onExit}>
-                  Salir
+                  {t("Salir")}
                 </button>
               </div>
             </motion.div>
@@ -305,9 +306,9 @@ function Stamp({ ok }: { ok?: boolean }) {
       initial={{ scale: 1.8, opacity: 0, rotate: -18 }}
       animate={{ scale: 1, opacity: 1, rotate: -8 }}
       transition={{ type: "spring", stiffness: 520, damping: 18 }}
-      aria-label={ok ? "Correcta" : "Tu respuesta, incorrecta"}
+      aria-label={ok ? t("Correcta") : t("Tu respuesta, incorrecta")}
     >
-      {ok ? "Correcta" : "✕"}
+      {ok ? t("Correcta") : "✕"}
     </motion.span>
   );
 }
@@ -323,14 +324,14 @@ function Flame() {
 /** veredicto: la onomatopeya entra de golpe sobre líneas de concentración */
 function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number; choice: number | null; excused?: boolean } }) {
   const reduce = useReducedMotion();
-  const word = pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!";
+  const word = t(pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!");
   const sub = pick.ok
-    ? `+${fmt(pick.gained)} puntos${pick.streak >= 2 ? ` · racha de ${pick.streak} (×${String(multiplier(pick.streak)).replace(".", ",")})` : ""}`
+    ? t("+{n} puntos", { n: fmt(pick.gained) }) + (pick.streak >= 2 ? ` · ${t("racha de {n}", { n: pick.streak })} (×${multiplier(pick.streak).toLocaleString(locale())})` : "")
     : pick.excused
-      ? "El video no cargó en tu celular: tu racha se mantiene."
+      ? t("El video no cargó en tu celular: tu racha se mantiene.")
       : pick.choice == null
-        ? "No respondiste a tiempo. La racha vuelve a cero."
-        : "La racha vuelve a cero.";
+        ? t("No respondiste a tiempo. La racha vuelve a cero.")
+        : t("La racha vuelve a cero.");
   return (
     <motion.div
       className={`verdict ${pick.ok ? "is-ok" : "is-bad"}`}
@@ -350,7 +351,7 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
 /** cuando la racha sube el multiplicador, una franja cruza la pantalla */
 function StreakBanner({ streak }: { streak: number }) {
   const reduce = useReducedMotion();
-  const text = streak >= 10 ? "¡Diez seguidas!" : streak >= 8 ? "¡Racha ×3!" : streak >= 5 ? "¡Racha ×2!" : "¡Racha ×1,5!";
+  const text = t(streak >= 10 ? "¡Diez seguidas!" : streak >= 8 ? "¡Racha ×3!" : streak >= 5 ? "¡Racha ×2!" : "¡Racha ×1,5!");
   if (reduce) return null;
   return (
     <motion.div
@@ -387,7 +388,7 @@ function Timer({ running, done, deadline, duration }: { running: boolean; done: 
   }, [running, deadline, duration]);
   const urgent = running && secs <= 5;
   return (
-    <div className={`timer ${urgent ? "is-urgent" : ""} ${done ? "is-done" : ""} ${!running && !done ? "is-waiting" : ""}`} role="timer" aria-label={`${secs} segundos`}>
+    <div className={`timer ${urgent ? "is-urgent" : ""} ${done ? "is-done" : ""} ${!running && !done ? "is-waiting" : ""}`} role="timer" aria-label={t("{n} segundos", { n: secs })}>
       <div className="timer__track">
         <div className="timer__bar" ref={bar} />
       </div>
@@ -402,7 +403,7 @@ function Progress({ snap, me }: { snap: Snapshot; me: string }) {
   if (snap.phase === "reveal" && snap.reveal) hist.current[snap.index] = snap.reveal.picks[me]?.ok ? "ok" : "bad";
   if (snap.index === 0 && snap.phase !== "reveal") hist.current = {};
   return (
-    <ol className="progress" aria-label={`Pregunta ${snap.index + 1} de ${snap.ids.length}`}>
+    <ol className="progress" aria-label={t("Pregunta {a} de {b}", { a: snap.index + 1, b: snap.ids.length })}>
       {snap.ids.map((_, i) => (
         <li key={i} className={`${hist.current[i] ?? ""} ${i === snap.index ? "is-now" : ""}`} />
       ))}
@@ -414,7 +415,7 @@ function Progress({ snap, me }: { snap: Snapshot; me: string }) {
 function Strip({ snap, me }: { snap: Snapshot; me: string }) {
   const sorted = useMemo(() => [...snap.players].filter((p) => p.online || p.score > 0).sort((a, b) => b.score - a.score), [snap.players]);
   return (
-    <ol className="strip" aria-label="Marcador en vivo">
+    <ol className="strip" aria-label={t("Marcador en vivo")}>
       {sorted.map((p, i) => {
         const pick = snap.phase === "reveal" ? snap.reveal?.picks[p.id] : undefined;
         const done = snap.phase === "question" && snap.answered.includes(p.id);
@@ -424,12 +425,12 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
             <span className="strip__face">
               <Avatar animal={p.seal} size={26} />
               {done && (
-                <span className="strip__check" aria-label="Respondió">
+                <span className="strip__check" aria-label={t("Respondió")}>
                   ✓
                 </span>
               )}
             </span>
-            <span className="strip__name">{p.id === me ? "Tú" : p.name}</span>
+            <span className="strip__name">{p.id === me ? t("Tú") : p.name}</span>
             <span className="strip__pts">
               {fmt(p.score)}
               {pick && <span className={`strip__delta ${pick.ok ? "is-ok" : ""}`}>{pick.ok ? `+${pick.gained}` : "+0"}</span>}
@@ -444,15 +445,15 @@ function Strip({ snap, me }: { snap: Snapshot; me: string }) {
 function Board({ snap, me }: { snap: Snapshot; me: string }) {
   const sorted = useMemo(() => [...snap.players].sort((a, b) => b.score - a.score), [snap.players]);
   return (
-    <aside className="board" aria-label="Marcador">
-      <p className="label">Marcador</p>
+    <aside className="board" aria-label={t("Marcador")}>
+      <p className="label">{t("Marcador")}</p>
       <ol>
         {sorted.map((p, i) => (
           <motion.li layout key={p.id} className={`${p.id === me ? "is-me" : ""} ${p.online ? "" : "is-off"}`} transition={{ type: "spring", stiffness: 400, damping: 34 }}>
             <span className="board__rank">{i + 1}</span>
             <Avatar animal={p.seal} size={34} />
             <span className="board__name">{p.name}</span>
-            {snap.phase === "question" && snap.answered.includes(p.id) && <span className="board__done" aria-label="Respondió">✓</span>}
+            {snap.phase === "question" && snap.answered.includes(p.id) && <span className="board__done" aria-label={t("Respondió")}>✓</span>}
             {snap.phase === "reveal" && snap.reveal?.picks[p.id] && (
               <span className={`board__delta ${snap.reveal.picks[p.id].ok ? "is-ok" : ""}`}>
                 {snap.reveal.picks[p.id].ok ? `+${snap.reveal.picks[p.id].gained}` : "0"}
@@ -493,18 +494,18 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const groupActions = client.isHost ? (
     <>
       <button type="button" className="btn btn--hanko" onClick={again}>
-        Jugar otra
+        {t("Jugar otra")}
       </button>
       <button type="button" className="btn" onClick={() => client.backToLobby()}>
-        Cambiar categoría
+        {t("Cambiar categoría")}
       </button>
     </>
   ) : (
-    <p className="final__wait">Esperando a que el anfitrión arranque otra…</p>
+    <p className="final__wait">{t("Esperando a que el anfitrión arranque otra…")}</p>
   );
 
   const share = async () => {
-    const text = `Hice ${fmt(me?.score ?? 0)} puntos en ${cat?.name} en Tostrivia (${correct}/${total}, mejor racha ${me?.best ?? 0}). ¿Me ganas?`;
+    const text = t("Hice {pts} puntos en {cat} en Tostrivia ({ok}/{total}, mejor racha {best}). ¿Me ganas?", { pts: fmt(me?.score ?? 0), cat: cat?.name ?? "", ok: correct, total, best: me?.best ?? 0 });
     const url = `${location.origin}/jugar/${snap.cat}`;
     try {
       if (navigator.share) await navigator.share({ text, url });
@@ -529,7 +530,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
       <FocusLines className="final__lines anim-spin" />
       {pct >= 60 && <Shards />}
       <motion.div className="final__inner wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
-        <p className="final__eyebrow">Fin de la ronda · {cat?.name}</p>
+        <p className="final__eyebrow">{t("Fin de la ronda")} · {cat?.name}</p>
         <div className="final__hero">
           <motion.div
             className="final__seal"
@@ -544,33 +545,33 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
           <div>
             <p className="final__score">
               <RollingNumber value={me?.score ?? 0} />
-              <span>puntos</span>
+              <span>{t("puntos")}</span>
             </p>
           </div>
         </div>
 
         <dl className="final__stats">
           <div>
-            <dt>Aciertos</dt>
+            <dt>{t("Aciertos")}</dt>
             <dd>
               {correct}/{total}
             </dd>
           </div>
           <div>
-            <dt>Mejor racha</dt>
+            <dt>{t("Mejor racha")}</dt>
             <dd>{me?.best ?? 0}</dd>
           </div>
           {snap.mode === "group" && (
             <div>
-              <dt>Puesto</dt>
+              <dt>{t("Puesto")}</dt>
               <dd>
-                {place} de {sorted.length}
+                {t("{a} de {b}", { a: place, b: sorted.length })}
               </dd>
             </div>
           )}
           {snap.replaced > 0 && (
             <div>
-              <dt>Preguntas cambiadas</dt>
+              <dt>{t("Preguntas cambiadas")}</dt>
               <dd>{snap.replaced}</dd>
             </div>
           )}
@@ -581,20 +582,20 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
         <div className="final__actions">
           {client.isHost && snap.mode === "solo" && (
             <button type="button" className="btn btn--hanko" onClick={again}>
-              Otra ronda de {cat?.name}
+              {t("Otra ronda de {c}", { c: cat?.name ?? "" })}
             </button>
           )}
           {snap.mode === "group" && groupActions}
           {snap.mode === "group" && (
             <button type="button" className="btn btn--ghost" onClick={() => setDetails(false)}>
-              Ver el podio
+              {t("Ver el podio")}
             </button>
           )}
           <button type="button" className="btn" onClick={share}>
-            {copied ? "Copiado" : "Compartir resultado"}
+            {copied ? t("Copiado") : t("Compartir resultado")}
           </button>
           <button type="button" className="link final__home" onClick={onExit}>
-            {snap.mode === "group" ? "Salir de la sala" : "Volver a la ruleta"}
+            {snap.mode === "group" ? t("Salir de la sala") : t("Volver a la ruleta")}
           </button>
         </div>
       </motion.div>
@@ -646,7 +647,7 @@ function Podium({ players, me }: { players: Player[]; me: string }) {
           </span>
           <span className="podium__name">{p.name}</span>
           <span className="podium__meta">
-            {p.correct} {p.correct === 1 ? "acierto" : "aciertos"} · racha {p.best}
+            {p.correct} {p.correct === 1 ? t("acierto") : t("aciertos")} · {t("racha")} {p.best}
           </span>
           <span className="podium__pts">{fmt(p.score)}</span>
         </motion.li>

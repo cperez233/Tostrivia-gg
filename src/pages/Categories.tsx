@@ -5,6 +5,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import CategoryBrowser from "../components/CategoryBrowser";
 import "./categories.css";
+import { t } from "../i18n";
 
 export default function Categories({ onPlay }: { onPlay: (cat: string) => void }) {
   const reduce = useReducedMotion();
@@ -12,12 +13,12 @@ export default function Categories({ onPlay }: { onPlay: (cat: string) => void }
     <main className="cats">
       <CategoryBrowser
         idp="cats"
-        verb="Jugar"
+        verb={t("Jugar")}
         onPick={onPlay}
         title={
           <h1 className="cats__title">
             <motion.span initial={reduce ? false : { y: "105%" }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-              Categorías
+              {t("Categorías")}
             </motion.span>
           </h1>
         }

@@ -10,6 +10,7 @@ import { savedProfile } from "../lib/identity";
 import { MAX_PLAYERS } from "../game/match";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import "./group.css";
+import { t } from "../i18n";
 
 /** duraciones sin relación entre sí: los animales nunca se mueven al tiempo (motion-patterns 71) */
 const BOB = [5.3, 6.1, 7.7, 4.9, 8.3, 6.7, 5.9, 7.1, 9.4, 5.6, 6.4, 8.8];
@@ -23,13 +24,13 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
 
   const host = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!profile.name.trim()) return setErr({ host: "Escribe tu nombre para que te reconozcan." });
+    if (!profile.name.trim()) return setErr({ host: t("Escribe tu nombre para que te reconozcan.") });
     onHost(profile.name.trim(), profile.seal);
   };
   const join = (e: React.FormEvent) => {
     e.preventDefault();
     const c = normalizeCode(code);
-    if (c.length !== 5) return setErr({ join: "El código tiene 5 letras o números." });
+    if (c.length !== 5) return setErr({ join: t("El código tiene 5 letras o números.") });
     onJoin(c);
   };
 
@@ -52,10 +53,10 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
         </ul>
         <h1 className="grp__title">
           <motion.span initial={reduce ? false : { y: "105%" }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
-            En grupo
+            {t("En grupo")}
           </motion.span>
         </h1>
-        <p className="grp__sub">Hasta {MAX_PLAYERS} personas, cada una desde su celular. Todos ven la misma pregunta al mismo tiempo.</p>
+        <p className="grp__sub">{t("Hasta {n} personas, cada una desde su celular. Todos ven la misma pregunta al mismo tiempo.", { n: MAX_PLAYERS })}</p>
       </header>
 
       <div className="grp__grid wrap">
@@ -66,7 +67,7 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
           animate={{ y: 0, opacity: 1, rotate: -0.6 }}
           transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.2 }}
         >
-          <h2 className="grp__h">Crear sala</h2>
+          <h2 className="grp__h">{t("Crear sala")}</h2>
           <ProfilePicker value={profile} onChange={(v) => (setProfile(v), setErr({}))} />
           {err.host && (
             <p className="form-err form-err--paper" role="alert">
@@ -74,7 +75,7 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
             </p>
           )}
           <button type="submit" className="btn btn--hanko btn--block">
-            Crear sala
+            {t("Crear sala")}
           </button>
         </motion.form>
 
@@ -85,9 +86,9 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
           animate={{ y: 0, opacity: 1, rotate: 0.6 }}
           transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.3 }}
         >
-          <h2 className="grp__h">Tengo un código</h2>
+          <h2 className="grp__h">{t("Tengo un código")}</h2>
           <div className="field">
-            <label htmlFor="join-code">Código de la sala</label>
+            <label htmlFor="join-code">{t("Código de la sala")}</label>
             <input
               id="join-code"
               className="input input--code"
@@ -108,9 +109,9 @@ export default function Group({ onHost, onJoin }: { onHost: (name: string, seal:
             </p>
           )}
           <button type="submit" className="btn btn--block">
-            Entrar
+            {t("Entrar")}
           </button>
-          <p className="grp__fine">Quien crea la sala te pasa el enlace o el código.</p>
+          <p className="grp__fine">{t("Quien crea la sala te pasa el enlace o el código.")}</p>
         </motion.form>
       </div>
     </main>

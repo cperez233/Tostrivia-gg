@@ -7,6 +7,7 @@
 import { BANK } from "../data/bank";
 import { CATEGORIES, CATEGORY_BY_ID, FAMILY_BY_ID, GROUPS } from "../data/categories";
 import type { Category, GroupId } from "../data/types";
+import { t } from "../i18n";
 
 export type RandomScope = GroupId | "todo";
 
@@ -67,18 +68,18 @@ export function describe(cat: string): CatInfo | null {
   const azar = cat.match(/^azar-(.+)$/);
   if (azar) {
     const g = azar[1] as RandomScope;
-    const name = RANDOM_NAME[g];
-    const group = GROUPS.find((x) => x.id === g)?.name ?? "Todas las categorías";
-    return { cover: { ...first, id: cat, name, mosaic: RANDOM_MOSAIC[g] }, name, short: "Al azar", label: `Al azar · ${group}` };
+    const name = t(RANDOM_NAME[g]);
+    const group = GROUPS.find((x) => x.id === g)?.name ?? t("Todas las categorías");
+    return { cover: { ...first, id: cat, name, mosaic: RANDOM_MOSAIC[g] }, name, short: t("Al azar"), label: `${t("Al azar")} · ${group}` };
   }
   const shorts = parts.map((p) => CATEGORY_BY_ID[p].short);
-  const name = parts.length <= 3 ? shorts.join(" + ") : `Mezcla de ${parts.length} temas`;
+  const name = parts.length <= 3 ? shorts.join(" + ") : t("Mezcla de {n} temas", { n: parts.length });
   // mosaico con las portadas de lo elegido (las de música no tienen póster propio: se saltan)
   const mosaic = parts.filter((p) => !CATEGORY_BY_ID[p].mosaic).slice(0, 4);
   return {
     cover: { ...first, id: cat, name, mosaic: mosaic.length > 1 ? mosaic : undefined },
     name,
-    short: "Mezcla",
-    label: parts.length <= 3 ? "Mezcla" : `Mezcla · ${shorts.slice(0, 3).join(", ")}…`,
+    short: t("Mezcla"),
+    label: parts.length <= 3 ? t("Mezcla") : `${t("Mezcla")} · ${shorts.slice(0, 3).join(", ")}…`,
   };
 }

@@ -3,6 +3,7 @@
  * Los openings van con anime y el OST con juegos. El póster de cada categoría está en src/assets/covers/<id>.webp.
  */
 import type { Category, Family, FamilyId, GroupId } from "./types";
+import { translateFields } from "../i18n";
 
 export const GROUPS: { id: GroupId; name: string }[] = [
   { id: "anime", name: "Anime" },
@@ -156,3 +157,8 @@ export const FAMILY_BY_ID = Object.fromEntries(FAMILIES.map((f) => [f.id, f])) a
 export const categoriesOf = (f: FamilyId) => CATEGORIES.filter((c) => c.family === f);
 export const groupOf = (cat: string): GroupId => FAMILY_BY_ID[CATEGORY_BY_ID[cat].family].group;
 export const familiesOf = (g: GroupId) => FAMILIES.filter((f) => f.group === g);
+
+// los nombres se leen en el idioma de la interfaz (ver src/i18n)
+for (const c of CATEGORIES) translateFields(c, ["name", "short"]);
+for (const f of FAMILIES) translateFields(f, ["name"]);
+for (const g of GROUPS) translateFields(g, ["name"]);

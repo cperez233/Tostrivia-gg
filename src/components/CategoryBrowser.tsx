@@ -10,6 +10,7 @@ import type { Category, GroupId } from "../data/types";
 import { describe, mixId, partsOf, playable, randomId } from "../game/mix";
 import { Cover } from "./Cover";
 import "../pages/categories.css";
+import { t } from "../i18n";
 
 interface Props {
   /** recibe un id de categoría, de "al azar" o de mezcla (src/game/mix.ts) */
@@ -48,7 +49,7 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
     <div className={`browser ${inSheet ? "browser--sheet" : ""}`}>
       <header className="cats__head wrap">
         {title}
-        <div className="cats__tabs" role="tablist" aria-label="Tipo de categoría">
+        <div className="cats__tabs" role="tablist" aria-label={t("Tipo de categoría")}>
           {GROUPS.map((g) => (
             <button key={g.id} type="button" role="tab" id={`${idp}-tab-${g.id}`} aria-selected={tab === g.id} aria-controls={`${idp}-panel`} className={`cats__tab ${tab === g.id ? "is-on" : ""}`} onClick={() => go(g.id)}>
               {tab === g.id && <motion.span layoutId={`${idp}-pill`} className="cats__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
@@ -57,19 +58,19 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
           ))}
         </div>
         <div className="cats__tools">
-          <div className="modes" role="radiogroup" aria-label="Cuántas categorías">
+          <div className="modes" role="radiogroup" aria-label={t("Cuántas categorías")}>
             <button type="button" role="radio" aria-checked={!picking} className={`modes__opt ${!picking ? "is-on" : ""}`} onClick={() => mode(false)}>
-              Una categoría
+              {t("Una categoría")}
             </button>
             <button type="button" role="radio" aria-checked={picking} className={`modes__opt ${picking ? "is-on" : ""}`} onClick={() => mode(true)}>
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
                 <path d="M4 5h7v7H4zM13 5h7v7h-7zM4 14h7v6H4zM13 14h7v6h-7z" fill="none" stroke="currentColor" strokeWidth="2.4" />
               </svg>
-              Varias a la vez
+              {t("Varias a la vez")}
             </button>
           </div>
           <button type="button" className="btn btn--small btn--ghost" onClick={() => onPick(randomId("todo"))}>
-            Todo al azar
+            {t("Todo al azar")}
           </button>
         </div>
       </header>
@@ -85,7 +86,7 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
             transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
           >
             {picking ? (
-              <p className="cats__hint">Toca las que quieras mezclar. Puedes cambiar de pestaña sin perder lo marcado.</p>
+              <p className="cats__hint">{t("Toca las que quieras mezclar. Puedes cambiar de pestaña sin perder lo marcado.")}</p>
             ) : (
               <RandomTile g={tab} verb={verb} onPick={onPick} />
             )}
@@ -116,7 +117,7 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
           <motion.div className="pickbar" initial={{ y: "120%" }} animate={{ y: 0 }} exit={{ y: "120%" }} transition={{ type: "spring", stiffness: 420, damping: 34 }}>
             <div className="pickbar__in wrap">
               <p className="pickbar__text" aria-live="polite">
-                {sel.length === 0 ? "Ninguna marcada todavía." : sel.length === 1 ? `1 marcada: ${describe(sel[0])?.short}. Marca otra para mezclar.` : `${sel.length} marcadas: ${sel.map((c) => describe(c)?.short).join(", ")}`}
+                {sel.length === 0 ? t("Ninguna marcada todavía.") : sel.length === 1 ? t("1 marcada: {c}. Marca otra para mezclar.", { c: describe(sel[0])?.short ?? "" }) : t("{n} marcadas: {list}", { n: sel.length, list: sel.map((c) => describe(c)?.short).join(", ") })}
               </p>
               <button type="button" className="btn btn--hanko" disabled={!sel.length} onClick={() => onPick(mixId(sel))}>
                 {verb}
@@ -142,7 +143,7 @@ function RandomTile({ g, verb, onPick }: { g: GroupId; verb: string; onPick: (ca
       </span>
       <span className="azar__text">
         <span className="azar__name">{info.name}</span>
-        <span className="azar__sub">Preguntas de las {count} categorías, mezcladas</span>
+        <span className="azar__sub">{t("Preguntas de las {n} categorías, mezcladas", { n: count })}</span>
       </span>
       <svg className="azar__go" width="22" height="22" viewBox="0 0 24 24" aria-hidden>
         <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
@@ -174,7 +175,7 @@ function Tile({ c, i, big, picking, on, verb, onTap }: { c: Category; i: number;
             </span>
           )}
           <span className="tile__play" aria-hidden>
-            {picking ? (on ? "Quitar" : "Agregar") : verb}
+            {picking ? (on ? t("Quitar") : t("Agregar")) : verb}
             <svg width="16" height="16" viewBox="0 0 24 24">
               <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
             </svg>

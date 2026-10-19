@@ -3,7 +3,9 @@
  */
 import { motion } from "framer-motion";
 import { Logo } from "./Seal";
+import LangSwitch from "./LangSwitch";
 import "./nav.css";
+import { t, t as tr } from "../i18n";
 
 export type Tab = "home" | "cats" | "group";
 export const TABS: { id: Tab; path: string; label: string; wipe: string }[] = [
@@ -47,27 +49,28 @@ export default function Nav({ active, onGo }: { active: Tab | null; onGo: (t: Ta
     <>
       <header className="topnav">
         <div className="topnav__in wrap">
-          <a href="/" className="topnav__logo" onClick={click("home")} aria-label="Tostrivia, ir a la ruleta">
+          <a href="/" className="topnav__logo" onClick={click("home")} aria-label={t("Tostrivia, ir a la ruleta")}>
             <Logo size={38} />
           </a>
-          <nav className="topnav__tabs" aria-label="Secciones">
+          <nav className="topnav__tabs" aria-label={t("Secciones")}>
             {TABS.map((t) => (
               <a key={t.id} href={t.path} className={`topnav__tab ${active === t.id ? "is-on" : ""}`} aria-current={active === t.id ? "page" : undefined} onClick={click(t.id)}>
                 {active === t.id && <motion.span layoutId="topnav-pill" className="topnav__pill" transition={{ type: "spring", stiffness: 480, damping: 34 }} />}
-                <span className="topnav__label">{t.label}</span>
+                <span className="topnav__label">{tr(t.label)}</span>
               </a>
             ))}
           </nav>
+          <LangSwitch />
         </div>
       </header>
-      <nav className="dock" aria-label="Secciones">
+      <nav className="dock" aria-label={t("Secciones")}>
         {TABS.map((t) => (
           <a key={t.id} href={t.path} className={`dock__item ${active === t.id ? "is-on" : ""}`} aria-current={active === t.id ? "page" : undefined} onClick={click(t.id)}>
             {active === t.id && <motion.span layoutId="dock-pill" className="dock__pill" transition={{ type: "spring", stiffness: 480, damping: 32 }} />}
             <motion.span className="dock__icon" animate={active === t.id ? { y: -2, rotate: [0, -10, 0] } : { y: 0, rotate: 0 }} transition={{ duration: 0.4 }}>
               <Icon id={t.id} />
             </motion.span>
-            <span className="dock__label">{t.label}</span>
+            <span className="dock__label">{tr(t.label)}</span>
           </a>
         ))}
       </nav>

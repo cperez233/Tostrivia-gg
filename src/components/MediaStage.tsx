@@ -13,6 +13,7 @@ import type { Media } from "../data/types";
 import type { VideoCandidate } from "../data/bank";
 import { loadYouTube, YT_ERRORS, type YTPlayer } from "../lib/youtube";
 import "./media.css";
+import { t } from "../i18n";
 
 interface Props {
   media: Media;
@@ -210,7 +211,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
                 ))}
               </div>
               <p className="stage__cover-text">
-                {state === "playing" ? "Escucha bien. La imagen se revela al responder." : state === "failed" ? "Este video no cargó." : "Cargando el audio…"}
+                {state === "playing" ? t("Escucha bien. La imagen se revela al responder.") : state === "failed" ? t("Este video no cargó.") : t("Cargando el audio…")}
               </p>
             </div>
           </motion.div>
@@ -224,17 +225,17 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
               <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
                 <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
               </svg>
-              Toca aquí para escuchar
+              {t("Toca aquí para escuchar")}
             </span>
           </button>
         )}
-        {state === "loading" && media.m !== "audio" && <div className="stage__loading">Cargando video…</div>}
+        {state === "loading" && media.m !== "audio" && <div className="stage__loading">{t("Cargando video…")}</div>}
       </div>
       <p className="stage__hint">
-        {media.m === "audio" && "Solo audio"}
-        {media.m === "blur" && "Video difuminado"}
-        {media.m === "clip" && "Clip sin título"}
-        <span className="muted"> · fragmento de {Math.round(media.e - media.s)} s en bucle</span>
+        {media.m === "audio" && t("Solo audio")}
+        {media.m === "blur" && t("Video difuminado")}
+        {media.m === "clip" && t("Clip sin título")}
+        <span className="muted"> · {t("fragmento de {s} s en bucle", { s: Math.round(media.e - media.s) })}</span>
       </p>
     </div>
   );
