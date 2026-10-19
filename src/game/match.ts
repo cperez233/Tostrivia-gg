@@ -4,10 +4,29 @@
  */
 import { BANK } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
-import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
+import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, multiplier, optionOrder, pointsFor, textBackups } from "./round";
 import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
-import { DOUBLE_RISK, EARN_EVERY, INK_MS, MAX_HAND, POOL, POWER_LINES, STEAL_PTS, drawPower, startHand, type PowerId, type Variant } from "./powers";
+import {
+  BLUE_PTS,
+  BOLT_PTS,
+  COLD_EVERY,
+  DICE_PTS,
+  DOUBLE_RISK,
+  EARN_EVERY,
+  INK_MS,
+  MAX_HAND,
+  MUSHROOM_MAX,
+  POOL,
+  POWER_LINES,
+  RED_PTS,
+  STAR_MULT,
+  STEAL_PTS,
+  drawPower,
+  startHand,
+  type PowerId,
+  type Variant,
+} from "./powers";
 import { shuffle } from "../lib/rng";
 
 export const MAX_PLAYERS = 10;
@@ -40,14 +59,21 @@ export interface Pick {
   excused?: boolean;
   /* modo Poderes */
   power?: PowerId;
-  /** poder que ganó con esta racha */
+  /** poder que ganó con esta racha (o de consuelo, tras fallar dos seguidas) */
   earned?: PowerId;
+  consolation?: boolean;
   /** falló con escudo y conservó la racha */
   shielded?: boolean;
-  stole?: { from: string; pts: number };
-  robbed?: { by: string; pts: number }[];
-  /** robos que frenó su escudo (ids de quien intentó) */
-  blocked?: string[];
+  /** Dado: lo que salió */
+  roll?: number;
+  /** lo que sumó o restó su propio poder (Dado, Hongo, Estrella) */
+  bonus?: number;
+  /** ataques que recibió */
+  hits?: { by: string; p: PowerId; pts: number }[];
+  /** ataques que hizo */
+  dealt?: { to: string; p: PowerId; pts: number }[];
+  /** ataques que frenó con su Escudo o Estrella */
+  blocked?: { by: string; p: PowerId; with: PowerId }[];
 }
 
 /** poder usado en la pregunta actual */
@@ -55,6 +81,8 @@ export interface PowerUse {
   p: PowerId;
   /** 50/50: opciones (índice en pantalla) que quedan tachadas */
   cut?: number[];
+  /** Dado: lo que salió */
+  roll?: number;
 }
 
 export interface Spin {
@@ -112,6 +140,8 @@ export class Match {
   private nextTimer: ReturnType<typeof setTimeout> | null = null;
   private answers = new Map<string, { choice: number; ms: number }>();
   private mediaFailed = new Set<string>();
+  /** modo Poderes: fallos seguidos de cada jugador, para el poder de consuelo */
+  private misses = new Map<string, number>();
   private listeners = new Set<Listener>();
 
   constructor(mode: "solo" | "group", host: { id: string; name: string; seal: number }) {
@@ -227,6 +257,7 @@ export class Match {
     this.reserves = reserves;
     this.backups = textBackups(this.s.cat, seed).filter((id) => !ids.includes(id));
     this.mediaFails = 0;
+    this.misses.clear();
     this.failLimit = ids.every((id) => BANK.byId[id].media) ? 4 : 2;
     this.emit({
       seed,
@@ -370,50 +401,80 @@ export class Match {
     const correctDisplay = this.s.order.indexOf(0);
     const picks: Record<string, Pick> = {};
     const powers = this.s.variant === "powers";
-    // primero lo de cada uno; los robos se cobran después, con el marcador de antes de esta pregunta
+    const used = powers ? this.s.used : {};
+    // primero lo de cada uno; los ataques se cobran después, con el marcador de antes de esta pregunta
     for (const p of this.s.players) {
       const a = this.answers.get(p.id);
       const ok = !!a && this.s.order[a.choice] === 0;
       const excused = !a && this.mediaFailed.has(p.id);
-      const power = powers ? this.s.used[p.id]?.p : undefined;
-      const shield = power === "shield";
-      const streak = ok ? p.streak + 1 : excused || shield ? p.streak : 0;
-      let gained = ok ? pointsFor(q.d, 1 - a!.ms / this.s.duration, streak) : 0;
-      if (power === "double") gained = ok ? gained * 2 : excused ? 0 : -DOUBLE_RISK;
-      picks[p.id] = { choice: a ? a.choice : null, ok, gained, streak, ms: a?.ms ?? this.s.duration, excused };
-      if (power) {
-        picks[p.id].power = power;
-        if (shield && !ok && !excused && p.streak > 0) picks[p.id].shielded = true;
+      const use = used[p.id];
+      const power = use?.p;
+      const streak = ok ? p.streak + 1 : excused || power === "shield" ? p.streak : 0;
+      const pick: Pick = { choice: a ? a.choice : null, ok, gained: 0, streak, ms: a?.ms ?? this.s.duration, excused };
+      const frac = a ? Math.max(0, Math.min(1, 1 - a.ms / this.s.duration)) : 0;
+      if (ok) {
+        pick.gained = pointsFor(q.d, frac, streak);
+        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - 100) * frac * multiplier(streak));
+        if (power === "star") pick.bonus = Math.round(pick.gained * (STAR_MULT - 1));
+        if (power === "double") pick.bonus = pick.gained;
+      } else if (!excused && power === "double") pick.bonus = -DOUBLE_RISK;
+      if (power === "dice" && use?.roll) {
+        pick.roll = use.roll;
+        pick.bonus = ok ? use.roll * DICE_PTS : excused ? 0 : -(use.roll * DICE_PTS) / 2;
       }
+      pick.gained += pick.bonus ?? 0;
+      if (power) {
+        pick.power = power;
+        if (power === "shield" && !ok && !excused && p.streak > 0) pick.shielded = true;
+      }
+      picks[p.id] = pick;
     }
     if (powers) {
       const ranking = [...this.s.players].sort((a, b) => b.score - a.score);
+      const scoreOf = (id: string) => this.s.players.find((x) => x.id === id)!.score;
+      /** un ataque de `from` a `to`: el Escudo y la Estrella lo frenan; con Boo los puntos pasan al que roba */
+      const hit = (from: string, to: string | undefined, p: PowerId, pts: number, transfer = false) => {
+        if (!to) return;
+        const theirs = picks[to];
+        const guard = used[to]?.p;
+        if (to !== from && (guard === "shield" || guard === "star")) {
+          theirs.blocked = [...(theirs.blocked ?? []), { by: from, p, with: guard }];
+          return;
+        }
+        const amount = Math.min(pts, Math.max(0, scoreOf(to) + theirs.gained));
+        if (!amount) return;
+        theirs.gained -= amount;
+        theirs.hits = [...(theirs.hits ?? []), { by: from, p, pts: amount }];
+        if (transfer) picks[from].gained += amount;
+        if (to !== from) picks[from].dealt = [...(picks[from].dealt ?? []), { to, p, pts: amount }];
+      };
       for (const p of this.s.players) {
         const mine = picks[p.id];
-        if (mine.power !== "steal" || !mine.ok) continue;
-        const target = ranking.find((x) => x.id !== p.id);
-        if (!target) continue;
-        const theirs = picks[target.id];
-        if (theirs.power === "shield") {
-          theirs.blocked = [...(theirs.blocked ?? []), p.id];
-          continue;
-        }
-        const pts = Math.min(STEAL_PTS, Math.max(0, target.score + theirs.gained));
-        if (!pts) continue;
-        theirs.gained -= pts;
-        theirs.robbed = [...(theirs.robbed ?? []), { by: p.id, pts }];
-        mine.gained += pts;
-        mine.stole = { from: target.id, pts };
+        const others = ranking.filter((x) => x.id !== p.id);
+        const at = ranking.findIndex((x) => x.id === p.id);
+        if (mine.power === "steal" && mine.ok) hit(p.id, others[0]?.id, "steal", STEAL_PTS, true);
+        else if (mine.power === "redShell") hit(p.id, (at > 0 ? ranking[at - 1] : others[0])?.id, "redShell", RED_PTS);
+        else if (mine.power === "blueShell") hit(p.id, ranking[0]?.id, "blueShell", BLUE_PTS);
+        else if (mine.power === "lightning") for (const o of others) if (o.online) hit(p.id, o.id, "lightning", BOLT_PTS);
       }
     }
+    const order = [...this.s.players].sort((a, b) => b.score - a.score);
     const players = this.s.players.map((p) => {
       const pick = picks[p.id];
       const score = Math.max(0, p.score + pick.gained);
       pick.gained = score - p.score;
       let hand = p.powers;
-      if (powers && pick.ok && pick.streak % EARN_EVERY === 0 && hand.length < MAX_HAND) {
-        pick.earned = drawPower(this.s.mode);
-        hand = [...hand, pick.earned];
+      if (powers) {
+        const cold = pick.ok ? 0 : pick.excused ? (this.misses.get(p.id) ?? 0) : (this.misses.get(p.id) ?? 0) + 1;
+        const behind = order.findIndex((x) => x.id === p.id) >= Math.ceil(order.length / 2);
+        const earn = pick.ok && pick.streak % EARN_EVERY === 0;
+        const comfort = cold >= COLD_EVERY;
+        if ((earn || comfort) && hand.length < MAX_HAND) {
+          pick.earned = drawPower(this.s.mode, behind);
+          if (!earn) pick.consolation = true;
+          hand = [...hand, pick.earned];
+        }
+        this.misses.set(p.id, comfort ? 0 : cold);
       }
       return { ...p, score, streak: pick.streak, best: Math.max(p.best, pick.streak), correct: p.correct + (pick.ok ? 1 : 0), powers: hand };
     });
@@ -424,16 +485,29 @@ export class Match {
   /** modo Poderes: uno por pregunta, antes de responder */
   usePower(pid: string, index: number, power: PowerId) {
     if (this.s.variant !== "powers" || this.s.phase !== "question" || index !== this.s.index) return;
-    if (this.answers.has(pid) || this.s.used[pid] || !POOL[this.s.mode].includes(power)) return;
+    // el Bloque ? no gasta el turno: se puede abrir y después usar otro
+    if (this.answers.has(pid) || (this.s.used[pid] && power !== "mystery") || !POOL[this.s.mode].includes(power)) return;
     const player = this.s.players.find((p) => p.id === pid);
     if (!player || !player.powers.includes(power)) return;
     const hand = player.powers.slice();
     hand.splice(hand.indexOf(power), 1);
     const players = this.s.players.map((p) => (p.id === pid ? { ...p, powers: hand } : p));
     if (power === "swap") return this.swapCurrent(players);
+    if (power === "mystery") {
+      const order = [...this.s.players].sort((a, b) => b.score - a.score);
+      const behind = order.findIndex((x) => x.id === pid) >= Math.ceil(order.length / 2);
+      const prize: PowerId[] = [];
+      while (prize.length < 2) {
+        const d = drawPower(this.s.mode, behind);
+        if (d !== "mystery") prize.push(d);
+      }
+      const full = [...hand, ...prize].slice(0, MAX_HAND);
+      return this.emit({ players: this.s.players.map((p) => (p.id === pid ? { ...p, powers: full } : p)) });
+    }
     const use: PowerUse = { p: power };
     let ink = this.s.ink;
-    if (power === "half") {
+    if (power === "dice") use.roll = 1 + Math.floor(Math.random() * 6);
+    else if (power === "half") {
       const wrong = [0, 1, 2, 3].filter((i) => this.s.order[i] !== 0);
       use.cut = shuffle(wrong, Math.random).slice(0, 2);
     } else if (power === "ink") {

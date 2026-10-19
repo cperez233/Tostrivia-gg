@@ -259,7 +259,8 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <PowerBar
               hand={me.powers ?? []}
               used={used?.p}
-              disabled={snap.phase !== "question" || myPick != null || !!used}
+              closed={snap.phase !== "question" || myPick != null}
+              spent={!!used}
               onUse={(p) => client.power(snap.index, p)}
             />
           )}
@@ -275,7 +276,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             )}
           </div>
 
-          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, nameOf)} />}</AnimatePresence>
+          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf)} />}</AnimatePresence>
 
           {reveal && (
             <div className="game__next">
@@ -358,7 +359,7 @@ function Flame() {
 }
 
 /** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
-function PowerBar({ hand, used, disabled, onUse }: { hand: PowerId[]; used?: PowerId; disabled: boolean; onUse: (p: PowerId) => void }) {
+function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; onUse: (p: PowerId) => void }) {
   return (
     <section className="powers" aria-label={POWER_LINES.label}>
       <p className="powers__label">
@@ -366,42 +367,49 @@ function PowerBar({ hand, used, disabled, onUse }: { hand: PowerId[]; used?: Pow
       </p>
       {hand.length === 0 && !used && <p className="powers__empty">{POWER_LINES.empty}</p>}
       <ul className="powers__hand">
-        {hand.map((p, i) => (
-          <li key={`${p}-${i}`}>
-            <motion.button
-              type="button"
-              className="power"
-              onClick={() => onUse(p)}
-              disabled={disabled}
-              title={POWER_TEXT[p].desc}
-              aria-label={`${POWER_TEXT[p].name}: ${POWER_TEXT[p].desc}`}
-              initial={{ scale: 0.6, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              whileTap={disabled ? undefined : { scale: 0.92 }}
-              transition={{ type: "spring", stiffness: 520, damping: 22 }}
-            >
-              <span className="power__icon" aria-hidden>
-                {POWER_ICON[p]}
-              </span>
-              <span className="power__name">{POWER_TEXT[p].name}</span>
-              <span className="power__desc">{POWER_TEXT[p].desc}</span>
-            </motion.button>
-          </li>
-        ))}
+        {hand.map((p, i) => {
+          // el Bloque ? se puede abrir aunque ya hayas usado otro
+          const disabled = closed || (spent && p !== "mystery");
+          return (
+            <li key={`${p}-${i}`}>
+              <motion.button
+                type="button"
+                className="power"
+                onClick={() => onUse(p)}
+                disabled={disabled}
+                title={POWER_TEXT[p].desc}
+                aria-label={`${POWER_TEXT[p].name}: ${POWER_TEXT[p].desc}`}
+                initial={{ scale: 0.6, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileTap={disabled ? undefined : { scale: 0.92 }}
+                transition={{ type: "spring", stiffness: 520, damping: 22 }}
+              >
+                <span className="power__icon" aria-hidden>
+                  {POWER_ICON[p]}
+                </span>
+                <span className="power__name">{POWER_TEXT[p].name}</span>
+                <span className="power__desc">{POWER_TEXT[p].desc}</span>
+              </motion.button>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
 }
 
 /** lo que pasó con los poderes en esta pregunta, en frases cortas para el veredicto */
-function powerNotes(pick: Pick, nameOf: (pid: string) => string): string[] {
+function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): string[] {
   const out: string[] = [];
-  if (pick.power === "double") out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
+  if (pick.power === "double" && pick.bonus) out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
+  if (pick.power === "dice" && pick.roll) out.push(`${POWER_ICON.dice} ${POWER_LINES.dice(pick.roll, pick.bonus ?? 0)}`);
+  if (pick.power === "mushroom" && pick.bonus) out.push(`${POWER_ICON.mushroom} ${POWER_LINES.mushroom(pick.bonus)}`);
+  if (pick.power === "star" && pick.bonus) out.push(`${POWER_ICON.star} ${POWER_LINES.star}`);
   if (pick.shielded) out.push(POWER_LINES.shielded);
-  if (pick.stole) out.push(POWER_LINES.stole(pick.stole.pts, nameOf(pick.stole.from)));
-  for (const r of pick.robbed ?? []) out.push(POWER_LINES.robbed(r.pts, nameOf(r.by)));
-  for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(nameOf(b)));
-  if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${POWER_LINES.earned(POWER_TEXT[pick.earned].name)}`);
+  for (const d of pick.dealt ?? []) out.push(POWER_LINES.dealt(d.p, nameOf(d.to), d.pts));
+  for (const h of pick.hits ?? []) out.push(h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
+  for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(b.p, nameOf(b.by), b.with));
+  if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${(pick.consolation ? POWER_LINES.consolation : POWER_LINES.earned)(POWER_TEXT[pick.earned].name)}`);
   return out;
 }
 
@@ -432,7 +440,7 @@ function Verdict({ pick, notes = [] }: { pick: Pick; notes?: string[] }) {
       <FocusLines className="verdict__lines" />
       <span className="verdict__word">{word}</span>
       <span className="verdict__sub">{sub}</span>
-      {notes.map((n) => (
+      {notes.slice(0, 4).map((n) => (
         <span key={n} className="verdict__power">
           {n}
         </span>
