@@ -207,10 +207,21 @@ button {
   display: block;
   user-select: none;
 }
-/* la hqdefault 16:9 trae franjas negras: la imagen se agranda 4/3 en alto y se recortan */
-.cover__cell img.has-bars {
-  top: -16.7%;
-  height: 133.4%;
+/* el póster entra con un fundido cuando termina de cargar, nunca a saltos */
+.cover__img {
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+.cover__cell.is-in .cover__img {
+  opacity: 1;
+}
+/* caja que no es 2:3: el póster entero sobre una copia difuminada y oscurecida */
+.cover--backdrop .cover__img {
+  object-fit: contain;
+}
+.cover__back {
+  filter: blur(22px) brightness(0.5) saturate(1.2);
+  transform: scale(1.2);
 }
 .cover--mosaic .cover__cell {
   inset: auto;
@@ -242,17 +253,6 @@ button {
 .cover--mosaic .cover__cell:nth-child(3) {
   border-left: 0;
 }
-/* trama de semitono encima: la miniatura se imprime en la revista */
-.cover__tone {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  color: var(--ink);
-  opacity: 0.16;
-  background-image: radial-gradient(currentColor 0.9px, transparent 1.3px);
-  background-size: 4px 4px;
-}
-
 /* ───────────── Botones ───────────── */
 .btn {
   --sweep: var(--ink);

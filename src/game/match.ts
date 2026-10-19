@@ -5,6 +5,7 @@
 import { BANK } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, optionOrder, pointsFor, textBackups } from "./round";
+import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 
 export const MAX_PLAYERS = 10;
 const MEDIA_WAIT_MS = 21_000; // tiempo máximo para que el video empiece a sonar en todos
@@ -174,7 +175,11 @@ export class Match {
   /* ───────── flujo ───────── */
   start(seed: number) {
     if (!this.s.cat) return;
-    const { ids, reserves } = buildRound(this.s.cat, seed);
+    const cat = this.s.cat;
+    pruneTo(cat, new Set((BANK.byCat[cat] || []).map((q) => q.id)));
+    const { ids, reserves, restart } = buildRound(cat, seed, seenIn(cat));
+    // ya salieron todas las de la categoría: esta ronda abre la vuelta siguiente
+    if (restart) restartCycle(cat);
     this.reserves = reserves;
     this.backups = textBackups(this.s.cat, seed).filter((id) => !ids.includes(id));
     this.mediaFails = 0;
@@ -218,6 +223,9 @@ export class Match {
     if (this.waitTimer) clearTimeout(this.waitTimer);
     this.startedAt = Date.now();
     this.deadline = this.startedAt + this.s.duration;
+    // ya está en pantalla: cuenta como vista para el historial (src/lib/history.ts)
+    const shown = this.s.qid ? BANK.byId[this.s.qid] : null;
+    if (shown) markSeen(shown.cat, shown.id);
     this.emit({ phase: "question" });
     this.timer = setInterval(() => {
       if (Date.now() > this.deadline + GRACE_MS) this.revealNow();

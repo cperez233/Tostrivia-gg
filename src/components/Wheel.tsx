@@ -97,13 +97,9 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
       deck.map((id, i) => {
         const c = CATEGORY_BY_ID[id];
         const img = coversOf(c)[0];
-        const focus = (Array.isArray(c.cover) ? 50 : (c.focus ?? 50)) / 100;
-        // la imagen cubre la caja del gajo (y 2..50); en 16:9 la hqdefault trae franjas que quedan fuera
-        const h = img?.wide ? 64 : 48;
-        const w = img?.wide ? 85.3 : 64;
-        const cw = img?.wide ? 85.3 : 64;
-        const x = Math.min(25, Math.max(75 - cw, 50 - focus * cw));
-        return { id, c, img, i, x, y: img?.wide ? -6 : 2, w, h };
+        // el póster (2:3) ocupa todo el ancho del gajo en su borde exterior y se recorta hacia el centro
+        const w = Math.min(64, 2 * 48.6 * Math.sin(Math.PI / n) + 2);
+        return { id, c, img, i, x: 50 - w / 2, y: 1, w, h: w * 1.5 };
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [deckKey],
@@ -136,7 +132,7 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
             >
               <g clipPath={`url(#${clipId})`}>
                 <rect x="0" y="0" width="100" height="52" fill="var(--paper)" />
-                {w.img && <image href={w.img.hq} x={w.x} y={w.y} width={w.w} height={w.h} preserveAspectRatio="none" />}
+                {w.img && <image href={w.img.sm} x={w.x} y={w.y} width={w.w} height={w.h} preserveAspectRatio="xMidYMin slice" />}
                 {landed != null && landed !== k && <rect x="0" y="0" width="100" height="52" fill="var(--ink)" opacity=".55" />}
               </g>
               <path d={topWedge(n, 48.6)} fill="none" stroke="var(--ink)" strokeWidth="1.1" />

@@ -133,12 +133,14 @@
 .result {
   position: relative;
   display: grid;
+  grid-template-columns: 42% 1fr;
   box-shadow: 8px 8px 0 var(--hanko);
 }
+/* el póster entero a la izquierda, el nombre y los botones a la derecha */
 .result__cover {
   position: relative;
-  aspect-ratio: 16 / 9;
-  border-bottom: var(--border);
+  aspect-ratio: 2 / 3;
+  border-right: var(--border);
   overflow: hidden;
 }
 .result__fam {
@@ -194,13 +196,7 @@
     z-index: 6;
   }
   .result {
-    grid-template-columns: 40% 1fr;
-  }
-  .result__cover {
-    aspect-ratio: auto;
-    min-height: 100%;
-    border-bottom: 0;
-    border-right: var(--border);
+    grid-template-columns: 36% 1fr;
   }
   .result__fam {
     left: 6px;
@@ -274,14 +270,14 @@
   }
   .deal__pile {
     position: relative;
-    height: 320px;
+    height: 360px;
   }
   .deal__card {
     position: absolute;
     left: 0;
     top: 0;
-    width: min(100%, 260px);
-    aspect-ratio: 4 / 3;
+    width: min(70%, 196px);
+    aspect-ratio: 2 / 3;
     border: 3px solid var(--ink);
     outline: 3px solid var(--paper);
     overflow: hidden;

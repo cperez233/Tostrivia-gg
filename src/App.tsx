@@ -227,7 +227,7 @@ function SoloStart({ cat, onPlay, onHome }: { cat: string; onPlay: () => void; o
       </a>
       <motion.div className="solo__card panel" initial={{ scale: 1.2, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} transition={{ type: "spring", stiffness: 380, damping: 20 }}>
         <div className="solo__cover">
-          <Cover cat={c} big eager />
+          <Cover cat={c} sizes="min(100vw, 520px)" backdrop eager />
         </div>
         <p className="label">Te retaron · {FAMILY_BY_ID[c.family].name}</p>
         <h1 className="solo__title">{c.name}</h1>

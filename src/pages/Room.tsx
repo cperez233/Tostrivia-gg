@@ -191,7 +191,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
               {cat && !spinShown ? (
                 <motion.div key={cat.id} className="lobby__pick panel" initial={reduce ? false : { scale: 1.3, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ type: "spring", stiffness: 420, damping: 20 }}>
                   <span className="lobby__pick-img">
-                    <Cover cat={cat} />
+                    <Cover cat={cat} sizes="64px" />
                   </span>
                   <span>
                     <span className="lobby__pick-fam">{FAMILY_BY_ID[cat.family].name}</span>

@@ -90,7 +90,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         </button>
         <div className="game__cat">
           <span className="game__cat-img">
-            <Cover cat={cat} />
+            <Cover cat={cat} sizes="30px" />
           </span>
           <span className="game__cat-name">{cat.name}</span>
         </div>
@@ -464,7 +464,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
     <div className="final">
       {cat && (
         <span className="final__bg" aria-hidden>
-          <Cover cat={cat} big />
+          <Cover cat={cat} sizes="70vw" />
         </span>
       )}
       <FocusLines className="final__lines anim-spin" />

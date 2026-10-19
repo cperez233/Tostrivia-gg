@@ -209,7 +209,7 @@
 }
 .lobby__pick {
   display: grid;
-  grid-template-columns: 96px 1fr;
+  grid-template-columns: 64px 1fr;
   gap: 12px;
   align-items: center;
   padding: 8px 14px 8px 8px;
@@ -218,7 +218,7 @@
 }
 .lobby__pick-img {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 3;
   border: 2px solid var(--ink);
   overflow: hidden;
 }

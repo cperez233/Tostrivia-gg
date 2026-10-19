@@ -45,10 +45,12 @@ export type FamilyId =
   | "mundo"
   | "accion"
   | "shooter"
-  | "versus";
+  | "versus"
+  | "series"
+  | "peliculas";
 
-/** las tres pestañas de arriba: cada familia pertenece a una */
-export type GroupId = "anime" | "juegos" | "cultura";
+/** las cuatro pestañas de arriba: cada familia pertenece a una */
+export type GroupId = "anime" | "juegos" | "series" | "cultura";
 
 export interface Family {
   id: FamilyId;
@@ -62,10 +64,8 @@ export interface Category {
   /** nombre corto para la ruleta y las fichas pequeñas */
   short: string;
   family: FamilyId;
-  /** clave de video (videos.json) cuya miniatura hace de portada; varias = mosaico */
-  cover: string | string[];
-  /** punto de interés horizontal de la portada, 0 a 100 */
-  focus?: number;
+  /** sin póster propio: mosaico con los pósters de estas categorías (ver src/lib/covers.ts) */
+  mosaic?: string[];
   /** onomatopeya decorativa (aria-hidden) */
   sfx?: string;
 }

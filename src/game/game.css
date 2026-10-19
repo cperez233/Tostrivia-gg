@@ -54,8 +54,8 @@
 }
 .game__cat-img {
   position: relative;
-  width: 46px;
-  height: 30px;
+  width: 30px;
+  height: 45px;
   flex-shrink: 0;
   border: 2px solid var(--paper);
   overflow: hidden;
@@ -131,8 +131,8 @@
     justify-content: flex-start;
   }
   .game__cat-img {
-    width: 36px;
-    height: 26px;
+    width: 26px;
+    height: 39px;
   }
   .game__cat-name {
     font-size: 15px;

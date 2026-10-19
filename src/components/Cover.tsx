@@ -1,5 +1,6 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Portada de una categoría: una miniatura oficial, o un mosaico de cuatro en Openings y OST gaming.
+ * Portada de una categoría: su póster oficial, o un mosaico de cuatro en Openings y OST gaming.
+ * La imagen entra con un fundido cuando termina de cargar; mientras tanto se ve el fondo de tinta.
  */
 import { memo, useState } from "react";
 import type { Category } from "../data/types";
@@ -7,48 +8,48 @@ import { coversOf } from "../lib/covers";
 
 interface Props {
   cat: Category;
-  /** usa la miniatura grande (1280 px) cuando la portada ocupa media pantalla */
-  big?: boolean;
-  /** 640 px: fichas medianas */
-  mid?: boolean;
+  /** ancho con que se pinta, para que el navegador elija 300 o 600 px */
+  sizes?: string;
   eager?: boolean;
+  /** la caja no es 2:3: el póster se ve entero sobre una copia difuminada de sí mismo */
+  backdrop?: boolean;
   className?: string;
 }
 
-function CoverBase({ cat, big, mid, eager, className = "" }: Props) {
+function CoverBase({ cat, sizes = "300px", eager, backdrop, className = "" }: Props) {
   const imgs = coversOf(cat);
   const mosaic = imgs.length > 1;
   return (
-    <span className={`cover ${mosaic ? "cover--mosaic" : ""} ${className}`} aria-hidden>
+    <span className={`cover ${mosaic ? "cover--mosaic" : ""} ${backdrop && !mosaic ? "cover--backdrop" : ""} ${className}`} aria-hidden>
       {imgs.slice(0, 4).map((im) => (
-        <Cell key={im.key} src={big && !mosaic ? im.big : mid && !mosaic ? im.sd : im.hq} fallback={im.hq} wide={im.wide} sdBars={mid && !mosaic && !big && im.wide} focus={mosaic ? 50 : (cat.focus ?? 50)} eager={eager} />
+        <Cell key={im.id} sm={im.sm} lg={im.lg} sizes={mosaic ? "160px" : sizes} eager={eager} backdrop={backdrop && !mosaic} />
       ))}
-      <span className="cover__tone" />
     </span>
   );
 }
 
-function Cell({ src, fallback, wide, sdBars, focus, eager }: { src: string; fallback: string; wide: boolean; sdBars?: boolean; focus: number; eager?: boolean }) {
-  const [url, setUrl] = useState(src);
+function Cell({ sm, lg, sizes, eager, backdrop }: { sm: string; lg: string; sizes: string; eager?: boolean; backdrop?: boolean }) {
+  const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
-  // la hqdefault de un video 16:9 trae franjas negras arriba y abajo
-  const bars = wide && (url === fallback || (sdBars && url === src));
   return (
-    <span className="cover__cell">
+    <span className={`cover__cell ${loaded ? "is-in" : ""}`}>
+      {backdrop && !failed && <img src={sm} alt="" className="cover__back" decoding="async" draggable={false} />}
       {!failed && (
         <img
-          src={url}
+          // si ya estaba en caché, onLoad puede no llegar a tiempo: se revisa al montar
+          ref={(el) => {
+            if (el?.complete && el.naturalWidth > 0 && !loaded) setLoaded(true);
+          }}
+          src={sm}
+          srcSet={`${sm} 300w, ${lg} 600w`}
+          sizes={sizes}
           alt=""
-          className={bars ? "has-bars" : undefined}
-          style={{ objectPosition: `${focus}% 50%` }}
+          className="cover__img"
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           draggable={false}
-          onLoad={(e) => {
-            // maxresdefault que no existe llega como una imagen gris de 120 px
-            if (url !== fallback && e.currentTarget.naturalWidth < 200) setUrl(fallback);
-          }}
-          onError={() => (url !== fallback ? setUrl(fallback) : setFailed(true))}
+          onLoad={() => setLoaded(true)}
+          onError={() => setFailed(true)}
         />
       )}
     </span>

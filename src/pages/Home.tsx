@@ -144,8 +144,8 @@ function Deal({ deck, spinning }: { deck: string[]; spinning: boolean }) {
   const three = deck.filter((d, i) => deck.indexOf(d) === i).slice(0, 3);
   const pose = [
     { r: -7, x: 0, y: 0 },
-    { r: 5, x: 18, y: 26 },
-    { r: -2, x: -12, y: 52 },
+    { r: 5, x: 78, y: 22 },
+    { r: -2, x: 34, y: 50 },
   ];
   return (
     <motion.div className="deal" exit={{ opacity: 0, x: 40 }} transition={{ duration: 0.2 }}>
@@ -160,7 +160,7 @@ function Deal({ deck, spinning }: { deck: string[]; spinning: boolean }) {
             animate={{ x: pose[i].x, y: pose[i].y, rotate: pose[i].r, opacity: 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 22, delay: 0.06 * i }}
           >
-            <Cover cat={CATEGORY_BY_ID[id]} />
+            <Cover cat={CATEGORY_BY_ID[id]} sizes="196px" />
             <span className="deal__name">{CATEGORY_BY_ID[id].short}</span>
           </motion.div>
         ))}
@@ -182,7 +182,7 @@ function Result({ cat, onPlay, onAgain, onClose }: { cat: string; onPlay: () => 
       transition={{ type: "spring", stiffness: 420, damping: 20 }}
     >
       <div className="result__cover">
-        <Cover cat={c} big eager />
+        <Cover cat={c} sizes="(min-width: 900px) 140px, 36vw" eager />
         <span className="result__fam">{FAMILY_BY_ID[c.family].name}</span>
       </div>
       <div className="result__body">

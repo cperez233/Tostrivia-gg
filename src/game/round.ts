@@ -9,37 +9,57 @@ export const TEXT_MS = 20_000;
 export const MEDIA_MS = 25_000;
 export const BASE_POINTS = { 1: 100, 2: 150, 3: 200 } as const;
 
-/** Elige 10 preguntas (3 fáciles, 4 medias, 3 difíciles, ordenadas de menos a más) y unas de reserva. */
-export function buildRound(cat: string, seed: number) {
+/**
+ * Elige 10 preguntas (3 fáciles, 4 medias, 3 difíciles, ordenadas de menos a más) y unas de reserva.
+ * Primero van las que no han salido en esta vuelta (`seen`); si no alcanzan para una ronda entran todas
+ * y se completa con la vuelta siguiente (`restart`: quien llama empieza el historial de cero).
+ */
+export function buildRound(cat: string, seed: number, seen: Set<string> = new Set()) {
   const rand = rng(seed);
   const pool = shuffle(BANK.byCat[cat] || [], rand);
   const audioOnly = pool.length > 0 && pool.every((q) => q.media);
-  const media = pool.filter((q) => q.media);
-  const text = pool.filter((q) => !q.media);
+  const fresh = pool.filter((q) => !seen.has(q.id));
+  const restart = fresh.length < ROUND_SIZE;
 
-  const picked: Question[] = [];
   // variedad: 1 a 3 preguntas de video en categorías normales, todas en Openings y OST gaming
-  if (!audioOnly) picked.push(...media.slice(0, Math.min(media.length, 1 + Math.floor(rand() * 3))));
+  const mediaWanted = audioOnly ? ROUND_SIZE : 1 + Math.floor(rand() * 3);
+  const picked = pick(fresh, ROUND_SIZE, mediaWanted, audioOnly);
+  if (picked.length < ROUND_SIZE) {
+    const used = picked.filter((q) => q.media).length;
+    // de las ya vistas, primero las que salieron hace más tiempo
+    const order = [...seen];
+    const rest = pool.filter((q) => !picked.includes(q)).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+    picked.push(...pick(rest, ROUND_SIZE - picked.length, Math.max(0, mediaWanted - used), audioOnly));
+  }
+  const chosen = picked.sort((a, b) => a.d - b.d || (rand() < 0.5 ? -1 : 1));
+  // reservas para cuando un video no carga: también primero las que no han salido
+  const byFreshness = [...fresh, ...pool.filter((q) => seen.has(q.id))];
+  const reserves = byFreshness.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, 6);
+  return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id), restart };
+}
+
+/** hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad (3/4/3 en una ronda completa) */
+function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boolean): Question[] {
+  const out: Question[] = [];
+  if (!audioOnly) out.push(...from.filter((q) => q.media).slice(0, Math.min(mediaWanted, n)));
   const want = { 1: 3, 2: 4, 3: 3 } as Record<number, number>;
-  for (const q of picked) want[q.d] = Math.max(0, want[q.d] - 1);
-  const rest = audioOnly ? media : text;
+  for (const q of out) want[q.d] = Math.max(0, want[q.d] - 1);
+  const rest = audioOnly ? from : from.filter((q) => !q.media);
   for (const d of [1, 2, 3]) {
     for (const q of rest) {
-      if (want[d] <= 0) break;
-      if (q.d === d && !picked.includes(q)) {
-        picked.push(q);
+      if (want[d] <= 0 || out.length >= n) break;
+      if (q.d === d && !out.includes(q)) {
+        out.push(q);
         want[d]--;
       }
     }
   }
   // si faltan de alguna dificultad, se completa con lo que haya
   for (const q of rest) {
-    if (picked.length >= ROUND_SIZE) break;
-    if (!picked.includes(q)) picked.push(q);
+    if (out.length >= n) break;
+    if (!out.includes(q)) out.push(q);
   }
-  const chosen = picked.slice(0, ROUND_SIZE).sort((a, b) => a.d - b.d || (rand() < 0.5 ? -1 : 1));
-  const reserves = pool.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, 6);
-  return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id) };
+  return out;
 }
 
 /** Preguntas sin video para cuando YouTube no responde. En Openings y OST gaming se toman de su lado (anime o juegos). */

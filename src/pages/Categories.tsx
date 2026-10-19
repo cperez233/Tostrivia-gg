@@ -81,25 +81,26 @@ function Tile({ c, i, onPlay }: { c: Category; i: number; onPlay: (cat: string) 
   return (
     <li ref={ref} className={`tile ${big ? "tile--big" : ""}`}>
       <motion.button
-        initial={reduce ? false : { clipPath: "inset(0 0 100% 0)", y: 24 }}
-        animate={seen || reduce ? { clipPath: "inset(0 0 0% 0)", y: 0, transitionEnd: { clipPath: "none" } } : undefined}
+        // el recorte deja 3% de aire a los lados para que el borde blanco se destape junto con la viñeta
+        initial={reduce ? false : { clipPath: "inset(-3% -3% 103% -3%)", y: 24 }}
+        animate={seen || reduce ? { clipPath: "inset(-3% -3% -3% -3%)", y: 0, transitionEnd: { clipPath: "none" } } : undefined}
         transition={{ duration: 0.55, delay: (i % 4) * 0.06, ease: [0.22, 1, 0.36, 1] }}
         whileTap={{ scale: 0.97 }} type="button" className="tile__btn" onClick={() => onPlay(c.id)} aria-label={`Jugar ${c.name}`}>
         <span className="tile__img">
-          <Cover cat={c} big={big} mid={!big} />
+          <Cover cat={c} sizes={big ? "(min-width: 1024px) 38vw, (min-width: 640px) 62vw, 46vw" : "(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 46vw"} />
+          <span className="tile__play" aria-hidden>
+            Jugar
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
+            </svg>
+          </span>
+          {c.sfx && c.sfx !== "♪" && (
+            <span className="tile__sfx sfx" aria-hidden>
+              {c.sfx}
+            </span>
+          )}
         </span>
         <span className="tile__name">{c.name}</span>
-        <span className="tile__play" aria-hidden>
-          Jugar
-          <svg width="16" height="16" viewBox="0 0 24 24">
-            <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
-          </svg>
-        </span>
-        {c.sfx && c.sfx !== "♪" && (
-          <span className="tile__sfx sfx" aria-hidden>
-            {c.sfx}
-          </span>
-        )}
       </motion.button>
     </li>
   );

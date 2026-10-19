@@ -1,11 +1,13 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Familias: anime por año de estreno del anime; juegos por género. Los openings van con anime y el OST con juegos.
+ * Familias: anime por año de estreno del anime; juegos por género; series y películas aparte.
+ * Los openings van con anime y el OST con juegos. El póster de cada categoría está en src/assets/covers/<id>.webp.
  */
 import type { Category, Family, FamilyId, GroupId } from "./types";
 
 export const GROUPS: { id: GroupId; name: string }[] = [
   { id: "anime", name: "Anime" },
   { id: "juegos", name: "Videojuegos" },
+  { id: "series", name: "Series y películas" },
   { id: "cultura", name: "Cultura general" },
 ];
 
@@ -21,90 +23,120 @@ export const FAMILIES: Family[] = [
   { id: "accion", group: "juegos", name: "Acción" },
   { id: "shooter", group: "juegos", name: "Shooters" },
   { id: "versus", group: "juegos", name: "Pelea y MOBA" },
+  { id: "series", group: "series", name: "Series" },
+  { id: "peliculas", group: "series", name: "Películas" },
   { id: "cultura", group: "cultura", name: "Cultura general" },
 ];
 
 export const CATEGORIES: Category[] = [
   // Openings: todas las preguntas suenan
-  { id: "openings", name: "Openings de anime", short: "Openings", family: "openings", cover: ["jojo-op-sonochi", "aot-op-guren", "kimetsu-op-gurenge", "op-op-weare"], sfx: "♪" },
+  { id: "openings", name: "Openings de anime", short: "Openings", family: "openings", mosaic: ["jojo", "aot", "kimetsu", "onepiece"], sfx: "♪" },
 
   // Anime clásico: el anime se estrenó antes de 2010
-  { id: "dragonball", name: "Dragon Ball", short: "Dragon Ball", family: "clasicos", cover: "db-op-chala", focus: 72, sfx: "ドドド" },
-  { id: "onepiece", name: "One Piece", short: "One Piece", family: "clasicos", cover: "op-op-weare", focus: 64, sfx: "ドン" },
-  { id: "naruto", name: "Naruto", short: "Naruto", family: "clasicos", cover: "naruto-op-bluebird", focus: 50, sfx: "ドン" },
-  { id: "bleach", name: "Bleach", short: "Bleach", family: "clasicos", cover: "bleach-op-asterisk", focus: 50, sfx: "ザン" },
-  { id: "hxh", name: "Hunter x Hunter", short: "HxH", family: "clasicos", cover: "hxh-op-departure", focus: 62, sfx: "ゴゴ" },
-  { id: "fma", name: "Fullmetal Alchemist", short: "Fullmetal", family: "clasicos", cover: "fma-op-again", focus: 30, sfx: "バチ" },
-  { id: "deathnote", name: "Death Note", short: "Death Note", family: "clasicos", cover: "dn-op-whatsup", focus: 50, sfx: "カリ" },
-  { id: "codegeass", name: "Code Geass", short: "Code Geass", family: "clasicos", cover: "cover-codegeass", focus: 50, sfx: "キン" },
-  { id: "eva", name: "Evangelion", short: "Evangelion", family: "clasicos", cover: "eva-op-thesis", focus: 50, sfx: "ギギ" },
-  { id: "bebop", name: "Cowboy Bebop", short: "Bebop", family: "clasicos", cover: "bebop-op-tank", focus: 50, sfx: "バン" },
+  { id: "dragonball", name: "Dragon Ball", short: "Dragon Ball", family: "clasicos", sfx: "ドドド" },
+  { id: "onepiece", name: "One Piece", short: "One Piece", family: "clasicos", sfx: "ドン" },
+  { id: "naruto", name: "Naruto", short: "Naruto", family: "clasicos", sfx: "ドン" },
+  { id: "bleach", name: "Bleach", short: "Bleach", family: "clasicos", sfx: "ザン" },
+  { id: "hxh", name: "Hunter x Hunter", short: "HxH", family: "clasicos", sfx: "ゴゴ" },
+  { id: "fma", name: "Fullmetal Alchemist", short: "Fullmetal", family: "clasicos", sfx: "バチ" },
+  { id: "deathnote", name: "Death Note", short: "Death Note", family: "clasicos", sfx: "カリ" },
+  { id: "codegeass", name: "Code Geass", short: "Code Geass", family: "clasicos", sfx: "キン" },
+  { id: "eva", name: "Evangelion", short: "Evangelion", family: "clasicos", sfx: "ギギ" },
+  { id: "bebop", name: "Cowboy Bebop", short: "Bebop", family: "clasicos", sfx: "バン" },
+  { id: "saintseiya", name: "Los Caballeros del Zodiaco", short: "Caballeros", family: "clasicos", sfx: "ゴゴ" },
+  { id: "sailormoon", name: "Sailor Moon", short: "Sailor Moon", family: "clasicos", sfx: "キラ" },
+  { id: "fairytail", name: "Fairy Tail", short: "Fairy Tail", family: "clasicos", sfx: "ボォ" },
 
   // Década de 2010
-  { id: "jojo", name: "JoJo's Bizarre Adventure", short: "JoJo", family: "d2010", cover: "jojo-op-sonochi", focus: 50, sfx: "ゴゴゴ" },
-  { id: "aot", name: "Attack on Titan", short: "Shingeki", family: "d2010", cover: "aot-op-guren", focus: 50, sfx: "ドォン" },
-  { id: "tokyoghoul", name: "Tokyo Ghoul", short: "Tokyo Ghoul", family: "d2010", cover: "tg-op-unravel", focus: 50, sfx: "ガリ" },
-  { id: "haikyuu", name: "Haikyuu!!", short: "Haikyuu!!", family: "d2010", cover: "haikyuu-op-imagination", focus: 50, sfx: "バシ" },
-  { id: "opm", name: "One Punch Man", short: "One Punch", family: "d2010", cover: "opm-op-thehero", focus: 45, sfx: "パン" },
-  { id: "mha", name: "My Hero Academia", short: "My Hero", family: "d2010", cover: "mha-op-theday", focus: 32, sfx: "ドカ" },
-  { id: "mob", name: "Mob Psycho 100", short: "Mob Psycho", family: "d2010", cover: "mob-op-99", focus: 45, sfx: "ゴゴ" },
-  { id: "kimetsu", name: "Demon Slayer", short: "Kimetsu", family: "d2010", cover: "kimetsu-op-gurenge", focus: 58, sfx: "シュ" },
+  { id: "jojo", name: "JoJo's Bizarre Adventure", short: "JoJo", family: "d2010", sfx: "ゴゴゴ" },
+  { id: "aot", name: "Attack on Titan", short: "Shingeki", family: "d2010", sfx: "ドォン" },
+  { id: "tokyoghoul", name: "Tokyo Ghoul", short: "Tokyo Ghoul", family: "d2010", sfx: "ガリ" },
+  { id: "haikyuu", name: "Haikyuu!!", short: "Haikyuu!!", family: "d2010", sfx: "バシ" },
+  { id: "opm", name: "One Punch Man", short: "One Punch", family: "d2010", sfx: "パン" },
+  { id: "mha", name: "My Hero Academia", short: "My Hero", family: "d2010", sfx: "ドカ" },
+  { id: "mob", name: "Mob Psycho 100", short: "Mob Psycho", family: "d2010", sfx: "ゴゴ" },
+  { id: "kimetsu", name: "Demon Slayer", short: "Kimetsu", family: "d2010", sfx: "シュ" },
+  { id: "sao", name: "Sword Art Online", short: "SAO", family: "d2010", sfx: "キン" },
+  { id: "vinland", name: "Vinland Saga", short: "Vinland", family: "d2010", sfx: "ザッ" },
 
   // De 2020 para acá
-  { id: "jjk", name: "Jujutsu Kaisen", short: "Jujutsu", family: "nuevos", cover: "jjk-op-kaikai", focus: 42, sfx: "ズン" },
-  { id: "csm", name: "Chainsaw Man", short: "Chainsaw", family: "nuevos", cover: "csm-op-kickback", focus: 50, sfx: "ブイーン" },
-  { id: "spyfamily", name: "Spy x Family", short: "Spy×Family", family: "nuevos", cover: "cover-spyfamily", focus: 58, sfx: "ワク" },
-  { id: "frieren", name: "Frieren", short: "Frieren", family: "nuevos", cover: "frieren-op-yuusha", focus: 62, sfx: "シン" },
-  { id: "sololeveling", name: "Solo Leveling", short: "Solo Leveling", family: "nuevos", cover: "solo-op-level", focus: 50, sfx: "ゴゴ" },
-  { id: "dandadan", name: "Dandadan", short: "Dandadan", family: "nuevos", cover: "dandadan-op-otonoke", focus: 38, sfx: "ダダン" },
+  { id: "jjk", name: "Jujutsu Kaisen", short: "Jujutsu", family: "nuevos", sfx: "ズン" },
+  { id: "csm", name: "Chainsaw Man", short: "Chainsaw", family: "nuevos", sfx: "ブイーン" },
+  { id: "spyfamily", name: "Spy x Family", short: "Spy×Family", family: "nuevos", sfx: "ワク" },
+  { id: "frieren", name: "Frieren", short: "Frieren", family: "nuevos", sfx: "シン" },
+  { id: "sololeveling", name: "Solo Leveling", short: "Solo Leveling", family: "nuevos", sfx: "ゴゴ" },
+  { id: "dandadan", name: "Dandadan", short: "Dandadan", family: "nuevos", sfx: "ダダン" },
+  { id: "bluelock", name: "Blue Lock", short: "Blue Lock", family: "nuevos", sfx: "ドン" },
 
   // OST gaming: todas las preguntas suenan
-  { id: "soundtracks", name: "Música de videojuegos", short: "OST gaming", family: "ost", cover: ["rdr-ost-thatstheway", "mario-ost-jumpup", "hk-ost-cityoftears", "sonic-ost-greenhill"], sfx: "♪" },
+  { id: "soundtracks", name: "Música de videojuegos", short: "OST gaming", family: "ost", mosaic: ["rdr", "mario", "hollowknight", "sonic"], sfx: "♪" },
 
   // Aventura y plataformas
-  { id: "mario", name: "Super Mario", short: "Mario", family: "aventura", cover: "mario-tr-wonder", focus: 56 },
-  { id: "zelda", name: "The Legend of Zelda", short: "Zelda", family: "aventura", cover: "zelda-tr-totk", focus: 62 },
-  { id: "sonic", name: "Sonic", short: "Sonic", family: "aventura", cover: "sonic-ost-greenhill", focus: 50 },
-  { id: "hollowknight", name: "Hollow Knight", short: "Hollow Knight", family: "aventura", cover: "hk-ost-cityoftears", focus: 50 },
+  { id: "mario", name: "Super Mario", short: "Mario", family: "aventura" },
+  { id: "zelda", name: "The Legend of Zelda", short: "Zelda", family: "aventura" },
+  { id: "sonic", name: "Sonic", short: "Sonic", family: "aventura" },
+  { id: "hollowknight", name: "Hollow Knight", short: "Hollow Knight", family: "aventura" },
+  { id: "crash", name: "Crash Bandicoot", short: "Crash", family: "aventura" },
 
   // Rol
-  { id: "pokemon", name: "Pokémon", short: "Pokémon", family: "rol", cover: "pokemon-tr-sv", focus: 50 },
-  { id: "ff", name: "Final Fantasy", short: "Final Fantasy", family: "rol", cover: "cover-ff", focus: 42 },
-  { id: "witcher", name: "The Witcher", short: "Witcher", family: "rol", cover: "witcher-tr-killing", focus: 50 },
-  { id: "souls", name: "Elden Ring y Souls", short: "Souls", family: "rol", cover: "souls-tr-erdtree", focus: 50 },
-  { id: "genshin", name: "Genshin Impact", short: "Genshin", family: "rol", cover: "genshin-tr-raiden", focus: 45 },
-  { id: "cyberpunk", name: "Cyberpunk 2077", short: "Cyberpunk", family: "rol", cover: "cyber-ost-neverfade", focus: 60 },
+  { id: "pokemon", name: "Pokémon", short: "Pokémon", family: "rol" },
+  { id: "ff", name: "Final Fantasy", short: "Final Fantasy", family: "rol" },
+  { id: "witcher", name: "The Witcher", short: "Witcher", family: "rol" },
+  { id: "souls", name: "Elden Ring y Souls", short: "Souls", family: "rol" },
+  { id: "genshin", name: "Genshin Impact", short: "Genshin", family: "rol" },
+  { id: "cyberpunk", name: "Cyberpunk 2077", short: "Cyberpunk", family: "rol" },
+  { id: "kingdomhearts", name: "Kingdom Hearts", short: "Kingdom Hearts", family: "rol" },
+  { id: "persona", name: "Persona", short: "Persona", family: "rol" },
 
   // Mundo abierto y sandbox
-  { id: "gta", name: "Grand Theft Auto", short: "GTA", family: "mundo", cover: "gta-tr-vi", focus: 50 },
-  { id: "rdr", name: "Red Dead Redemption", short: "Red Dead", family: "mundo", cover: "rdr-ost-thatstheway", focus: 30 },
-  { id: "minecraft", name: "Minecraft", short: "Minecraft", family: "mundo", cover: "cover-minecraft", focus: 50 },
+  { id: "gta", name: "Grand Theft Auto", short: "GTA", family: "mundo" },
+  { id: "rdr", name: "Red Dead Redemption", short: "Red Dead", family: "mundo" },
+  { id: "minecraft", name: "Minecraft", short: "Minecraft", family: "mundo" },
+  { id: "assassins", name: "Assassin's Creed", short: "Assassin's", family: "mundo" },
+  { id: "animalcrossing", name: "Animal Crossing", short: "Animal Crossing", family: "mundo" },
 
   // Acción
-  { id: "gow", name: "God of War", short: "God of War", family: "accion", cover: "gow-ost-main", focus: 45 },
-  { id: "tlou", name: "The Last of Us", short: "Last of Us", family: "accion", cover: "tlou-ost-main", focus: 40 },
-  { id: "re", name: "Resident Evil", short: "Resident Evil", family: "accion", cover: "re-ost-saferoom", focus: 50 },
-  { id: "mgs", name: "Metal Gear Solid", short: "Metal Gear", family: "accion", cover: "cover-mgs", focus: 34 },
+  { id: "gow", name: "God of War", short: "God of War", family: "accion" },
+  { id: "tlou", name: "The Last of Us", short: "Last of Us", family: "accion" },
+  { id: "re", name: "Resident Evil", short: "Resident Evil", family: "accion" },
+  { id: "mgs", name: "Metal Gear Solid", short: "Metal Gear", family: "accion" },
+  { id: "spiderman", name: "Marvel's Spider-Man", short: "Spider-Man", family: "accion" },
 
   // Shooters
-  { id: "halo", name: "Halo", short: "Halo", family: "shooter", cover: "cover-halo", focus: 30 },
-  { id: "cod", name: "Call of Duty", short: "CoD", family: "shooter", cover: "cover-cod", focus: 50 },
-  { id: "fortnite", name: "Fortnite", short: "Fortnite", family: "shooter", cover: "cover-fortnite", focus: 50 },
-  { id: "valorant", name: "Valorant", short: "Valorant", family: "shooter", cover: "valorant-tr-neon", focus: 40 },
-  { id: "overwatch", name: "Overwatch", short: "Overwatch", family: "shooter", cover: "ow-tr-dragons", focus: 40 },
+  { id: "halo", name: "Halo", short: "Halo", family: "shooter" },
+  { id: "cod", name: "Call of Duty", short: "CoD", family: "shooter" },
+  { id: "fortnite", name: "Fortnite", short: "Fortnite", family: "shooter" },
+  { id: "valorant", name: "Valorant", short: "Valorant", family: "shooter" },
+  { id: "overwatch", name: "Overwatch", short: "Overwatch", family: "shooter" },
+  { id: "counterstrike", name: "Counter-Strike", short: "Counter-Strike", family: "shooter" },
 
   // Pelea y MOBA
-  { id: "smash", name: "Super Smash Bros.", short: "Smash", family: "versus", cover: "smash-tr-sora", focus: 56 },
-  { id: "pelea", name: "Juegos de pelea", short: "Pelea", family: "versus", cover: "pelea-ost-guile", focus: 55 },
-  { id: "lol", name: "League of Legends", short: "LoL", family: "versus", cover: "lol-ost-enemy", focus: 60 },
+  { id: "smash", name: "Super Smash Bros.", short: "Smash", family: "versus" },
+  { id: "pelea", name: "Juegos de pelea", short: "Pelea", family: "versus" },
+  { id: "lol", name: "League of Legends", short: "LoL", family: "versus" },
+
+  // Series
+  { id: "simpsons", name: "Los Simpson", short: "Los Simpson", family: "series" },
+  { id: "breakingbad", name: "Breaking Bad", short: "Breaking Bad", family: "series" },
+  { id: "got", name: "Juego de Tronos", short: "Juego de Tronos", family: "series" },
+  { id: "strangerthings", name: "Stranger Things", short: "Stranger Things", family: "series" },
+  { id: "friends", name: "Friends", short: "Friends", family: "series" },
+  { id: "casadepapel", name: "La casa de papel", short: "Casa de papel", family: "series" },
+
+  // Películas
+  { id: "starwars", name: "Star Wars", short: "Star Wars", family: "peliculas" },
+  { id: "harrypotter", name: "Harry Potter", short: "Harry Potter", family: "peliculas" },
+  { id: "mcu", name: "Marvel: los Vengadores", short: "Vengadores", family: "peliculas" },
+  { id: "lotr", name: "El Señor de los Anillos", short: "Señor Anillos", family: "peliculas" },
+  { id: "pixar", name: "Pixar", short: "Pixar", family: "peliculas" },
 
   // Cultura general
-  { id: "historia", name: "Historia", short: "Historia", family: "cultura", cover: "cover-historia", focus: 50 },
-  { id: "geografia", name: "Geografía", short: "Geografía", family: "cultura", cover: "cover-geografia", focus: 30 },
-  { id: "ciencia", name: "Ciencia", short: "Ciencia", family: "cultura", cover: "cover-ciencia", focus: 50 },
-  { id: "deportes", name: "Deportes", short: "Deportes", family: "cultura", cover: "cover-deportes", focus: 36 },
-  { id: "cine", name: "Cine", short: "Cine", family: "cultura", cover: "cine-ost-starwars", focus: 50 },
-  { id: "musica", name: "Música", short: "Música", family: "cultura", cover: "musica-queen-bohemian", focus: 50 },
+  { id: "historia", name: "Historia", short: "Historia", family: "cultura" },
+  { id: "geografia", name: "Geografía", short: "Geografía", family: "cultura" },
+  { id: "ciencia", name: "Ciencia", short: "Ciencia", family: "cultura" },
+  { id: "deportes", name: "Deportes", short: "Deportes", family: "cultura" },
+  { id: "cine", name: "Cine", short: "Cine", family: "cultura" },
+  { id: "musica", name: "Música", short: "Música", family: "cultura" },
 ];
 
 export const CATEGORY_BY_ID: Record<string, Category> = Object.fromEntries(CATEGORIES.map((c) => [c.id, c]));

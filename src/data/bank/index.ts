@@ -9,6 +9,10 @@ import oido from "./oido";
 import nintendo from "./nintendo";
 import aaa from "./aaa";
 import online from "./online";
+import pantalla from "./pantalla";
+import masAnime from "./mas-anime";
+import masJuegos from "./mas-juegos";
+import extra from "./extra";
 
 export interface ResolvedVideo {
   id: string;
@@ -23,7 +27,18 @@ export function videoFor(key: string): ResolvedVideo | undefined {
   return VIDEOS[key];
 }
 
-const RAW: Record<string, RawQuestion[]> = { ...cultura, ...leyenda, ...nueva, ...culto, ...oido, ...nintendo, ...aaa, ...online };
+// varios archivos pueden aportar a la misma categoría: se suman, no se pisan
+const RAW: Record<string, RawQuestion[]> = {};
+for (const part of [cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra]) {
+  for (const [cat, list] of Object.entries(part)) (RAW[cat] ??= []).push(...list);
+}
+
+/** id estable que sale del contenido: reordenar o sumar preguntas no cambia el de las demás (el historial lo usa) */
+function stableId(cat: string, q: string, answer: string, media?: string) {
+  let h = 2166136261;
+  for (const ch of `${q}|${answer}|${media ?? ""}`) h = Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0;
+  return `${cat}-${h.toString(36)}`;
+}
 
 export interface Bank {
   byId: Record<string, Question>;
@@ -38,9 +53,10 @@ function build(): Bank {
   const missingVideo: string[] = [];
   for (const [cat, list] of Object.entries(RAW)) {
     byCat[cat] = [];
-    list.forEach((r, i) => {
+    list.forEach((r) => {
       const [d, q, a, b, c, e, media] = r as [RawQuestion[0], string, string, string, string, string, RawQuestion[6]];
-      const id = `${cat}-${String(i + 1).padStart(2, "0")}`;
+      let id = stableId(cat, q, a, media?.k);
+      while (byId[id]) id += "x";
       const question: Question = { id, cat, d, q, o: [a, b, c, e], media: media || undefined };
       if (media) {
         const v = VIDEOS[media.k];
