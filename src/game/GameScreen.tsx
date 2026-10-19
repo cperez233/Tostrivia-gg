@@ -15,6 +15,7 @@ import { describe } from "./mix";
 import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
 import Ceremony from "./Ceremony";
+import { rng, shuffle } from "../lib/rng";
 import "./game.css";
 import "./ceremony.css";
 
@@ -44,18 +45,25 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   const localStart = starts.current.get(key) ?? 0;
   const deadline = localStart + snap.duration;
 
-  // modo Poderes: lo que usé en esta pregunta y la tinta que me echaron
+  // modo Poderes: lo que usé en esta pregunta y lo que me echaron encima (Tinta, Susto, Revoltijo, De cabeza)
   const used = snap.used?.[client.me.id];
   const cut = (snap.phase === "question" && used?.cut) || [];
-  const ink = snap.phase === "question" ? snap.ink?.[client.me.id] : undefined;
-  const inkUntil = ink ? localStart + ink.until : 0;
-  const [, setTick] = useState(0);
-  const inked = !!ink && Date.now() < inkUntil;
+  const fx = snap.phase === "question" ? snap.fx?.[client.me.id] : undefined;
+  const fxFrom = fx ? localStart + fx.from : 0;
+  const fxUntil = fx ? localStart + fx.until : 0;
+  const [tick, setTick] = useState(0);
+  const now = Date.now();
+  const fxOn = !!fx && now >= fxFrom && now < fxUntil;
+  const fxPending = !!fx && now < fxUntil;
   useEffect(() => {
-    if (!inked) return;
-    const t = setTimeout(() => setTick((n) => n + 1), Math.max(0, inkUntil - Date.now()) + 30);
+    if (!fxPending) return;
+    // el Revoltijo mueve las opciones cada poco; los demás solo esperan a empezar o terminar
+    const next = fxOn && fx?.p === "shuffle" ? 750 : Math.max(0, (Date.now() < fxFrom ? fxFrom : fxUntil) - Date.now()) + 30;
+    const t = setTimeout(() => setTick((n) => n + 1), next);
     return () => clearTimeout(t);
-  }, [inked, inkUntil]);
+  }, [fxPending, fxOn, fxFrom, fxUntil, fx?.p, tick]);
+  const inked = fxOn && fx?.p === "ink";
+  const shuffled = fxOn && fx?.p === "shuffle" ? shuffle([0, 1, 2, 3], rng(Math.floor(now / 750))) : null;
   const nameOf = (pid: string) => snap.players.find((p) => p.id === pid)?.name ?? "?";
 
   const answer = (i: number) => {
@@ -153,7 +161,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         )}
       </AnimatePresence>
 
-      <main className={`game__body ${q.media ? "has-media" : ""}`}>
+      <main className={`game__body ${q.media ? "has-media" : ""} ${fxOn && fx?.p === "flip" ? "is-flipped" : ""}`}>
         <section className="game__main">
           <AnimatePresence mode="wait">
             <motion.div
@@ -207,7 +215,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                 const state = reveal ? (isCorrect ? "correct" : isMine ? "wrong" : "dim") : isMine ? "picked" : isCut ? "cut" : "idle";
                 const who = reveal ? online.filter((p) => reveal.picks[p.id]?.choice === i && p.id !== client.me.id) : [];
                 return (
-                  <li key={`${key}-${i}`}>
+                  <li key={`${key}-${i}`} style={shuffled ? { order: shuffled[i] } : undefined}>
                     <motion.button
                       type="button"
                       className={`opt opt--${state}`}
@@ -245,10 +253,10 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
               })}
             </ol>
             <AnimatePresence>
-              {inked && ink && (
+              {inked && fx && (
                 <motion.div key="ink" className="ink" role="status" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
                   <span className="ink__text">
-                    {POWER_ICON.ink} {POWER_LINES.inked(nameOf(ink.by))}
+                    {POWER_ICON.ink} {POWER_LINES.inked(nameOf(fx.by))}
                   </span>
                 </motion.div>
               )}
@@ -266,6 +274,11 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           )}
 
           <div className="game__status" aria-live="polite">
+            {fxOn && fx && (fx.p === "shuffle" || fx.p === "flip") && (
+              <p className="game__fx">
+                {POWER_ICON[fx.p]} {POWER_LINES.fx(fx.p, nameOf(fx.by))}
+              </p>
+            )}
             {snap.phase === "loading" && q.media && (
               <p>{snap.mode === "group" ? `Preparando el video en todos los celulares (${snap.mediaReady.length}/${online.length})…` : "Preparando el video…"}</p>
             )}
@@ -305,6 +318,8 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           <StreakBanner key={`streak-${key}`} streak={mine.streak} />
         )}
       </AnimatePresence>
+
+      <AnimatePresence>{fxOn && fx?.p === "scare" && <Scare key={`scare-${key}`} who={nameOf(fx.by)} />}</AnimatePresence>
 
       <AnimatePresence>
         {confirmExit && (
@@ -358,6 +373,52 @@ function Flame() {
   );
 }
 
+/** Susto: la pantalla se va a negro, sale la cara y suena un chillido corto */
+function Scare({ who }: { who: string }) {
+  const reduce = useReducedMotion();
+  useEffect(() => {
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new Ctx();
+      const t = ctx.currentTime;
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, t);
+      gain.gain.exponentialRampToValueAtTime(0.35, t + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.9);
+      gain.connect(ctx.destination);
+      for (const [type, f0, f1] of [["sawtooth", 180, 1400], ["square", 230, 1100]] as const) {
+        const o = ctx.createOscillator();
+        o.type = type;
+        o.frequency.setValueAtTime(f0, t);
+        o.frequency.exponentialRampToValueAtTime(f1, t + 0.25);
+        o.frequency.exponentialRampToValueAtTime(f0 * 2, t + 0.9);
+        o.connect(gain);
+        o.start(t);
+        o.stop(t + 0.95);
+      }
+      setTimeout(() => ctx.close(), 1200);
+    } catch {
+      /* sin audio: queda el susto visual */
+    }
+    navigator.vibrate?.([120, 60, 220]);
+  }, []);
+  return (
+    <motion.div className="scare" role="alert" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.25 } }} transition={{ duration: 0.04 }}>
+      <motion.span
+        className="scare__face"
+        aria-hidden
+        initial={{ scale: 0.3 }}
+        animate={reduce ? { scale: 1 } : { scale: [0.3, 1.25, 1.1], x: [0, -18, 14, -10, 8, 0], rotate: [0, -6, 5, -3, 0] }}
+        transition={{ duration: 0.45 }}
+      >
+        👹
+      </motion.span>
+      <span className="scare__word">¡BU!</span>
+      <span className="scare__who">{POWER_LINES.scare(who)}</span>
+    </motion.div>
+  );
+}
+
 /** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
 function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; onUse: (p: PowerId) => void }) {
   return (
@@ -406,8 +467,9 @@ function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): st
   if (pick.power === "mushroom" && pick.bonus) out.push(`${POWER_ICON.mushroom} ${POWER_LINES.mushroom(pick.bonus)}`);
   if (pick.power === "star" && pick.bonus) out.push(`${POWER_ICON.star} ${POWER_LINES.star}`);
   if (pick.shielded) out.push(POWER_LINES.shielded);
-  for (const d of pick.dealt ?? []) out.push(POWER_LINES.dealt(d.p, nameOf(d.to), d.pts));
-  for (const h of pick.hits ?? []) out.push(h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
+  for (const d of pick.dealt ?? []) out.push(d.p === "swapScore" ? POWER_LINES.swappedUp(nameOf(d.to), d.pts) : POWER_LINES.dealt(d.p, nameOf(d.to), d.pts));
+  for (const h of pick.hits ?? [])
+    out.push(h.p === "swapScore" ? POWER_LINES.swappedDown(nameOf(h.by), h.pts) : h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
   for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(b.p, nameOf(b.by), b.with));
   if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${(pick.consolation ? POWER_LINES.consolation : POWER_LINES.earned)(POWER_TEXT[pick.earned].name)}`);
   return out;

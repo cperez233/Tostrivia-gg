@@ -11,7 +11,7 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
 - **Modos**: Vanilla (la partida de siempre) o Poderes. Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
-- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 2 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 4 en la mano). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
+- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 1 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 3 en la mano, como en Mario Kart). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo, Cambiazo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
   - ✂️ **50/50**: tacha dos opciones malas.
   - 🎰 **Doble o nada**: ×2 si aciertas, −300 si fallas.
   - 🎲 **Dado**: +100 por punto del dado si aciertas, −50 por punto si fallas.
@@ -25,6 +25,11 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - 🔵 **Caparazón azul** (grupo): −600 al primero; si el primero eres tú, te pega a ti.
   - ⚡ **Rayo** (grupo): −200 a todos los demás.
   - 🦑 **Tinta** (grupo): tapa las opciones de los demás durante 5 s.
+  - 😱 **Susto** (grupo): un jumpscare (cara, chillido y vibración) en la pantalla de los demás, entre 1 y 3,5 s después de usarlo.
+  - 🌀 **Revoltijo** (grupo): las opciones de los demás cambian de lugar cada segundo durante 6 s.
+  - 🙃 **De cabeza** (grupo): la pantalla de los demás se voltea 6 s.
+  - 🔁 **Cambiazo** (grupo): cambias tu puntaje con el que va justo delante de ti (al final de la pregunta).
+  - 🍌 **Plátano** (grupo): el primero que responda después de que lo tiras pierde 300.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local

@@ -14,7 +14,8 @@ import {
   DICE_PTS,
   DOUBLE_RISK,
   EARN_EVERY,
-  INK_MS,
+  BANANA_PTS,
+  FX_MS,
   MAX_HAND,
   MUSHROOM_MAX,
   POOL,
@@ -24,6 +25,7 @@ import {
   STEAL_PTS,
   drawPower,
   startHand,
+  type FxId,
   type PowerId,
   type Variant,
 } from "./powers";
@@ -83,6 +85,18 @@ export interface PowerUse {
   cut?: number[];
   /** Dado: lo que salió */
   roll?: number;
+  /** ms desde que arrancó el reloj */
+  at?: number;
+  /** Plátano: cuántos habían respondido cuando lo tiró (lo pisa el siguiente) */
+  after?: number;
+}
+
+/** un efecto en la pantalla de un jugador: de `from` a `until` (ms desde que arrancó el reloj) */
+export interface Fx {
+  p: FxId;
+  by: string;
+  from: number;
+  until: number;
 }
 
 export interface Spin {
@@ -119,8 +133,8 @@ export interface Snapshot {
   replaced: number;
   /** poderes usados en la pregunta actual, por jugador */
   used: Record<string, PowerUse>;
-  /** Tinta: hasta cuándo (ms desde que arrancó el reloj) tiene tapadas las opciones cada jugador, y quién se la echó */
-  ink: Record<string, { by: string; until: number }>;
+  /** Tinta, Susto, Revoltijo o De cabeza: lo que tiene encima cada jugador en esta pregunta */
+  fx: Record<string, Fx>;
 }
 
 type Listener = (s: Snapshot) => void;
@@ -168,7 +182,7 @@ export class Match {
       notice: null,
       replaced: 0,
       used: {},
-      ink: {},
+      fx: {},
     };
   }
 
@@ -289,10 +303,10 @@ export class Match {
       return this.replaceAt(index, "YouTube no responde en esta red. Seguimos con preguntas sin video.", true);
     }
     if (q.media) {
-      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, ink: {} });
+      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, fx: {} });
       this.waitTimer = setTimeout(() => this.mediaTimeout(), MEDIA_WAIT_MS);
     } else {
-      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, ink: {} });
+      this.emit({ phase: "loading", index, qid, order, duration, answered: [], mediaReady: [], reveal: null, used: {}, fx: {} });
       this.beginQuestion();
     }
   }
@@ -379,8 +393,8 @@ export class Match {
     if (!this.s.players.some((p) => p.id === pid)) return;
     const hostMs = Date.now() - this.startedAt;
     // con tinta encima no se puede responder (el celular ya lo bloquea; esto es por si acaso)
-    const ink = this.s.ink[pid];
-    if (ink && hostMs < ink.until - GRACE_MS) return;
+    const fx = this.s.fx[pid];
+    if (fx?.p === "ink" && hostMs >= fx.from && hostMs < fx.until - GRACE_MS) return;
     // el invitado mide su propio tiempo; se acepta si no es absurdo frente al reloj del anfitrión
     const ms = clientMs != null && clientMs >= 0 && clientMs <= hostMs + 1500 ? clientMs : hostMs;
     this.answers.set(pid, { choice, ms: Math.min(ms, this.s.duration) });
@@ -455,13 +469,38 @@ export class Match {
         if (mine.power === "steal" && mine.ok) hit(p.id, others[0]?.id, "steal", STEAL_PTS, true);
         else if (mine.power === "redShell") hit(p.id, (at > 0 ? ranking[at - 1] : others[0])?.id, "redShell", RED_PTS);
         else if (mine.power === "blueShell") hit(p.id, ranking[0]?.id, "blueShell", BLUE_PTS);
-        else if (mine.power === "lightning") for (const o of others) if (o.online) hit(p.id, o.id, "lightning", BOLT_PTS);
+        else if (mine.power === "lightning") {
+          for (const o of others) if (o.online) hit(p.id, o.id, "lightning", BOLT_PTS);
+        } else if (mine.power === "banana") {
+          // resbala el primero que respondió después de que lo tiró
+          const first = [...this.answers.keys()].slice(used[p.id]?.after ?? 0).find((id) => id !== p.id);
+          hit(p.id, first, "banana", BANANA_PTS);
+        }
       }
     }
     const order = [...this.s.players].sort((a, b) => b.score - a.score);
+    const final = new Map(this.s.players.map((p) => [p.id, Math.max(0, p.score + picks[p.id].gained)]));
+    if (powers) {
+      // Cambiazo: al final de todo, cambia el puntaje con el que va justo delante
+      for (const p of this.s.players) {
+        if (picks[p.id].power !== "swapScore") continue;
+        const ahead = [...final].filter(([id, sc]) => id !== p.id && sc > final.get(p.id)!).sort((a, b) => a[1] - b[1])[0]?.[0];
+        if (!ahead) continue;
+        const guard = used[ahead]?.p;
+        if (guard === "shield" || guard === "star") {
+          picks[ahead].blocked = [...(picks[ahead].blocked ?? []), { by: p.id, p: "swapScore", with: guard }];
+          continue;
+        }
+        const diff = final.get(ahead)! - final.get(p.id)!;
+        final.set(ahead, final.get(p.id)!);
+        final.set(p.id, final.get(p.id)! + diff);
+        picks[ahead].hits = [...(picks[ahead].hits ?? []), { by: p.id, p: "swapScore", pts: diff }];
+        picks[p.id].dealt = [...(picks[p.id].dealt ?? []), { to: ahead, p: "swapScore", pts: diff }];
+      }
+    }
     const players = this.s.players.map((p) => {
       const pick = picks[p.id];
-      const score = Math.max(0, p.score + pick.gained);
+      const score = final.get(p.id)!;
       pick.gained = score - p.score;
       let hand = p.powers;
       if (powers) {
@@ -504,21 +543,27 @@ export class Match {
       const full = [...hand, ...prize].slice(0, MAX_HAND);
       return this.emit({ players: this.s.players.map((p) => (p.id === pid ? { ...p, powers: full } : p)) });
     }
-    const use: PowerUse = { p: power };
-    let ink = this.s.ink;
+    const now = Date.now() - this.startedAt;
+    const use: PowerUse = { p: power, at: now };
+    if (power === "banana") use.after = this.answers.size;
+    let fx = this.s.fx;
     if (power === "dice") use.roll = 1 + Math.floor(Math.random() * 6);
     else if (power === "half") {
       const wrong = [0, 1, 2, 3].filter((i) => this.s.order[i] !== 0);
       use.cut = shuffle(wrong, Math.random).slice(0, 2);
-    } else if (power === "ink") {
-      const until = Date.now() - this.startedAt + INK_MS;
-      ink = { ...ink };
-      for (const p of this.active()) if (p.id !== pid && !this.answers.has(p.id) && this.s.used[p.id]?.p !== "shield") ink[p.id] = { by: pid, until };
-    } else if (power === "shield" && ink[pid]) {
-      ink = { ...ink };
-      delete ink[pid];
+    } else if (power === "ink" || power === "scare" || power === "shuffle" || power === "flip") {
+      // el Susto llega cuando menos lo esperan
+      const from = power === "scare" ? now + 1000 + Math.floor(Math.random() * 2500) : now;
+      fx = { ...fx };
+      for (const p of this.active()) {
+        const guard = this.s.used[p.id]?.p;
+        if (p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star") fx[p.id] = { p: power, by: pid, from, until: from + FX_MS[power] };
+      }
+    } else if ((power === "shield" || power === "star") && fx[pid]) {
+      fx = { ...fx };
+      delete fx[pid];
     }
-    this.emit({ players, used: { ...this.s.used, [pid]: use }, ink });
+    this.emit({ players, used: { ...this.s.used, [pid]: use }, fx });
   }
 
   /** Cambio (solo): otra pregunta, mejor sin video y de la misma dificultad */

@@ -1,5 +1,5 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
- * Modo Poderes, al estilo de los juegos de fiesta: cada jugador arranca con dos poderes y gana más
+ * Modo Poderes, al estilo de los juegos de fiesta: cada jugador arranca con un poder y gana más
  * con cada racha de 3 o tras fallar tres seguidas. En grupo, el que va atrás recibe los poderes más fuertes.
  * Se usa uno por pregunta, antes de responder (el Bloque ? no cuenta). Vanilla es la partida de siempre.
  * Los textos están todos aquí (POWER_TEXT, VARIANT_TEXT, POWER_LINES) para poder traducirlos en un solo sitio.
@@ -21,20 +21,29 @@ export type PowerId =
   | "mystery"
   | "redShell"
   | "blueShell"
-  | "lightning";
+  | "lightning"
+  | "scare"
+  | "shuffle"
+  | "flip"
+  | "swapScore"
+  | "banana";
+
+/** efectos que se ven en la pantalla de los demás mientras corre la pregunta */
+export type FxId = "ink" | "scare" | "shuffle" | "flip";
 
 /** solo: los que no dependen de otros; grupo: los que no cambian la pregunta de todos */
 export const POOL: Record<"solo" | "group", PowerId[]> = {
   solo: ["half", "double", "shield", "swap", "dice", "mushroom", "star", "mystery"],
-  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning"],
+  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning", "scare", "shuffle", "flip", "swapScore", "banana"],
 };
 /** los que le tocan más seguido al que va en la mitad de abajo (como en Mario Kart) */
-export const COMEBACK: PowerId[] = ["blueShell", "lightning", "star", "steal", "redShell"];
-/** poderes contra los demás: el Escudo y la Estrella los frenan */
-export const ATTACKS: PowerId[] = ["steal", "ink", "redShell", "blueShell", "lightning"];
+export const COMEBACK: PowerId[] = ["blueShell", "lightning", "star", "steal", "redShell", "swapScore"];
+/** los que se ven en la pantalla de los demás y cuánto duran */
+export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000 };
 
-export const START_HAND = 2;
-export const MAX_HAND = 4;
+export const START_HAND = 1;
+/** como en Mario Kart: tres en la mano */
+export const MAX_HAND = 3;
 /** cada cuántos aciertos seguidos se gana un poder */
 export const EARN_EVERY = 3;
 /** tras cuántos fallos seguidos llega un poder de consuelo */
@@ -44,7 +53,8 @@ export const DOUBLE_RISK = 300;
 /** Robo: lo que se le quita al líder si aciertas */
 export const STEAL_PTS = 400;
 /** Tinta: cuánto tiempo quedan tapadas las opciones de los demás */
-export const INK_MS = 5_000;
+export const INK_MS = FX_MS.ink;
+export const BANANA_PTS = 300;
 export const RED_PTS = 400;
 export const BLUE_PTS = 600;
 export const BOLT_PTS = 200;
@@ -69,6 +79,11 @@ export const POWER_ICON: Record<PowerId, string> = {
   redShell: "🔴",
   blueShell: "🔵",
   lightning: "⚡",
+  scare: "😱",
+  shuffle: "🌀",
+  flip: "🙃",
+  swapScore: "🔁",
+  banana: "🍌",
 };
 
 export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
@@ -85,6 +100,11 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
   redShell: { name: "Caparazón rojo", desc: `−${RED_PTS} al que va justo delante de ti.` },
   blueShell: { name: "Caparazón azul", desc: `−${BLUE_PTS} al primero. Si el primero eres tú, te pega a ti.` },
   lightning: { name: "Rayo", desc: `−${BOLT_PTS} a todos los demás.` },
+  scare: { name: "Susto", desc: "Un susto en la pantalla de todos los demás, cuando menos lo esperan." },
+  shuffle: { name: "Revoltijo", desc: `Las opciones de los demás bailan ${FX_MS.shuffle / 1000} s.` },
+  flip: { name: "De cabeza", desc: `La pantalla de los demás se voltea ${FX_MS.flip / 1000} s.` },
+  swapScore: { name: "Cambiazo", desc: "Cambias tu puntaje con el que va justo delante de ti." },
+  banana: { name: "Plátano", desc: `El primero que responda después de ti resbala: −${BANANA_PTS}.` },
 };
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
@@ -111,6 +131,11 @@ export const POWER_LINES = {
   dealt: (p: PowerId, who: string, pts: number) => (p === "steal" ? `${POWER_ICON[p]} Le robaste ${pts} a ${who}.` : `${POWER_ICON[p]} ${POWER_TEXT[p].name} a ${who}: −${pts}.`),
   blocked: (p: PowerId, who: string, by: PowerId) => `${POWER_ICON[by]} Frenaste ${POWER_TEXT[p].name} de ${who}.`,
   missed: (p: PowerId) => `${POWER_ICON[p]} ${POWER_TEXT[p].name} no le hizo nada a nadie.`,
+  swappedUp: (who: string, pts: number) => `${POWER_ICON.swapScore} Cambiazo con ${who}: +${pts}.`,
+  swappedDown: (who: string, pts: number) => `${POWER_ICON.swapScore} ${who} te hizo cambiazo: −${pts}.`,
+  fx: (p: FxId, who: string) =>
+    p === "ink" ? `${who} te echó tinta` : p === "shuffle" ? `${who} te revolvió las opciones` : p === "flip" ? `${who} te volteó la pantalla` : "¡BU!",
+  scare: (who: string) => `Cortesía de ${who}`,
   swapped: "Pregunta cambiada.",
 };
 
