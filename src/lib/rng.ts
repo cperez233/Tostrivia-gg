@@ -21,4 +21,35 @@ export function shuffle<T>(arr: readonly T[], rand: () => number): T[] {
   return a;
 }
 
-export const newSeed = () => (Math.random() * 2 ** 31) | 0;
+/**
+ * Azar de verdad para lo que no tiene que repetirse en otros dispositivos (semillas, ruleta, dados):
+ * usa el generador criptográfico del navegador, que no se queda en ciclos como Math.random en algunos
+ * navegadores viejos. Devuelve un número en [0, 1) con 32 bits de azar.
+ */
+export function random(): number {
+  try {
+    const buf = new Uint32Array(1);
+    crypto.getRandomValues(buf);
+    return buf[0] / 4294967296;
+  } catch {
+    return Math.random();
+  }
+}
+
+/** entero en [0, n) sin sesgo */
+export const randomInt = (n: number) => Math.floor(random() * n);
+
+/** semilla para una partida o un mazo (positiva, como antes) */
+export const newSeed = () => randomInt(2 ** 31);
+
+/**
+ * Elige un índice con pesos. Sirve para que la ruleta y los poderes no repitan tanto:
+ * lo que salió hace poco pesa menos, pero nunca cero si es lo único que queda.
+ */
+export function weightedIndex(weights: readonly number[], rand: () => number = random): number {
+  const total = weights.reduce((n, w) => n + Math.max(0, w), 0);
+  if (total <= 0) return Math.floor(rand() * weights.length);
+  let r = rand() * total;
+  for (let i = 0; i < weights.length; i++) if ((r -= Math.max(0, weights[i])) < 0) return i;
+  return weights.length - 1;
+}

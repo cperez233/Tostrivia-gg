@@ -1,0 +1,130 @@
+/* personalizador de partidas: el modo arriba, el resumen de reglas y el panel que se abre */
+.setup {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  width: 100%;
+  max-width: 520px;
+}
+.setup__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+.setup__sum {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--on-ink-2);
+  text-wrap: pretty;
+}
+.setup__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 2px solid var(--paper);
+  background: none;
+  color: var(--on-ink);
+  font-weight: 900;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.setup__toggle.is-open,
+.setup__toggle:not(:disabled):hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+.setup__toggle:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.setup__panel {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  padding: 14px;
+  border: 2px solid var(--ink-line);
+  background: var(--ink-2);
+  box-shadow: var(--lift-1);
+}
+.setup__row {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.setup__label {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+.setup__opts {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid var(--paper);
+  width: fit-content;
+  max-width: 100%;
+}
+.setup__opt {
+  flex: 1 0 auto;
+  min-height: 40px;
+  min-width: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: var(--on-ink);
+  font-weight: 900;
+  font-size: 14px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  transition: background 0.15s, color 0.15s;
+}
+.setup__opt + .setup__opt {
+  box-shadow: inset 2px 0 0 var(--ink-line);
+}
+.setup__opt.is-on {
+  background: var(--signal);
+  color: var(--ink);
+  box-shadow: none;
+}
+.setup__opt:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.setup__hint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--on-ink-3);
+  text-wrap: pretty;
+}
+.setup__reset {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--signal);
+  font-weight: 900;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 32px;
+}
+.setup--read {
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+}
+.setup__line {
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--on-ink-2);
+}
+.setup__line .label {
+  margin-right: 6px;
+}

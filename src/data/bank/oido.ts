@@ -48,7 +48,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2, OST, "Super Smash Bros. Ultimate", "Mario Kart 8", "Kirby Star Allies", "Splatoon 3", { k: "smash-ost-lifelight", m: "audio", s: 20, e: 45 }],
     [2, OST, "The Witcher 3", "Skyrim", "Dragon Age: Inquisition", "Kingdom Come: Deliverance", { k: "witcher-ost-wolven", m: "audio", s: 10, e: 35 }],
     [2, OST, "God of War (2018)", "Assassin's Creed Valhalla", "Hellblade", "Skyrim", { k: "gow-ost-main", m: "audio", s: 20, e: 45 }],
-    [2, OST, "The Last of Us", "Red Dead Redemption", "Days Gone", "Uncharted 4", { k: "tlou-ost-main", m: "audio", s: 0, e: 25 }],
+    [2, "Es la entrada de la serie de HBO basada en un videojuego. ¿Cuál es el juego?", "The Last of Us", "Red Dead Redemption", "Days Gone", "Uncharted 4", { k: "tlou-ost-main", m: "audio", s: 0, e: 25 }],
     [2, OST, "Final Fantasy VII", "Kingdom Hearts", "Chrono Trigger", "Dark Souls", { k: "ff-ost-onewinged", m: "audio", s: 5, e: 30 }],
     [2, OST, "Metal Gear Solid 3", "007 GoldenEye", "Splinter Cell", "Hitman", { k: "mgs-ost-snakeeater", m: "audio", s: 0, e: 25 }],
     [2, "Esta canción sonó en una serie basada en un videojuego. ¿Cuál es el juego?", "League of Legends", "Dota 2", "Overwatch", "Valorant", { k: "lol-ost-enemy", m: "audio", s: 30, e: 55 }],

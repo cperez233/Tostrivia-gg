@@ -182,6 +182,13 @@
   border-color: var(--paper);
   background: var(--paper);
 }
+/* partidas largas: más casillas, menos aire entre ellas */
+.progress--long {
+  gap: 2px;
+}
+.progress--long li {
+  border-width: 1px;
+}
 
 /* temporizador: la barra se quema hacia la izquierda */
 .timer {
@@ -755,10 +762,10 @@
   font-size: 20px;
   font-weight: 700;
 }
-.final__line {
-  font-size: 18px;
-  font-weight: 700;
-  max-width: 40ch;
+.final__grade {
+  font-size: 92px;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 .final__stats {
   margin: 0;
@@ -970,5 +977,307 @@
 @media (min-width: 1000px) {
   .strip {
     display: none;
+  }
+}
+
+/* ───────── modo Poderes ───────── */
+.game__variant {
+  flex-shrink: 0;
+  padding: 2px 7px;
+  border: 2px solid var(--ink);
+  background: var(--signal);
+  color: var(--ink);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  .game__variant {
+    display: none;
+  }
+}
+.opts-wrap {
+  position: relative;
+}
+/* 50/50: las dos malas quedan tachadas */
+.opt--cut {
+  opacity: 0.32;
+  box-shadow: none;
+}
+.opt--cut .opt__text {
+  text-decoration: line-through 3px var(--hanko);
+}
+/* Tinta: un borrón de tinta tapa las opciones unos segundos */
+.ink {
+  position: absolute;
+  inset: -8px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 22% 30%, var(--ink) 0 22%, transparent 23%),
+    radial-gradient(circle at 70% 64%, var(--ink) 0 26%, transparent 27%),
+    radial-gradient(circle at 48% 46%, var(--ink) 0 34%, transparent 35%),
+    rgba(18, 17, 16, 0.94);
+  border: 3px solid var(--paper);
+}
+.ink__text {
+  padding: 8px 14px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 18px;
+  transform: rotate(-2deg);
+}
+
+.powers {
+  display: grid;
+  gap: 8px;
+}
+.powers__label {
+  margin: 0;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+.powers__empty {
+  margin: 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--on-ink-2);
+}
+.powers__hand {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(160px, 45%), 1fr));
+  gap: 8px;
+}
+.power {
+  width: 100%;
+  height: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 2px solid var(--ink);
+  background: var(--signal);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: 3px 3px 0 var(--hanko);
+  transition: box-shadow 0.15s var(--ease), translate 0.15s var(--ease), opacity 0.2s;
+}
+.power__icon {
+  grid-row: 1 / 3;
+  font-size: 22px;
+  line-height: 1;
+}
+.power__name {
+  font-family: var(--display);
+  font-size: 14px;
+  line-height: 1.15;
+}
+.power__desc {
+  align-self: start;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+}
+.power[disabled] {
+  cursor: default;
+  opacity: 0.45;
+  box-shadow: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .power:not([disabled]):hover {
+    box-shadow: 6px 6px 0 var(--hanko);
+    translate: -2px -2px;
+  }
+}
+@media (max-width: 520px) {
+  .power {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    justify-items: center;
+    text-align: center;
+    row-gap: 2px;
+  }
+  .power__icon {
+    grid-row: auto;
+  }
+  .power__desc {
+    font-size: 11px;
+  }
+}
+.verdict__power {
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* De cabeza: la pantalla se voltea unos segundos */
+.game__body {
+  transition: rotate 0.5s var(--ease-snap, ease);
+}
+.game__body.fx-flip {
+  rotate: 180deg;
+}
+/* Espejo: todo al revés de izquierda a derecha */
+.game__body.fx-mirror {
+  scale: -1 1;
+}
+/* Terremoto */
+.game__body.fx-quake {
+  animation: quake 0.18s steps(2) infinite;
+}
+@keyframes quake {
+  0% { translate: -6px 3px; rotate: -1deg; }
+  50% { translate: 7px -4px; rotate: 1.2deg; }
+  100% { translate: -3px -2px; rotate: -0.6deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game__body.fx-quake {
+    animation-duration: 0.6s;
+  }
+}
+/* Hormiga: opciones diminutas */
+.game__body.fx-tiny .opt__text {
+  font-size: 8px;
+  line-height: 1.1;
+}
+.game__body.fx-tiny .opt {
+  min-height: 34px;
+}
+/* Apagón: negro con un círculo de linterna */
+.blackout {
+  --x: 50vw;
+  --y: 55vh;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: radial-gradient(circle 90px at var(--x) var(--y), transparent 0 70%, rgba(0, 0, 0, 0.985) 100%);
+}
+/* Susto con screamer de YouTube: cargado y escondido hasta que toca */
+.scare-clip {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+.scare-clip.is-on {
+  opacity: 1;
+}
+.scare-clip__video {
+  position: absolute;
+  inset: 0;
+}
+.scare-clip__video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.scare-clip__who {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(18px + var(--safe-b, 0px));
+  text-align: center;
+}
+.game__fx {
+  margin: 0;
+  color: var(--signal);
+  font-weight: 900;
+}
+/* Susto: negro, cara enorme y un BU que tiembla */
+.scare {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  background: radial-gradient(circle at 50% 45%, #3a0b04 0%, #000 70%);
+  color: var(--paper);
+  text-align: center;
+  pointer-events: none;
+}
+.scare__face {
+  margin-bottom: 0.12em;
+  font-size: min(54vw, 40vh);
+  line-height: 1;
+  filter: saturate(1.6) contrast(1.3) drop-shadow(0 0 40px rgba(255, 75, 31, 0.7));
+}
+.scare__word {
+  font-family: var(--display);
+  font-size: clamp(3rem, 2rem + 8vw, 8rem);
+  line-height: 1;
+  color: var(--hanko);
+  -webkit-text-stroke: 2px var(--paper);
+}
+.scare__who {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--on-ink-2);
+}
+
+/* Niebla, Mareo y Corto circuito */
+.game__body.fx-blur .game__main {
+  filter: blur(6px);
+}
+.game__body.fx-spin {
+  animation: spin-fx 3s linear infinite;
+}
+@keyframes spin-fx {
+  to {
+    rotate: 360deg;
+  }
+}
+.game__body.fx-blink {
+  animation: blink-fx 0.7s steps(2) infinite;
+}
+@keyframes blink-fx {
+  50% {
+    opacity: 0.04;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game__body.fx-spin {
+    animation-duration: 12s;
+  }
+  .game__body.fx-blink {
+    animation-duration: 2s;
+  }
+}
+/* Fiesta: cae confeti encima de todo */
+.party {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+  pointer-events: none;
+}
+.party span {
+  position: absolute;
+  top: -12vh;
+  animation-name: party-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes party-fall {
+  to {
+    translate: 0 115vh;
+    rotate: 540deg;
   }
 }

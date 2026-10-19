@@ -18,7 +18,11 @@ import ChatDock from "../components/ChatDock";
 import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
+import MatchSetup from "../components/MatchSetup";
+import { saveVariant } from "../game/powers";
+import { DEFAULT_RULES, saveRules } from "../game/rules";
 import "./room.css";
+import { t } from "../i18n";
 
 export default function Room({ client, onExit }: { client: GameClient; onExit: () => void }) {
   const { snap, at, status } = useGame(client);
@@ -39,13 +43,13 @@ const NET_TEXT: Record<NetStatus, [string, string]> = {
   open: ["", ""],
   lost: ["Se perdió la conexión", "No llegan datos del anfitrión. Si vuelve en unos segundos, seguimos donde íbamos."],
   closed: ["La sala se cerró", "El anfitrión salió o cerró la pestaña. Puedes crear una sala nueva."],
-  full: ["La sala está llena", `Ya hay ${MAX_PLAYERS} personas jugando. Pídele al anfitrión que abra otra.`],
+  full: ["La sala está llena", "Ya hay {n} personas jugando. Pídele al anfitrión que abra otra."],
   missing: ["No encontramos esa sala", "Revisa el código. Si el anfitrión cerró la pestaña, la sala ya no existe."],
   error: ["No se pudo conectar", "La red bloqueó la conexión entre navegadores o el servidor de enlace no respondió. Prueba con otra red o vuelve a intentarlo."],
 };
 
 function NetState({ status, code, onExit }: { status: NetStatus; code: string | null; onExit: () => void }) {
-  const [t, d] = NET_TEXT[status];
+  const [title, d] = NET_TEXT[status].map((s) => t(s, { n: MAX_PLAYERS }));
   return (
     <div className="netstate wrap">
       <Logo size={36} />
@@ -59,11 +63,11 @@ function NetState({ status, code, onExit }: { status: NetStatus; code: string | 
             ))}
           </div>
         )}
-        <h1>{t}</h1>
+        <h1>{title}</h1>
         <p>{d}</p>
-        {code && <p className="muted">Sala {code}</p>}
+        {code && <p className="muted">{t("Sala")} {code}</p>}
         <button type="button" className="btn" onClick={onExit}>
-          Volver al inicio
+          {t("Volver al inicio")}
         </button>
       </motion.div>
     </div>
@@ -101,7 +105,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   };
 
   const share = async () => {
-    const text = `Entra a mi sala de Tostrivia. Código ${client.code}`;
+    const text = t("Entra a mi sala de Tostrivia. Código {code}", { code: client.code ?? "" });
     try {
       if (navigator.share) await navigator.share({ text, url: link });
       else {
@@ -119,14 +123,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
       <header className="lobby__top wrap">
         <Logo size={34} />
         <button type="button" className="btn btn--ghost btn--small" onClick={onExit}>
-          {client.isHost ? "Cerrar sala" : "Salir"}
+          {client.isHost ? t("Cerrar sala") : t("Salir")}
         </button>
       </header>
 
       <main className="lobby__grid wrap">
         <section className="lobby__code panel" aria-labelledby="code-t">
-          <p className="label">Código de la sala</p>
-          <h1 id="code-t" className="lobby__codetext" aria-label={`Código ${client.code?.split("").join(" ")}`}>
+          <p className="label">{t("Código de la sala")}</p>
+          <h1 id="code-t" className="lobby__codetext" aria-label={t("Código {code}", { code: client.code?.split("").join(" ") ?? "" })}>
             {client.code?.split("").map((ch, i) => (
               <motion.span key={i} initial={reduce ? false : { y: 40, opacity: 0, rotate: -14, scale: 1.4 }} animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }} transition={{ delay: 0.25 + 0.07 * i, type: "spring", stiffness: 520, damping: 18 }}>
                 {ch}
@@ -135,13 +139,13 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
           </h1>
           <p className="lobby__link">{link.replace(/^https?:\/\//, "")}</p>
           <button type="button" className="btn btn--hanko btn--small lobby__share" onClick={share}>
-            {copied ? "Enlace copiado" : "Compartir enlace"}
+            {copied ? t("Enlace copiado") : t("Compartir enlace")}
           </button>
         </section>
 
         <section className="lobby__roster" aria-labelledby="roster-t">
           <div className="lobby__roster-head">
-            <h2 id="roster-t">Jugadores</h2>
+            <h2 id="roster-t">{t("Jugadores")}</h2>
             <span className="lobby__count">
               {online.length}/{MAX_PLAYERS}
             </span>
@@ -162,9 +166,9 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                     <Avatar animal={p.seal} size={58} title={animalName(p.seal)} />
                   </span>
                   <span className="roster__name">{p.name}</span>
-                  <span className="roster__tag">{p.id === snap.hostId ? "Anfitrión" : p.id === client.me.id ? "Tú" : p.online ? "" : "Desconectado"}</span>
+                  <span className="roster__tag">{p.id === snap.hostId ? t("Anfitrión") : p.id === client.me.id ? t("Tú") : p.online ? "" : t("Desconectado")}</span>
                   {client.isHost && p.id !== snap.hostId && (
-                    <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={`Sacar a ${p.name}`}>
+                    <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={t("Sacar a {name}", { name: p.name })}>
                       <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden>
                         <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" />
                       </svg>
@@ -176,7 +180,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
             {snap.players.length < MAX_PLAYERS && (
               <li className="roster__empty" aria-hidden>
                 <span className="roster__hole">?</span>
-                <span>Esperando…</span>
+                <span>{t("Esperando…")}</span>
               </li>
             )}
           </ul>
@@ -184,14 +188,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
 
         <section className="lobby__cat" aria-labelledby="cat-t">
           <h2 id="cat-t" className="sr-only">
-            Categoría
+            {t("Categoría")}
           </h2>
           {client.isHost && (
-            <div className="filters lobby__filters" role="radiogroup" aria-label="Qué entra en la ruleta">
+            <div className="filters lobby__filters" role="radiogroup" aria-label={t("Qué entra en la ruleta")}>
               {FILTERS.map((f) => (
                 <button key={f.id} type="button" role="radio" aria-checked={filter === f.id} className={`filter ${filter === f.id ? "is-on" : ""}`} onClick={() => pickFilter(f.id)} disabled={spinShown}>
                   {filter === f.id && <motion.span layoutId="lobby-filter" className="filter__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
-                  <span className="filter__label">{f.label}</span>
+                  <span className="filter__label">{t(f.label)}</span>
                 </button>
               ))}
             </div>
@@ -211,18 +215,33 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                 </motion.div>
               ) : (
                 <motion.p key="wait" className="lobby__waiting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  {spinShown ? "Girando…" : client.isHost ? "Gira la ruleta o elige de la lista." : `${host?.name ?? "El anfitrión"} está eligiendo la categoría.`}
+                  {spinShown ? t("Girando…") : client.isHost ? t("Gira la ruleta o elige de la lista.") : t("{name} está eligiendo la categoría.", { name: host?.name ?? t("El anfitrión") })}
                 </motion.p>
               )}
             </AnimatePresence>
           </div>
+          <MatchSetup
+            idp="lobby"
+            readOnly={!client.isHost}
+            variant={snap.variant}
+            rules={snap.rules ?? DEFAULT_RULES}
+            onVariant={(v) => {
+              client.setVariant(v);
+              saveVariant(v);
+            }}
+            onRules={(r) => {
+              client.setRules(r);
+              saveRules(r);
+            }}
+            disabled={spinShown}
+          />
           {client.isHost && (
             <>
               <button type="button" className="btn lobby__choose" onClick={() => setChoosing(true)} disabled={spinShown}>
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
                   <path d="M4 5h7v7H4zM13 5h7v7h-7zM4 14h7v6H4zM13 14h7v6h-7z" fill="none" stroke="currentColor" strokeWidth="2.4" />
                 </svg>
-                {cat ? "Cambiar categoría" : "O elige la categoría"}
+                {cat ? t("Cambiar categoría") : t("O elige la categoría")}
               </button>
               <CategorySheet
                 open={choosing}
@@ -242,13 +261,13 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
         <div className="wrap lobby__dock-in">
           {client.isHost ? (
             <>
-              <p className="lobby__hint">{!cat ? "Falta la categoría." : online.length < 2 ? "Puedes empezar solo o esperar a los demás." : `Listos: ${online.length}.`}</p>
+              <p className="lobby__hint">{!cat ? t("Falta la categoría.") : online.length < 2 ? t("Puedes empezar solo o esperar a los demás.") : t("Listos: {n}.", { n: online.length })}</p>
               <button type="button" className="btn btn--hanko" disabled={!cat || spinShown} onClick={() => client.start(newSeed())}>
-                Empezar
+                {t("Empezar")}
               </button>
             </>
           ) : (
-            <p className="lobby__hint">Esperando a que {host?.name ?? "el anfitrión"} empiece…</p>
+            <p className="lobby__hint">{t("Esperando a que {name} empiece…", { name: host?.name ?? t("el anfitrión") })}</p>
           )}
         </div>
       </div>
@@ -268,15 +287,15 @@ function CategorySheet({ open, current, onClose, onPick }: { open: boolean; curr
   return (
     <dialog ref={ref} className="sheet" aria-labelledby="sheet-t" onClose={onClose} onCancel={onClose}>
       <div className="sheet__top wrap">
-        <h2 id="sheet-t">Elige la categoría</h2>
-        <button type="button" className="sheet__close" onClick={onClose} aria-label="Cerrar">
+        <h2 id="sheet-t">{t("Elige la categoría")}</h2>
+        <button type="button" className="sheet__close" onClick={onClose} aria-label={t("Cerrar")}>
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
             <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3" />
           </svg>
         </button>
       </div>
       {/* se monta al abrir: cada vez arranca limpio (o con la mezcla actual marcada) */}
-      {open && <CategoryBrowser idp="sheet" verb="Elegir" inSheet current={current} onPick={onPick} />}
+      {open && <CategoryBrowser idp="sheet" verb={t("Elegir")} inSheet current={current} onPick={onPick} />}
     </dialog>
   );
 }

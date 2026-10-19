@@ -4,38 +4,55 @@ import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import { partsOf } from "./mix";
 import type { Question } from "../data/types";
 import { rng, shuffle } from "../lib/rng";
+import { DEFAULT_RULES, MEDIA_EXTRA, type Difficulty, type Rules } from "./rules";
 
-export const ROUND_SIZE = 10;
-export const TEXT_MS = 20_000;
-export const MEDIA_MS = 25_000;
+export const ROUND_SIZE = DEFAULT_RULES.count;
+export const TEXT_MS = DEFAULT_RULES.time * 1000;
+export const MEDIA_MS = (DEFAULT_RULES.time + MEDIA_EXTRA) * 1000;
 export const BASE_POINTS = { 1: 100, 2: 150, 3: 200 } as const;
 
+/** cuánto dura una pregunta con estas reglas */
+export const durationFor = (rules: Rules, media: boolean) => (rules.time + (media ? MEDIA_EXTRA : 0)) * 1000;
+
+/** cuántas fáciles, medias y difíciles: 30/40/30 en mixta (3/4/3 con 10), o todas de una */
+function mixFor(n: number, diff: Difficulty): Record<number, number> {
+  if (diff !== "mix") return { 1: 0, 2: 0, 3: 0, [diff]: n };
+  const easy = Math.round(n * 0.3);
+  const hard = Math.round(n * 0.3);
+  return { 1: easy, 2: n - easy - hard, 3: hard };
+}
+
 /**
- * Elige 10 preguntas (3 fáciles, 4 medias, 3 difíciles, ordenadas de menos a más) y unas de reserva.
+ * Elige las preguntas de la ronda (de menos a más difícil en mixta) y unas de reserva.
  * Primero van las que no han salido en esta vuelta (`seen`); si no alcanzan para una ronda entran todas
  * y se completa con la vuelta siguiente (`restart`: quien llama empieza el historial de cero).
+ * Si la categoría tiene menos preguntas que las pedidas, la ronda queda del tamaño de la categoría.
  */
-export function buildRound(cat: string, seed: number, seen: Set<string> = new Set()) {
+export function buildRound(cat: string, seed: number, seen: Set<string> = new Set(), rules: Rules = DEFAULT_RULES) {
   const rand = rng(seed);
+  const size = rules.count;
   const pool = poolFor(cat, rand);
   const audioOnly = pool.length > 0 && pool.every((q) => q.media);
+  // con una dificultad fija, las de esa dificultad van primero (las otras solo rellenan si faltan)
+  const inDiff = (q: Question) => rules.diff === "mix" || q.d === rules.diff;
   const fresh = pool.filter((q) => !seen.has(q.id));
-  const restart = fresh.length < ROUND_SIZE;
+  const restart = fresh.length < Math.min(size, pool.length);
 
-  // variedad: 1 a 3 preguntas de video en categorías normales, todas en Openings y OST gaming
-  const mediaWanted = audioOnly ? ROUND_SIZE : 1 + Math.floor(rand() * 3);
-  const picked = pick(fresh, ROUND_SIZE, mediaWanted, audioOnly);
-  if (picked.length < ROUND_SIZE) {
+  // variedad: entre el 10 % y el 30 % de video en categorías normales (1 a 3 con 10), todas en Openings y OST gaming
+  const mediaWanted = audioOnly ? size : Math.max(1, Math.round(size * (0.1 + rand() * 0.2)));
+  const picked = pick(fresh, size, mediaWanted, audioOnly, rules.diff);
+  if (picked.length < size) {
     const used = picked.filter((q) => q.media).length;
     // de las ya vistas, primero las que salieron hace más tiempo
     const order = [...seen];
     const rest = pool.filter((q) => !picked.includes(q)).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
-    picked.push(...pick(rest, ROUND_SIZE - picked.length, Math.max(0, mediaWanted - used), audioOnly));
+    picked.push(...pick(rest, size - picked.length, Math.max(0, mediaWanted - used), audioOnly, rules.diff));
   }
-  const chosen = picked.sort((a, b) => a.d - b.d || (rand() < 0.5 ? -1 : 1));
-  // reservas para cuando un video no carga: también primero las que no han salido
-  const byFreshness = [...fresh, ...pool.filter((q) => seen.has(q.id))];
-  const reserves = byFreshness.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, 6);
+  // de menos a más; dentro de cada dificultad, en orden al azar (barajar y luego ordenar estable: sin sesgo)
+  const chosen = shuffle(picked, rand).sort((a, b) => a.d - b.d);
+  // reservas para cuando un video no carga: también primero las que no han salido y de la dificultad elegida
+  const byFreshness = [...fresh.filter(inDiff), ...fresh.filter((q) => !inDiff(q)), ...pool.filter((q) => seen.has(q.id))];
+  const reserves = byFreshness.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, Math.max(6, Math.ceil(size / 2)));
   return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id), restart };
 }
 
@@ -50,11 +67,12 @@ export function poolFor(cat: string, rand: () => number): Question[] {
   return out;
 }
 
-/** hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad (3/4/3 en una ronda completa) */
-function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boolean): Question[] {
+/** hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad */
+function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boolean, diff: Difficulty): Question[] {
   const out: Question[] = [];
-  if (!audioOnly) out.push(...from.filter((q) => q.media).slice(0, Math.min(mediaWanted, n)));
-  const want = { 1: 3, 2: 4, 3: 3 } as Record<number, number>;
+  const fits = (q: Question) => diff === "mix" || q.d === diff;
+  if (!audioOnly) out.push(...from.filter((q) => q.media && fits(q)).slice(0, Math.min(mediaWanted, n)));
+  const want = mixFor(n, diff);
   for (const q of out) want[q.d] = Math.max(0, want[q.d] - 1);
   const rest = audioOnly ? from : from.filter((q) => !q.media);
   for (const d of [1, 2, 3]) {
@@ -66,8 +84,8 @@ function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boole
       }
     }
   }
-  // si faltan de alguna dificultad, se completa con lo que haya
-  for (const q of rest) {
+  // si faltan de alguna dificultad, se completa primero con las de la dificultad elegida y luego con lo que haya
+  for (const q of [...rest.filter(fits), ...rest]) {
     if (out.length >= n) break;
     if (!out.includes(q)) out.push(q);
   }
@@ -95,12 +113,20 @@ export function optionOrder(qid: string, seed: number): number[] {
   return shuffle([0, 1, 2, 3], rng(h));
 }
 
-export function multiplier(streak: number) {
-  return streak >= 5 ? 2 : streak >= 3 ? 1.5 : 1;
+/** hasta cuánto suma responder rápido (proporcional al tiempo que sobra) */
+export const SPEED_POINTS = 200;
+
+/** ×1,25 con 2 seguidas, ×1,5 con 3, ×2 con 5 y ×3 con 8 (×1 siempre si la partida va sin racha) */
+export function multiplier(streak: number, rules: Pick<Rules, "streak"> = DEFAULT_RULES) {
+  if (!rules.streak) return 1;
+  return streak >= 8 ? 3 : streak >= 5 ? 2 : streak >= 3 ? 1.5 : streak >= 2 ? 1.25 : 1;
 }
 
-/** Puntos de un acierto: base por dificultad + hasta 100 por rapidez, por el multiplicador de racha. */
-export function pointsFor(d: 1 | 2 | 3, remainingFrac: number, streakAfter: number) {
-  const base = BASE_POINTS[d] + Math.round(100 * Math.max(0, Math.min(1, remainingFrac)));
-  return Math.round(base * multiplier(streakAfter));
+/**
+ * Puntos de un acierto: base por dificultad + hasta 200 por rapidez, por el multiplicador de racha
+ * y por el multiplicador de puntos de la partida.
+ */
+export function pointsFor(d: 1 | 2 | 3, remainingFrac: number, streakAfter: number, rules: Pick<Rules, "streak" | "mult"> = DEFAULT_RULES) {
+  const base = BASE_POINTS[d] + Math.round(SPEED_POINTS * Math.max(0, Math.min(1, remainingFrac)));
+  return Math.round(base * multiplier(streakAfter, rules) * rules.mult);
 }

@@ -16,6 +16,9 @@ import ProfilePicker from "./components/ProfilePicker";
 import Nav, { TABS, type Tab } from "./components/Nav";
 import Foot from "./components/Foot";
 import Wipe, { type WipeState } from "./components/Wipe";
+import { t, useLang } from "./i18n";
+import { savedVariant } from "./game/powers";
+import { savedRules } from "./game/rules";
 
 type View =
   | { k: "home" }
@@ -54,6 +57,7 @@ const scrollKey = (k: string) => `tostrivia:scroll:${k}`;
 
 export default function App() {
   const reduce = useReducedMotion();
+  const lang = useLang();
   const [view, setView] = useState<View>(() => fromPath(location.pathname));
   const [wipe, setWipe] = useState<WipeState | null>(null);
   const [entry, setEntry] = useState(0);
@@ -92,7 +96,7 @@ export default function App() {
         if (path != null && opts.push !== false && path !== location.pathname) history.pushState(null, "", path);
       };
       if (reduce) return swap();
-      const label = opts.label ?? (isTab(v.k) ? TABS.find((t) => t.id === v.k)!.wipe : v.k === "room" ? "¡A jugar!" : v.k === "404" ? "¿Eh?" : "Sala");
+      const label = opts.label ?? (isTab(v.k) ? t(TABS.find((x) => x.id === v.k)!.wipe) : v.k === "room" ? t("¡A jugar!") : v.k === "404" ? t("¿Eh?") : t("Sala"));
       setWipe({ n: Date.now(), dir: order(v.k) >= order(from.k) ? 1 : -1, label });
       timers.current = [
         window.setTimeout(swap, COVER_MS),
@@ -116,7 +120,7 @@ export default function App() {
   }, [go]);
 
   useEffect(() => {
-    document.title = TITLES[view.k];
+    document.title = t(TITLES[view.k]);
     let robots = document.querySelector('meta[name="robots"]');
     if (view.k === "404") {
       if (!robots) {
@@ -126,7 +130,7 @@ export default function App() {
       }
       robots.setAttribute("content", "noindex");
     } else robots?.remove();
-  }, [view.k]);
+  }, [view.k, lang]);
 
   const tab = (t: Tab) => go({ k: t } as View, TABS.find((x) => x.id === t)!.path);
   const exitRoom = () => go({ k: "home" }, "/");
@@ -134,13 +138,18 @@ export default function App() {
   const playSolo = (cat: string) => {
     const c = new LocalClient(myself());
     c.setCategory(cat);
+    c.setVariant(savedVariant());
+    c.setRules(savedRules());
     c.start(newSeed());
-    go({ k: "room", client: c }, location.pathname.startsWith("/jugar/") ? "/" : null, { label: describe(cat)?.short ?? "¡A jugar!" });
+    go({ k: "room", client: c }, location.pathname.startsWith("/jugar/") ? "/" : null, { label: describe(cat)?.short ?? t("¡A jugar!") });
   };
 
   const host = async (name: string, seal: number) => {
     const c = new HostClient(myself(name, seal));
-    go({ k: "room", client: c }, null, { label: "¡Sala!" });
+    // la sala arranca con lo último que eligió; lo puede cambiar en la sala
+    c.setVariant(savedVariant());
+    c.setRules(savedRules());
+    go({ k: "room", client: c }, null, { label: t("¡Sala!") });
     try {
       await c.open();
     } catch {
@@ -150,7 +159,7 @@ export default function App() {
 
   const join = async (code: string, name?: string, seal?: number) => {
     const c = new GuestClient(myself(name, seal), code);
-    go({ k: "room", client: c }, `/sala/${code}`, { label: "¡Sala!" });
+    go({ k: "room", client: c }, `/sala/${code}`, { label: t("¡Sala!") });
     try {
       await c.connect();
     } catch {
@@ -190,18 +199,18 @@ function JoinScreen({ code, onJoin, onHome }: { code: string; onJoin: (name: str
   const [err, setErr] = useState("");
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!profile.name.trim()) return setErr("Escribe tu nombre para que te reconozcan.");
+    if (!profile.name.trim()) return setErr(t("Escribe tu nombre para que te reconozcan."));
     onJoin(profile.name.trim(), profile.seal);
   };
   return (
     <div className="solo wrap">
-      <a href="/" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label="Ir a la ruleta">
+      <a href="/" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label={t("Ir a la ruleta")}>
         <Logo size={36} />
       </a>
       <motion.form className="solo__card panel" onSubmit={submit} initial={{ y: 30, rotate: -2 }} animate={{ y: 0, rotate: -0.6 }} transition={{ type: "spring", stiffness: 300, damping: 22 }}>
-        <p className="label">Te invitaron a una sala</p>
+        <p className="label">{t("Te invitaron a una sala")}</p>
         <h1 className="solo__title">
-          Sala <span className="solo__code">{code}</span>
+          {t("Sala")} <span className="solo__code">{code}</span>
         </h1>
         <ProfilePicker value={profile} onChange={setProfile} />
         {err && (
@@ -210,7 +219,7 @@ function JoinScreen({ code, onJoin, onHome }: { code: string; onJoin: (name: str
           </p>
         )}
         <button type="submit" className="btn btn--hanko btn--block">
-          Entrar a la sala
+          {t("Entrar a la sala")}
         </button>
       </motion.form>
     </div>
@@ -222,20 +231,20 @@ function SoloStart({ cat, onPlay, onHome }: { cat: string; onPlay: () => void; o
   const c = info.cover;
   return (
     <div className="solo wrap">
-      <a href="/categorias" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label="Ver las categorías">
+      <a href="/categorias" className="solo__logo" onClick={(e) => (e.preventDefault(), onHome())} aria-label={t("Ver las categorías")}>
         <Logo size={36} />
       </a>
       <motion.div className="solo__card panel" initial={{ scale: 1.2, rotate: -6, opacity: 0 }} animate={{ scale: 1, rotate: -1, opacity: 1 }} transition={{ type: "spring", stiffness: 380, damping: 20 }}>
         <div className="solo__cover">
           <Cover cat={c} sizes="min(100vw, 520px)" backdrop eager />
         </div>
-        <p className="label">Te retaron · {info.label}</p>
+        <p className="label">{t("Te retaron")} · {info.label}</p>
         <h1 className="solo__title">{c.name}</h1>
         <button type="button" className="btn btn--hanko btn--block" onClick={onPlay} autoFocus>
-          Aceptar el reto
+          {t("Aceptar el reto")}
         </button>
         <button type="button" className="link" onClick={onHome}>
-          Ver todas las categorías
+          {t("Ver todas las categorías")}
         </button>
       </motion.div>
     </div>

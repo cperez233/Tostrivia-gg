@@ -6,6 +6,9 @@
  */
 import type { DataConnection, Peer as PeerType, PeerOptions } from "peerjs";
 import { Match, type Snapshot, type Spin } from "../game/match";
+import { isPower, type PowerId, type Variant } from "../game/powers";
+import type { Rules } from "../game/rules";
+import { randomInt } from "../lib/rng";
 
 export type NetStatus = "connecting" | "open" | "lost" | "closed" | "full" | "missing" | "error";
 
@@ -38,11 +41,16 @@ export interface GameClient {
   status: NetStatus;
   answer(index: number, choice: number, ms: number): void;
   media(index: number, status: "playing" | "error"): void;
+  /** modo Poderes: usar uno en la pregunta `index` */
+  power(index: number, p: PowerId): void;
   next(): void;
   start(seed: number): void;
   setSpin(spin: Spin): void;
   setDeck(deck: string[]): void;
   setCategory(cat: string): void;
+  setVariant(v: Variant): void;
+  /** reglas de la partida (solo quien juega solo o el anfitrión) */
+  setRules(r: Rules): void;
   backToLobby(): void;
   kick(id: string): void;
   leave(): void;
@@ -57,6 +65,7 @@ type GuestMsg =
   | { t: "hello"; me: Me }
   | { t: "answer"; i: number; c: number; ms: number }
   | { t: "media"; i: number; st: "playing" | "error" }
+  | { t: "power"; i: number; p: PowerId }
   | { t: "ping" }
   | { t: "chat"; body: string }
   | { t: "emote"; e: string };
@@ -74,7 +83,7 @@ const CHAT_KEEP = 60;
 
 const PREFIX = "tostrivia-v1-";
 const ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
-export const newCode = () => Array.from({ length: 5 }, () => ALPHABET[Math.floor(Math.random() * ALPHABET.length)]).join("");
+export const newCode = () => Array.from({ length: 5 }, () => ALPHABET[randomInt(ALPHABET.length)]).join("");
 export const normalizeCode = (c: string) => c.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 5);
 
 function peerOptions(): PeerOptions {
@@ -134,6 +143,9 @@ export class LocalClient implements GameClient {
   media(i: number, st: "playing" | "error") {
     this.match.media(this.me.id, i, st);
   }
+  power(i: number, p: PowerId) {
+    this.match.usePower(this.me.id, i, p);
+  }
   next() {
     this.match.next();
   }
@@ -148,6 +160,12 @@ export class LocalClient implements GameClient {
   }
   setCategory(cat: string) {
     this.match.setCategory(cat);
+  }
+  setVariant(v: Variant) {
+    this.match.setVariant(v);
+  }
+  setRules(r: Rules) {
+    this.match.setRules(r);
   }
   backToLobby() {
     this.match.backToLobby();
@@ -263,6 +281,7 @@ export class HostClient extends LocalClient {
     if (!entry.pid) return;
     if (msg.t === "answer") this.match.answer(entry.pid, msg.i, msg.c, msg.ms);
     else if (msg.t === "media") this.match.media(entry.pid, msg.i, msg.st);
+    else if (msg.t === "power" && isPower(msg.p)) this.match.usePower(entry.pid, msg.i, msg.p);
     else if (msg.t === "chat") this.post(entry.pid, "text", msg.body);
     else if (msg.t === "emote") this.post(entry.pid, "emote", msg.e);
   }
@@ -417,6 +436,9 @@ export class GuestClient implements GameClient {
   media(i: number, st: "playing" | "error") {
     this.send({ t: "media", i, st });
   }
+  power(i: number, p: PowerId) {
+    this.send({ t: "power", i, p });
+  }
   say(text: string) {
     const body = text.trim().slice(0, 140);
     if (body) this.send({ t: "chat", body });
@@ -435,6 +457,8 @@ export class GuestClient implements GameClient {
   setSpin() {}
   setDeck() {}
   setCategory() {}
+  setVariant() {}
+  setRules() {}
   backToLobby() {}
   kick() {}
   leave() {

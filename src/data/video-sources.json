@@ -31,6 +31,9 @@
     ],
     "alt": [
       "DBZ opening Cha la head cha la HD"
+    ],
+    "ban": [
+      "kakarot"
     ]
   },
   "db-op-makafushigi": {
@@ -358,9 +361,10 @@
     ]
   },
   "tlou-ost-main": {
-    "q": "The Last of Us main theme Gustavo Santaolalla",
+    "q": "The Last of Us HBO opening credits Gustavo Santaolalla",
     "must": [
-      "last of us"
+      "last of us",
+      "opening|intro|title|credits"
     ]
   },
   "halo-ost-theme": {
@@ -1415,5 +1419,113 @@
       "es-espana"
     ],
     "max": 330
+  },
+  "scare-fnaf2-foxy": {
+    "q": "FNAF 2 Withered Foxy jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "foxy"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-fnaf1-freddy": {
+    "q": "Five Nights at Freddy's Freddy jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "freddy"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-fnaf2-mangle": {
+    "q": "FNAF 2 Mangle jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "mangle"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-fnaf-goldenfreddy": {
+    "q": "FNAF Golden Freddy jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "golden freddy"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-fnaf4-nightmare": {
+    "q": "FNAF 4 Nightmare jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "nightmare"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-poppy-huggy": {
+    "q": "Poppy Playtime Huggy Wuggy jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "huggy"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-granny": {
+    "q": "Granny game jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "granny"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-baldi": {
+    "q": "Baldi's Basics jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "baldi"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-doors-seek": {
+    "q": "Roblox Doors Seek jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "seek|doors"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-scarymaze": {
+    "q": "Scary Maze Game jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "scary maze|maze game"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-slender": {
+    "q": "Slender jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "slender"
+    ],
+    "min": 2,
+    "max": 25
+  },
+  "scare-fnaf3-springtrap": {
+    "q": "FNAF 3 Springtrap jumpscare",
+    "must": [
+      "jumpscare|jump scare|scream",
+      "springtrap"
+    ],
+    "min": 2,
+    "max": 25
   }
 }

@@ -1,0 +1,43 @@
+/* selector de modo: Estándar o Poderes */
+.variant {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+.variant__opts {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+}
+.variant__opt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  color: var(--on-ink);
+  font-weight: 900;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.variant__opt.is-on {
+  background: var(--signal);
+  color: var(--ink);
+}
+.variant__opt[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+.variant__desc {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--on-ink-2);
+  text-wrap: pretty;
+}

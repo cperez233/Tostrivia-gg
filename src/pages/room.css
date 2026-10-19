@@ -345,3 +345,22 @@
     animation: none;
   }
 }
+
+/* personalizador: el anfitrión lo cambia, los demás ven el resumen */
+.lobby__cat .setup {
+  justify-items: center;
+  text-align: center;
+}
+.lobby__cat .setup__bar {
+  justify-content: center;
+}
+.lobby__cat .setup__panel {
+  justify-items: center;
+}
+.lobby__cat .variant {
+  justify-items: center;
+  text-align: center;
+}
+.lobby__cat .setup__reset {
+  justify-self: center;
+}

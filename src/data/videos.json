@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T05:41:55.344Z",
+  "generatedAt": "2026-10-19T18:32:30.479Z",
   "videos": {
     "ac-tr-nh": {
       "id": "_3YNL0OWio0",
@@ -562,10 +562,10 @@
       "checkedAt": "2026-10-19"
     },
     "db-op-chala": {
-      "id": "oXUZVj7I2H8",
-      "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
-      "channel": "IGN",
-      "durationSec": 124,
+      "id": "qQmTdijhjD4",
+      "title": "Dragon Ball Z - 1989 Japanese Opening - Cha-La Head Cha-La - Remastered 1440p 60fps",
+      "channel": "Bruno Silva",
+      "durationSec": 120,
       "alt": [
         {
           "id": "cie7scVUdQE",
@@ -574,10 +574,10 @@
           "durationSec": 112
         },
         {
-          "id": "qQmTdijhjD4",
-          "title": "Dragon Ball Z - 1989 Japanese Opening - Cha-La Head Cha-La - Remastered 1440p 60fps",
-          "channel": "Bruno Silva",
-          "durationSec": 120
+          "id": "oXUZVj7I2H8",
+          "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
+          "channel": "IGN",
+          "durationSec": 124
         }
       ],
       "checkedAt": "2026-10-19"
@@ -2488,6 +2488,221 @@
           "title": "Crossing Field - Subtitulado Al Español. | Sword Art Online OP.1",
           "channel": "meena♡",
           "durationSec": 243
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-baldi": {
+      "id": "IC4DpCfTJ8k",
+      "title": "Baldi's Basics Plus JUMPSCARE",
+      "channel": "Video Game News",
+      "durationSec": 10,
+      "alt": [
+        {
+          "id": "wfYiflnKm-4",
+          "title": "Baldi's Basics \"99\" Jumpscare",
+          "channel": "PartySpooper",
+          "durationSec": 20
+        },
+        {
+          "id": "v-fWlxhiT9I",
+          "title": "Baldi's Basics All Jumpscare",
+          "channel": "Rafiffalah",
+          "durationSec": 24
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-doors-seek": {
+      "id": "KvfIFhBfHVQ",
+      "title": "Roblox Doors Seek Jumpscare",
+      "channel": "ARandomAccount3725",
+      "durationSec": 6,
+      "alt": [
+        {
+          "id": "QkJaGh52qU4",
+          "title": "Doors Seek Jumpscare Sound Roblox MP4",
+          "channel": "Meme Sounds & More ",
+          "durationSec": 4
+        },
+        {
+          "id": "Kduvp5z0Eb8",
+          "title": "ROBLOX Doors: Seek Jumpscare",
+          "channel": "Roblox Jumpscares",
+          "durationSec": 3
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf-goldenfreddy": {
+      "id": "QgPWE4YyuH4",
+      "title": "Jumpscare golden freddy's un fnaf one",
+      "channel": "freddy fazbear band et cie",
+      "durationSec": 19,
+      "alt": [
+        {
+          "id": "IS-NIkmbo9k",
+          "title": "Golden Freddy's Scream",
+          "channel": "Jj",
+          "durationSec": 16
+        },
+        {
+          "id": "ZbXmScsWndg",
+          "title": "Chinese Golden Freddy scream",
+          "channel": "Idiotic Guy",
+          "durationSec": 12
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf1-freddy": {
+      "id": "8KxkzngOGJY",
+      "title": "Five Nights at Freddy's 4 Nightmare Fredbear Jumpscare",
+      "channel": "IULITMx",
+      "durationSec": 15,
+      "alt": [
+        {
+          "id": "FUaaGInT_R8",
+          "title": "FREDDY JUMPSCARE",
+          "channel": "IULITMx",
+          "durationSec": 6
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf2-foxy": {
+      "id": "r11mz5jvHaU",
+      "title": "foxy jumpscare  fnaf 2",
+      "channel": "That One Foxy",
+      "durationSec": 5,
+      "alt": [
+        {
+          "id": "gu8PiUGjZ5U",
+          "title": "Withered Foxy falló en Jumpscare",
+          "channel": "Double0F !",
+          "durationSec": 19
+        },
+        {
+          "id": "BqdxLBPkAj0",
+          "title": "FNAF 2 Foxy Jumpscare",
+          "channel": "Spring Trap",
+          "durationSec": 6
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf2-mangle": {
+      "id": "aiBT3Va0Zs0",
+      "title": "Mangle Jumpscare",
+      "channel": "Popcorn Colonel",
+      "durationSec": 11,
+      "alt": [],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf3-springtrap": {
+      "id": "rirWOOWWGYo",
+      "title": "FNaF 3 - Springtrap Jumpscare",
+      "channel": "FNAF & MORE!",
+      "durationSec": 2,
+      "alt": [
+        {
+          "id": "Zd3QmoFZPrs",
+          "title": "FNAF 3 Springtrap failed jumpscare",
+          "channel": "Madfut king PS5 clips",
+          "durationSec": 15
+        },
+        {
+          "id": "ViirKqqqFjM",
+          "title": "FNaF 3 Springtrap jumpscare",
+          "channel": "FNaF 2,3,4",
+          "durationSec": 19
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-fnaf4-nightmare": {
+      "id": "8KxkzngOGJY",
+      "title": "Five Nights at Freddy's 4 Nightmare Fredbear Jumpscare",
+      "channel": "IULITMx",
+      "durationSec": 15,
+      "alt": [
+        {
+          "id": "grwxEGEdS5w",
+          "title": "Five Nights at Freddy's 4 NIGHTMARE Jumpscare",
+          "channel": "IULITMx",
+          "durationSec": 11
+        },
+        {
+          "id": "JL11fr626_Q",
+          "title": "Fnaf 4 nightmare jumpscare",
+          "channel": "Joshua King",
+          "durationSec": 10
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-granny": {
+      "id": "Df7NZwRqFDI",
+      "title": "Granny Remake New Jumpscare Scene! [New Update]",
+      "channel": "Sophynity",
+      "durationSec": 12,
+      "alt": [
+        {
+          "id": "GGh3inr1qx0",
+          "title": "Granny Jumpscare: Hide under the Bed",
+          "channel": "Calvin's 2nd Channel",
+          "durationSec": 20
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-poppy-huggy": {
+      "id": "PseKfhHRSqQ",
+      "title": "POPPY PLAYTIME CHAPTER 2 ALL MINI HUGGY JUMPSCARES",
+      "channel": "Video Game News",
+      "durationSec": 17,
+      "alt": [
+        {
+          "id": "lVyOd1VNEXM",
+          "title": "Poppy Playtime Huggy Wuggy jumpscare on PS5",
+          "channel": "Cobble The Great",
+          "durationSec": 18
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-scarymaze": {
+      "id": "XfQrgDbisAo",
+      "title": "Scary Maze Game Scream original - Sound effect",
+      "channel": "Yasir Malik",
+      "durationSec": 6,
+      "alt": [
+        {
+          "id": "9VWR8zXwS4s",
+          "title": "scary maze no jumpscare (secret ending)",
+          "channel": "A CONFUSED MAN cx",
+          "durationSec": 15
+        }
+      ],
+      "checkedAt": "2026-10-19"
+    },
+    "scare-slender": {
+      "id": "agqLu2vuO4I",
+      "title": "Slender - Jump Scare!",
+      "channel": "RedHeadRedemption",
+      "durationSec": 17,
+      "alt": [
+        {
+          "id": "bmNLrxgcprY",
+          "title": "Slender Space Jumpscare",
+          "channel": "NeriDeaux",
+          "durationSec": 14
+        },
+        {
+          "id": "2ewNKnCRia8",
+          "title": "Slenderman Jumpscare Cut-off Scream (Original)",
+          "channel": "Photon (Gaming Channel)",
+          "durationSec": 10
         }
       ],
       "checkedAt": "2026-10-19"
