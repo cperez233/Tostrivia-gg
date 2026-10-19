@@ -26,20 +26,69 @@ export type PowerId =
   | "shuffle"
   | "flip"
   | "swapScore"
-  | "banana";
+  | "banana"
+  | "dark"
+  | "mirror"
+  | "quake"
+  | "tiny";
 
 /** efectos que se ven en la pantalla de los demás mientras corre la pregunta */
-export type FxId = "ink" | "scare" | "shuffle" | "flip";
+export type FxId = "ink" | "scare" | "shuffle" | "flip" | "dark" | "mirror" | "quake" | "tiny";
+export const FX_POWERS: FxId[] = ["ink", "scare", "shuffle", "flip", "dark", "mirror", "quake", "tiny"];
 
 /** solo: los que no dependen de otros; grupo: los que no cambian la pregunta de todos */
 export const POOL: Record<"solo" | "group", PowerId[]> = {
   solo: ["half", "double", "shield", "swap", "dice", "mushroom", "star", "mystery"],
-  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning", "scare", "shuffle", "flip", "swapScore", "banana"],
+  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning", "scare", "shuffle", "flip", "swapScore", "banana", "dark", "mirror", "quake", "tiny"],
 };
 /** los que le tocan más seguido al que va en la mitad de abajo (como en Mario Kart) */
 export const COMEBACK: PowerId[] = ["blueShell", "lightning", "star", "steal", "redShell", "swapScore"];
-/** los que se ven en la pantalla de los demás y cuánto duran */
-export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000 };
+/** qué tan seguido sale cada uno: los más fuertes son raros */
+export const WEIGHT: Record<PowerId, number> = {
+  half: 4,
+  double: 3,
+  shield: 4,
+  swap: 4,
+  steal: 2,
+  ink: 4,
+  dice: 4,
+  mushroom: 4,
+  star: 2,
+  mystery: 2,
+  redShell: 3,
+  blueShell: 1,
+  lightning: 2,
+  scare: 3,
+  shuffle: 4,
+  flip: 4,
+  swapScore: 1,
+  banana: 4,
+  dark: 4,
+  mirror: 4,
+  quake: 4,
+  tiny: 4,
+};
+/** los que se ven en la pantalla de los demás y cuánto duran (el Susto con screamer de YouTube dura SCARE_CLIP_MS) */
+export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000, dark: 7_000, mirror: 7_000, quake: 6_000, tiny: 7_000 };
+export const SCARE_CLIP_MS = 4_500;
+/**
+ * Screamers de juegos de terror. Cada clave se busca en YouTube con scripts/find-videos.mjs (src/data/video-sources.json)
+ * y solo se usan las que ya tienen un video verificado en videos.json; sin ninguna, sale el susto propio.
+ */
+export const SCARE_KEYS = [
+  "scare-fnaf2-foxy",
+  "scare-fnaf1-freddy",
+  "scare-fnaf2-mangle",
+  "scare-fnaf-goldenfreddy",
+  "scare-fnaf3-springtrap",
+  "scare-fnaf4-nightmare",
+  "scare-poppy-huggy",
+  "scare-granny",
+  "scare-baldi",
+  "scare-doors-seek",
+  "scare-scarymaze",
+  "scare-slender",
+];
 
 export const START_HAND = 1;
 /** como en Mario Kart: tres en la mano */
@@ -84,6 +133,10 @@ export const POWER_ICON: Record<PowerId, string> = {
   flip: "🙃",
   swapScore: "🔁",
   banana: "🍌",
+  dark: "🔦",
+  mirror: "🪞",
+  quake: "🫨",
+  tiny: "🐜",
 };
 
 export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
@@ -105,6 +158,10 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
   flip: { name: "De cabeza", desc: `La pantalla de los demás se voltea ${FX_MS.flip / 1000} s.` },
   swapScore: { name: "Cambiazo", desc: "Cambias tu puntaje con el que va justo delante de ti." },
   banana: { name: "Plátano", desc: `El primero que responda después de ti resbala: −${BANANA_PTS}.` },
+  dark: { name: "Apagón", desc: `Se va la luz donde los demás: solo ven con una linterna ${FX_MS.dark / 1000} s.` },
+  mirror: { name: "Espejo", desc: `La pantalla de los demás se ve al revés, como en un espejo, ${FX_MS.mirror / 1000} s.` },
+  quake: { name: "Terremoto", desc: `La pantalla de los demás tiembla ${FX_MS.quake / 1000} s.` },
+  tiny: { name: "Hormiga", desc: `Las opciones de los demás se encogen ${FX_MS.tiny / 1000} s.` },
 };
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
@@ -134,7 +191,16 @@ export const POWER_LINES = {
   swappedUp: (who: string, pts: number) => `${POWER_ICON.swapScore} Cambiazo con ${who}: +${pts}.`,
   swappedDown: (who: string, pts: number) => `${POWER_ICON.swapScore} ${who} te hizo cambiazo: −${pts}.`,
   fx: (p: FxId, who: string) =>
-    p === "ink" ? `${who} te echó tinta` : p === "shuffle" ? `${who} te revolvió las opciones` : p === "flip" ? `${who} te volteó la pantalla` : "¡BU!",
+    ({
+      ink: `${who} te echó tinta`,
+      shuffle: `${who} te revolvió las opciones`,
+      flip: `${who} te volteó la pantalla`,
+      dark: `${who} te apagó la luz. Mueve el dedo para alumbrar`,
+      mirror: `${who} te puso el espejo`,
+      quake: `${who} hizo temblar tu pantalla`,
+      tiny: `${who} te encogió las opciones`,
+      scare: "¡BU!",
+    })[p],
   scare: (who: string) => `Cortesía de ${who}`,
   swapped: "Pregunta cambiada.",
 };
@@ -145,14 +211,21 @@ export const isVariant = (x: unknown): x is Variant => x === "vanilla" || x === 
 /** un poder al azar; en grupo, al que va atrás le salen más seguido los fuertes */
 export function drawPower(mode: "solo" | "group", behind = false, rand: () => number = Math.random): PowerId {
   const pool = mode === "group" && behind && rand() < 0.5 ? COMEBACK : POOL[mode];
-  return pool[Math.floor(rand() * pool.length)];
+  return weighted(pool, rand);
+}
+
+function weighted(pool: PowerId[], rand: () => number): PowerId {
+  const total = pool.reduce((n, p) => n + WEIGHT[p], 0);
+  let r = rand() * total;
+  for (const p of pool) if ((r -= WEIGHT[p]) < 0) return p;
+  return pool[pool.length - 1];
 }
 
 /** mano inicial: dos distintos */
 export function startHand(mode: "solo" | "group", rand: () => number = Math.random): PowerId[] {
   const pool = POOL[mode].slice();
   const out: PowerId[] = [];
-  while (out.length < START_HAND && pool.length) out.push(pool.splice(Math.floor(rand() * pool.length), 1)[0]);
+  while (out.length < START_HAND && pool.length) out.push(pool.splice(pool.indexOf(weighted(pool, rand)), 1)[0]);
   return out;
 }
 

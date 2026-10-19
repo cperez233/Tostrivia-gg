@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BANK, videoFor, type VideoCandidate } from "../data/bank";
+import { loadYouTube, type YTNamespace, type YTPlayer } from "../lib/youtube";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
 import type { Pick, Player, Snapshot } from "./match";
@@ -161,7 +162,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         )}
       </AnimatePresence>
 
-      <main className={`game__body ${q.media ? "has-media" : ""} ${fxOn && fx?.p === "flip" ? "is-flipped" : ""}`}>
+      <main className={`game__body ${q.media ? "has-media" : ""} ${fxOn && fx ? `fx-${fx.p}` : ""}`}>
         <section className="game__main">
           <AnimatePresence mode="wait">
             <motion.div
@@ -274,7 +275,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
           )}
 
           <div className="game__status" aria-live="polite">
-            {fxOn && fx && (fx.p === "shuffle" || fx.p === "flip") && (
+            {fxOn && fx && fx.p !== "ink" && fx.p !== "scare" && (
               <p className="game__fx">
                 {POWER_ICON[fx.p]} {POWER_LINES.fx(fx.p, nameOf(fx.by))}
               </p>
@@ -319,7 +320,13 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>{fxOn && fx?.p === "scare" && <Scare key={`scare-${key}`} who={nameOf(fx.by)} />}</AnimatePresence>
+      {/* con screamer se monta antes, escondido, para que el video ya esté cargado cuando toque */}
+      {fxPending && fx?.p === "scare" && fx.clip ? (
+        <ScareClip key={`clip-${key}`} clip={fx.clip} at={fxFrom} until={fxUntil} who={nameOf(fx.by)} />
+      ) : (
+        <AnimatePresence>{fxOn && fx?.p === "scare" && <Scare key={`scare-${key}`} who={nameOf(fx.by)} />}</AnimatePresence>
+      )}
+      {fxOn && fx?.p === "dark" && <Blackout />}
 
       <AnimatePresence>
         {confirmExit && (
@@ -370,6 +377,98 @@ function Flame() {
     <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden>
       <path d="M8 1c1 3.4 5.6 5 5.6 10A5.6 5.6 0 0 1 2.4 11c0-2.4 1.2-3.8 2.4-4.8.2 1.6.9 2.6 1.8 3C6.4 6 7 3.4 8 1z" fill="currentColor" stroke="var(--ink)" strokeWidth="1.6" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+/** Apagón: todo negro menos el círculo de la linterna, que sigue al dedo o al mouse */
+function Blackout() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const move = (e: PointerEvent) => {
+      ref.current?.style.setProperty("--x", `${e.clientX}px`);
+      ref.current?.style.setProperty("--y", `${e.clientY}px`);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerdown", move);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerdown", move);
+    };
+  }, []);
+  return <div ref={ref} className="blackout" aria-hidden />;
+}
+
+/**
+ * Susto con screamer: el video de YouTube se carga escondido apenas llega el poder y salta a pantalla completa
+ * con sonido en el momento `at`. Si no alcanzó a cargar o YouTube falla, sale el susto propio.
+ */
+function ScareClip({ clip, at, until, who }: { clip: string; at: number; until: number; who: string }) {
+  const host = useRef<HTMLDivElement>(null);
+  const [stage, setStage] = useState<"wait" | "show" | "fallback" | "done">("wait");
+  const player = useRef<YTPlayer | null>(null);
+  const ready = useRef(false);
+  useEffect(() => {
+    const v = videoFor(clip);
+    const ids = v ? [v.id, ...(v.alt ?? []).map((a) => a.id)] : [];
+    let dead = false;
+    let attempt = 0;
+    const mount = (YT: YTNamespace) => {
+      if (dead || !host.current || attempt >= ids.length) return;
+      host.current.innerHTML = "";
+      const el = document.createElement("div");
+      host.current.appendChild(el);
+      player.current = new YT.Player(el, {
+        videoId: ids[attempt],
+        width: "100%",
+        height: "100%",
+        playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, rel: 0, origin: window.location.origin },
+        events: {
+          onReady: () => {
+            ready.current = true;
+          },
+          onError: () => {
+            ready.current = false;
+            attempt++;
+            mount(YT);
+          },
+        },
+      });
+    };
+    if (ids.length) loadYouTube().then(mount, () => undefined);
+    const go = setTimeout(() => {
+      if (dead) return;
+      const p = player.current;
+      if (!ready.current || !p) return setStage("fallback");
+      try {
+        p.unMute();
+        p.setVolume(100);
+        p.seekTo(0, true);
+        p.playVideo();
+        setStage("show");
+      } catch {
+        setStage("fallback");
+      }
+    }, Math.max(0, at - Date.now()));
+    const end = setTimeout(() => setStage("done"), Math.max(0, until - Date.now()));
+    return () => {
+      dead = true;
+      clearTimeout(go);
+      clearTimeout(end);
+      try {
+        player.current?.destroy();
+      } catch {
+        /* ya no existe */
+      }
+    };
+  }, [clip, at, until]);
+  return (
+    <>
+      <div className={`scare-clip ${stage === "show" ? "is-on" : ""}`} aria-hidden={stage !== "show"}>
+        <div ref={host} className="scare-clip__video" />
+        {stage === "show" && <span className="scare__who scare-clip__who">{POWER_LINES.scare(who)}</span>}
+      </div>
+      <AnimatePresence>{stage === "fallback" && <Scare key="fallback" who={who} />}</AnimatePresence>
+    </>
   );
 }
 

@@ -25,11 +25,16 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - 🔵 **Caparazón azul** (grupo): −600 al primero; si el primero eres tú, te pega a ti.
   - ⚡ **Rayo** (grupo): −200 a todos los demás.
   - 🦑 **Tinta** (grupo): tapa las opciones de los demás durante 5 s.
-  - 😱 **Susto** (grupo): un jumpscare (cara, chillido y vibración) en la pantalla de los demás, entre 1 y 3,5 s después de usarlo.
+  - 😱 **Susto** (grupo): un screamer de un juego de terror (FNAF, Poppy Playtime, Granny, Baldi, Doors, Slender…) a pantalla completa y con sonido en la pantalla de los demás, unos segundos después de usarlo. Los videos salen de YouTube como los de las preguntas: las claves `scare-*` de `src/data/video-sources.json` se resuelven con `npm run videos:sin-key` y solo se usan las que quedaron verificadas. Si no hay ninguna o el video no alcanza a cargar, sale el susto propio (cara, chillido sintetizado y vibración).
   - 🌀 **Revoltijo** (grupo): las opciones de los demás cambian de lugar cada segundo durante 6 s.
   - 🙃 **De cabeza** (grupo): la pantalla de los demás se voltea 6 s.
   - 🔁 **Cambiazo** (grupo): cambias tu puntaje con el que va justo delante de ti (al final de la pregunta).
   - 🍌 **Plátano** (grupo): el primero que responda después de que lo tiras pierde 300.
+  - 🔦 **Apagón** (grupo): la pantalla de los demás se va a negro y solo ven con una linterna que sigue el dedo, 7 s.
+  - 🪞 **Espejo** (grupo): la pantalla de los demás se ve al revés de izquierda a derecha, 7 s.
+  - 🫨 **Terremoto** (grupo): la pantalla de los demás tiembla 6 s.
+  - 🐜 **Hormiga** (grupo): las opciones de los demás se encogen, 7 s.
+- **Qué tan seguido sale cada poder**: los más fuertes son raros. Caparazón azul y Cambiazo pesan 1; Boo, Estrella, Bloque ? y Rayo, 2; Doble o nada, Caparazón rojo y Susto, 3; el resto, 4 (`WEIGHT` en `src/game/powers.ts`).
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local

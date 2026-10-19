@@ -2,7 +2,7 @@
  * Motor de partida. Vive en el dispositivo del anfitrión (o en el tuyo si juegas solo)
  * y es la única fuente de verdad: los invitados solo reciben fotos (Snapshot) del estado.
  */
-import { BANK } from "../data/bank";
+import { BANK, videoFor } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
 import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, multiplier, optionOrder, pointsFor, textBackups } from "./round";
 import { partsOf } from "./mix";
@@ -16,6 +16,9 @@ import {
   EARN_EVERY,
   BANANA_PTS,
   FX_MS,
+  FX_POWERS,
+  SCARE_CLIP_MS,
+  SCARE_KEYS,
   MAX_HAND,
   MUSHROOM_MAX,
   POOL,
@@ -97,6 +100,8 @@ export interface Fx {
   by: string;
   from: number;
   until: number;
+  /** Susto: la clave del screamer de YouTube (sin ella sale el susto propio) */
+  clip?: string;
 }
 
 export interface Spin {
@@ -551,13 +556,17 @@ export class Match {
     else if (power === "half") {
       const wrong = [0, 1, 2, 3].filter((i) => this.s.order[i] !== 0);
       use.cut = shuffle(wrong, Math.random).slice(0, 2);
-    } else if (power === "ink" || power === "scare" || power === "shuffle" || power === "flip") {
-      // el Susto llega cuando menos lo esperan
-      const from = power === "scare" ? now + 1000 + Math.floor(Math.random() * 2500) : now;
+    } else if ((FX_POWERS as PowerId[]).includes(power)) {
+      const kind = power as FxId;
+      // el Susto llega cuando menos lo esperan; con screamer, un poco más tarde para que el video alcance a cargar
+      const clips = kind === "scare" ? SCARE_KEYS.filter((k) => videoFor(k)) : [];
+      const clip = clips.length ? clips[Math.floor(Math.random() * clips.length)] : undefined;
+      const from = kind !== "scare" ? now : now + (clip ? 3000 + Math.floor(Math.random() * 3000) : 1000 + Math.floor(Math.random() * 2500));
+      const until = from + (clip ? SCARE_CLIP_MS : FX_MS[kind]);
       fx = { ...fx };
       for (const p of this.active()) {
         const guard = this.s.used[p.id]?.p;
-        if (p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star") fx[p.id] = { p: power, by: pid, from, until: from + FX_MS[power] };
+        if (p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star") fx[p.id] = { p: kind, by: pid, from, until, ...(clip ? { clip } : {}) };
       }
     } else if ((power === "shield" || power === "star") && fx[pid]) {
       fx = { ...fx };
