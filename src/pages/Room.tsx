@@ -14,6 +14,7 @@ import { Avatar, animalName } from "../components/Avatar";
 import { Cover } from "../components/Cover";
 import { describe } from "../game/mix";
 import CategoryBrowser from "../components/CategoryBrowser";
+import ChatDock from "../components/ChatDock";
 import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
@@ -22,8 +23,15 @@ import "./room.css";
 export default function Room({ client, onExit }: { client: GameClient; onExit: () => void }) {
   const { snap, at, status } = useGame(client);
   if (status !== "open" || !snap) return <NetState status={status} code={client.code} onExit={onExit} />;
-  if (snap.phase === "lobby") return <Lobby client={client} snap={snap} onExit={onExit} />;
-  return <GameScreen client={client} snap={snap} at={at} onExit={onExit} />;
+  const screen = snap.phase === "lobby" ? <Lobby client={client} snap={snap} onExit={onExit} /> : <GameScreen client={client} snap={snap} at={at} onExit={onExit} />;
+  if (snap.mode !== "group") return screen;
+  // el chat sigue montado entre la sala y la partida: no se pierden los mensajes ni el contador
+  return (
+    <>
+      {screen}
+      <ChatDock client={client} place={snap.phase === "lobby" ? "lobby" : "game"} />
+    </>
+  );
 }
 
 const NET_TEXT: Record<NetStatus, [string, string]> = {

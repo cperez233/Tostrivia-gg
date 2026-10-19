@@ -14,6 +14,12 @@ import masAnime from "./mas-anime";
 import masJuegos from "./mas-juegos";
 import extra from "./extra";
 import conVideo from "./con-video";
+import v1PantallaCultura from "./v1-pantalla-cultura";
+import v1Series from "./v1-series";
+import v1Anime from "./v1-anime";
+import v1Juegos from "./v1-juegos";
+import v1Video from "./v1-video";
+import v1Peliculas from "./v1-peliculas";
 
 export interface VideoCandidate {
   id: string;
@@ -35,7 +41,7 @@ export function videoFor(key: string): ResolvedVideo | undefined {
 
 // varios archivos pueden aportar a la misma categoría: se suman, no se pisan
 const RAW: Record<string, RawQuestion[]> = {};
-for (const part of [cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra, conVideo]) {
+for (const part of [cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra, conVideo, v1PantallaCultura, v1Series, v1Peliculas, v1Anime, v1Juegos, v1Video]) {
   for (const [cat, list] of Object.entries(part)) (RAW[cat] ??= []).push(...list);
 }
 

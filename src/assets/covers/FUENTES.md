@@ -88,3 +88,15 @@ Las fotos de Cultura general vienen de Wikimedia Commons con licencias libres (l
 | Deportes | Collage de https://commons.wikimedia.org/wiki/File:Lionel_Messi_20180626.jpg, https://commons.wikimedia.org/wiki/File:Rafael_Nadal_(12054444625).jpg, https://commons.wikimedia.org/wiki/File:Serena_Williams_at_2013_US_Open.jpg, https://commons.wikimedia.org/wiki/File:Usain_Bolt_Rio_100m_final_2016k.jpg |
 | Cine | Collage de pósters oficiales en TMDB: Titanic (movie/597), Jurassic Park (movie/329), Matrix (movie/603), Volver al futuro (movie/105) |
 | Música | Collage de carátulas oficiales (iTunes): Thriller, Abbey Road, A Night at the Opera, Pies Descalzos, Clásicos de la Provincia, Barrio Fino |
+| El Chavo del 8 | Póster en TMDB: https://www.themoviedb.org/tv/47-el-chavo-del-ocho |
+| The Office | Póster en TMDB: https://www.themoviedb.org/tv/2316-the-office |
+| The Walking Dead | Póster en TMDB: https://www.themoviedb.org/tv/1402 |
+| Merlina | Póster en TMDB: https://www.themoviedb.org/tv/119051 |
+| Avatar: la leyenda de Aang | Póster en TMDB: https://www.themoviedb.org/tv/246 |
+| Peaky Blinders | Póster en TMDB: https://www.themoviedb.org/tv/60574 |
+| Shrek | Póster en TMDB: https://www.themoviedb.org/movie/808 |
+| Rápidos y furiosos | Póster en TMDB: https://www.themoviedb.org/movie/9799 |
+| Batman en el cine | Póster en TMDB de El caballero de la noche: https://www.themoviedb.org/movie/155 |
+| Piratas del Caribe | Póster en TMDB: https://www.themoviedb.org/movie/22 |
+| Jurassic Park | Póster en TMDB: https://www.themoviedb.org/movie/329 |
+| Clásicos de Disney | Collage de pósters en TMDB: El rey león (8587), Aladdín (812), La sirenita (10144) y Frozen (109445) |

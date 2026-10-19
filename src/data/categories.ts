@@ -122,6 +122,12 @@ export const CATEGORIES: Category[] = [
   { id: "strangerthings", name: "Stranger Things", short: "Stranger Things", family: "series" },
   { id: "friends", name: "Friends", short: "Friends", family: "series" },
   { id: "casadepapel", name: "La casa de papel", short: "Casa de papel", family: "series" },
+  { id: "chavo", name: "El Chavo del 8", short: "El Chavo", family: "series" },
+  { id: "theoffice", name: "The Office", short: "The Office", family: "series" },
+  { id: "walkingdead", name: "The Walking Dead", short: "Walking Dead", family: "series" },
+  { id: "merlina", name: "Merlina", short: "Merlina", family: "series" },
+  { id: "avatar", name: "Avatar: la leyenda de Aang", short: "Avatar", family: "series" },
+  { id: "peaky", name: "Peaky Blinders", short: "Peaky Blinders", family: "series" },
 
   // Películas
   { id: "starwars", name: "Star Wars", short: "Star Wars", family: "peliculas" },
@@ -129,6 +135,12 @@ export const CATEGORIES: Category[] = [
   { id: "mcu", name: "Marvel: los Vengadores", short: "Vengadores", family: "peliculas" },
   { id: "lotr", name: "El Señor de los Anillos", short: "Señor Anillos", family: "peliculas" },
   { id: "pixar", name: "Pixar", short: "Pixar", family: "peliculas" },
+  { id: "disney", name: "Clásicos de Disney", short: "Disney", family: "peliculas" },
+  { id: "shrek", name: "Shrek", short: "Shrek", family: "peliculas" },
+  { id: "rapidos", name: "Rápidos y furiosos", short: "Rápidos", family: "peliculas" },
+  { id: "batman", name: "Batman en el cine", short: "Batman", family: "peliculas" },
+  { id: "piratas", name: "Piratas del Caribe", short: "Piratas", family: "peliculas" },
+  { id: "jurassic", name: "Jurassic Park", short: "Jurassic Park", family: "peliculas" },
 
   // Cultura general
   { id: "historia", name: "Historia", short: "Historia", family: "cultura" },

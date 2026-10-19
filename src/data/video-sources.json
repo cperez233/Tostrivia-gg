@@ -766,5 +766,654 @@
     "must": [
       "reawaker"
     ]
+  },
+  "naruto-op-harukakanata": {
+    "q": "Naruto opening 2 Haruka Kanata creditless",
+    "must": [
+      "haruka kanata"
+    ],
+    "ban": [
+      "shippuden"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "dbs-op-chozetsu": {
+    "q": "Dragon Ball Super opening 1 Chouzetsu Dynamic creditless",
+    "must": [
+      "dynamic"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "hxh99-op-ohayou": {
+    "q": "Hunter x Hunter 1999 opening Ohayo Keno",
+    "must": [
+      "ohayo|ohayou"
+    ],
+    "ban": [
+      "harmonica",
+      "2011",
+      "instrumental",
+      "latino",
+      "doblaje"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "inuyasha-op-changetheworld": {
+    "q": "Inuyasha opening 1 Change the World V6 creditless",
+    "must": [
+      "change the world"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "yyh-op-hohoemi": {
+    "q": "Yu Yu Hakusho opening japones",
+    "must": [
+      "hohoemi|smile bomb|bakudan"
+    ],
+    "ban": [
+      "live action",
+      "netflix",
+      "instrumental",
+      "ending",
+      "latino",
+      "espanol",
+      "opening 2",
+      "opening 3"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "digimon-op-butterfly": {
+    "q": "Digimon Adventure opening 1 Butter-Fly Koji Wada TV size",
+    "must": [
+      "butter"
+    ],
+    "ban": [
+      "all cast",
+      "full",
+      "tri",
+      "last evolution",
+      "2020",
+      "piano",
+      "latino",
+      "espanol"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "pokemon-op-mezase": {
+    "q": "Pokemon anime opening 1 Mezase Pokemon Master japones",
+    "must": [
+      "mezase"
+    ],
+    "ban": [
+      "2023",
+      "20th"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "fma03-op-melissa": {
+    "q": "Fullmetal Alchemist 2003 opening 1 Melissa Porno Graffitti creditless",
+    "must": [
+      "melissa"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "souleater-op-resonance": {
+    "q": "Soul Eater opening 1 Resonance creditless",
+    "must": [
+      "resonance"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "blackclover-op-harukamirai": {
+    "q": "Black Clover opening 1 Haruka Mirai creditless",
+    "must": [
+      "haruka mirai"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "tokrev-op-crybaby": {
+    "q": "Tokyo Revengers opening Cry Baby creditless",
+    "must": [
+      "cry baby"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "kaguya-op-lovedramatic": {
+    "q": "Kaguya-sama Love is War opening 1 Love Dramatic creditless",
+    "must": [
+      "love dramatic"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "oshinoko-op-idol": {
+    "q": "Oshi no Ko opening Idol YOASOBI creditless",
+    "must": [
+      "idol|アイドル"
+    ],
+    "ban": [
+      "osu",
+      "instrumental"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "bocchi-op-seishun": {
+    "q": "Bocchi the Rock opening Seishun Complex creditless",
+    "must": [
+      "seishun|complex|青春"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "hellsparadise-op-work": {
+    "q": "Hell's Paradise Jigokuraku opening W●RK creditless",
+    "must": [
+      "hell's paradise|jigokuraku"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "mashle-op-bbb": {
+    "q": "Mashle season 2 opening Bling-Bang-Bang-Born creditless",
+    "must": [
+      "bling"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "gurren-op-sorairo": {
+    "q": "Gurren Lagann opening Sorairo Days creditless",
+    "must": [
+      "sorairo"
+    ],
+    "ban": [
+      "versiones",
+      "versions",
+      "instrumental"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "steinsgate-op-hacking": {
+    "q": "Steins;Gate opening Hacking to the Gate creditless",
+    "must": [
+      "hacking to the gate"
+    ],
+    "ban": [
+      "versions",
+      "比較",
+      "instrumental"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "fireforce-op-inferno": {
+    "q": "Fire Force opening 1 Inferno creditless",
+    "must": [
+      "inferno"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "drstone-op-goodmorning": {
+    "q": "Dr. Stone opening 1 Good Morning World creditless",
+    "must": [
+      "good morning world"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "rezero-op-redo": {
+    "q": "Re:Zero opening 1 Redo creditless",
+    "must": [
+      "redo"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "kimiuso-op-hikarunara": {
+    "q": "Your Lie in April opening 1 Hikaru Nara creditless",
+    "must": [
+      "hikaru nara"
+    ],
+    "min": 60,
+    "max": 150
+  },
+  "tetris-ost-korobeiniki": {
+    "q": "Tetris Game Boy music A theme Korobeiniki original",
+    "must": [
+      "tetris"
+    ],
+    "max": 300
+  },
+  "smb-ost-overworld": {
+    "q": "Super Mario Bros. NES Music Overworld Theme",
+    "must": [
+      "super mario bros"
+    ],
+    "ban": [
+      "world",
+      "movie",
+      "pelicula",
+      "wonder",
+      "3",
+      "2",
+      "remake",
+      "new"
+    ],
+    "max": 300,
+    "min": 30
+  },
+  "zelda-ost-main": {
+    "q": "The Legend of Zelda NES overworld theme original",
+    "must": [
+      "zelda"
+    ],
+    "ban": [
+      "gerudo",
+      "ocarina"
+    ],
+    "max": 300
+  },
+  "skyrim-ost-dragonborn": {
+    "q": "Skyrim main theme Dragonborn Jeremy Soule",
+    "must": [
+      "skyrim|dragonborn"
+    ],
+    "max": 360
+  },
+  "undertale-ost-megalovania": {
+    "q": "Undertale OST Megalovania",
+    "must": [
+      "megalovania"
+    ],
+    "max": 240
+  },
+  "portal-ost-stillalive": {
+    "q": "Portal Still Alive ending song",
+    "must": [
+      "still alive"
+    ],
+    "max": 300
+  },
+  "doom-ost-bfg": {
+    "q": "DOOM 2016 OST BFG Division Mick Gordon",
+    "must": [
+      "bfg"
+    ],
+    "max": 600
+  },
+  "katamari-ost-rocks": {
+    "q": "Katamari Damacy OST Katamari on the Rocks",
+    "must": [
+      "katamari"
+    ],
+    "max": 400
+  },
+  "sa2-ost-liveandlearn": {
+    "q": "Sonic Adventure 2 Live and Learn Crush 40",
+    "must": [
+      "live and learn|live & learn"
+    ],
+    "max": 330
+  },
+  "celeste-ost-resurrections": {
+    "q": "Celeste OST Resurrections Lena Raine",
+    "must": [
+      "resurrections"
+    ],
+    "max": 600
+  },
+  "terraria-ost-day": {
+    "q": "Terraria OST Overworld Day",
+    "must": [
+      "terraria"
+    ],
+    "max": 400
+  },
+  "dkc-ost-aquatic": {
+    "q": "Donkey Kong Country OST Aquatic Ambience SNES",
+    "must": [
+      "donkey kong|dkc"
+    ],
+    "ban": [
+      "scizzie",
+      "lofi"
+    ],
+    "max": 330
+  },
+  "chrono-ost-main": {
+    "q": "Chrono Trigger main theme OST SNES",
+    "must": [
+      "chrono trigger"
+    ],
+    "max": 330
+  },
+  "ff-ost-victory": {
+    "q": "Final Fantasy victory fanfare original",
+    "must": [
+      "victory|fanfare"
+    ],
+    "max": 300,
+    "min": 30
+  },
+  "mk-ost-techno": {
+    "q": "Mortal Kombat theme The Immortals Techno Syndrome 1994 original",
+    "must": [
+      "mortal kombat|techno syndrome"
+    ],
+    "ban": [
+      "2021",
+      "2026",
+      "wallfisch",
+      "movie trailer",
+      "mix"
+    ],
+    "max": 600
+  },
+  "wii-ost-shop": {
+    "q": "Wii Shop Channel Music HQ",
+    "must": [
+      "wii shop"
+    ],
+    "ban": [
+      "busta",
+      "bling",
+      "jazz",
+      "trap",
+      "goes",
+      "but"
+    ],
+    "max": 400
+  },
+  "amongus-ost-theme": {
+    "q": "Among Us main menu theme Innersloth",
+    "must": [
+      "among us",
+      "theme|menu|tema"
+    ],
+    "ban": [
+      "wolf",
+      "cinematic",
+      "drip",
+      "seek",
+      "hide"
+    ],
+    "max": 300
+  },
+  "kirby-ost-greengreens": {
+    "q": "Kirby's Dream Land Green Greens OST",
+    "must": [
+      "green greens"
+    ],
+    "max": 300
+  },
+  "pvz-ost-grasswalk": {
+    "q": "Plants vs Zombies OST Grasswalk",
+    "must": [
+      "grasswalk"
+    ],
+    "max": 300
+  },
+  "angrybirds-ost-theme": {
+    "q": "Angry Birds theme song original",
+    "must": [
+      "angry birds"
+    ],
+    "ban": [
+      "movie",
+      "pelicula"
+    ],
+    "max": 300
+  },
+  "wiisports-ost-title": {
+    "q": "Wii Sports title theme music",
+    "must": [
+      "wii sports"
+    ],
+    "ban": [
+      "resort"
+    ],
+    "max": 300
+  },
+  "cod-ost-mw2": {
+    "q": "Call of Duty Modern Warfare 2 2009 main theme Hans Zimmer",
+    "must": [
+      "modern warfare 2|mw2"
+    ],
+    "ban": [
+      "2022",
+      "remastered"
+    ],
+    "max": 330
+  },
+  "cod-tr-bo6": {
+    "q": "Call of Duty Black Ops 6 official reveal trailer",
+    "must": [
+      "black ops 6"
+    ],
+    "max": 300
+  },
+  "fortnite-tr-ch2": {
+    "q": "Fortnite Chapter 2 launch trailer",
+    "must": [
+      "chapter 2|capitulo 2"
+    ],
+    "ban": [
+      "remix",
+      "season 2",
+      "temporada 2"
+    ],
+    "max": 300
+  },
+  "fortnite-tr-ch4": {
+    "q": "Fortnite Chapter 4 launch trailer",
+    "must": [
+      "chapter 4|capitulo 4"
+    ],
+    "ban": [
+      "season 2",
+      "temporada 2"
+    ],
+    "max": 300
+  },
+  "chavo-intro": {
+    "q": "El Chavo del 8 entrada original",
+    "must": [
+      "chavo"
+    ],
+    "ban": [
+      "animado"
+    ],
+    "max": 200,
+    "min": 30
+  },
+  "theoffice-intro": {
+    "q": "The Office US theme song opening credits",
+    "must": [
+      "office"
+    ],
+    "ban": [
+      "best",
+      "cold open"
+    ],
+    "max": 120,
+    "min": 25
+  },
+  "twd-intro": {
+    "q": "The Walking Dead season 1 opening intro",
+    "must": [
+      "walking dead"
+    ],
+    "ban": [
+      "fear",
+      "daryl",
+      "dead city",
+      "world beyond",
+      "ones who live"
+    ],
+    "max": 200,
+    "min": 30
+  },
+  "merlina-dance": {
+    "q": "Wednesday Addams dance scene Netflix Goo Goo Muck",
+    "must": [
+      "dance|baile"
+    ],
+    "ban": [
+      "bloody mary"
+    ],
+    "max": 300,
+    "min": 30
+  },
+  "avatar-intro": {
+    "q": "Avatar la leyenda de Aang intro serie animada",
+    "must": [
+      "avatar|aang"
+    ],
+    "ban": [
+      "korra",
+      "netflix",
+      "trailer",
+      "trailer oficial",
+      "live action",
+      "quienes"
+    ],
+    "max": 200,
+    "min": 30
+  },
+  "peaky-intro": {
+    "q": "Peaky Blinders theme Red Right Hand Nick Cave",
+    "must": [
+      "red right hand"
+    ],
+    "max": 400
+  },
+  "shrek-allstar": {
+    "q": "Shrek opening scene All Star Smash Mouth",
+    "must": [
+      "shrek"
+    ],
+    "max": 330
+  },
+  "shrek2-hero": {
+    "q": "Shrek 2 Holding Out for a Hero Fairy Godmother scene",
+    "must": [
+      "hero"
+    ],
+    "max": 330,
+    "min": 60
+  },
+  "rapidos-seeyouagain": {
+    "q": "Wiz Khalifa See You Again ft Charlie Puth official video",
+    "must": [
+      "see you again"
+    ],
+    "max": 300
+  },
+  "rapidos-tokyodrift": {
+    "q": "Teriyaki Boyz Tokyo Drift Fast & Furious official",
+    "must": [
+      "tokyo drift"
+    ],
+    "max": 330
+  },
+  "batman-ost-1989": {
+    "q": "Batman 1989 theme Danny Elfman main title",
+    "must": [
+      "batman"
+    ],
+    "ban": [
+      "animated",
+      "returns"
+    ],
+    "max": 330
+  },
+  "batman-ost-2022": {
+    "q": "The Batman 2022 main theme Michael Giacchino",
+    "must": [
+      "batman"
+    ],
+    "max": 400
+  },
+  "piratas-ost-hesapirate": {
+    "q": "He's a Pirate Klaus Badelt Pirates of the Caribbean",
+    "must": [
+      "he's a pirate|hes a pirate|he is a pirate"
+    ],
+    "ban": [
+      "orchestra",
+      "live",
+      "violin",
+      "piano",
+      "guitar",
+      "cello",
+      "concert",
+      "epic",
+      "trap",
+      "organ"
+    ],
+    "max": 330
+  },
+  "piratas-ost-davyjones": {
+    "q": "Davy Jones Hans Zimmer soundtrack Dead Man's Chest",
+    "must": [
+      "davy jones"
+    ],
+    "ban": [
+      "organ",
+      "piano",
+      "lyrics",
+      "letra"
+    ],
+    "max": 330
+  },
+  "jurassic-tr-world": {
+    "q": "Jurassic World 2015 official trailer Universal Pictures",
+    "must": [
+      "jurassic world"
+    ],
+    "ban": [
+      "dominion",
+      "fallen",
+      "rebirth",
+      "camp",
+      "evolution"
+    ],
+    "max": 300
+  },
+  "disney-libresoy": {
+    "q": "Frozen Libre soy Carmen Sarahí español latino",
+    "must": [
+      "libre soy"
+    ],
+    "ban": [
+      "martina",
+      "gisela"
+    ],
+    "max": 330
+  },
+  "disney-hakuna": {
+    "q": "El Rey León Hakuna Matata español latino",
+    "must": [
+      "hakuna"
+    ],
+    "ban": [
+      "espana",
+      "es-espana"
+    ],
+    "max": 330
   }
 }

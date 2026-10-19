@@ -13,7 +13,9 @@ import { Cover } from "../components/Cover";
 import { describe } from "./mix";
 import { FocusLines } from "../components/Wipe";
 import RollingNumber from "../components/RollingNumber";
+import Ceremony from "./Ceremony";
 import "./game.css";
+import "./ceremony.css";
 
 const LETTERS = ["A", "B", "C", "D"];
 const DIFF = { 1: "Fácil", 2: "Media", 3: "Difícil" } as const;
@@ -482,6 +484,21 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const place = sorted.findIndex((p) => p.id === client.me.id) + 1;
   const [copied, setCopied] = useState(false);
+  // en grupo primero va el podio animado; desde ahí se puede ver el detalle de cada uno
+  const [details, setDetails] = useState(snap.mode !== "group");
+  const again = () => client.start(Math.floor(Math.random() * 2 ** 31));
+  const groupActions = client.isHost ? (
+    <>
+      <button type="button" className="btn btn--hanko" onClick={again}>
+        Jugar otra
+      </button>
+      <button type="button" className="btn" onClick={() => client.backToLobby()}>
+        Cambiar categoría
+      </button>
+    </>
+  ) : (
+    <p className="final__wait">Esperando a que el anfitrión arranque otra…</p>
+  );
 
   const share = async () => {
     const text = `Hice ${fmt(me?.score ?? 0)} puntos en ${cat?.name} en Tostrivia (${correct}/${total}, mejor racha ${me?.best ?? 0}). ¿Me ganas?`;
@@ -496,6 +513,8 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
       /* el usuario canceló */
     }
   };
+
+  if (!details) return <Ceremony players={sorted} me={client.me.id} actions={groupActions} onDetails={() => setDetails(true)} />;
 
   return (
     <div className="final">
@@ -557,16 +576,16 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
 
         <div className="final__actions">
           {client.isHost && snap.mode === "solo" && (
-            <button type="button" className="btn btn--hanko" onClick={() => client.start(Math.floor(Math.random() * 2 ** 31))}>
+            <button type="button" className="btn btn--hanko" onClick={again}>
               Otra ronda de {cat?.name}
             </button>
           )}
-          {client.isHost && snap.mode === "group" && (
-            <button type="button" className="btn btn--hanko" onClick={() => client.backToLobby()}>
-              Volver a la sala
+          {snap.mode === "group" && groupActions}
+          {snap.mode === "group" && (
+            <button type="button" className="btn btn--ghost" onClick={() => setDetails(false)}>
+              Ver el podio
             </button>
           )}
-          {!client.isHost && <p className="final__wait">Esperando a que el anfitrión arme otra ronda…</p>}
           <button type="button" className="btn" onClick={share}>
             {copied ? "Copiado" : "Compartir resultado"}
           </button>

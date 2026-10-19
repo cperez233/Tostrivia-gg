@@ -23,7 +23,7 @@ const RANDOM_NAME: Record<RandomScope, string> = {
 const RANDOM_MOSAIC: Record<RandomScope, string[]> = {
   anime: ["onepiece", "jojo", "frieren", "dragonball"],
   juegos: ["zelda", "gta", "hollowknight", "minecraft"],
-  series: ["breakingbad", "starwars", "simpsons", "lotr"],
+  series: ["breakingbad", "starwars", "chavo", "shrek"],
   cultura: ["historia", "geografia", "ciencia", "deportes"],
   todo: ["jojo", "zelda", "breakingbad", "historia"],
 };

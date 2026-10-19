@@ -15,6 +15,19 @@ export interface Me {
   seal: number;
 }
 
+/** reacciones rápidas: un toque y salen flotando en la pantalla de todos */
+export const EMOTES = ["🔥", "😂", "😱", "👏", "💀", "🤯", "😭", "🫡"] as const;
+
+export interface ChatMsg {
+  id: string;
+  pid: string;
+  name: string;
+  seal: number;
+  kind: "text" | "emote";
+  body: string;
+  at: number;
+}
+
 export interface GameClient {
   me: Me;
   isHost: boolean;
@@ -33,15 +46,31 @@ export interface GameClient {
   backToLobby(): void;
   kick(id: string): void;
   leave(): void;
+  /** chat y emotes (solo en grupo): pasan por el anfitrión, que los reparte */
+  say(text: string): void;
+  react(emote: string): void;
+  onChat(fn: (m: ChatMsg) => void): () => void;
+  chatLog(): ChatMsg[];
 }
 
 type GuestMsg =
   | { t: "hello"; me: Me }
   | { t: "answer"; i: number; c: number; ms: number }
   | { t: "media"; i: number; st: "playing" | "error" }
-  | { t: "ping" };
+  | { t: "ping" }
+  | { t: "chat"; body: string }
+  | { t: "emote"; e: string };
 
-type HostMsg = { t: "snap"; s: Snapshot } | { t: "full" } | { t: "ping" } | { t: "bye" } | { t: "kicked" };
+type HostMsg =
+  | { t: "snap"; s: Snapshot }
+  | { t: "full" }
+  | { t: "ping" }
+  | { t: "bye" }
+  | { t: "kicked" }
+  | { t: "chat"; m: ChatMsg }
+  | { t: "chatlog"; list: ChatMsg[] };
+
+const CHAT_KEEP = 60;
 
 const PREFIX = "tostrivia-v1-";
 const ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -127,6 +156,14 @@ export class LocalClient implements GameClient {
   leave() {
     this.match.destroy();
   }
+  say(_text: string) {}
+  react(_emote: string) {}
+  onChat(_fn: (m: ChatMsg) => void): () => void {
+    return () => {};
+  }
+  chatLog(): ChatMsg[] {
+    return [];
+  }
 }
 
 /* ───────────────── Anfitrión ───────────────── */
@@ -136,6 +173,10 @@ export class HostClient extends LocalClient {
   private statusE = new Emitter<NetStatus>();
   private pingTimer: ReturnType<typeof setInterval> | null = null;
   private unsub: (() => void) | null = null;
+  private chatE = new Emitter<ChatMsg>();
+  private chat: ChatMsg[] = [];
+  /** último mensaje de cada jugador: un poco de freno contra el spam */
+  private lastSaid = new Map<string, number>();
 
   constructor(me: Me) {
     super(me);
@@ -216,11 +257,42 @@ export class HostClient extends LocalClient {
       }
       entry.pid = me.id;
       safeSend(entry.conn, { t: "snap", s: this.match.snapshot() });
+      if (this.chat.length) safeSend(entry.conn, { t: "chatlog", list: this.chat.filter((m) => m.kind === "text") });
       return;
     }
     if (!entry.pid) return;
     if (msg.t === "answer") this.match.answer(entry.pid, msg.i, msg.c, msg.ms);
     else if (msg.t === "media") this.match.media(entry.pid, msg.i, msg.st);
+    else if (msg.t === "chat") this.post(entry.pid, "text", msg.body);
+    else if (msg.t === "emote") this.post(entry.pid, "emote", msg.e);
+  }
+
+  /** todo mensaje pasa por aquí: se limpia, se le pone el nombre que tiene en la partida y se reparte */
+  private post(pid: string, kind: ChatMsg["kind"], raw: unknown) {
+    const player = this.match.snapshot().players.find((p) => p.id === pid);
+    if (!player || typeof raw !== "string") return;
+    const body = kind === "emote" ? raw : raw.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, 140);
+    if (!body || (kind === "emote" && !(EMOTES as readonly string[]).includes(body))) return;
+    const now = Date.now();
+    if (now - (this.lastSaid.get(pid) ?? 0) < (kind === "emote" ? 250 : 600)) return;
+    this.lastSaid.set(pid, now);
+    const m: ChatMsg = { id: `${pid}-${now}`, pid, name: player.name, seal: player.seal, kind, body, at: now };
+    if (kind === "text") this.chat = [...this.chat, m].slice(-CHAT_KEEP);
+    this.chatE.emit(m);
+    this.broadcast({ t: "chat", m });
+  }
+
+  say(text: string) {
+    this.post(this.me.id, "text", text);
+  }
+  react(emote: string) {
+    this.post(this.me.id, "emote", emote);
+  }
+  onChat(fn: (m: ChatMsg) => void) {
+    return this.chatE.on(fn);
+  }
+  chatLog() {
+    return this.chat;
   }
 
   private drop(entry: { conn: DataConnection; pid: string | null }) {
@@ -269,6 +341,8 @@ export class GuestClient implements GameClient {
   private last: [Snapshot, number] | null = null;
   private seen = Date.now();
   private watch: ReturnType<typeof setInterval> | null = null;
+  private chatE = new Emitter<ChatMsg>();
+  private chat: ChatMsg[] = [];
 
   constructor(public me: Me, public code: string) {}
 
@@ -303,6 +377,13 @@ export class GuestClient implements GameClient {
             }
             this.last = [msg.s, Date.now()];
             this.snapE.emit(this.last);
+          } else if (msg.t === "chat") {
+            const m = cleanChat(msg.m);
+            if (!m) return;
+            if (m.kind === "text") this.chat = [...this.chat, m].slice(-CHAT_KEEP);
+            this.chatE.emit(m);
+          } else if (msg.t === "chatlog" && Array.isArray(msg.list)) {
+            this.chat = msg.list.map(cleanChat).filter((m): m is ChatMsg => !!m).slice(-CHAT_KEEP);
           } else if (msg.t === "full") fail("full");
           else if (msg.t === "bye" || msg.t === "kicked") this.setStatus("closed");
         });
@@ -336,6 +417,19 @@ export class GuestClient implements GameClient {
   media(i: number, st: "playing" | "error") {
     this.send({ t: "media", i, st });
   }
+  say(text: string) {
+    const body = text.trim().slice(0, 140);
+    if (body) this.send({ t: "chat", body });
+  }
+  react(emote: string) {
+    this.send({ t: "emote", e: emote });
+  }
+  onChat(fn: (m: ChatMsg) => void) {
+    return this.chatE.on(fn);
+  }
+  chatLog() {
+    return this.chat;
+  }
   next() {}
   start() {}
   setSpin() {}
@@ -361,6 +455,24 @@ function safeSend(conn: DataConnection, msg: unknown) {
   } catch {
     /* la conexión se cerró entre medias */
   }
+}
+
+/** el anfitrión ya los limpió, pero lo que llega por la red se revisa igual */
+function cleanChat(m: unknown): ChatMsg | null {
+  if (!m || typeof m !== "object") return null;
+  const x = m as Record<string, unknown>;
+  if (typeof x.body !== "string" || typeof x.name !== "string" || typeof x.pid !== "string") return null;
+  const kind = x.kind === "emote" ? "emote" : "text";
+  if (kind === "emote" && !(EMOTES as readonly string[]).includes(x.body)) return null;
+  return {
+    id: String(x.id ?? Math.random()),
+    pid: x.pid.slice(0, 40),
+    name: x.name.slice(0, 18),
+    seal: Number.isInteger(x.seal) ? Math.min(11, Math.max(0, x.seal as number)) : 0,
+    kind,
+    body: x.body.slice(0, 140),
+    at: Number(x.at) || Date.now(),
+  };
 }
 
 /** Lo que llega de otro navegador no es de fiar: nombre corto, sin control, sello en rango. */
