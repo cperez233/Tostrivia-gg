@@ -2,6 +2,7 @@
  * Vanilla o Poderes: dos botones y una línea que dice qué cambia.
  */
 import { VARIANTS, VARIANT_TEXT, type Variant } from "../game/powers";
+import { t } from "../i18n";
 import "./variant.css";
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 export default function VariantPicker({ value, onChange, disabled, idp }: Props) {
   return (
     <div className="variant">
-      <div className="variant__opts" role="radiogroup" aria-label="Modo de juego" aria-describedby={`${idp}-variant-d`}>
+      <div className="variant__opts" role="radiogroup" aria-label={t("Modo de juego")} aria-describedby={`${idp}-variant-d`}>
         {VARIANTS.map((v) => (
           <button key={v} type="button" role="radio" aria-checked={value === v} className={`variant__opt ${value === v ? "is-on" : ""}`} onClick={() => onChange(v)} disabled={disabled}>
             {v === "powers" && <span aria-hidden>⚡</span>}

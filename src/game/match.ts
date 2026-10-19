@@ -4,7 +4,7 @@
  */
 import { BANK, videoFor } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
-import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, multiplier, optionOrder, pointsFor, textBackups } from "./round";
+import { MEDIA_MS, ROUND_SIZE, TEXT_MS, buildRound, multiplier, optionOrder, pointsFor, SPEED_POINTS, textBackups } from "./round";
 import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 import {
@@ -433,7 +433,7 @@ export class Match {
       const frac = a ? Math.max(0, Math.min(1, 1 - a.ms / this.s.duration)) : 0;
       if (ok) {
         pick.gained = pointsFor(q.d, frac, streak);
-        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - 100) * frac * multiplier(streak));
+        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - SPEED_POINTS) * frac * multiplier(streak));
         if (power === "star") pick.bonus = Math.round(pick.gained * (STAR_MULT - 1));
         if (power === "double") pick.bonus = pick.gained;
       } else if (!excused && power === "double") pick.bonus = -DOUBLE_RISK;

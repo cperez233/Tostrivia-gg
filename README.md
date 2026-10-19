@@ -15,7 +15,7 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - ✂️ **50/50**: tacha dos opciones malas.
   - 🎰 **Doble o nada**: ×2 si aciertas, −300 si fallas.
   - 🎲 **Dado**: +100 por punto del dado si aciertas, −50 por punto si fallas.
-  - 🍄 **Hongo**: el bono por rapidez sube de 100 a 500.
+  - 🍄 **Hongo**: el bono por rapidez sube de 200 a 500.
   - ⭐ **Estrella**: ×2 si aciertas y ningún ataque te toca.
   - 🛡️ **Escudo**: si fallas no pierdes la racha y te cubre de ataques.
   - ❓ **Bloque ?**: te da dos poderes al azar.

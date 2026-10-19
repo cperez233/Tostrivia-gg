@@ -45,7 +45,10 @@ if (process.argv.includes("--pending")) {
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : /\.tsx?$/.test(e.name) ? [path.join(d, e.name)] : []));
 const missing = new Set();
 for (const f of walk(path.join(root, "src"))) {
-  for (const m of fs.readFileSync(f, "utf8").matchAll(/\bt\("((?:[^"\\]|\\.)*)"/g)) if (!(m[1] in EN)) missing.add(m[1]);
+  const src = fs.readFileSync(f, "utf8");
+  for (const m of src.matchAll(/\bt\("((?:[^"\\]|\\.)*)"/g)) if (!(m[1] in EN)) missing.add(m[1]);
+  // text("nombre", "descripción") de src/game/powers.ts
+  for (const m of src.matchAll(/\btext\("((?:[^"\\]|\\.)*)", "((?:[^"\\]|\\.)*)"/g)) for (const k of [m[1], m[2]]) if (!(k in EN)) missing.add(k);
 }
 console.log(`Interfaz: ${missing.size ? `${missing.size} frases sin traducir` : "todo traducido"}`);
 for (const s of missing) console.log(`  ✗ ${s}`);

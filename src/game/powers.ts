@@ -4,6 +4,7 @@
  * Se usa uno por pregunta, antes de responder (el Bloque ? no cuenta). Vanilla es la partida de siempre.
  * Los textos están todos aquí (POWER_TEXT, VARIANT_TEXT, POWER_LINES) para poder traducirlos en un solo sitio.
  */
+import { t } from "../i18n";
 
 export type Variant = "vanilla" | "powers";
 export const VARIANTS: Variant[] = ["vanilla", "powers"];
@@ -119,7 +120,7 @@ export const BLUE_PTS = 600;
 export const BOLT_PTS = 200;
 /** Dado: cada punto del dado vale esto si aciertas (y la mitad en contra si fallas) */
 export const DICE_PTS = 100;
-/** Hongo: el bono por rapidez llega hasta esto (normal: 100) */
+/** Hongo: el bono por rapidez llega hasta esto (normal: SPEED_POINTS, 200) */
 export const MUSHROOM_MAX = 500;
 /** Estrella: multiplica lo que ganes */
 export const STAR_MULT = 2;
@@ -154,79 +155,107 @@ export const POWER_ICON: Record<PowerId, string> = {
   blink: "💡",
 };
 
+/** nombre y descripción en el idioma actual: se leen al pintar, así que cambian con el idioma */
+function text(name: string, desc: string, vars?: Record<string, string | number>) {
+  return {
+    get name() {
+      return t(name);
+    },
+    get desc() {
+      return t(desc, vars);
+    },
+  };
+}
+const secs = (ms: number) => ms / 1000;
+
 export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
-  half: { name: "50/50", desc: "Quita dos opciones malas." },
-  double: { name: "Doble o nada", desc: `×2 si aciertas, −${DOUBLE_RISK} si fallas.` },
-  shield: { name: "Escudo", desc: "Si fallas no pierdes la racha y te cubre de ataques." },
-  swap: { name: "Cambio", desc: "Cambia la pregunta por otra." },
-  steal: { name: "Boo", desc: `Si aciertas, le robas ${STEAL_PTS} al que va primero.` },
-  ink: { name: "Tinta", desc: `Tapa las opciones de los demás ${INK_MS / 1000} s.` },
-  dice: { name: "Dado", desc: `Tira un dado: +${DICE_PTS} por punto si aciertas, −${DICE_PTS / 2} si fallas.` },
-  mushroom: { name: "Hongo", desc: `Responde rápido: el bono de rapidez sube hasta +${MUSHROOM_MAX}.` },
-  star: { name: "Estrella", desc: `×${String(STAR_MULT).replace(".", ",")} si aciertas y ningún ataque te toca.` },
-  mystery: { name: "Bloque ?", desc: "Te da dos poderes al azar. No gasta tu turno." },
-  redShell: { name: "Caparazón rojo", desc: `−${RED_PTS} al que va justo delante de ti.` },
-  blueShell: { name: "Caparazón azul", desc: `−${BLUE_PTS} al primero. Si el primero eres tú, te pega a ti.` },
-  lightning: { name: "Rayo", desc: `−${BOLT_PTS} a todos los demás.` },
-  scare: { name: "Susto", desc: "Un susto en la pantalla de todos los demás, cuando menos lo esperan." },
-  shuffle: { name: "Revoltijo", desc: `Las opciones de los demás bailan ${FX_MS.shuffle / 1000} s.` },
-  flip: { name: "De cabeza", desc: `La pantalla de los demás se voltea ${FX_MS.flip / 1000} s.` },
-  swapScore: { name: "Cambiazo", desc: "Cambias tu puntaje con el que va justo delante de ti." },
-  banana: { name: "Plátano", desc: `El primero que responda después de ti resbala: −${BANANA_PTS}.` },
-  dark: { name: "Apagón", desc: `Se va la luz donde los demás: solo ven con una linterna ${FX_MS.dark / 1000} s.` },
-  mirror: { name: "Espejo", desc: `La pantalla de los demás se ve al revés, como en un espejo, ${FX_MS.mirror / 1000} s.` },
-  quake: { name: "Terremoto", desc: `La pantalla de los demás tiembla ${FX_MS.quake / 1000} s.` },
-  tiny: { name: "Hormiga", desc: `Las opciones de los demás se encogen ${FX_MS.tiny / 1000} s.` },
-  blur: { name: "Niebla", desc: `Los demás ven todo borroso ${FX_MS.blur / 1000} s.` },
-  spin: { name: "Mareo", desc: `La pantalla de los demás da vueltas ${FX_MS.spin / 1000} s.` },
-  party: { name: "Fiesta", desc: `Confeti, globos y cornetas en la pantalla de los demás ${FX_MS.party / 1000} s.` },
-  scramble: { name: "Trabalenguas", desc: `Las letras de las opciones de los demás se revuelven ${FX_MS.scramble / 1000} s.` },
-  blink: { name: "Corto circuito", desc: `La pantalla de los demás parpadea ${FX_MS.blink / 1000} s.` },
+  half: text("50/50", "Quita dos opciones malas."),
+  double: text("Doble o nada", "×2 si aciertas, −{n} si fallas.", { n: DOUBLE_RISK }),
+  shield: text("Escudo", "Si fallas no pierdes la racha y te cubre de ataques."),
+  swap: text("Cambio", "Cambia la pregunta por otra."),
+  steal: text("Boo", "Si aciertas, le robas {n} al que va primero.", { n: STEAL_PTS }),
+  ink: text("Tinta", "Tapa las opciones de los demás {s} s.", { s: secs(INK_MS) }),
+  dice: text("Dado", "Tira un dado: +{n} por punto si aciertas, −{m} si fallas.", { n: DICE_PTS, m: DICE_PTS / 2 }),
+  mushroom: text("Hongo", "Responde rápido: el bono de rapidez sube hasta +{n}.", { n: MUSHROOM_MAX }),
+  star: text("Estrella", "×{n} si aciertas y ningún ataque te toca.", { n: STAR_MULT }),
+  mystery: text("Bloque ?", "Te da dos poderes al azar. No gasta tu turno."),
+  redShell: text("Caparazón rojo", "−{n} al que va justo delante de ti.", { n: RED_PTS }),
+  blueShell: text("Caparazón azul", "−{n} al primero. Si el primero eres tú, te pega a ti.", { n: BLUE_PTS }),
+  lightning: text("Rayo", "−{n} a todos los demás.", { n: BOLT_PTS }),
+  scare: text("Susto", "Un susto en la pantalla de todos los demás, cuando menos lo esperan."),
+  shuffle: text("Revoltijo", "Las opciones de los demás bailan {s} s.", { s: secs(FX_MS.shuffle) }),
+  flip: text("De cabeza", "La pantalla de los demás se voltea {s} s.", { s: secs(FX_MS.flip) }),
+  swapScore: text("Cambiazo", "Cambias tu puntaje con el que va justo delante de ti."),
+  banana: text("Plátano", "El primero que responda después de ti resbala: −{n}.", { n: BANANA_PTS }),
+  dark: text("Apagón", "Se va la luz donde los demás: solo ven con una linterna {s} s.", { s: secs(FX_MS.dark) }),
+  mirror: text("Espejo", "La pantalla de los demás se ve al revés, como en un espejo, {s} s.", { s: secs(FX_MS.mirror) }),
+  quake: text("Terremoto", "La pantalla de los demás tiembla {s} s.", { s: secs(FX_MS.quake) }),
+  tiny: text("Hormiga", "Las opciones de los demás se encogen {s} s.", { s: secs(FX_MS.tiny) }),
+  blur: text("Niebla", "Los demás ven todo borroso {s} s.", { s: secs(FX_MS.blur) }),
+  spin: text("Mareo", "La pantalla de los demás da vueltas {s} s.", { s: secs(FX_MS.spin) }),
+  party: text("Fiesta", "Confeti, globos y cornetas en la pantalla de los demás {s} s.", { s: secs(FX_MS.party) }),
+  scramble: text("Trabalenguas", "Las letras de las opciones de los demás se revuelven {s} s.", { s: secs(FX_MS.scramble) }),
+  blink: text("Corto circuito", "La pantalla de los demás parpadea {s} s.", { s: secs(FX_MS.blink) }),
 };
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
-  vanilla: { name: "Vanilla", desc: "Solo preguntas, reloj y racha." },
-  powers: { name: "Poderes", desc: "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3." },
+  vanilla: text("Vanilla", "Solo preguntas, reloj y racha."),
+  powers: text("Poderes", "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3."),
 };
 
-/** frases del modo poderes que salen en la partida */
+const FX_TEXT: Record<FxId, string> = {
+  ink: "{who} te echó tinta",
+  shuffle: "{who} te revolvió las opciones",
+  flip: "{who} te volteó la pantalla",
+  dark: "{who} te apagó la luz. Mueve el dedo para alumbrar",
+  mirror: "{who} te puso el espejo",
+  quake: "{who} hizo temblar tu pantalla",
+  tiny: "{who} te encogió las opciones",
+  blur: "{who} te echó niebla",
+  spin: "{who} te mareó",
+  party: "{who} armó una fiesta en tu pantalla",
+  scramble: "{who} te revolvió las letras",
+  blink: "{who} te hizo un corto circuito",
+  scare: "¡BU!",
+};
+
+/** frases del modo poderes que salen en la partida (se arman al pintar, en el idioma actual) */
 export const POWER_LINES = {
-  label: "Poderes",
-  empty: "Sin poderes. Acierta 3 seguidas para ganar uno.",
-  used: (name: string) => `Usaste ${name}.`,
-  inked: (who: string) => `${who} te echó tinta`,
-  earned: (name: string) => `Ganaste ${name}.`,
-  consolation: (name: string) => `De consuelo: ${name}.`,
-  doubled: "Doble o nada: ¡doble!",
-  doubleLost: `Doble o nada: −${DOUBLE_RISK}.`,
-  shielded: "El escudo salvó tu racha.",
-  dice: (roll: number, pts: number) => `Sacaste ${roll} en el dado: ${pts >= 0 ? "+" : "−"}${Math.abs(pts)}.`,
-  mushroom: (pts: number) => `Hongo: +${pts} por rapidez.`,
-  star: `Estrella: ×${String(STAR_MULT).replace(".", ",")}.`,
-  hit: (p: PowerId, who: string, pts: number) => `${POWER_ICON[p]} ${POWER_TEXT[p].name} de ${who}: −${pts}.`,
-  selfHit: (p: PowerId, pts: number) => `${POWER_ICON[p]} Tu propio ${POWER_TEXT[p].name} te pegó: −${pts}.`,
-  dealt: (p: PowerId, who: string, pts: number) => (p === "steal" ? `${POWER_ICON[p]} Le robaste ${pts} a ${who}.` : `${POWER_ICON[p]} ${POWER_TEXT[p].name} a ${who}: −${pts}.`),
-  blocked: (p: PowerId, who: string, by: PowerId) => `${POWER_ICON[by]} Frenaste ${POWER_TEXT[p].name} de ${who}.`,
-  missed: (p: PowerId) => `${POWER_ICON[p]} ${POWER_TEXT[p].name} no le hizo nada a nadie.`,
-  swappedUp: (who: string, pts: number) => `${POWER_ICON.swapScore} Cambiazo con ${who}: +${pts}.`,
-  swappedDown: (who: string, pts: number) => `${POWER_ICON.swapScore} ${who} te hizo cambiazo: −${pts}.`,
-  fx: (p: FxId, who: string) =>
-    ({
-      ink: `${who} te echó tinta`,
-      shuffle: `${who} te revolvió las opciones`,
-      flip: `${who} te volteó la pantalla`,
-      dark: `${who} te apagó la luz. Mueve el dedo para alumbrar`,
-      mirror: `${who} te puso el espejo`,
-      quake: `${who} hizo temblar tu pantalla`,
-      tiny: `${who} te encogió las opciones`,
-      blur: `${who} te echó niebla`,
-      spin: `${who} te mareó`,
-      party: `${who} armó una fiesta en tu pantalla`,
-      scramble: `${who} te revolvió las letras`,
-      blink: `${who} te hizo un corto circuito`,
-      scare: "¡BU!",
-    })[p],
-  scare: (who: string) => `Cortesía de ${who}`,
+  get label() {
+    return t("Poderes");
+  },
+  get empty() {
+    return t("Sin poderes. Acierta 3 seguidas para ganar uno.");
+  },
+  used: (name: string) => t("Usaste {name}.", { name }),
+  inked: (who: string) => t("{who} te echó tinta", { who }),
+  earned: (name: string) => t("Ganaste {name}.", { name }),
+  consolation: (name: string) => t("De consuelo: {name}.", { name }),
+  get doubled() {
+    return t("Doble o nada: ¡doble!");
+  },
+  get doubleLost() {
+    return t("Doble o nada: −{n}.", { n: DOUBLE_RISK });
+  },
+  get shielded() {
+    return t("El escudo salvó tu racha.");
+  },
+  dice: (roll: number, pts: number) => t("Sacaste {roll} en el dado: {pts}.", { roll, pts: `${pts >= 0 ? "+" : "−"}${Math.abs(pts)}` }),
+  mushroom: (pts: number) => t("Hongo: +{n} por rapidez.", { n: pts }),
+  get star() {
+    return t("Estrella: ×{n}.", { n: STAR_MULT });
+  },
+  hit: (p: PowerId, who: string, pts: number) => `${POWER_ICON[p]} ${t("{power} de {who}: −{n}.", { power: POWER_TEXT[p].name, who, n: pts })}`,
+  selfHit: (p: PowerId, pts: number) => `${POWER_ICON[p]} ${t("Tu propio {power} te pegó: −{n}.", { power: POWER_TEXT[p].name, n: pts })}`,
+  dealt: (p: PowerId, who: string, pts: number) =>
+    `${POWER_ICON[p]} ${p === "steal" ? t("Le robaste {n} a {who}.", { n: pts, who }) : t("{power} a {who}: −{n}.", { power: POWER_TEXT[p].name, who, n: pts })}`,
+  blocked: (p: PowerId, who: string, by: PowerId) => `${POWER_ICON[by]} ${t("Frenaste {power} de {who}.", { power: POWER_TEXT[p].name, who })}`,
+  missed: (p: PowerId) => `${POWER_ICON[p]} ${t("{power} no le hizo nada a nadie.", { power: POWER_TEXT[p].name })}`,
+  swappedUp: (who: string, pts: number) => `${POWER_ICON.swapScore} ${t("Cambiazo con {who}: +{n}.", { who, n: pts })}`,
+  swappedDown: (who: string, pts: number) => `${POWER_ICON.swapScore} ${t("{who} te hizo cambiazo: −{n}.", { who, n: pts })}`,
+  fx: (p: FxId, who: string) => t(FX_TEXT[p], { who }),
+  scare: (who: string) => t("Cortesía de {who}", { who }),
+  /** se manda tal cual por la red y cada uno lo traduce al pintarlo */
   swapped: "Pregunta cambiada.",
 };
 

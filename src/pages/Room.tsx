@@ -223,7 +223,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
             <VariantPicker idp="lobby" value={snap.variant} onChange={(v) => client.setVariant(v)} disabled={spinShown} />
           ) : (
             <p className="lobby__variant">
-              <span className="label">Modo</span> {VARIANT_TEXT[snap.variant].name} · {VARIANT_TEXT[snap.variant].desc}
+              <span className="label">{t("Modo")}</span> {VARIANT_TEXT[snap.variant].name} · {VARIANT_TEXT[snap.variant].desc}
             </p>
           )}
           {client.isHost && (

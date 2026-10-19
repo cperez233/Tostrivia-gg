@@ -856,7 +856,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
             animate={{ scale: 1, rotate: -9, opacity: 1 }}
             transition={{ delay: 0.35, type: "spring", stiffness: 380, damping: 15 }}
           >
-            <span className="final__grade" aria-label={`Nota ${grade}`}>
+            <span className="final__grade" aria-label={t("Nota {g}", { g: grade })}>
               {grade}
             </span>
           </motion.div>
