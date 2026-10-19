@@ -466,12 +466,15 @@ function Board({ snap, me }: { snap: Snapshot; me: string }) {
   );
 }
 
-const RANKS: [number, string, string][] = [
-  [10, "Perfecto", "Diez de diez. Nada que corregir en este tomo."],
-  [8, "Maestro", "Te pasaste la categoría casi sin despeinarte."],
-  [6, "Veterano", "Sabes de esto. Otra ronda y llegas a maestro."],
-  [4, "Aprendiz", "Vas bien. Repite la categoría y verás preguntas nuevas."],
-  [0, "Novato", "Todo maestro empezó aquí. Otra ronda."],
+// nota por porcentaje de aciertos; con 10 preguntas: 10 S+, 9 S, 8 A, 6-7 B, 5 C, 3-4 D, 0-2 F
+const GRADES: [number, string][] = [
+  [100, "S+"],
+  [90, "S"],
+  [75, "A"],
+  [60, "B"],
+  [45, "C"],
+  [30, "D"],
+  [0, "F"],
 ];
 
 function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snapshot; onExit: () => void }) {
@@ -479,8 +482,8 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
   const sorted = [...snap.players].sort((a, b) => b.score - a.score);
   const total = snap.ids.length;
   const correct = me?.correct ?? 0;
-  const scaled = total ? Math.round((correct / total) * 10) : 0;
-  const rank = RANKS.find(([min]) => scaled >= min)!;
+  const pct = total ? (correct / total) * 100 : 0;
+  const grade = GRADES.find(([min]) => pct >= min)![1];
   const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const place = sorted.findIndex((p) => p.id === client.me.id) + 1;
   const [copied, setCopied] = useState(false);
@@ -524,7 +527,7 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
         </span>
       )}
       <FocusLines className="final__lines anim-spin" />
-      {scaled >= 6 && <Shards />}
+      {pct >= 60 && <Shards />}
       <motion.div className="final__inner wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
         <p className="final__eyebrow">Fin de la ronda · {cat?.name}</p>
         <div className="final__hero">
@@ -534,14 +537,15 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
             animate={{ scale: 1, rotate: -9, opacity: 1 }}
             transition={{ delay: 0.35, type: "spring", stiffness: 380, damping: 15 }}
           >
-            <span>{rank[1]}</span>
+            <span className="final__grade" aria-label={`Nota ${grade}`}>
+              {grade}
+            </span>
           </motion.div>
           <div>
             <p className="final__score">
               <RollingNumber value={me?.score ?? 0} />
               <span>puntos</span>
             </p>
-            <p className="final__line">{rank[2]}</p>
           </div>
         </div>
 

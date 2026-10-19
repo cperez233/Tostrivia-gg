@@ -755,10 +755,10 @@
   font-size: 20px;
   font-weight: 700;
 }
-.final__line {
-  font-size: 18px;
-  font-weight: 700;
-  max-width: 40ch;
+.final__grade {
+  font-size: 92px;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 .final__stats {
   margin: 0;
