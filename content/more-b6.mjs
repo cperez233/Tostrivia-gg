@@ -14,7 +14,7 @@ export default {
   ],
   jjk: [
     [1, "¿Quién es el tercer compañero de primer año de Yuji, junto a Nobara?", "Megumi Fushiguro", "Yuta Okkotsu", "Maki Zen'in", "Yuki Tsukumo", ["Who is Yuji's third first-year classmate, alongside Nobara?", N, "Yuta Okkotsu", "Maki Zen'in", "Yuki Tsukumo"]],
-    [2, "¿Cómo se llama el fenómeno en el que un golpe conecta con una chispa negra al impactar apenas una fracción de segundo después de la energía maldita?", "Destello Negro", "Expansión de Dominio", "Técnica Inversa", "Vacío Infinito", ["What is the phenomenon called where a hit lands with a black spark just a split second apart from the cursed energy?", "Black Flash", "Domain Expansion", "Reverse Cursed Technique", "Infinite Void"]],
+    [2, "¿Cómo se llama el golpe que conecta con una chispa negra justo tras la energía maldita?", "Destello Negro", "Expansión de Dominio", "Técnica Inversa", "Vacío Infinito", ["What is the hit called that lands with a black spark right after the cursed energy?", "Black Flash", "Domain Expansion", "Reverse Cursed Technique", "Infinite Void"]],
     [2, "¿Cuántos brazos tiene Sukuna en su forma original?", "Cuatro", "Dos", "Seis", "Ocho", ["How many arms does Sukuna have in his original form?", "Four", "Two", "Six", "Eight"]],
     [2, "¿Cómo se llama la técnica de Gojo que genera una fuerza de repulsión?", "Rojo", "Azul", "Púrpura", "Vacío", ["What is the name of Gojo's technique that creates a repelling force?", "Red", "Blue", "Purple", "Void"]],
     [2, "¿Qué estudiante de la escuela de Tokio es un mutante creado por el director Yaga?", "Panda", "Toge Inumaki", "Maki Zen'in", "Nobara Kugisaki", ["Which Tokyo Jujutsu student is a mutant created by Principal Yaga?", N, "Toge Inumaki", "Maki Zen'in", "Nobara Kugisaki"]],

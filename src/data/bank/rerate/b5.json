@@ -1,0 +1,21 @@
+{
+  "d": {
+    "dragonball-noiaud": 1, "dragonball-veitu5": 1, "dragonball-hdmg94": 2, "dragonball-1lvz0u5": 2, "dragonball-v1dveq": 2, "dragonball-u2zmqp": 3, "dragonball-1ba9ie4": 2,
+    "mario-hcrcn6": 1, "mario-xo0jx7": 3, "mario-128g9ww": 2, "mario-1pfx832": 2, "mario-jrkbbn": 2, "mario-8f14si": 1, "mario-o5rvz0": 1,
+    "simpsons-16awd2t": 1, "simpsons-8h0xz9": 1, "simpsons-a2nzx9": 1, "simpsons-88qvgz": 1, "simpsons-1cdthik": 2, "simpsons-183xun0": 2, "simpsons-4yezrp": 3, "simpsons-627sf9": 2,
+    "ff-rzqkzu": 2, "ff-r6yald": 2, "ff-spwv7a": 2, "ff-db9e36": 2, "ff-7w8fyg": 2, "ff-1l3rykv": 2,
+    "frieren-1q2j9j4": 2, "frieren-um3vjq": 2, "frieren-vigtef": 2, "frieren-10h6vfn": 2, "frieren-1isudb6": 3, "frieren-cj6j44": 2,
+    "sailormoon-osmgfl": 1, "sailormoon-1mhqrwe": 2, "sailormoon-vz06sh": 2, "sailormoon-7h2rsk": 2, "sailormoon-1vikmke": 3,
+    "persona-1bl7ky6": 2, "persona-1t2ir57": 2, "persona-16p8wno": 2, "persona-95bgv2": 2, "persona-1eh21up": 2, "persona-gja56l": 3, "persona-v4jb6p": 3, "persona-1lyt7o": 3, "persona-1r5l8cc": 3, "persona-1dx6v3m": 3, "persona-1vagcx3": 3, "persona-1whbxyo": 3, "persona-1ip4erj": 3, "persona-d9dkjx": 2, "persona-ndo46w": 2, "persona-mnwvz5": 2, "persona-ono8vy": 3,
+    "sololeveling-4h1na": 2, "sololeveling-199nn1r": 3,
+    "valorant-ic6xxn": 2, "valorant-15fy68w": 2, "valorant-y7lcp2": 2, "valorant-1lrjlk3": 2, "valorant-1c7wyrh": 3, "valorant-1c1tu1b": 3,
+    "ghibli-1paktt6": 2, "ghibli-f7oboo": 2, "ghibli-wdz8mo": 2, "ghibli-o5aq7z": 3,
+    "digimon-dyq71g": 2, "digimon-1befm3d": 2, "digimon-1yt7qyi": 2, "digimon-1n2k75l": 2,
+    "undertale-kavsgv": 2, "undertale-rwq2w3": 2, "undertale-1cpsf7e": 2, "undertale-12wo6ep": 2,
+    "bobesponja-1yqwxpo": 1, "bobesponja-107pl5i": 1, "bobesponja-1ercniy": 1, "bobesponja-ee938c": 2, "bobesponja-1p08k6u": 1, "bobesponja-1ru4sgb": 2, "bobesponja-sxh31q": 2, "bobesponja-17jyzy": 1
+  },
+  "fame": {
+    "dragonball": 1, "mario": 1, "simpsons": 1, "ff": 2, "frieren": 2, "sailormoon": 2, "persona": 3,
+    "sololeveling": 2, "valorant": 2, "ghibli": 2, "digimon": 2, "undertale": 2, "bobesponja": 1
+  }
+}

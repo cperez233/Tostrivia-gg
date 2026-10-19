@@ -169,7 +169,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2, "¿Qué es un Halo?", "Un anillo artificial que es también un arma", "Una nave Covenant", "Una IA", "Un planeta"],
     [2, "¿Cuál es el número de Spartan del Jefe Maestro?", "117", "007", "343", "042"],
     [2, "¿Cómo se llama el vehículo todoterreno de cuatro ruedas?", "Warthog", "Scorpion", "Ghost", "Mongoose"],
-    [2, "¿Qué élite se alía con el Jefe Maestro en Halo 2 y 3?", "El Inquisidor", "El Profeta de la Verdad", "Tartarus", "El Profeta del Pesar"],
     [2, "¿Qué arma cuerpo a cuerpo usan los Élites del Covenant para matar de un golpe?", "La espada de energía", "El martillo gravitatorio", "La carabina Covenant", "El rifle de plasma"],
     [2, "¿Qué Halo principal salió en 2021?", "Halo Infinite", "Halo 5: Guardians", "Halo 4", "Halo Reach"],
     [2, "¿Qué aeronave Covenant se roba en varias misiones?", "La Banshee", "El Pelican", "El Hornet", "El Phantom"],

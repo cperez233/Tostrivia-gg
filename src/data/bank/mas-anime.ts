@@ -126,7 +126,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2, "¿Quién dirige el proyecto Blue Lock?", "Jinpachi Ego", "Anri Teieri", "Noel Noa", "Ryusei Shidou"],
     [2, "¿Cuántos delanteros entran al empezar el proyecto?", "300", "100", "500", "50"],
     [2, "¿Qué compañero regateador dice tener un monstruo dentro?", "Meguru Bachira", "Rensuke Kunigami", "Hyoma Chigiri", "Gin Gagamaru"],
-    [2, "¿Quién es el número 1 del ranking al principio?", "Rin Itoshi", "Yoichi Isagi", "Shoei Barou", "Seishiro Nagi"],
     [2, "¿Quién es el hermano mayor de Rin?", "Sae Itoshi", "Ryusei Shidou", "Oliver Aiku", "Reo Mikage"],
     [2, "¿Qué habilidad hace especial a Isagi?", "Su visión espacial del campo", "Su velocidad", "Su potencia de tiro", "Su altura"],
     [2, "¿Qué genio del control del balón dice que todo es \"un fastidio\"?", "Seishiro Nagi", "Rin Itoshi", "Shoei Barou", "Yo Hiori"],
