@@ -237,7 +237,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                       <span className="opt__letter" aria-hidden>
                         {LETTERS[i]}
                       </span>
-                      <span className="opt__text">{q.o[orig]}</span>
+                      <span className="opt__text">{fxOn && fx?.p === "scramble" && !reveal ? jumble(q.o[orig]) : q.o[orig]}</span>
                       {state === "correct" && <Stamp ok />}
                       {state === "wrong" && <Stamp />}
                       {who.length > 0 && (
@@ -327,6 +327,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
         <AnimatePresence>{fxOn && fx?.p === "scare" && <Scare key={`scare-${key}`} who={nameOf(fx.by)} />}</AnimatePresence>
       )}
       {fxOn && fx?.p === "dark" && <Blackout />}
+      {fxOn && fx?.p === "party" && <Party key={`party-${key}`} />}
 
       <AnimatePresence>
         {confirmExit && (
@@ -377,6 +378,59 @@ function Flame() {
     <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden>
       <path d="M8 1c1 3.4 5.6 5 5.6 10A5.6 5.6 0 0 1 2.4 11c0-2.4 1.2-3.8 2.4-4.8.2 1.6.9 2.6 1.8 3C6.4 6 7 3.4 8 1z" fill="currentColor" stroke="var(--ink)" strokeWidth="1.6" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+/** Trabalenguas: cada palabra con sus letras revueltas (siempre igual para la misma palabra) */
+function jumble(text: string) {
+  return text.replace(/\p{L}{3,}/gu, (w) => {
+    let h = 0;
+    for (const ch of w) h = Math.imul(h ^ ch.codePointAt(0)!, 2654435761) >>> 0;
+    const out = shuffle([...w], rng(h || 1)).join("");
+    return out === w ? [...w].reverse().join("") : out;
+  });
+}
+
+/** Fiesta: lluvia de confeti y globos con corneta */
+const PARTY = Array.from({ length: 36 }, (_, i) => ({
+  e: ["🎉", "🎊", "🎈", "🥳", "🪅", "🎂"][i % 6],
+  x: (i * 29) % 100,
+  d: 1.6 + ((i * 7) % 10) / 6,
+  delay: ((i * 13) % 20) / 10,
+  s: 28 + ((i * 11) % 36),
+}));
+function Party() {
+  useEffect(() => {
+    try {
+      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = new Ctx();
+      const t = ctx.currentTime;
+      for (const [i, f] of [440, 554, 660].entries()) {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "square";
+        o.frequency.setValueAtTime(f, t + i * 0.18);
+        o.frequency.linearRampToValueAtTime(f * 1.06, t + i * 0.18 + 0.15);
+        g.gain.setValueAtTime(0.0001, t + i * 0.18);
+        g.gain.exponentialRampToValueAtTime(0.12, t + i * 0.18 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.18 + 0.3);
+        o.connect(g).connect(ctx.destination);
+        o.start(t + i * 0.18);
+        o.stop(t + i * 0.18 + 0.32);
+      }
+      setTimeout(() => ctx.close(), 1200);
+    } catch {
+      /* sin audio */
+    }
+  }, []);
+  return (
+    <div className="party" aria-hidden>
+      {PARTY.map((p, i) => (
+        <span key={i} style={{ left: `${p.x}%`, fontSize: p.s, animationDuration: `${p.d}s`, animationDelay: `${p.delay}s` }}>
+          {p.e}
+        </span>
+      ))}
+    </div>
   );
 }
 

@@ -1224,3 +1224,53 @@
   font-size: 15px;
   color: var(--on-ink-2);
 }
+
+/* Niebla, Mareo y Corto circuito */
+.game__body.fx-blur .game__main {
+  filter: blur(6px);
+}
+.game__body.fx-spin {
+  animation: spin-fx 3s linear infinite;
+}
+@keyframes spin-fx {
+  to {
+    rotate: 360deg;
+  }
+}
+.game__body.fx-blink {
+  animation: blink-fx 0.7s steps(2) infinite;
+}
+@keyframes blink-fx {
+  50% {
+    opacity: 0.04;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .game__body.fx-spin {
+    animation-duration: 12s;
+  }
+  .game__body.fx-blink {
+    animation-duration: 2s;
+  }
+}
+/* Fiesta: cae confeti encima de todo */
+.party {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  overflow: hidden;
+  pointer-events: none;
+}
+.party span {
+  position: absolute;
+  top: -12vh;
+  animation-name: party-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes party-fall {
+  to {
+    translate: 0 115vh;
+    rotate: 540deg;
+  }
+}

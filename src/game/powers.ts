@@ -30,16 +30,21 @@ export type PowerId =
   | "dark"
   | "mirror"
   | "quake"
-  | "tiny";
+  | "tiny"
+  | "blur"
+  | "spin"
+  | "party"
+  | "scramble"
+  | "blink";
 
 /** efectos que se ven en la pantalla de los demás mientras corre la pregunta */
-export type FxId = "ink" | "scare" | "shuffle" | "flip" | "dark" | "mirror" | "quake" | "tiny";
-export const FX_POWERS: FxId[] = ["ink", "scare", "shuffle", "flip", "dark", "mirror", "quake", "tiny"];
+export type FxId = "ink" | "scare" | "shuffle" | "flip" | "dark" | "mirror" | "quake" | "tiny" | "blur" | "spin" | "party" | "scramble" | "blink";
+export const FX_POWERS: FxId[] = ["ink", "scare", "shuffle", "flip", "dark", "mirror", "quake", "tiny", "blur", "spin", "party", "scramble", "blink"];
 
 /** solo: los que no dependen de otros; grupo: los que no cambian la pregunta de todos */
 export const POOL: Record<"solo" | "group", PowerId[]> = {
   solo: ["half", "double", "shield", "swap", "dice", "mushroom", "star", "mystery"],
-  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning", "scare", "shuffle", "flip", "swapScore", "banana", "dark", "mirror", "quake", "tiny"],
+  group: ["half", "double", "shield", "steal", "ink", "dice", "mushroom", "star", "mystery", "redShell", "blueShell", "lightning", "scare", "shuffle", "flip", "swapScore", "banana", "dark", "mirror", "quake", "tiny", "blur", "spin", "party", "scramble", "blink"],
 };
 /** los que le tocan más seguido al que va en la mitad de abajo (como en Mario Kart) */
 export const COMEBACK: PowerId[] = ["blueShell", "lightning", "star", "steal", "redShell", "swapScore"];
@@ -67,9 +72,14 @@ export const WEIGHT: Record<PowerId, number> = {
   mirror: 4,
   quake: 4,
   tiny: 4,
+  blur: 3,
+  spin: 3,
+  party: 3,
+  scramble: 3,
+  blink: 3,
 };
 /** los que se ven en la pantalla de los demás y cuánto duran (el Susto con screamer de YouTube dura SCARE_CLIP_MS) */
-export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000, dark: 7_000, mirror: 7_000, quake: 6_000, tiny: 7_000 };
+export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000, dark: 7_000, mirror: 7_000, quake: 6_000, tiny: 7_000, blur: 6_000, spin: 6_000, party: 6_000, scramble: 7_000, blink: 6_000 };
 export const SCARE_CLIP_MS = 4_500;
 /**
  * Screamers de juegos de terror. Cada clave se busca en YouTube con scripts/find-videos.mjs (src/data/video-sources.json)
@@ -137,6 +147,11 @@ export const POWER_ICON: Record<PowerId, string> = {
   mirror: "🪞",
   quake: "🫨",
   tiny: "🐜",
+  blur: "🌫️",
+  spin: "😵‍💫",
+  party: "🎉",
+  scramble: "🔤",
+  blink: "💡",
 };
 
 export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
@@ -162,6 +177,11 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
   mirror: { name: "Espejo", desc: `La pantalla de los demás se ve al revés, como en un espejo, ${FX_MS.mirror / 1000} s.` },
   quake: { name: "Terremoto", desc: `La pantalla de los demás tiembla ${FX_MS.quake / 1000} s.` },
   tiny: { name: "Hormiga", desc: `Las opciones de los demás se encogen ${FX_MS.tiny / 1000} s.` },
+  blur: { name: "Niebla", desc: `Los demás ven todo borroso ${FX_MS.blur / 1000} s.` },
+  spin: { name: "Mareo", desc: `La pantalla de los demás da vueltas ${FX_MS.spin / 1000} s.` },
+  party: { name: "Fiesta", desc: `Confeti, globos y cornetas en la pantalla de los demás ${FX_MS.party / 1000} s.` },
+  scramble: { name: "Trabalenguas", desc: `Las letras de las opciones de los demás se revuelven ${FX_MS.scramble / 1000} s.` },
+  blink: { name: "Corto circuito", desc: `La pantalla de los demás parpadea ${FX_MS.blink / 1000} s.` },
 };
 
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
@@ -199,6 +219,11 @@ export const POWER_LINES = {
       mirror: `${who} te puso el espejo`,
       quake: `${who} hizo temblar tu pantalla`,
       tiny: `${who} te encogió las opciones`,
+      blur: `${who} te echó niebla`,
+      spin: `${who} te mareó`,
+      party: `${who} armó una fiesta en tu pantalla`,
+      scramble: `${who} te revolvió las letras`,
+      blink: `${who} te hizo un corto circuito`,
       scare: "¡BU!",
     })[p],
   scare: (who: string) => `Cortesía de ${who}`,

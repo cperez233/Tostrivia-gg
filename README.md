@@ -34,7 +34,12 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
   - 🪞 **Espejo** (grupo): la pantalla de los demás se ve al revés de izquierda a derecha, 7 s.
   - 🫨 **Terremoto** (grupo): la pantalla de los demás tiembla 6 s.
   - 🐜 **Hormiga** (grupo): las opciones de los demás se encogen, 7 s.
-- **Qué tan seguido sale cada poder**: los más fuertes son raros. Caparazón azul y Cambiazo pesan 1; Boo, Estrella, Bloque ? y Rayo, 2; Doble o nada, Caparazón rojo y Susto, 3; el resto, 4 (`WEIGHT` en `src/game/powers.ts`).
+  - 🌫️ **Niebla** (grupo): los demás ven todo borroso, 6 s.
+  - 😵‍💫 **Mareo** (grupo): la pantalla de los demás da vueltas, 6 s.
+  - 🎉 **Fiesta** (grupo): lluvia de confeti y globos con corneta en la pantalla de los demás, 6 s.
+  - 🔤 **Trabalenguas** (grupo): las letras de cada palabra de las opciones se revuelven, 7 s.
+  - 💡 **Corto circuito** (grupo): la pantalla de los demás parpadea, 6 s.
+- **Qué tan seguido sale cada poder**: los más fuertes son raros. Caparazón azul y Cambiazo pesan 1; Boo, Estrella, Bloque ? y Rayo, 2; Doble o nada, Caparazón rojo, Susto, Niebla, Mareo, Fiesta, Trabalenguas y Corto circuito, 3; el resto, 4 (`WEIGHT` en `src/game/powers.ts`).
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local
