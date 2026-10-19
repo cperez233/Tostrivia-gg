@@ -31,6 +31,9 @@
     ],
     "alt": [
       "DBZ opening Cha la head cha la HD"
+    ],
+    "ban": [
+      "kakarot"
     ]
   },
   "db-op-makafushigi": {
@@ -358,9 +361,10 @@
     ]
   },
   "tlou-ost-main": {
-    "q": "The Last of Us main theme Gustavo Santaolalla",
+    "q": "The Last of Us HBO opening credits Gustavo Santaolalla",
     "must": [
-      "last of us"
+      "last of us",
+      "opening|intro|title|credits"
     ]
   },
   "halo-ost-theme": {

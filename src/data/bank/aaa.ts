@@ -156,7 +156,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿En qué ciudad está el hospital de las Luciérnagas del primer juego?", "Salt Lake City", "Denver", "Pittsburgh", "Boston"],
     [3, "¿Qué grupo religioso con cicatrices en la cara aparece en Part II?", "Los Serafitas", "Los Lobos", "Las Luciérnagas", "Los Rattlers"],
     [3, "¿Quién interpreta a Joel en los videojuegos?", "Troy Baker", "Nolan North", "Pedro Pascal", "Roger Clark"],
-    [3, "Este es el tema principal. ¿Quién lo compuso?", "Gustavo Santaolalla", "Hans Zimmer", "Bear McCreary", "Mac Quayle", { k: "tlou-ost-main", m: "audio", s: 0, e: 25 }],
+    [3, "Es la entrada de la serie de HBO. ¿Quién compuso su música?", "Gustavo Santaolalla", "Hans Zimmer", "Bear McCreary", "Mac Quayle", { k: "tlou-ost-main", m: "audio", s: 0, e: 25 }],
   ],
   halo: [
     [1, "¿Cómo se llama el protagonista de Halo?", "El Jefe Maestro", "El Inquisidor", "El Comandante Shepard", "Marcus Fenix"],

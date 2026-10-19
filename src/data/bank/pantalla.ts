@@ -247,7 +247,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1, "¿Cómo se llama el auto protagonista de Cars?", "Rayo McQueen", "Mate", "Doc Hudson", "Francesco"],
     [1, "¿Qué película empieza con un anciano que ata globos a su casa?", "Up", "Soul", "Unidos", "Red"],
     [1, "¿Cómo se llama la pez azul que olvida todo?", "Dory", "Nemo", "Perla", "Coral"],
-    [2, "¿Cuál de estas emociones NO aparece en la primera Intensamente?", "Ansiedad", "Alegría", "Tristeza", "Furia"],
+    [2, "¿Cuál de estas emociones NO aparece en la primera Intensa-Mente?", "Ansiedad", "Alegría", "Tristeza", "Furia"],
     [2, "¿Cómo se llama la ciudad de los monstruos?", "Monstrópolis", "Monsterville", "Ciudad Susto", "Monstruolandia"],
     [2, "¿Con qué funciona Monstrópolis al principio de Monsters, Inc.?", "Con los gritos de los niños", "Con las risas de los niños", "Con energía solar", "Con pesadillas"],
     [2, "¿Cómo se llama la niña que entra al mundo de los monstruos?", "Boo", "Riley", "Mei", "Andy"],

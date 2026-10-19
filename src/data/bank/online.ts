@@ -82,7 +82,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1, "¿Cómo se llama el mundo de Genshin Impact?", "Teyvat", "Runaterra", "Hyrule", "Azeroth"],
     [1, "¿Quién es la pequeña guía flotante del Viajero?", "Paimon", "Navi", "Midna", "Klee"],
     [1, "¿Cuántos elementos hay en Teyvat?", "Siete", "Cinco", "Seis", "Ocho"],
-    [1, "¿Cómo se llaman las tiradas para conseguir personajes?", "Gachapón de deseos", "Cajas de botín", "Sobres", "Invocaciones del vacío"],
+    [1, "¿Cómo se llaman las tiradas para conseguir personajes?", "Deseos", "Cajas de botín", "Sobres", "Invocaciones del vacío"],
     [2, "¿Cómo se llama la moneda premium del juego?", "Protogemas", "Pavos", "Polvo Estelar", "Mora"],
     [2, "¿Qué región se inspira en Japón?", "Inazuma", "Liyue", "Mondstadt", "Sumeru"],
     [2, "¿Qué región, la primera del juego, se inspira en Alemania?", "Mondstadt", "Fontaine", "Snezhnaya", "Natlan"],
