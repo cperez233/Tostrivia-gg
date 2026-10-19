@@ -562,10 +562,10 @@
       "checkedAt": "2026-10-19"
     },
     "db-op-chala": {
-      "id": "oXUZVj7I2H8",
-      "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
-      "channel": "IGN",
-      "durationSec": 124,
+      "id": "qQmTdijhjD4",
+      "title": "Dragon Ball Z - 1989 Japanese Opening - Cha-La Head Cha-La - Remastered 1440p 60fps",
+      "channel": "Bruno Silva",
+      "durationSec": 120,
       "alt": [
         {
           "id": "cie7scVUdQE",
@@ -574,10 +574,10 @@
           "durationSec": 112
         },
         {
-          "id": "qQmTdijhjD4",
-          "title": "Dragon Ball Z - 1989 Japanese Opening - Cha-La Head Cha-La - Remastered 1440p 60fps",
-          "channel": "Bruno Silva",
-          "durationSec": 120
+          "id": "oXUZVj7I2H8",
+          "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
+          "channel": "IGN",
+          "durationSec": 124
         }
       ],
       "checkedAt": "2026-10-19"
