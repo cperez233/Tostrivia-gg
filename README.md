@@ -9,7 +9,7 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **En grupo**: marcador en vivo (al lado en pantalla grande, en una franja fija arriba en celular) con quién ya respondió y lo que sumó cada uno; chat y emotes que pasan por el anfitrión (`src/components/ChatDock.tsx`, protocolo en `src/net/client.ts`); y al final un podio que se arma de a uno (`src/game/Ceremony.tsx`) con "Jugar otra" y "Cambiar categoría".
 - **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
-- **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
+- **Puntos**: fácil 100, media 150, difícil 200, más hasta 200 por rapidez. **Racha**: ×1,25 con 2 aciertos seguidos, ×1,5 desde 3, ×2 desde 5 y ×3 desde 8.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 
 ## Correr en local

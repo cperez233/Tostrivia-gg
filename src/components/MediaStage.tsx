@@ -25,7 +25,8 @@ interface Props {
   onVideo?: (v: VideoCandidate) => void;
 }
 
-const START_TIMEOUT = 18_000;
+// con internet lento el reproductor tarda; la partida espera un poco más (MEDIA_WAIT_MS en match.ts)
+const START_TIMEOUT = 30_000;
 
 export default function MediaStage({ media, videos, revealed, onPlaying, onError, onVideo }: Props) {
   const host = useRef<HTMLDivElement>(null);
@@ -102,7 +103,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
               setState("playing");
               cb.current.onPlaying();
               // bucle manual sobre el fragmento: end solo vale en la primera pasada
-              // y vigilancia de atascos: "reproduciendo" pero sin avanzar 5 s cuenta como fallo
+              // y vigilancia de atascos: "reproduciendo" pero sin avanzar 10 s cuenta como fallo
               let lastT = -1;
               let stuckSince = Date.now();
               loop = setInterval(() => {
@@ -111,7 +112,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
                   const t = player.getCurrentTime();
                   if (t >= clip.e - 0.15) player.seekTo(clip.s, true);
                   if (Math.abs(t - lastT) > 0.05 || player.getPlayerState() === 2) stuckSince = Date.now();
-                  else if (Date.now() - stuckSince > 5000) fail("el video se quedó atascado");
+                  else if (Date.now() - stuckSince > 10_000) fail("el video se quedó atascado");
                   lastT = t;
                 } catch {
                   /* el reproductor ya no existe */
@@ -144,7 +145,7 @@ export default function MediaStage({ media, videos, revealed, onPlaying, onError
       playerRef.current = player;
     };
 
-    loadYouTube()
+    loadYouTube(15_000)
       .then(mount)
       .catch((e: Error) => fail(e.message === "youtube-blocked" ? "YouTube bloqueado en esta red" : "YouTube no respondió"));
 

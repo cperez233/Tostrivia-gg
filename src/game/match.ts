@@ -9,7 +9,7 @@ import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 
 export const MAX_PLAYERS = 10;
-const MEDIA_WAIT_MS = 21_000; // tiempo máximo para que el video empiece a sonar en todos
+const MEDIA_WAIT_MS = 33_000; // tiempo máximo para que el video empiece a sonar en todos
 const GRACE_MS = 700; // margen de red para respuestas que llegan justo al final
 const AUTO_NEXT_MS = 7_000; // en grupo, la revelación pasa sola
 

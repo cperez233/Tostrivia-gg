@@ -95,12 +95,16 @@ export function optionOrder(qid: string, seed: number): number[] {
   return shuffle([0, 1, 2, 3], rng(h));
 }
 
+/** hasta cuánto suma responder rápido (proporcional al tiempo que sobra) */
+export const SPEED_POINTS = 200;
+
+/** ×1,25 con 2 seguidas, ×1,5 con 3, ×2 con 5 y ×3 con 8 */
 export function multiplier(streak: number) {
-  return streak >= 5 ? 2 : streak >= 3 ? 1.5 : 1;
+  return streak >= 8 ? 3 : streak >= 5 ? 2 : streak >= 3 ? 1.5 : streak >= 2 ? 1.25 : 1;
 }
 
-/** Puntos de un acierto: base por dificultad + hasta 100 por rapidez, por el multiplicador de racha. */
+/** Puntos de un acierto: base por dificultad + hasta 200 por rapidez, por el multiplicador de racha. */
 export function pointsFor(d: 1 | 2 | 3, remainingFrac: number, streakAfter: number) {
-  const base = BASE_POINTS[d] + Math.round(100 * Math.max(0, Math.min(1, remainingFrac)));
+  const base = BASE_POINTS[d] + Math.round(SPEED_POINTS * Math.max(0, Math.min(1, remainingFrac)));
   return Math.round(base * multiplier(streakAfter));
 }

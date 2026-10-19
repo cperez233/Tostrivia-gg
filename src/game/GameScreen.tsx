@@ -263,7 +263,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
             <FocusLines className="game__flash-lines" />
           </motion.div>
         )}
-        {reveal && mine?.ok && (mine.streak === 3 || mine.streak === 5 || mine.streak === 10) && (
+        {reveal && mine?.ok && (mine.streak === 3 || mine.streak === 5 || mine.streak === 8 || mine.streak === 10) && (
           <StreakBanner key={`streak-${key}`} streak={mine.streak} />
         )}
       </AnimatePresence>
@@ -325,7 +325,7 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
   const reduce = useReducedMotion();
   const word = pick.ok ? "¡Bien!" : pick.choice == null ? (pick.excused ? "Sin video" : "¡Tiempo!") : "¡Fallaste!";
   const sub = pick.ok
-    ? `+${fmt(pick.gained)} puntos${pick.streak >= 3 ? ` · racha de ${pick.streak} (×${String(multiplier(pick.streak)).replace(".", ",")})` : ""}`
+    ? `+${fmt(pick.gained)} puntos${pick.streak >= 2 ? ` · racha de ${pick.streak} (×${String(multiplier(pick.streak)).replace(".", ",")})` : ""}`
     : pick.excused
       ? "El video no cargó en tu celular: tu racha se mantiene."
       : pick.choice == null
@@ -350,7 +350,7 @@ function Verdict({ pick }: { pick: { ok: boolean; gained: number; streak: number
 /** cuando la racha sube el multiplicador, una franja cruza la pantalla */
 function StreakBanner({ streak }: { streak: number }) {
   const reduce = useReducedMotion();
-  const text = streak >= 10 ? "¡Diez seguidas!" : streak >= 5 ? "¡Racha ×2!" : "¡Racha ×1,5!";
+  const text = streak >= 10 ? "¡Diez seguidas!" : streak >= 8 ? "¡Racha ×3!" : streak >= 5 ? "¡Racha ×2!" : "¡Racha ×1,5!";
   if (reduce) return null;
   return (
     <motion.div
