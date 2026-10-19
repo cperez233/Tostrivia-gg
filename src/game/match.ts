@@ -59,7 +59,7 @@ export interface Pick {
   excused?: boolean;
   /* modo Poderes */
   power?: PowerId;
-  /** poder que ganó con esta racha (o de consuelo, tras fallar dos seguidas) */
+  /** poder que ganó con esta racha (o de consuelo, tras fallar tres seguidas) */
   earned?: PowerId;
   consolation?: boolean;
   /** falló con escudo y conservó la racha */

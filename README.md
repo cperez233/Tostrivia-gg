@@ -11,19 +11,19 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
 - **Modos**: Vanilla (la partida de siempre) o Poderes. Se elige en la ruleta y en Categorías al jugar solo (queda recordado en el navegador), y en sala lo elige el anfitrión.
-- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 2 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar dos seguidas (máximo 4 en la mano). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
+- **Poderes** (al estilo Mario Party y Mario Kart): cada jugador arranca con 2 al azar, gana uno cada vez que su racha llega a 3, 6, 9 y uno de consuelo tras fallar tres seguidas (máximo 4 en la mano). En grupo, al que va en la mitad de abajo le salen más seguido los fuertes (caparazón azul, rayo, estrella, Boo). Se usa uno por pregunta, antes de responder; el Bloque ? no gasta el turno. El puntaje nunca baja de 0. Todos los textos están en `src/game/powers.ts`.
   - ✂️ **50/50**: tacha dos opciones malas.
-  - 🎰 **Doble o nada**: ×2 si aciertas, −150 si fallas.
-  - 🎲 **Dado**: +60 por punto del dado si aciertas, −30 por punto si fallas.
-  - 🍄 **Hongo**: el bono por rapidez sube de 100 a 300.
-  - ⭐ **Estrella**: ×1,5 si aciertas y ningún ataque te toca.
+  - 🎰 **Doble o nada**: ×2 si aciertas, −300 si fallas.
+  - 🎲 **Dado**: +100 por punto del dado si aciertas, −50 por punto si fallas.
+  - 🍄 **Hongo**: el bono por rapidez sube de 100 a 500.
+  - ⭐ **Estrella**: ×2 si aciertas y ningún ataque te toca.
   - 🛡️ **Escudo**: si fallas no pierdes la racha y te cubre de ataques.
   - ❓ **Bloque ?**: te da dos poderes al azar.
   - 🔄 **Cambio** (solo): cambia la pregunta por otra sin video, de la misma dificultad si hay.
-  - 👻 **Boo** (grupo): si aciertas, le robas 200 al que va primero.
-  - 🔴 **Caparazón rojo** (grupo): −200 al que va justo delante de ti.
-  - 🔵 **Caparazón azul** (grupo): −300 al primero; si el primero eres tú, te pega a ti.
-  - ⚡ **Rayo** (grupo): −100 a todos los demás.
+  - 👻 **Boo** (grupo): si aciertas, le robas 400 al que va primero.
+  - 🔴 **Caparazón rojo** (grupo): −400 al que va justo delante de ti.
+  - 🔵 **Caparazón azul** (grupo): −600 al primero; si el primero eres tú, te pega a ti.
+  - ⚡ **Rayo** (grupo): −200 a todos los demás.
   - 🦑 **Tinta** (grupo): tapa las opciones de los demás durante 5 s.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado) y `clip` (visible, con la franja del título tapada).
 

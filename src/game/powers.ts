@@ -1,6 +1,6 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me
  * Modo Poderes, al estilo de los juegos de fiesta: cada jugador arranca con dos poderes y gana más
- * con cada racha de 3 o tras fallar dos seguidas. En grupo, el que va atrás recibe los poderes más fuertes.
+ * con cada racha de 3 o tras fallar tres seguidas. En grupo, el que va atrás recibe los poderes más fuertes.
  * Se usa uno por pregunta, antes de responder (el Bloque ? no cuenta). Vanilla es la partida de siempre.
  * Los textos están todos aquí (POWER_TEXT, VARIANT_TEXT, POWER_LINES) para poder traducirlos en un solo sitio.
  */
@@ -38,22 +38,22 @@ export const MAX_HAND = 4;
 /** cada cuántos aciertos seguidos se gana un poder */
 export const EARN_EVERY = 3;
 /** tras cuántos fallos seguidos llega un poder de consuelo */
-export const COLD_EVERY = 2;
+export const COLD_EVERY = 3;
 /** Doble o nada: si fallas con él puesto, pierdes esto */
-export const DOUBLE_RISK = 150;
+export const DOUBLE_RISK = 300;
 /** Robo: lo que se le quita al líder si aciertas */
-export const STEAL_PTS = 200;
+export const STEAL_PTS = 400;
 /** Tinta: cuánto tiempo quedan tapadas las opciones de los demás */
 export const INK_MS = 5_000;
-export const RED_PTS = 200;
-export const BLUE_PTS = 300;
-export const BOLT_PTS = 100;
+export const RED_PTS = 400;
+export const BLUE_PTS = 600;
+export const BOLT_PTS = 200;
 /** Dado: cada punto del dado vale esto si aciertas (y la mitad en contra si fallas) */
-export const DICE_PTS = 60;
+export const DICE_PTS = 100;
 /** Hongo: el bono por rapidez llega hasta esto (normal: 100) */
-export const MUSHROOM_MAX = 300;
+export const MUSHROOM_MAX = 500;
 /** Estrella: multiplica lo que ganes */
-export const STAR_MULT = 1.5;
+export const STAR_MULT = 2;
 
 export const POWER_ICON: Record<PowerId, string> = {
   half: "✂️",
@@ -105,7 +105,7 @@ export const POWER_LINES = {
   shielded: "El escudo salvó tu racha.",
   dice: (roll: number, pts: number) => `Sacaste ${roll} en el dado: ${pts >= 0 ? "+" : "−"}${Math.abs(pts)}.`,
   mushroom: (pts: number) => `Hongo: +${pts} por rapidez.`,
-  star: "Estrella: ×1,5.",
+  star: `Estrella: ×${String(STAR_MULT).replace(".", ",")}.`,
   hit: (p: PowerId, who: string, pts: number) => `${POWER_ICON[p]} ${POWER_TEXT[p].name} de ${who}: −${pts}.`,
   selfHit: (p: PowerId, pts: number) => `${POWER_ICON[p]} Tu propio ${POWER_TEXT[p].name} te pegó: −${pts}.`,
   dealt: (p: PowerId, who: string, pts: number) => (p === "steal" ? `${POWER_ICON[p]} Le robaste ${pts} a ${who}.` : `${POWER_ICON[p]} ${POWER_TEXT[p].name} a ${who}: −${pts}.`),
