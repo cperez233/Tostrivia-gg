@@ -5,7 +5,7 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **81 categorías y 1.910 preguntas**: 30 animes (con Openings) agrupados por año de estreno, 32 sagas de videojuegos (con OST gaming) agrupadas por género, 6 series, 5 sagas de películas y 6 de cultura general (historia, geografía, ciencia, deportes, cine, música). En Openings y OST gaming todas las preguntas suenan.
 - **Ruleta**: el filtro (Todo, Anime, Juegos, Series y pelis, Cultura) arma los gajos; cada gajo lleva el póster de su categoría. En Anime siempre sale Openings y en Juegos, OST gaming. En sala, el anfitrión elige el filtro y todos ven la misma rueda.
 - **Jugadores**: cada persona elige uno de 12 animales chibi (capibara, shiba, corgi, pug, husky, salchicha, gato naranja, gato negro, siamés, bulldog, panda rojo y ajolote). En una sala no se repite raza: si ya está tomada, le toca la siguiente libre.
-- **Varias categorías a la vez**: en Categorías, "Elegir varias" deja marcar las que quieras (por ejemplo JoJo, Breaking Bad y Deportes) y salen preguntas de todas, intercaladas. Cada pestaña tiene su versión al azar (Anime al azar, Videojuegos al azar…) y hay un "Todo al azar". En sala, el anfitrión tiene lo mismo en la lista y en "Mezclar varias categorías". Los ids viajan como texto (`azar-anime`, `mix-breakingbad.deportes.jojo`) y se resuelven en `src/game/mix.ts`.
+- **Varias categorías a la vez**: en Categorías, "Varias a la vez" deja marcar las que quieras (por ejemplo JoJo, Breaking Bad y Deportes) y salen preguntas de todas, intercaladas. Cada pestaña tiene su versión al azar (Anime al azar, Videojuegos al azar…) y hay un "Todo al azar". En sala, el anfitrión elige con el mismo explorador (pestañas, al azar y "Varias a la vez") en una hoja a pantalla completa. Los ids viajan como texto (`azar-anime`, `mix-breakingbad.deportes.jojo`) y se resuelven en `src/game/mix.ts`.
 - **Sin repeticiones**: dentro de una categoría no vuelve a salir una pregunta hasta que hayan salido todas; el historial queda guardado en el navegador (`src/lib/history.ts`). En sala cuenta el del anfitrión.
 - **10 preguntas por partida** (3 fáciles, 4 medias, 3 difíciles), 20 s cada una, 25 s las de video (el reloj arranca cuando empieza a sonar).
 - **Puntos**: fácil 100, media 150, difícil 200, más hasta 100 por rapidez. **Racha**: ×1,5 desde 3 aciertos seguidos, ×2 desde 5.
@@ -41,11 +41,13 @@ npm run videos                    # resuelve las claves que faltan (retoma donde
 npm run videos -- --verify        # revisa que los ids guardados sigan siendo embebibles
 npm run videos -- --force naruto-op-bluebird   # vuelve a buscar una clave concreta
 npm run videos:sin-key            # sin API key: busca en YouTube y revisa la página /embed/ (no ve bloqueos por país)
+npm run videos:sin-key -- --all   # revisa todas las claves, cambia las que ya no se dejan insertar y guarda 2 de respaldo
 ```
 
 - La key se lee de `.env`, que está en `.gitignore`, y el script nunca la imprime.
 - Cuota: cada búsqueda cuesta 100 unidades y el límite diario por defecto es de 10.000. Si se acaba, el script para solo y la siguiente ejecución sigue donde quedó.
 - Las preguntas cuyo video no se ha resuelto se omiten automáticamente; el resto de la categoría sigue funcionando.
+- Cada clave puede traer videos de respaldo (`alt` en videos.json). Si YouTube no deja reproducir el principal (las disqueras suelen bloquear la inserción), el reproductor prueba el siguiente antes de cambiar la pregunta. En Openings y OST gaming la partida insiste hasta 4 fallos antes de pasar a preguntas sin video.
 - Después de correrlo, haz commit de `src/data/videos.json` y Vercel desplegará los videos nuevos.
 
 ### Si un video falla en la web

@@ -15,11 +15,16 @@ import masJuegos from "./mas-juegos";
 import extra from "./extra";
 import conVideo from "./con-video";
 
-export interface ResolvedVideo {
+export interface VideoCandidate {
   id: string;
   title: string;
   channel: string;
   durationSec: number;
+}
+
+/** el video de una clave y los de respaldo, por si YouTube no deja reproducir el primero */
+export interface ResolvedVideo extends VideoCandidate {
+  alt?: VideoCandidate[];
 }
 
 const VIDEOS = (videosFile as { videos: Record<string, ResolvedVideo> }).videos;

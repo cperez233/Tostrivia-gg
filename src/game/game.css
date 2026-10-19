@@ -885,3 +885,90 @@
     transform-origin: left center;
   }
 }
+
+/* marcador en vivo (celular): franja con todos, se desliza si no caben */
+.strip {
+  /* pegada bajo la barra de arriba: el marcador se sigue viendo al bajar a las opciones */
+  position: sticky;
+  top: 62px;
+  z-index: 19;
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 16px;
+  background: var(--ink);
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+.strip__p {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px 4px 5px;
+  border: 2px solid var(--ink-line);
+  background: var(--ink-2);
+  font-size: 13px;
+  font-weight: 700;
+}
+.strip__p.is-me {
+  border-color: var(--signal);
+}
+.strip__p.is-done {
+  border-color: var(--paper);
+}
+.strip__rank {
+  font-family: var(--display);
+  color: var(--on-ink-3);
+}
+.strip__face {
+  position: relative;
+  display: flex;
+}
+.strip__check {
+  position: absolute;
+  right: -5px;
+  bottom: -4px;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  background: var(--signal);
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  font-size: 9px;
+  font-weight: 900;
+}
+.strip__name {
+  max-width: 9ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.strip__pts {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--display);
+  color: var(--signal);
+}
+.strip__delta {
+  font-family: var(--text);
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--on-ink-3);
+}
+.strip__delta.is-ok {
+  color: var(--signal);
+}
+/* en pantalla grande ya está el marcador al lado */
+@media (min-width: 1000px) {
+  .strip {
+    display: none;
+  }
+}

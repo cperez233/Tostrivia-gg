@@ -325,9 +325,16 @@
     ]
   },
   "souls-ost-gwyn": {
-    "q": "Dark Souls Gwyn Lord of Cinder theme",
+    "q": "Dark Souls OST Gwyn Lord of Cinder",
     "must": [
       "gwyn"
+    ],
+    "ban": [
+      "but",
+      "piano",
+      "plin",
+      "sadder",
+      "remix"
     ]
   },
   "souls-tr-erdtree": {
@@ -337,9 +344,17 @@
     ]
   },
   "gow-ost-main": {
-    "q": "God of War 2018 main theme Bear McCreary",
+    "q": "God of War 2018 OST main theme Bear McCreary soundtrack",
     "must": [
       "god of war"
+    ],
+    "ban": [
+      "music of",
+      "dissecting",
+      "analizando",
+      "countdown",
+      "making",
+      "interview"
     ]
   },
   "tlou-ost-main": {

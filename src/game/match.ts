@@ -74,8 +74,10 @@ export class Match {
   private s: Snapshot;
   private reserves: string[] = [];
   private backups: string[] = [];
-  /** videos que fallaron en esta ronda; con 2 se asume que YouTube no responde en esta red */
+  /** videos que fallaron en esta ronda; con 2 (4 en Openings y OST) se asume que YouTube no responde en esta red */
   private mediaFails = 0;
+  /** la ronda es toda de video (Openings, OST gaming): se insiste más antes de pasar a texto */
+  private failLimit = 2;
   private startedAt = 0;
   private deadline = 0;
   private timer: ReturnType<typeof setInterval> | null = null;
@@ -190,6 +192,7 @@ export class Match {
     this.reserves = reserves;
     this.backups = textBackups(this.s.cat, seed).filter((id) => !ids.includes(id));
     this.mediaFails = 0;
+    this.failLimit = ids.every((id) => BANK.byId[id].media) ? 4 : 2;
     this.emit({
       seed,
       ids,
@@ -213,7 +216,7 @@ export class Match {
     this.mediaFailed.clear();
     const order = optionOrder(qid, this.s.seed);
     const duration = q.media ? MEDIA_MS : TEXT_MS;
-    if (q.media && this.mediaFails >= 2) {
+    if (q.media && this.mediaFails >= this.failLimit) {
       // YouTube ya falló dos veces: no se hace esperar a nadie otra vez
       return this.replaceAt(index, "YouTube no responde en esta red. Seguimos con preguntas sin video.", true);
     }
@@ -279,7 +282,7 @@ export class Match {
     const taken = new Set(this.s.ids);
     const textReserve = this.reserves.findIndex((id) => !BANK.byId[id].media);
     let next: string | undefined;
-    if (this.mediaFails >= 2) {
+    if (this.mediaFails >= this.failLimit) {
       next = textReserve >= 0 ? this.reserves.splice(textReserve, 1)[0] : undefined;
       while (!next && this.backups.length) {
         const b = this.backups.shift()!;

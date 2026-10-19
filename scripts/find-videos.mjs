@@ -7,6 +7,8 @@
  *
  *   npm run videos:sin-key                    # resuelve las claves que faltan
  *   npm run videos:sin-key -- --force sao-op-crossing
+ *   npm run videos:sin-key -- --all     # revisa todas: cambia las que ya no se dejan insertar
+ *                                       # y les busca videos de respaldo (alt)
  *
  * Lo que no puede ver sin la API: el bloqueo por país. La partida ya cambia la pregunta
  * si un video no carga, y `npm run videos -- --verify` (con key) lo revisa cuando haya cuota.
@@ -65,25 +67,44 @@ async function embedVerdict(id) {
   return null;
 }
 
-async function resolve(src) {
+/** cuántos videos se guardan por clave: el principal y dos de respaldo por si uno falla en la partida */
+const WANT = 3;
+
+/** hasta WANT videos que se dejan insertar, el mejor primero; `keep` va de primero si sigue sirviendo */
+async function resolve(src, keep) {
+  const found = [];
+  const seen = new Set();
+  if (keep && !(await embedVerdict(keep.id))) {
+    found.push(keep);
+    seen.add(keep.id);
+  } else if (keep) console.log(`   el actual ${keep.id} ya no se deja insertar`);
   for (const q of [src.q, ...(src.alt || [])]) {
+    if (found.length >= WANT) break;
     const html = await get(`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}&gl=CO&hl=es`);
     const ranked = videoRenderers(html)
       .filter((v) => !v.live)
       .map((v) => ({ v, s: score(v, src) }))
       .filter(({ v, s }) => Number.isFinite(s) && v.durationSec >= (src.min ?? 45) && v.durationSec <= (src.max ?? defaultMax(src)))
       .sort((a, b) => b.s - a.s);
-    for (const { v } of ranked.slice(0, 5)) {
+    for (const { v } of ranked.slice(0, 8)) {
+      if (found.length >= WANT) break;
+      if (seen.has(v.id)) continue;
+      seen.add(v.id);
+      // los respaldos tienen que durar parecido: el fragmento [s, e] de la pregunta cae en el mismo sitio
+      const main = found[0];
+      if (main && Math.abs(v.durationSec - main.durationSec) > Math.max(20, main.durationSec * 0.25)) continue;
       const why = await embedVerdict(v.id);
       if (why) {
         console.log(`   descartado ${v.id} (${why}): ${v.title}`);
         continue;
       }
-      return { id: v.id, title: v.title, channel: v.channel, durationSec: v.durationSec, checkedAt: new Date().toISOString().slice(0, 10) };
+      found.push({ id: v.id, title: v.title, channel: v.channel, durationSec: v.durationSec });
     }
-    console.log(`   sin candidato válido para "${q}"`);
+    if (!found.length) console.log(`   sin candidato válido para "${q}"`);
   }
-  return null;
+  if (!found.length) return null;
+  const [main, ...alt] = found;
+  return { ...main, alt, checkedAt: new Date().toISOString().slice(0, 10) };
 }
 
 async function main() {
@@ -99,16 +120,18 @@ async function main() {
     const sorted = Object.fromEntries(Object.keys(out.videos).sort().map((k) => [k, out.videos[k]]));
     fs.writeFileSync(OUT, JSON.stringify({ generatedAt: out.generatedAt, videos: sorted }, null, 2) + "\n");
   };
-  const pending = Object.keys(sources).filter((k) => forced.has(k) || !out.videos[k]);
+  const all = args.includes("--all");
+  const pending = Object.keys(sources).filter((k) => all || forced.has(k) || !out.videos[k]);
   console.log(`${Object.keys(out.videos).length} resueltas, ${pending.length} pendientes.`);
   const missing = [];
   for (const k of pending) {
     console.log(`→ ${k}`);
     try {
-      const v = await resolve(sources[k]);
+      const prev = out.videos[k];
+      const v = await resolve(sources[k], all && prev ? { id: prev.id, title: prev.title, channel: prev.channel, durationSec: prev.durationSec } : null);
       if (v) {
         out.videos[k] = v;
-        console.log(`✓ ${k}: ${v.id} · ${v.title} · ${v.channel} · ${v.durationSec}s`);
+        console.log(`✓ ${k}: ${v.id} · ${v.title} · ${v.channel} · ${v.durationSec}s · ${v.alt.length} de respaldo`);
         save();
       } else missing.push(k);
     } catch (e) {

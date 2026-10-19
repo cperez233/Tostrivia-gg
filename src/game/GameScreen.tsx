@@ -1,7 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { BANK, videoFor } from "../data/bank";
+import { BANK, videoFor, type VideoCandidate } from "../data/bank";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
 import type { Player, Snapshot } from "./match";
@@ -72,6 +72,9 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   }, [snap.phase, key, reduce]);
 
   const video = q?.media ? videoFor(q.media.k) : undefined;
+  // el que sonó de verdad: puede ser uno de respaldo si YouTube no dejó el principal
+  const [played, setPlayed] = useState<{ key: string; v: VideoCandidate } | null>(null);
+  const shown = played?.key === `${snap.index}:${snap.qid}` ? played.v : video;
   const reveal = snap.phase === "reveal" ? snap.reveal : null;
   const mine = reveal?.picks[client.me.id];
   const answeredCount = snap.answered.length;
@@ -120,6 +123,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
       </header>
 
       <Progress snap={snap} me={client.me.id} />
+      {snap.mode === "group" && <Strip snap={snap} me={client.me.id} />}
 
       <Timer key={key} running={snap.phase === "question"} done={snap.phase === "reveal"} deadline={deadline} duration={snap.duration} />
 
@@ -161,15 +165,16 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                 <MediaStage
                   key={key}
                   media={q.media}
-                  videoId={video.id}
+                  videos={[video, ...(video.alt ?? [])]}
+                  onVideo={(v) => setPlayed({ key, v })}
                   revealed={snap.phase === "reveal"}
                   onPlaying={() => client.media(snap.index, "playing")}
                   onError={() => client.media(snap.index, "error")}
                 />
               )}
-              {q.media && snap.phase === "reveal" && video && (
+              {q.media && snap.phase === "reveal" && shown && (
                 <p className="qpanel__source">
-                  Sonó: <b>{video.title}</b> <span className="muted">· {video.channel}</span>
+                  Sonó: <b>{shown.title}</b> <span className="muted">· {shown.channel}</span>
                 </p>
               )}
             </motion.div>
@@ -399,6 +404,37 @@ function Progress({ snap, me }: { snap: Snapshot; me: string }) {
       {snap.ids.map((_, i) => (
         <li key={i} className={`${hist.current[i] ?? ""} ${i === snap.index ? "is-now" : ""}`} />
       ))}
+    </ol>
+  );
+}
+
+/** marcador en vivo para celular: una franja arriba, con el puesto, los puntos y quién ya respondió */
+function Strip({ snap, me }: { snap: Snapshot; me: string }) {
+  const sorted = useMemo(() => [...snap.players].filter((p) => p.online || p.score > 0).sort((a, b) => b.score - a.score), [snap.players]);
+  return (
+    <ol className="strip" aria-label="Marcador en vivo">
+      {sorted.map((p, i) => {
+        const pick = snap.phase === "reveal" ? snap.reveal?.picks[p.id] : undefined;
+        const done = snap.phase === "question" && snap.answered.includes(p.id);
+        return (
+          <motion.li layout key={p.id} className={`strip__p ${p.id === me ? "is-me" : ""} ${done ? "is-done" : ""}`} transition={{ type: "spring", stiffness: 400, damping: 34 }}>
+            <span className="strip__rank">{i + 1}</span>
+            <span className="strip__face">
+              <Avatar animal={p.seal} size={26} />
+              {done && (
+                <span className="strip__check" aria-label="Respondió">
+                  ✓
+                </span>
+              )}
+            </span>
+            <span className="strip__name">{p.id === me ? "Tú" : p.name}</span>
+            <span className="strip__pts">
+              {fmt(p.score)}
+              {pick && <span className={`strip__delta ${pick.ok ? "is-ok" : ""}`}>{pick.ok ? `+${pick.gained}` : "+0"}</span>}
+            </span>
+          </motion.li>
+        );
+      })}
     </ol>
   );
 }

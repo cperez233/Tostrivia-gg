@@ -329,3 +329,56 @@
 .cats:has(.pickbar) {
   padding-bottom: calc(110px + var(--dock-h));
 }
+
+/* una o varias: interruptor de dos posiciones, bien visible */
+.modes {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+}
+.modes__opt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  background: none;
+  color: var(--on-ink);
+  font-weight: 900;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.modes__opt.is-on {
+  background: var(--paper);
+  color: var(--ink);
+}
+.modes__opt.is-on svg {
+  color: var(--hanko);
+}
+@media (hover: hover) and (pointer: fine) {
+  .modes__opt:not(.is-on):hover {
+    color: var(--on-ink);
+  }
+}
+.cats__hint {
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--hanko);
+  background: var(--ink-2);
+  font-weight: 700;
+  color: var(--on-ink-2);
+}
+
+/* dentro de la hoja de la sala: la barra queda pegada al fondo de la hoja */
+.browser--sheet .pickbar {
+  position: sticky;
+  bottom: 0;
+  margin-top: 24px;
+}
+.browser--sheet .cats__head {
+  padding-top: 4px;
+}

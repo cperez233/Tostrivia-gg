@@ -12,10 +12,9 @@ import Wheel from "../components/Wheel";
 import { Logo } from "../components/Seal";
 import { Avatar, animalName } from "../components/Avatar";
 import { Cover } from "../components/Cover";
-import { CATEGORIES, FAMILIES, GROUPS } from "../data/categories";
-import { describe, mixId, randomId } from "../game/mix";
-import MixPicker from "../components/MixPicker";
-import { FILTERS, makeDeck, makeSpin, playable, type Filter } from "../game/deck";
+import { describe } from "../game/mix";
+import CategoryBrowser from "../components/CategoryBrowser";
+import { FILTERS, makeDeck, makeSpin, type Filter } from "../game/deck";
 import { newSeed } from "../lib/rng";
 import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import "./room.css";
@@ -67,7 +66,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   const reduce = useReducedMotion();
   const rosterRef = usePauseOffscreen<HTMLUListElement>();
   const [copied, setCopied] = useState(false);
-  const [mixing, setMixing] = useState(false);
+  const [choosing, setChoosing] = useState(false);
   const [filter, setFilter] = useState<Filter>("todo");
   const link = `${location.origin}/sala/${client.code}`;
   const host = snap.players.find((p) => p.id === snap.hostId);
@@ -210,41 +209,23 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
             </AnimatePresence>
           </div>
           {client.isHost && (
-            <div className="field lobby__select">
-              <label htmlFor="cat-select">O elige de la lista</label>
-              <select id="cat-select" className="input select" value={snap.cat ?? ""} onChange={(e) => e.target.value && client.setCategory(e.target.value)}>
-                <option value="">Elegir categoría…</option>
-                {snap.cat?.startsWith("mix-") && <option value={snap.cat}>{info?.name}</option>}
-                <optgroup label="Al azar">
-                  {[...GROUPS.map((g) => g.id), "todo" as const].map((g) => (
-                    <option key={g} value={randomId(g)}>
-                      {describe(randomId(g))?.name}
-                    </option>
-                  ))}
-                </optgroup>
-                {FAMILIES.map((f) => (
-                  <optgroup key={f.id} label={f.name}>
-                    {CATEGORIES.filter((c) => c.family === f.id && playable(c.id)).map((c) => (
-                      <option key={c.id} value={c.id}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-              <button type="button" className="btn btn--small lobby__mix" onClick={() => setMixing(true)} disabled={spinShown}>
-                Mezclar varias categorías
+            <>
+              <button type="button" className="btn lobby__choose" onClick={() => setChoosing(true)} disabled={spinShown}>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+                  <path d="M4 5h7v7H4zM13 5h7v7h-7zM4 14h7v6H4zM13 14h7v6h-7z" fill="none" stroke="currentColor" strokeWidth="2.4" />
+                </svg>
+                {cat ? "Cambiar categoría" : "O elige la categoría"}
               </button>
-              <MixPicker
-                open={mixing}
+              <CategorySheet
+                open={choosing}
                 current={snap.cat}
-                onClose={() => setMixing(false)}
-                onPick={(cats) => {
-                  setMixing(false);
-                  client.setCategory(mixId(cats));
+                onClose={() => setChoosing(false)}
+                onPick={(c) => {
+                  setChoosing(false);
+                  client.setCategory(c);
                 }}
               />
-            </div>
+            </>
           )}
         </section>
       </main>
@@ -264,5 +245,30 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
         </div>
       </div>
     </div>
+  );
+}
+
+/** la sala elige con el mismo explorador de Categorías, en una hoja a pantalla completa */
+function CategorySheet({ open, current, onClose, onPick }: { open: boolean; current: string | null; onClose: () => void; onPick: (cat: string) => void }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const d = ref.current;
+    if (!d) return;
+    if (open && !d.open) d.showModal();
+    else if (!open && d.open) d.close();
+  }, [open]);
+  return (
+    <dialog ref={ref} className="sheet" aria-labelledby="sheet-t" onClose={onClose} onCancel={onClose}>
+      <div className="sheet__top wrap">
+        <h2 id="sheet-t">Elige la categoría</h2>
+        <button type="button" className="sheet__close" onClick={onClose} aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
+            <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3" />
+          </svg>
+        </button>
+      </div>
+      {/* se monta al abrir: cada vez arranca limpio (o con la mezcla actual marcada) */}
+      {open && <CategoryBrowser idp="sheet" verb="Elegir" inSheet current={current} onPick={onPick} />}
+    </dialog>
   );
 }

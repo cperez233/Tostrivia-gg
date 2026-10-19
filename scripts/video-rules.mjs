@@ -17,13 +17,12 @@ export const OFFICIAL = [
   "star wars", "lucasfilm", "halo", "bethesda", "seatbelts", "flying dog", "victor entertainment",
   "netflix", "hbo", "max latinoamerica", "disney", "pixar", "marvel", "ubisoft", "atlus", "activision", "valve",
   "counter-strike", "insomniac", "naughty dog", "the simpsons", "sony pictures", "toei animation", "aniplex usa",
-  "- topic",
 ];
 export const BANNED = [
   "cover", "reaction", "reaccion", "react", "nightcore", "remix", "8 bit", "8-bit", "1 hour", "10 hours", "1 hora",
   "slowed", "sped up", "tutorial", "karaoke", "guitar", "drum", "fandub", "lyrics prank", "amv", "mashup",
   "ranking", "dank", "parody", "parodia", "leak", "leaked", "top 10", "top 20", "tier list", "loop", "extended", "earrape", "bass boosted", "ost compilation",
-  "full album", "playlist", "session", "jazz", "arrangement", "orchestral cover", "lofi", "lo-fi", "explained", "analysis", "breakdown", "theme was", "music theory", "vs", "piano tutorial", "meme", "short", "shorts",
+  "full album", "playlist", "session", "jazz", "arrangement", "acapella", "a cappella", "but it", "but its", "every time", "reacts", "reactions", "epic version", "italian version", "muppet", "dissecting", "analizando", "things you missed", "voice-over", "voz de", "ateez", "gta iv", "just another", "tribute", "orchestral cover", "lofi", "lo-fi", "explained", "analysis", "breakdown", "theme was", "music theory", "vs", "piano tutorial", "meme", "short", "shorts",
 ];
 
 export function score(v, src) {

@@ -1,11 +1,25 @@
 {
-  "generatedAt": "2026-10-19T01:16:01.366Z",
+  "generatedAt": "2026-10-19T05:20:47.116Z",
   "videos": {
     "ac-tr-nh": {
       "id": "_3YNL0OWio0",
       "title": "Animal Crossing: New Horizons - Nintendo Switch Trailer - Nintendo E3 2019",
       "channel": "Nintendo of America",
       "durationSec": 107,
+      "alt": [
+        {
+          "id": "5YPxiTLMcdg",
+          "title": "Animal Crossing: New Horizons - Tráiler del E3 2019 (Nintendo Switch)",
+          "channel": "Nintendo España",
+          "durationSec": 110
+        },
+        {
+          "id": "5LAKjL3p6Gw",
+          "title": "Animal Crossing: New Horizons – Your island, your life! (Nintendo Switch)",
+          "channel": "Nintendo UK",
+          "durationSec": 103
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "aot-op-guren": {
@@ -13,20 +27,62 @@
       "title": "Attack on Titan Opening 1 | Feuerroter Pfeil und Bogen",
       "channel": "Crunchyroll",
       "durationSec": 93,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "StLX4kITjWU",
+          "title": "Attack on Titan - Opening 1 | 4K | 60FPS | Creditless |",
+          "channel": "Anicrad",
+          "durationSec": 106
+        },
+        {
+          "id": "AgBUP8TJqV8",
+          "title": "Shingeki No Kyojin Opening 1 [With Lyrics]",
+          "channel": "kimmeh",
+          "durationSec": 92
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "aot-op-rumbling": {
-      "id": "EtjQVqXUPHo",
-      "title": "Attack on Titan Final Season Opening 2 | The Rumbling by SiM",
-      "channel": "Crunchyroll",
-      "durationSec": 105,
-      "checkedAt": "2026-10-18"
+      "id": "9l9Wa-5ph6o",
+      "title": "Attack on Titan Final Season - Opening 2 | The Rumbling",
+      "channel": "Crunchyroll FR",
+      "durationSec": 95,
+      "alt": [
+        {
+          "id": "Wov8ZQUwxFw",
+          "title": "Attack on Titan Temporada Final - Opening 2 | 「The Rumbling」 por SiM",
+          "channel": "Crunchyroll en Español",
+          "durationSec": 115
+        },
+        {
+          "id": "2S4qGKmzBJE",
+          "title": "Attack on Titan The Final Season Part 2 Opening｜The Rumbling - SiM",
+          "channel": "進撃の巨人 - Attack on Titan Official",
+          "durationSec": 91
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "assassins-ost-ezio": {
       "id": "FSVHx23ByhM",
       "title": "Assassin's Creed 2 OST / Jesper Kyd - Ezio's Family (Track 03)",
       "channel": "Ubisoft Music",
       "durationSec": 240,
+      "alt": [
+        {
+          "id": "_UGcwmafuR0",
+          "title": "Assassin's Creed II: Ezio’s Family Concert Suite (Live) | WDR Funkhausorchester",
+          "channel": "ARD Klassik",
+          "durationSec": 296
+        },
+        {
+          "id": "a6EOW2A6z6I",
+          "title": "Assassin'S Creed - Ezio's Family (Jesper Kyd)",
+          "channel": "Cethical",
+          "durationSec": 249
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "assassins-tr-valhalla": {
@@ -34,6 +90,20 @@
       "title": "Assassin's Creed Valhalla - Official Soundtrack Cinematic Trailer | PS4",
       "channel": "PlayStation",
       "durationSec": 225,
+      "alt": [
+        {
+          "id": "6TXx0guC5zE",
+          "title": "Assassin’s Creed Valhalla - Cinematic World Premiere Trailer | PS5",
+          "channel": "PlayStation",
+          "durationSec": 227
+        },
+        {
+          "id": "tAvELqdGZ4U",
+          "title": "Assassin's Creed Valhalla | Cinematic World Premiere Trailer | PS4 + PS5",
+          "channel": "PlayStation Asia",
+          "durationSec": 232
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "bb-intro": {
@@ -41,34 +111,80 @@
       "title": "Breaking Bad Full Intro Title Sequence",
       "channel": "Marcio Alexandre",
       "durationSec": 76,
+      "alt": [
+        {
+          "id": "TDFAYRtrYuk",
+          "title": "Breaking Bad, Full Title Sequence",
+          "channel": "jamesmontalbano",
+          "durationSec": 74
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "bebop-op-tank": {
-      "id": "UFFa0QoHWvE",
-      "title": "Tank!",
-      "channel": "SEATBELTS - Topic",
-      "durationSec": 211,
-      "checkedAt": "2026-10-18"
+      "id": "EL-D9LrFJd4",
+      "title": "Cowboy Bebop - Opening | Tank!",
+      "channel": "Crunchyroll",
+      "durationSec": 90,
+      "alt": [
+        {
+          "id": "9Go4J1RaeuM",
+          "title": "Tank!  -  Cowboy Bebop Opening [HD]",
+          "channel": "Tatsumatsu Yonamine",
+          "durationSec": 92
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "bleach-op-asterisk": {
       "id": "wW9TwZdWpjw",
       "title": "OPENING 1 | BLEACH | Asterisk by ORANGE RANGE | VIZ",
       "channel": "vizmedia",
       "durationSec": 96,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "GH0zZgI205s",
+          "title": "JUMP MV /『BLEACH』×『*~Asterisk~』| ORANGE RANGE",
+          "channel": "ジャンプチャンネル y 『BLEACH』アニメ公式チャンネル",
+          "durationSec": 98
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "bleach-op-scar": {
       "id": "pb_fwnVamdI",
       "title": "スカー / キタニタツヤ - Scar / Tatsuya Kitani",
       "channel": "キタニタツヤ / Tatsuya Kitani",
       "durationSec": 261,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "T7r6LqFfTS0",
+          "title": "Bleach: Thousand-Year Blood War Opening 「SCAR」|  Tatsuya Kitani | Lyrics (KAN, ROM, ENG)",
+          "channel": "Mz Anime Lyrics",
+          "durationSec": 259
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "bluelock-op-chaos": {
       "id": "_2hwblQ_I20",
       "title": "UNISON SQUARE GARDEN「カオスが極まる」ブルーロック Animation MV",
       "channel": "unisonsgofficial",
       "durationSec": 235,
+      "alt": [
+        {
+          "id": "ejzfqXA-bYY",
+          "title": "UNISON SQUARE GARDEN「カオスが極まる」MV",
+          "channel": "unisonsgofficial",
+          "durationSec": 230
+        },
+        {
+          "id": "angBzjDBnKo",
+          "title": "Blue Lock (ブルーロック)(Opening) | UNISON SQUARE GARDEN - Chaos ga Kiwamaru (カオスが極まる) Lyrics_Kan/Rom/Eng)",
+          "channel": "Haeya",
+          "durationSec": 230
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "bluelock-op-judgement": {
@@ -76,34 +192,91 @@
       "title": "Judgement / ASH DA HERO（TVアニメ『ブルーロック』2クール目オープニング主題歌）",
       "channel": "ASH DA HERO Channel",
       "durationSec": 246,
+      "alt": [
+        {
+          "id": "chuZkvjt6_Q",
+          "title": "「Judgement」ブルーロック Animation MV（TVアニメ『ブルーロック』2クール目オープニング主題歌）",
+          "channel": "ASH DA HERO Channel",
+          "durationSec": 235
+        },
+        {
+          "id": "UVuilmoDKhE",
+          "title": "Blue Lock (ブルーロック)(Opening 2) | ASH DA HERO - Judgement Lyrics_Kan/Rom/Eng)",
+          "channel": "Haeya",
+          "durationSec": 223
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "cg-op-colors": {
-      "id": "FUH9S44D1BM",
-      "title": "FLOW - Colors",
-      "channel": "FLOWofficialVEVO",
-      "durationSec": 222,
-      "checkedAt": "2026-10-18"
+      "id": "G8CFuZ9MseQ",
+      "title": "Code Geass Opening | COLORS by FLOW",
+      "channel": "Crunchyroll",
+      "durationSec": 90,
+      "alt": [
+        {
+          "id": "ny3Mh1fojl0",
+          "title": "アニメ「コードギアス 反逆のルルーシュ」オープニング／FLOW「COLORS」",
+          "channel": "コードギアスチャンネル CODEGEASS Channel",
+          "durationSec": 91
+        },
+        {
+          "id": "IJyoYy0Efag",
+          "title": "アニメ「コードギアス 反逆のルルーシュ」オープニング／FLOW「COLORS」（Another ver.）",
+          "channel": "コードギアスチャンネル CODEGEASS Channel",
+          "durationSec": 91
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "cine-ost-jurassic": {
-      "id": "o1aburRb_2c",
-      "title": "Main Theme | From the Soundtrack to \"Jurassic Park \" by John Williams",
-      "channel": "SonySoundtracksVEVO",
-      "durationSec": 333,
-      "checkedAt": "2026-10-18"
+      "id": "D8zlUUrFK-M",
+      "title": "Jurassic Park theme song.",
+      "channel": "Gijs van Baalen",
+      "durationSec": 201,
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "cine-ost-starwars": {
       "id": "_D0ZQPqeJkk",
       "title": "Star Wars Main Theme (Full)",
       "channel": "Coltsrock56",
       "durationSec": 352,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "54hoKbTWon4",
+          "title": "John Williams & Wiener Philharmoniker – \"Main Title\" from \"Star Wars: A New Hope\"",
+          "channel": "Deutsche Grammophon - DG y John Williams",
+          "durationSec": 402
+        },
+        {
+          "id": "we3VEI5pmqo",
+          "title": "Main Title - STAR WARS // The Danish National Symphony Orchestra (Live)",
+          "channel": "DR Koncerthuset",
+          "durationSec": 341
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "crash-ost-nsanity": {
       "id": "e68I_a6Y8rY",
       "title": "Crash Bandicoot 1 - N. Sanity Beach Mp3",
       "channel": "TheCrashKing",
       "durationSec": 101,
+      "alt": [
+        {
+          "id": "301c4tcGuAw",
+          "title": "Crash Bandicoot N. Sane Trilogy: Crash 1 - Main Theme & N. Sanity Beach OST",
+          "channel": "AbdulTheArabicGuy",
+          "durationSec": 89
+        },
+        {
+          "id": "TnPEh331aLE",
+          "title": "Crash Bandicoot Soundtrack- N.Sanity Beach",
+          "channel": "Crashpunk94",
+          "durationSec": 102
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "crash-tr-4": {
@@ -111,6 +284,14 @@
       "title": "Crash Bandicoot 4: It’s About Time - State of Play Trailer | PS4",
       "channel": "PlayStation",
       "durationSec": 323,
+      "alt": [
+        {
+          "id": "0fGqE8nT_Zs",
+          "title": "Crash Bandicoot 4: It’s About Time - State of Play Trailer | PS4",
+          "channel": "PlayStation Brasil",
+          "durationSec": 323
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "cs-tr-cs2": {
@@ -118,6 +299,20 @@
       "title": "Counter-Strike 2: Responsive Smokes",
       "channel": "Valve",
       "durationSec": 77,
+      "alt": [
+        {
+          "id": "GqhhFl5zgA0",
+          "title": "Counter-Strike 2: Moving Beyond Tick Rate",
+          "channel": "Valve",
+          "durationSec": 83
+        },
+        {
+          "id": "c80dVYcL69E",
+          "title": "Counter-Strike 2 - Official Launch Trailer",
+          "channel": "GameSpot",
+          "durationSec": 57
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "csm-op-kickback": {
@@ -125,62 +320,170 @@
       "title": "『チェンソーマン』ノンクレジットオープニング / CHAINSAW MAN  Opening│米津玄師 「KICK BACK」",
       "channel": "MAPPA CHANNEL",
       "durationSec": 90,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "woi0PQu-JXA",
+          "title": "Chainsaw Man OST | Kenshi Yonezu - KICK BACK Lyrics [Easy/Romaji/JP]",
+          "channel": "Riichigo",
+          "durationSec": 88
+        },
+        {
+          "id": "7pOAVNzIt5w",
+          "title": "Chainsaw Man - Opening 𝟏 \"KICK BACK\" | 4K | 60FPS | Creditless |",
+          "channel": "Anigaku",
+          "durationSec": 90
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "cyber-ost-neverfade": {
       "id": "pzVZKmoNfxs",
       "title": "サイバーパンク2077 — 『Never Fade Away』 by SAMURAI (Refused)",
       "channel": "CD PROJEKT RED JAPAN",
       "durationSec": 191,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "AN1RJF55NXI",
+          "title": "Cyberpunk 2077 — Never Fade Away by SAMURAI (Refused)",
+          "channel": "Cyberpunk 2077",
+          "durationSec": 191
+        },
+        {
+          "id": "wYlgITKlluE",
+          "title": "SAMURAI - Never Fade Away | Cyberpunk 2077 OST",
+          "channel": "Original Soundtrack",
+          "durationSec": 225
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "dandadan-op-otonoke": {
       "id": "a4na2opArGY",
       "title": "DAN DA DAN Opening | Otonoke by Creepy Nuts",
       "channel": "Crunchyroll",
       "durationSec": 101,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "A1dnxXrpN-o",
+          "title": "DAN DA DAN OP | Otonoke by Creepy Nuts | Netflix Anime",
+          "channel": "Netflix Anime",
+          "durationSec": 104
+        },
+        {
+          "id": "msGQOO6f3h0",
+          "title": "DAN DA DAN | Otonoke (Music Video)",
+          "channel": "TheAnimeMen",
+          "durationSec": 113
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "db-op-chala": {
       "id": "oXUZVj7I2H8",
       "title": "Dragon Ball Z: Kakarot - Official Opening Cinematic (Cha La Head Cha La)",
       "channel": "IGN",
       "durationSec": 124,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "cie7scVUdQE",
+          "title": "Dragon Ball Z - Chala Head Chala (opening Latino) Full HD 1080p",
+          "channel": "Alvaro Padilla",
+          "durationSec": 112
+        },
+        {
+          "id": "qQmTdijhjD4",
+          "title": "Dragon Ball Z - 1989 Japanese Opening - Cha-La Head Cha-La - Remastered 1440p 60fps",
+          "channel": "Bruno Silva",
+          "durationSec": 120
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "db-op-makafushigi": {
       "id": "Mmbc8E6rAmM",
       "title": "Makafushigi Adventure (FULL VERSION/VERSION LONGUE) Lyrics/Paroles",
       "channel": "user-5508",
       "durationSec": 233,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "aXlC91TfPuA",
+          "title": "Hiroki Takahashi - Makafushigi Adventure [DBGBH2022] live / 魔訶不思議アドベンチャー!  (ドラゴンボール)",
+          "channel": "ГОКИБУРИ",
+          "durationSec": 229
+        },
+        {
+          "id": "WwgoL9yKUCc",
+          "title": "Makafushigi Adventure ‐ Hiroki Takahashi | Dragon Ball OP.1 | (Sub español)",
+          "channel": "DarkZero Music",
+          "durationSec": 231
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "dn-op-theworld": {
       "id": "D7MMMNTQ7H0",
       "title": "ナイトメア NIGHTMARE - the WORLD [OFFICIAL MUSIC VIDEO]",
       "channel": "NIGHTMARE",
       "durationSec": 242,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "wOKmqDwdvIw",
+          "title": "The World. | Death Note OP.1 | Traducido Al Español.",
+          "channel": "meena♡",
+          "durationSec": 223
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "dn-op-whatsup": {
       "id": "BTevuW9xeuE",
       "title": "「Creditless」Death Note OP / Opening 2「UHD 60FPS」",
       "channel": "TriaxFx",
       "durationSec": 93,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "wiE3XXRkdpc",
+          "title": "What's Up People - Maximum The Hormone (Death Note Opening)",
+          "channel": "CLIP-REMASTERED",
+          "durationSec": 81
+        },
+        {
+          "id": "B-IboEeI-9w",
+          "title": "Death Note - Opening 2 | What’s Up, People?! | Sub ESP/ENG + Lyrics",
+          "channel": "NovaUta",
+          "durationSec": 91
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "eva-op-thesis": {
       "id": "o6wtDPVkKqI",
       "title": "「残酷な天使のテーゼ」MUSIC VIDEO（HDver.）/Zankoku na Tenshi no Te-ze“The Cruel Angel's Thesis”",
       "channel": "KING RECORDS",
       "durationSec": 244,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "7HnBuEI96-o",
+          "title": "Yoko Takahashi performs \"A Cruel Angel's Thesis\" at the 2026 Crunchyroll Anime Awards",
+          "channel": "Crunchyroll",
+          "durationSec": 257
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "fairytail-op-snowfairy": {
       "id": "sCxyiE1pI0k",
       "title": "FUNKIST [ Snow fairy ] OFFICIAL MUSIC VIDEO",
       "channel": "FUNKIST official",
       "durationSec": 219,
+      "alt": [
+        {
+          "id": "SC6s6ATi90s",
+          "title": "[FULL] Fairy Tail OP 1 -『Snow Fairy』- Original/English",
+          "channel": "〖 AnimeSongsLуrics 〗",
+          "durationSec": 213
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "fairytail-ost-main": {
@@ -188,6 +491,20 @@
       "title": "Yasuharu Takanashi: Fairy Tail Main Theme",
       "channel": "ModPoppyEDM",
       "durationSec": 150,
+      "alt": [
+        {
+          "id": "ouhroPXWpWE",
+          "title": "Fairy Tail - Main Theme [HQ]",
+          "channel": "Xuan Yin Liu",
+          "durationSec": 150
+        },
+        {
+          "id": "uFD7CkIkNwE",
+          "title": "Greatest Battle OST's of All Time: Fairy Tail Main Theme 2016",
+          "channel": "TheOSTMaestro",
+          "durationSec": 172
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "ff-ost-onewinged": {
@@ -195,34 +512,91 @@
       "title": "[Video Soundtrack] One Winged Angel [FINAL FANTASY VII]",
       "channel": "SQUARE ENIX MUSIC Channel",
       "durationSec": 441,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "mYdf0yqK_Fc",
+          "title": "Final Fantasy VII OST - One-Winged Angel",
+          "channel": "anomaly1",
+          "durationSec": 441
+        },
+        {
+          "id": "R3cZ-lCaE2c",
+          "title": "One Winged Angel [Final Fantasy Advent Children Version][HQ Audio]",
+          "channel": "RealityStrobe",
+          "durationSec": 368
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "ff-ost-zanarkand": {
       "id": "QQq0zv_JXEk",
       "title": "Zanarkand (FINAL FANTASY X Original Soundtrack) 【Audio】",
       "channel": "SQUARE ENIX MUSIC Channel",
       "durationSec": 185,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "sy-nrLiAwZI",
+          "title": "[Video Soundtrack] Zanarkand [FINAL FANTASY X HD Remaster]",
+          "channel": "SQUARE ENIX MUSIC Channel",
+          "durationSec": 183
+        },
+        {
+          "id": "6fp81GzKarQ",
+          "title": "Final Fantasy X - OST - To Zanarkand",
+          "channel": "Dork_Maule",
+          "durationSec": 185
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "fma-op-again": {
       "id": "FM3aJQzqV90",
       "title": "Yui [Again] Fullmetal Alchemist: Brotherhood Opening 1 [Kan/Rom/Eng Lyrics]",
       "channel": "TASNIM",
       "durationSec": 258,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "45yi7bopMu0",
+          "title": "Fullmetal Alchemist: Brotherhood - OP Full \"Again\" by YUI",
+          "channel": "Anime OST",
+          "durationSec": 294
+        },
+        {
+          "id": "S2IOrt-n2fc",
+          "title": "again - YUI",
+          "channel": "YUI OFFICIAL YouTube CHANNEL",
+          "durationSec": 298
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "fma-op-goldentime": {
       "id": "IdjAdBs0Dz0",
       "title": "FMA Brotherhood Opening 3 | Golden Time Lover | Sub Español.",
       "channel": "CafeRojizo",
       "durationSec": 329,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "friends-theme": {
       "id": "048SNZIP40I",
       "title": "I'll Be There For You | Friends [US & CA] [HD] | Netflix",
       "channel": "Netflix",
       "durationSec": 225,
+      "alt": [
+        {
+          "id": "x-IZmZL01Js",
+          "title": "I'll Be There For You - Friends - Netflix - Danmark [HD]",
+          "channel": "Netflix Nordic",
+          "durationSec": 225
+        },
+        {
+          "id": "q-9kPks0IfE",
+          "title": "The Rembrandts- I'll be there for you (official video)",
+          "channel": "alliemaster93",
+          "durationSec": 194
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "frieren-op-yuusha": {
@@ -230,76 +604,179 @@
       "title": "YOASOBI「勇者」 Official Music Video／TVアニメ『葬送のフリーレン』オープニングテーマ",
       "channel": "YOASOBI",
       "durationSec": 204,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "bjDixpdHLUA",
+          "title": "YOASOBI - Yuusha「勇者」Lyrics Video [Kan/Rom/Eng] Sousou no Frieren OP",
+          "channel": "mimanimi",
+          "durationSec": 195
+        },
+        {
+          "id": "1xeRi8syoy4",
+          "title": "Sousou no Frieren - Opening FULL \"Yuusha\" by YOASOBI (Lyrics)",
+          "channel": "Jamong",
+          "durationSec": 195
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "genshin-tr-hutao": {
       "id": "qrH9vMZBwAk",
       "title": "Character Demo - \"Hu Tao: Let the Living Beware\" | Genshin Impact",
       "channel": "Genshin Impact",
       "durationSec": 101,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "dc3eD6C6Gbk",
+          "title": "Avance de la trama de Genshin Impact - Hu Tao: ¿Te asustaste?",
+          "channel": "Genshin Impact",
+          "durationSec": 90
+        },
+        {
+          "id": "gh6gtpH4EbQ",
+          "title": "Burning Desires but Genshin Impact ft. Hu Tao's VA @Brianna-Knickerbocker",
+          "channel": "Stormz67 y 5 más",
+          "durationSec": 86
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "genshin-tr-raiden": {
       "id": "mvrW4aKwAXw",
       "title": "Character Demo - \"Raiden Shogun: Judgment of Euthymia\" | Genshin Impact",
       "channel": "Genshin Impact",
       "durationSec": 163,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "got-intro": {
       "id": "s7L2PVdrb_8",
       "title": "Official Opening Credits: Game of Thrones (HBO)",
       "channel": "GameofThrones",
       "durationSec": 102,
+      "alt": [
+        {
+          "id": "eCemS3f-LDU",
+          "title": "Game of Thrones S8 Official Soundtrack | Main Title - Ramin Djawadi | WaterTower",
+          "channel": "WaterTower Music",
+          "durationSec": 112
+        },
+        {
+          "id": "TZE9gVF1QbA",
+          "title": "Opening Credits | Game of Thrones | Season 8 (HBO)",
+          "channel": "GameofThrones",
+          "durationSec": 118
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "gow-ost-main": {
-      "id": "jpyVfd8TyoI",
-      "title": "Bear McCreary - God of War (Main Theme) | God of War (PlayStation Soundtrack)",
-      "channel": "SonySoundtracksVEVO",
-      "durationSec": 249,
-      "checkedAt": "2026-10-18"
+      "id": "y9hh91-2iaA",
+      "title": "1. God of War | God of War OST",
+      "channel": "Original Soundtrack",
+      "durationSec": 248,
+      "alt": [
+        {
+          "id": "beL5yKYlh18",
+          "title": "GOD OF WAR | BANDA SONORA SUBTITULADA | OVERTURE (Main Theme) | ESPAÑOL",
+          "channel": "SirBoyah",
+          "durationSec": 243
+        },
+        {
+          "id": "GWXnMaQNESA",
+          "title": "God Of War OST (Bear McCreary - Overture)",
+          "channel": "Musiclapse",
+          "durationSec": 252
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "gta-ost-sa": {
-      "id": "7qfbi3HACV8",
-      "title": "Grand Theft Auto: San Andreas (Official Theme Song)",
-      "channel": "Michael Hunter - Topic",
-      "durationSec": 89,
-      "checkedAt": "2026-10-18"
+      "id": "W4VTq0sa9yg",
+      "title": "GTA San Andreas Theme Song Full ! !",
+      "channel": "Buttonik",
+      "durationSec": 370,
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "gta-tr-vi": {
       "id": "QdBZY2fkU-0",
       "title": "Grand Theft Auto VI Trailer 1",
       "channel": "Rockstar Games",
       "durationSec": 91,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "rz1B4B2yBZY",
+          "title": "Grand Theft Auto VI Launch Trailer",
+          "channel": "Rockstar Games",
+          "durationSec": 91
+        },
+        {
+          "id": "RiR77AI4uQ8",
+          "title": "Grand Theft Auto VI Launch Trailer",
+          "channel": "Rockstar Games UK & Ireland",
+          "durationSec": 91
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "haikyuu-op-imagination": {
-      "id": "XS-N8KfZ5EU",
-      "title": "Haikyu!! - Opening 1 | Imagination",
-      "channel": "Crunchyroll",
-      "durationSec": 100,
-      "checkedAt": "2026-10-18"
+      "id": "ia5TsQxcmSM",
+      "title": "Haikyuu!! OP 1 - Imagination Lyrics",
+      "channel": "o0o AnimeLyrics o0o",
+      "durationSec": 174,
+      "alt": [
+        {
+          "id": "S2E-wiwAAhU",
+          "title": "SPYAIR - Imagination [HAIKYU イマジネーション Opening 1] [Color Coded Lyrics/KAN/ROM/EN]",
+          "channel": "Melloaeriz ",
+          "durationSec": 175
+        },
+        {
+          "id": "-Ty4ZCYTRto",
+          "title": "SPYAIR - Imagination LIVE Just Like This 2016 | OST HAIKYUU Season 1",
+          "channel": "XAIFAM",
+          "durationSec": 213
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "halo-ost-theme": {
-      "id": "DOZLSho2o-M",
-      "title": "Halo",
-      "channel": "Halo - Topic",
-      "durationSec": 263,
-      "checkedAt": "2026-10-18"
+      "id": "rZxSzPxhraI",
+      "title": "HALO 2 original soundtrack volume one: Halo Theme MJOLNIR Mix",
+      "channel": "The Sound of Halo",
+      "durationSec": 252,
+      "alt": [
+        {
+          "id": "Qz7EhV4t4Es",
+          "title": "halo 2 soundtrack (Mjolnir mix) HD",
+          "channel": "Games Soundtracks",
+          "durationSec": 252
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "hk-ost-cityoftears": {
       "id": "MJDn70jh1V0",
       "title": "Hollow Knight OST - City of Tears",
       "channel": "Amellifera",
       "durationSec": 179,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "V-qJnHZHDeM",
+          "title": "Hollow Knight City of Tears OST (With Rain)",
+          "channel": "Aragna",
+          "durationSec": 186
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "hp-ost-hedwig": {
       "id": "jTPXwbDtIpA",
       "title": "Harry Potter - Hedwig's Theme (Piano Version)",
       "channel": "Patrik Pietschmann",
       "durationSec": 190,
+      "alt": [],
       "checkedAt": "2026-10-19"
     },
     "hp-tr-deathly2": {
@@ -307,6 +784,20 @@
       "title": "\"Harry Potter and the Deathly Hallows - Part 2\" Trailer 1",
       "channel": "Warner Bros.",
       "durationSec": 118,
+      "alt": [
+        {
+          "id": "AX85BTPv9KY",
+          "title": "Harry Potter y las reliquias de la Muerte: parte 2 - Tráiler",
+          "channel": "Warner Bros. UK & Ireland",
+          "durationSec": 106
+        },
+        {
+          "id": "PUXpgitNeOU",
+          "title": "Harry Potter and the Deathly Hallows: Part 2 Official Trailer #1 - (2011) HD",
+          "channel": "Movieclips",
+          "durationSec": 145
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "hxh-ed-justawake": {
@@ -314,48 +805,140 @@
       "title": "Hunter X Hunter - Ending 1 | Just Awake",
       "channel": "Crunchyroll",
       "durationSec": 91,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "qT-1VUmf5qk",
+          "title": "Hunter X Hunter ハンター×ハンター Ending 1 Just Awake",
+          "channel": "AnimeVideoGames",
+          "durationSec": 80
+        },
+        {
+          "id": "F8OzMtBQ1po",
+          "title": "Hunter x Hunter Ending 1 (2011) - Just Awake",
+          "channel": "SlashExfo00F",
+          "durationSec": 81
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "hxh-op-departure": {
       "id": "faqmNf_fZlE",
       "title": "Hunter X Hunter Opening 1 | Departure!",
       "channel": "Crunchyroll",
       "durationSec": 91,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "a-Jttwd1ipI",
+          "title": "Hunter X Hunter Opening 5 | Departure! -second version- by Masatoshi Ono",
+          "channel": "Crunchyroll",
+          "durationSec": 90
+        },
+        {
+          "id": "LXu9u3kH6Ro",
+          "title": "Hunter X Hunter - Opening 6 | Departure!",
+          "channel": "Crunchyroll",
+          "durationSec": 90
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "jjk-op-kaikai": {
-      "id": "GwaRztMaoY0",
-      "title": "JUJUTSU KAISEN Opening | Kaikai Kitan by Eve",
-      "channel": "Crunchyroll",
-      "durationSec": 101,
-      "checkedAt": "2026-10-18"
+      "id": "mpJIBY6eg-8",
+      "title": "Jujutsu Kaisen - OP 1 Full - Kaikai Kitan by Eve (Lyrics)",
+      "channel": "StarryAya",
+      "durationSec": 222,
+      "alt": [
+        {
+          "id": "4zd0_Dns7Ko",
+          "title": "Jujutsu Kaisen OP1 - Eve - Kaikai Kitan Lyrics",
+          "channel": "Suzuhara Misaki",
+          "durationSec": 217
+        },
+        {
+          "id": "IS2FZwbKhIQ",
+          "title": "Jujutsu Kaisen OP / Opening 1 Full Lyrics Sub Español + Romaji ( Kaikai Kitan - Eve )",
+          "channel": "GN-sub",
+          "durationSec": 220
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "jjk-op-specialz": {
       "id": "fhzKLBZJC3w",
       "title": "King Gnu - SPECIALZ",
       "channel": "King Gnu official YouTube channel",
       "durationSec": 242,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "ldEzCnE89a4",
+          "title": "Jujutsu Kaisen 'Shibuya Incident Arc' - Opening FULL \"SPECIALZ\" by King Gnu (Lyrics)",
+          "channel": "Jamong",
+          "durationSec": 240
+        },
+        {
+          "id": "Mwgsi5Rz0_w",
+          "title": "Jujutsu Kaisen Season 2 Opening 2 Full『King Gnu - SPECIALZ』(lyrics)",
+          "channel": "Melodic Star",
+          "durationSec": 267
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "jojo-op-greatdays": {
       "id": "mU3vgXUKeFM",
       "title": "JoJo's Bizarre Adventure | Opening 7 - Great Days | 4K Creditless HD",
       "channel": "CyberCodeFX",
       "durationSec": 83,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "g1QUAbnscgI",
+          "title": "Jojo's DiU Opening: [GREAT DAYS] Bites the Dust version",
+          "channel": "Nahuoxus",
+          "durationSec": 83
+        },
+        {
+          "id": "RDsdS4Iyz-Q",
+          "title": "JoJo's Bizarre Adventure - Great Days (Episode 27 TV Version)",
+          "channel": "GunnarTheCroc",
+          "durationSec": 82
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "jojo-op-sonochi": {
       "id": "1ZKAQzGYYSo",
       "title": "JoJo's Bizarre Adventure : Phantom Blood - Opening 1 HD Creditless『Sono Chi No Sadame』",
       "channel": "Zen",
       "durationSec": 93,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "8Ns3murXFhw",
+          "title": "JoJo OP 1 Sono Chi No Sadame || Sin Créditos || Efectos Sonoros || 4k2160p60",
+          "channel": "Mario Persiano",
+          "durationSec": 93
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "kh-ost-dearly": {
       "id": "tnYMKDA2ei4",
       "title": "Yoko Shimomura (Kingdom Hearts 2 Original Soundtrack) Dearly Beloved",
       "channel": "halostar120",
       "durationSec": 144,
+      "alt": [
+        {
+          "id": "g25QXnhVijQ",
+          "title": "Kingdom Hearts - Dearly Beloved - Yoko Shimomura",
+          "channel": "Yoshio808",
+          "durationSec": 112
+        },
+        {
+          "id": "gGxdeGIc3jI",
+          "title": "Kingdom Hearts - Dearly Beloved (Emotional Cinematic Orchestral Crescendo)",
+          "channel": "Osirois Music",
+          "durationSec": 174
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "kh-ost-simple": {
@@ -363,6 +946,14 @@
       "title": "Simple and Clean: Ray of Hope Mix Full Opening English",
       "channel": "RlJl",
       "durationSec": 154,
+      "alt": [
+        {
+          "id": "ZxIGclx-nj8",
+          "title": "Simple and Clean Lyrics Kingdom Hearts Birth by Sleep (Traducida al Español)",
+          "channel": "Nova",
+          "durationSec": 149
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "kimetsu-op-gurenge": {
@@ -370,20 +961,62 @@
       "title": "LISA Gurenge (From Kimetsu No Yaiba) (Official Video)",
       "channel": "KNYMusicChannelVEVO",
       "durationSec": 235,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "oomE4oltFRo",
+          "title": "LiSA - Gurenge (Demon Slayer: Kimetsu no Yaiba OP) [Eng/Rom/漢字 Lyrics]",
+          "channel": "maxiebaku",
+          "durationSec": 237
+        },
+        {
+          "id": "YMwYfh4Ouhk",
+          "title": "Kimetsu no Yaiba Season 1 - Opening FULL \"Gurenge\" by LiSA (Lyrics)",
+          "channel": "Jamong",
+          "durationSec": 239
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "kimetsu-op-zankyou": {
       "id": "tLQLa6lM3Us",
       "title": "Aimer「Zankyosanka」MUSIC VIDEO（Demon Slayer:Kimetsu no Yaiba Entertainment District Arc Theme Song）",
       "channel": "Aimer Official YouTube Channel",
       "durationSec": 182,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "FCgACOkmwtg",
+          "title": "Demon Slayer: Kimetsu no Yaiba Season 2 Opening Full 『Aimer - Zankyou Sanka』",
+          "channel": "Melodic Star",
+          "durationSec": 196
+        },
+        {
+          "id": "isFdoIq0DGc",
+          "title": "Aimer 「残響散歌」 (Zankyou Sanka) Kimetsu no Yaiba: Yuukaku-hen Opening Lyrics [Kan_Rom_Eng]",
+          "channel": "Kei Takahashi",
+          "durationSec": 185
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "lcdp-bellaciao": {
       "id": "46cXFUzR9XM",
       "title": "Bella Ciao Full Song | La Casa De Papel | Money Heist | Netflix India",
       "channel": "Netflix India",
       "durationSec": 158,
+      "alt": [
+        {
+          "id": "0aUav1lx3rA",
+          "title": "La Casa De Papel - Bella Ciao [Lyrics] (Money Heist)",
+          "channel": "ReLike Vibes",
+          "durationSec": 135
+        },
+        {
+          "id": "9ao4FEaDGhQ",
+          "title": "Bella Ciao - La Casa de Papel",
+          "channel": "harisego",
+          "durationSec": 188
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "lcdp-intro": {
@@ -391,6 +1024,20 @@
       "title": "My life Is Going On (Trailer Versión) | La Casa De Papel | Official Soundtrack | Netflix",
       "channel": "Netflix Music",
       "durationSec": 197,
+      "alt": [
+        {
+          "id": "9KKqFjCpPL4",
+          "title": "La Casa De Papel | Cecilia Krull - My Life Is Going On (Official Music Video)",
+          "channel": "Cloud 9 Music",
+          "durationSec": 213
+        },
+        {
+          "id": "ehZFyxRbyd0",
+          "title": "La casa de papel Soundtrack | Cecilia Krull - My life is going on (Lyric Video)",
+          "channel": "The Good Melodies -TGM",
+          "durationSec": 215
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "lol-ost-enemy": {
@@ -398,20 +1045,56 @@
       "title": "Imagine Dragons & JID - Enemy (from the series Arcane: League of Legends) | Official Music Video",
       "channel": "League of Legends",
       "durationSec": 214,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "UqcE-IIevf0",
+          "title": "Imagine Dragons feat. JID - “Enemy (Opening Title Version)” (from Arcane) [Official Visualizer]",
+          "channel": "Riot Games Music",
+          "durationSec": 187
+        },
+        {
+          "id": "HzJv6sef8HY",
+          "title": "Enemy (Imagine Dragons, JID) - Worlds 2021 Show Open Presented by Mastercard",
+          "channel": "League of Legends",
+          "durationSec": 257
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "lol-ost-warriors": {
-      "id": "wPQEeBAXou0",
-      "title": "Imagine Dragons - Warriors (Official Lyric Video)",
-      "channel": "ImagineDragonsVEVO",
+      "id": "fmI_Ndrxy14",
+      "title": "Warriors (ft. Imagine Dragons) | Worlds 2014 - League of Legends",
+      "channel": "League of Legends",
       "durationSec": 171,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "QZATTFyZfsc",
+          "title": "Imagine Dragons - \"Warriors\" Live (League of Legends Worlds 2014)",
+          "channel": "Imagine Dragons Live",
+          "durationSec": 179
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "lotr-ost-mayit": {
       "id": "nt3Ggo1CE3g",
       "title": "Enya - May It Be (Official Lyric Video)",
       "channel": "enyatv",
       "durationSec": 215,
+      "alt": [
+        {
+          "id": "i7MLT4MmAK8",
+          "title": "Enya - May It Be",
+          "channel": "Marius Malmstrøm",
+          "durationSec": 215
+        },
+        {
+          "id": "NJVxEaGrHS4",
+          "title": "The Lord of the Rings: The Fellowship of the Ring • May It Be • Enya",
+          "channel": "HD Film Tributes",
+          "durationSec": 215
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "lotr-ost-shire": {
@@ -419,6 +1102,20 @@
       "title": "The Fellowship of the Ring Soundtrack-02-Concerning Hobbits",
       "channel": "dogsrule3444",
       "durationSec": 176,
+      "alt": [
+        {
+          "id": "SRgBI0WqWp4",
+          "title": "Lord of the Rings Symphony - The Shire (Concerning Hobbits) HD",
+          "channel": "RokujyuuyonShou",
+          "durationSec": 151
+        },
+        {
+          "id": "LQed7aE9YHQ",
+          "title": "Concerning Hobbits (Howard Shore) - Music Video - Lord of the Rings",
+          "channel": "Fitzcarraldo",
+          "durationSec": 171
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "mario-ost-jumpup": {
@@ -426,27 +1123,77 @@
       "title": "Super Mario Odyssey - Jump Up, Super Star!",
       "channel": "MuttonBashers",
       "durationSec": 250,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "fbR_pCRPDTg",
+          "title": "Super Mario Odyssey Soundtrack \"Jump Up, Super Star!\" COMPLETE SONG with subs (No SFX)",
+          "channel": "NintendoMovies",
+          "durationSec": 248
+        },
+        {
+          "id": "B9PTVYJVilU",
+          "title": "Jump Up, Super Star! (Super Mario Odyssey)//Pauline (CV: Kate Davis)//Sub español",
+          "channel": "Reflet リフレット",
+          "durationSec": 246
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mario-tr-wonder": {
       "id": "JStAYvbeSHc",
       "title": "Super Mario Bros. Wonder - Nintendo Direct 6.21.2023",
       "channel": "Nintendo of America",
       "durationSec": 159,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "FGeMeoMnWWw",
+          "title": "¡Nuevas peripecias multijugador en Super Mario Bros. Wonder! (Nintendo Switch 2)",
+          "channel": "Nintendo España",
+          "durationSec": 159
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mc-ost-sweden": {
       "id": "xIQrC4CerB8",
       "title": "Minecraft Volume Alpha - 18 - Sweden",
       "channel": "C418",
       "durationSec": 216,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "aBkTkxKDduc",
+          "title": "C418  - Sweden - Minecraft Volume Alpha",
+          "channel": "SMORT",
+          "durationSec": 216
+        },
+        {
+          "id": "9h5j5vNgidE",
+          "title": "C418 - Sweden played over Nostalgic Minecraft images",
+          "channel": "ydarb",
+          "durationSec": 216
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mcu-ost-avengers": {
       "id": "mnWtCkdzFIQ",
       "title": "FSO 2015 Oficial | The Avengers (A. Silvestri)",
       "channel": "filmsymphony",
       "durationSec": 158,
+      "alt": [
+        {
+          "id": "UAm0aWvzFI8",
+          "title": "The Avengers - Main Theme (Piano Version)",
+          "channel": "Patrik Pietschmann",
+          "durationSec": 122
+        },
+        {
+          "id": "cVq4zJ1WbaQ",
+          "title": "The Avengers - Theme Song",
+          "channel": "Gal Halperin",
+          "durationSec": 121
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "mcu-tr-endgame": {
@@ -454,111 +1201,304 @@
       "title": "Marvel Studios' Avengers: Endgame - Official Trailer",
       "channel": "Marvel Entertainment",
       "durationSec": 147,
+      "alt": [
+        {
+          "id": "znk2OICHbjY",
+          "title": "Avengers: Endgame – Tráiler oficial #1 (Subtitulado)",
+          "channel": "Marvel Latinoamérica Oficial",
+          "durationSec": 146
+        },
+        {
+          "id": "wuOvmyuYFMo",
+          "title": "Marvel Studios’ Avengers: Endgame - Official Trailer - UK Marvel | HD",
+          "channel": "Marvel UK",
+          "durationSec": 146
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "mgs-ost-snakeeater": {
-      "id": "m2OR_JaXDaM",
-      "title": "Snake Eater",
-      "channel": "Release - Topic",
+      "id": "9aHQnDTd1y4",
+      "title": "Metal Gear Solid 3 Snake Eater Soundtrack: Snake Eater",
+      "channel": "alvaroduck",
       "durationSec": 178,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "I8pg2XoQTlA",
+          "title": "Snake Eater (Live at Symphony Hall)",
+          "channel": "Video Game Orchestra",
+          "durationSec": 173
+        },
+        {
+          "id": "_CbFAZ2ztlE",
+          "title": "PS2 - Metal Gear Solid 3: Snake Eater - Song - Intro",
+          "channel": "Ricpos",
+          "durationSec": 188
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mha-op-peacesign": {
       "id": "9aJVr5tTTWk",
       "title": "米津玄師 - ピースサイン , Kenshi Yonezu - Peace Sign",
       "channel": "Kenshi Yonezu  米津玄師",
       "durationSec": 265,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "YX0ciXDwLW0",
+          "title": "Peace Sign. OP.2 | Boku No Hero. | Sub Al Español. |  Kenshi Yonezu.",
+          "channel": "meena♡",
+          "durationSec": 237
+        },
+        {
+          "id": "eaKT0sEYToQ",
+          "title": "My Hero Academia Season 2 Full Opening (1080p) | Kenshi Yonezu - Peace Sign",
+          "channel": "Shimazu",
+          "durationSec": 236
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mha-op-theday": {
       "id": "yu0HjPzFYnY",
       "title": "My Hero Academia Opening 1 | The Day",
       "channel": "Crunchyroll",
       "durationSec": 91,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "XzmamQmLtgs",
+          "title": "[4K] My Hero Academia – Opening 1 \"The Day\" (Creditless)",
+          "channel": "BlanketAnime",
+          "durationSec": 93
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "mob-op-99": {
       "id": "Bw-5Lka7gPE",
       "title": "Mob Psycho 100 Opening | 99",
       "channel": "Crunchyroll",
       "durationSec": 101,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "epZaT8B31-g",
+          "title": "Mob Psycho 100 II Opening | 99.9 by Mob Choir",
+          "channel": "Crunchyroll",
+          "durationSec": 100
+        },
+        {
+          "id": "RU4qj0JDlek",
+          "title": "Mob psycho 100 opening 1 (99 by MoB cHoIR) with english CC",
+          "channel": "Joth Walia",
+          "durationSec": 90
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "musica-despacito": {
-      "id": "kJQP7kiw5Fk",
-      "title": "Luis Fonsi - Despacito ft. Daddy Yankee",
-      "channel": "LuisFonsiVEVO",
-      "durationSec": 282,
-      "checkedAt": "2026-10-18"
+      "id": "wJvppSr8BN4",
+      "title": "Luis Fonsi  Despacito ft  Justin Bieber Daddy Yankee (Official Video) -VEVO",
+      "channel": "YouTube VeVo",
+      "durationSec": 251,
+      "alt": [
+        {
+          "id": "DWir_XczIE8",
+          "title": "Luis Fonsi, Despacito ft,Daddy Yankee (Official Video)",
+          "channel": "DJ DY",
+          "durationSec": 282
+        },
+        {
+          "id": "sPWBxEmEITk",
+          "title": "Despacito Luis Fonsi ft Daddy Yankee (Video Oficial)",
+          "channel": "Yusceglys Music BBay",
+          "durationSec": 189
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "musica-queen-bohemian": {
       "id": "fJ9rUzIMcZQ",
       "title": "Queen – Bohemian Rhapsody (Official Video Remastered)",
       "channel": "Queen Official",
       "durationSec": 360,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "naruto-op-bluebird": {
       "id": "2upuBiEiXDk",
       "title": "Naruto Shippuden Opening 3 | Blue Bird",
       "channel": "Crunchyroll",
       "durationSec": 100,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "Blp2MWm-l6Y",
+          "title": "Blue Bird - Naruto Shippuden Opening 3 v3",
+          "channel": "GameKnight333",
+          "durationSec": 90
+        },
+        {
+          "id": "21D40C3y2Dw",
+          "title": "Blue Bird - Naruto Shippuden Opening 3 v5",
+          "channel": "GameKnight333",
+          "durationSec": 90
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "naruto-op-silhouette": {
-      "id": "dlFA0Zq1k2A",
-      "title": "KANA-BOON - Silhouette",
-      "channel": "KANABOONVEVO",
-      "durationSec": 266,
-      "checkedAt": "2026-10-18"
+      "id": "zVgKnfN9i34",
+      "title": "Naruto Shippuden Opening 16 | Silhouette by KANA-BOON",
+      "channel": "Crunchyroll",
+      "durationSec": 100,
+      "alt": [
+        {
+          "id": "521hC8Dzwhc",
+          "title": "Naruto Shippuden Opening 16『Silhouette』4K | 60FPS | Creditless",
+          "channel": "Justoverse",
+          "durationSec": 88
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "op-op-overthetop": {
       "id": "PwVT67T5Xt4",
       "title": "One Piece Opening 22 | OVER THE TOP",
       "channel": "Crunchyroll",
       "durationSec": 120,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "CepRGgSkQzU",
+          "title": "Hiroshi Kitadani - Over The Top | Sub Español (One Piece Opening 22)",
+          "channel": "EGFLyrics_",
+          "durationSec": 122
+        },
+        {
+          "id": "G4IvRB52Az0",
+          "title": "One Piece OP 22 - OVER THE TOP (TV-Size Instrumental)",
+          "channel": "Pain in the Brass",
+          "durationSec": 120
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "op-op-weare": {
       "id": "0OdExTY2D8M",
       "title": "ONE PIECE | Episode 1000 Special Opening | We Are!",
       "channel": "Toei Animation",
       "durationSec": 112,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "YoeP9w5UIlg",
+          "title": "Opening Theme | We Are! | Hiroshi Kitadani",
+          "channel": "ONE PIECE Official - ENG",
+          "durationSec": 111
+        },
+        {
+          "id": "gUMBa3ezThI",
+          "title": "One Piece OP 1000 We Are || Creditless || 4k 2160p",
+          "channel": "Mario Persiano",
+          "durationSec": 111
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "opm-op-thehero": {
       "id": "atxYe-nOa9w",
       "title": "One Punch Man - Official Opening - The Hero!! Set Fire to the Furious Fist",
       "channel": "animelab",
       "durationSec": 90,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "oZU6QvWHBxY",
+          "title": "『ワンパンマン』第1期ノンクレジットOP | One-Punch Man Season 1 Opening | JAM Project - THE HERO!! 〜怒れる拳に火をつけろ〜",
+          "channel": "バンダイナムコフィルムワークス チャンネル",
+          "durationSec": 91
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "ow-tr-dragons": {
       "id": "KOkn872Cvdg",
       "title": "Overwatch Soundtrack - Dragons Animated Short Theme 2",
       "channel": "Overwatch",
       "durationSec": 179,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "dWjlwi4lPZw",
+          "title": "\"A Tale of two Dragons\" from Overwatch Animated Short | “Dragons”",
+          "channel": "Yako",
+          "durationSec": 164
+        },
+        {
+          "id": "cv944owBpoY",
+          "title": "Overwatch Soundtrack - Dragons Animated Short Theme",
+          "channel": "Overwatch",
+          "durationSec": 155
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "pelea-ost-guile": {
-      "id": "bshQ0KyBqgk",
-      "title": "Guile's Theme | Street Fighter (Original Motion Picture Soundtrack)",
-      "channel": "SonySoundtracksVEVO",
-      "durationSec": 168,
-      "checkedAt": "2026-10-18"
+      "id": "Iof5pRAIZmw",
+      "title": "GUILE'S THEME",
+      "channel": "Dragonan",
+      "durationSec": 246,
+      "alt": [
+        {
+          "id": "FEdbR0jnfvQ",
+          "title": "Super Street Fighter II OST Guile Theme",
+          "channel": "Dan Dojo",
+          "durationSec": 224
+        },
+        {
+          "id": "iB4dK5RQgB4",
+          "title": "Street Fighter 2 - Guile's Theme",
+          "channel": "Kyle Athayde",
+          "durationSec": 254
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "pelea-tr-tekken8": {
       "id": "2hPuRQz6IlM",
       "title": "Tekken 8 - State of Play Sep 2022 Announcement Trailer | PS5 Games",
       "channel": "PlayStation",
       "durationSec": 113,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "07FdDRbdurg",
+          "title": "TEKKEN 8 – Reveal Trailer",
+          "channel": "Bandai Namco Entertainment America",
+          "durationSec": 120
+        },
+        {
+          "id": "QH6s_o3dIic",
+          "title": "TEKKEN 8 — Leo Reveal & Gameplay Trailer",
+          "channel": "Bandai Namco Entertainment America",
+          "durationSec": 136
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "persona-ost-lastsurprise": {
       "id": "Ec4YbVP9R-A",
       "title": "Persona 5 - Last Surprise",
       "channel": "Tails The Fox",
       "durationSec": 236,
+      "alt": [
+        {
+          "id": "5-pYuiWoE-Q",
+          "title": "Persona 5 OST 17 - Last Surprise",
+          "channel": "Bfr's OST",
+          "durationSec": 236
+        },
+        {
+          "id": "_WLNdxQCr04",
+          "title": "Last Surprise With Lyrics   Persona 5",
+          "channel": "Captain comics",
+          "durationSec": 237
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "persona-ost-reachout": {
@@ -566,6 +1506,20 @@
       "title": "Reach Out To The Truth -Revival- | Persona 4 Revival 【Official Lyric Video】",
       "channel": "ATLUS GAME MUSIC y 2 más",
       "durationSec": 203,
+      "alt": [
+        {
+          "id": "5cbjrTNSq0I",
+          "title": "Persona 4 - Reach Out To The Truth - First Battle",
+          "channel": "HyperTrooper",
+          "durationSec": 178
+        },
+        {
+          "id": "Jxl-nM5_Nb0",
+          "title": "Persona 4 Revival - \"Reach Out To The Truth\" Official Lyric Video | GameStop",
+          "channel": "GameStop",
+          "durationSec": 203
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "pixar-ost-friend": {
@@ -573,6 +1527,20 @@
       "title": "You've Got A Friend In Me - Randy Newman (Toy Story Edition)",
       "channel": "blushmatter",
       "durationSec": 145,
+      "alt": [
+        {
+          "id": "XHFy3YWpRx8",
+          "title": "toy story - you've got a friend in me music",
+          "channel": "scousekid92",
+          "durationSec": 125
+        },
+        {
+          "id": "zIYOJ_hSs0o",
+          "title": "Toy Story - You've got a friend in me - lyrics",
+          "channel": "songlyrics1994",
+          "durationSec": 131
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "pixar-ost-married": {
@@ -580,6 +1548,20 @@
       "title": "Married Life - Carl & Ellie by Michael Giacchino in UP",
       "channel": "Harsh Makwana",
       "durationSec": 262,
+      "alt": [
+        {
+          "id": "FI8hqNOPtao",
+          "title": "Married Life from Up! by Michael Giacchino",
+          "channel": "Wells Cathedral School Music",
+          "durationSec": 317
+        },
+        {
+          "id": "Q-N1kcwAdJk",
+          "title": "Michael Giacchino - Married Life",
+          "channel": "qoobbell",
+          "durationSec": 251
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "pokemon-ost-wildbattle": {
@@ -587,41 +1569,87 @@
       "title": "Pokémon Red, Blue & Yellow - Trainer Battle Music (HQ)",
       "channel": "Pokeli",
       "durationSec": 180,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "pokemon-tr-sv": {
       "id": "dAQBo9BGRdA",
       "title": "Pokémon Scarlet & Pokémon Violet – Overview Trailer – Nintendo Switch",
       "channel": "Nintendo of America",
       "durationSec": 331,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "hdbxquqdLKI",
+          "title": "Pokemon Scarlet & Pokemon Violet DLC: The Hidden Treasure of Area Zero Part 2 - Official Trailer",
+          "channel": "IGN",
+          "durationSec": 254
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "rdr-ost-faraway": {
       "id": "_7i-GJTXFaA",
       "title": "Live Performance of \"Far Away\" by Jose Gonzalez",
       "channel": "Rockstar Games",
       "durationSec": 150,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "85u6n7nEe6Q",
+          "title": "Live Performance of 'Far Away' by Jose Gonzales",
+          "channel": "Rockstar Games Australia & New Zealand",
+          "durationSec": 150
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "rdr-ost-thatstheway": {
       "id": "gJ7KotqY5xY",
       "title": "Red Dead Redemption 2 Official Soundtrack - That's The Way It Is",
       "channel": "Arthur Morgan",
       "durationSec": 192,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "WoxFRRf9DJM",
+          "title": "Arthur's last ride song - That's the way it is - Daniel Lanois - Red Dead Redemption 2",
+          "channel": "TheOddSusie",
+          "durationSec": 188
+        },
+        {
+          "id": "hFHthsmwCZU",
+          "title": "Daniel Lanois ~ That's The Way It Is",
+          "channel": "MariMari142",
+          "durationSec": 194
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "re-ost-saferoom": {
       "id": "dLX6reRrD88",
       "title": "Resident Evil Remake Soundtrack \"Save Heaven\"",
       "channel": "zero19923",
       "durationSec": 190,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "sailormoon-op-moonlight": {
       "id": "aIQVnR1e9aw",
       "title": "Pretty Guardian Sailor Moon Cosmos The Movie: Part 1 OP | \"Moonlight Legend\" | Netflix Anime",
       "channel": "Netflix Anime",
       "durationSec": 95,
+      "alt": [
+        {
+          "id": "XLHD7DjneKQ",
+          "title": "Sailor Moon OP02 'Moonlight densetsu' (Creditless)",
+          "channel": "esnvideos",
+          "durationSec": 93
+        },
+        {
+          "id": "5eEWAmkfs9I",
+          "title": "Sailor Moon Crystal – Moonlight Densetsu [OP1 Remake]",
+          "channel": "Daniel Praźmo (D.Prazz'd)",
+          "durationSec": 91
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "sailormoon-op-starsong": {
@@ -629,6 +1657,14 @@
       "title": "Pretty Guardian Sailor Moon Cosmos The Movie: Part 2 OP | \"Sailor Star Song\" | Netflix Anime",
       "channel": "Netflix Anime",
       "durationSec": 109,
+      "alt": [
+        {
+          "id": "J54dO5EaCJI",
+          "title": "Sailor Moon, Sailor Star Opening (Sailor Star Song) (Latino)",
+          "channel": "анимемузыка",
+          "durationSec": 107
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "saintseiya-op-pegasus": {
@@ -636,6 +1672,20 @@
       "title": "Pegasus Fantasy - Saint Seiya - original japanese opening - subtitled",
       "channel": "Lorenzo Gasperoni",
       "durationSec": 86,
+      "alt": [
+        {
+          "id": "CsCcPHRPnBo",
+          "title": "Opening de Saint Seiya Pegasus Fantasy HD",
+          "channel": "koga567",
+          "durationSec": 86
+        },
+        {
+          "id": "GAEb5Kk9K5s",
+          "title": "Opening de Saint Seiya Pegasus Fantasy (Japones) HD",
+          "channel": "Axelcapo555",
+          "durationSec": 86
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "saintseiya-op-soldier": {
@@ -643,6 +1693,20 @@
       "title": "·MAUREN·「Soldier Dream ~Versión Full~ ★SAINT SEIYA OPENING 2★",
       "channel": "Anison Music",
       "durationSec": 218,
+      "alt": [
+        {
+          "id": "E_8ITwD42cI",
+          "title": "SAINT SEIYA SOLDIER DREAM (BEST VERSION)",
+          "channel": "MrInfinitrix",
+          "durationSec": 175
+        },
+        {
+          "id": "BGgNiyJ9DwM",
+          "title": "Soldier Dream - Saint Seiya Soul of God",
+          "channel": "HydraMUSIC",
+          "durationSec": 222
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "sao-op-adamas": {
@@ -650,6 +1714,20 @@
       "title": "LiSA \"ADAMAS\" MUSiC CLiP (\"Sword Art Online: Alicization\" Opening Theme Song)",
       "channel": "LiSA Official YouTube",
       "durationSec": 224,
+      "alt": [
+        {
+          "id": "MMuAqR_MjS8",
+          "title": "Sword Art Online: Alicization Opening Full『LiSA - ADAMAS』【ENG Sub】",
+          "channel": "Melodic Star",
+          "durationSec": 224
+        },
+        {
+          "id": "5-aazdelI5c",
+          "title": "Sword Art Online  Alicization Opening Full『LiSA   ADAMAS』【ENG Sub】",
+          "channel": "KILLER",
+          "durationSec": 224
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "sao-op-crossing": {
@@ -657,6 +1735,20 @@
       "title": "LiSA \"crossing field\" MUSiC CLiP (\"Sword Art Online\" Opening Theme Song)",
       "channel": "LiSA Official YouTube",
       "durationSec": 249,
+      "alt": [
+        {
+          "id": "alObUAhcJ9Y",
+          "title": "LiSA - Crossing Field メガスピーカー Lyrics",
+          "channel": "El papu",
+          "durationSec": 253
+        },
+        {
+          "id": "Zxk1Jpq_8fk",
+          "title": "Crossing Field - Subtitulado Al Español. | Sword Art Online OP.1",
+          "channel": "meena♡",
+          "durationSec": 243
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "simpsons-intro": {
@@ -664,6 +1756,20 @@
       "title": "Simpsons Intro HD",
       "channel": "Moreno Candente",
       "durationSec": 113,
+      "alt": [
+        {
+          "id": "aPzS3QYb868",
+          "title": "The Simpsons Opening Credits and Theme Song",
+          "channel": "Steven",
+          "durationSec": 101
+        },
+        {
+          "id": "MGFOgyUzp1A",
+          "title": "The Simpsons Opening (1991-2009)",
+          "channel": "Никита Шевченко",
+          "durationSec": 85
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "smash-ost-lifelight": {
@@ -671,48 +1777,121 @@
       "title": "Super Smash Bros. Ultimate Main Theme - Lifelight",
       "channel": "Super Smash Bros.",
       "durationSec": 230,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "0DDKiPjXJmo",
+          "title": "Super Smash Bros Ultimate Theme - Lifelight With Lyrics",
+          "channel": "Digital Gator",
+          "durationSec": 230
+        },
+        {
+          "id": "znzR3af4VtU",
+          "title": "Smash Bros Musical Bytes - Lifelight - Man on the Internet",
+          "channel": "Man on the Internet",
+          "durationSec": 275
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "smash-tr-sora": {
       "id": "243SBEaD0A4",
       "title": "Super Smash Bros. Ultimate Official Sora Reveal Trailer + Gameplay",
       "channel": "GameSpot",
       "durationSec": 241,
-      "checkedAt": "2026-10-18"
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "solo-op-reawaker": {
       "id": "C0zMWogztQs",
       "title": "Solo Leveling Season 2 -Arise from the Shadow- Opening | \"ReawakeR\" by LiSA feat Felix of Stray Kids",
       "channel": "Crunchyroll",
       "durationSec": 101,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "SwcrvJ7VljY",
+          "title": "Solo Leveling Opening 2 - ReawakeR | Creditless | 4K | English / Romaji Subtitles",
+          "channel": "Bruh Clan ++",
+          "durationSec": 124
+        },
+        {
+          "id": "o5A95N277ew",
+          "title": "Solo Leveling Season 2 OPENING「ReawakeR」TV SIZE 俺だけレベルアップな件 | HQ Remake",
+          "channel": "Pharozen",
+          "durationSec": 94
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "sonic-ost-greenhill": {
       "id": "G-i8HYi1QH0",
       "title": "Sonic The Hedgehog OST - Green Hill Zone",
       "channel": "Hanternos",
       "durationSec": 142,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "8lkTRBywniw",
+          "title": "Sonic Mania \"Green Hill Zone Act 1\" Music",
+          "channel": "Truesonic1",
+          "durationSec": 145
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "souls-ost-gwyn": {
-      "id": "3bqLGebDRIY",
-      "title": "Gwyn, Lord of Cinder",
-      "channel": "Motoi Sakuraba - Topic",
-      "durationSec": 219,
-      "checkedAt": "2026-10-18"
+      "id": "Nvv9w-UPuSY",
+      "title": "Gwyn, Lord of Cinder - Dark Souls Soundtrack 28",
+      "channel": "K Playz",
+      "durationSec": 216,
+      "alt": [
+        {
+          "id": "QH3mbB3H57g",
+          "title": "Dark Souls OST - Gwyn, Lord of Cinder",
+          "channel": "Woo Nam",
+          "durationSec": 219
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "souls-tr-erdtree": {
       "id": "qLZenOn7WUo",
       "title": "ELDEN RING Shadow of the Erdtree | Official Gameplay Reveal Trailer",
       "channel": "BANDAI NAMCO Europe",
       "durationSec": 187,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "M-Xh4vbs6go",
+          "title": "ELDEN RING Shadow of the Erdtree | Official Launch Trailer",
+          "channel": "BANDAI NAMCO Europe",
+          "durationSec": 199
+        },
+        {
+          "id": "a8k8R0Q2ubY",
+          "title": "ELDEN RING Shadow of the Erdtree – Official Gameplay Reveal Trailer",
+          "channel": "Bandai Namco Entertainment America",
+          "durationSec": 187
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "spiderman-ost-main": {
       "id": "6XpU86QsZj0",
       "title": "Marvel's Spider-Man (Spider-Man PS4) - Main Theme (Full)",
       "channel": "Evan Filarca",
       "durationSec": 180,
+      "alt": [
+        {
+          "id": "Rtbje4vVnv0",
+          "title": "Spider-Man Theme Music (PS4 2018)",
+          "channel": "OrcCorp",
+          "durationSec": 184
+        },
+        {
+          "id": "HW-h_l0pvpA",
+          "title": "Marvel's Spider-Man Pre-Order PS4 Theme (Music Only)",
+          "channel": "Katsudon96",
+          "durationSec": 219
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "spiderman-tr-2": {
@@ -720,6 +1899,20 @@
       "title": "Marvel's Spider-Man 2 - PlayStation Showcase 2021: Reveal Trailer | PS5",
       "channel": "PlayStation",
       "durationSec": 98,
+      "alt": [
+        {
+          "id": "bgqGdIoa52s",
+          "title": "Marvel's Spider-Man 2 - Story Trailer | PS5 Games",
+          "channel": "PlayStation",
+          "durationSec": 117
+        },
+        {
+          "id": "9fVYKsEmuRo",
+          "title": "Marvel's Spider-Man 2 - Launch Trailer I PS5 Games",
+          "channel": "PlayStation",
+          "durationSec": 74
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "spy-op-mixednuts": {
@@ -727,13 +1920,41 @@
       "title": "OFFICIAL HIGE DANDISM - MIXED NUTS [ Official Video ]",
       "channel": "Official髭男dism",
       "durationSec": 230,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "Wf8XuAoCjN8",
+          "title": "「SPY×FAMILY」Opening → Mixed Nuts By Official HIGE DANdism | Lyrics | HQ Audio",
+          "channel": "mysticholy",
+          "durationSec": 213
+        },
+        {
+          "id": "jAcndcCIzQ4",
+          "title": "OFFICIAL HIGE DANDISM - MIXED NUTS",
+          "channel": "Songsong Music",
+          "durationSec": 210
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "st-intro": {
       "id": "-RcPZdihrp4",
       "title": "Stranger Things | Title Sequence [HD] | Netflix",
       "channel": "Stranger Things",
       "durationSec": 54,
+      "alt": [
+        {
+          "id": "6We5KjlvTb4",
+          "title": "Stranger Things Volume One - Kyle Dixon & Michael Stein - Stranger Things",
+          "channel": "mollemania",
+          "durationSec": 68
+        },
+        {
+          "id": "Sz6gq9lHEn8",
+          "title": "Stranger Things -  Kyle Dixon &  Michael Stein",
+          "channel": "Anupa06",
+          "durationSec": 68
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "st-runningup": {
@@ -741,6 +1962,20 @@
       "title": "Max’s Song (Full Scene) | Kate Bush - Running Up That Hill | Stranger Things | Netflix",
       "channel": "Still Watching Netflix",
       "durationSec": 251,
+      "alt": [
+        {
+          "id": "wp43OdtAAkM",
+          "title": "Kate Bush - Running Up That Hill - Official Music Video",
+          "channel": "KateBushMusic",
+          "durationSec": 296
+        },
+        {
+          "id": "l_b_X6n__pY",
+          "title": "Kate Bush - Running Up That Hill (Lyrics)",
+          "channel": "Rap Samurai",
+          "durationSec": 298
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "sw-ost-duel": {
@@ -748,6 +1983,20 @@
       "title": "John Williams - Duel of the Fates (Star Wars Soundtrack)",
       "channel": "TSOM",
       "durationSec": 254,
+      "alt": [
+        {
+          "id": "qzVBqBosf5w",
+          "title": "Star Wars - John Williams - Duel Of The Fates",
+          "channel": "tomoxis",
+          "durationSec": 255
+        },
+        {
+          "id": "97-0ghnBMcs",
+          "title": "STAR WARS - Duel of the Fates  // The Danish National Symphony Orchestra (Live)",
+          "channel": "DR Koncerthuset",
+          "durationSec": 256
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "sw-ost-imperial": {
@@ -755,6 +2004,7 @@
       "title": "Star Wars: The Empire Strikes Back - The Imperial March (Darth Vader Theme)",
       "channel": "Star Wars Saga LatinAmerica",
       "durationSec": 97,
+      "alt": [],
       "checkedAt": "2026-10-19"
     },
     "sw-ost-main": {
@@ -762,6 +2012,20 @@
       "title": "Star Wars Main Theme (Full)",
       "channel": "Coltsrock56",
       "durationSec": 352,
+      "alt": [
+        {
+          "id": "54hoKbTWon4",
+          "title": "John Williams & Wiener Philharmoniker – \"Main Title\" from \"Star Wars: A New Hope\"",
+          "channel": "Deutsche Grammophon - DG y John Williams",
+          "durationSec": 402
+        },
+        {
+          "id": "we3VEI5pmqo",
+          "title": "Main Title - STAR WARS // The Danish National Symphony Orchestra (Live)",
+          "channel": "DR Koncerthuset",
+          "durationSec": 341
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "tg-op-unravel": {
@@ -769,27 +2033,45 @@
       "title": "Tokyo Ghoul Opening | \"Unravel\" by TK from Ling Toshite Sigure",
       "channel": "Crunchyroll",
       "durationSec": 93,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "RrfyrqvQ_Wk",
+          "title": "Tokyo Ghoul Opening 1 - Unravel | Creditless | English / Romaji Subtitles",
+          "channel": "Bruh Clan ++",
+          "durationSec": 114
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "tlou-ost-main": {
-      "id": "Pt1pOY3_W64",
-      "title": "Gustavo Santaolalla - The Last of Us (Main Theme) | The Last of Us (Video Game Soundtrack)",
-      "channel": "SonySoundtracksVEVO",
-      "durationSec": 186,
-      "checkedAt": "2026-10-18"
+      "id": "8SWhBsbxmpk",
+      "title": "The Last of Us | Opening Credits | Max",
+      "channel": "HBO Max",
+      "durationSec": 80,
+      "alt": [],
+      "checkedAt": "2026-10-19"
     },
     "valorant-tr-neon": {
       "id": "dtx8CgjRmqE",
       "title": "Spark - Neon Agent Trailer // VALORANT",
       "channel": "VALORANT",
       "durationSec": 165,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "yW4fqAhETp8",
+          "title": "Chispa - Tráiler de la agente Neon // VALORANT",
+          "channel": "VALORANT - LATAM",
+          "durationSec": 165
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "vinland-ed-torches": {
       "id": "A28JWbwyWN8",
       "title": "VINLAND SAGA - Ending 1 | Torches",
       "channel": "Crunchyroll",
       "durationSec": 101,
+      "alt": [],
       "checkedAt": "2026-10-19"
     },
     "vinland-op-mukanjyo": {
@@ -797,6 +2079,20 @@
       "title": "VINLAND SAGA Opening 1 | Mukanjyo by Survive Said the Prophet",
       "channel": "Crunchyroll",
       "durationSec": 101,
+      "alt": [
+        {
+          "id": "Z4b70ecDelY",
+          "title": "Vinland saga - op 1  (Survive Said the Prophet - MUKANJYO)",
+          "channel": "Ridex",
+          "durationSec": 91
+        },
+        {
+          "id": "iqI7jC8XEFo",
+          "title": "Vinland Saga - Opening 1 | Mukanjyo (Legendado PT/BR) Game Over Lyrics",
+          "channel": "Game Over Lyrics",
+          "durationSec": 90
+        }
+      ],
       "checkedAt": "2026-10-19"
     },
     "witcher-ost-wolven": {
@@ -804,28 +2100,78 @@
       "title": "WitcherCon | Marcin Przybyłowicz & Percival feat. Monika Kuczera | Wolven Storm",
       "channel": "The Witcher",
       "durationSec": 195,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "sferp_9KHZM",
+          "title": "It’s All About You! — Priscilla’s Song Special: The Wolven Storm",
+          "channel": "The Witcher",
+          "durationSec": 208
+        },
+        {
+          "id": "823yuWz0lto",
+          "title": "The Witcher 3 Soundtrack - The Wolven Storm (Priscilla's song)",
+          "channel": "Movie Edition Games",
+          "durationSec": 201
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "witcher-tr-killing": {
       "id": "c0i88t0Kacs",
       "title": "The Witcher 3: Wild Hunt - Killing Monsters Cinematic Trailer",
       "channel": "The Witcher",
       "durationSec": 165,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "7i23ZDoxClk",
+          "title": "The Witcher 3 Killing Monsters Cinematic Trailer",
+          "channel": "ONE Media +",
+          "durationSec": 165
+        },
+        {
+          "id": "UgYoKVUPD8Y",
+          "title": "Wiedźmin 3: Dziki Gon PL - Killing Monsters Cinematic Trailer - Eurogamer.pl",
+          "channel": "EurogamerPL",
+          "durationSec": 146
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "zelda-ost-gerudo": {
       "id": "0hEYvdMoF2g",
       "title": "Gerudo Valley - The Legend of Zelda: Ocarina Of Time",
       "channel": "Halo2playa",
       "durationSec": 176,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "sX3XVwMnW7I",
+          "title": "Legend of Zelda - Gerudo Valley",
+          "channel": "InstrumentManiac",
+          "durationSec": 187
+        }
+      ],
+      "checkedAt": "2026-10-19"
     },
     "zelda-tr-totk": {
       "id": "uHGShqcAHlQ",
       "title": "The Legend of Zelda: Tears of the Kingdom – Official Trailer #3",
       "channel": "Nintendo of America",
       "durationSec": 235,
-      "checkedAt": "2026-10-18"
+      "alt": [
+        {
+          "id": "WBELOrZvgNI",
+          "title": "The Legend of Zelda: Tears of the Kingdom – Official Trailer #3 (Nintendo Switch)",
+          "channel": "Nintendo UK",
+          "durationSec": 235
+        },
+        {
+          "id": "Dv-7K_m589I",
+          "title": "The Legend of Zelda: Tears of the Kingdom – Bande-annonce officielle #3 (Nintendo Switch)",
+          "channel": "Nintendo France",
+          "durationSec": 235
+        }
+      ],
+      "checkedAt": "2026-10-19"
     }
   }
 }
