@@ -1,0 +1,149 @@
+const N = null;
+export default {
+  mcu: [
+    // reescrituras
+    [1, "💚💪😡\n¿Qué héroe es?", "Hulk", "Thor", "Drax", "Ant-Man", ["💚💪😡\nWhich hero is it?", N, N, N, N], { v: "emoji" }],
+    [3, "¿Qué armadura estrena Tony en Infinity War?", "Mark 50", "Mark 42", "Mark 85", "Mark 7", ["Which armor does Tony debut in Infinity War?", N, N, N, N]],
+    [2, "¿Quiénes crean a Ultrón?", "Tony Stark y Bruce Banner", "Tony Stark y Hank Pym", "Bruce Banner y Erik Selvig", "Tony Stark y Helen Cho", ["Who creates Ultron?", "Tony Stark and Bruce Banner", "Tony Stark and Hank Pym", "Bruce Banner and Erik Selvig", "Tony Stark and Helen Cho"]],
+    // nuevas
+    [2, "¿Qué comida piden al final de Los Vengadores?", "Shawarma", "Pizza", "Hamburguesas", "Perros calientes", ["What food do they order at the end of The Avengers?", "Shawarma", "Pizza", "Burgers", "Hot dogs"]],
+    [2, "¿De qué planeta es Thanos?", "Titán", "Xandar", "Sakaar", "Morag", ["Which planet is Thanos from?", "Titan", N, N, N]],
+    [2, "¿Cómo se llaman los acuerdos de Civil War?", "Acuerdos de Sokovia", "Acuerdos de Wakanda", "Pacto de Nueva York", "Tratado de Asgard", ["What are the Civil War accords called?", "Sokovia Accords", "Wakanda Accords", "New York Pact", "Treaty of Asgard"]],
+    [2, "¿Qué artefacto roba Loki en Los Vengadores?", "El Teseracto", "El Éter", "El Orbe", "El Cetro", ["Which artifact does Loki steal in The Avengers?", "The Tesseract", "The Aether", "The Orb", "The Scepter"]],
+    [2, "¿Quién muere en La era de Ultrón?", "Pietro Maximoff", "Clint Barton", "Maria Hill", "Nick Fury", ["Who dies in Age of Ultron?", N, N, N, N]],
+    [2, "¿Quién es la general de las Dora Milaje?", "Okoye", "Nakia", "Shuri", "Ramonda", ["Who is the general of the Dora Milaje?", N, N, N, N]],
+  ],
+
+  sonic: [
+    // reescrituras
+    [1, "🥚🔬🤖\n¿Quién es?", "Dr. Eggman", "Orbot", "Metal Sonic", "E-123 Omega", ["🥚🔬🤖\nWho is it?", N, N, N, N], { v: "emoji" }],
+    [2, "¿Quién usa el martillo Piko Piko?", "Amy Rose", "Rouge", "Cream", "Blaze", ["Who uses the Piko Piko Hammer?", N, N, N, N]],
+    [2, "¿Quién es la espía de G.U.N. que roba joyas?", "Rouge", "Blaze", "Cream", "Amy", ["Who is the G.U.N. spy who steals jewels?", N, N, N, N]],
+    [2, "¿Qué estudio de Sega desarrolla Sonic?", "Sonic Team", "Sega AM2", "Ryu Ga Gotoku Studio", "Creative Assembly", ["Which Sega studio develops Sonic?", N, N, N, N]],
+    [3, "¿Qué miembro del Team Chaotix es ninja?", "Espio", "Vector", "Charmy", "Mighty", ["Which Team Chaotix member is a ninja?", N, N, N, N]],
+    [2, "¿Quién viaja siempre con su chao Cheese?", "Cream", "Amy", "Blaze", "Rouge", ["Who always travels with her chao, Cheese?", N, N, N, N]],
+    // nuevas
+    [2, "¿Cómo se llama la isla de Knuckles?", "Angel Island", "West Side Island", "Prison Island", "Mystic Ruins", ["What is Knuckles' island called?", N, N, N, N]],
+    [2, "¿Qué robot se une al Team Dark?", "E-123 Omega", "Orbot", "Cubot", "Metal Sonic", ["Which robot joins Team Dark?", N, N, N, N]],
+    [3, "¿Qué zona de Sonic 1 tiene bumpers?", "Spring Yard Zone", "Marble Zone", "Labyrinth Zone", "Scrap Brain Zone", ["Which zone in Sonic 1 has bumpers?", N, N, N, N]],
+    [2, "¿Qué juego de 2011 une a Sonic clásico y moderno?", "Sonic Generations", "Sonic Colors", "Sonic Unleashed", "Sonic Lost World", ["Which 2011 game unites classic and modern Sonic?", N, N, N, N]],
+    [3, "¿Quién creó a Shadow?", "Gerald Robotnik", "Ivo Robotnik", "Maria Robotnik", "Eggman Nega", ["Who created Shadow?", N, N, N, N]],
+  ],
+
+  breakingbad: [
+    // reescrituras
+    [1, "¿Qué ropa usan Walter y Jesse para cocinar?", "Trajes amarillos y respiradores", "Delantales de laboratorio y guantes", "Overoles azules y cascos", "Batas blancas y gafas", ["What do Walter and Jesse wear to cook?", "Yellow suits and respirators", "Lab aprons and gloves", "Blue coveralls and helmets", "White coats and goggles"]],
+    [3, "¿Qué porcentaje de pureza tiene la metanfetamina de Walter?", "99,1 %", "97,8 %", "98,6 %", "99,7 %", ["What purity percentage is Walter's meth?", "99.1%", "97.8%", "98.6%", "99.7%"]],
+    [1, "¿Quién fue alumno de Walter y luego su socio?", "Jesse Pinkman", "Saul Goodman", "Hank Schrader", "Mike Ehrmantraut", ["Who was Walter's student and later his partner?", N, N, N, N]],
+    // nuevas
+    [3, "¿Qué roban del tren en la quinta temporada?", "Metilamina", "Pseudoefedrina", "Fósforo rojo", "Acetona", ["What do they steal from the train in season five?", "Methylamine", "Pseudoephedrine", "Red phosphorus", "Acetone"]],
+    [2, "¿Qué auto conduce Walter al inicio?", "Pontiac Aztek", "Chrysler 300", "Toyota Camry", "Ford Taurus", ["Which car does Walter drive at the start?", N, N, N, N]],
+    [2, "¿Qué actor interpreta a Gus Fring?", "Giancarlo Esposito", "Jonathan Banks", "Dean Norris", "Steven Michael Quezada", ["Which actor plays Gus Fring?", N, N, N, N]],
+    [3, "¿Qué empresa fundó Walter con sus socios?", "Gray Matter", "Madrigal Electromotive", "Vamonos Pest", "Los Pollos Hermanos", ["Which company did Walter found with his partners?", N, N, N, N]],
+    [2, "¿Qué libro delata a Walter ante Hank?", "Hojas de hierba", "Moby Dick", "Walden", "El viejo y el mar", ["Which book gives Walter away to Hank?", "Leaves of Grass", "Moby-Dick", "Walden", "The Old Man and the Sea"]],
+  ],
+
+  bleach: [
+    // reescritura (video: mismo media)
+    [2, "¿Cuál es este opening de Bleach?", "Scar", "Tonight, Tonight, Tonight", "D-tecnoLife", "Asterisk", ["Which Bleach opening is this?", N, N, N, N], { k: "bleach-op-scar", m: "audio", s: 30, e: 52 }],
+    // nuevas
+    [3, "¿En quién oculta Urahara el Hōgyoku?", "Rukia Kuchiki", "Orihime Inoue", "Yoruichi Shihōin", "Yasutora Sado", ["Who does Urahara hide the Hōgyoku inside?", N, N, N, N]],
+    [3, "¿Cuál es la resurrección de Ulquiorra?", "Murciélago", "Pantera", "Santa Teresa", "Los Lobos", ["What is Ulquiorra's resurrección?", N, N, N, N]],
+    [3, "¿Cómo se llama el grupo de Kūgo Ginjō?", "Xcution", "Los Visored", "Gotei 13", "Los Espada", ["What is Kūgo Ginjō's group called?", N, "The Visored", N, "The Espada"]],
+    [2, "¿Quién es la teniente del Escuadrón 10?", "Rangiku Matsumoto", "Nanao Ise", "Isane Kotetsu", "Momo Hinamori", ["Who is the lieutenant of Squad 10?", N, N, N, N]],
+    [2, "¿Cómo se llama el palacio de Hueco Mundo?", "Las Noches", "Seireitei", "Rukongai", "El Palacio del Rey Espíritu", ["What is the palace in Hueco Mundo called?", N, N, N, "The Soul King's Palace"]],
+  ],
+
+  tokyoghoul: [
+    // reescrituras
+    [2, "¿Cómo se llama la secuela del manga original?", "Tokyo Ghoul:re", "Tokyo Ghoul: Jack", "Tokyo Ghoul: Pinto", "Tokyo Ghoul: Zakki", ["What is the sequel to the original manga called?", N, N, N, N]],
+    [2, "¿Con qué nombre vive Kaneki en Tokyo Ghoul:re?", "Haise Sasaki", "Kuki Urie", "Shirazu Ginshi", "Kishou Arima", ["What name does Kaneki live under in Tokyo Ghoul:re?", N, N, N, N]],
+    [2, "¿Cómo es la máscara de Parche?", "Negra, con un ojo cubierto y una boca con cierre", "Blanca, con forma de conejo", "Negra, con forma de búho", "Blanca, con sonrisa de payaso", ["What does Eyepatch's mask look like?", "Black, with one eye covered and a zippered mouth", "White, rabbit-shaped", "Black, owl-shaped", "White, with a clown smile"]],
+    [3, "¿Cómo se llama el hermano menor de Touka?", "Ayato", "Nishiki", "Tatara", "Yomo", ["What is Touka's younger brother called?", N, N, N, N]],
+    [2, "¿Cómo se llaman las armas hechas con kagune?", "Quinque", "Kakuhou", "Kakuja", "Kakugan", ["What are weapons made from kagune called?", N, N, N, N]],
+    // nuevas
+    [3, "¿Qué tipo de kagune toma forma de cola?", "Bikaku", "Ukaku", "Rinkaku", "Koukaku", ["Which type of kagune takes the shape of a tail?", N, N, N, N]],
+    [3, "¿Qué tipo de kagune tiene Nishiki Nishio?", "Koukaku", "Ukaku", "Rinkaku", "Bikaku", ["Which type of kagune does Nishiki Nishio have?", N, N, N, N]],
+    [3, "¿En qué distrito está Anteiku?", "Distrito 20", "Distrito 11", "Distrito 13", "Distrito 24", ["Which ward is Anteiku in?", "Ward 20", "Ward 11", "Ward 13", "Ward 24"]],
+    [2, "¿Cómo se llama la forma que se logra devorando ghouls?", "Kakuja", "Kakugan", "Kakuhou", "Rinkaku", ["What is the form reached by devouring ghouls called?", N, N, N, N]],
+  ],
+
+  opm: [
+    // reescrituras
+    [1, "¿Cuál es el entrenamiento diario de Saitama?", "100 flexiones, 100 abdominales, 100 sentadillas y 10 km de carrera", "50 flexiones, 50 abdominales, 50 sentadillas y 5 km de carrera", "200 flexiones, 200 abdominales, 200 sentadillas y 20 km de carrera", "1000 flexiones, 100 abdominales y 100 sentadillas, sin correr", ["What is Saitama's daily training?", "100 push-ups, 100 sit-ups, 100 squats and a 10 km run", "50 push-ups, 50 sit-ups, 50 squats and a 5 km run", "200 push-ups, 200 sit-ups, 200 squats and a 20 km run", "1,000 push-ups, 100 sit-ups and 100 squats, no running"]],
+    [2, "¿Qué líder alienígena derrota Saitama?", "Boros", "Orochi", "Psykos", "Carnage Kabuto", ["Which alien leader does Saitama defeat?", N, N, N, N]],
+    [3, "¿Qué héroe de Clase S va disfrazado de perro?", "Watchdog Man", "Pig God", "Puri-Puri Prisoner", "Superalloy Darkshine", ["Which S-Class hero dresses up as a dog?", N, N, N, N]],
+    // nuevas
+    [3, "¿Quién destruyó el pueblo de Genos?", "Mad Cyborg", "Dr. Genus", "Metal Knight", "Orochi", ["Who destroyed Genos' town?", N, N, N, N]],
+    [3, "¿Quién reconstruyó a Genos?", "Dr. Kuseno", "Dr. Genus", "Metal Knight", "Child Emperor", ["Who rebuilt Genos?", N, N, N, N]],
+    [2, "¿Cuántos años tiene Saitama?", "25", "21", "29", "33", ["How old is Saitama?", N, N, N, N]],
+    [2, "¿Qué héroe de Clase S es un niño genio?", "Child Emperor", "Metal Knight", "Tanktop Master", "Puri-Puri Prisoner", ["Which S-Class hero is a child genius?", N, N, N, N]],
+  ],
+
+  cyberpunk: [
+    // reescritura
+    [3, "¿Quién creó el juego de mesa original?", "Mike Pondsmith", "Gary Gygax", "Warren Spector", "Richard Garriott", ["Who created the original tabletop game?", N, N, N, N]],
+    // nuevas
+    [3, "¿Qué es el Blackwall?", "Una barrera que contiene a las IA peligrosas de la Red", "Un muro defensivo de la Torre Arasaka", "Un implante que protege a los netrunners", "Una droga que usan los netrunners", ["What is the Blackwall?", "A barrier that contains dangerous AIs in the Net", "A defensive wall of Arasaka Tower", "An implant that protects netrunners", "A drug netrunners use"]],
+    [3, "¿Qué era Alt Cunningham?", "Netrunner", "Fixer", "Ripperdoc", "Nómada", ["What was Alt Cunningham?", N, N, N, "Nomad"]],
+    [3, "¿Qué programa de Arasaka copia la conciencia?", "Soulkiller", "El Relic", "El Blackwall", "Braindance", ["Which Arasaka program copies consciousness?", N, "The Relic", "The Blackwall", N]],
+    [2, "¿Quién lidera la banda de David?", "Maine", "Dorio", "Pilar", "Kiwi", ["Who leads David's crew?", N, N, N, N]],
+  ],
+
+  historia: [
+    [2, "¿Quién fundó el Imperio mongol?", "Gengis Kan", "Kublai Kan", "Tamerlán", "Atila", ["Who founded the Mongol Empire?", "Genghis Khan", "Kublai Khan", "Tamerlane", "Attila"]],
+    [2, "¿Qué ciudad cayó en 1453 ante los otomanos?", "Constantinopla", "Atenas", "Tesalónica", "Alejandría", ["Which city fell to the Ottomans in 1453?", "Constantinople", "Athens", "Thessaloniki", "Alexandria"]],
+    [2, "¿Qué tratado de 1919 puso fin a la Primera Guerra Mundial?", "Tratado de Versalles", "Paz de Westfalia", "Tratado de Brest-Litovsk", "Congreso de Viena", ["Which 1919 treaty ended World War I?", "Treaty of Versailles", "Peace of Westphalia", "Treaty of Brest-Litovsk", "Congress of Vienna"]],
+    [2, "¿Quién inició la Reforma con sus 95 tesis?", "Martín Lutero", "Juan Calvino", "Erasmo de Róterdam", "Ulrico Zuinglio", ["Who started the Reformation with his 95 theses?", "Martin Luther", "John Calvin", "Erasmus of Rotterdam", "Huldrych Zwingli"]],
+    [2, "¿Qué rey francés fue guillotinado en 1793?", "Luis XVI", "Luis XIV", "Luis XV", "Carlos X", ["Which French king was guillotined in 1793?", "Louis XVI", "Louis XIV", "Louis XV", "Charles X"]],
+    [2, "¿Qué conquistador derrotó al Imperio inca?", "Francisco Pizarro", "Hernán Cortés", "Pedro de Valdivia", "Vasco Núñez de Balboa", ["Which conquistador defeated the Inca Empire?", N, N, N, N]],
+  ],
+
+  rapidos: [
+    // reescritura
+    [2, "¿Qué actriz interpreta a Gisele Yashar?", "Gal Gadot", "Eva Mendes", "Elsa Pataky", "Michelle Rodriguez", ["Which actress plays Gisele Yashar?", N, N, N, N]],
+    // nuevas
+    [3, "¿Qué actor interpreta a Mr. Nobody?", "Kurt Russell", "Dwayne Johnson", "Jason Statham", "Ludacris", ["Which actor plays Mr. Nobody?", N, N, N, N]],
+    [2, "¿En qué película aparece por primera vez Luke Hobbs?", "Rápidos y furiosos 5", "Rápidos y furiosos 4", "Rápidos y furiosos 6", "Rápidos y furiosos 7", ["In which movie does Luke Hobbs first appear?", "Fast Five", "Fast & Furious", "Fast & Furious 6", "Furious 7"]],
+    [2, "¿Quién reaparece con amnesia en Rápidos y furiosos 6?", "Letty", "Han", "Gisele", "Elena", ["Who reappears with amnesia in Fast & Furious 6?", N, N, N, N]],
+    [2, "¿En qué ciudad se ambienta la primera película?", "Los Ángeles", "Miami", "Tokio", "Río de Janeiro", ["Which city is the first movie set in?", "Los Angeles", N, "Tokyo", "Rio de Janeiro"]],
+    [2, "¿Cómo explica Dom su forma de vivir?", "Un cuarto de milla a la vez", "Una carrera a la vez", "Un día a la vez", "A toda velocidad", ["How does Dom describe the way he lives?", "A quarter mile at a time", "One race at a time", "One day at a time", "At full speed"]],
+  ],
+
+  merlina: [
+    [1, "¿Cómo se llama el hermano menor de Merlina?", "Pugsley", "Fester", "Lurch", "Gómez", ["What is Wednesday's younger brother called?", N, N, N, "Gomez"]],
+    [2, "¿Qué criatura es Ajax Petropolus?", "Una gorgona", "Un hombre lobo", "Un vampiro", "Un cambiaformas", ["What kind of creature is Ajax Petropolus?", "A gorgon", "A werewolf", "A vampire", "A shapeshifter"]],
+    [2, "¿Quién es el Hyde que ataca a los estudiantes?", "Tyler Galpin", "Xavier Thorpe", "Eugene Ottinger", "El sheriff Galpin", ["Who is the Hyde that attacks the students?", N, N, N, "Sheriff Galpin"]],
+    [3, "¿Dónde trabaja Tyler?", "Weathervane", "The Raven's Nest", "Café Poe", "The Black Cat", ["Where does Tyler work?", N, N, N, N]],
+    [3, "¿Qué actor interpreta a Xavier Thorpe?", "Percy Hynes White", "Hunter Doohan", "Moosa Mostafa", "Georgie Farmer", ["Which actor plays Xavier Thorpe?", N, N, N, N]],
+  ],
+
+  cuphead: [
+    // reescritura
+    [2, "¿Para qué recolectan contratos de almas?", "Para saldar la deuda de su apuesta con el Diablo", "Para romper una maldición sobre la isla", "Para reabrir el casino de King Dice", "Para rescatar a Elder Kettle", ["Why do they collect soul contracts?", "To pay off their gambling debt to the Devil", "To break a curse on the island", "To reopen King Dice's casino", "To rescue Elder Kettle"]],
+    // nuevas
+    [3, "¿Qué miembro de The Root Pack lanza lágrimas?", "Ollie Bulb", "Sal Spudder", "Horace Radish", "Chauncey Chantenay", ["Which Root Pack member shoots tears?", N, N, N, N]],
+    [3, "¿Qué jefe es un genio?", "Djimmi the Great", "Grim Matchstick", "Rumor Honeybottoms", "Captain Brineybeard", ["Which boss is a genie?", N, N, N, N]],
+    [3, "¿En qué se convierten Ribby y Croaks en su fase final?", "Una máquina tragamonedas", "Un camión de bomberos", "Un tanque", "Una rana gigante", ["What do Ribby and Croaks turn into in their final phase?", "A slot machine", "A fire truck", "A tank", "A giant frog"]],
+    [2, "¿Con qué arma empieza Cuphead?", "Peashooter", "Spread", "Lobber", "Roundabout", ["What weapon does Cuphead start with?", N, N, N, N]],
+    [3, "¿Quién atiende la tienda?", "Porkrind", "Elder Kettle", "Beppi", "Cala Maria", ["Who runs the shop?", N, N, N, N]],
+  ],
+
+  rickmorty: [
+    [3, "¿Cómo se llama la esposa asesinada de Rick?", "Diane", "Unity", "Jessica", "Tammy", ["What is Rick's murdered wife called?", N, N, N, N]],
+    [3, "¿Cómo se llama el episodio de la TV interdimensional?", "Rixty Minutes", "Total Rickall", "Ricksy Business", "The Ricks Must Be Crazy", ["What is the interdimensional cable episode called?", N, N, N, N]],
+    [3, "¿Qué amiga de Summer es agente de la Federación?", "Tammy", "Jessica", "Unity", "Beth", ["Which friend of Summer is a Federation agent?", N, N, N, N]],
+    [3, "¿Quién es el director de la escuela de Morty?", "Director Vagina", "Sr. Goldenfold", "Sr. Poopybutthole", "Squanchy", ["Who is the principal of Morty's school?", "Principal Vagina", "Mr. Goldenfold", "Mr. Poopybutthole", N]],
+  ],
+
+  bocchi: [
+    // reescrituras
+    [3, "¿Quién toca el bajo en Kessoku Band?", "Ryo Yamada", "Nijika Ijichi", "Ikuyo Kita", "Hitori Gotoh", ["Who plays bass in Kessoku Band?", N, N, N, N]],
+    [3, "¿Cómo se llama el opening de Bocchi the Rock!?", "Seishun Complex", "Guitar, Loneliness and Blue Planet", "Distortion!!", "Karakara", ["What is the opening of Bocchi the Rock! called?", N, N, N, N]],
+    // nuevas
+    [2, "¿Qué significa \"bocchi\" en japonés?", "Persona solitaria", "Guitarrista principiante", "Fan del rock", "Nueva estudiante", ["What does \"bocchi\" mean in Japanese?", "Loner", "Beginner guitarist", "Rock fan", "New student"]],
+    [3, "¿Quién maneja el sonido en STARRY?", "PA-san", "Seika Ijichi", "Kikuri Hiroi", "Ikuyo Kita", ["Who runs the sound at STARRY?", N, N, N, N]],
+    [3, "¿Qué instrumento toca Kikuri Hiroi?", "El bajo", "La guitarra", "La batería", "El teclado", ["What instrument does Kikuri Hiroi play?", "Bass", "Guitar", "Drums", "Keyboard"]],
+    [2, "¿Qué hábito tiene Kikuri Hiroi?", "Beber alcohol en exceso", "Apostar en carreras", "Coleccionar guitarras", "Dormir en el local", ["What habit does Kikuri Hiroi have?", "Drinking too much alcohol", "Betting on races", "Collecting guitars", "Sleeping at the venue"]],
+  ],
+};

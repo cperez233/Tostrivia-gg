@@ -1,0 +1,158 @@
+const N = null;
+export default {
+  onepiece: [
+    [2, "¿Quién es el «dios» de Skypiea?", "Eneru", "Gan Fall", "Wyper", "Calgara", ["Who is the \"god\" of Skypiea?", "Eneru", "Gan Fall", "Wyper", "Calgara"]],
+    [2, "¿Quién derrota a Zoro en el Baratie?", "Dracule Mihawk", "Tashigi", "Daz Bonez", "Kaku", ["Who defeats Zoro at the Baratie?", "Dracule Mihawk", "Tashigi", "Daz Bonez", "Kaku"]],
+    [1, "¿Quién es el músico de la tripulación?", "Brook", "Franky", "Jinbe", "Usopp", ["Who is the crew's musician?", "Brook", "Franky", "Jinbe", "Usopp"]],
+    [2, "¿Cuál es la verdadera fruta de Luffy?", "Hito Hito no Mi, modelo Nika", "Hito Hito no Mi, modelo Daibutsu", "Uo Uo no Mi, modelo Seiryū", "Zou Zou no Mi, modelo Mamut", ["What is Luffy's true fruit?", "Hito Hito no Mi, Model: Nika", "Hito Hito no Mi, Model: Daibutsu", "Uo Uo no Mi, Model: Seiryu", "Zou Zou no Mi, Model: Mammoth"]],
+    [2, "¿Quién entrenó a Sanji como cocinero?", "Zeff", "Patty", "Carne", "Judge", ["Who trained Sanji as a cook?", "Zeff", "Patty", "Carne", "Judge"]],
+    [2, "¿Cuál es la fruta del diablo de Nico Robin?", "Hana Hana no Mi", "Suna Suna no Mi", "Doru Doru no Mi", "Bane Bane no Mi", ["What is Nico Robin's Devil Fruit?", N, N, N, N]],
+    [2, "¿Qué objeto lleva Nami en la muñeca para navegar?", "El Log Pose", "El Eternal Pose", "La Vivre Card", "El Den Den Mushi", ["Which object does Nami wear on her wrist to navigate?", "The Log Pose", "The Eternal Pose", "The Vivre Card", "The Den Den Mushi"]],
+    [3, "¿De qué mar proviene Sanji?", "Del Mar del Norte", "Del Mar del Este", "Del Mar del Oeste", "Del Mar del Sur", ["Which sea does Sanji come from?", "North Blue", "East Blue", "West Blue", "South Blue"]],
+    [2, "¿En qué ciudad fue ejecutado Gol D. Roger?", "Loguetown", "Marineford", "Mary Geoise", "Water 7", ["In which town was Gol D. Roger executed?", N, N, N, N]],
+    [2, "¿Qué fruta del diablo comió Ace?", "Mera Mera no Mi", "Pika Pika no Mi", "Magu Magu no Mi", "Hie Hie no Mi", ["Which Devil Fruit did Ace eat?", N, N, N, N]],
+    [3, "¿Cómo se llama el pueblo donde creció Nami?", "Cocoyasi", "Syrup", "Shells Town", "Orange Town", ["What is the village where Nami grew up?", "Cocoyasi Village", "Syrup Village", "Shells Town", "Orange Town"]],
+  ],
+
+  simpsons: [
+    [3, "¿Cómo se llama la madre de Marge?", "Jacqueline Bouvier", "Mona Simpson", "Agnes Skinner", "Luann Van Houten", ["What is Marge's mother called?", "Jacqueline Bouvier", "Mona Simpson", "Agnes Skinner", "Luann Van Houten"]],
+    [3, "¿Qué número tiene la casa de los Simpson?", "742", "744", "724", "472", ["What is the Simpsons' house number?", N, N, N, N]],
+    [2, "¿En qué año se estrenó la serie?", "1989", "1987", "1991", "1993", ["In what year did the series premiere?", N, N, N, N]],
+    [3, "¿En qué sector trabaja Homero?", "Sector 7-G", "Sector 7-B", "Sector 3-G", "Sector 9-G", ["In which sector does Homer work?", "Sector 7-G", "Sector 7-B", "Sector 3-G", "Sector 9-G"]],
+    [2, "¿Quién es el alcalde de Springfield?", "Joe Quimby", "Kent Brockman", "Lionel Hutz", "Rainier Wolfcastle", ["Who is the mayor of Springfield?", "Joe Quimby", "Kent Brockman", "Lionel Hutz", "Rainier Wolfcastle"]],
+    [3, "¿Cuántos hijos tienen Apu y Manjula de un parto?", "Ocho", "Seis", "Cuatro", "Diez", ["How many babies did Apu and Manjula have at once?", "Eight", "Six", "Four", "Ten"]],
+    [3, "¿Qué religión adopta Lisa?", "El budismo", "El hinduismo", "El judaísmo", "El presbiterianismo", ["Which religion does Lisa adopt?", "Buddhism", "Hinduism", "Judaism", "Presbyterianism"]],
+  ],
+
+  strangerthings: [
+    [1, "¿A qué juegan los chicos en el sótano de Mike?", "Calabozos y Dragones", "Monopoly", "Risk", "Cluedo", ["What are the boys playing in Mike's basement?", "Dungeons & Dragons", "Monopoly", "Risk", "Clue"]],
+    [1, "¿Quién es el jefe de policía de Hawkins?", "Jim Hopper", "Powell", "Callahan", "Flo", ["Who is the chief of police of Hawkins?", "Jim Hopper", "Powell", "Callahan", "Flo"]],
+    [2, "¿Dónde trabaja Joyce al inicio?", "En una tienda general", "En el laboratorio de Hawkins", "En una biblioteca", "En una gasolinera", ["Where does Joyce work at the start?", "At a general store", "At the Hawkins Lab", "At a library", "At a gas station"]],
+    [2, "¿Dónde está preso Hopper en la cuarta temporada?", "En la Unión Soviética", "En Alemania Oriental", "En Cuba", "En China", ["Where is Hopper imprisoned in season 4?", "In the Soviet Union", "In East Germany", "In Cuba", "In China"]],
+    [3, "¿Quién es la primera víctima de Vecna?", "Chrissy Cunningham", "Fred Benson", "Patrick McKinney", "Jason Carver", ["Who is Vecna's first victim?", "Chrissy Cunningham", "Fred Benson", "Patrick McKinney", "Jason Carver"]],
+    [2, "¿Cómo se llama el profesor de ciencias?", "Scott Clarke", "Bob Newby", "Dr. Owens", "Murray Bauman", ["What is the science teacher's name?", "Scott Clarke", "Bob Newby", "Dr. Owens", "Murray Bauman"]],
+    [2, "¿Cómo se llama la amiga de Nancy que desaparece?", "Barb Holland", "Robin Buckley", "Chrissy Cunningham", "Max Mayfield", ["Who is Nancy's friend who disappears?", "Barb Holland", "Robin Buckley", "Chrissy Cunningham", "Max Mayfield"]],
+  ],
+
+  ff: [
+    [2, "¿Qué invocación lanza Megaflare?", "Bahamut", "Ifrit", "Shiva", "Ramuh", ["Which summon casts Megaflare?", N, N, N, N]],
+    [2, "¿A qué cuerpo de élite pertenecían Sephiroth y Zack?", "SOLDADO", "Los Turcos", "AVALANCHA", "WRO", ["Which elite force did Sephiroth and Zack belong to?", "SOLDIER", "The Turks", "AVALANCHE", "WRO"]],
+    [2, "🥊🍸\n¿Quién es?", "Tifa Lockhart", "Aerith Gainsborough", "Yuffie Kisaragi", "Lightning", ["🥊🍸\nWho is it?", "Tifa Lockhart", "Aerith Gainsborough", "Yuffie Kisaragi", "Lightning"], { v: "emoji" }],
+    [2, "¿Quién es la estrella de los Abes de Zanarkand?", "Tidus", "Wakka", "Auron", "Kimahri", ["Who is the star of the Zanarkand Abes?", N, N, N, N]],
+    [2, "¿Cómo se llama la corporación de Final Fantasy VII?", "Shinra", "Galbadia", "Archadia", "El Imperio de Gestahl", ["What is the corporation in Final Fantasy VII called?", "Shinra", "Galbadia", "Archadia", "The Gestahl Empire"]],
+    [3, "¿De qué color es la Materia de magia?", "Verde", "Roja", "Azul", "Amarilla", ["What color is Magic Materia?", "Green", "Red", "Blue", "Yellow"]],
+    [2, "¿Cómo se llama la espada de Sephiroth?", "La Masamune", "La Espada Mortal", "La Lion Heart", "La Excalibur", ["What is Sephiroth's sword called?", "The Masamune", "The Buster Sword", "The Lion Heart", "The Excalibur"]],
+    [2, "¿Cuál es el pueblo natal de Cloud?", "Nibelheim", "Kalm", "Gongaga", "Corel", ["What is Cloud's hometown?", N, N, N, N]],
+    [2, "¿Quién es el protagonista de Final Fantasy IX?", "Zidane Tribal", "Vivi Ornitier", "Adelbert Steiner", "Freya Crescent", ["Who is the protagonist of Final Fantasy IX?", N, N, N, N]],
+    [3, "¿En qué escuela militar estudia Squall?", "Balamb Garden", "Galbadia Garden", "Trabia Garden", "Esthar Garden", ["Which military academy does Squall attend?", N, N, N, N]],
+    [2, "¿Qué criatura lleva un farol y un cuchillo?", "Un Tonberry", "Un Cactilio", "Un Bomb", "Un Behemoth", ["Which creature carries a lantern and a knife?", "A Tonberry", "A Cactuar", "A Bomb", "A Behemoth"]],
+  ],
+
+  cod: [
+    [3, "¿Cuántas bajas pide la nuclear en Modern Warfare 2 (2009)?", "25", "15", "20", "30", ["How many kills does the nuke need in Modern Warfare 2 (2009)?", N, N, N, N]],
+    [2, "¿Dónde apareció primero el Prestigio?", "Call of Duty 4: Modern Warfare", "Call of Duty 3", "World at War", "Modern Warfare 2", ["Where did Prestige first appear?", "Call of Duty 4: Modern Warfare", "Call of Duty 3", "World at War", "Modern Warfare 2"]],
+    [3, "¿Quién es el espía soviético de Black Ops Cold War?", "Perseus", "Russell Adler", "Alex Mason", "Viktor Reznov", ["Who is the Soviet spy in Black Ops Cold War?", "Perseus", "Russell Adler", "Alex Mason", "Viktor Reznov"]],
+    [1, "¿Dónde luchan 1 contra 1 los eliminados de Warzone?", "El Gulag", "La Arena", "El Coliseo", "El Búnker", ["Where do eliminated Warzone players fight 1v1?", "The Gulag", "The Arena", "The Colosseum", "The Bunker"]],
+    [3, "¿Qué estudio hace la serie Black Ops?", "Treyarch", "Infinity Ward", "Sledgehammer Games", "Raven Software", ["Which studio makes the Black Ops series?", N, N, N, N]],
+    [1, "¿Qué mapa tiene dos casas enfrentadas?", "Nuketown", "Rust", "Shipment", "Terminal", ["Which map has two houses facing each other?", N, N, N, N]],
+    [3, "¿Cuál es el primer mapa de Zombis de la saga?", "Nacht der Untoten", "Verrückt", "Shi No Numa", "Der Riese", ["What is the first Zombies map in the series?", N, N, N, N]],
+    [3, "¿Cuál es el verdadero nombre de Gaz?", "Kyle Garrick", "Simon Riley", "John MacTavish", "Philip Graves", ["What is Gaz's real name?", N, N, N, N]],
+    [2, "¿Cómo se llama la unidad de Price y Soap en Modern Warfare 2 (2009)?", "Fuerza de Tarea 141", "El SAS", "Delta Force", "Spetsnaz", ["What is Price and Soap's unit in Modern Warfare 2 (2009)?", "Task Force 141", "The SAS", "Delta Force", "Spetsnaz"]],
+    [2, "¿Qué modo cambia tu arma con cada baja?", "Gun Game", "Capturar la bandera", "Dominio", "Duelo por equipos", ["Which mode changes your weapon with every kill?", "Gun Game", "Capture the Flag", "Domination", "Team Deathmatch"]],
+    [2, "¿Cómo se llama el perro de Call of Duty: Ghosts?", "Riley", "Max", "Duke", "Rex", ["What is the dog in Call of Duty: Ghosts called?", N, N, N, N]],
+  ],
+
+  codegeass: [
+    [1, "¿Qué poder tiene el Geass de Lelouch?", "Obligar a obedecer una orden", "Leer mentes", "Detener el tiempo", "Ver el futuro", ["What power does Lelouch's Geass have?", "Forcing people to obey an order", "Reading minds", "Stopping time", "Seeing the future"]],
+    [2, "¿Qué limitación tiene el Geass de Lelouch?", "Solo se puede usar una vez por persona", "Solo funciona de noche", "Le quita años de vida", "Solo funciona con los japoneses", ["What is the limitation of Lelouch's Geass?", "It can only be used once per person", "It only works at night", "It takes years off his life", "It only works on Japanese people"]],
+    [2, "¿Cuál es el nombre real de Lelouch?", "Lelouch vi Britannia", "Lelouch Lamperouge", "Lelouch zi Britannia", "Lelouch Kururugi", ["What is Lelouch's real name?", N, N, N, N]],
+    [3, "¿Qué orden le da Lelouch a Euphemia?", "Matar a todos los japoneses", "Matar a todos los britanos", "Matar a su hermana Cornelia", "Matar a Suzaku", ["What order does Lelouch give Euphemia?", "To kill all the Japanese", "To kill all the Britannians", "To kill her sister Cornelia", "To kill Suzaku"]],
+    [2, "¿Qué discapacidades tiene Nunnally?", "Es ciega y no puede caminar", "Es sorda y muda", "Es ciega y sorda", "No puede hablar ni caminar", ["What disabilities does Nunnally have?", "She is blind and cannot walk", "She is deaf and mute", "She is blind and deaf", "She can neither speak nor walk"]],
+    [3, "¿Qué poder tiene el Geass de Mao?", "Leer los pensamientos de los demás", "Controlar a otros con la mirada", "Detener el tiempo", "Borrar la memoria", ["What power does Mao's Geass have?", "Reading other people's thoughts", "Controlling others with his gaze", "Stopping time", "Erasing memories"]],
+    [3, "¿Quién pilota el Tristan?", "Gino Weinberg", "Anya Alstreim", "Bismarck Waldstein", "Suzaku Kururugi", ["Who pilots the Tristan?", N, N, N, N]],
+    [3, "¿Quién es la criada personal de Nunnally?", "Sayoko Shinozaki", "Villetta Nu", "Cecile Croomy", "Nina Einstein", ["Who is Nunnally's personal maid?", N, N, N, N]],
+    [2, "¿Quién mata a Lelouch en el Réquiem Zero?", "Suzaku", "Kallen", "C.C.", "Jeremiah", ["Who kills Lelouch in the Zero Requiem?", "Suzaku", "Kallen", "C.C.", "Jeremiah"]],
+  ],
+
+  haikyuu: [
+    [3, "¿Quién es el mejor amigo de Oikawa?", "Hajime Iwaizumi", "Issei Matsukawa", "Takahiro Hanamaki", "Yuutarou Kindaichi", ["Who is Oikawa's best friend?", N, N, N, N]],
+    [3, "¿Quién es el entrenador de Nekoma?", "Yasufumi Nekomata", "Keishin Ukai", "Ittetsu Takeda", "Tanji Washijo", ["Who is Nekoma's head coach?", N, N, N, N]],
+    [2, "¿Quién es el líbero de Karasuno?", "Yu Nishinoya", "Morisuke Yaku", "Haruki Komi", "Motoya Komori", ["Who is Karasuno's libero?", N, N, N, N]],
+    [2, "¿Contra quién es la «Batalla del basurero»?", "Nekoma", "Fukurodani", "Aoba Johsai", "Shiratorizawa", ["Who is the \"Battle of the Garbage Dump\" against?", N, N, N, N]],
+    [3, "¿Qué practica Hinata en Brasil?", "Voleibol de playa", "Voleibol bajo techo", "Fútbol playa", "Tenis de playa", ["What does Hinata practice in Brazil?", "Beach volleyball", "Indoor volleyball", "Beach soccer", "Beach tennis"]],
+    [2, "¿De qué color es el uniforme de Nekoma?", "Rojo", "Negro", "Celeste", "Morado", ["What color is Nekoma's uniform?", "Red", "Black", "Light blue", "Purple"]],
+    [3, "¿Quién es el as de Inarizaki?", "Aran Ojiro", "Osamu Miya", "Rintaro Suna", "Shinsuke Kita", ["Who is Inarizaki's ace?", N, N, N, N]],
+    [3, "¿A qué país se va Oikawa a jugar?", "Argentina", "Brasil", "España", "Italia", ["Which country does Oikawa go to play in?", "Argentina", "Brazil", "Spain", "Italy"]],
+    [3, "¿En qué prefectura queda Karasuno?", "Miyagi", "Tokio", "Hyogo", "Nagano", ["In which prefecture is Karasuno?", "Miyagi", "Tokyo", "Hyogo", "Nagano"]],
+  ],
+
+  vinland: [
+    [3, "¿En qué siglo transcurre la historia?", "En el siglo XI", "En el siglo X", "En el siglo IX", "En el siglo XII", ["In which century does the story take place?", "The 11th century", "The 10th century", "The 9th century", "The 12th century"]],
+    [3, "¿De quién dice descender Askeladd?", "Lucius Artorius Castus (el rey Arturo)", "Ragnar Lodbrok", "Erik el Rojo", "Harald Hardrada", ["Who does Askeladd claim to descend from?", "Lucius Artorius Castus (King Arthur)", "Ragnar Lodbrok", "Erik the Red", "Harald Hardrada"]],
+    [2, "¿De qué isla es Thorfinn?", "Islandia", "Groenlandia", "Irlanda", "Las Islas Feroe", ["Which island is Thorfinn from?", "Iceland", "Greenland", "Ireland", "The Faroe Islands"]],
+    [2, "¿Qué país invaden los vikingos?", "Inglaterra", "Francia", "Escocia", "Irlanda", ["Which country do the Vikings invade?", "England", "France", "Scotland", "Ireland"]],
+    [3, "¿Quién es el hijo de Ketil?", "Olmar", "Einar", "Snake", "Thorfinn", ["Who is Ketil's son?", N, N, N, N]],
+    [2, "¿Qué ciudad inglesa asedian los daneses?", "Londres", "York", "Winchester", "Canterbury", ["Which English city do the Danes besiege?", "London", "York", "Winchester", "Canterbury"]],
+    [3, "¿Quién lidera la revuelta de esclavos?", "Snake", "Einar", "Arnheid", "Olmar", ["Who leads the slave revolt?", N, N, N, N]],
+    [3, "¿Cómo se llama el hermano mayor de Canuto?", "Harald", "Svend", "Thorkell", "Ragnar", ["What is Canute's older brother called?", "Harald", "Sweyn", "Thorkell", "Ragnar"]],
+  ],
+
+  jurassic: [
+    [2, "¿Qué criatura devora un tiburón en Jurassic World?", "El mosasaurio", "El plesiosaurio", "El ictiosaurio", "El liopleurodon", ["Which creature devours a shark in Jurassic World?", "The mosasaurus", "The plesiosaur", "The ichthyosaur", "The liopleurodon"]],
+    [2, "¿En qué isla está el parque?", "Isla Nublar", "Isla Sorna", "Isla Muerta", "Isla Matanceros", ["On which island is the park?", N, N, N, N]],
+    [2, "¿Qué dinosaurio escapa en Jurassic World (2015)?", "Indominus rex", "Indoraptor", "Scorpios rex", "Pyroraptor", ["Which dinosaur escapes in Jurassic World (2015)?", N, N, N, N]],
+    [3, "¿Cómo se llama la compañía de John Hammond?", "InGen", "Biosyn", "Masrani Global", "Lockwood Foundation", ["What is John Hammond's company called?", N, N, N, N]],
+    [2, "¿Quién es el abogado que devora el T. rex?", "Donald Gennaro", "Dennis Nedry", "Ray Arnold", "Henry Wu", ["Who is the lawyer eaten by the T. rex?", N, N, N, N]],
+    [2, "¿Cómo se llama el guardabosques jefe?", "Robert Muldoon", "Ray Arnold", "Henry Wu", "John Hammond", ["What is the chief game warden's name?", N, N, N, N]],
+    [2, "¿Dónde esconde Nedry los embriones?", "En una lata de crema de afeitar", "En un termo de café", "En un estuche de lentes", "En una caja de herramientas", ["Where does Nedry hide the embryos?", "In a shaving cream can", "In a coffee thermos", "In a glasses case", "In a toolbox"]],
+    [3, "¿Qué vehículo usan en el tour?", "Ford Explorer", "Jeep Wrangler", "Land Rover Defender", "Toyota Land Cruiser", ["Which vehicle is used on the tour?", N, N, N, N]],
+    [3, "¿Qué sistema reconoce Lex?", "Unix", "Windows NT", "MS-DOS", "Macintosh", ["Which system does Lex recognize?", N, N, N, N]],
+  ],
+
+  steinsgate: [
+    [2, "¿A quién encuentra Okabe sin vida al inicio?", "Kurisu Makise", "Mayuri Shiina", "Moeka Kiryu", "Faris NyanNyan", ["Who does Okabe find lifeless at the start?", N, N, N, N]],
+    [3, "¿Qué ordenador antiguo es clave contra SERN?", "El IBN 5100", "El Commodore 64", "El Apple II", "El Altair 8800", ["Which old computer is key against SERN?", "The IBN 5100", "The Commodore 64", "The Apple II", "The Altair 8800"]],
+    [3, "¿Cómo se llama el aparato que envía recuerdos al pasado?", "La Máquina de Salto Temporal", "El Microondas Telefónico", "El Cronotrón", "Amadeus", ["What sends memories to the past?", "The Time Leap Machine", "The Phone Microwave", "The Chronotron", "Amadeus"]],
+    [2, "¿A quién intenta salvar Okabe una y otra vez?", "Mayuri Shiina", "Kurisu Makise", "Suzuha Amane", "Faris NyanNyan", ["Who does Okabe try to save over and over?", N, N, N, N]],
+    [3, "¿Cómo se titula la película de 2013?", "Load Region of Déjà vu", "Divergence of Steiner", "Paradox Memories", "Beyond the Gate", ["What is the 2013 film called?", "Load Region of Déjà vu", "Divergence of Steiner", "Paradox Memories", "Beyond the Gate"]],
+  ],
+
+  amongus: [
+    [2, "¿Qué pueden hacer los tripulantes muertos?", "Seguir haciendo tareas como fantasmas", "Votar en las reuniones", "Hablar con los vivos por el chat", "Usar los conductos", ["What can dead crewmates do?", "Keep doing tasks as ghosts", "Vote in meetings", "Talk to the living through chat", "Use the vents"]],
+    [2, "¿Cuál es el mapa original?", "The Skeld", "Polus", "Mira HQ", "The Airship", ["Which is the original map?", N, N, N, N]],
+    [2, "¿En qué mapa eliges dónde aparecer?", "The Airship", "Mira HQ", "The Skeld", "Polus", ["On which map do you choose where to spawn?", N, N, N, N]],
+    [2, "¿En qué mapa hay una sala de descontaminación?", "Mira HQ", "Polus", "The Skeld", "The Fungle", ["Which map has a decontamination room?", N, N, N, N]],
+    [2, "¿Qué rol de tripulante puede usar los conductos de ventilación?", "Ingeniero", "Científico", "Rastreador", "Ángel guardián", ["Which crewmate role can use the vents?", "Engineer", "Scientist", "Tracker", "Guardian Angel"]],
+    [2, "¿Dónde se pasa la tarjeta en el Skeld?", "Administración", "Electricidad", "Cafetería", "Navegación", ["Where do you swipe the card in the Skeld?", "Admin", "Electrical", "Cafeteria", "Navigation"]],
+    [2, "¿Cuántas reuniones puede pedir cada jugador?", "Una", "Dos", "Tres", "Cinco", ["How many meetings can each player call?", "One", "Two", "Three", "Five"]],
+    [2, "¿Dónde se disparan los asteroides en el Skeld?", "Armas", "Navegación", "Escudos", "Comunicaciones", ["Where do you shoot asteroids in the Skeld?", "Weapons", "Navigation", "Shields", "Communications"]],
+    [3, "¿Qué sabotaje se arregla con un código en dos paneles?", "Oxígeno", "Reactor", "Luces", "Comunicaciones", ["Which sabotage is fixed with a code on two panels?", "Oxygen", "Reactor", "Lights", "Communications"]],
+    [2, "¿Dónde se hace el escaneo médico en el Skeld?", "Enfermería", "Seguridad", "Almacén", "Reactor", ["Where is the medical scan in the Skeld?", "Medbay", "Security", "Storage", "Reactor"]],
+  ],
+
+  fallout: [
+    [2, "¿Cómo se llaman los robots con sierra y lanzallamas?", "Mr. Handy", "Protectron", "Robobrain", "Assaultron", ["What are the robots with saws and flamethrowers called?", N, N, N, N]],
+    [2, "¿En qué año cayeron las bombas?", "2077", "2065", "2085", "2060", ["In what year did the bombs fall?", N, N, N, N]],
+    [3, "¿Dónde transcurre Fallout 76?", "Virginia Occidental", "Pensilvania", "Kentucky", "Ohio", ["Where is Fallout 76 set?", "West Virginia", "Pennsylvania", "Kentucky", "Ohio"]],
+    [2, "¿Cómo se llama el robot mayordomo de Fallout 4?", "Codsworth", "Curie", "Ada", "Nick Valentine", ["What is Fallout 4's butler robot called?", N, N, N, N]],
+    [3, "¿Qué compañero de Fallout 3 es un ghoul?", "Charon", "Fawkes", "Jericho", "Clover", ["Which Fallout 3 companion is a ghoul?", N, N, N, N]],
+    [2, "¿Quién gobierna desde la Torre Lucky 38?", "Mr. House", "Benny", "César", "El Élder McNamara", ["Who rules from the Lucky 38 tower?", "Mr. House", "Benny", "Caesar", "Elder McNamara"]],
+    [3, "¿De dónde viene el Elegido de Fallout 2?", "Arroyo", "Klamath", "Vault City", "The Den", ["Where does Fallout 2's Chosen One come from?", N, N, N, N]],
+  ],
+
+  kaguya: [
+    [1, "¿Cuál es la premisa de la serie?", "El que confiese su amor primero, pierde", "El que se enoje primero, pierde", "El que se ría primero, pierde", "El que parpadee primero, pierde", ["What is the premise of the series?", "Whoever confesses their love first, loses", "Whoever gets angry first, loses", "Whoever laughs first, loses", "Whoever blinks first, loses"]],
+    [3, "¿A qué universidad quiere ir Miyuki?", "Stanford", "Harvard", "Oxford", "Yale", ["Which university does Miyuki want to attend?", "Stanford", "Harvard", "Oxford", "Yale"]],
+    [2, "¿En qué año están Kaguya y Miyuki?", "En segundo", "En primero", "En tercero", "En ninguno, ya egresaron", ["Which year are Kaguya and Miyuki in?", "Second year", "First year", "Third year", "None, they've already graduated"]],
+    [3, "¿Quién da voz a Kaguya en japonés?", "Aoi Koga", "Konomi Kohara", "Rie Takahashi", "Yui Ishikawa", ["Who voices Kaguya in Japanese?", N, N, N, N]],
+    [3, "¿Quién da voz a Miyuki en japonés?", "Makoto Furukawa", "Natsuki Hanae", "Yuki Kaji", "Kaito Ishikawa", ["Who voices Miyuki in Japanese?", N, N, N, N]],
+  ],
+
+  brooklyn99: [
+    [3, "¿Qué cadena la canceló y cuál la rescató?", "Fox la canceló y NBC la rescató", "NBC la canceló y Fox la rescató", "ABC la canceló y NBC la rescató", "Fox la canceló y Netflix la rescató", ["Which network canceled it and which rescued it?", "Fox canceled it and NBC rescued it", "NBC canceled it and Fox rescued it", "ABC canceled it and NBC rescued it", "Fox canceled it and Netflix rescued it"]],
+    [3, "¿Qué detective vuelve tras años encubierto?", "Adrian Pimento", "Doug Judy", "Keith Pembroke", "Kevin Cozner", ["Which detective returns after years undercover?", N, N, N, N]],
+    [3, "¿Quién interpreta a Gina Linetti?", "Chelsea Peretti", "Melissa Fumero", "Stephanie Beatriz", "Kate Micucci", ["Who plays Gina Linetti?", N, N, N, N]],
+    [3, "¿Cuál es el nombre de pila de Scully?", "Norm", "Michael", "Hank", "Dave", ["What is Scully's first name?", N, N, N, N]],
+    [2, "¿Cuál es el apodo de Doug Judy?", "El Bandido del Pontiac", "El Ladrón de Cadillacs", "El Rey de los Autos", "El Fantasma de Detroit", ["What is Doug Judy's nickname?", "The Pontiac Bandit", "The Cadillac Thief", "The King of Cars", "The Ghost of Detroit"]],
+  ],
+};
