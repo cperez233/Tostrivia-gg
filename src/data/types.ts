@@ -21,7 +21,7 @@ export interface Media {
  *  - quote:  la primera línea es una frase que sale en un globo de cómic ("“Yo seré el Rey…”\n¿Quién lo dijo?")
  *  - poster: el póster de una categoría que se va aclarando mientras corre el reloj (pixel, zoom o desenfoque)
  */
-export type PosterFx = "pixel" | "zoom" | "blur";
+export type PosterFx = "pixel" | "zoom" | "blur" | "zblur";
 export type Visual = { v: "emoji" } | { v: "quote" } | { v: "poster"; id: string; fx: PosterFx };
 
 /**

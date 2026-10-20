@@ -79,6 +79,9 @@ const PIXEL_TO = 34;
 /** borroso: formas y colores al principio; al final casi nítido pero el texto sigue sin leerse */
 const BLUR_FROM = 20;
 const BLUR_TO = 5;
+/** detalle difuminado: el filtro se aplica antes del zoom, así que a 4,6x estos px se ven ~14 y al final ~2 */
+const ZBLUR_FROM = 3.2;
+const ZBLUR_TO = 0.9;
 /**
  * detalle: un recorte del póster que se va alejando. Dónde cae se calcula aparte (src/data/posterZoom.json: scripts/zoom-posters.py)
  * para que la ventana final nunca pise el título ni textos; trae la escala final del póster y hasta 3 puntos posibles.
@@ -125,7 +128,9 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
               animate={
                 fx === "blur"
                   ? { filter: `blur(${revealed ? 0 : running ? BLUR_TO : BLUR_FROM}px)`, scale: revealed ? 1 : 1.08 }
-                  : { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2 }
+                  : fx === "zblur"
+                    ? { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2, filter: `blur(${revealed ? 0 : running ? ZBLUR_TO : ZBLUR_FROM}px)` }
+                    : { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2 }
               }
               transition={
                 instant ??
@@ -142,6 +147,7 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
         {fx === "pixel" && t("Póster pixelado")}
         {fx === "blur" && t("Póster borroso")}
         {fx === "zoom" && t("Detalle del póster")}
+        {fx === "zblur" && t("Detalle borroso")}
         <span className="muted"> · {t("se aclara con el reloj")}</span>
       </p>
     </div>

@@ -50,7 +50,7 @@ Trivia en español de anime, videojuegos, series, películas y cultura general. 
 - **Preguntas que no son solo texto** (`src/components/Visuals.tsx`, tipos en `src/data/types.ts`):
   - **Emojis**: los emojis de la primera línea de la pregunta se sueltan uno a uno ("🦁👑🌅 ¿Qué película es?").
   - **Frases en globo de cómic**: "¿Quién lo dijo?" con la frase en un globo.
-  - **Adivina el póster / la portada**: una categoría por lado (anime, juegos, series y películas) armada con las portadas que ya hay. Cada póster sale tres veces: borroso, pixelado o un detalle que se aleja, y se va aclarando mientras corre el reloj (sin llegar a mostrar el título impreso); al responder se ve entero. Se arman solas en `src/data/bank/index.ts` y se traducen solas.
+  - **Adivina el póster / la portada**: una categoría por lado (anime, juegos, series y películas) armada con las portadas que ya hay. Cada póster sale cuatro veces: borroso, pixelado, un detalle que se aleja o ese detalle difuminado, y se va aclarando mientras corre el reloj; al responder se ve entero. El detalle nunca pisa el título: `python3 scripts/zoom-posters.py` calcula la ventana de cada póster (con las cajas de texto de la lista `T`) y escribe `src/data/posterZoom.json`. La dificultad sale de qué tan reconocible es la obra (`src/data/posterLevel.json`: 0 ícono, 1 muy famosa, 2 conocida, 3 de nicho) y del efecto. Se arman solas en `src/data/bank/index.ts` y se traducen solas.
 - **Video**: cada pregunta trae su clave de video y su fragmento `s`–`e` en segundos, en tres modos: `audio` (tapado), `blur` (difuminado, se va aclarando con el reloj sin llegar a ser ilegible) y `clip` (visible, con la franja del título tapada).
 
 ## Agregar preguntas

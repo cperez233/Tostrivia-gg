@@ -1,6 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import type { Difficulty, Media, PosterFx, Question, RawQuestion, Visual } from "../types";
 import { CATEGORIES, FAMILY_BY_ID, NAME_ES } from "../categories";
+import posterLevel from "../posterLevel.json";
 import posterZoom from "../posterZoom.json";
 import { rng, shuffle } from "../../lib/rng";
 import videosFile from "../videos.json";
@@ -56,25 +57,33 @@ for (const part of [...GENERATED, cultura, leyenda, nueva, culto, oido, nintendo
  */
 const POSTER_CATS = { anime: "posteranime", juegos: "posterjuegos", series: "posterseries" } as const;
 const POSTER_Q: Record<keyof typeof POSTER_CATS, Record<PosterFx, string>> = {
-  anime: { blur: "¿De qué anime es este póster borroso?", pixel: "¿De qué anime es este póster pixelado?", zoom: "¿De qué anime es este detalle de su póster?" },
-  juegos: { blur: "¿De qué juego es esta portada borrosa?", pixel: "¿De qué juego es esta portada pixelada?", zoom: "¿De qué juego es este detalle de su portada?" },
-  series: { blur: "¿De qué serie o película es este póster borroso?", pixel: "¿De qué serie o película es este póster pixelado?", zoom: "¿De qué serie o película es este detalle de su póster?" },
+  anime: { blur: "¿De qué anime es este póster borroso?", pixel: "¿De qué anime es este póster pixelado?", zoom: "¿De qué anime es este detalle de su póster?", zblur: "¿De qué anime es este detalle borroso de su póster?" },
+  juegos: { blur: "¿De qué juego es esta portada borrosa?", pixel: "¿De qué juego es esta portada pixelada?", zoom: "¿De qué juego es este detalle de su portada?", zblur: "¿De qué juego es este detalle borroso de su portada?" },
+  series: { blur: "¿De qué serie o película es este póster borroso?", pixel: "¿De qué serie o película es este póster pixelado?", zoom: "¿De qué serie o película es este detalle de su póster?", zblur: "¿De qué serie o película es este detalle borroso de su póster?" },
 };
 /** categorías que no son una sola obra (el póster no tiene una respuesta única) o cuyo póster es solo el título (undertale, jurassic) */
 const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu", "undertale", "jurassic"]);
-const POSTER_D: Record<PosterFx, Difficulty> = { blur: 1, pixel: 2, zoom: 3 };
+/**
+ * Dificultad de "Adivina el póster": depende de qué tan reconocible es la obra (src/data/posterLevel.json) y del efecto.
+ * 0 icono que todos conocen, 1 muy famosa, 2 conocida, 3 de nicho. Un icono es fácil hasta con el detalle.
+ */
+const POSTER_D: Record<number, Record<PosterFx, Difficulty>> = {
+  0: { blur: 1, pixel: 1, zblur: 1, zoom: 1 },
+  1: { blur: 1, pixel: 1, zblur: 1, zoom: 2 },
+  2: { blur: 1, pixel: 2, zblur: 2, zoom: 3 },
+  3: { blur: 2, pixel: 3, zblur: 3, zoom: 3 },
+};
+const POSTER_LEVEL = posterLevel as Record<string, number>;
+const posterD = (id: string, fx: PosterFx): Difficulty => POSTER_D[POSTER_LEVEL[id] ?? 2][fx];
 
 /**
  * Ajustes de dificultad hechos a mano (src/data/bank/rerate/*.json), por si una pregunta pesa distinto de lo que dice su archivo:
  *   d:    { idDePregunta: 1|2|3 }
- *   fame: { categoria: 1|2|3 }  qué tan famosa es la obra (1 mainstream, 3 de nicho); mueve la dificultad de sus pósters
  */
-const RERATE: { d: Record<string, Difficulty>; fame: Record<string, number> } = { d: {}, fame: {} };
-for (const m of Object.values(import.meta.glob<{ default: { d?: Record<string, Difficulty>; fame?: Record<string, number> } }>("./rerate/*.json", { eager: true }))) {
+const RERATE: { d: Record<string, Difficulty> } = { d: {} };
+for (const m of Object.values(import.meta.glob<{ default: { d?: Record<string, Difficulty> } }>("./rerate/*.json", { eager: true }))) {
   Object.assign(RERATE.d, m.default.d);
-  Object.assign(RERATE.fame, m.default.fame);
 }
-const posterD = (cat: string, fx: PosterFx) => Math.min(3, Math.max(1, POSTER_D[fx] + (RERATE.fame[cat] ?? 2) - 2)) as Difficulty;
 
 function posterQuestions(): Record<string, RawQuestion[]> {
   const out: Record<string, RawQuestion[]> = {};
@@ -83,8 +92,8 @@ function posterQuestions(): Record<string, RawQuestion[]> {
     const pool = CATEGORIES.filter((c) => FAMILY_BY_ID[c.family].group === side && !c.mosaic && !NO_POSTER.has(c.id) && (RAW[c.id]?.length ?? 0) >= 10);
     const list: RawQuestion[] = [];
     for (const c of pool) {
-      for (const fx of ["blur", "pixel", "zoom"] as PosterFx[]) {
-        if (fx === "zoom" && !(c.id in posterZoom)) continue; // sin ventana que evite el título
+      for (const fx of ["blur", "pixel", "zoom", "zblur"] as PosterFx[]) {
+        if ((fx === "zoom" || fx === "zblur") && !(c.id in posterZoom)) continue; // sin ventana que evite el título
         const rand = rng([...`${c.id}|${fx}`].reduce((h, ch) => Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0, 2166136261));
         const bad = shuffle(pool.filter((x) => x.id !== c.id), rand).slice(0, 3);
         list.push([posterD(c.id, fx), POSTER_Q[side][fx], NAME_ES[c.id], NAME_ES[bad[0].id], NAME_ES[bad[1].id], NAME_ES[bad[2].id], { v: "poster", id: c.id, fx }]);
