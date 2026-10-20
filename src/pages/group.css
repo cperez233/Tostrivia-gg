@@ -131,15 +131,17 @@
     transform: translateY(-3px) rotate(-4deg);
   }
 }
+/* el animal elegido: un aro limpio con sombra dura, sin relleno (las calcomanías tienen huecos y el relleno se colaba) */
 .profile__ring {
   position: absolute;
-  inset: -1px;
+  inset: 0;
   margin: auto;
-  width: min(112%, 66px);
+  width: min(100%, 60px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--hanko);
+  background: var(--paper);
   border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--hanko);
 }
 .profile__animal:has(:focus-visible) {
   outline: 3px solid var(--signal);

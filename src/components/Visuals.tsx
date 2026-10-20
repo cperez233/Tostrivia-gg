@@ -7,6 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { PosterFx, Visual } from "../data/types";
+import posterZoom from "../data/posterZoom.json";
 import { posterOf } from "../lib/covers";
 import { t } from "../i18n";
 import "./visuals.css";
@@ -78,12 +79,12 @@ const PIXEL_TO = 34;
 /** borroso: formas y colores al principio; al final casi nítido pero el texto sigue sin leerse */
 const BLUR_FROM = 20;
 const BLUR_TO = 5;
-/** detalle: un recorte del póster que se va alejando (sin llegar a mostrar la franja del título) */
-const ZOOM_FROM = 4.6;
-const ZOOM_TO = 2.3;
-
-/** pósters con el título en medio o arriba: el detalle se centra donde no se lee (x %, y %) */
-const ZOOM_AT: Record<string, [number, number]> = { friends: [50, 62], jurassic: [50, 20], fortnite: [50, 64], gta: [50, 86], gow: [50, 84], starwars: [50, 30], got: [50, 40] };
+/**
+ * detalle: un recorte del póster que se va alejando. Dónde cae se calcula aparte (src/data/posterZoom.json: scripts/zoom-posters.py)
+ * para que la ventana final nunca pise el título ni textos; trae la escala final del póster y hasta 3 puntos posibles.
+ * La escala inicial es el doble de la final.
+ */
+const ZOOMS = posterZoom as unknown as Record<string, [number, [number, number][]]>;
 
 interface PosterProps {
   id: string;
@@ -103,7 +104,8 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
   const running = startAt > 0 && !revealed;
   // dónde cae el recorte del detalle: arriba y al medio, lejos del título
   const h = useMemo(() => hash(`${id}:${qkey}`), [id, qkey]);
-  const [ox, oy] = ZOOM_AT[id] ?? [22 + (h % 56), 20 + ((h >> 8) % 30)];
+  const [zoomTo, spots] = ZOOMS[id] ?? [2.3, [[50, 50]]];
+  const [ox, oy] = spots[h % spots.length];
   // lo que falta del reloj en el momento en que empieza la transición
   const left = useMemo(() => (running ? Math.max(0.2, (startAt + duration - Date.now()) / 1000) : 0), [running, startAt, duration]);
   const instant = reduce ? { duration: 0 } : undefined;
@@ -123,7 +125,7 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
               animate={
                 fx === "blur"
                   ? { filter: `blur(${revealed ? 0 : running ? BLUR_TO : BLUR_FROM}px)`, scale: revealed ? 1 : 1.08 }
-                  : { scale: revealed ? 1 : running ? ZOOM_TO : ZOOM_FROM }
+                  : { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2 }
               }
               transition={
                 instant ??

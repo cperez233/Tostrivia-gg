@@ -1,6 +1,7 @@
 /* editorial-ui · Cristian Pérez · cristianperez.me */
 import type { Difficulty, Media, PosterFx, Question, RawQuestion, Visual } from "../types";
 import { CATEGORIES, FAMILY_BY_ID, NAME_ES } from "../categories";
+import posterZoom from "../posterZoom.json";
 import { rng, shuffle } from "../../lib/rng";
 import videosFile from "../videos.json";
 import cultura from "./cultura";
@@ -59,8 +60,8 @@ const POSTER_Q: Record<keyof typeof POSTER_CATS, Record<PosterFx, string>> = {
   juegos: { blur: "¿De qué juego es esta portada borrosa?", pixel: "¿De qué juego es esta portada pixelada?", zoom: "¿De qué juego es este detalle de su portada?" },
   series: { blur: "¿De qué serie o película es este póster borroso?", pixel: "¿De qué serie o película es este póster pixelado?", zoom: "¿De qué serie o película es este detalle de su póster?" },
 };
-/** categorías que no son una sola obra (el póster no tiene una respuesta única) */
-const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu"]);
+/** categorías que no son una sola obra (el póster no tiene una respuesta única) o cuyo póster es solo el título (undertale, jurassic) */
+const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu", "undertale", "jurassic"]);
 const POSTER_D: Record<PosterFx, Difficulty> = { blur: 1, pixel: 2, zoom: 3 };
 
 /**
@@ -83,6 +84,7 @@ function posterQuestions(): Record<string, RawQuestion[]> {
     const list: RawQuestion[] = [];
     for (const c of pool) {
       for (const fx of ["blur", "pixel", "zoom"] as PosterFx[]) {
+        if (fx === "zoom" && !(c.id in posterZoom)) continue; // sin ventana que evite el título
         const rand = rng([...`${c.id}|${fx}`].reduce((h, ch) => Math.imul(h ^ ch.codePointAt(0)!, 16777619) >>> 0, 2166136261));
         const bad = shuffle(pool.filter((x) => x.id !== c.id), rand).slice(0, 3);
         list.push([posterD(c.id, fx), POSTER_Q[side][fx], NAME_ES[c.id], NAME_ES[bad[0].id], NAME_ES[bad[1].id], NAME_ES[bad[2].id], { v: "poster", id: c.id, fx }]);

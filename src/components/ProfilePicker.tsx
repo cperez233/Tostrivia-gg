@@ -42,7 +42,7 @@ export default function ProfilePicker({ value, onChange }: Props) {
               <label key={a.name} className={`profile__animal ${on ? "is-on" : ""}`}>
                 <input type="radio" name={`${id}-animal`} className="sr-only" checked={on} onChange={() => set({ ...value, seal: i })} />
                 {on && <motion.span layoutId={`${id}-ring`} className="profile__ring" transition={{ type: "spring", stiffness: 520, damping: 36 }} />}
-                <motion.span className="profile__face" animate={on ? { y: [0, -7, 0], rotate: [0, -6, 0] } : { y: 0, rotate: 0 }} transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}>
+                <motion.span className="profile__face" animate={on ? { scale: 0.8, y: [0, -6, 0], rotate: [0, -6, 0] } : { scale: 1, y: 0, rotate: 0 }} transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}>
                   <Avatar animal={i} size={60} />
                 </motion.span>
                 <span className="sr-only">{a.name}</span>
