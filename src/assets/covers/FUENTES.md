@@ -143,3 +143,4 @@ Las fotos de Cultura general vienen de Wikimedia Commons con licencias libres (l
 | Portal | Steam app 620 (library 600x900) |
 | Cuphead | Steam app 268910 (library 600x900) |
 | Los Sims | Steam app 1222670 (library 600x900) |
+| Pokémon (anime) | TMDB tv 60572 |

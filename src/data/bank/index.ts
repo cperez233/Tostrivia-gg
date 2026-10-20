@@ -85,6 +85,10 @@ for (const m of Object.values(import.meta.glob<{ default: { d?: Record<string, D
   Object.assign(RERATE.d, m.default.d);
 }
 
+/** preguntas retiradas a mano (src/data/bank/drop/*.json: { "ids": [...] }), por ejemplo las que se soplaban solas */
+const DROPPED = new Set<string>();
+for (const m of Object.values(import.meta.glob<{ default: { ids?: string[] } }>("./drop/*.json", { eager: true }))) m.default.ids?.forEach((id) => DROPPED.add(id));
+
 function posterQuestions(): Record<string, RawQuestion[]> {
   const out: Record<string, RawQuestion[]> = {};
   for (const side of Object.keys(POSTER_CATS) as (keyof typeof POSTER_CATS)[]) {
@@ -144,6 +148,7 @@ function build(): Bank {
           question.media = { ...media, e: Math.max(5, v.durationSec - 1), s: Math.max(0, v.durationSec - 1 - len) };
         }
       }
+      if (DROPPED.has(id)) return;
       byId[id] = question;
       byCat[cat].push(question);
     });

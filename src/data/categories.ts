@@ -54,6 +54,7 @@ export const CATEGORIES: Category[] = [
   { id: "sailormoon", name: "Sailor Moon", short: "Sailor Moon", family: "clasicos", sfx: "キラ" },
   { id: "fairytail", name: "Fairy Tail", short: "Fairy Tail", family: "clasicos", sfx: "ボォ" },
   { id: "digimon", name: "Digimon", short: "Digimon", family: "clasicos", sfx: "ピコ" },
+  { id: "pokemonanime", name: "Pokémon (anime)", short: "Pokémon anime", family: "clasicos", sfx: "ピカ" },
   { id: "yugioh", name: "Yu-Gi-Oh!", short: "Yu-Gi-Oh!", family: "clasicos", sfx: "ドロー" },
   { id: "slamdunk", name: "Slam Dunk", short: "Slam Dunk", family: "clasicos", sfx: "ダム" },
   { id: "yuyuhakusho", name: "Yu Yu Hakusho", short: "Yu Yu Hakusho", family: "clasicos", sfx: "バキ" },

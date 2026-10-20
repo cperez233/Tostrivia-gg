@@ -1,0 +1,35 @@
+// Pokémon (anime): la serie de Ash. Formato en scripts/build-content.mjs
+const N = null;
+
+export default {
+  pokemonanime: [
+    [1, "¿De qué pueblo es Ash?", "Pueblo Paleta", "Ciudad Verde", "Ciudad Plateada", "Ciudad Celeste", ["What is Ash's hometown?", "Pallet Town", "Viridian City", "Pewter City", "Cerulean City"]],
+    [1, "¿Quién le entrega a Ash su primer Pokémon?", "El profesor Oak", "Brock", "Gary", "Giovanni", ["Who gives Ash his first Pokémon?", "Professor Oak", "Brock", "Gary", "Giovanni"]],
+    [1, "¿Qué Pokémon recibe Ash al comenzar su viaje?", "Pikachu", "Charmander", "Squirtle", "Bulbasaur", ["Which Pokémon does Ash receive at the start of his journey?", "Pikachu", "Charmander", "Squirtle", "Bulbasaur"]],
+    [2, "¿Por qué Ash no recibe uno de los Pokémon iniciales de Kanto?", "Se quedó dormido y los demás ya se habían entregado", "Gary se los llevó todos", "Era demasiado joven para elegir", "El profesor Oak se había quedado sin Pokémon", ["Why doesn't Ash get one of Kanto's starter Pokémon?", "He overslept and the others had already been given out", "Gary took them all", "He was too young to choose", "Professor Oak had run out of Pokémon"]],
+    [1, "¿Quién es el rival de Ash en Kanto?", "Gary Oak", "Brock", "Tracey", "Giovanni", ["Who is Ash's rival in Kanto?", "Gary Oak", "Brock", "Tracey", "Giovanni"]],
+    [2, "¿Qué parentesco tiene Gary con el profesor Oak?", "Es su nieto", "Es su hijo", "Es su sobrino", "Es su hermano", ["How is Gary related to Professor Oak?", "He is his grandson", "He is his son", "He is his nephew", "He is his brother"]],
+    [1, "¿De qué tipo son los Pokémon del gimnasio de Brock?", "Roca", "Agua", "Fuego", "Eléctrico", ["What type are the Pokémon in Brock's gym?", "Rock", "Water", "Fire", "Electric"]],
+    [2, "¿De qué ciudad es líder de gimnasio Brock?", "Ciudad Plateada", "Ciudad Celeste", "Ciudad Carmín", "Ciudad Verde", ["Which city is Brock the gym leader of?", "Pewter City", "Cerulean City", "Vermilion City", "Viridian City"]],
+    [2, "¿Qué Pokémon sale del huevo que cuida Misty?", "Togepi", "Pichu", "Eevee", "Psyduck", ["Which Pokémon hatches from the egg Misty looks after?", "Togepi", "Pichu", "Eevee", "Psyduck"]],
+    [1, "¿Cómo se llaman los tres miembros principales del Equipo Rocket que persiguen a Pikachu?", "Jessie, James y Meowth", "Giovanni, Jessie y James", "Butch, Cassidy y Meowth", "Jessie, James y Wobbuffet", ["What are the names of the three main Team Rocket members who chase Pikachu?", "Jessie, James and Meowth", "Giovanni, Jessie and James", "Butch, Cassidy and Meowth", "Jessie, James and Wobbuffet"]],
+    [1, "¿Qué Pokémon del Equipo Rocket habla como una persona?", "Meowth", "Ekans", "Koffing", "Persian", ["Which Team Rocket Pokémon talks like a person?", "Meowth", "Ekans", "Koffing", "Persian"]],
+    [2, "¿Cuál es el primer Pokémon de James en el Equipo Rocket?", "Koffing", "Ekans", "Grimer", "Meowth", ["What is James's first Pokémon in Team Rocket?", "Koffing", "Ekans", "Grimer", "Meowth"]],
+    [2, "¿Qué cargo tiene Giovanni además de dirigir el Equipo Rocket?", "Líder del gimnasio de Ciudad Verde", "Líder del gimnasio de Ciudad Plateada", "Campeón de la Liga Pokémon", "Profesor de Pueblo Paleta", ["What other role does Giovanni hold besides running Team Rocket?", "Viridian City gym leader", "Pewter City gym leader", "Pokémon League champion", "Professor of Pallet Town"]],
+    [2, "¿Qué Pokémon acaricia Giovanni en casi todas sus escenas?", "Persian", "Meowth", "Raichu", "Arcanine", ["Which Pokémon does Giovanni pet in almost every scene?", "Persian", "Meowth", "Raichu", "Arcanine"]],
+    [3, "¿Qué Pokémon deja caer una pluma arcoíris que Ash ve en el primer episodio?", "Ho-Oh", "Lugia", "Articuno", "Moltres", ["Which Pokémon drops a rainbow feather that Ash sees in the first episode?", "Ho-Oh", "Lugia", "Articuno", "Moltres"]],
+    [2, "¿De qué Pokémon fue clonado Mewtwo?", "Mew", "Celebi", "Jirachi", "Deoxys", ["Which Pokémon was Mewtwo cloned from?", "Mew", "Celebi", "Jirachi", "Deoxys"]],
+    [2, "¿Qué compañero de Ash en las Islas Naranja es dibujante?", "Tracey", "Brock", "Gary", "Max", ["Which of Ash's companions in the Orange Islands is a sketch artist?", "Tracey", "Brock", "Gary", "Max"]],
+    [2, "¿Qué Pokémon es la mascota de Delia, la mamá de Ash?", "Mr. Mime", "Snorlax", "Chansey", "Meowth", ["Which Pokémon is the pet of Delia, Ash's mom?", "Mr. Mime", "Snorlax", "Chansey", "Meowth"]],
+    [2, "¿Qué región visita Ash después de Hoenn?", "Sinnoh", "Johto", "Teselia", "Kalos", ["Which region does Ash visit after Hoenn?", "Sinnoh", "Johto", "Unova", "Kalos"]],
+    [2, "¿Qué compañera de Ash en Kalos lo conocía desde un campamento de verano?", "Serena", "Misty", "May", "Dawn", ["Which of Ash's companions in Kalos knew him from a summer camp?", "Serena", "Misty", "May", "Dawn"]],
+    [2, "¿Con qué Pokémon se sincroniza Ash en Kalos?", "Greninja", "Pikachu", "Charizard", "Lucario", ["Which Pokémon does Ash sync with in Kalos?", "Greninja", "Pikachu", "Charizard", "Lucario"]],
+    [2, "¿Cuál es el equipo villano de Kalos?", "El Equipo Flare", "El Equipo Aqua", "El Equipo Plasma", "El Equipo Magma", ["Which is Kalos's villain team?", "Team Flare", "Team Aqua", "Team Plasma", "Team Magma"]],
+    [3, "¿Cuál es la primera Liga Pokémon que gana Ash?", "La de Alola", "La Índigo", "La de Sinnoh", "La de Kalos", ["What is the first Pokémon League Ash wins?", "The Alola League", "The Indigo League", "The Sinnoh League", "The Kalos League"]],
+    [3, "¿A quién vence Ash en la final para ser Campeón Mundial?", "Leon", "Cynthia", "Lance", "Gary", ["Who does Ash beat in the final to become World Champion?", "Leon", "Cynthia", "Lance", "Gary"]],
+    [3, "¿Cómo se llama Ash en Japón?", "Satoshi", "Takeshi", "Shigeru", "Kenji", ["What is Ash called in Japan?", "Satoshi", "Takeshi", "Shigeru", "Kenji"]],
+    [3, "¿Quién es la voz japonesa de Pikachu?", "Ikue Ōtani", "Rica Matsumoto", "Megumi Hayashibara", "Mayumi Iizuka", ["Who is Pikachu's Japanese voice?", "Ikue Ōtani", "Rica Matsumoto", "Megumi Hayashibara", "Mayumi Iizuka"]],
+    [3, "¿Quién creó Pokémon?", "Satoshi Tajiri", "Shigeru Miyamoto", "Masahiro Sakurai", "Junichi Masuda", ["Who created Pokémon?", "Satoshi Tajiri", "Shigeru Miyamoto", "Masahiro Sakurai", "Junichi Masuda"]],
+    [2, "¿Cuántas medallas necesita Ash para entrar en la Liga?", "Ocho", "Seis", "Diez", "Doce", ["How many badges does Ash need to enter the League?", "Eight", "Six", "Ten", "Twelve"]],
+  ],
+};
