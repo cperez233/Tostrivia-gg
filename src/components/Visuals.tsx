@@ -79,9 +79,8 @@ const PIXEL_TO = 34;
 /** borroso: formas y colores al principio; al final casi nítido pero el texto sigue sin leerse */
 const BLUR_FROM = 20;
 const BLUR_TO = 5;
-/** detalle difuminado: el filtro se aplica antes del zoom, así que a 4,6x estos px se ven ~14 y al final ~2 */
-const ZBLUR_FROM = 3.2;
-const ZBLUR_TO = 0.9;
+/** detalle borroso: el mismo difuminado que "borroso" pero sobre un detalle, con un zoom que casi no se mueve */
+const ZBLUR_ZOOM = 1.3;
 /**
  * detalle: un recorte del póster que se va alejando. Dónde cae se calcula aparte (src/data/posterZoom.json: scripts/zoom-posters.py)
  * para que la ventana final nunca pise el título ni textos; trae la escala final del póster y hasta 3 puntos posibles.
@@ -129,7 +128,11 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
                 fx === "blur"
                   ? { filter: `blur(${revealed ? 0 : running ? BLUR_TO : BLUR_FROM}px)`, scale: revealed ? 1 : 1.08 }
                   : fx === "zblur"
-                    ? { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2, filter: `blur(${revealed ? 0 : running ? ZBLUR_TO : ZBLUR_FROM}px)` }
+                    ? {
+                        scale: revealed ? 1 : running ? zoomTo : zoomTo * ZBLUR_ZOOM,
+                        // el filtro se aplica antes del zoom: se divide para que en pantalla se vean los mismos px que en "borroso"
+                        filter: `blur(${revealed ? 0 : running ? BLUR_TO / zoomTo : BLUR_FROM / (zoomTo * ZBLUR_ZOOM)}px)`,
+                      }
                     : { scale: revealed ? 1 : running ? zoomTo : zoomTo * 2 }
               }
               transition={
