@@ -91,7 +91,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Qué plataforma de financiación colectiva usó Hollow Knight en 2014?","Kickstarter","Patreon","Indiegogo","GoFundMe"],
     [3,"¿Cómo se llama la sustancia oscura de la que se origina el Caballero?","El Vacío","La Sombra","La Infección","La Oscuridad"],
     [3,"¿Cómo se llaman los tres jefes insectos guerreros de la Aldea Mantis?","Los Señores Mantis","Los Hijos de Mantis","Los Guerreros Mantis","Los Soñadores"],
-    [3,"¿Quién es la vendedora de amuletos, en el Cruce Olvidado?","Salubra","Iselda","Sly","Cornifer"],
+    [3,"¿Quién es la vendedora de amuletos, en el Cruces Olvidados?","Salubra","Iselda","Sly","Cornifer"],
     [1,"¿Cómo se mide la salud del Caballero?","Con máscaras","Con corazones","Con una barra verde","Con estrellas"],
   ],
   jurassic: [

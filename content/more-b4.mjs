@@ -32,7 +32,7 @@ export default {
     [2, "¿Qué actor interpreta a Ross?", "David Schwimmer", "Matthew Perry", "Matt LeBlanc", "Hank Azaria", ["Which actor plays Ross?", N, N, N, N]],
   ],
   csm: [
-    [3, "¿Con qué demonio hace contrato Aki para invocar a Kon?", "El Demonio Zorro", "El Demonio Lobo", "El Demonio Gato", "El Demonio Tigre", ["Which devil does Aki make a contract with to summon Kon?", "The Fox Devil", "The Wolf Devil", "The Cat Devil", "The Tiger Devil"]],
+    [3, "¿Con qué demonio hace contrato Aki, al que invoca diciendo «Kon»?", "El Demonio Zorro", "El Demonio Lobo", "El Demonio Gato", "El Demonio Tigre", ["Which devil does Aki have a contract with, the one he summons by saying \"Kon\"?", "The Fox Devil", "The Wolf Devil", "The Cat Devil", "The Tiger Devil"]],
     [2, "¿En qué año se estrenó el anime de Chainsaw Man?", "2022", "2021", "2023", "2020", ["In what year did the Chainsaw Man anime premiere?", N, N, N, N]],
     [2, "¿Qué arco adapta la película de Chainsaw Man estrenada en 2025?", "El arco de Reze", "El arco de la Katana", "El arco de la Pistola", "El arco del Hotel", ["Which arc does the Chainsaw Man film released in 2025 adapt?", "The Reze arc", "The Katana arc", "The Gun arc", "The Hotel arc"]],
     [2, "¿Qué tienen de especial los endings del anime?", "Cada episodio usa un ending distinto", "Son solo instrumentales", "Los canta siempre el mismo cantante", "Cambian solo a mitad de temporada", ["What is special about the anime's endings?", "Each episode uses a different ending", "They are instrumental only", "They are always sung by the same singer", "They only change mid-season"]],
@@ -134,6 +134,5 @@ export default {
     [1, "¿De qué país es la telenovela Yo soy Betty, la fea?", "Colombia", "México", "Venezuela", "Argentina", ["Which country is the telenovela Yo soy Betty, la fea from?", "Colombia", "Mexico", "Venezuela", "Argentina"]],
     [3, "¿Cuántos capítulos tiene la telenovela original?", "335", "150", "250", "420", ["How many episodes does the original telenovela have?", N, N, N, N]],
     [3, "¿En qué país se hizo la adaptación llamada Verliebt in Berlin?", "Alemania", "Austria", "Países Bajos", "Suiza", ["In which country was the adaptation titled Verliebt in Berlin made?", "Germany", "Austria", "The Netherlands", "Switzerland"]],
-    [3, "¿Cuál de estas es integrante del Cuartel de las feas?", "Sandra Patiño", "Marcela Valencia", "Patricia Fernández", "Daniela Valencia", ["Which of these is a member of the \"Cuartel de las feas\" (the Ugly Squad)?", N, N, N, N]],
   ],
 };

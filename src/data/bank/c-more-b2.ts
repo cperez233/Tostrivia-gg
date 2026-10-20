@@ -52,7 +52,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo se llama la nave con la que Sora, Donald y Goofy viajan entre mundos?","Nave Gumi","Highwind","Ragnarok","Enterprise"],
     [2,"¿En qué mundo transcurre el prólogo de Roxas en Kingdom Hearts II?","Villa Crepúsculo","Fortaleza Oscura","Ciudad de Paso","Islas del Destino"],
     [2,"¿Quién es el líder de la Organización XIII?","Xemnas","Axel","Saïx","Xigbar"],
-    [3,"¿Cómo se llama la primera Llave Espada de Sora?","Llave Reino","Hasta el Final","Guardajuramento","Arma Definitiva"],
     [2,"¿Qué dios villano de Disney domina el Coliseo del Olimpo?","Hades","Jafar","Úrsula","Scar"],
     [3,"¿Quién es la Incorpórea de Kairi?","Naminé","Xion","Larxene","Olette"],
   ],

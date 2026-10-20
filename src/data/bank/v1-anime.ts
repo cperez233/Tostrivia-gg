@@ -70,7 +70,6 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   eva: [
     [1, "¿De qué color es principalmente el EVA-01?", "Morado", "Rojo", "Amarillo", "Blanco"],
-    [1, "¿Qué aparato usa Shinji para aislarse escuchando música?", "Un reproductor de casetes", "Un iPod", "Una radio de pilas", "Un tocadiscos"],
     [2, "¿Qué compañero de clase de Shinji es elegido para pilotar el EVA-03?", "Toji Suzuhara", "Kensuke Aida", "Hikari Horaki", "Makoto Hyuga"],
     [2, "¿Qué organización secreta da órdenes a NERV desde las sombras?", "SEELE", "WILLE", "Gehirn", "Marduk"],
     [3, "¿Qué ser está crucificado en lo más profundo de NERV, aunque al principio dicen que es Adán?", "Lilith", "Armisael", "Sachiel", "Lilim"],

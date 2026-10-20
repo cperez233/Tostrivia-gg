@@ -120,7 +120,7 @@ export default {
     [2, "¿Qué dios del Olimpo ofrece bendiciones relacionadas con los rayos?", "Zeus", "Poseidón", "Ares", "Atenea", ["Which Olympian god offers lightning-themed boons?", N, "Poseidon", "Ares", "Athena"]],
     [2, "¿Qué moneda se usa para comprar en la tienda de Caronte?", "Óbolos", "Dracmas", "Denarios", "Talentos", ["What currency is used in Charon's shop?", "Obols", "Drachmae", "Denarii", "Talents"]],
     [3, "¿Qué músico con una lira vive en la Casa de Hades?", "Orfeo", "Apolo", "Hermes", "Dionisio", ["Which musician with a lyre lives in the House of Hades?", "Orpheus", "Apollo", "Hermes", "Dionysus"]],
-    [3, "¿Qué tipo de arma es Varatha?", "Una lanza", "Una espada", "Un arco", "Un escudo", ["What type of weapon is Varatha?", "A spear", "A sword", "A bow", "A shield"]],
+    [3, "¿Qué tipo de arma es Varatea?", "Una lanza", "Una espada", "Un arco", "Un escudo", ["What type of weapon is Varatha?", "A spear", "A sword", "A bow", "A shield"]],
     [3, "¿Qué héroe griego y qué criatura son los jefes de los Campos Elíseos?", "Teseo y Asterio", "Aquiles y Patroclo", "Heracles y Hilas", "Perseo y Medusa", ["Which Greek hero and which creature are the bosses of Elysium?", "Theseus and Asterius", "Achilles and Patroclus", "Heracles and Hylas", "Perseus and Medusa"]],
     [2, "¿Quién es el barquero que gestiona la tienda del Inframundo?", "Caronte", "Tánatos", "Hipnos", "Cerbero", ["Who is the ferryman who runs the Underworld's shop?", "Charon", "Thanatos", "Hypnos", "Cerberus"]],
     [2, "¿Qué recurso gastas en el Espejo de la Noche para obtener mejoras permanentes?", "Oscuridad", "Néctar", "Ambrosía", "Óbolos", ["What resource do you spend at the Mirror of Night for permanent upgrades?", "Darkness", "Nectar", "Ambrosia", "Obols"]],
@@ -149,7 +149,7 @@ export default {
     [2, "¿Qué príncipe pierde un ojo en la pelea con sus sobrinos?", "Aemond", "Aegon", "Daemon", "Jacaerys", ["Which prince loses an eye in the fight with his nephews?", N, "Aegon", "Daemon", "Jacaerys"]],
     [2, "¿Qué cargo ocupa Otto Hightower como principal consejero del rey?", "Mano del Rey", "Gran maestre", "Lord Comandante", "Consejero de la Moneda", ["What position does Otto Hightower hold as the king's chief advisor?", "Hand of the King", "Grand Maester", "Lord Commander", "Master of Coin"]],
     [3, "¿Cómo se llama el primer hijo de Rhaenyra?", "Jacaerys", "Lucerys", "Joffrey", "Aegon", ["What is the name of Rhaenyra's firstborn son?", N, "Lucerys", "Joffrey", "Aegon"]],
-    [3, "¿Cómo se llama la isla sede de la Casa Velaryon?", "Marcaderiva", "Rocadragón", "Pyke", "Bastión de Tormenta", ["What is the name of the island seat of House Velaryon?", "Driftmark", "Dragonstone", "Pyke", "Storm's End"]],
+    [3, "¿Cómo se llama la isla sede de la Casa Velaryon?", "Marcaderiva", "Rocadragón", "Pyke", "Bastión de Tormentas", ["What is the name of the island seat of House Velaryon?", "Driftmark", "Dragonstone", "Pyke", "Storm's End"]],
     [3, "¿Quién fue showrunner de la primera temporada junto a Miguel Sapochnik?", "Ryan Condal", "D. B. Weiss", "David Benioff", "Vince Gilligan", ["Who was the first season's showrunner alongside Miguel Sapochnik?", N, "D. B. Weiss", "David Benioff", "Vince Gilligan"]],
   ],
 };

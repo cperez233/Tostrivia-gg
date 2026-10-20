@@ -121,7 +121,6 @@ export default {
   ],
 
   merlina: [
-    [1, "🖐️🕯️\n¿Quién es?", "Cosa", "Enid", "Tío Lucas", "Pugsley", ["🖐️🕯️\nWho is it?", "Thing", "Enid", "Uncle Fester", "Pugsley"], E],
   ],
 
   peaky: [

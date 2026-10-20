@@ -37,7 +37,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué actor interpreta a Ross?","David Schwimmer","Matthew Perry","Matt LeBlanc","Hank Azaria"],
   ],
   csm: [
-    [3,"¿Con qué demonio hace contrato Aki para invocar a Kon?","El Demonio Zorro","El Demonio Lobo","El Demonio Gato","El Demonio Tigre"],
+    [3,"¿Con qué demonio hace contrato Aki, al que invoca diciendo «Kon»?","El Demonio Zorro","El Demonio Lobo","El Demonio Gato","El Demonio Tigre"],
     [2,"¿En qué año se estrenó el anime de Chainsaw Man?","2022","2021","2023","2020"],
     [2,"¿Qué arco adapta la película de Chainsaw Man estrenada en 2025?","El arco de Reze","El arco de la Katana","El arco de la Pistola","El arco del Hotel"],
     [2,"¿Qué tienen de especial los endings del anime?","Cada episodio usa un ending distinto","Son solo instrumentales","Los canta siempre el mismo cantante","Cambian solo a mitad de temporada"],
@@ -139,7 +139,6 @@ const bank: Record<string, RawQuestion[]> = {
     [1,"¿De qué país es la telenovela Yo soy Betty, la fea?","Colombia","México","Venezuela","Argentina"],
     [3,"¿Cuántos capítulos tiene la telenovela original?","335","150","250","420"],
     [3,"¿En qué país se hizo la adaptación llamada Verliebt in Berlin?","Alemania","Austria","Países Bajos","Suiza"],
-    [3,"¿Cuál de estas es integrante del Cuartel de las feas?","Sandra Patiño","Marcela Valencia","Patricia Fernández","Daniela Valencia"],
   ],
 };
 

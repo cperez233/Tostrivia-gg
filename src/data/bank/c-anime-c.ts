@@ -107,7 +107,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo se llama la hermana menor de Doraemon?","Dorami","Shizuka","Jaiko","Tamako"],
     [3,"¿Por qué Doraemon es azul, según su historia?","Un ratón robot le comió las orejas y se puso azul de tristeza","Siempre fue azul","Se pintó por accidente","Cayó en un tanque de pintura"],
     [2,"¿Quién creó Doraemon?","Fujiko F. Fujio","Akira Toriyama","Osamu Tezuka","Rumiko Takahashi"],
-    [3,"¿Cómo se llama el bisnieto de Nobita que envía a Doraemon al pasado?","Sewashi","Nobisuke","Dekisugi","Nobiru"],
+    [3,"¿Cómo se llama el descendiente de Nobita que envía a Doraemon al pasado?","Sewashi","Nobisuke","Dekisugi","Nobiru"],
   ],
   bocchi: [
     [1,"¿Cómo se llama la protagonista de Bocchi the Rock!?","Hitori Gotoh","Nijika Ijichi","Ryo Yamada","Ikuyo Kita"],

@@ -86,7 +86,7 @@ export default {
     [3, "¿Qué plataforma de financiación colectiva usó Hollow Knight en 2014?", "Kickstarter", "Patreon", "Indiegogo", "GoFundMe", ["Which crowdfunding platform did Hollow Knight use in 2014?", N, N, N, N]],
     [3, "¿Cómo se llama la sustancia oscura de la que se origina el Caballero?", "El Vacío", "La Sombra", "La Infección", "La Oscuridad", ["What is the dark substance the Knight originates from?", "The Void", "The Shade", "The Infection", "The Darkness"]],
     [3, "¿Cómo se llaman los tres jefes insectos guerreros de la Aldea Mantis?", "Los Señores Mantis", "Los Hijos de Mantis", "Los Guerreros Mantis", "Los Soñadores", ["What are the three warrior insect bosses of Mantis Village called?", "The Mantis Lords", "The Mantis Sons", "The Mantis Warriors", "The Dreamers"]],
-    [3, "¿Quién es la vendedora de amuletos, en el Cruce Olvidado?", "Salubra", "Iselda", "Sly", "Cornifer", ["Who is the charm seller in Forgotten Crossroads?", N, N, N, N]],
+    [3, "¿Quién es la vendedora de amuletos, en el Cruces Olvidados?", "Salubra", "Iselda", "Sly", "Cornifer", ["Who is the charm seller in Forgotten Crossroads?", N, N, N, N]],
     [1, "¿Cómo se mide la salud del Caballero?", "Con máscaras", "Con corazones", "Con una barra verde", "Con estrellas", ["How is the Knight's health measured?", "With masks", "With hearts", "With a green bar", "With stars"]],
   ],
   jurassic: [

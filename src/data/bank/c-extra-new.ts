@@ -36,7 +36,7 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   narcos: [
     [3,"¿Qué hermanos lideraban el Cartel de Cali?","Los Rodríguez Orejuela","Los Ochoa","Los Moncada","Los Castaño"],
-    [3,"¿Qué grupo se formó para perseguir a Escobar?","Los Pepes","Los Extraditables","El Bloque de Búsqueda","Los Rastrojos"],
+    [3,"¿Qué grupo paramilitar formado por enemigos de Escobar lo persiguió al margen de la ley?","Los Pepes","Los Extraditables","Los Priscos","Los Rastrojos"],
     [3,"¿Cómo se llamó el grupo de Escobar que luchaba contra la extradición a EE. UU.?","Los Extraditables","Los Pepes","Los Priscos","Los Chulavitas"],
     [3,"¿Quién interpreta al agente Steve Murphy?","Boyd Holbrook","Pedro Pascal","Wagner Moura","Damián Alcázar"],
     [3,"¿Quién interpreta a Félix Gallardo en Narcos: México?","Diego Luna","Gael García Bernal","Michael Peña","Alfonso Herrera"],
@@ -83,9 +83,9 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién escribió los tres diarios?","Ford","Stan","Dipper","Soos"],
   ],
   adventuretime: [
-    [2,"¿Quién es la novia de Finn con poderes de fuego?","La Princesa Flama","Marceline","La Princesa Bubblegum","Lady Rainicorn"],
-    [2,"¿Cómo se llama el reino que gobierna la Princesa Bubblegum?","El Reino Dulce","El Reino de Fuego","El Reino de Hielo","El Reino Nube"],
-    [2,"¿Quién es la princesa con forma de nube púrpura?","Lumpy Space Princess","Princesa Flama","Princesa Nube","Princesa Lila"],
+    [2,"¿Quién es la novia de Finn con poderes de fuego?","La Princesa Flama","Marceline","La Dulce Princesa","Arcoíris"],
+    [2,"¿Cómo se llama el reino que gobierna la Dulce Princesa?","El Dulce Reino","El Reino Flama","El Reino Helado","El Espacio Grumoso"],
+    [2,"¿Quién es la princesa con forma de nube púrpura?","Princesa del Espacio Grumoso","Princesa Flama","Princesa Nube","Princesa Lila"],
     [1,"¿Qué hace el Rey Helado en los primeros capítulos?","Secuestra princesas","Cocina","Canta","Vende helados"],
   ],
   terraria: [
@@ -105,7 +105,7 @@ const bank: Record<string, RawQuestion[]> = {
   hades: [
     [2,"¿Cómo se llama el esqueleto de entrenamiento en la casa de Hades?","Skelly","Bones","Sans","Dusa"],
     [3,"¿Quién es la cabeza de gorgona que flota en la casa?","Dusa","Medusa","Aracne","Gorgo"],
-    [2,"¿Cómo se llama la personificación de la muerte, amigo de Zagreus?","Thanatos","Caronte","Ares","Orfeo"],
+    [2,"¿Cómo se llama la personificación de la muerte, amigo de Zagreus?","Tánatos","Caronte","Ares","Orfeo"],
   ],
   southpark: [
     [2,"¿Cómo se llama el padre de Stan?","Randy","Gerald","Stuart","Chef"],

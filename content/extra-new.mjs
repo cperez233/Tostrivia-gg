@@ -36,7 +36,7 @@ export default {
 
   narcos: [
     [3, "¿Qué hermanos lideraban el Cartel de Cali?", "Los Rodríguez Orejuela", "Los Ochoa", "Los Moncada", "Los Castaño", ["Which brothers led the Cali Cartel?", "The Rodríguez Orejuela brothers", "The Ochoa brothers", "The Moncada brothers", "The Castaño brothers"]],
-    [3, "¿Qué grupo se formó para perseguir a Escobar?", "Los Pepes", "Los Extraditables", "El Bloque de Búsqueda", "Los Rastrojos", ["Which group was formed to hunt Escobar?", N, N, "The Search Bloc", N]],
+    [3, "¿Qué grupo paramilitar formado por enemigos de Escobar lo persiguió al margen de la ley?", "Los Pepes", "Los Extraditables", "Los Priscos", "Los Rastrojos", ["Which vigilante group, formed by Escobar's enemies, hunted him outside the law?", "Los Pepes", "Los Extraditables", "Los Priscos", "Los Rastrojos"]],
     [3, "¿Cómo se llamó el grupo de Escobar que luchaba contra la extradición a EE. UU.?", "Los Extraditables", "Los Pepes", "Los Priscos", "Los Chulavitas", ["What was Escobar's group that fought extradition to the U.S. called?", N, N, N, N]],
     [3, "¿Quién interpreta al agente Steve Murphy?", "Boyd Holbrook", "Pedro Pascal", "Wagner Moura", "Damián Alcázar", ["Who plays agent Steve Murphy?", N, N, N, N]],
     [3, "¿Quién interpreta a Félix Gallardo en Narcos: México?", "Diego Luna", "Gael García Bernal", "Michael Peña", "Alfonso Herrera", ["Who plays Félix Gallardo in Narcos: Mexico?", N, N, N, N]],
@@ -89,9 +89,9 @@ export default {
   ],
 
   adventuretime: [
-    [2, "¿Quién es la novia de Finn con poderes de fuego?", "La Princesa Flama", "Marceline", "La Princesa Bubblegum", "Lady Rainicorn", ["Who is Finn's fire-powered girlfriend?", "Flame Princess", "Marceline", "Princess Bubblegum", "Lady Rainicorn"]],
-    [2, "¿Cómo se llama el reino que gobierna la Princesa Bubblegum?", "El Reino Dulce", "El Reino de Fuego", "El Reino de Hielo", "El Reino Nube", ["What is the kingdom ruled by Princess Bubblegum called?", "The Candy Kingdom", "The Fire Kingdom", "The Ice Kingdom", "The Cloud Kingdom"]],
-    [2, "¿Quién es la princesa con forma de nube púrpura?", "Lumpy Space Princess", "Princesa Flama", "Princesa Nube", "Princesa Lila", ["Who is the princess shaped like a purple cloud?", N, "Flame Princess", "Cloud Princess", "Lilac Princess"]],
+    [2, "¿Quién es la novia de Finn con poderes de fuego?", "La Princesa Flama", "Marceline", "La Dulce Princesa", "Arcoíris", ["Who is Finn's fire-powered girlfriend?", "Flame Princess", "Marceline", "Princess Bubblegum", "Lady Rainicorn"]],
+    [2, "¿Cómo se llama el reino que gobierna la Dulce Princesa?", "El Dulce Reino", "El Reino Flama", "El Reino Helado", "El Espacio Grumoso", ["What is the kingdom ruled by Princess Bubblegum called?", "The Candy Kingdom", "The Fire Kingdom", "The Ice Kingdom", "Lumpy Space"]],
+    [2, "¿Quién es la princesa con forma de nube púrpura?", "Princesa del Espacio Grumoso", "Princesa Flama", "Princesa Nube", "Princesa Lila", ["Who is the princess shaped like a purple cloud?", "Lumpy Space Princess", "Flame Princess", "Cloud Princess", "Lilac Princess"]],
     [1, "¿Qué hace el Rey Helado en los primeros capítulos?", "Secuestra princesas", "Cocina", "Canta", "Vende helados", ["What does the Ice King do in the first episodes?", "Kidnaps princesses", "Cooks", "Sings", "Sells ice cream"]],
   ],
 
@@ -114,7 +114,7 @@ export default {
   hades: [
     [2, "¿Cómo se llama el esqueleto de entrenamiento en la casa de Hades?", "Skelly", "Bones", "Sans", "Dusa", ["What is the training skeleton in the House of Hades called?", N, N, N, N]],
     [3, "¿Quién es la cabeza de gorgona que flota en la casa?", "Dusa", "Medusa", "Aracne", "Gorgo", ["Who is the Gorgon head floating around the house?", N, N, N, N]],
-    [2, "¿Cómo se llama la personificación de la muerte, amigo de Zagreus?", "Thanatos", "Caronte", "Ares", "Orfeo", ["Who is the personification of death and a friend of Zagreus?", "Thanatos", "Charon", "Ares", "Orpheus"]],
+    [2, "¿Cómo se llama la personificación de la muerte, amigo de Zagreus?", "Tánatos", "Caronte", "Ares", "Orfeo", ["Who is the personification of death and a friend of Zagreus?", "Thanatos", "Charon", "Ares", "Orpheus"]],
   ],
 
   southpark: [

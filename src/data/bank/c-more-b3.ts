@@ -133,11 +133,9 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿A qué se dedica Robin?","Es presentadora de noticias","Es chef","Es arquitecta","Es profesora"],
     [2,"¿Qué actor interpreta a Barney Stinson?","Neil Patrick Harris","Josh Radnor","Jason Segel","Bob Saget"],
     [1,"¿En qué ciudad transcurre la serie?","Nueva York","Chicago","Los Ángeles","Boston"],
-    [2,"¿Cómo se llama el libro de planes de seducción de Barney?","El Playbook","El Código de Hermanos","La Guía Stinson","El Manual Legen"],
     [2,"¿Cuál es el nombre artístico pop de Robin en su adolescencia?","Robin Sparkles","Robin Starlight","Robin Glitter","Robin Shine"],
     [2,"¿Cuántas temporadas tiene la serie?","Nueve","Siete","Ocho","Diez"],
     [3,"¿Qué novia de Ted lo deja plantado en el altar?","Stella","Victoria","Zoey","Karen"],
-    [1,"“¡Desafío aceptado!”\n¿Quién lo dice?","Barney","Ted","Marshall","Robin",{"v":"quote"}],
   ],
 };
 

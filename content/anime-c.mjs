@@ -109,7 +109,7 @@ export default {
     [2, "¿Cómo se llama la hermana menor de Doraemon?", "Dorami", "Shizuka", "Jaiko", "Tamako", ["What is Doraemon's younger sister called?", N, N, N, N]],
     [3, "¿Por qué Doraemon es azul, según su historia?", "Un ratón robot le comió las orejas y se puso azul de tristeza", "Siempre fue azul", "Se pintó por accidente", "Cayó en un tanque de pintura", ["Why is Doraemon blue, according to his story?", "A robot mouse ate his ears and he turned blue from sadness", "He was always blue", "He painted himself by accident", "He fell into a tank of paint"]],
     [2, "¿Quién creó Doraemon?", "Fujiko F. Fujio", "Akira Toriyama", "Osamu Tezuka", "Rumiko Takahashi", ["Who created Doraemon?", N, N, N, N]],
-    [3, "¿Cómo se llama el bisnieto de Nobita que envía a Doraemon al pasado?", "Sewashi", "Nobisuke", "Dekisugi", "Nobiru", ["What is Nobita's great-grandson who sends Doraemon to the past called?", N, N, N, N]],
+    [3, "¿Cómo se llama el descendiente de Nobita que envía a Doraemon al pasado?", "Sewashi", "Nobisuke", "Dekisugi", "Nobiru", ["What is the name of Nobita's descendant who sends Doraemon to the past?", "Sewashi", "Nobisuke", "Dekisugi", "Nobiru"]],
   ],
 
   bocchi: [

@@ -101,7 +101,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"🧟🏹🏍️\n¿Quién es?","Daryl","Rick","Negan","Glenn",{"v":"emoji"}],
   ],
   merlina: [
-    [1,"🖐️🕯️\n¿Quién es?","Cosa","Enid","Tío Lucas","Pugsley",{"v":"emoji"}],
+
   ],
   peaky: [
     [2,"🧢🪒🥃\n¿Quién es?","Tommy Shelby","Arthur Shelby","Alfie Solomons","John Shelby",{"v":"emoji"}],

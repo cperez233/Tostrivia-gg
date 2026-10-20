@@ -125,7 +125,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué dios del Olimpo ofrece bendiciones relacionadas con los rayos?","Zeus","Poseidón","Ares","Atenea"],
     [2,"¿Qué moneda se usa para comprar en la tienda de Caronte?","Óbolos","Dracmas","Denarios","Talentos"],
     [3,"¿Qué músico con una lira vive en la Casa de Hades?","Orfeo","Apolo","Hermes","Dionisio"],
-    [3,"¿Qué tipo de arma es Varatha?","Una lanza","Una espada","Un arco","Un escudo"],
+    [3,"¿Qué tipo de arma es Varatea?","Una lanza","Una espada","Un arco","Un escudo"],
     [3,"¿Qué héroe griego y qué criatura son los jefes de los Campos Elíseos?","Teseo y Asterio","Aquiles y Patroclo","Heracles y Hilas","Perseo y Medusa"],
     [2,"¿Quién es el barquero que gestiona la tienda del Inframundo?","Caronte","Tánatos","Hipnos","Cerbero"],
     [2,"¿Qué recurso gastas en el Espejo de la Noche para obtener mejoras permanentes?","Oscuridad","Néctar","Ambrosía","Óbolos"],
@@ -154,7 +154,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué príncipe pierde un ojo en la pelea con sus sobrinos?","Aemond","Aegon","Daemon","Jacaerys"],
     [2,"¿Qué cargo ocupa Otto Hightower como principal consejero del rey?","Mano del Rey","Gran maestre","Lord Comandante","Consejero de la Moneda"],
     [3,"¿Cómo se llama el primer hijo de Rhaenyra?","Jacaerys","Lucerys","Joffrey","Aegon"],
-    [3,"¿Cómo se llama la isla sede de la Casa Velaryon?","Marcaderiva","Rocadragón","Pyke","Bastión de Tormenta"],
+    [3,"¿Cómo se llama la isla sede de la Casa Velaryon?","Marcaderiva","Rocadragón","Pyke","Bastión de Tormentas"],
     [3,"¿Quién fue showrunner de la primera temporada junto a Miguel Sapochnik?","Ryan Condal","D. B. Weiss","David Benioff","Vince Gilligan"],
   ],
 };

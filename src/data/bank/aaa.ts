@@ -199,7 +199,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3, "¿Quién compuso la música de los Final Fantasy clásicos?", "Nobuo Uematsu", "Koji Kondo", "Yoko Shimomura", "Yasunori Mitsuda"],
     [3, "¿Cómo se llama la segunda parte del remake de Final Fantasy VII?", "Rebirth", "Reunion", "Revival", "Reborn"],
     [3, "¿Qué villano payaso destruye el mundo en Final Fantasy VI?", "Kefka", "Exdeath", "Kuja", "Garland"],
-    [3, "¿Qué Final Fantasy es el MMO más jugado de la saga?", "Final Fantasy XIV", "Final Fantasy XI", "Final Fantasy XII", "Final Fantasy XIII"],
     [3, "¿Quién protagoniza Final Fantasy XVI?", "Clive Rosfield", "Noctis Lucis Caelum", "Lightning", "Vaan"],
     [3, "¿Qué nombre aparece en casi todos los Final Fantasy?", "Cid", "Biggs", "Gilgamesh", "Ultros"],
     [3, "¿Qué ex SOLDADO es el mejor amigo de Cloud en Crisis Core?", "Zack Fair", "Genesis", "Angeal", "Vincent"],

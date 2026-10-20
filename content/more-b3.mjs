@@ -128,10 +128,8 @@ export default {
     [2, "¿A qué se dedica Robin?", "Es presentadora de noticias", "Es chef", "Es arquitecta", "Es profesora", ["What does Robin do for a living?", "She is a TV news anchor", "She is a chef", "She is an architect", "She is a teacher"]],
     [2, "¿Qué actor interpreta a Barney Stinson?", "Neil Patrick Harris", "Josh Radnor", "Jason Segel", "Bob Saget", ["Which actor plays Barney Stinson?", N, "Josh Radnor", "Jason Segel", "Bob Saget"]],
     [1, "¿En qué ciudad transcurre la serie?", "Nueva York", "Chicago", "Los Ángeles", "Boston", ["In which city is the series set?", "New York City", "Chicago", "Los Angeles", "Boston"]],
-    [2, "¿Cómo se llama el libro de planes de seducción de Barney?", "El Playbook", "El Código de Hermanos", "La Guía Stinson", "El Manual Legen", ["What is Barney's book of seduction schemes called?", "The Playbook", "The Bro Code", "The Stinson Guide", "The Legend Manual"]],
     [2, "¿Cuál es el nombre artístico pop de Robin en su adolescencia?", "Robin Sparkles", "Robin Starlight", "Robin Glitter", "Robin Shine", ["What is Robin's teenage pop stage name?", N, "Robin Starlight", "Robin Glitter", "Robin Shine"]],
     [2, "¿Cuántas temporadas tiene la serie?", "Nueve", "Siete", "Ocho", "Diez", ["How many seasons does the series have?", "Nine", "Seven", "Eight", "Ten"]],
     [3, "¿Qué novia de Ted lo deja plantado en el altar?", "Stella", "Victoria", "Zoey", "Karen", ["Which of Ted's girlfriends leaves him at the altar?", N, "Victoria", "Zoey", "Karen"]],
-    [1, "“¡Desafío aceptado!”\n¿Quién lo dice?", "Barney", "Ted", "Marshall", "Robin", ["\"Challenge accepted!\"\nWho says it?", N, "Ted", "Marshall", "Robin"], { v: "quote" }],
   ],
 };
