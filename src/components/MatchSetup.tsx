@@ -3,8 +3,9 @@
  * (preguntas, tiempo, multiplicador, dificultad, racha) que se abre para cambiarlas.
  * Lo usan la ruleta y Categorías (al jugar solo) y la sala (lo cambia el anfitrión, los demás lo ven).
  */
-import { useState } from "react";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, LayoutGroup, motion, useDragControls, useReducedMotion } from "framer-motion";
 import VariantPicker from "./VariantPicker";
 import { VARIANT_TEXT, saveVariant, savedVariant, type Variant } from "../game/powers";
 import { COUNTS, DEFAULT_RULES, DIFFS, MEDIA_EXTRA, MULTS, TIMES, isDefault, saveRules, savedRules, type Difficulty, type Rules } from "../game/rules";
@@ -45,7 +46,7 @@ export function rulesChips(r: Rules) {
 }
 
 const PANEL = { hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.08 } } };
-const ROW = { hidden: { opacity: 0, x: -18 }, show: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 420, damping: 30 } } };
+const ROW = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 420, damping: 30 } } };
 
 export default function MatchSetup({ variant, rules, onVariant, onRules, disabled, readOnly, idp }: Props) {
   useLang();
@@ -73,6 +74,7 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
         <motion.button
           type="button"
           className={`setup__toggle ${open ? "is-open" : ""}`}
+          aria-haspopup="dialog"
           aria-expanded={open}
           aria-controls={`${idp}-rules`}
           aria-describedby={`${idp}-rules-sum`}
@@ -81,9 +83,9 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
           whileTap={disabled ? undefined : { scale: 0.96, x: 2, y: 2 }}
         >
           <Sliders open={open} />
-          <span className="setup__toggle-text">{open ? t("Listo") : t("Personalizar")}</span>
-          <motion.svg className="setup__chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden animate={{ rotate: open ? 180 : 0 }} transition={{ type: "spring", stiffness: 380, damping: 22 }}>
-            <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
+          <span className="setup__toggle-text">{t("Personalizar")}</span>
+          <motion.svg className="setup__chev" width="18" height="18" viewBox="0 0 24 24" aria-hidden animate={{ y: open ? -3 : 0 }} transition={{ type: "spring", stiffness: 380, damping: 22 }}>
+            <path d="M5 15l7-7 7 7" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
           </motion.svg>
         </motion.button>
         <p className="sr-only" id={`${idp}-rules-sum`}>
@@ -96,10 +98,10 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
                 key={c}
                 layout={!reduce}
                 className="setup__chip"
-                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.4, rotate: -8 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.4 }}
-                transition={{ type: "spring", stiffness: 520, damping: 24 }}
+                initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6 }}
+                transition={{ type: "spring", stiffness: 520, damping: 30 }}
               >
                 {c}
               </motion.li>
@@ -107,76 +109,129 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
           </AnimatePresence>
         </ul>
       </div>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            key="rules"
-            id={`${idp}-rules`}
-            className="setup__drawer"
-            initial={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            animate={reduce ? { opacity: 1 } : { height: "auto", opacity: 1 }}
-            exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.div className="setup__panel" variants={PANEL} initial="hidden" animate="show">
-              <LayoutGroup id={`${idp}-rules-pills`}>
-                <Row idp={idp} id="count" label={t("Preguntas")} list={COUNTS} value={rules.count} name={(n) => String(n)} onPick={(v) => set("count", v)} disabled={disabled} />
-                <Row
-                  idp={idp}
-                  id="time"
-                  label={t("Tiempo por pregunta")}
-                  hint={t("Las de video tienen {n} s más.", { n: MEDIA_EXTRA })}
-                  list={TIMES}
-                  value={rules.time}
-                  name={(n) => `${n} s`}
-                  onPick={(v) => set("time", v)}
-                  disabled={disabled}
-                />
-                <Row
-                  idp={idp}
-                  id="mult"
-                  label={t("Multiplicador de puntos")}
-                  hint={t("Multiplica lo que gana cada acierto.")}
-                  list={MULTS}
-                  value={rules.mult}
-                  name={(n) => `×${num(n)}`}
-                  onPick={(v) => set("mult", v)}
-                  disabled={disabled}
-                />
-                <Row<Difficulty> idp={idp} id="diff" label={t("Dificultad")} list={DIFFS} value={rules.diff} name={(d) => t(DIFF_NAME[d])} onPick={(v) => set("diff", v)} disabled={disabled} />
-                <Row<boolean>
-                  idp={idp}
-                  id="streak"
-                  label={t("Racha")}
-                  hint={rules.streak ? t("Acertar seguido multiplica: ×1,25 con 2, ×1,5 con 3, ×2 con 5 y ×3 con 8.") : t("Cada acierto vale lo mismo, vayas como vayas.")}
-                  list={[true, false]}
-                  value={rules.streak}
-                  name={(on) => (on ? t("Multiplica") : t("Sin racha"))}
-                  onPick={(v) => set("streak", v)}
-                  disabled={disabled}
-                />
-              </LayoutGroup>
-              <AnimatePresence initial={false}>
-                {!isDefault(rules) && (
-                  <motion.button
-                    key="reset"
-                    type="button"
-                    className="setup__reset"
-                    onClick={() => onRules?.({ ...DEFAULT_RULES })}
-                    disabled={disabled}
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                  >
-                    {t("Volver a lo normal")}
-                  </motion.button>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Sheet open={open} onClose={() => setOpen(false)} idp={idp} reduce={!!reduce}>
+        <motion.div className="setup__panel" variants={PANEL} initial="hidden" animate="show">
+          <LayoutGroup id={`${idp}-rules-pills`}>
+            <Row idp={idp} id="count" label={t("Preguntas")} list={COUNTS} value={rules.count} name={(n) => String(n)} onPick={(v) => set("count", v)} disabled={disabled} />
+            <Row
+              idp={idp}
+              id="time"
+              label={t("Tiempo por pregunta")}
+              hint={t("Las de video tienen {n} s más.", { n: MEDIA_EXTRA })}
+              list={TIMES}
+              value={rules.time}
+              name={(n) => `${n} s`}
+              onPick={(v) => set("time", v)}
+              disabled={disabled}
+            />
+            <Row
+              idp={idp}
+              id="mult"
+              label={t("Multiplicador de puntos")}
+              hint={t("Multiplica lo que gana cada acierto.")}
+              list={MULTS}
+              value={rules.mult}
+              name={(n) => `×${num(n)}`}
+              onPick={(v) => set("mult", v)}
+              disabled={disabled}
+            />
+            <Row<Difficulty> idp={idp} id="diff" label={t("Dificultad")} list={DIFFS} value={rules.diff} name={(d) => t(DIFF_NAME[d])} onPick={(v) => set("diff", v)} disabled={disabled} />
+            <Row<boolean>
+              idp={idp}
+              id="streak"
+              label={t("Racha")}
+              hint={rules.streak ? t("Acertar seguido multiplica: ×1,25 con 2, ×1,5 con 3, ×2 con 5 y ×3 con 8.") : t("Cada acierto vale lo mismo, vayas como vayas.")}
+              list={[true, false]}
+              value={rules.streak}
+              name={(on) => (on ? t("Multiplica") : t("Sin racha"))}
+              onPick={(v) => set("streak", v)}
+              disabled={disabled}
+            />
+          </LayoutGroup>
+          <AnimatePresence initial={false}>
+            {!isDefault(rules) && (
+              <motion.button
+                key="reset"
+                type="button"
+                className="setup__reset"
+                onClick={() => onRules?.({ ...DEFAULT_RULES })}
+                disabled={disabled}
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+              >
+                {t("Volver a lo normal")}
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </Sheet>
     </div>
+  );
+}
+
+/**
+ * Las reglas se abren en una hoja que sube desde abajo, encima de la pantalla: nada de lo que hay detrás se mueve ni se estira.
+ * Se cierra con "Listo", con la X, tocando fuera, con Esc o arrastrándola hacia abajo.
+ */
+function Sheet({ open, onClose, idp, reduce, children }: { open: boolean; onClose: () => void; idp: string; reduce: boolean; children: ReactNode }) {
+  const doneRef = useRef<HTMLButtonElement>(null);
+  const controls = useDragControls();
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const key = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", key);
+    doneRef.current?.focus({ preventScroll: true });
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", key);
+    };
+  }, [open, onClose]);
+  if (typeof document === "undefined") return null;
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <div className="rsheet" key="rsheet">
+          <motion.div className="rsheet__back" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }} />
+          <motion.section
+            id={`${idp}-rules`}
+            className="rsheet__card"
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("Personalizar")}
+            initial={reduce ? { opacity: 0 } : { y: "100%" }}
+            animate={reduce ? { opacity: 1 } : { y: 0 }}
+            exit={reduce ? { opacity: 0 } : { y: "100%" }}
+            transition={reduce ? { duration: 0.15 } : { type: "spring", stiffness: 380, damping: 38, mass: 0.9 }}
+            drag={reduce ? false : "y"}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.6 }}
+            dragListener={false}
+            dragControls={controls}
+            onDragEnd={(_, i) => (i.offset.y > 110 || i.velocity.y > 600) && onClose()}
+          >
+            <header className="rsheet__head" onPointerDown={(e) => controls.start(e)}>
+              <span className="rsheet__grip" aria-hidden />
+              <h2 className="rsheet__title">{t("Personalizar")}</h2>
+              <button type="button" className="rsheet__x" onClick={onClose} aria-label={t("Cerrar")}>
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+                  <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
+                </svg>
+              </button>
+            </header>
+            <div className="rsheet__body">{children}</div>
+            <footer className="rsheet__foot">
+              <button type="button" ref={doneRef} className="rsheet__done" onClick={onClose}>
+                {t("Listo")}
+              </button>
+            </footer>
+          </motion.section>
+        </div>
+      )}
+    </AnimatePresence>,
+    document.body
   );
 }
 

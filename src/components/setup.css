@@ -79,22 +79,108 @@
   line-height: 1.2;
   white-space: nowrap;
 }
-/* el panel se despliega: el cajón recorta, el panel lleva el borde */
-.setup__drawer {
+/* la hoja de reglas: sube desde abajo y tapa la pantalla sin moverla */
+.rsheet {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.rsheet__back {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.62);
+}
+.rsheet__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  overflow: hidden;
-  padding: 0 6px 6px 0;
-  margin: 0 -6px -6px 0;
+  max-width: 560px;
+  max-height: min(88svh, 720px);
+  border: 3px solid var(--ink);
+  border-bottom: 0;
+  background: var(--ink-2);
+  color: var(--on-ink);
+  box-shadow: 0 -6px 0 var(--signal);
+  padding-bottom: env(safe-area-inset-bottom);
+  will-change: transform;
+}
+.rsheet__head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 14px 10px 18px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.rsheet__grip {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 44px;
+  height: 5px;
+  translate: -50% 0;
+  background: var(--ink-line);
+}
+.rsheet__title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 1;
+}
+.rsheet__x {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink-line);
+  background: none;
+  color: var(--on-ink);
+}
+.rsheet__body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px 14px 14px;
+}
+.rsheet__foot {
+  padding: 10px 14px 14px;
+  border-top: 2px solid var(--ink-line);
+}
+.rsheet__done {
+  width: 100%;
+  min-height: 54px;
+  border: 3px solid var(--ink);
+  background: var(--signal);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 20px;
+  box-shadow: 4px 4px 0 var(--hanko);
+  transition: translate 0.12s var(--ease), box-shadow 0.12s var(--ease);
+}
+.rsheet__done:active {
+  translate: 3px 3px;
+  box-shadow: 1px 1px 0 var(--hanko);
+}
+@media (min-width: 700px) {
+  .rsheet {
+    align-items: center;
+  }
+  .rsheet__card {
+    border: 3px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--signal);
+  }
 }
 .setup__panel {
   display: grid;
   gap: 16px;
   width: 100%;
-  padding: 16px 14px 14px;
-  border: 2px solid var(--ink-line);
-  border-left: 5px solid var(--signal);
-  background: var(--ink-2);
-  box-shadow: 4px 4px 0 var(--hanko);
+  padding: 8px 0 4px;
 }
 .setup__row {
   display: grid;
