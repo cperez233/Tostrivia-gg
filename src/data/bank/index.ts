@@ -46,7 +46,13 @@ export function videoFor(key: string): ResolvedVideo | undefined {
 // varios archivos pueden aportar a la misma categoría: se suman, no se pisan
 const RAW: Record<string, RawQuestion[]> = {};
 // lo que genera scripts/build-content.mjs (preguntas en español e inglés escritas en content/)
-const GENERATED = Object.values(import.meta.glob<{ default: Record<string, RawQuestion[]> }>("./c-*.ts", { eager: true })).map((m) => m.default);
+const GENERATED_FILES = import.meta.glob<{ default: Record<string, RawQuestion[]> }>("./c-*.ts", { eager: true });
+const GENERATED = Object.values(GENERATED_FILES).map((m) => m.default);
+/** filas que vienen de las auditorías (content/audit-*.mjs): son la versión revisada, no se retiran por id y reemplazan a la vieja que comparte id */
+const FROM_AUDIT = new Set<RawQuestion>();
+for (const [file, m] of Object.entries(GENERATED_FILES)) {
+  if (/\/c-audit-/.test(file)) for (const list of Object.values(m.default)) list.forEach((r) => FROM_AUDIT.add(r));
+}
 for (const part of [...GENERATED, cultura, leyenda, nueva, culto, oido, nintendo, aaa, online, pantalla, masAnime, masJuegos, extra, conVideo, v1PantallaCultura, v1Series, v1Peliculas, v1Anime, v1Juegos, v1Video]) {
   for (const [cat, list] of Object.entries(part)) (RAW[cat] ??= []).push(...list);
 }
@@ -127,6 +133,15 @@ function build(): Bank {
   const byId: Record<string, Question> = {};
   const byCat: Record<string, Question[]> = {};
   const missingVideo: string[] = [];
+  // ids de las preguntas revisadas: si una pregunta vieja tiene el mismo id (mismo enunciado y respuesta), manda la revisada
+  const auditIds = new Set<string>();
+  for (const [cat, list] of Object.entries(RAW)) {
+    for (const r of list) {
+      if (!FROM_AUDIT.has(r)) continue;
+      const x = r[6] as Media | Visual | undefined;
+      auditIds.add(stableId(cat, r[1] as string, r[2] as string, x && "k" in x ? x.k : x && "v" in x && x.v === "poster" ? `${x.id}:${x.fx}` : undefined));
+    }
+  }
   for (const [cat, list] of Object.entries(RAW)) {
     byCat[cat] = [];
     list.forEach((r) => {
@@ -134,6 +149,7 @@ function build(): Bank {
       const media = extra && "k" in extra ? extra : undefined;
       const visual = extra && "v" in extra ? extra : undefined;
       let id = stableId(cat, q, a, media?.k ?? (visual?.v === "poster" ? `${visual.id}:${visual.fx}` : undefined));
+      const baseId = id;
       while (byId[id]) id += "x";
       const question: Question = { id, cat, d: RERATE.d[id] ?? d, q, o: [a, b, c, e], media: media || undefined, visual };
       if (media) {
@@ -148,7 +164,9 @@ function build(): Bank {
           question.media = { ...media, e: Math.max(5, v.durationSec - 1), s: Math.max(0, v.durationSec - 1 - len) };
         }
       }
-      if (DROPPED.has(id)) return;
+      const audited = FROM_AUDIT.has(r);
+      if (!audited && auditIds.has(baseId)) return; // la versión revisada ya cubre esta pregunta
+      if (DROPPED.has(id) && !audited) return;
       byId[id] = question;
       byCat[cat].push(question);
     });

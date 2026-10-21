@@ -15,7 +15,7 @@ export default {
     // nuevas
     [2, "¿Quién roba a Woody en Toy Story 2 para venderlo a un museo de Japón?", "Al", "Sid", "Lotso", "Zurg", ["Who steals Woody in Toy Story 2 to sell him to a museum in Japan?", "Al", "Sid", "Lotso", "Zurg"]],
     [2, "En Buscando a Nemo, ¿en qué ciudad está el consultorio del dentista que atrapa a Nemo?", "Sídney", "Melbourne", "Auckland", "Brisbane", ["In Finding Nemo, in what city is the dentist's office where Nemo ends up?", "Sydney", "Melbourne", "Auckland", "Brisbane"]],
-    [2, "En Up, ¿a qué lugar de Sudamérica quiere llevar Carl su casa?", "Las Cataratas del Paraíso", "Machu Picchu", "El Salto Ángel", "Las Cataratas del Iguazú", ["In Up, where in South America does Carl want to take his house?", "Paradise Falls", "Machu Picchu", "Angel Falls", "Iguazú Falls"]],
+    [2, "En Up, ¿a dónde quiere llevar Carl su casa?", "Las Cataratas del Paraíso", "Machu Picchu", "El Salto Ángel", "Las Cataratas del Iguazú", ["In Up, where does Carl want to take his house?", "Paradise Falls", "Machu Picchu", "Angel Falls", "Iguazú Falls"]],
     [2, "En Coco, ¿qué canción le cantaba Héctor a su hija?", "Recuérdame", "Un poco loco", "La Llorona", "Proud Corazón", ["In Coco, what song did Héctor sing to his daughter?", "Remember Me", "Un Poco Loco", "La Llorona", "Proud Corazón"]],
     [2, "En Toy Story 3, ¿cómo se llama la guardería a la que van los juguetes?", "Sunnyside", "Rayo de Sol", "Villa Feliz", "Pequeños Amigos", ["In Toy Story 3, what is the name of the daycare the toys end up in?", "Sunnyside", "Sunbeam", "Happy Village", "Little Friends"]],
   ],
@@ -33,8 +33,8 @@ export default {
     [3, "Tras escribir la causa de muerte, ¿cuánto tiempo hay para añadir los detalles?", "6 minutos y 40 segundos", "3 minutos y 20 segundos", "10 minutos", "1 minuto y 40 segundos", ["After writing the cause of death, how long do you have to add the details?", "6 minutes and 40 seconds", "3 minutes and 20 seconds", "10 minutes", "1 minute and 40 seconds"]],
     [2, "¿En qué región de Japón descubre L que está Kira?", "Kantō", "Kansai", "Hokkaido", "Kyūshū", ["In which region of Japan does L discover that Kira is located?", "Kantō", "Kansai", "Hokkaido", "Kyūshū"]],
     [2, "¿Cómo se sienta L en su silla?", "En cuclillas", "Con las piernas cruzadas", "Recostado hacia atrás", "De lado, con una pierna colgando", ["How does L sit in his chair?", "Crouched", "Cross-legged", "Leaning back", "Sideways, with one leg dangling"]],
-    [2, "Al final de la historia, ¿quién escribe el nombre de Light en su Death Note?", "Ryuk", "Rem", "Mikami", "Near", ["At the end of the story, who writes Light's name in his Death Note?", "Ryuk", "Rem", "Mikami", "Near"]],
-    [3, "¿Qué agente del FBI acompaña a Near en la investigación sobre Kira?", "Halle Lidner", "Naomi Misora", "Raye Penber", "Kiyomi Takada", ["Which FBI agent works with Near on the Kira investigation?", "Halle Lidner", "Naomi Misora", "Raye Penber", "Kiyomi Takada"]],
+    [2, "¿Quién escribe el nombre de Light al final de la historia?", "Ryuk", "Rem", "Mikami", "Near", ["At the end of the story, who writes Light's name down?", "Ryuk", "Rem", "Mikami", "Near"]],
+    [3, "¿Qué exagente de la CIA trabaja para Near y filtra datos a Mello?", "Halle Lidner", "Naomi Misora", "Raye Penber", "Kiyomi Takada", ["Which former CIA agent works for Near and leaks information to Mello?", "Halle Lidner", "Naomi Misora", "Raye Penber", "Kiyomi Takada"]],
   ],
 
   spyfamily: [
@@ -85,7 +85,7 @@ export default {
 
   frieren: [
     // reescritura
-    [2, "¿Qué habilidad destaca en Fern durante los combates?", "Lanza hechizos con una rapidez enorme", "Hace magia de hielo mejor que nadie", "Se transforma en animales", "Es inmune a la magia demoníaca", ["What ability does Fern stand out for in combat?", "She casts spells incredibly fast", "She uses ice magic better than anyone", "She transforms into animals", "She is immune to demonic magic"]],
+    [2, "¿En qué destaca Fern al combatir?", "Lanza hechizos con una rapidez enorme", "Hace magia de hielo mejor que nadie", "Se transforma en animales", "Es inmune a la magia demoníaca", ["What does Fern excel at in combat?", "She casts spells incredibly fast", "She uses ice magic better than anyone", "She transforms into animals", "She is immune to demonic magic"]],
     // nuevas
     [2, "¿Cuántos años duró el viaje del grupo del héroe Himmel hasta derrotar al Rey Demonio?", "10 años", "5 años", "3 años", "20 años", ["How many years did hero Himmel's party journey before defeating the Demon King?", "10 years", "5 years", "3 years", "20 years"]],
     [1, "En Frieren, ¿qué criatura se hace pasar por un cofre del tesoro y se come a Frieren?", "Un mímico", "Un golem", "Un slime", "Un wyvern", ["In Frieren, what creature pretends to be a treasure chest and swallows Frieren?", "A mimic", "A golem", "A slime", "A wyvern"]],
@@ -129,9 +129,9 @@ export default {
 
   yugioh: [
     // reescritura
-    [2, "¿Cuál es el monstruo marrón y peludo, de ojos verdes, que protege a Yugi?", "Kuriboh", "Guardián Celta", "Gaia el Caballero Feroz", "Mago Oscuro", ["Which brown, furry, green-eyed monster protects Yugi?", "Kuriboh", "Celtic Guardian", "Gaia the Fierce Knight", "Dark Magician"]],
+    [2, "¿Cómo se llama el monstruo peludo y marrón de ojos verdes que protege a Yugi?", "Kuriboh", "Guardián Celta", "Gaia el Caballero Feroz", "Mago Oscuro", ["What is the name of the furry brown green-eyed monster that protects Yugi?", "Kuriboh", "Celtic Guardian", "Gaia the Fierce Knight", "Dark Magician"]],
     // nuevas
-    [2, "¿Cómo se llama la fusión de tres Dragones Blancos de Ojos Azules?", "Dragón Definitivo de Ojos Azules", "Dragón Alado de Ra", "Exodia el Prohibido", "Dragón Negro de Ojos Rojos", ["What is the fusion of three Blue-Eyes White Dragons called?", "Blue-Eyes Ultimate Dragon", "Winged Dragon of Ra", "Exodia the Forbidden One", "Red-Eyes Black Dragon"]],
+    [2, "¿Cómo se llama la fusión de tres Dragones Blancos de Ojos Azules?", "Dragón de Ojos Azules Definitivo", "Dragón Alado de Ra", "Exodia el Prohibido", "Dragón Negro de Ojos Rojos", ["What is the fusion of three Blue-Eyes White Dragons called?", "Blue-Eyes Ultimate Dragon", "Winged Dragon of Ra", "Exodia the Forbidden One", "Red-Eyes Black Dragon"]],
     [1, "¿Cómo se llama el hermano menor de Seto Kaiba?", "Mokuba", "Roland", "Duke", "Tristan", ["What is the name of Seto Kaiba's younger brother?", "Mokuba", "Roland", "Duke", "Tristan"]],
     [2, "¿Quién adoptó a Seto Kaiba cuando era niño?", "Gozaburo Kaiba", "Roland", "Maximillion Pegasus", "Solomon Muto", ["Who adopted Seto Kaiba as a child?", "Gozaburo Kaiba", "Roland", "Maximillion Pegasus", "Solomon Muto"]],
     [2, "¿Qué Objeto del Milenio posee Maximillion Pegasus?", "El Ojo del Milenio", "El Collar del Milenio", "La Vara del Milenio", "La Balanza del Milenio", ["Which Millennium Item does Maximillion Pegasus own?", "The Millennium Eye", "The Millennium Necklace", "The Millennium Rod", "The Millennium Scales"]],

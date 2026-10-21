@@ -32,11 +32,11 @@ export default {
   friends: [
     // reescrituras
     [3, "¿Qué número tiene el departamento de Monica?", "20", "19", "21", "22", ["What is Monica's apartment number?", N, N, N, N]],
-    [2, "¿Qué actor interpretó a Chandler?", "Matthew Perry", "David Schwimmer", "Matt LeBlanc", "Hank Azaria", ["Which actor played Chandler?", N, N, N, N]],
-    [2, "¿Qué personaje de Friends tuvo su propia serie derivada?", "Joey Tribbiani", "Chandler Bing", "Ross Geller", "Gunther", ["Which Friends character got their own spin-off series?", N, N, N, N]],
-    [2, "¿Cómo se llama la canción más famosa de Phoebe?", "Smelly Cat", "Little Black Spiders", "Two of Them Kissed Last Night", "Sticky Shoes", ["What is Phoebe's most famous song?", N, N, N, N]],
+    [2, "¿Quién interpretó a Chandler?", "Matthew Perry", "David Schwimmer", "Matt LeBlanc", "Hank Azaria", ["Who played Chandler?", N, N, N, N]],
+    [2, "¿Quién de Friends tuvo serie propia?", "Joey Tribbiani", "Chandler Bing", "Ross Geller", "Gunther", ["Which Friends character got their own spin-off?", N, N, N, N]],
+    [2, "¿Cuál es la canción más famosa de Phoebe?", "Smelly Cat", "Little Black Spiders", "Two of Them Kissed Last Night", "Sticky Shoes", ["What is Phoebe's most famous song?", N, N, N, N]],
     [2, "¿Qué mueble no logran subir mientras Ross grita \"¡Pivote!\"?", "Un sofá", "Un armario", "Una cama", "Una mesa de comedor", ["Which furniture can't they get upstairs as Ross yells \"Pivot!\"?", "A couch", "A wardrobe", "A bed", "A dining table"]],
-    [2, "¿Qué mascotas tienen Joey y Chandler?", "Un pollo y un pato", "Un perro y un loro", "Un gato y un conejo", "Un hámster y una tortuga", ["What pets do Joey and Chandler have?", "A chick and a duck", "A dog and a parrot", "A cat and a rabbit", "A hamster and a turtle"]],
+    [2, "¿Qué mascotas tienen Joey y Chandler?", "Un pollito y un pato", "Un perro y un loro", "Un gato y un conejo", "Un hámster y una tortuga", ["What pets do Joey and Chandler have?", "A chick and a duck", "A dog and a parrot", "A cat and a rabbit", "A hamster and a turtle"]],
     [2, "¿En qué año se estrenó Friends?", "1994", "1992", "1996", "1998", ["What year did Friends premiere?", N, N, N, N]],
     // nuevas
     [2, "¿A quién deja plantado Rachel en el altar?", "Barry", "Paolo", "Mark", "Joshua", ["Who does Rachel leave at the altar?", N, N, N, N]],
@@ -65,7 +65,7 @@ export default {
   overwatch: [
     // reescrituras
     [1, "¿Qué científico es un gorila?", "Winston", "Doomfist", "Hammond", "Torbjörn", ["Which scientist is a gorilla?", N, N, N, N]],
-    [2, "¿Cómo se llama hoy McCree?", "Cassidy", "Morrison", "Reyes", "Ashe", ["What is McCree called today?", N, N, N, N]],
+    [2, "¿Cómo se llama ahora McCree?", "Cassidy", "Morrison", "Reyes", "Ashe", ["What is McCree called now?", N, N, N, N]],
     // nuevas
     [3, "¿A qué líder omnic seguía Zenyatta?", "Tekhartha Mondatta", "Ramattra", "Orisa", "Bastion", ["Which omnic leader did Zenyatta follow?", N, N, N, N]],
     [2, "¿Quién es la hija de Torbjörn?", "Brigitte", "Mei", "Ashe", "Echo", ["Who is Torbjörn's daughter?", N, N, N, N]],
@@ -77,8 +77,8 @@ export default {
   smash: [
     // reescrituras
     [2, "¿Qué luchador de Street Fighter se unió a Smash 4?", "Ryu", "Guile", "Chun-Li", "Blanka", ["Which Street Fighter fighter joined Smash 4?", N, N, N, N]],
-    [2, "¿Cómo se llama la mano zurda que acompaña a Master Hand?", "Crazy Hand", "Tabuu", "Galeem", "Giga Bowser", ["What is the left hand that accompanies Master Hand called?", N, N, N, N]],
-    [2, "¿Quién es el jefe final del modo clásico?", "Master Hand", "Tabuu", "Galeem", "Dharkon", ["Who is the final boss of Classic Mode?", N, N, N, N]],
+    [2, "¿Cómo se llama la mano zurda de Smash?", "Crazy Hand", "Tabuu", "Galeem", "Giga Bowser", ["What is Smash's left hand called?", N, N, N, N]],
+    [2, "¿Qué jefe suele cerrar el modo clásico?", "Master Hand", "Tabuu", "Galeem", "Dharkon", ["Which boss usually ends Classic Mode?", N, N, N, N]],
     [1, "¿Qué pasa con más porcentaje de daño?", "Sale volando más lejos al recibir golpes", "Pega más fuerte", "Se mueve más lento", "Salta más alto", ["What happens at a higher damage percentage?", "They fly farther when hit", "They hit harder", "They move slower", "They jump higher"]],
     // nuevas
     [3, "¿Qué personaje de Fire Emblem fue DLC de Ultimate?", "Byleth", "Corrin", "Robin", "Ike", ["Which Fire Emblem character was Ultimate DLC?", N, N, N, N]],
@@ -95,7 +95,7 @@ export default {
     [3, "¿Quién habita el mundo de la tele en Persona 4?", "Teddie", "Morgana", "Koromaru", "Jack Frost", ["Who lives in the TV world in Persona 4?", N, N, N, N]],
     [2, "¿Qué origina un Palacio en Persona 5?", "Los deseos distorsionados de una persona", "Los sueños colectivos de toda la ciudad", "Un experimento secreto del gobierno", "Una maldición heredada de familia", ["What creates a Palace in Persona 5?", "A person's distorted desires", "The collective dreams of the whole city", "A secret government experiment", "A curse inherited through a family"]],
     // nuevas
-    [3, "¿Cómo se llaman las gemelas de la Sala Terciopelo?", "Caroline y Justine", "Elizabeth y Theodore", "Margaret y Elizabeth", "Fuuka y Aigis", ["What are the Velvet Room twins called?", "Caroline and Justine", "Elizabeth and Theodore", "Margaret and Elizabeth", "Fuuka and Aigis"]],
+    [3, "¿Cómo se llaman las gemelas de la Habitación de Terciopelo?", "Caroline y Justine", "Elizabeth y Theodore", "Margaret y Elizabeth", "Fuuka y Aigis", ["What are the Velvet Room twins called?", "Caroline and Justine", "Elizabeth and Theodore", "Margaret and Elizabeth", "Fuuka and Aigis"]],
     [2, "¿Quién es la androide de Persona 3?", "Aigis", "Fuuka Yamagishi", "Mitsuru Kirijo", "Yukari Takeba", ["Who is the android in Persona 3?", N, N, N, N]],
     [2, "¿Quién hereda una posada en Persona 4?", "Yukiko Amagi", "Chie Satonaka", "Rise Kujikawa", "Naoto Shirogane", ["Who inherits an inn in Persona 4?", N, N, N, N]],
     [2, "¿Quién fue estrella de atletismo en Persona 5?", "Ryuji Sakamoto", "Yusuke Kitagawa", "Makoto Niijima", "Futaba Sakura", ["Who was a track star in Persona 5?", N, N, N, N]],
@@ -124,7 +124,7 @@ export default {
     // reescrituras
     [1, "¿Cuál suele ser el primer jefe que se derrota?", "El Ojo de Cthulhu", "Skeletron", "El Devorador de Mundos", "La Reina Abeja", ["Which boss is usually beaten first?", "The Eye of Cthulhu", "Skeletron", "The Eater of Worlds", "The Queen Bee"]],
     [2, "¿Cuáles son los dos biomas malignos?", "Corrupción y Carmesí", "Corrupción y Lo Sagrado", "Carmesí y la Selva", "La Selva y los Hongos Luminosos", ["Which are the two evil biomes?", "Corruption and Crimson", "Corruption and the Hallow", "Crimson and the Jungle", "The Jungle and the Glowing Mushroom biome"]],
-    [3, "¿Con qué NPC puedes comprar semillas y se preocupa por la naturaleza?", "La Dríada", "El Tintorero", "El Mago", "La Enfermera", ["Which NPC sells seeds and cares about nature?", "The Dryad", "The Dye Trader", "The Wizard", "The Nurse"]],
+    [3, "¿Qué NPC vende semillas y cuida la naturaleza?", "La Dríada", "El Tintorero", "El Mago", "La Enfermera", ["Which NPC sells seeds and cares for nature?", "The Dryad", "The Dye Trader", "The Wizard", "The Nurse"]],
     [3, "¿Para qué sirve un Pylon?", "Para teletransportarse entre pueblos", "Para invocar jefes", "Para guardar objetos en cualquier lugar", "Para curar a los NPC", ["What is a Pylon for?", "To teleport between towns", "To summon bosses", "To store items anywhere", "To heal NPCs"]],
     [2, "¿Qué jefe sale de una larva gigante?", "La Reina Abeja", "Plantera", "Golem", "El Rey Slime", ["Which boss comes out of a giant larva?", "The Queen Bee", "Plantera", "Golem", "King Slime"]],
     // nuevas
@@ -166,13 +166,13 @@ export default {
 
   hotd: [
     // reescrituras
-    [2, "¿Cuántos años antes de Juego de Tronos ocurre?", "Unos 200", "Unos 100", "Unos 400", "Unos 600", ["How many years before Game of Thrones is it set?", "About 200", "About 100", "About 400", "About 600"]],
+    [2, "¿Cuántos años antes de Juego de Tronos ocurre La Casa del Dragón?", "Unos 200", "Unos 100", "Unos 400", "Unos 600", ["How many years before Game of Thrones is House of the Dragon set?", "About 200", "About 100", "About 400", "About 600"]],
     [1, "¿Quién es la heredera de Viserys?", "Rhaenyra Targaryen", "Alicent Hightower", "Laena Velaryon", "Helaena Targaryen", ["Who is Viserys's heir?", N, N, N, N]],
     [3, "¿Cómo se llama el dragón de Daemon?", "Caraxes", "Vhagar", "Syrax", "Sunfyre", ["What is Daemon's dragon called?", N, N, N, N]],
     [2, "¿Dónde se establece Rhaenyra con sus hijos?", "Rocadragón", "Roca Casterly", "Pyke", "Harrenhal", ["Where does Rhaenyra settle with her children?", "Dragonstone", "Casterly Rock", "Pyke", "Harrenhal"]],
     // nuevas
     [2, "¿Con quién se casa Rhaenyra primero?", "Laenor Velaryon", "Daemon Targaryen", "Harwin Strong", "Criston Cole", ["Who does Rhaenyra marry first?", N, N, N, N]],
-    [3, "¿Quién es el padre de Jacaerys y Lucerys?", "Harwin Strong", "Laenor Velaryon", "Daemon Targaryen", "Criston Cole", ["Who is the father of Jacaerys and Lucerys?", N, N, N, N]],
+    [3, "¿Quién es el verdadero padre de Jacaerys y Lucerys?", "Harwin Strong", "Laenor Velaryon", "Daemon Targaryen", "Criston Cole", ["Who is the real father of Jacaerys and Lucerys?", N, N, N, N]],
     [2, "¿Quién es la esposa de Aegon II?", "Helaena Targaryen", "Rhaena Targaryen", "Baela Targaryen", "Alicent Hightower", ["Who is Aegon II's wife?", N, N, N, N]],
     [3, "¿Dónde está la sede de los Hightower?", "Antigua", "Desembarco del Rey", "Rocadragón", "Marcaderiva", ["Where is House Hightower's seat?", "Oldtown", "King's Landing", "Dragonstone", "Driftmark"]],
     [3, "¿Cómo se llama el dragón de Laenor Velaryon?", "Seasmoke", "Vermax", "Arrax", "Caraxes", ["What is Laenor Velaryon's dragon called?", N, N, N, N]],

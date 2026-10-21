@@ -19,7 +19,7 @@ export default {
     [1, "🥚🔬🤖\n¿Quién es?", "Dr. Eggman", "Orbot", "Metal Sonic", "E-123 Omega", ["🥚🔬🤖\nWho is it?", N, N, N, N], { v: "emoji" }],
     [2, "¿Quién usa el martillo Piko Piko?", "Amy Rose", "Rouge", "Cream", "Blaze", ["Who uses the Piko Piko Hammer?", N, N, N, N]],
     [2, "¿Quién es la espía de G.U.N. que roba joyas?", "Rouge", "Blaze", "Cream", "Amy", ["Who is the G.U.N. spy who steals jewels?", N, N, N, N]],
-    [2, "¿Qué estudio de Sega desarrolla Sonic?", "Sonic Team", "Sega AM2", "Ryu Ga Gotoku Studio", "Creative Assembly", ["Which Sega studio develops Sonic?", N, N, N, N]],
+    [2, "¿Qué estudio de Sega crea los juegos del erizo azul?", "Sonic Team", "Atlus", "Ryu Ga Gotoku Studio", "Creative Assembly", ["Which Sega studio makes the blue hedgehog's games?", N, N, N, N]],
     [3, "¿Qué miembro del Team Chaotix es ninja?", "Espio", "Vector", "Charmy", "Mighty", ["Which Team Chaotix member is a ninja?", N, N, N, N]],
     [2, "¿Quién viaja siempre con su chao Cheese?", "Cream", "Amy", "Blaze", "Rouge", ["Who always travels with her chao, Cheese?", N, N, N, N]],
     // nuevas
@@ -33,7 +33,7 @@ export default {
   breakingbad: [
     // reescrituras
     [1, "¿Qué ropa usan Walter y Jesse para cocinar?", "Trajes amarillos y respiradores", "Delantales de laboratorio y guantes", "Overoles azules y cascos", "Batas blancas y gafas", ["What do Walter and Jesse wear to cook?", "Yellow suits and respirators", "Lab aprons and gloves", "Blue coveralls and helmets", "White coats and goggles"]],
-    [3, "¿Qué porcentaje de pureza tiene la metanfetamina de Walter?", "99,1 %", "97,8 %", "98,6 %", "99,7 %", ["What purity percentage is Walter's meth?", "99.1%", "97.8%", "98.6%", "99.7%"]],
+    [3, "¿Qué pureza tiene la metanfetamina de Walter?", "99,1 %", "97,8 %", "98,6 %", "99,7 %", ["What purity is Walter's meth?", "99.1%", "97.8%", "98.6%", "99.7%"]],
     [1, "¿Quién fue alumno de Walter y luego su socio?", "Jesse Pinkman", "Saul Goodman", "Hank Schrader", "Mike Ehrmantraut", ["Who was Walter's student and later his partner?", N, N, N, N]],
     // nuevas
     [3, "¿Qué roban del tren en la quinta temporada?", "Metilamina", "Pseudoefedrina", "Fósforo rojo", "Acetona", ["What do they steal from the train in season five?", "Methylamine", "Pseudoephedrine", "Red phosphorus", "Acetone"]],
@@ -50,7 +50,7 @@ export default {
     [3, "¿En quién oculta Urahara el Hōgyoku?", "Rukia Kuchiki", "Orihime Inoue", "Yoruichi Shihōin", "Yasutora Sado", ["Who does Urahara hide the Hōgyoku inside?", N, N, N, N]],
     [3, "¿Cuál es la resurrección de Ulquiorra?", "Murciélago", "Pantera", "Santa Teresa", "Los Lobos", ["What is Ulquiorra's resurrección?", N, N, N, N]],
     [3, "¿Cómo se llama el grupo de Kūgo Ginjō?", "Xcution", "Los Visored", "Gotei 13", "Los Espada", ["What is Kūgo Ginjō's group called?", N, "The Visored", N, "The Espada"]],
-    [2, "¿Quién es la teniente del Escuadrón 10?", "Rangiku Matsumoto", "Nanao Ise", "Isane Kotetsu", "Momo Hinamori", ["Who is the lieutenant of Squad 10?", N, N, N, N]],
+    [2, "¿Quién es la teniente de Hitsugaya?", "Rangiku Matsumoto", "Nanao Ise", "Isane Kotetsu", "Momo Hinamori", ["Who is Hitsugaya's lieutenant?", N, N, N, N]],
     [2, "¿Cómo se llama el palacio de Hueco Mundo?", "Las Noches", "Seireitei", "Rukongai", "El Palacio del Rey Espíritu", ["What is the palace in Hueco Mundo called?", N, N, N, "The Soul King's Palace"]],
   ],
 
@@ -62,8 +62,7 @@ export default {
     [3, "¿Cómo se llama el hermano menor de Touka?", "Ayato", "Nishiki", "Tatara", "Yomo", ["What is Touka's younger brother called?", N, N, N, N]],
     [2, "¿Cómo se llaman las armas hechas con kagune?", "Quinque", "Kakuhou", "Kakuja", "Kakugan", ["What are weapons made from kagune called?", N, N, N, N]],
     // nuevas
-    [3, "¿Qué tipo de kagune toma forma de cola?", "Bikaku", "Ukaku", "Rinkaku", "Koukaku", ["Which type of kagune takes the shape of a tail?", N, N, N, N]],
-    [3, "¿Qué tipo de kagune tiene Nishiki Nishio?", "Koukaku", "Ukaku", "Rinkaku", "Bikaku", ["Which type of kagune does Nishiki Nishio have?", N, N, N, N]],
+    [3, "¿Qué tipo de kagune tiene Nishiki Nishio?", "Bikaku", "Koukaku", "Ukaku", "Rinkaku", ["Which type of kagune does Nishiki Nishio have?", N, N, N, N]],
     [3, "¿En qué distrito está Anteiku?", "Distrito 20", "Distrito 11", "Distrito 13", "Distrito 24", ["Which ward is Anteiku in?", "Ward 20", "Ward 11", "Ward 13", "Ward 24"]],
     [2, "¿Cómo se llama la forma que se logra devorando ghouls?", "Kakuja", "Kakugan", "Kakuhou", "Rinkaku", ["What is the form reached by devouring ghouls called?", N, N, N, N]],
   ],
@@ -71,7 +70,7 @@ export default {
   opm: [
     // reescrituras
     [1, "¿Cuál es el entrenamiento diario de Saitama?", "100 flexiones, 100 abdominales, 100 sentadillas y 10 km de carrera", "50 flexiones, 50 abdominales, 50 sentadillas y 5 km de carrera", "200 flexiones, 200 abdominales, 200 sentadillas y 20 km de carrera", "1000 flexiones, 100 abdominales y 100 sentadillas, sin correr", ["What is Saitama's daily training?", "100 push-ups, 100 sit-ups, 100 squats and a 10 km run", "50 push-ups, 50 sit-ups, 50 squats and a 5 km run", "200 push-ups, 200 sit-ups, 200 squats and a 20 km run", "1,000 push-ups, 100 sit-ups and 100 squats, no running"]],
-    [2, "¿Qué líder alienígena derrota Saitama?", "Boros", "Orochi", "Psykos", "Carnage Kabuto", ["Which alien leader does Saitama defeat?", N, N, N, N]],
+    [2, "¿A qué líder alienígena vence Saitama?", "Boros", "Orochi", "Psykos", "Carnage Kabuto", ["Which alien leader does Saitama defeat?", N, N, N, N]],
     [3, "¿Qué héroe de Clase S va disfrazado de perro?", "Watchdog Man", "Pig God", "Puri-Puri Prisoner", "Superalloy Darkshine", ["Which S-Class hero dresses up as a dog?", N, N, N, N]],
     // nuevas
     [3, "¿Quién destruyó el pueblo de Genos?", "Mad Cyborg", "Dr. Genus", "Metal Knight", "Orochi", ["Who destroyed Genos' town?", N, N, N, N]],
@@ -82,12 +81,12 @@ export default {
 
   cyberpunk: [
     // reescritura
-    [3, "¿Quién creó el juego de mesa original?", "Mike Pondsmith", "Gary Gygax", "Warren Spector", "Richard Garriott", ["Who created the original tabletop game?", N, N, N, N]],
+    [3, "¿Quién creó el juego de rol original de Cyberpunk?", "Mike Pondsmith", "Gary Gygax", "Warren Spector", "Richard Garriott", ["Who created the original Cyberpunk tabletop RPG?", N, N, N, N]],
     // nuevas
     [3, "¿Qué es el Blackwall?", "Una barrera que contiene a las IA peligrosas de la Red", "Un muro defensivo de la Torre Arasaka", "Un implante que protege a los netrunners", "Una droga que usan los netrunners", ["What is the Blackwall?", "A barrier that contains dangerous AIs in the Net", "A defensive wall of Arasaka Tower", "An implant that protects netrunners", "A drug netrunners use"]],
     [3, "¿Qué era Alt Cunningham?", "Netrunner", "Fixer", "Ripperdoc", "Nómada", ["What was Alt Cunningham?", N, N, N, "Nomad"]],
-    [3, "¿Qué programa de Arasaka copia la conciencia?", "Soulkiller", "El Relic", "El Blackwall", "Braindance", ["Which Arasaka program copies consciousness?", N, "The Relic", "The Blackwall", N]],
-    [2, "¿Quién lidera la banda de David?", "Maine", "Dorio", "Pilar", "Kiwi", ["Who leads David's crew?", N, N, N, N]],
+    [3, "¿Qué programa de Arasaka copia la conciencia?", "Soulkiller", "Sandevistan", "El Blackwall", "Braindance", ["Which Arasaka program copies consciousness?", N, N, "The Blackwall", N]],
+    [2, "¿Quién lidera la banda de David al principio?", "Maine", "Dorio", "Pilar", "Kiwi", ["Who leads David's crew at the start?", N, N, N, N]],
   ],
 
   historia: [
@@ -107,7 +106,7 @@ export default {
     [2, "¿En qué película aparece por primera vez Luke Hobbs?", "Rápidos y furiosos 5", "Rápidos y furiosos 4", "Rápidos y furiosos 6", "Rápidos y furiosos 7", ["In which movie does Luke Hobbs first appear?", "Fast Five", "Fast & Furious", "Fast & Furious 6", "Furious 7"]],
     [2, "¿Quién reaparece con amnesia en Rápidos y furiosos 6?", "Letty", "Han", "Gisele", "Elena", ["Who reappears with amnesia in Fast & Furious 6?", N, N, N, N]],
     [2, "¿En qué ciudad se ambienta la primera película?", "Los Ángeles", "Miami", "Tokio", "Río de Janeiro", ["Which city is the first movie set in?", "Los Angeles", N, "Tokyo", "Rio de Janeiro"]],
-    [2, "¿Cómo explica Dom su forma de vivir?", "Un cuarto de milla a la vez", "Una carrera a la vez", "Un día a la vez", "A toda velocidad", ["How does Dom describe the way he lives?", "A quarter mile at a time", "One race at a time", "One day at a time", "At full speed"]],
+    [2, "¿Cómo dice Dom que vive su vida?", "Un cuarto de milla a la vez", "Una carrera a la vez", "Un día a la vez", "A toda velocidad", ["How does Dom say he lives his life?", "A quarter mile at a time", "One race at a time", "One day at a time", "At full speed"]],
   ],
 
   merlina: [
@@ -131,9 +130,9 @@ export default {
 
   rickmorty: [
     [3, "¿Cómo se llama la esposa asesinada de Rick?", "Diane", "Unity", "Jessica", "Tammy", ["What is Rick's murdered wife called?", N, N, N, N]],
-    [3, "¿Cómo se llama el episodio de la TV interdimensional?", "Rixty Minutes", "Total Rickall", "Ricksy Business", "The Ricks Must Be Crazy", ["What is the interdimensional cable episode called?", N, N, N, N]],
-    [3, "¿Qué amiga de Summer es agente de la Federación?", "Tammy", "Jessica", "Unity", "Beth", ["Which friend of Summer is a Federation agent?", N, N, N, N]],
-    [3, "¿Quién es el director de la escuela de Morty?", "Director Vagina", "Sr. Goldenfold", "Sr. Poopybutthole", "Squanchy", ["Who is the principal of Morty's school?", "Principal Vagina", "Mr. Goldenfold", "Mr. Poopybutthole", N]],
+    [3, "¿En qué episodio aparece por primera vez el cable interdimensional?", "Rixty Minutes", "Total Rickall", "Ricksy Business", "The Ricks Must Be Crazy", ["In which episode does interdimensional cable first appear?", N, N, N, N]],
+    [3, "¿Qué amiga de Summer resulta ser agente de la Federación?", "Tammy", "Jessica", "Unity", "Beth", ["Which friend of Summer turns out to be a Federation agent?", N, N, N, N]],
+    [3, "¿Quién está al mando de la escuela de Morty?", "Director Vagina", "Sr. Goldenfold", "Sr. Poopybutthole", "Squanchy", ["Who runs Morty's school?", "Principal Vagina", "Mr. Goldenfold", "Mr. Poopybutthole", N]],
   ],
 
   bocchi: [
