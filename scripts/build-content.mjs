@@ -75,6 +75,14 @@ export default bank;
   );
   console.log(`${f}: ${Object.values(out).reduce((n, l) => n + l.length, 0)} preguntas → src/data/bank/${name}.ts`);
 }
+// archivos generados que ya no tienen su content/*.mjs (se movieron o se borraron): fuera
+const keep = new Set(files.map((f) => "c-" + f.replace(/\.mjs$/, "") + ".ts"));
+for (const f of fs.readdirSync(path.join(root, "src/data/bank"))) {
+  if (/^c-.*\.ts$/.test(f) && !keep.has(f)) {
+    fs.unlinkSync(path.join(root, "src/data/bank", f));
+    console.log(`  (borrado ${f}: ya no existe su content/*.mjs)`);
+  }
+}
 fs.writeFileSync(enFile, JSON.stringify(en));
 console.log(`Total: ${total}${problems ? ` · ${problems} problemas` : ""}`);
 process.exit(problems ? 1 : 0);

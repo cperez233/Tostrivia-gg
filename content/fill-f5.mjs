@@ -1,0 +1,17 @@
+const N = null;
+export default {
+  frieren: [
+    [2, "¿Quién mata al demonio Lügner en un duelo?", "Fern", "Frieren", "Stark", "Eisen", ["Who kills the demon Lügner in a duel?", N, N, N, N]],
+    [3, "¿Cómo logra Stark acabar con la demonio Linie?", "Aguanta un golpe a propósito para contraatacar", "La sorprende con un hechizo de Fern", "La deja sin maná", "Usa la espada del héroe", ["How does Stark finish off the demon Linie?", "He takes a blow on purpose to counterattack", "He surprises her with one of Fern's spells", "He leaves her without mana", "He uses the hero's sword"]],
+    [2, "¿Qué le pasa a Aura al usar la Balanza de la Obediencia contra Frieren?", "Queda sometida y se decapita a sí misma", "Fern la derrota con un hechizo rápido", "Stark la parte con su hacha", "La balanza se rompe y huye", ["What happens to Aura when she uses the Scales of Obedience on Frieren?", "She is overpowered and beheads herself", "Fern beats her with a fast spell", "Stark cuts her down with his axe", "The scales break and she flees"]],
+    [2, "¿Qué le propone Serie a Fern, que ella rechaza?", "Convertirse en su alumna", "Dirigir la Asociación de Magia", "Quedarse con su báculo", "Viajar con ella a Ende", ["What does Serie offer Fern, which she turns down?", "To become her student", "To lead the Magic Association", "To keep her staff", "To travel with her to Ende"]],
+    [3, "¿Quién empuja a Stark a huir de su aldea para que sobreviva?", "Su hermano Stoltz", "Su padre", "Eisen", "Heiter", ["Who urges Stark to flee his village so he can survive?", "His brother Stoltz", "His father", "Eisen", "Heiter"]],
+    [2, "¿Qué busca Sein al unirse al grupo de Frieren?", "A su mejor amigo de la infancia", "A su hermano mayor", "Una reliquia de la Diosa", "A un antiguo maestro", ["What is Sein looking for when he joins Frieren's party?", "His childhood best friend", "His older brother", "A relic of the Goddess", "An old teacher"]],
+    [3, "¿Cuánto tiempo pasa el grupo refugiado con el monje Kraft en una cabaña?", "Seis meses", "Un mes", "Tres meses", "Un año", ["How long does the party shelter in a cabin with the monk Kraft?", "Six months", "One month", "Three months", "One year"]],
+    [3, "¿Qué deben capturar los equipos en la primera fase del examen de primera clase?", "Un pájaro llamado Stille", "Un golem de piedra", "Un demonio de agua", "Un dragón de las nubes", ["What must the teams capture in the first stage of the first-class exam?", "A bird called Stille", "A stone golem", "A water demon", "A cloud dragon"]],
+    [3, "¿Quién derrota a Macht, uno de los Siete Sabios de la Destrucción?", "Denken", "Fern", "Frieren", "Übel", ["Who defeats Macht, one of the Seven Sages of Destruction?", N, N, N, N]],
+    [2, "¿Qué le hace Macht a la ciudad de Weise?", "La convierte en oro", "La hunde bajo un lago", "La congela", "La reduce a cenizas", ["What does Macht do to the city of Weise?", "He turns it to gold", "He sinks it under a lake", "He freezes it", "He reduces it to ashes"]],
+    [1, "¿Qué suele pedir Frieren como pago por un trabajo?", "Libros de magia", "Joyas antiguas", "Comida", "Armas encantadas", ["What does Frieren usually ask for as payment for a job?", "Books of magic", "Ancient jewels", "Food", "Enchanted weapons"]],
+    [1, "¿De qué presume el héroe Himmel?", "De ser muy guapo", "De ser el más fuerte", "De ser el más rico", "De ser el más sabio", ["What does the hero Himmel boast about?", "Being very handsome", "Being the strongest", "Being the richest", "Being the wisest"]],
+  ],
+};
