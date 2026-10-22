@@ -121,8 +121,8 @@ export const BLUE_PTS = 600;
 export const BOLT_PTS = 200;
 /** Dado: cada punto del dado vale esto si aciertas (y la mitad en contra si fallas) */
 export const DICE_PTS = 100;
-/** Hongo: el bono por rapidez llega hasta esto (normal: SPEED_POINTS, 200) */
-export const MUSHROOM_MAX = 500;
+/** Hongo: el bono por rapidez se multiplica por esto */
+export const MUSHROOM_SPEED = 3;
 /** Estrella: multiplica lo que ganes */
 export const STAR_MULT = 2;
 
@@ -177,7 +177,7 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
   steal: text("Boo", "Si aciertas, le robas {n} al que va primero.", { n: STEAL_PTS }),
   ink: text("Tinta", "Tapa las opciones de los demás {s} s.", { s: secs(INK_MS) }),
   dice: text("Dado", "Tira un dado: +{n} por punto si aciertas, −{m} si fallas.", { n: DICE_PTS, m: DICE_PTS / 2 }),
-  mushroom: text("Hongo", "Responde rápido: el bono de rapidez sube hasta +{n}.", { n: MUSHROOM_MAX }),
+  mushroom: text("Hongo", "Responde rápido: el bono de rapidez se multiplica por {n}.", { n: MUSHROOM_SPEED }),
   star: text("Estrella", "×{n} si aciertas y ningún ataque te toca.", { n: STAR_MULT }),
   mystery: text("Bloque ?", "Te da dos poderes al azar. No gasta tu turno."),
   redShell: text("Caparazón rojo", "−{n} al que va justo delante de ti.", { n: RED_PTS }),

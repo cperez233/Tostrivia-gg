@@ -391,7 +391,7 @@ export const EN: Record<string, string> = {
   Dado: "Dice",
   "Tira un dado: +{n} por punto si aciertas, −{m} si fallas.": "Roll a die: +{n} per pip if you're right, −{m} if you're wrong.",
   Hongo: "Mushroom",
-  "Responde rápido: el bono de rapidez sube hasta +{n}.": "Answer fast: the speed bonus goes up to +{n}.",
+  "Responde rápido: el bono de rapidez se multiplica por {n}.": "Answer fast: the speed bonus is multiplied by {n}.",
   Estrella: "Star",
   "×{n} si aciertas y ningún ataque te toca.": "×{n} if you're right, and no attack can touch you.",
   "Bloque ?": "? Block",

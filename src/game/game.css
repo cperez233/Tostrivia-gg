@@ -480,13 +480,13 @@
 }
 
 /* veredicto: onomatopeya sobre líneas de concentración */
-/* el veredicto se pega sobre la esquina de la viñeta, como un recorte: no tapa las opciones ni el botón */
+/* en celular el veredicto va en el flujo, entre las opciones y el botón: nunca tapa el temporizador */
 .verdict {
-  position: absolute;
-  right: -6px;
-  top: -66px;
+  position: relative;
+  justify-self: start;
+  margin: 4px 8px 14px 4px;
   z-index: 6;
-  max-width: min(300px, 82%);
+  max-width: min(300px, calc(100% - 16px));
   display: grid;
   gap: 2px;
   padding: 12px 22px 14px;
@@ -885,6 +885,8 @@
 /* en pantallas anchas va junto al botón de seguir, donde sobra espacio */
 @media (min-width: 760px) {
   .verdict {
+    position: absolute;
+    margin: 0;
     top: auto;
     right: auto;
     bottom: -14px;

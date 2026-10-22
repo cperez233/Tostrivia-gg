@@ -9,7 +9,8 @@ import { DEFAULT_RULES, MEDIA_EXTRA, type Difficulty, type Rules } from "./rules
 export const ROUND_SIZE = DEFAULT_RULES.count;
 export const TEXT_MS = DEFAULT_RULES.time * 1000;
 export const MEDIA_MS = (DEFAULT_RULES.time + MEDIA_EXTRA) * 1000;
-export const BASE_POINTS = { 1: 100, 2: 150, 3: 200 } as const;
+/** puntos base por dificultad: una difícil rinde más del doble que una fácil */
+export const BASE_POINTS = { 1: 100, 2: 200, 3: 350 } as const;
 
 /** cuánto dura una pregunta con estas reglas */
 export const durationFor = (rules: Rules, media: boolean) => (rules.time + (media ? MEDIA_EXTRA : 0)) * 1000;
@@ -113,8 +114,12 @@ export function optionOrder(qid: string, seed: number): number[] {
   return shuffle([0, 1, 2, 3], rng(h));
 }
 
-/** hasta cuánto suma responder rápido (proporcional al tiempo que sobra) */
-export const SPEED_POINTS = 200;
+/** el bono por rapidez llega hasta esta fracción de los puntos base (proporcional al tiempo que sobra) */
+export const SPEED_SHARE = 0.5;
+
+/** bono por rapidez de una pregunta de dificultad `d`: escala con la dificultad para que no tape la base */
+export const speedBonus = (d: 1 | 2 | 3, remainingFrac: number) =>
+  Math.round(BASE_POINTS[d] * SPEED_SHARE * Math.max(0, Math.min(1, remainingFrac)));
 
 /** ×1,25 con 2 seguidas, ×1,5 con 3, ×2 con 5 y ×3 con 8 (×1 siempre si la partida va sin racha) */
 export function multiplier(streak: number, rules: Pick<Rules, "streak"> = DEFAULT_RULES) {
@@ -123,10 +128,10 @@ export function multiplier(streak: number, rules: Pick<Rules, "streak"> = DEFAUL
 }
 
 /**
- * Puntos de un acierto: base por dificultad + hasta 200 por rapidez, por el multiplicador de racha
+ * Puntos de un acierto: base por dificultad + hasta la mitad de la base por rapidez, por el multiplicador de racha
  * y por el multiplicador de puntos de la partida.
  */
 export function pointsFor(d: 1 | 2 | 3, remainingFrac: number, streakAfter: number, rules: Pick<Rules, "streak" | "mult"> = DEFAULT_RULES) {
-  const base = BASE_POINTS[d] + Math.round(SPEED_POINTS * Math.max(0, Math.min(1, remainingFrac)));
+  const base = BASE_POINTS[d] + speedBonus(d, remainingFrac);
   return Math.round(base * multiplier(streakAfter, rules) * rules.mult);
 }

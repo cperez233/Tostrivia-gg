@@ -4,7 +4,7 @@
  */
 import { BANK, videoFor } from "../data/bank";
 import { ANIMAL_COUNT } from "../components/Avatar";
-import { TEXT_MS, buildRound, durationFor, multiplier, optionOrder, pointsFor, SPEED_POINTS, textBackups } from "./round";
+import { TEXT_MS, buildRound, durationFor, multiplier, optionOrder, pointsFor, speedBonus, textBackups } from "./round";
 import { DEFAULT_RULES, cleanRules, type Rules } from "./rules";
 import { partsOf } from "./mix";
 import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
@@ -21,7 +21,7 @@ import {
   SCARE_CLIP_MS,
   SCARE_KEYS,
   MAX_HAND,
-  MUSHROOM_MAX,
+  MUSHROOM_SPEED,
   POOL,
   POWER_LINES,
   RED_PTS,
@@ -442,7 +442,7 @@ export class Match {
       const frac = a ? Math.max(0, Math.min(1, 1 - a.ms / this.s.duration)) : 0;
       if (ok) {
         pick.gained = pointsFor(q.d, frac, streak, this.s.rules);
-        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_MAX - SPEED_POINTS) * frac * multiplier(streak, this.s.rules));
+        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_SPEED - 1) * speedBonus(q.d, frac) * multiplier(streak, this.s.rules));
         if (power === "star") pick.bonus = Math.round(pick.gained * (STAR_MULT - 1));
         if (power === "double") pick.bonus = pick.gained;
       } else if (!excused && power === "double") pick.bonus = -DOUBLE_RISK;
