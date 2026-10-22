@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T18:54:28.202Z",
+  "generatedAt": "2026-10-22T18:43:14.374Z",
   "videos": {
     "ac-tr-nh": {
       "id": "_3YNL0OWio0",
@@ -353,6 +353,14 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "champloo-op-battlecry": {
+      "id": "Eq6EYcpWB_c",
+      "title": "Samurai Champloo Opening | Battlecry",
+      "channel": "Crunchyroll",
+      "durationSec": 90,
+      "alt": [],
+      "checkedAt": "2026-10-22"
+    },
     "chavo-intro": {
       "id": "tdYwPuSVmG8",
       "title": "EL Chavo Del 8 - INTRO OFICIAL (1979)",
@@ -618,6 +626,21 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "deathparade-op-flyers": {
+      "id": "Ca5Tf5BDSYI",
+      "title": "Death Parade - Opening | Flyers",
+      "channel": "Crunchyroll",
+      "durationSec": 80,
+      "alt": [
+        {
+          "id": "UjjTMNDZi-A",
+          "title": "Death Parade OP / Opening デス・パレード\"Flyers\" by BRADIO [HD 720p]",
+          "channel": "AD Anime",
+          "durationSec": 79
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "digimon-op-butterfly": {
       "id": "32JTFI0alPk",
       "title": "デジモンアドベンチャー オープニング映像 / 和田光司「Butter-Fly」",
@@ -737,6 +760,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "doom-ost-atdoomsgate": {
+      "id": "BSsfjHCFosw",
+      "title": "Doom OST - E1M1 - At Doom's Gate",
+      "channel": "Jim DarkMagic",
+      "durationSec": 102,
+      "alt": [
+        {
+          "id": "cBnyGG4nng4",
+          "title": "Doom E1M1 (Classic Midi Version)",
+          "channel": "Hoxie99",
+          "durationSec": 98
+        },
+        {
+          "id": "LXL8nsFalXA",
+          "title": "DooM. Soundtrack. Robert Prince - At Doom's Gate. E1M1.",
+          "channel": "Der Winter",
+          "durationSec": 109
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "doom-ost-bfg": {
       "id": "QHRuTYtSbJQ",
@@ -1513,6 +1557,27 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "konosuba-op-fantasticdreamer": {
+      "id": "fpG3BPNQepY",
+      "title": "KONOSUBA -God's blessing on this wonderful world! Opening | Fantastic Dreamer by Machico",
+      "channel": "Crunchyroll",
+      "durationSec": 100,
+      "alt": [
+        {
+          "id": "lFLMh-nIgZs",
+          "title": "Machico / fantastic dreamer(TVアニメ「この素晴らしい世界に祝福を！」オープニング・テーマ)",
+          "channel": "日本コロムビア 公式YouTubeチャンネル",
+          "durationSec": 113
+        },
+        {
+          "id": "fkN2WrnZxAY",
+          "title": "【TABS】KonoSuba! OP -「fantastic dreamer」by @Tron544",
+          "channel": "Tron544",
+          "durationSec": 103
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "lcdp-bellaciao": {
       "id": "46cXFUzR9XM",
       "title": "Bella Ciao Full Song | La Casa De Papel | Money Heist | Netflix India",
@@ -1633,6 +1698,27 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "madoka-op-connect": {
+      "id": "7EuTPTVpuNI",
+      "title": "ClariS \"Connect\" -reformare- Music Video (TV Anime \"Puella Magi Madoka Magica\" Opening Theme)",
+      "channel": "ClariS Official YouTube Channel",
+      "durationSec": 268,
+      "alt": [
+        {
+          "id": "JpH6aQ-hCTI",
+          "title": "Madoka Magica - \"Connect\" (FULL Opening) | ENGLISH Ver | AmaLee",
+          "channel": "LeeandLie (AmaLee)",
+          "durationSec": 289
+        },
+        {
+          "id": "eNvD-D6Gw6c",
+          "title": "ClariS \"Connect\" Music Video (TV Anime \"Puella Magi Madoka Magica\" Opening Theme)",
+          "channel": "ClariS Official YouTube Channel",
+          "durationSec": 274
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "mario-ost-jumpup": {
       "id": "e9r5hx47kxM",
       "title": "Super Mario Odyssey - Jump Up, Super Star!",
@@ -1739,6 +1825,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "megaman2-ost-wily1": {
+      "id": "WJRoRt155mA",
+      "title": "Mega Man 2 - Dr. Wily's Castle",
+      "channel": "UryaV",
+      "durationSec": 234,
+      "alt": [
+        {
+          "id": "QaW5K85UDR0",
+          "title": "DR. WILYS CASTLE / MEGA MAN 2 played on MODULIN",
+          "channel": "Wintergatan",
+          "durationSec": 197
+        },
+        {
+          "id": "aTbfpkByIM8",
+          "title": "Mega Man 2 (NES) Music - Wily Fortress 1",
+          "channel": "GBelair",
+          "durationSec": 181
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "merlina-dance": {
       "id": "NakTu_VZxJ0",
@@ -1914,6 +2021,27 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "nier-ost-cityruins": {
+      "id": "LC5HsZt4oNc",
+      "title": "City Ruins - Rays of Light (NieR:Automata Original Soundtrack)【Audio】",
+      "channel": "SQUARE ENIX MUSIC Channel",
+      "durationSec": 383,
+      "alt": [
+        {
+          "id": "_v4lMOzrgLk",
+          "title": "City Ruins - Shade (NieR:Automata Original Soundtrack)【Audio】",
+          "channel": "SQUARE ENIX MUSIC Channel",
+          "durationSec": 362
+        },
+        {
+          "id": "W6U8OMLcecM",
+          "title": "NIER Automata - Rays Of Light - Medium Instrumental No Vocals (City Ruins)",
+          "channel": "gamerrey23",
+          "durationSec": 317
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "op-op-overthetop": {
       "id": "PwVT67T5Xt4",
       "title": "One Piece Opening 22 | OVER THE TOP",
@@ -1979,6 +2107,27 @@
       "alt": [],
       "checkedAt": "2026-10-19"
     },
+    "overlord-op-clattanoia": {
+      "id": "KOWcj7XKnfQ",
+      "title": "Overlord Opening | Clattanoia by OxT",
+      "channel": "Crunchyroll",
+      "durationSec": 90,
+      "alt": [
+        {
+          "id": "gme1ffqskew",
+          "title": "TVアニメ「オーバーロード」ノンクレジットOP映像【OxT「Clattanoia」】",
+          "channel": "KADOKAWAanime",
+          "durationSec": 91
+        },
+        {
+          "id": "74a8ywulUG8",
+          "title": "Overlord OP - Clattanoia - Remake",
+          "channel": "THERIPPER1541",
+          "durationSec": 84
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "ow-tr-dragons": {
       "id": "KOkn872Cvdg",
       "title": "Overwatch Soundtrack - Dragons Animated Short Theme 2",
@@ -1999,6 +2148,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "parasyte-op-letmehear": {
+      "id": "D-SQqppuGvc",
+      "title": "［PV］Let Me Hear/Fear, and Loathing in Las Vegas",
+      "channel": "zenigame0123",
+      "durationSec": 235,
+      "alt": [
+        {
+          "id": "D_jk-nGpxLQ",
+          "title": "Parasyte - \"Let Me Hear\" Romaji + English Lyrics #37",
+          "channel": "AnimeTranslations",
+          "durationSec": 222
+        },
+        {
+          "id": "bUDp4tF8Hbo",
+          "title": "Parasyte let me hear- full theme song",
+          "channel": "Zain",
+          "durationSec": 222
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "peaky-intro": {
       "id": "RrxePKps87k",
@@ -2098,6 +2268,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "persona5-ost-lifewillchange": {
+      "id": "CGwH6rZk7VM",
+      "title": "Persona 5 - Life Will Change (中英歌詞)",
+      "channel": "Eve.Y Translate",
+      "durationSec": 263,
+      "alt": [
+        {
+          "id": "BQGRN0D1SDA",
+          "title": "Persona 5 - \"Life Will Change\" FULL | AmaLee Ver",
+          "channel": "LeeandLie (AmaLee)",
+          "durationSec": 256
+        },
+        {
+          "id": "pppTnyNoegw",
+          "title": "【ペルソナ5】Life Will Change(歌詞・日本語訳付き)",
+          "channel": "夢宮",
+          "durationSec": 250
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "piratas-ost-davyjones": {
       "id": "5fe9W1gZPUs",
@@ -2241,6 +2432,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "psychopass-op-abnormalize": {
+      "id": "DOKM9QWJG3g",
+      "title": "Ling tosite sigure 『abnormalize(full ver.)』",
+      "channel": "凛として時雨 / TK",
+      "durationSec": 226,
+      "alt": [
+        {
+          "id": "rxuR-52cyNw",
+          "title": "Psycho Pass Opening 1 full  [ Ling Tosite Sigure - Abnormalize ]  ENG SUB",
+          "channel": "Maxtopten",
+          "durationSec": 219
+        },
+        {
+          "id": "RJWGT7BFQjI",
+          "title": "PSYCHO-PASS (OPENING 1) - ABNORMALIZE (サイコパス Op 1)",
+          "channel": "pellekofficial",
+          "durationSec": 220
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "pvz-ost-grasswalk": {
       "id": "43SfJem13jQ",
@@ -2707,6 +2919,27 @@
       ],
       "checkedAt": "2026-10-19"
     },
+    "shovelknight-ost-striketheearth": {
+      "id": "wqAYMZSOQao",
+      "title": "Shovel Knight OST - Strike the Earth! Plains of Passage",
+      "channel": "Nicholas Kirk",
+      "durationSec": 225,
+      "alt": [
+        {
+          "id": "W7rhEKTX-sE",
+          "title": "Strike the Earth! (Plains of Passage) - Shovel Knight [OST]",
+          "channel": "DeoxysPrime",
+          "durationSec": 225
+        },
+        {
+          "id": "BoOjcBiZu0I",
+          "title": "Strike the Earth! (Plains of Passage) - Shovel Knight: Treasure Trove",
+          "channel": "SiIvaGunner",
+          "durationSec": 187
+        }
+      ],
+      "checkedAt": "2026-10-22"
+    },
     "shrek-allstar": {
       "id": "P6antjcBFZ4",
       "title": "'All Star' Opening Scene (Smash Mouth) | Shrek (2001) | TUNE: Kids",
@@ -3013,6 +3246,27 @@
         }
       ],
       "checkedAt": "2026-10-19"
+    },
+    "stardew-ost-overture": {
+      "id": "FQSHcl6TJb4",
+      "title": "Stardew Valley OST - Stardew Valley Overture",
+      "channel": "Lewie G",
+      "durationSec": 147,
+      "alt": [
+        {
+          "id": "L-nseTUsCnQ",
+          "title": "Stardew Valley Overture | Stardew Valley (OST)",
+          "channel": "Crowdrip's OST",
+          "durationSec": 148
+        },
+        {
+          "id": "5h9y_3rRkbU",
+          "title": "Stardew Valley Overture: Stardew Valley OST Concernedape FLAC Hi-Res Audio",
+          "channel": "LEOSMCC",
+          "durationSec": 147
+        }
+      ],
+      "checkedAt": "2026-10-22"
     },
     "steinsgate-op-hacking": {
       "id": "G4M98iDKKQw",

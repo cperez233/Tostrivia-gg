@@ -1527,5 +1527,83 @@
     ],
     "min": 2,
     "max": 25
+  },
+  "madoka-op-connect": {
+    "q": "Madoka Magica opening Connect ClariS",
+    "must": [
+      "connect"
+    ]
+  },
+  "champloo-op-battlecry": {
+    "q": "Samurai Champloo opening Battlecry Nujabes Shing02",
+    "must": [
+      "battlecry"
+    ]
+  },
+  "persona5-ost-lifewillchange": {
+    "q": "Persona 5 Life Will Change",
+    "must": [
+      "life will change"
+    ]
+  },
+  "doom-ost-atdoomsgate": {
+    "q": "Doom E1M1 At Doom's Gate Bobby Prince",
+    "must": [
+      "doom"
+    ]
+  },
+  "deathparade-op-flyers": {
+    "q": "Death Parade opening Flyers BRADIO",
+    "must": [
+      "flyers"
+    ]
+  },
+  "parasyte-op-letmehear": {
+    "q": "Parasyte the maxim opening Let Me Hear Fear and Loathing in Las Vegas",
+    "must": [
+      "let me hear"
+    ]
+  },
+  "psychopass-op-abnormalize": {
+    "q": "Psycho-Pass opening Abnormalize Ling Tosite Sigure",
+    "must": [
+      "abnormalize"
+    ]
+  },
+  "overlord-op-clattanoia": {
+    "q": "Overlord opening Clattanoia MYTH & ROID",
+    "must": [
+      "clattanoia"
+    ]
+  },
+  "konosuba-op-fantasticdreamer": {
+    "q": "KonoSuba opening Fantastic Dreamer Machico",
+    "must": [
+      "fantastic dreamer"
+    ]
+  },
+  "stardew-ost-overture": {
+    "q": "Stardew Valley Overture ConcernedApe",
+    "must": [
+      "overture"
+    ]
+  },
+  "megaman2-ost-wily1": {
+    "q": "Mega Man 2 Dr. Wily Stage 1 theme",
+    "must": [
+      "wily"
+    ]
+  },
+  "nier-ost-cityruins": {
+    "q": "NieR Automata City Ruins Rays of Light",
+    "must": [
+      "city ruins"
+    ]
+  },
+  "shovelknight-ost-striketheearth": {
+    "q": "Shovel Knight Strike the Earth Plains of Passage",
+    "must": [
+      "strike the earth"
+    ]
   }
 }
