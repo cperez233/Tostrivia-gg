@@ -1,0 +1,756 @@
+[
+ {
+  "agent": 1,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "oshinoko",
+    "name": "Oshi no Ko",
+    "n": 25
+   },
+   {
+    "id": "rurouni",
+    "name": "Samurái X (Rurouni Kenshin)",
+    "n": 26
+   },
+   {
+    "id": "steinsgate",
+    "name": "Steins;Gate",
+    "n": 26
+   },
+   {
+    "id": "kaguya",
+    "name": "Kaguya-sama: Love Is War",
+    "n": 26
+   },
+   {
+    "id": "bocchi",
+    "name": "Bocchi the Rock!",
+    "n": 26
+   },
+   {
+    "id": "yuyuhakusho",
+    "name": "Yu Yu Hakusho",
+    "n": 27
+   },
+   {
+    "id": "edgerunners",
+    "name": "Cyberpunk: Edgerunners",
+    "n": 27
+   }
+  ]
+ },
+ {
+  "agent": 2,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "doraemon",
+    "name": "Doraemon",
+    "n": 28
+   },
+   {
+    "id": "rezero",
+    "name": "Re:Zero",
+    "n": 28
+   },
+   {
+    "id": "slamdunk",
+    "name": "Slam Dunk",
+    "n": 29
+   },
+   {
+    "id": "ranma",
+    "name": "Ranma ½",
+    "n": 29
+   },
+   {
+    "id": "inuyasha",
+    "name": "Inuyasha",
+    "n": 30
+   },
+   {
+    "id": "konosuba",
+    "name": "KonoSuba",
+    "n": 30
+   },
+   {
+    "id": "yugioh",
+    "name": "Yu-Gi-Oh!",
+    "n": 31
+   }
+  ]
+ },
+ {
+  "agent": 3,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "mob",
+    "name": "Mob Psycho 100",
+    "n": 31
+   },
+   {
+    "id": "digimon",
+    "name": "Digimon",
+    "n": 32
+   },
+   {
+    "id": "drstone",
+    "name": "Dr. Stone",
+    "n": 33
+   },
+   {
+    "id": "blackclover",
+    "name": "Black Clover",
+    "n": 33
+   },
+   {
+    "id": "dandadan",
+    "name": "Dandadan",
+    "n": 33
+   },
+   {
+    "id": "tokyoghoul",
+    "name": "Tokyo Ghoul",
+    "n": 35
+   },
+   {
+    "id": "vinland",
+    "name": "Vinland Saga",
+    "n": 35
+   }
+  ]
+ },
+ {
+  "agent": 4,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "bluelock",
+    "name": "Blue Lock",
+    "n": 35
+   },
+   {
+    "id": "opm",
+    "name": "One Punch Man",
+    "n": 36
+   },
+   {
+    "id": "sao",
+    "name": "Sword Art Online",
+    "n": 36
+   },
+   {
+    "id": "sololeveling",
+    "name": "Solo Leveling",
+    "n": 36
+   },
+   {
+    "id": "codegeass",
+    "name": "Code Geass",
+    "n": 37
+   },
+   {
+    "id": "saintseiya",
+    "name": "Los Caballeros del Zodiaco",
+    "n": 39
+   },
+   {
+    "id": "haikyuu",
+    "name": "Haikyuu!!",
+    "n": 39
+   }
+  ]
+ },
+ {
+  "agent": 5,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "sailormoon",
+    "name": "Sailor Moon",
+    "n": 40
+   },
+   {
+    "id": "csm",
+    "name": "Chainsaw Man",
+    "n": 40
+   },
+   {
+    "id": "frieren",
+    "name": "Frieren",
+    "n": 40
+   },
+   {
+    "id": "eva",
+    "name": "Evangelion",
+    "n": 41
+   },
+   {
+    "id": "bebop",
+    "name": "Cowboy Bebop",
+    "n": 41
+   },
+   {
+    "id": "spyfamily",
+    "name": "Spy x Family",
+    "n": 41
+   },
+   {
+    "id": "deathnote",
+    "name": "Death Note",
+    "n": 42
+   }
+  ]
+ },
+ {
+  "agent": 6,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "fairytail",
+    "name": "Fairy Tail",
+    "n": 42
+   },
+   {
+    "id": "bleach",
+    "name": "Bleach",
+    "n": 43
+   },
+   {
+    "id": "hxh",
+    "name": "Hunter x Hunter",
+    "n": 44
+   },
+   {
+    "id": "fma",
+    "name": "Fullmetal Alchemist",
+    "n": 44
+   },
+   {
+    "id": "jojo",
+    "name": "JoJo's Bizarre Adventure",
+    "n": 44
+   },
+   {
+    "id": "jjk",
+    "name": "Jujutsu Kaisen",
+    "n": 44
+   },
+   {
+    "id": "pokemonanime",
+    "name": "Pokémon (anime)",
+    "n": 45
+   }
+  ]
+ },
+ {
+  "agent": 7,
+  "group": "anime",
+  "cats": [
+   {
+    "id": "dragonball",
+    "name": "Dragon Ball",
+    "n": 47
+   },
+   {
+    "id": "mha",
+    "name": "My Hero Academia",
+    "n": 47
+   },
+   {
+    "id": "kimetsu",
+    "name": "Demon Slayer",
+    "n": 48
+   },
+   {
+    "id": "aot",
+    "name": "Attack on Titan",
+    "n": 49
+   },
+   {
+    "id": "onepiece",
+    "name": "One Piece",
+    "n": 53
+   },
+   {
+    "id": "naruto",
+    "name": "Naruto",
+    "n": 53
+   }
+  ]
+ },
+ {
+  "agent": 8,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "cuphead",
+    "name": "Cuphead",
+    "n": 19
+   },
+   {
+    "id": "sims",
+    "name": "Los Sims",
+    "n": 27
+   },
+   {
+    "id": "stardew",
+    "name": "Stardew Valley",
+    "n": 28
+   },
+   {
+    "id": "terraria",
+    "name": "Terraria",
+    "n": 28
+   },
+   {
+    "id": "undertale",
+    "name": "Undertale",
+    "n": 29
+   },
+   {
+    "id": "fallout",
+    "name": "Fallout",
+    "n": 29
+   },
+   {
+    "id": "portal",
+    "name": "Portal",
+    "n": 30
+   }
+  ]
+ },
+ {
+  "agent": 9,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "skyrim",
+    "name": "Skyrim (The Elder Scrolls)",
+    "n": 30
+   },
+   {
+    "id": "amongus",
+    "name": "Among Us",
+    "n": 30
+   },
+   {
+    "id": "animalcrossing",
+    "name": "Animal Crossing",
+    "n": 31
+   },
+   {
+    "id": "hades",
+    "name": "Hades",
+    "n": 31
+   },
+   {
+    "id": "counterstrike",
+    "name": "Counter-Strike",
+    "n": 33
+   },
+   {
+    "id": "cyberpunk",
+    "name": "Cyberpunk 2077",
+    "n": 35
+   },
+   {
+    "id": "hollowknight",
+    "name": "Hollow Knight",
+    "n": 37
+   }
+  ]
+ },
+ {
+  "agent": 10,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "spiderman",
+    "name": "Marvel's Spider-Man",
+    "n": 37
+   },
+   {
+    "id": "crash",
+    "name": "Crash Bandicoot",
+    "n": 38
+   },
+   {
+    "id": "rdr",
+    "name": "Red Dead Redemption",
+    "n": 38
+   },
+   {
+    "id": "valorant",
+    "name": "Valorant",
+    "n": 38
+   },
+   {
+    "id": "kingdomhearts",
+    "name": "Kingdom Hearts",
+    "n": 39
+   },
+   {
+    "id": "gow",
+    "name": "God of War",
+    "n": 39
+   },
+   {
+    "id": "souls",
+    "name": "Elden Ring y Souls",
+    "n": 40
+   }
+  ]
+ },
+ {
+  "agent": 11,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "persona",
+    "name": "Persona",
+    "n": 40
+   },
+   {
+    "id": "mgs",
+    "name": "Metal Gear Solid",
+    "n": 40
+   },
+   {
+    "id": "fortnite",
+    "name": "Fortnite",
+    "n": 40
+   },
+   {
+    "id": "smash",
+    "name": "Super Smash Bros.",
+    "n": 40
+   },
+   {
+    "id": "sonic",
+    "name": "Sonic",
+    "n": 41
+   },
+   {
+    "id": "witcher",
+    "name": "The Witcher",
+    "n": 41
+   },
+   {
+    "id": "tlou",
+    "name": "The Last of Us",
+    "n": 41
+   }
+  ]
+ },
+ {
+  "agent": 12,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "re",
+    "name": "Resident Evil",
+    "n": 41
+   },
+   {
+    "id": "cod",
+    "name": "Call of Duty",
+    "n": 41
+   },
+   {
+    "id": "genshin",
+    "name": "Genshin Impact",
+    "n": 42
+   },
+   {
+    "id": "assassins",
+    "name": "Assassin's Creed",
+    "n": 42
+   },
+   {
+    "id": "halo",
+    "name": "Halo",
+    "n": 42
+   },
+   {
+    "id": "lol",
+    "name": "League of Legends",
+    "n": 42
+   },
+   {
+    "id": "overwatch",
+    "name": "Overwatch",
+    "n": 43
+   }
+  ]
+ },
+ {
+  "agent": 13,
+  "group": "juegos",
+  "cats": [
+   {
+    "id": "ff",
+    "name": "Final Fantasy",
+    "n": 44
+   },
+   {
+    "id": "minecraft",
+    "name": "Minecraft",
+    "n": 44
+   },
+   {
+    "id": "zelda",
+    "name": "The Legend of Zelda",
+    "n": 45
+   },
+   {
+    "id": "mario",
+    "name": "Super Mario",
+    "n": 47
+   },
+   {
+    "id": "gta",
+    "name": "Grand Theft Auto",
+    "n": 47
+   },
+   {
+    "id": "pokemon",
+    "name": "Pokémon",
+    "n": 52
+   }
+  ]
+ },
+ {
+  "agent": 14,
+  "group": "series",
+  "cats": [
+   {
+    "id": "rickmorty",
+    "name": "Rick y Morty",
+    "n": 23
+   },
+   {
+    "id": "himym",
+    "name": "Cómo conocí a vuestra madre",
+    "n": 25
+   },
+   {
+    "id": "adventuretime",
+    "name": "Hora de Aventura",
+    "n": 26
+   },
+   {
+    "id": "betty",
+    "name": "Yo soy Betty, la fea",
+    "n": 26
+   },
+   {
+    "id": "brooklyn99",
+    "name": "Brooklyn Nine-Nine",
+    "n": 27
+   },
+   {
+    "id": "bobesponja",
+    "name": "Bob Esponja",
+    "n": 28
+   },
+   {
+    "id": "gravityfalls",
+    "name": "Gravity Falls",
+    "n": 29
+   }
+  ]
+ },
+ {
+  "agent": 15,
+  "group": "series",
+  "cats": [
+   {
+    "id": "squidgame",
+    "name": "El juego del calamar",
+    "n": 29
+   },
+   {
+    "id": "ghibli",
+    "name": "Studio Ghibli",
+    "n": 29
+   },
+   {
+    "id": "narcos",
+    "name": "Narcos",
+    "n": 30
+   },
+   {
+    "id": "theboys",
+    "name": "The Boys",
+    "n": 30
+   },
+   {
+    "id": "hotd",
+    "name": "La casa del dragón",
+    "n": 30
+   },
+   {
+    "id": "nolan",
+    "name": "Christopher Nolan",
+    "n": 31
+   },
+   {
+    "id": "indiana",
+    "name": "Indiana Jones",
+    "n": 32
+   }
+  ]
+ },
+ {
+  "agent": 16,
+  "group": "series",
+  "cats": [
+   {
+    "id": "southpark",
+    "name": "South Park",
+    "n": 33
+   },
+   {
+    "id": "matrix",
+    "name": "Matrix",
+    "n": 33
+   },
+   {
+    "id": "merlina",
+    "name": "Merlina",
+    "n": 36
+   },
+   {
+    "id": "chavo",
+    "name": "El Chavo del 8",
+    "n": 37
+   },
+   {
+    "id": "theoffice",
+    "name": "The Office",
+    "n": 38
+   },
+   {
+    "id": "peaky",
+    "name": "Peaky Blinders",
+    "n": 38
+   },
+   {
+    "id": "rapidos",
+    "name": "Rápidos y furiosos",
+    "n": 38
+   }
+  ]
+ },
+ {
+  "agent": 17,
+  "group": "series",
+  "cats": [
+   {
+    "id": "walkingdead",
+    "name": "The Walking Dead",
+    "n": 39
+   },
+   {
+    "id": "avatar",
+    "name": "Avatar: la leyenda de Aang",
+    "n": 39
+   },
+   {
+    "id": "shrek",
+    "name": "Shrek",
+    "n": 40
+   },
+   {
+    "id": "batman",
+    "name": "Batman en el cine",
+    "n": 40
+   },
+   {
+    "id": "jurassic",
+    "name": "Jurassic Park",
+    "n": 40
+   },
+   {
+    "id": "casadepapel",
+    "name": "La casa de papel",
+    "n": 41
+   },
+   {
+    "id": "piratas",
+    "name": "Piratas del Caribe",
+    "n": 42
+   }
+  ]
+ },
+ {
+  "agent": 18,
+  "group": "series",
+  "cats": [
+   {
+    "id": "breakingbad",
+    "name": "Breaking Bad",
+    "n": 43
+   },
+   {
+    "id": "friends",
+    "name": "Friends",
+    "n": 43
+   },
+   {
+    "id": "disney",
+    "name": "Clásicos de Disney",
+    "n": 43
+   },
+   {
+    "id": "simpsons",
+    "name": "Los Simpson",
+    "n": 44
+   },
+   {
+    "id": "got",
+    "name": "Juego de Tronos",
+    "n": 46
+   },
+   {
+    "id": "strangerthings",
+    "name": "Stranger Things",
+    "n": 46
+   },
+   {
+    "id": "lotr",
+    "name": "El Señor de los Anillos",
+    "n": 46
+   }
+  ]
+ },
+ {
+  "agent": 19,
+  "group": "series",
+  "cats": [
+   {
+    "id": "starwars",
+    "name": "Star Wars",
+    "n": 47
+   },
+   {
+    "id": "harrypotter",
+    "name": "Harry Potter",
+    "n": 47
+   },
+   {
+    "id": "pixar",
+    "name": "Pixar",
+    "n": 48
+   },
+   {
+    "id": "mcu",
+    "name": "Marvel: los Vengadores",
+    "n": 49
+   }
+  ]
+ }
+]
