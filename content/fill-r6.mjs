@@ -38,13 +38,13 @@ export default {
   ],
   sims: [
     // --- pendientes rescatadas / corregidas ---
-    [2, "¿Cómo se llama el hijo menor de Bella y Mortimer Goth?", "Alexander", "Daniel", "Vidcund", "Lazlo", ["What is the youngest child of Bella and Mortimer Goth called?", N, N, N, N]],
+    [2, "¿Qué hijo de los Goth aparece por primera vez en Los Sims 2?", "Alexander", "Daniel", "Vidcund", "Darren", ["Which Goth child first appears in The Sims 2?", N, N, N, N]],
     [1, "¿Qué habilidad hace falta para reparar objetos rotos?", "Mecánica", "Cocina", "Carisma", "Lógica", ["Which skill do you need to repair broken objects?", "Mechanical", "Cooking", "Charisma", "Logic"]],
     [1, "¿Qué suele provocar un Sim con poca habilidad de cocina?", "Un incendio", "Una inundación", "Un apagón", "Una pelea", ["What does a Sim with low Cooking skill often cause?", "A fire", "A flood", "A blackout", "A fight"]],
     [2, "¿Qué puede pasarle a un Sim varón abducido por extraterrestres en Los Sims 2?", "Quedar embarazado de un bebé mitad alienígena", "Volverse invisible", "Convertirse en zombi", "Quedarse sin trabajo", ["What can happen to a male Sim abducted by aliens in The Sims 2?", "He can become pregnant with a half-alien baby", "He can turn invisible", "He can turn into a zombie", "He can lose his job"]],
     [2, "¿Cuántas etapas de vida pueden vivir los Sims en Los Sims 2 con las expansiones?", "Siete", "Cinco", "Seis", "Ocho", ["How many life stages can Sims go through in The Sims 2 with the expansions?", "Seven", "Five", "Six", "Eight"]],
     [2, "¿Cuántos rasgos de personalidad puede elegir un Sim adulto en Los Sims 4?", "Tres", "Dos", "Cuatro", "Cinco", ["How many personality traits can an adult Sim pick in The Sims 4?", "Three", "Two", "Four", "Five"]],
-    [3, "¿Cuántos rasgos de personalidad puede tener como máximo un Sim adulto en Los Sims 3?", "Cinco", "Tres", "Cuatro", "Seis", ["What is the maximum number of personality traits an adult Sim can have in The Sims 3?", "Five", "Three", "Four", "Six"]],
+    [3, "¿Hasta cuántos rasgos de carácter admite un adulto en Los Sims 3?", "Cinco", "Tres", "Cuatro", "Seis", ["Up to how many character traits can an adult have in The Sims 3?", "Five", "Three", "Four", "Six"]],
     [2, "¿Qué habilidad se entrena jugando al ajedrez?", "Lógica", "Carisma", "Cocina", "Creatividad", ["Which skill do you train by playing chess?", "Logic", "Charisma", "Cooking", "Creativity"]],
     [1, "¿Qué marca la muerte de un Sim en el primer Los Sims?", "Una lápida o una urna", "Una estatua", "Un árbol", "Una cruz de madera", ["What marks a Sim's death in the first The Sims?", "A tombstone or an urn", "A statue", "A tree", "A wooden cross"]],
     [2, "¿Qué pasa con un niño Sim que no come nada en el primer Los Sims?", "Un asistente social se lo lleva", "Se escapa de casa", "Se convierte en fantasma", "Se enferma pero sobrevive", ["What happens to a child Sim who never eats in the first The Sims?", "A social worker takes them away", "They run away from home", "They turn into a ghost", "They get sick but survive"]],
