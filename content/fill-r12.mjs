@@ -40,4 +40,17 @@ export default {
     [1, "¿Qué le pasa a Geralt al principio del primer The Witcher?", "Despierta sin memoria", "Pierde un ojo", "Queda maldito por una striga", "Pierde sus espadas", ["What happens to Geralt at the start of the first The Witcher?", "He wakes up with no memory", "He loses an eye", "He is cursed by a striga", "He loses his swords"]],
     [1, "¿Qué archipiélago visita Geralt siguiendo el rastro de Ciri, tras Velen y Novigrado?", "Skellige", "Toussaint", "Kaedwen", "Aedirn", ["Which archipelago does Geralt visit on Ciri's trail, after Velen and Novigrad?", "Skellige", "Toussaint", "Kaedwen", "Aedirn"]],
   ],
+  tlou: [
+    [1, "¿Cómo muere Sarah al inicio del primer juego?", "Un soldado le dispara", "La muerde un infectado", "En un accidente de coche", "En un incendio", ["How does Sarah die at the start of the first game?", "A soldier shoots her", "An infected bites her", "In a car accident", "In a fire"]],
+    [1, "¿En qué ciudad se alían Joel y Ellie con Henry y Sam?", "Pittsburgh", "Boston", "Seattle", "Lincoln", ["In which city do Joel and Ellie team up with Henry and Sam?", N, N, N, N]],
+    [2, "¿En qué ciudad vive Joel antes del brote?", "Austin", "Boston", "Dallas", "Denver", ["Which city does Joel live in before the outbreak?", N, N, N, N]],
+    [2, "¿Cómo terminan Henry y Sam?", "Henry mata a Sam, infectado, y se quita la vida", "Los atrapan los cazadores", "Se unen a Tommy en Jackson", "Los devora una horda", ["How do Henry and Sam end up?", "Henry kills the infected Sam and takes his own life", "The hunters capture them", "They join Tommy in Jackson", "A horde devours them"]],
+    [2, "¿Qué mentira le cuenta Joel a Ellie al final del primer juego?", "Que las Luciérnagas dejaron de buscar una cura", "Que Marlene sobrevivió", "Que Tommy murió", "Que ella no era inmune", ["What lie does Joel tell Ellie at the end of the first game?", "That the Fireflies stopped looking for a cure", "That Marlene survived", "That Tommy died", "That she was never immune"]],
+    [3, "¿Qué personaje iba a ser originalmente el antagonista principal del primer juego?", "Tess", "Marlene", "Bill", "Henry", ["Which character was originally going to be the main antagonist of the first game?", N, N, N, N]],
+    [2, "¿Quién es el padre del bebé de Dina?", "Jesse", "Tommy", "Owen", "Joel", ["Who is the father of Dina's baby?", N, N, N, N]],
+    [3, "¿A quién tortura Ellie para saber dónde está Abby?", "A Nora", "A Mel", "A Owen", "A Yara", ["Who does Ellie torture to find out where Abby is?", "Nora", "Mel", "Owen", "Yara"]],
+    [2, "¿Qué pierde Ellie en su pelea final con Abby?", "Dos dedos", "Un ojo", "Una oreja", "La audición", ["What does Ellie lose in her final fight with Abby?", "Two fingers", "An eye", "An ear", "Her hearing"]],
+    [3, "En Santa Barbara, ¿qué grupo con esclavos captura a Abby y Lev?", "Los Rattlers", "Los Serafitas", "Los Lobos", "Las Luciérnagas", ["In Santa Barbara, which group that keeps slaves captures Abby and Lev?", "The Rattlers", "The Seraphites", "The Wolves", "The Fireflies"]],
+    [3, "¿Qué canción baila Ellie con Riley en una tienda de electrónica en Left Behind?", "I Got You Babe", "Take On Me", "Future Days", "Hallelujah", ["Which song do Ellie and Riley dance to in an electronics store in Left Behind?", N, N, N, N]],
+  ],
 };
