@@ -14,4 +14,17 @@ export default {
     [3, "¿Para qué luchador de Ultimate dejaron un hueco libre porque aún no existía?", "Incineroar", "Greninja", "Lucario", "Mewtwo", ["For which Ultimate fighter did the team leave an open slot because he didn't exist yet?", N, N, N, N]],
     [3, "¿Qué luchador estaba previsto para el primer Smash, pero no llegó hasta Brawl?", "King Dedede", "Bowser", "Marth", "Mewtwo", ["Which fighter was planned for the first Smash but didn't arrive until Brawl?", N, N, N, N]],
   ],
+  sonic: [
+    [2, "¿A qué criatura libera Eggman al romper la Master Emerald en Sonic Adventure?", "Chaos", "Biolizard", "Gamma", "Metal Sonic", ["Which creature does Eggman release by shattering the Master Emerald in Sonic Adventure?", N, N, N, N]],
+    [2, "¿Qué esmeraldas protege la princesa Blaze?", "Las Sol Emeralds", "Las Esmeraldas del Caos", "Las Super Esmeraldas", "La Master Emerald", ["Which emeralds does Princess Blaze protect?", "The Sol Emeralds", "The Chaos Emeralds", "The Super Emeralds", "The Master Emerald"]],
+    [1, "¿Qué alienígenas de colores ayudan a Sonic en Sonic Colors?", "Los Wisps", "Los Chao", "Los Flickies", "Los Gaia", ["Which colorful aliens help Sonic in Sonic Colors?", "The Wisps", "The Chao", "The Flickies", "The Gaia"]],
+    [3, "¿Qué es en realidad Chip, el amnésico de Sonic Unleashed?", "Light Gaia", "Un Wisp", "Un Chao", "Dark Gaia", ["What is Chip, the amnesiac of Sonic Unleashed, really?", "Light Gaia", "A Wisp", "A Chao", "Dark Gaia"]],
+    [1, "¿En qué se transforma Sonic de noche en Sonic Unleashed?", "En el Werehog", "En Super Sonic", "En Dark Sonic", "En Hyper Sonic", ["What does Sonic turn into at night in Sonic Unleashed?", "The Werehog", "Super Sonic", "Dark Sonic", "Hyper Sonic"]],
+    [2, "¿Qué equipo forman Amy, Cream y Big en Sonic Heroes?", "Team Rose", "Team Dark", "Team Chaotix", "Team Sonic", ["Which team do Amy, Cream and Big form in Sonic Heroes?", N, N, N, N]],
+    [2, "En Sonic Forces, ¿quién obtiene su poder de la Phantom Ruby y derrota a Sonic?", "Infinite", "Zavok", "Mephiles", "Black Doom", ["In Sonic Forces, who gets his power from the Phantom Ruby and defeats Sonic?", N, N, N, N]],
+    [3, "¿Quién lidera a los Deadly Six en Sonic Lost World?", "Zavok", "Zazz", "Zeena", "Zomom", ["Who leads the Deadly Six in Sonic Lost World?", N, N, N, N]],
+    [2, "¿A qué amiga le hizo Shadow una promesa antes de que ella muriera?", "Maria", "Amy", "Rouge", "Tikal", ["Which friend did Shadow make a promise to before she died?", N, N, N, N]],
+    [3, "¿Quién resulta ser el misterioso cliente de los Chaotix en Sonic Heroes?", "Eggman", "Shadow", "Rouge", "Metal Sonic", ["Who turns out to be the Chaotix's mysterious client in Sonic Heroes?", N, N, N, N]],
+    [3, "¿Qué motiva a Gerald Robotnik a programar el ARK para chocar con la Tierra?", "Vengarse del gobierno que condenó su investigación", "Detener a Eggman", "Proteger las Chaos Emeralds", "Impedir que Shadow despertara", ["What motivates Gerald Robotnik to program the ARK to collide with Earth?", "Revenge on the government that condemned his research", "Stopping Eggman", "Protecting the Chaos Emeralds", "Keeping Shadow from awakening"]],
+  ],
 };
