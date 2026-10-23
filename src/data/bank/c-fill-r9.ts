@@ -51,7 +51,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué objeto trae al circo de Grimm a Hallownest?","La Linterna de Pesadilla","La Linterna de Luciérnagas","El Clavo Onírico","El Sello del Soñador"],
     [3,"¿Quién te ayuda a expulsar a la tropa de Grimm?","Brumm","Divine","Nymm","Zote"],
     [2,"¿A quién derrotas al final del Panteón de Hallownest?","La Radiancia Absoluta","Grimm Pesadilla","El Falso Caballero","El Rey Pálido"],
-    [1,"¿Quién es la esgrimista infantil que acosa a Hornet por Pharloom?","Lace","Shakra","Sherma","Garmond"],
+    [1,"¿Qué esgrimista de aspecto infantil se enfrenta a Hornet en Pharloom?","Lace","Shakra","Sherma","Garmond"],
     [2,"¿Qué ser casi divino dominaba Pharloom?","Grand Mother Silk","Lace","La Radiancia","El Rey Pálido"],
     [3,"¿Qué civilización levantó la Ciudadela de Pharloom con su canción mágica?","Los Tejedores","Los Soñadores","Los Peregrinos","Los Recipientes"],
     [3,"En el final del Corazón del Vacío, ¿dónde te enfrentas a la Radiancia?","En el Reino de los Sueños","En el Templo del Huevo Negro","En el Abismo","En el Palacio Blanco"],
@@ -64,7 +64,7 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   spiderman: [
     [2,"¿Qué arma biológica creó Oscorp sin querer mientras buscaba una cura?","El Aliento del Diablo","El Suero Simbionte","La Toxina Lagarto","La Fórmula Octavius"],
-    [2,"¿De qué prisión de supervillanos escapan Electro, Buitre, Rhino y Escorpión?","The Raft","Ryker's Island","Ravencroft","Sing Sing"],
+    [2,"En el videojuego de 2018, ¿de qué prisión escapan Electro, Buitre, Rhino y Escorpión?","The Raft","Ryker's Island","Ravencroft","Sing Sing"],
     [1,"¿Dónde libera Otto el Aliento del Diablo sobre la gente?","Times Square","Central Park","Grand Central","Union Square"],
     [2,"¿A quién pierde Peter por salvar a toda la ciudad con el antídoto?","A tía May","A Mary Jane","A Norman Osborn","A Yuri Watanabe"],
     [3,"¿Quién guarda a Harry en un tanque secreto durante el epílogo?","Norman Osborn","Otto Octavius","Martin Li","Silver Sable"],

@@ -52,7 +52,7 @@ const bank: Record<string, RawQuestion[]> = {
   mgs: [
     [3,"¿Quién se hace pasar por el jefe de DARPA, Donald Anderson?","Decoy Octopus","Psycho Mantis","Vulcan Raven","Revolver Ocelot"],
     [2,"¿Quién inyecta FOXDIE a Snake?","Naomi Hunter","Mei Ling","Meryl Silverburgh","Sniper Wolf"],
-    [2,"¿Quién guarda tu partida con proverbios chinos?","Mei Ling","Naomi Hunter","Meryl Silverburgh","Otacon"],
+    [2,"En el primer Metal Gear Solid, ¿quién guarda tu partida con proverbios chinos?","Mei Ling","Naomi Hunter","Meryl Silverburgh","Otacon"],
     [3,"¿Cuál es el nombre real de Gray Fox?","Frank Jaeger","Roy Campbell","Kenneth Baker","Johnny Sasaki"],
     [2,"¿De quién es el brazo que lleva Ocelot tras perder la mano en Metal Gear Solid?","De Liquid Snake","De Solid Snake","De Big Boss","De Gray Fox"],
     [2,"¿Quién es el expresidente al que se enfrenta Raiden al final de MGS2?","Solidus Snake","Liquid Snake","Revolver Ocelot","Vamp"],

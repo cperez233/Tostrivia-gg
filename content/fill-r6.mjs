@@ -33,7 +33,6 @@ export default {
     [2, "¿Qué jefes son una escuadrilla de perros pilotos?", "The Howling Aces", "The Moonshine Mob", "The Root Pack", "Ribby and Croaks", ["Which bosses are a squadron of pilot dogs?", N, N, N, N]],
     [3, "¿Qué banda de bichos con estilo mafioso se esconde en una destilería?", "The Moonshine Mob", "The Howling Aces", "The Root Pack", "Ribby and Croaks", ["Which gang of mobster-style bugs hides in a distillery?", N, N, N, N]],
     [3, "¿Qué jefe es un mago de hielo que acaba convertido en un enorme copo de nieve?", "Mortimer Freeze", "Djimmi the Great", "Glumstone the Giant", "Grim Matchstick", ["Which boss is an ice wizard who ends up as a giant snowflake?", N, N, N, N]],
-    [3, "¿Qué año falso de copyright aparece en las pantallas de título de los niveles?", "1930", "1936", "1942", "1927", ["What fake copyright year shows on the level title cards?", N, N, N, N]],
     [3, "¿En qué juego se inspiran los campeones del jefe secreto King of Games?", "Ajedrez", "Damas", "Póker", "Dominó", ["Which game inspires the champions of the secret boss King of Games?", "Chess", "Checkers", "Poker", "Dominoes"]],
   ],
   sims: [

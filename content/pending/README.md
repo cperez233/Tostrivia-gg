@@ -1,8 +1,11 @@
-# Preguntas pendientes de verificar
+# Material de la ronda de verificación
 
-Estas preguntas se escribieron de memoria (sin fuente leída) y **no están en el juego** hasta que se confirmen con una fuente.
-- `plot-p8.mjs … plot-p19.mjs`: lotes de trama aún sin verificar (mismas categorías que el plan original).
-- `parked/`: filas de los lotes 1-7 que se quitaron por no poder confirmarlas (Bocchi, Yu Yu Hakusho, Edgerunners, Kaguya, FMA, JoJo, JJK, Pokémon anime, Eva, Bebop, Spy x Family, Ranma, Inuyasha, KonoSuba, Yu-Gi-Oh!, Black Clover, Dandadan, Tokyo Ghoul, Vinland, One Piece, AoT…).
+Estado a 23-oct-2026: los lotes `plot-p8…p19` y las filas de `parked/` se **revisaron contra Wikipedia (en/es) y otras fuentes**.
+Lo que se pudo confirmar (con correcciones donde hizo falta) ya está en el juego, en `content/fill-r1…r27.mjs`.
+Lo que queda en estos archivos es lo que **no se pudo confirmar** o se descartó por repetida/ambigua: no entra al juego (`pending/` no se lee).
+Algunas filas están marcadas en los informes como «correctas pero sobraban»; sirven de reserva si algún día hace falta rellenar una categoría.
 
-Para devolver una pregunta al juego: confirmar el dato en una fuente, copiar la fila a `content/plot-pN.mjs` (o a un `fill-fN.mjs`) y correr `npm run content`.
-Los `content/*.mjs` de primer nivel son los únicos que entran al juego (`pending/` no se lee).
+- `tools/wp.mjs`: lee Wikipedia/otras URLs como texto sin gastar búsquedas (`page`, `search`, `url`).
+- `tools/lint.mjs`: revisa formato, soplos y repetidas de un `fill-rN.mjs`.
+- `tools/INSTRUCCIONES3.md`: instrucciones que se dieron a los agentes verificadores.
+- Regla: lo que no se confirma en una fuente leída no entra.

@@ -103,7 +103,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Quién es la novia de Soos que se vuelve la nueva cajera de la Cabaña del Misterio?","Melody","Candy","Tambry","Pacifica"],
     [2,"¿Quién queda al mando de la Cabaña del Misterio al final?","Soos","Wendy","Stan","Ford"],
     [3,"¿Cuántos minutos mayor es Mabel que Dipper?","Cinco","Diez","Dos","Quince"],
-    [1,"¿De quién está obsesionado Gideon?","De Mabel","De Wendy","De Pacifica","De Candy"],
+    [1,"¿Quién es la obsesión de Gideon?","Mabel","Wendy","Pacifica","Candy"],
     [2,"¿Qué tipo de demonio es Bill Cipher?","De los sueños","Del fuego","Del hielo","Del vacío"],
     [3,"¿En qué año fue transportado Ford a otra dimensión por el portal?","1982","1972","1987","1992"],
     [3,"¿A quién posee Bill Cipher para liberar la grieta dimensional y escapar?","A Blendin Blandin","A Dipper","A Gideon","A Stan"],

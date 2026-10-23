@@ -38,7 +38,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo muere Jack Toretto, el padre de Dom?","En un choque durante una carrera de stock cars","En un tiroteo con la policía","En un asalto a un camión","En una pelea callejera"],
   ],
   walkingdead: [
-    [1,"¿Quién mata a Shane antes de que se convierta en caminante?","Rick","Daryl","Hershel","Glenn"],
+    [1,"En la serie, ¿quién mata a Shane antes de que se convierta en caminante?","Rick","Daryl","Hershel","Glenn"],
     [2,"¿Cómo muere Lori?","Durante el parto","Mordida por un caminante","De un disparo del Gobernador","En el asalto a Woodbury"],
     [2,"¿Quién mata a Hershel en la cuarta temporada?","El Gobernador","Negan","Joe","Gareth"],
     [2,"¿Quién encabeza el asalto que libera al grupo de Rick en Terminus?","Carol","Michonne","Morgan","Aaron"],

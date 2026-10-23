@@ -36,7 +36,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué jefes son una escuadrilla de perros pilotos?","The Howling Aces","The Moonshine Mob","The Root Pack","Ribby and Croaks"],
     [3,"¿Qué banda de bichos con estilo mafioso se esconde en una destilería?","The Moonshine Mob","The Howling Aces","The Root Pack","Ribby and Croaks"],
     [3,"¿Qué jefe es un mago de hielo que acaba convertido en un enorme copo de nieve?","Mortimer Freeze","Djimmi the Great","Glumstone the Giant","Grim Matchstick"],
-    [3,"¿Qué año falso de copyright aparece en las pantallas de título de los niveles?","1930","1936","1942","1927"],
     [3,"¿En qué juego se inspiran los campeones del jefe secreto King of Games?","Ajedrez","Damas","Póker","Dominó"],
   ],
   sims: [

@@ -33,7 +33,7 @@ export default {
     [2, "¿Cómo muere Jack Toretto, el padre de Dom?", "En un choque durante una carrera de stock cars", "En un tiroteo con la policía", "En un asalto a un camión", "En una pelea callejera", ["How does Jack Toretto, Dom's father, die?", "In a crash during a stock car race", "In a shootout with the police", "In a truck hijacking", "In a street fight"]],
   ],
   walkingdead: [
-    [1, "¿Quién mata a Shane antes de que se convierta en caminante?", "Rick", "Daryl", "Hershel", "Glenn", ["Who kills Shane before he turns into a walker?", N, N, N, N]],
+    [1, "En la serie, ¿quién mata a Shane antes de que se convierta en caminante?", "Rick", "Daryl", "Hershel", "Glenn", ["In the TV series, who kills Shane before he turns into a walker?", N, N, N, N]],
     [2, "¿Cómo muere Lori?", "Durante el parto", "Mordida por un caminante", "De un disparo del Gobernador", "En el asalto a Woodbury", ["How does Lori die?", "During childbirth", "Bitten by a walker", "Shot by the Governor", "In the Woodbury assault"]],
     [2, "¿Quién mata a Hershel en la cuarta temporada?", "El Gobernador", "Negan", "Joe", "Gareth", ["Who kills Hershel in season four?", "The Governor", N, N, N]],
     [2, "¿Quién encabeza el asalto que libera al grupo de Rick en Terminus?", "Carol", "Michonne", "Morgan", "Aaron", ["Who leads the assault that frees Rick's group at Terminus?", N, N, N, N]],

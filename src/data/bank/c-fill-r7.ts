@@ -47,7 +47,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"Según Sans, ¿qué significan en realidad LV y EXP?","Nivel de violencia y puntos de ejecución","Nivel de vida y puntos de experiencia","Nivel de valor y puntos de exploración","Nivel de vigor y puntos de energía"],
     [2,"¿Qué tipografía usa para hablar el esqueleto bromista de la sudadera?","Comic Sans","Papyrus","Times New Roman","Helvetica"],
     [2,"¿Qué pasa si coqueteas con Papyrus durante su pelea?","Te propone una cita","Se va corriendo avergonzado","Te lanza un hueso","Te regala su armadura"],
-    [1,"¿Qué hace Asgore en su pelea para que no puedas perdonarlo?","Destruye la opción MERCY del menú","Se cura toda la vida","Llama a Undyne para que lo ayude","Esconde el botón de ACT"],
     [1,"¿Qué te da Toriel en las Ruinas para que puedas comunicarte con ella?","Un celular","Una linterna","Un mapa de las Ruinas","Un pastel"],
     [3,"¿Qué sueño cumple Toriel en el epílogo de la ruta pacifista?","Fundar una escuela y dar clases","Reinar otra vez sobre los monstruos","Abrir una pastelería","Cuidar un jardín de flores doradas"],
     [3,"¿Qué opción del combate no te sirve contra Undyne en Waterfall?","Perdonarla","Atacar","Actuar","Usar objetos"],

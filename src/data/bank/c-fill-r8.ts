@@ -49,7 +49,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1,"¿Para qué usan las tareas los impostores?","Para aparentar ser tripulantes","Para ganar puntos extra","Para sabotear el mapa","Para moverse más rápido"],
     [2,"¿Para qué sirven las tareas visuales?","Para demostrar que eres tripulante","Para ver el mapa de los impostores","Para ganar más rápido","Para revivir a un tripulante"],
     [1,"Además de en línea, ¿cómo se puede jugar con amigos que están en el mismo lugar?","Por WiFi local","Por Bluetooth","Con cable USB","En pantalla dividida"],
-    [2,"¿Cuándo pueden chatear por texto los jugadores vivos?","Solo durante las reuniones","Siempre","Solo cerca de otros jugadores","Solo en la cafetería"],
+    [2,"Durante una partida, ¿cuándo pueden chatear por texto los jugadores vivos?","Solo durante las reuniones","Siempre","Solo cerca de otros jugadores","Solo en la cafetería"],
     [2,"¿Qué puede ajustar el anfitrión sobre un jugador expulsado?","Si se revela que era impostor o no","Su color de traje","Si vuelve como tripulante","Su nombre en el chat"],
     [1,"Además de expulsar a los impostores, ¿cómo ganan los tripulantes?","Completando todas las tareas","Sobreviviendo diez minutos","Reparando el reactor","Atrapando un fantasma"],
   ],

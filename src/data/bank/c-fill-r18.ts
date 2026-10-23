@@ -44,7 +44,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Qué aves devoran a los warawara en el mundo de la torre?","Pelícanos","Periquitos","Garzas","Cuervos"],
     [2,"¿Qué jabalí poseído por el odio ataca la aldea de Ashitaka al inicio?","Nago","Okkoto","Moro","Yakul"],
     [3,"¿Qué dios ciego lidera el ataque de su clan contra la Ciudad del Hierro?","Okkoto","Moro","Nago","El Espíritu del Bosque"],
-    [2,"¿Qué le arrancan de un disparo al Espíritu del Bosque?","La cabeza","Los cuernos","La cola","Un ojo"],
+    [2,"¿Qué le cortan al Espíritu del Bosque en la película?","La cabeza","Los cuernos","La cola","Un ojo"],
     [2,"¿Qué quiere ser Seiji, el chico de la tienda de antigüedades?","Fabricante de violines","Pintor","Relojero","Escritor"],
     [2,"¿Cómo se llaman los insectos gigantes del bosque tóxico en Nausicaä?","Ohmu","Kodama","Warawara","Susuwatari"],
     [3,"¿Cuál es el nombre de nacimiento de Ponyo?","Brunilda","Sieglinde","Kriemhild","Isolda"],

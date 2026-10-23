@@ -47,7 +47,7 @@ export default {
   mgs: [
     [3, "¿Quién se hace pasar por el jefe de DARPA, Donald Anderson?", "Decoy Octopus", "Psycho Mantis", "Vulcan Raven", "Revolver Ocelot", ["Who impersonates the DARPA chief, Donald Anderson?", N, N, N, N]],
     [2, "¿Quién inyecta FOXDIE a Snake?", "Naomi Hunter", "Mei Ling", "Meryl Silverburgh", "Sniper Wolf", ["Who injects Snake with FOXDIE?", N, N, N, N]],
-    [2, "¿Quién guarda tu partida con proverbios chinos?", "Mei Ling", "Naomi Hunter", "Meryl Silverburgh", "Otacon", ["Who saves your game with Chinese proverbs?", N, N, N, N]],
+    [2, "En el primer Metal Gear Solid, ¿quién guarda tu partida con proverbios chinos?", "Mei Ling", "Naomi Hunter", "Meryl Silverburgh", "Otacon", ["In the first Metal Gear Solid, who saves your game with Chinese proverbs?", N, N, N, N]],
     [3, "¿Cuál es el nombre real de Gray Fox?", "Frank Jaeger", "Roy Campbell", "Kenneth Baker", "Johnny Sasaki", ["What is Gray Fox's real name?", N, N, N, N]],
     [2, "¿De quién es el brazo que lleva Ocelot tras perder la mano en Metal Gear Solid?", "De Liquid Snake", "De Solid Snake", "De Big Boss", "De Gray Fox", ["Whose arm does Ocelot carry after losing his hand in Metal Gear Solid?", "Liquid Snake's", "Solid Snake's", "Big Boss's", "Gray Fox's"]],
     [2, "¿Quién es el expresidente al que se enfrenta Raiden al final de MGS2?", "Solidus Snake", "Liquid Snake", "Revolver Ocelot", "Vamp", ["Which former president does Raiden face at the end of MGS2?", N, N, N, N]],

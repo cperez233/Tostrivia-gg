@@ -42,7 +42,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué criatura azul recoge los objetos iguales al que le diste?","El allay","El vex","El phantom","El guardián"],
     [3,"¿Qué pasa si le pones el nombre «Dinnerbone» a un mob?","Se pone boca abajo","Se vuelve invisible","Se hace gigante","Cambia de colores"],
     [3,"¿Qué objeto, junto a 8 conchas de nautilo, forma un conducto?","Un corazón del mar","Una estrella del Nether","Una perla de ender","Un fragmento de prismarina"],
-    [2,"¿Qué flor le da un gólem de hierro a un aldeano niño?","Una amapola","Un diente de león","Una orquídea azul","Un tulipán rojo"],
+    [2,"En Bedrock, ¿qué flor le da un gólem de hierro a un aldeano niño?","Una amapola","Un diente de león","Una orquídea azul","Un tulipán rojo"],
   ],
   zelda: [
     [2,"¿Qué hada acompaña a Link en Majora's Mask?","Tatl","Navi","Tael","Ciela"],

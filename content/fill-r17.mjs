@@ -98,7 +98,7 @@ export default {
     [2, "¿Quién es la novia de Soos que se vuelve la nueva cajera de la Cabaña del Misterio?", "Melody", "Candy", "Tambry", "Pacifica", ["Who is Soos's girlfriend who becomes the Mystery Shack's new cashier?", N, "Candy", "Tambry", "Pacifica"]],
     [2, "¿Quién queda al mando de la Cabaña del Misterio al final?", "Soos", "Wendy", "Stan", "Ford", ["Who ends up in charge of the Mystery Shack at the end?", "Soos", "Wendy", "Stan", "Ford"]],
     [3, "¿Cuántos minutos mayor es Mabel que Dipper?", "Cinco", "Diez", "Dos", "Quince", ["How many minutes older is Mabel than Dipper?", "Five", "Ten", "Two", "Fifteen"]],
-    [1, "¿De quién está obsesionado Gideon?", "De Mabel", "De Wendy", "De Pacifica", "De Candy", ["Who is Gideon obsessed with?", "Mabel", "Wendy", "Pacifica", "Candy"]],
+    [1, "¿Quién es la obsesión de Gideon?", "Mabel", "Wendy", "Pacifica", "Candy", ["Who is Gideon obsessed with?", "Mabel", "Wendy", "Pacifica", "Candy"]],
     [2, "¿Qué tipo de demonio es Bill Cipher?", "De los sueños", "Del fuego", "Del hielo", "Del vacío", ["What kind of demon is Bill Cipher?", "A dream demon", "A fire demon", "An ice demon", "A void demon"]],
     [3, "¿En qué año fue transportado Ford a otra dimensión por el portal?", "1982", "1972", "1987", "1992", ["In what year was Ford sent to another dimension through the portal?", "1982", "1972", "1987", "1992"]],
     [3, "¿A quién posee Bill Cipher para liberar la grieta dimensional y escapar?", "A Blendin Blandin", "A Dipper", "A Gideon", "A Stan", ["Whom does Bill Cipher possess to release the dimensional rift and escape?", N, "Dipper", "Gideon", "Stan"]],
