@@ -58,6 +58,11 @@ export default function Home({ onPlay }: Props) {
     setHits((h) => h + 1);
     if (!reduce && scope.current) shake(scope.current, { x: [0, -10, 9, -6, 4, 0], y: [0, 6, -5, 3, -1, 0] }, { duration: 0.38, ease: "easeOut" });
   };
+  // cerrar con la X: hay que limpiar también `spin`, si no `spinning` queda en true y todo se bloquea
+  const closeResult = () => {
+    setSpin(null);
+    setLanded(null);
+  };
 
   const cat = landed ? CATEGORY_BY_ID[landed.cat] : null;
 
@@ -133,7 +138,7 @@ export default function Home({ onPlay }: Props) {
         <div className="arena__side" aria-live="polite">
           <AnimatePresence mode="wait">
             {cat && landed ? (
-              <Result key={`r-${landed.nonce}`} cat={cat.id} onPlay={() => onPlay(cat.id)} onAgain={doSpin} onClose={() => setLanded(null)} />
+              <Result key={`r-${landed.nonce}`} cat={cat.id} onPlay={() => onPlay(cat.id)} onAgain={doSpin} onClose={closeResult} />
             ) : (
               <Deal key={`d-${deck.join()}`} deck={deck} spinning={spinning} />
             )}
