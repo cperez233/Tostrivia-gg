@@ -25,4 +25,16 @@ export default {
     [2, "¿De quién se enamora Joey en la octava temporada?", "Rachel", "Phoebe", "Janine", "Erica", ["Who does Joey fall in love with in season eight?", N, N, N, N]],
     [2, "¿Qué descubre Phoebe que hace su hermana Ursula usando el nombre de Phoebe?", "Películas para adultos", "Cantar en bares", "Dar masajes", "Bailar en un club", ["What does Phoebe discover her sister Ursula is doing under Phoebe's name?", "Adult films", "Singing in bars", "Giving massages", "Dancing at a club"]],
   ],
+  disney: [
+    [2, "¿Cómo se llama el mandril sabio de El Rey León?", "Rafiki", "Zazú", "Banzai", "Shenzi", ["What is the wise mandrill in The Lion King called?", N, N, N, N]],
+    [2, "¿Qué manada atropella y mata a Mufasa?", "Ñus", "Búfalos", "Cebras", "Elefantes", ["Which herd tramples and kills Mufasa?", "Wildebeests", "Buffalo", "Zebras", "Elephants"]],
+    [2, "¿Cómo se llama el tigre de Jazmín en Aladdín?", "Rajah", "Iago", "Abú", "Pascal", ["What is Jasmine's tiger called in Aladdin?", N, N, N, N]],
+    [3, "¿Quién lidera a los hunos que invaden China en Mulán?", "Shan Yu", "Chi-Fu", "General Li", "Yao", ["Who leads the Huns that invade China in Mulan?", N, N, N, N]],
+    [1, "¿Qué dios planea derrocar a Zeus en Hércules?", "Hades", "Poseidón", "Ares", "Apolo", ["Which god plots to overthrow Zeus in Hercules?", "Hades", "Poseidon", "Ares", "Apollo"]],
+    [2, "¿Quién desaparece en Alicia dejando solo su sonrisa?", "El Gato Risón", "El Sombrerero Loco", "La Liebre de Marzo", "La Oruga", ["Who vanishes in Alice in Wonderland leaving only a grin?", "The Cheshire Cat", "The Mad Hatter", "The March Hare", "The Caterpillar"]],
+    [1, "¿Qué animal le arrancó la mano al Capitán Garfio?", "Un cocodrilo", "Un tiburón", "Una serpiente", "Un pulpo", ["Which animal took Captain Hook's hand?", "A crocodile", "A shark", "A snake", "An octopus"]],
+    [2, "¿Quién cría a Tarzán desde bebé?", "Kala", "Terk", "Kerchak", "Jane", ["Who raises Tarzan from infancy?", N, N, N, N]],
+    [2, "¿Qué caballo alado acompaña a Hércules?", "Pegaso", "Bucéfalo", "Arión", "Sleipnir", ["Which winged horse accompanies Hercules?", "Pegasus", "Bucephalus", "Arion", "Sleipnir"]],
+    [3, "¿Cómo se llaman los ratones que ayudan a Cenicienta?", "Jaq y Gus", "Chip y Dale", "Bernardo y Bianca", "Timoteo y Basil", ["What are the mice that help Cinderella called?", "Jaq and Gus", "Chip and Dale", "Bernard and Bianca", "Timothy and Basil"]],
+  ],
 };
