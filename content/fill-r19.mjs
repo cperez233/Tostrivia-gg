@@ -1,0 +1,30 @@
+const N = null;
+export default {
+  hotd: [
+    // --- pendientes rescatadas (verificadas en en.wikipedia: season 1 / season 2 / personajes) ---
+    [1, "¿A quién persigue Aemond con Vhagar tras coincidir con él ante el señor Borros Baratheon?", "Lucerys", "Jacaerys", "Joffrey", "Daeron", ["Whom does Aemond chase on Vhagar after meeting him at Lord Borros Baratheon's court?", N, N, N, N]],
+    [2, "¿Cómo se llama el dragón de Lucerys?", "Arrax", "Vermax", "Seasmoke", "Meleys", ["What is Lucerys's dragon called?", N, N, N, N]],
+    [2, "¿A qué príncipe matan por error los asesinos que Daemon envía contra Aemond?", "Jaehaerys", "Daeron", "Joffrey", "Jacaerys", ["Which prince do the assassins Daemon sends after Aemond kill by mistake?", N, N, N, N]],
+    [2, "¿Qué caballero de la Guardia Real, antes amante de Rhaenyra, termina sirviendo a Alicent?", "Criston Cole", "Harwin Strong", "Laenor Velaryon", "Arryk Cargyll", ["Which Kingsguard knight, once Rhaenyra's lover, ends up serving Alicent?", N, N, N, N]],
+    [2, "¿Quién orquesta el incendio de Harrenhal que mata a su padre y a su hermano?", "Larys Strong", "Criston Cole", "Otto Hightower", "Aemond Targaryen", ["Who orchestrates the Harrenhal fire that kills his father and his brother?", N, N, N, N]],
+    [2, "¿Qué castillo ocupa Daemon en la segunda temporada, donde tiene visiones?", "Harrenhal", "Aguasdulces", "Marcaderiva", "Desembarco del Rey", ["Which castle does Daemon take in season 2, where he has visions?", "Harrenhal", "Riverrun", "Driftmark", "King's Landing"]],
+    [3, "¿Quién reclama al dragón Seasmoke en la segunda temporada?", "Addam de Hull", "Alyn de Hull", "Hugh Hammer", "Ulf White", ["Who claims the dragon Seasmoke in season 2?", "Addam of Hull", "Alyn of Hull", N, N]],
+    [3, "¿Qué dragón reclama Hugh Hammer?", "Vermithor", "Silverwing", "Seasmoke", "Dreamfyre", ["Which dragon does Hugh Hammer claim?", N, N, N, N]],
+    [2, "¿Cómo se llama la primera esposa de Viserys, que muere en un parto?", "Aemma Arryn", "Alicent Hightower", "Laena Velaryon", "Rhaenys Targaryen", ["What is the name of Viserys's first wife, who dies in childbirth?", N, N, N, N]],
+    [2, "¿Quién es el Gusano Blanco?", "Mysaria", "Alys Rivers", "Laena Velaryon", "Baela", ["Who is the White Worm?", N, N, N, N]],
+    [3, "¿Cómo se llama el dragón de Daeron, hermano de Aegon II?", "Tessarion", "Sunfyre", "Dreamfyre", "Vhagar", ["What is the name of the dragon of Daeron, Aegon II's brother?", N, N, N, N]],
+    [2, "¿Cómo se llama la dragona de Helaena?", "Dreamfyre", "Tessarion", "Meleys", "Syrax", ["What is Helaena's dragon called?", N, N, N, N]],
+    [3, "¿Con qué caballero huye Laenor tras fingir su muerte?", "Qarl Correy", "Harwin Strong", "Criston Cole", "Erryk Cargyll", ["Which knight does Laenor flee with after faking his death?", N, N, N, N]],
+    [1, "¿Con quién se casa Rhaenyra en segundas nupcias?", "Daemon", "Harwin Strong", "Criston Cole", "Qarl Correy", ["Whom does Rhaenyra marry the second time?", "Daemon", N, N, N]],
+    [2, "¿Quién sustituye a Otto Hightower como Mano del Rey cuando Viserys lo destituye?", "Lyonel Strong", "Harwin Strong", "Larys Strong", "Corlys Velaryon", ["Who replaces Otto Hightower as Hand of the King when Viserys dismisses him?", N, N, N, N]],
+    // --- nuevas ---
+    [1, "¿Por qué destierra Viserys a Daemon de Desembarco del Rey al principio de la serie?", "Por burlarse del hijo recién muerto del rey", "Por robar un huevo de dragón", "Por asesinar a su esposa", "Por aliarse con la Triarquía", ["Why does Viserys banish Daemon from King's Landing at the start of the series?", "For mocking the king's newly dead son", "For stealing a dragon egg", "For murdering his wife", "For allying with the Triarchy"]],
+    [2, "¿Cómo muere Laena Velaryon?", "Pide a Vhagar que la incinere tras un parto imposible", "Muere en el parto sin ayuda", "Cae de su dragona en batalla", "La envenena Alicent", ["How does Laena Velaryon die?", "She asks Vhagar to burn her after an impossible labor", "She dies in childbirth without help", "She falls off her dragon in battle", "Alicent poisons her"]],
+    [2, "¿De qué color es el vestido con que Alicent irrumpe en la fiesta de compromiso de Rhaenyra y Laenor?", "Verde", "Negro", "Rojo", "Dorado", ["What color is the gown Alicent wears when she bursts into Rhaenyra and Laenor's betrothal feast?", "Green", "Black", "Red", "Gold"]],
+    [3, "¿Quién mata a Joffrey Lonmouth, amante de Laenor, en esa misma fiesta?", "Criston Cole", "Harwin Strong", "Daemon Targaryen", "Qarl Correy", ["Who kills Joffrey Lonmouth, Laenor's lover, at that same feast?", N, N, N, N]],
+    [2, "¿Qué le ocurre a Vaemond Velaryon al llamar bastardos a los hijos de Rhaenyra ante la corte?", "Daemon lo decapita", "Viserys lo destierra", "Corlys lo encierra", "Lo mata un dragón", ["What happens to Vaemond Velaryon when he calls Rhaenyra's sons bastards before the court?", "Daemon beheads him", "Viserys banishes him", "Corlys locks him up", "A dragon kills him"]],
+    [2, "¿A quién eligen como regente cuando Aegon queda en coma tras la batalla en que muere Rhaenys?", "Aemond", "Alicent", "Criston Cole", "Otto Hightower", ["Who is chosen as regent when Aegon falls into a coma after the battle in which Rhaenys dies?", N, N, N, N]],
+    [3, "¿A quiénes busca Rhaenyra en Desembarco del Rey para que monten dragones sin jinete?", "A bastardos con sangre valyria", "A antiguos jinetes en el exilio", "A hijos de lores del Norte", "A soldados leales a Daemon", ["Whom does Rhaenyra look for in King's Landing to ride unclaimed dragons?", "Bastards with Valyrian blood", "Former dragonriders in exile", "Sons of Northern lords", "Soldiers loyal to Daemon"]],
+    [3, "¿Cómo derrota Tyland Lannister al almirante Sharako Lohar para ganarse a la Triarquía?", "En una lucha en el barro", "En un duelo de espadas", "En una partida de dados", "En una carrera de barcos", ["How does Tyland Lannister beat Admiral Sharako Lohar to win over the Triarchy?", "In mud-wrestling", "In a sword duel", "In a game of dice", "In a ship race"]],
+  ],
+};

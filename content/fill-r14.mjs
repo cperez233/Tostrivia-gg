@@ -28,8 +28,26 @@ export default {
     [3, "¿Quién es el padre esper de Terra?", "Maduin", "Ramuh", "Odin", "Bahamut", ["Who is Terra's Esper father?", N, N, N, N]],
     [2, "¿Qué Eikon de fuego mata a Fénix y empuja a Clive a jurar venganza?", "Ifrit", "Shiva", "Garuda", "Titán", ["Which fire Eikon kills Phoenix and drives Clive to swear revenge?", "Ifrit", "Shiva", "Garuda", "Titan"]],
   ],
-  // __MINECRAFT__
-  // __MINECRAFT__
-  // __ZELDA__
+  minecraft: [
+    [2, "¿Qué efecto recibes al derrotar una invasión de saqueadores?", "Héroe de la aldea", "Gracia del delfín", "Poder del conducto", "Absorción", ["Which effect do you get for defeating a pillager raid?", "Hero of the Village", "Dolphin's Grace", "Conduit Power", "Absorption"]],
+    [2, "¿Qué mob suelta el tótem de la inmortalidad?", "El evocador", "El vindicador", "El saqueador", "El devastador", ["Which mob drops the Totem of Undying?", "The evoker", "The vindicator", "The pillager", "The ravager"]],
+    [2, "¿Con qué se cura a un aldeano zombi, junto a una poción de debilidad?", "Con una manzana dorada", "Con una zanahoria dorada", "Con una sandía resplandeciente", "Con una patata venenosa", ["What cures a zombie villager, along with a Potion of Weakness?", "A golden apple", "A golden carrot", "A glistering melon slice", "A poisonous potato"]],
+    [3, "¿Con qué se cría a un axolote?", "Con cubos de pez tropical", "Con cubos de salmón", "Con bacalao crudo", "Con algas marinas", ["What do you breed axolotls with?", "Buckets of tropical fish", "Buckets of salmon", "Raw cod", "Kelp"]],
+    [3, "¿En qué se convierte un hoglin que sale del Nether al mundo normal?", "En un zoglin", "En un piglin zombificado", "En un piglin bruto", "En un zombi", ["What does a hoglin turn into when it leaves the Nether for the Overworld?", "A zoglin", "A zombified piglin", "A piglin brute", "A zombie"]],
+    [2, "¿Qué criatura azul recoge los objetos iguales al que le diste?", "El allay", "El vex", "El phantom", "El guardián", ["Which blue creature collects items matching the one you gave it?", "The allay", "The vex", "The phantom", "The guardian"]],
+    [3, "¿Qué pasa si le pones el nombre «Dinnerbone» a un mob?", "Se pone boca abajo", "Se vuelve invisible", "Se hace gigante", "Cambia de colores", ["What happens if you name a mob \"Dinnerbone\"?", "It turns upside down", "It becomes invisible", "It grows giant", "It changes colors"]],
+    [3, "¿Qué objeto, junto a 8 conchas de nautilo, forma un conducto?", "Un corazón del mar", "Una estrella del Nether", "Una perla de ender", "Un fragmento de prismarina", ["Which item, along with 8 nautilus shells, makes a conduit?", "A heart of the sea", "A Nether star", "An ender pearl", "A prismarine shard"]],
+    [2, "¿Qué flor le da un gólem de hierro a un aldeano niño?", "Una amapola", "Un diente de león", "Una orquídea azul", "Un tulipán rojo", ["Which flower does an iron golem give to a child villager?", "A poppy", "A dandelion", "A blue orchid", "A red tulip"]],
+  ],
+  zelda: [
+    [2, "¿Qué hada acompaña a Link en Majora's Mask?", "Tatl", "Navi", "Tael", "Ciela", ["Which fairy accompanies Link in Majora's Mask?", N, N, N, N]],
+    [2, "¿A quién rapta el gran pájaro al inicio de The Wind Waker?", "Aryll", "Zelda", "Medli", "Malon", ["Who does the giant bird carry off at the start of The Wind Waker?", N, N, N, N]],
+    [3, "¿Quién es en realidad el barco parlante de The Wind Waker?", "El rey de Hyrule", "Ganondorf", "La abuela de Link", "Un héroe antiguo", ["Who is the talking boat in The Wind Waker really?", "The King of Hyrule", "Ganondorf", "Link's grandmother", "An ancient hero"]],
+    [2, "¿Qué Señor Demonio trabaja para liberar a su amo Demise en Skyward Sword?", "Ghirahim", "Vaati", "Zant", "Onox", ["Which Demon Lord works to free his master Demise in Skyward Sword?", N, N, N, N]],
+    [2, "¿Cómo se llama el último rey de Hyrule, que aparece como espíritu en Breath of the Wild?", "Rhoam", "Rauru", "Dorephan", "Gaepora", ["What is the name of the last king of Hyrule, who appears as a spirit in Breath of the Wild?", N, N, N, N]],
+    [3, "¿Qué diosa dorada representa el Valor en la Trifuerza?", "Farore", "Din", "Nayru", "Hylia", ["Which golden goddess represents Courage in the Triforce?", N, N, N, N]],
+    [2, "¿Qué ave desea ser Marin en Link's Awakening?", "Una gaviota", "Una paloma", "Una cigüeña", "Un halcón", ["Which bird does Marin wish she could be in Link's Awakening?", "A seagull", "A dove", "A stork", "A hawk"]],
+    [3, "¿Quién fue el primer rey de Hyrule según Tears of the Kingdom?", "Rauru", "Rhoam", "Daphnes", "Dorephan", ["Who was the first king of Hyrule in Tears of the Kingdom?", N, N, N, N]],
+  ],
   // __MARIO__
 };
