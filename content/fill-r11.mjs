@@ -44,4 +44,18 @@ export default {
     [3, "¿Con qué arma pelea Ken Amada?", "Una lanza", "Un hacha", "Un arco", "Una espada grande", ["What weapon does Ken Amada fight with?", "A spear", "An axe", "A bow", "A great sword"]],
     [3, "¿Quién muere protegiendo a Ken Amada de Takaya?", "Shinjiro Aragaki", "Akihiko Sanada", "Junpei Iori", "Chidori", ["Who dies protecting Ken Amada from Takaya?", N, N, N, N]],
   ],
+  mgs: [
+    [3, "¿Quién se hace pasar por el jefe de DARPA, Donald Anderson?", "Decoy Octopus", "Psycho Mantis", "Vulcan Raven", "Revolver Ocelot", ["Who impersonates the DARPA chief, Donald Anderson?", N, N, N, N]],
+    [2, "¿Quién inyecta FOXDIE a Snake?", "Naomi Hunter", "Mei Ling", "Meryl Silverburgh", "Sniper Wolf", ["Who injects Snake with FOXDIE?", N, N, N, N]],
+    [2, "¿Quién guarda tu partida con proverbios chinos?", "Mei Ling", "Naomi Hunter", "Meryl Silverburgh", "Otacon", ["Who saves your game with Chinese proverbs?", N, N, N, N]],
+    [3, "¿Cuál es el nombre real de Gray Fox?", "Frank Jaeger", "Roy Campbell", "Kenneth Baker", "Johnny Sasaki", ["What is Gray Fox's real name?", N, N, N, N]],
+    [2, "¿De quién es el brazo que lleva Ocelot tras perder la mano en Metal Gear Solid?", "De Liquid Snake", "De Solid Snake", "De Big Boss", "De Gray Fox", ["Whose arm does Ocelot carry after losing his hand in Metal Gear Solid?", "Liquid Snake's", "Solid Snake's", "Big Boss's", "Gray Fox's"]],
+    [2, "¿Quién es el expresidente al que se enfrenta Raiden al final de MGS2?", "Solidus Snake", "Liquid Snake", "Revolver Ocelot", "Vamp", ["Which former president does Raiden face at the end of MGS2?", N, N, N, N]],
+    [3, "¿A qué científico soviético debe rescatar Naked Snake al comienzo de MGS3?", "Nikolai Sokolov", "Aleksandr Granin", "Ivan Raikov", "Yevgeny Volgin", ["Which Soviet scientist must Naked Snake rescue at the start of MGS3?", N, N, N, N]],
+    [2, "¿Qué miembro de la Cobra Unit controla avispones?", "The Pain", "The Fear", "The Fury", "The Sorrow", ["Which Cobra Unit member controls hornets?", N, N, N, N]],
+    [2, "¿Qué cosmonauta con lanzallamas enfrenta Snake en MGS3?", "The Fury", "The Pain", "The Fear", "The End", ["Which flamethrower-wielding cosmonaut does Snake face in MGS3?", N, N, N, N]],
+    [3, "¿Quién es realmente el Big Boss que manejas en MGS V?", "Un médico convertido en doble", "Solid Snake", "Liquid Snake", "Revolver Ocelot", ["Who is the Big Boss you control in MGS V, really?", "A medic turned into a body double", "Solid Snake", "Liquid Snake", "Revolver Ocelot"]],
+    [3, "¿Quién finge estar poseído por Liquid Snake en MGS4?", "Revolver Ocelot", "Solidus Snake", "Raiden", "Big Boss", ["Who pretends to be possessed by Liquid Snake in MGS4?", N, N, N, N]],
+    [3, "¿Quién se oculta tras el ninja cibernético que captura a Raiden en MGS2?", "Olga Gurlukovich", "Fortune", "Vamp", "Emma Emmerich", ["Who is hiding behind the cyborg ninja who captures Raiden in MGS2?", N, N, N, N]],
+  ],
 };

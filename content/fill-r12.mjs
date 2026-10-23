@@ -27,4 +27,17 @@ export default {
     [3, "¿Quién resulta ser el misterioso cliente de los Chaotix en Sonic Heroes?", "Eggman", "Shadow", "Rouge", "Metal Sonic", ["Who turns out to be the Chaotix's mysterious client in Sonic Heroes?", N, N, N, N]],
     [3, "¿Qué motiva a Gerald Robotnik a programar el ARK para chocar con la Tierra?", "Vengarse del gobierno que condenó su investigación", "Detener a Eggman", "Proteger las Chaos Emeralds", "Impedir que Shadow despertara", ["What motivates Gerald Robotnik to program the ARK to collide with Earth?", "Revenge on the government that condemned his research", "Stopping Eggman", "Protecting the Chaos Emeralds", "Keeping Shadow from awakening"]],
   ],
+  witcher: [
+    [2, "¿Quién es la abuela de Ciri?", "Calanthe", "Pavetta", "Yennefer", "Triss", ["Who is Ciri's grandmother?", N, N, N, N]],
+    [2, "¿Quién es el padre biológico de Ciri?", "Emhyr var Emreis", "Geralt", "Eredin", "Vesemir", ["Who is Ciri's biological father?", "Emhyr var Emreis", "Geralt", "Eredin", "Vesemir"]],
+    [2, "¿Qué defecto físico tenía Yennefer antes de volverse hechicera?", "Una joroba", "Cojera", "Ceguera", "Un brazo atrofiado", ["What physical flaw did Yennefer have before becoming a sorceress?", "A hunchback", "A limp", "Blindness", "An atrophied arm"]],
+    [2, "¿Qué brujo es el asesino de reyes en The Witcher 2?", "Letho", "Eskel", "Lambert", "Vesemir", ["Which witcher is the kingslayer in The Witcher 2?", N, N, N, N]],
+    [3, "¿Qué es en realidad Saskia, la líder rebelde de The Witcher 2?", "Un dragón", "Una elfa", "Una hechicera", "Una vampira", ["What is Saskia, the rebel leader in The Witcher 2, really?", "A dragon", "An elf", "A sorceress", "A vampire"]],
+    [2, "¿Qué noble pacta con O'Dimm y acaba con un corazón de piedra?", "Olgierd von Everec", "Maximilian Borsodi", "Vlodimir von Everec", "Radovid", ["Which nobleman makes a pact with O'Dimm and ends up with a heart of stone?", N, N, N, N]],
+    [3, "¿Qué elfo es en realidad Uma, la criatura deforme que Geralt ve con el Barón Sanguinario?", "Avallac'h", "Eredin", "Iorveth", "Imlerith", ["Which elf is really Uma, the deformed creature Geralt sees with the Bloody Baron?", N, N, N, N]],
+    [3, "¿Quién mata a Vesemir cuando la Cacería Salvaje ataca Kaer Morhen?", "Imlerith", "Eredin", "Letho", "Dettlaff", ["Who kills Vesemir when the Wild Hunt attacks Kaer Morhen?", N, N, N, N]],
+    [3, "¿Quién finge su propio secuestro en Blood and Wine para vengarse de los caballeros?", "Syanna", "Anna Henrietta", "Dandelion", "Regis", ["Who fakes her own kidnapping in Blood and Wine to take revenge on the knights?", N, N, N, N]],
+    [1, "¿Qué le pasa a Geralt al principio del primer The Witcher?", "Despierta sin memoria", "Pierde un ojo", "Queda maldito por una striga", "Pierde sus espadas", ["What happens to Geralt at the start of the first The Witcher?", "He wakes up with no memory", "He loses an eye", "He is cursed by a striga", "He loses his swords"]],
+    [1, "¿Qué archipiélago visita Geralt siguiendo el rastro de Ciri, tras Velen y Novigrado?", "Skellige", "Toussaint", "Kaedwen", "Aedirn", ["Which archipelago does Geralt visit on Ciri's trail, after Velen and Novigrad?", "Skellige", "Toussaint", "Kaedwen", "Aedirn"]],
+  ],
 };

@@ -38,5 +38,17 @@ export default {
     [2, "¿Con quién se retira Ezio a vivir una vida normal al final de Revelations?", "Sofia Sartor", "Caterina Sforza", "Claudia Auditore", "Maria Thorpe", ["Whom does Ezio retire with to live a normal life at the end of Revelations?", "Sofia Sartor", "Caterina Sforza", "Claudia Auditore", "Maria Thorpe"]],
     [2, "¿Qué doctor de Abstergo supervisa a Desmond en el Animus del primer juego?", "Warren Vidic", "Lucy Stillman", "Shaun Hastings", "Rebecca Crane", ["Which Abstergo doctor oversees Desmond in the Animus in the first game?", "Warren Vidic", "Lucy Stillman", "Shaun Hastings", "Rebecca Crane"]],
   ],
+  halo: [
+    [1, "¿Quién es la francotiradora del Equipo Azul?", "Linda-058", "Kelly-087", "Fred-104", "Holly Tanaka", ["Who is the sniper of Blue Team?", "Linda-058", "Kelly-087", "Fred-104", "Holly Tanaka"]],
+    [1, "¿Quién es el villano Forerunner de Halo 4?", "El Didacto", "El Gravemind", "Tartarus", "Atriox", ["Who is the Forerunner villain of Halo 4?", "The Didact", "The Gravemind", "Tartarus", "Atriox"]],
+    [3, "¿Quién hiere de muerte al sargento Johnson cuando intenta activar el anillo en Halo 3?", "343 Guilty Spark", "Tartarus", "El Gravemind", "El Profeta de la Verdad", ["Who fatally wounds Sergeant Johnson when he tries to activate the ring in Halo 3?", "343 Guilty Spark", "Tartarus", "The Gravemind", "The Prophet of Truth"]],
+    [2, "¿Qué Spartan persigue al Jefe Maestro en Halo 5?", "Jameson Locke", "Fred-104", "Kelly-087", "Linda-058", ["Which Spartan hunts Master Chief in Halo 5?", "Jameson Locke", "Fred-104", "Kelly-087", "Linda-058"]],
+    [2, "¿En qué nave duerme el Jefe Maestro al final de Halo 3?", "Forward Unto Dawn", "Spirit of Fire", "In Amber Clad", "Pillar of Autumn", ["Which ship does Master Chief sleep in at the end of Halo 3?", N, N, N, N]],
+    [3, "¿Qué IA vigila Nueva Mombasa en Halo 3: ODST?", "Vergil", "Roland", "Cortana", "Serina", ["Which AI watches over New Mombasa in Halo 3: ODST?", N, N, N, N]],
+    [3, "¿Dónde queda atrapada Cortana al final de Halo 2?", "En High Charity", "En Reach", "En el Arca", "En Sanghelios", ["Where is Cortana left trapped at the end of Halo 2?", "On High Charity", "On Reach", "On the Ark", "On Sanghelios"]],
+    [3, "¿Quién se queda atrás para detonar el motor de salto y destruir el portaaviones Covenant en Halo Reach?", "Jorge-052", "Carter-A259", "Emile-A239", "Jun-A266", ["Who stays behind to detonate the slipspace engine and destroy the Covenant supercarrier in Halo Reach?", "Jorge-052", "Carter-A259", "Emile-A239", "Jun-A266"]],
+    [2, "¿Quién se sacrifica para destruir la flota Forerunner al final de Halo Wars?", "El sargento John Forge", "El capitán Cutter", "La profesora Anders", "Serina", ["Who sacrifices himself to destroy the Forerunner fleet at the end of Halo Wars?", "Sergeant John Forge", "Captain Cutter", "Professor Anders", "Serina"]],
+    [2, "¿Qué le pasa a Cortana en Halo 4 por superar su vida útil de siete años?", "Entra en rampancia", "Pierde la memoria", "Se fusiona con el Flood", "Se apaga por completo", ["What happens to Cortana in Halo 4 after outliving her seven-year lifespan?", "She becomes rampant", "She loses her memory", "She merges with the Flood", "She shuts down completely"]],
+  ],
   //@@MARK
 };
