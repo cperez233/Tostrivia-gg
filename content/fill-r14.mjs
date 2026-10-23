@@ -15,7 +15,20 @@ export default {
     [2, "¿Dónde nació Juno, la primera niña nacida en una colonia secreta?", "En Marte", "En la Luna", "En Venus", "En Europa", ["Where was Juno born, the first child born in a secret colony?", "On Mars", "On the Moon", "On Venus", "On Europa"]],
     [3, "¿Qué científica creó a la androide Echo?", "Mina Liao", "Angela Ziegler", "Moira O'Deorain", "Satya Vaswani", ["Which scientist created the android Echo?", N, N, N, N]],
   ],
-  // __FF__
+  ff: [
+    [3, "¿Quién maneja a Cait Sith a distancia?", "Reeve", "Heidegger", "Palmer", "Tseng", ["Who operates Cait Sith remotely?", N, N, N, N]],
+    [2, "¿Qué lugar sufre el envenenamiento de su agua a manos de Kefka?", "Doma", "Figaro", "Narshe", "Zozo", ["Which place has its water supply poisoned by Kefka?", N, N, N, N]],
+    [3, "¿Qué es Tidus en realidad?", "Un sueño de los Fayth", "Un clon de Jecht", "Un espíritu de Sin", "Un Guado transformado", ["What is Tidus really?", "A dream of the fayth", "A clone of Jecht", "A spirit of Sin", "A transformed Guado"]],
+    [2, "¿Quién le dejó a Squall la cicatriz de la cara?", "Seifer", "Raijin", "Fujin", "Irvine", ["Who gave Squall the scar on his face?", N, N, N, N]],
+    [3, "¿Qué capitán de caballeros de Alexandria sirve a Garnet con fanfarronería?", "Steiner", "Freya", "Blank", "Cid Fabool", ["Which boastful captain of Alexandria's knights serves Garnet?", N, N, N, N]],
+    [3, "¿Quién resulta ser el hermano mayor de Cecil?", "Golbez", "Kain", "Zemus", "Fusoya", ["Who turns out to be Cecil's older brother?", N, N, N, N]],
+    [2, "¿En qué se convierte Cecil al superar su prueba en el monte Ordeals?", "Paladín", "Caballero Oscuro", "Caballero Dragón", "Mago Blanco", ["What does Cecil become after passing his trial on Mt. Ordeals?", "A Paladin", "A Dark Knight", "A Dragoon", "A White Mage"]],
+    [3, "¿Quién resulta ser el padre biológico de Sephiroth?", "El profesor Hojo", "El presidente Shinra", "Heidegger", "Reeve", ["Who turns out to be Sephiroth's biological father?", "Professor Hojo", "President Shinra", "Heidegger", "Reeve"]],
+    [2, "¿Qué era en realidad Cloud en Shinra, aunque presumía de ser un SOLDADO de primera clase?", "Un soldado raso de infantería", "Un Turco", "Un científico", "Un piloto", ["What was Cloud really in Shinra, even though he boasted of being a 1st Class SOLDIER?", "A mere infantryman", "A Turk", "A scientist", "A pilot"]],
+    [3, "¿Quién es el padre esper de Terra?", "Maduin", "Ramuh", "Odin", "Bahamut", ["Who is Terra's Esper father?", N, N, N, N]],
+    [2, "¿Qué Eikon de fuego mata a Fénix y empuja a Clive a jurar venganza?", "Ifrit", "Shiva", "Garuda", "Titán", ["Which fire Eikon kills Phoenix and drives Clive to swear revenge?", "Ifrit", "Shiva", "Garuda", "Titan"]],
+  ],
+  // __MINECRAFT__
   // __MINECRAFT__
   // __ZELDA__
   // __MARIO__
