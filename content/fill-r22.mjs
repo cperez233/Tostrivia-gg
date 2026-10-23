@@ -46,4 +46,18 @@ export default {
     [3, "¿Cómo muere el Indoraptor en El reino caído?", "Ensartado en un cráneo de ceratopsio", "Aplastado por Rexy", "Ahogado en el mar", "Electrocutado en la jaula", ["How does the Indoraptor die in Fallen Kingdom?", "Impaled on a ceratopsid skull", "Crushed by Rexy", "Drowned in the sea", "Electrocuted in its cage"]],
     [3, "¿Cómo encuentran los T. rex adultos el campamento de Ian en El mundo perdido?", "Por la sangre de la cría en la chaqueta de Sarah", "Por el humo de la fogata", "Por los gritos de Kelly", "Por el ruido de un helicóptero", ["How do the adult T. rexes find Ian's camp in The Lost World?", "By the infant's blood on Sarah's jacket", "By the campfire smoke", "By Kelly's screams", "By the noise of a helicopter"]],
   ],
+  casadepapel: [
+    [2, "¿Quién dispara a Nairobi y la mata en el Banco de España?", "Gandía", "Tamayo", "Alicia Sierra", "Palermo", ["Who shoots and kills Nairobi at the Bank of Spain?", "Gandía", "Tamayo", "Alicia Sierra", "Palermo"]],
+    [3, "¿Cuántas horas pasa la banda dentro de la Fábrica de Moneda antes de escapar?", "128", "96", "144", "72", ["How many hours does the gang spend inside the Royal Mint before escaping?", N, N, N, N]],
+    [3, "¿Con cuántos millones de euros logra huir la banda de la Fábrica?", "984", "2.400", "1.500", "650", ["With how many million euros does the gang manage to escape the Mint?", "984", "2,400", "1,500", "650"]],
+    [2, "¿De quién es hijo Rafael, el joven de los flashbacks de la quinta parte?", "De Berlín", "Del Profesor", "De Palermo", "De Helsinki", ["Whose son is Rafael, the young man in the part five flashbacks?", "Berlin's", "The Professor's", "Palermo's", "Helsinki's"]],
+    [3, "¿Qué nombres en clave tienen los tres fichajes de la tercera parte?", "Palermo, Bogotá y Marsella", "Palermo, Lima y Marsella", "Mónaco, Bogotá y Marsella", "Palermo, Bogotá y Sídney", ["What are the code names of the three new recruits in part three?", "Palermo, Bogotá and Marseille", "Palermo, Lima and Marseille", "Monaco, Bogotá and Marseille", "Palermo, Bogotá and Sydney"]],
+    [2, "¿Qué alerta militar declara el Profesor al creer muerta a Lisboa?", "DEFCON 2", "DEFCON 1", "DEFCON 3", "DEFCON 4", ["What military alert level does the Professor declare when he thinks Lisbon is dead?", N, N, N, N]],
+    [2, "¿Qué cargo ocupa Gandía en el Banco de España?", "Jefe de seguridad", "Gobernador del banco", "Cajero principal", "Director de operaciones", ["What position does Gandía hold at the Bank of Spain?", "Head of security", "Governor of the bank", "Chief teller", "Operations director"]],
+    [2, "¿Qué coronel dirige el cerco policial al Banco de España?", "Luis Tamayo", "Ángel Rubio", "Antoñanzas", "Alberto Vicuña", ["Which colonel leads the police siege of the Bank of Spain?", "Luis Tamayo", "Ángel Rubio", "Antoñanzas", "Alberto Vicuña"]],
+    [3, "¿Quién dispara a Arturo Román cuando los rehenes se rebelan?", "Estocolmo", "Denver", "Helsinki", "Palermo", ["Who shoots Arturo Román when the hostages rebel?", "Stockholm", "Denver", "Helsinki", "Palermo"]],
+    [2, "¿Quién se sacrifica en la quinta parte para frenar a Gandía y a los soldados?", "Tokio", "Denver", "Helsinki", "Río", ["Who sacrifices themselves in part five to stop Gandía and the soldiers?", "Tokyo", "Denver", "Helsinki", "Rio"]],
+    [2, "¿Con qué nombre conoce Raquel al Profesor cuando empieza su romance?", "Salva", "Mario", "Andrés", "Pablo", ["What name does Raquel know the Professor by when their romance begins?", N, N, N, N]],
+    [2, "¿Cuántos rehenes toman al inicio del atraco a la Fábrica?", "67", "40", "54", "90", ["How many hostages do they take at the start of the Mint heist?", N, N, N, N]],
+  ],
 };
