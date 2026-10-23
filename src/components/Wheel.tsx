@@ -49,6 +49,9 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
   const lastIdx = useRef(0);
   const landedCb = useRef(onLanded);
   landedCb.current = onLanded;
+  const spinRef = useRef(spin);
+  spinRef.current = spin;
+  const spinNonce = spin?.nonce ?? null;
 
   const n = Math.max(1, deck.length);
   const slice = 360 / n;
@@ -70,6 +73,7 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
   }, [deckKey]);
 
   useEffect(() => {
+    const spin = spinRef.current;
     if (!spin || spin.nonce === lastNonce.current) return;
     lastNonce.current = spin.nonce;
     if (deck[spin.index] !== spin.cat) return;
@@ -82,18 +86,27 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     const target = base + ((desired - (((base % 360) + 360) % 360) + 360) % 360);
     setLanded(null);
     setSpinning(true);
+    let finished = false;
     const controls = animate(rot, target, {
       duration: reduce ? 0 : 4.4,
       ease: [0.15, 0.6, 0.08, 1],
       onComplete: () => {
+        finished = true;
         setSpinning(false);
         setLanded(spin.index);
         landedCb.current?.(spin);
       },
     });
-    return () => controls.stop();
+    return () => {
+      controls.stop();
+      if (!finished) {
+        // si se cortó (X, cambio de mazo, desmontaje) no puede quedar "girando"
+        setSpinning(false);
+        if (lastNonce.current === spin.nonce) lastNonce.current = null;
+      }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [spin, rot, reduce]);
+  }, [spinNonce, rot, reduce]);
 
   const wedges = useMemo(
     () =>
