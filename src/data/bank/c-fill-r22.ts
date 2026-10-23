@@ -1,0 +1,83 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/fill-r22.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  shrek: [
+    [2,"¿Qué poción roban Shrek, Burro y el Gato de la fábrica del Hada Madrina?","Felices para siempre","Eterna juventud","Belleza perfecta","Amor verdadero"],
+    [2,"¿Qué es Mongo, la criatura que ayuda a asaltar el baile real?","Un hombre de jengibre gigante","Un golem de barro gigante","Un troll de piedra gigante","Un ogro de paja gigante"],
+    [2,"¿Qué lee Shrek en Muy Muy Lejano que le hace temer perder a Fiona?","Un diario de infancia","Una carta de Encantador","Un poema de Harold","El libro de hechizos del Hada"],
+    [2,"¿En qué acaba convertida el Hada Madrina al final de Shrek 2?","En burbujas","En polvo","En una rana","En una calabaza"],
+    [2,"¿Quién contrata al Gato con Botas para matar a Shrek?","El rey Harold","El Hada Madrina","El Príncipe Encantador","La reina Lillian"],
+    [2,"¿Qué sigue cambiado entre Burro y el Gato cuando Merlín revierte el hechizo?","Las colas","Las voces","Las orejas","Los ojos"],
+    [3,"¿Dónde estudia Arturo cuando Shrek lo encuentra?","En la Academia de Worcestershire","En la Academia de Camelot","En la Escuela de Excalibur","En la Academia de Avalon"],
+    [2,"¿Quién es el viejo mago retirado que ayuda a Shrek y Arturo en una isla?","Merlín","El Flautista","Capitán Garfio","Rumpelstiltskin"],
+    [2,"¿Qué princesa traiciona a Fiona por Encantador?","Rapunzel","Cenicienta","Blancanieves","La Bella Durmiente"],
+    [2,"¿Quién abre un hueco en la pared de la celda de un cabezazo?","La reina Lillian","Fiona","Cenicienta","Blancanieves"],
+    [2,"¿Qué día borra Rumpelstiltskin de la vida de Shrek?","El día en que nació","El día de su boda","El día que conoció a Fiona","El día que rescató a Fiona"],
+    [2,"¿Quién captura a los ogros con su música en Shrek para siempre?","El Flautista de Hamelín","Capitán Garfio","El Lobo Feroz","Rumpelstiltskin"],
+    [2,"¿Cómo se puede romper el contrato que firma Shrek?","Con un beso de amor verdadero","Rompiendo el pergamino","Con la varita del Hada Madrina","Con un hechizo de Merlín"],
+  ],
+  batman: [
+    [1,"¿Qué hace el Joker con la montaña de dinero de la mafia?","Le prende fuego","La reparte","La tira al río","La dona"],
+    [2,"¿A quiénes secuestra el Joker para obligar a Batman a elegir?","A Rachel y a Harvey Dent","A Rachel y a Gordon","A Alfred y a Rachel","A Harvey y a Gordon"],
+    [2,"¿Qué edificio hace explotar el Joker cuando no matan a Coleman Reese a tiempo?","Un hospital","El ayuntamiento","La comisaría","El banco"],
+    [2,"¿En qué viaja el emisor de microondas de Ra's al Ghul hacia el centro de Ciudad Gótica?","En un monorriel","En un camión blindado","En un barco","En un dirigible"],
+    [2,"¿Quién resulta ser el verdadero Ra's al Ghul en Batman inicia?","Ducard","Carmine Falcone","Jonathan Crane","Lucius Fox"],
+    [2,"¿Dónde trabaja el doctor Crane, el Espantapájaros, en Batman inicia?","En el Asilo Arkham","En Blackgate","En el Hospital de Gótica","En el Instituto Wayne"],
+    [2,"¿Qué ley mantiene encarcelados a los criminales tras la muerte de Harvey?","La Ley Dent","La Ley Gordon","La Ley Wayne","La Ley Marcial"],
+    [2,"¿Qué convierte Bane en una bomba de neutrones?","El reactor de fusión de Wayne Enterprises","Un satélite de Wayne Enterprises","Un láser del ejército","Un misil nuclear"],
+    [2,"¿Qué joya de su madre le roba Selina Kyle a Bruce?","El collar de perlas","El anillo de bodas","Un reloj de bolsillo","Un broche de diamantes"],
+    [2,"¿Qué le aconsejan a Bruce dejar atrás para volver a sentir miedo y escalar la pared de la prisión de Bane?","La soga de seguridad","Las vendas de las manos","El chaleco protector","La linterna"],
+    [2,"¿Cómo se llama el club nocturno del Pingüino en The Batman?","Iceberg Lounge","Club Arkham","Ace Lounge","Blue Parrot"],
+    [3,"¿Cuál es el nombre real del Acertijo en The Batman?","Edward Nashton","Edward Nygma","Oswald Cobblepot","Carmine Falcone"],
+    [2,"¿Quién es la primera víctima del Acertijo en The Batman?","El alcalde","El comisionado","El fiscal","El juez"],
+  ],
+  jurassic: [
+    [2,"¿Con ADN de qué animal rellenan los huecos del genoma de los dinosaurios?","Rana","Cocodrilo","Gallina","Lagarto"],
+    [1,"¿Qué dinosaurios acechan a Lex y Tim en la cocina?","Velociraptores","Dilofosaurios","Compsognatos","Tiranosaurios"],
+    [1,"¿Quién interrumpe el ataque de los raptores en el vestíbulo y salva al grupo?","El T. rex","Un braquiosaurio","El dilofosaurio","Ian Malcolm"],
+    [3,"En El mundo perdido, ¿a quién le roba las balas Nick para que no cace al T. rex macho?","A Roland Tembo","A Peter Ludlow","A Eddie Carr","A Ajay Sidhu"],
+    [2,"¿A quién buscan los Kirby al contratar a Grant?","A su hijo Eric","A su hija Amy","A su sobrino Tim","A su hermano Paul"],
+    [2,"¿Quién es el dueño de Jurassic World?","Simon Masrani","Vic Hoskins","Lowery Cruthers","Zach Mitchell"],
+    [1,"¿Qué amenaza a los dinosaurios de Isla Nublar en El reino caído?","Una erupción volcánica","Un huracán","Un meteorito","Un tsunami"],
+    [2,"¿Cómo se llama el híbrido que crean en El reino caído?","Indoraptor","Indominus rex","Scorpios rex","Pyroraptor"],
+    [2,"¿Qué secreto esconde Maisie Lockwood sobre su origen?","Es un clon","Es nieta de Hammond","Es hija de Eli Mills","Es un androide"],
+    [2,"¿Qué plaga de insectos gigantes devasta las cosechas en Dominio?","Langostas","Hormigas","Escarabajos","Libélulas"],
+    [2,"¿Qué empresa rival de InGen aparece en Dominio?","Biosyn","Masrani Global","Lockwood Industries","Costa Group"],
+    [3,"¿Quién soborna a Nedry para que robe los embriones de dinosaurio?","Lewis Dodgson","Henry Wu","Ray Arnold","Donald Gennaro"],
+    [3,"¿Cómo muere el Indoraptor en El reino caído?","Ensartado en un cráneo de ceratopsio","Aplastado por Rexy","Ahogado en el mar","Electrocutado en la jaula"],
+    [3,"¿Cómo encuentran los T. rex adultos el campamento de Ian en El mundo perdido?","Por la sangre de la cría en la chaqueta de Sarah","Por el humo de la fogata","Por los gritos de Kelly","Por el ruido de un helicóptero"],
+  ],
+  casadepapel: [
+    [2,"¿Quién dispara a Nairobi y la mata en el Banco de España?","Gandía","Tamayo","Alicia Sierra","Palermo"],
+    [3,"¿Cuántas horas pasa la banda dentro de la Fábrica de Moneda antes de escapar?","128","96","144","72"],
+    [3,"¿Con cuántos millones de euros logra huir la banda de la Fábrica?","984","2.400","1.500","650"],
+    [2,"¿De quién es hijo Rafael, el joven de los flashbacks de la quinta parte?","De Berlín","Del Profesor","De Palermo","De Helsinki"],
+    [3,"¿Qué nombres en clave tienen los tres fichajes de la tercera parte?","Palermo, Bogotá y Marsella","Palermo, Lima y Marsella","Mónaco, Bogotá y Marsella","Palermo, Bogotá y Sídney"],
+    [2,"¿Qué alerta militar declara el Profesor al creer muerta a Lisboa?","DEFCON 2","DEFCON 1","DEFCON 3","DEFCON 4"],
+    [2,"¿Qué cargo ocupa Gandía en el Banco de España?","Jefe de seguridad","Gobernador del banco","Cajero principal","Director de operaciones"],
+    [2,"¿Qué coronel dirige el cerco policial al Banco de España?","Luis Tamayo","Ángel Rubio","Antoñanzas","Alberto Vicuña"],
+    [3,"¿Quién dispara a Arturo Román cuando los rehenes se rebelan?","Estocolmo","Denver","Helsinki","Palermo"],
+    [2,"¿Quién se sacrifica en la quinta parte para frenar a Gandía y a los soldados?","Tokio","Denver","Helsinki","Río"],
+    [2,"¿Con qué nombre conoce Raquel al Profesor cuando empieza su romance?","Salva","Mario","Andrés","Pablo"],
+    [2,"¿Cuántos rehenes toman al inicio del atraco a la Fábrica?","67","40","54","90"],
+  ],
+  piratas: [
+    [3,"¿Cuántas monedas componen el tesoro azteca maldito?","882","666","777","1000"],
+    [2,"¿A qué conquistador sobornaron los aztecas con las monedas para frenar su matanza?","Hernán Cortés","Francisco Pizarro","Cristóbal Colón","Ponce de León"],
+    [2,"¿Cómo pide ayuda Elizabeth a la Marina desde la isla desierta?","Con una hoguera de ron","Con una bengala","Con un espejo","Con un disparo"],
+    [2,"¿Qué promete Elizabeth a Norrington a cambio de que salve a Will?","Casarse con él","Entregarle el medallón","Delatar a Jack","Dejar a su padre"],
+    [2,"¿Quién salva a Jack de la horca al final de la primera película?","Will","Gibbs","Elizabeth","Norrington"],
+    [2,"¿Qué hace el mono de Barbossa en la escena tras los créditos?","Roba una moneda y queda maldito","Se queda con el Perla Negra","Muere en el mar","Escapa con la brújula"],
+    [2,"¿Qué barco de la Marina roban Jack y Will para perseguir al Perla Negra?","El Interceptor","El Dauntless","El Endeavour","El Centinela"],
+    [2,"¿Con qué amenaza Will a Barbossa para que deje ilesos a Elizabeth y a la tripulación?","Con matarse","Con quemar el barco","Con tirar el tesoro al mar","Con delatarlo a la Marina"],
+    [1,"¿Quién es arrastrado al fondo del mar por el Kraken al final de El cofre del hombre muerto?","Jack Sparrow","Will Turner","Gibbs","Barbossa"],
+    [2,"¿En qué ciudad se encuentran con el señor pirata Sao Feng en En el fin del mundo?","Singapur","Shanghái","Hong Kong","Macao"],
+    [3,"¿Qué rango tiene Norrington cuando rescata a Will de niño?","Teniente","Capitán","Almirante","Sargento"],
+  ],
+};
+
+export default bank;

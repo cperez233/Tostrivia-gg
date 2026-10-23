@@ -1,0 +1,82 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/fill-r11.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  gow: [
+    [2,"¿A quién mata Kratos en Vanaheim para quedarse con el Gjallarhorn?","A Heimdall","A Thor","A Týr","A Freyr"],
+    [2,"¿Quién se sacrifica para proteger a Kratos de Zeus en God of War II?","Atenea","Hera","Gaia","Pandora"],
+    [2,"¿Quién es la hija de Hefesto que acompaña a Kratos?","Pandora","Atenea","Gaia","Hera"],
+    [1,"¿Qué libera Kratos a la humanidad al final de God of War III?","La esperanza","La paz","La venganza","La fe"],
+    [2,"¿Dónde esparcen Kratos y Atreus las cenizas de Faye?","En la montaña más alta de los reinos","En el Lago de los Nueve","En la Puerta de Midgard","En la cámara de Tyr"],
+    [2,"¿Cómo se conoce a Freya en Midgard?","La Bruja del Bosque","La Vidente","La Reina de Hielo","La Valquiria Blanca"],
+    [3,"¿Cómo se llama la hija de Thor que aparece en Ragnarök?","Thrúd","Sigrún","Gondul","Hildr"],
+    [2,"¿Cuántos años pasan entre God of War (2018) y Ragnarök?","Tres","Dos","Cinco","Diez"],
+    [2,"¿Sobre la espalda de qué Titán va encadenado el Templo de Pandora en el primer God of War?","Cronos","Atlas","Gaia","Prometeo"],
+    [2,"¿Qué estatua enorme cobra vida y ataca a Kratos al inicio de God of War II?","El Coloso de Rodas","El Minotauro","La Hidra","El Cíclope"],
+    [2,"¿A quiénes busca Kratos en la Isla de la Creación para poder alterar el tiempo?","A las Hermanas del Destino","A las Gorgonas","A las Harpías","A las Sirenas"],
+    [2,"¿De qué reino traen Kratos y Atreus la luz mágica que disipa la niebla negra?","Alfheim","Svartalfheim","Muspelheim","Niflheim"],
+    [3,"¿Quién se hace pasar por Týr y apuñala a Brok en Ragnarök?","Odín","Thor","Heimdall","Freyr"],
+    [3,"¿En qué animal se transforma Atreus de pura pena al ver morir a Fenrir?","En un oso","En un lobo","En un águila","En un jabalí"],
+  ],
+  souls: [
+    [2,"¿Qué era inaugura Ranni si la invocas ante los restos de Marika?","La Era de las Estrellas","La Era del Orden","La Era de la Fragilidad","La Era de los nacidos en la oscuridad"],
+    [3,"¿Quién es en realidad Radagon, el antiguo esposo de Rennala?","La reina Marika","Godfrey","Miquella","Radahn"],
+    [3,"¿A quién asesinaron en la Noche de los Puñales Negros?","A Godwyn el Dorado","A Miquella","A Radahn","A Mohg"],
+    [3,"¿Qué poder desató Malenia contra Radahn y dejó Caelid en ruinas?","La Putrefacción Roja","La Llama Frenética","La Runa de la Muerte","La Llama de la Perdición"],
+    [3,"¿Qué jefe, apodado la Hoja Negra, custodia la Runa de la Muerte en Farum Azula?","Maliketh","Morgott","Godfrey","Mohg"],
+    [3,"¿Cuántas almas de señor hay que reunir en Dark Souls antes de enfrentarse a Gwyn?","Cuatro","Tres","Cinco","Siete"],
+    [2,"¿Quién te anima a dejar que la llama se apague para que llegue la Era de la Oscuridad?","Kaathe","Frampt","Gwyndolin","Solaire"],
+    [2,"¿Quién está detrás de la ilusión de Gwynevere en Anor Londo?","Gwyndolin","Seath","Solaire","Ornstein"],
+    [3,"¿A qué jefe de Bloodborne puedes aturdir con una cajita de música?","Al Padre Gascoigne","A la Vicaria Amelia","A Lady Maria","A Rom"],
+    [2,"¿Qué cazadora enmascarada, apodada la Cuervo, persigue a los cazadores corruptos?","Eileen","La Vicaria Amelia","Lady Maria","La Muñeca"],
+    [2,"¿Quién es el abuelo adoptivo de Genichiro y antiguo líder del clan?","Isshin Ashina","El Búho","Kuro","Emma"],
+    [3,"¿Con quién te alías en Elden Ring para lograr la Era del Orden?","Con Máscara Dorada","Con Fia","Con Ranni","Con el Zampaheces"],
+  ],
+  persona: [
+    [2,"¿Qué mafioso tiene un banco flotante sobre Shibuya como Palacio?","Kaneshiro","Madarame","Okumura","Shido"],
+    [3,"¿Qué forma tiene el Palacio de Sae Niijima?","Un casino","Un banco","Un museo","Un crucero"],
+    [3,"¿Qué forma tiene el Palacio de Futaba Sakura?","Una pirámide","Un castillo","Una estación espacial","Un casino"],
+    [3,"¿En qué Persona evoluciona Arsène al final de Persona 5?","Satanael","Lucifer","Beelzebub","Mara"],
+    [3,"¿Quién se esconde tras el falso Igor de la Habitación de Terciopelo en Persona 5?","Yaldabaoth","Nyx","Izanami","Philemon"],
+    [2,"¿Qué joven detective trabaja en secreto para Shido y planea vengarse de él?","Goro Akechi","Sae Niijima","Munehisa Iwai","Yuuki Mishima"],
+    [2,"¿Qué compañero de Dojima resulta ser el verdadero culpable de los asesinatos de Inaba?","Adachi","Namatame","Kubo","Morooka"],
+    [2,"¿Qué tienda gigante dirige el padre de Yosuke?","Junes","Marukyu","Shiroku","Daidara"],
+    [3,"¿Quién se esconde tras la empleada de la gasolinera que aparece al inicio de Persona 4?","Izanami","Adachi","Namatame","Teddie"],
+    [2,"¿Quién es la presidenta del consejo estudiantil e hija del líder de un gran conglomerado?","Mitsuru Kirijo","Yukari Takeba","Fuuka Yamagishi","Aigis"],
+    [3,"¿Con qué arma pelea Ken Amada?","Una lanza","Un hacha","Un arco","Una espada grande"],
+    [3,"¿Quién muere protegiendo a Ken Amada de Takaya?","Shinjiro Aragaki","Akihiko Sanada","Junpei Iori","Chidori"],
+  ],
+  mgs: [
+    [3,"¿Quién se hace pasar por el jefe de DARPA, Donald Anderson?","Decoy Octopus","Psycho Mantis","Vulcan Raven","Revolver Ocelot"],
+    [2,"¿Quién inyecta FOXDIE a Snake?","Naomi Hunter","Mei Ling","Meryl Silverburgh","Sniper Wolf"],
+    [2,"¿Quién guarda tu partida con proverbios chinos?","Mei Ling","Naomi Hunter","Meryl Silverburgh","Otacon"],
+    [3,"¿Cuál es el nombre real de Gray Fox?","Frank Jaeger","Roy Campbell","Kenneth Baker","Johnny Sasaki"],
+    [2,"¿De quién es el brazo que lleva Ocelot tras perder la mano en Metal Gear Solid?","De Liquid Snake","De Solid Snake","De Big Boss","De Gray Fox"],
+    [2,"¿Quién es el expresidente al que se enfrenta Raiden al final de MGS2?","Solidus Snake","Liquid Snake","Revolver Ocelot","Vamp"],
+    [3,"¿A qué científico soviético debe rescatar Naked Snake al comienzo de MGS3?","Nikolai Sokolov","Aleksandr Granin","Ivan Raikov","Yevgeny Volgin"],
+    [2,"¿Qué miembro de la Cobra Unit controla avispones?","The Pain","The Fear","The Fury","The Sorrow"],
+    [2,"¿Qué cosmonauta con lanzallamas enfrenta Snake en MGS3?","The Fury","The Pain","The Fear","The End"],
+    [3,"¿Quién es realmente el Big Boss que manejas en MGS V?","Un médico convertido en doble","Solid Snake","Liquid Snake","Revolver Ocelot"],
+    [3,"¿Quién finge estar poseído por Liquid Snake en MGS4?","Revolver Ocelot","Solidus Snake","Raiden","Big Boss"],
+    [3,"¿Quién se oculta tras el ninja cibernético que captura a Raiden en MGS2?","Olga Gurlukovich","Fortune","Vamp","Emma Emmerich"],
+  ],
+  fortnite: [
+    [2,"¿Qué cae del cielo en la Temporada 4 del Capítulo 1 y deja un cráter enorme?","Un meteorito","Un cohete","Un rayo","Un satélite"],
+    [3,"¿Qué devorador de mundos protagonizó el evento final de la Temporada 4 del Capítulo 2?","Galactus","Thanos","Doctor Doom","Ultron"],
+    [3,"¿Quién es el líder de la Agencia en la Temporada 2 del Capítulo 2?","Midas","Meowscles","Skye","Jonesy"],
+    [3,"¿Qué rapero de Detroit actuó junto a Snoop Dogg en el final del Remix?","Eminem","Drake","Kendrick Lamar","Post Malone"],
+    [2,"¿Qué le pasa a la isla al empezar la Temporada 3 del Capítulo 2?","Se inunda","Se congela","Se llena de selva","Queda cubierta de humo"],
+    [1,"¿Quién invade la isla en la Temporada 7 del Capítulo 2?","Alienígenas","Zombis","Piratas","Robots"],
+    [2,"¿Qué cazarrecompensas de Star Wars llegó con la Temporada 5 del Capítulo 2?","The Mandalorian","Darth Vader","Kylo Ren","Han Solo"],
+    [2,"¿Qué banda de metal tuvo un concierto en Fortnite en 2024?","Metallica","Iron Maiden","Slipknot","Guns N' Roses"],
+    [2,"¿Qué nombre le pusieron los jugadores al cubo morado que cayó en Balsa Botín?","Kevin","Carl","Steve","Brian"],
+    [3,"¿Qué dos facciones rivales se disputaban la isla en la Temporada 2 del Capítulo 2?","SHADOW y GHOST","La IO y los Siete","Los Cazadores y los Loopers","El Underground y la Sociedad"],
+    [3,"¿Cómo se llama el orbe de energía pura nacido del Big Bang que guarda la Bóveda bajo Balsa Botín?","El Punto Cero","El Cubo Dorado","Kevin","La Singularidad"],
+    [2,"¿Qué temática tuvo la Temporada 8 del Capítulo 1, con sitios de excavación y una bóveda?","Piratas","Medieval","Invierno","Futurista"],
+  ],
+};
+
+export default bank;
