@@ -115,7 +115,7 @@ export function optionOrder(qid: string, seed: number): number[] {
 }
 
 /** el bono por rapidez llega hasta esta fracción de los puntos base (proporcional al tiempo que sobra) */
-export const SPEED_SHARE = 0.5;
+export const SPEED_SHARE = 0.7;
 
 /** bono por rapidez de una pregunta de dificultad `d`: escala con la dificultad para que no tape la base */
 export const speedBonus = (d: 1 | 2 | 3, remainingFrac: number) =>
