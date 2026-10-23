@@ -72,6 +72,11 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     setLanded(null);
   }, [deckKey]);
 
+  // si quien manda cierra el resultado (spin = null), se quita el resaltado del gajo
+  useEffect(() => {
+    if (spinNonce === null) setLanded(null);
+  }, [spinNonce]);
+
   useEffect(() => {
     const spin = spinRef.current;
     if (!spin || spin.nonce === lastNonce.current) return;
