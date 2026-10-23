@@ -26,5 +26,17 @@ export default {
     [3, "¿Qué alquimista de Khaenri'ah creó a Albedo?", "Rhinedottir", "Lisa", "Alice", "Sucrose", ["Which Khaenri'ahn alchemist created Albedo?", "Rhinedottir", "Lisa", "Alice", "Sucrose"]],
     [2, "¿Qué excapitán de la Guardia Real de Khaenri'ah comparte pistas con el Viajero?", "Dainsleif", "Albedo", "Zhongli", "Cyno", ["Which former captain of Khaenri'ah's Royal Guard shares hints with the Traveler?", "Dainsleif", "Albedo", "Zhongli", "Cyno"]],
   ],
+  assassins: [
+    [2, "¿Quién es el Gran Maestro templario que acaba siendo Papa en Assassin's Creed II?", "Rodrigo Borgia", "Uberto Alberti", "Girolamo Savonarola", "Lorenzo de' Medici", ["Who is the Templar Grand Master who ends up as Pope in Assassin's Creed II?", "Rodrigo Borgia", "Uberto Alberti", "Girolamo Savonarola", "Lorenzo de' Medici"]],
+    [1, "¿Cómo se llama la hermana de Ezio?", "Claudia", "Caterina", "Sofia", "Maria", ["What is Ezio's sister called?", "Claudia", "Caterina", "Sofia", "Maria"]],
+    [3, "¿Qué líder de los Hospitalarios experimenta con sus pacientes en Acre, en el primer juego?", "Garnier de Nablus", "Majd Addin", "Sibrand", "Tamir", ["Which leader of the Hospitallers experiments on his patients in Acre in the first game?", "Garnier de Nablus", "Majd Addin", "Sibrand", "Tamir"]],
+    [2, "¿Cómo se llama el hijo de Bayek, cuya muerte lo lanza a la venganza?", "Khemu", "Apollodorus", "Eudoros", "Pothinus", ["What is the name of Bayek's son, whose death sets him on a path of revenge?", "Khemu", "Apollodorus", "Eudoros", "Pothinus"]],
+    [3, "¿En qué isla crece el misthios tras ser arrojado del monte Taigeto?", "Cefalonia", "Naxos", "Delos", "Mykonos", ["On which island does the misthios grow up after being thrown off Mount Taygetos?", "Kephallonia", "Naxos", "Delos", "Mykonos"]],
+    [2, "¿Quién es el hermano adoptivo de Eivor en Valhalla?", "Sigurd", "Halfdan", "Ubba", "Ivar", ["Who is Eivor's adoptive brother in Valhalla?", "Sigurd", "Halfdan", "Ubba", "Ivar"]],
+    [2, "¿Quién es el líder templario de Londres en Syndicate?", "Crawford Starrick", "Maxwell Roth", "Lucy Thorne", "Pearl Attaway", ["Who is the Templar leader of London in Syndicate?", "Crawford Starrick", "Maxwell Roth", "Lucy Thorne", "Pearl Attaway"]],
+    [3, "¿Quién es la mentora de Basim entre los Ocultos?", "Roshan", "Nehal", "Rayhan", "Qabiha", ["Who is Basim's mentor among the Hidden Ones?", "Roshan", "Nehal", "Rayhan", "Qabiha"]],
+    [2, "¿Con quién se retira Ezio a vivir una vida normal al final de Revelations?", "Sofia Sartor", "Caterina Sforza", "Claudia Auditore", "Maria Thorpe", ["Whom does Ezio retire with to live a normal life at the end of Revelations?", "Sofia Sartor", "Caterina Sforza", "Claudia Auditore", "Maria Thorpe"]],
+    [2, "¿Qué doctor de Abstergo supervisa a Desmond en el Animus del primer juego?", "Warren Vidic", "Lucy Stillman", "Shaun Hastings", "Rebecca Crane", ["Which Abstergo doctor oversees Desmond in the Animus in the first game?", "Warren Vidic", "Lucy Stillman", "Shaun Hastings", "Rebecca Crane"]],
+  ],
   //@@MARK
 };
