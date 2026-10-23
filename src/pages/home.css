@@ -92,6 +92,7 @@
 .arena__side {
   position: relative;
   min-height: 0;
+  min-width: 0;
 }
 .deal {
   display: none;
@@ -99,7 +100,8 @@
 .result {
   position: relative;
   display: grid;
-  grid-template-columns: 42% 1fr;
+  /* minmax(0, 1fr): sin esto la columna crece con el título y se sale del cuadro */
+  grid-template-columns: 42% minmax(0, 1fr);
   box-shadow: 8px 8px 0 var(--hanko);
 }
 /* el póster entero a la izquierda, el nombre y los botones a la derecha */
@@ -123,17 +125,23 @@
   display: grid;
   gap: 14px;
   padding: 14px 16px 16px;
+  min-width: 0;
+  /* el título se mide contra el ancho real de esta columna */
+  container-type: inline-size;
 }
 .result__name {
-  font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem);
+  max-width: 100%;
+  font-size: clamp(1.1rem, 11.5cqw, 2.6rem);
   line-height: 1.06;
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 .result__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 12px;
   align-items: center;
+  min-width: 0;
 }
 .result__actions .btn--hanko {
   box-shadow: 4px 4px 0 var(--ink);
@@ -162,7 +170,7 @@
     z-index: 6;
   }
   .result {
-    grid-template-columns: 36% 1fr;
+    grid-template-columns: 36% minmax(0, 1fr);
   }
   .result__fam {
     left: 6px;
@@ -176,7 +184,7 @@
     align-content: center;
   }
   .result__name {
-    font-size: 1.45rem;
+    font-size: clamp(1.05rem, 9.5cqw, 1.45rem);
     padding-right: 34px;
   }
   .result__actions .btn--hanko {
