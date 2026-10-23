@@ -50,5 +50,18 @@ export default {
     [2, "¿Quién se sacrifica para destruir la flota Forerunner al final de Halo Wars?", "El sargento John Forge", "El capitán Cutter", "La profesora Anders", "Serina", ["Who sacrifices himself to destroy the Forerunner fleet at the end of Halo Wars?", "Sergeant John Forge", "Captain Cutter", "Professor Anders", "Serina"]],
     [2, "¿Qué le pasa a Cortana en Halo 4 por superar su vida útil de siete años?", "Entra en rampancia", "Pierde la memoria", "Se fusiona con el Flood", "Se apaga por completo", ["What happens to Cortana in Halo 4 after outliving her seven-year lifespan?", "She becomes rampant", "She loses her memory", "She merges with the Flood", "She shuts down completely"]],
   ],
+  lol: [
+    [1, "¿Quién acoge a Vi y Powder tras la muerte de sus padres en Arcane?", "Vander", "Silco", "Singed", "Jayce", ["Who takes in Vi and Powder after their parents die in Arcane?", "Vander", "Silco", "Singed", "Jayce"]],
+    [1, "¿Qué príncipe heredero de Demacia lucha con una lanza?", "Jarvan IV", "Garen", "Galio", "Xin Zhao", ["Which crown prince of Demacia fights with a lance?", "Jarvan IV", "Garen", "Galio", "Xin Zhao"]],
+    [2, "¿Quién es la mano derecha de Silco en Arcane?", "Sevika", "Mel", "Ambessa", "Renni", ["Who is Silco's second-in-command in Arcane?", "Sevika", "Mel", "Ambessa", "Renni"]],
+    [2, "¿Quién es la madre de la consejera Mel Medarda en Arcane?", "Ambessa", "Sevika", "Cassandra", "Renni", ["Who is the mother of councilor Mel Medarda in Arcane?", "Ambessa", "Sevika", "Cassandra", "Renni"]],
+    [2, "¿Quién es el medio hermano de Yasuo?", "Yone", "Zed", "Shen", "Kennen", ["Who is Yasuo's half-brother?", "Yone", "Zed", "Shen", "Kennen"]],
+    [2, "¿Quién es la hermana gemela de Kayle?", "Morgana", "Lux", "Vayne", "Leona", ["Who is Kayle's twin sister?", "Morgana", "Lux", "Vayne", "Leona"]],
+    [2, "¿Qué estructura hay que derribar para que aparezcan súbditos más fuertes en una línea?", "Un inhibidor", "Una torreta exterior", "El Nexo", "Una fuente", ["Which structure must you destroy so that stronger minions spawn in a lane?", "An inhibitor", "An outer turret", "The Nexus", "A fountain"]],
+    [3, "¿Qué gobernante de Noxus perdió el brazo izquierdo en las guerras de Jonia?", "Jericho Swain", "Darius", "Draven", "Sion", ["Which ruler of Noxus lost his left arm in the Ionian wars?", "Jericho Swain", "Darius", "Draven", "Sion"]],
+    [3, "¿Qué ser cósmico fue engañado por un imperio espacial para forjar estrellas a su servicio?", "Aurelion Sol", "Anivia", "Brand", "Shyvana", ["Which cosmic being was tricked by a space-faring empire into forging stars for it?", "Aurelion Sol", "Anivia", "Brand", "Shyvana"]],
+    [3, "¿Qué campeón era Vander antes de transformarse por los experimentos?", "Warwick", "Singed", "Dr. Mundo", "Zac", ["Which champion was Vander before being transformed by experiments?", "Warwick", "Singed", "Dr. Mundo", "Zac"]],
+    [2, "¿Quién dispara por accidente a Silco en la bodega donde murió Vander?", "Jinx", "Vi", "Sevika", "Caitlyn", ["Who accidentally shoots Silco in the warehouse where Vander died?", "Jinx", "Vi", "Sevika", "Caitlyn"]],
+  ],
   //@@MARK
 };
