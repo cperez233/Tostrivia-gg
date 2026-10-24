@@ -19,6 +19,7 @@ import Wipe, { type WipeState } from "./components/Wipe";
 import { t, useLang } from "./i18n";
 import { savedVariant } from "./game/powers";
 import { savedRules } from "./game/rules";
+import { rememberTabOf } from "./lib/catsTab";
 
 type View =
   | { k: "home" }
@@ -134,6 +135,11 @@ export default function App() {
 
   const tab = (t: Tab) => go({ k: t } as View, TABS.find((x) => x.id === t)!.path);
   const exitRoom = () => go({ k: "home" }, "/");
+  /** de una partida a Categorías, en la pestaña de lo que se jugaba */
+  const toCats = (cat?: string | null) => {
+    rememberTabOf(cat);
+    go({ k: "cats" }, "/categorias");
+  };
 
   const playSolo = (cat: string) => {
     const c = new LocalClient(myself());
@@ -184,7 +190,7 @@ export default function App() {
         {view.k === "home" && <Home onPlay={playSolo} />}
         {view.k === "cats" && <Categories onPlay={playSolo} />}
         {view.k === "group" && <Group onHost={host} onJoin={(code) => go({ k: "join", code }, `/sala/${code}`)} />}
-        {view.k === "room" && <Room client={view.client} onExit={exitRoom} />}
+        {view.k === "room" && <Room client={view.client} onExit={exitRoom} onCats={toCats} />}
         {view.k === "join" && <JoinScreen code={view.code} onJoin={(n, s) => join(view.code, n, s)} onHome={() => go({ k: "home" }, "/")} />}
         {view.k === "solo-start" && <SoloStart cat={view.cat} onPlay={() => playSolo(view.cat)} onHome={() => go({ k: "cats" }, "/categorias")} />}
         {view.k === "404" && <NotFound onGo={(t) => tab(t)} />}

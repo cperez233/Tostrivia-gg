@@ -189,6 +189,8 @@ export const EN: Record<string, string> = {
   Páginas: "Pages",
   "Jugar en grupo": "Play with friends",
   "Volver a la ruleta": "Back to the wheel",
+  "Volver a categorías": "Back to categories",
+  "Ir a categorías": "Go to categories",
 
   // conexión
   "Conectando…": "Connecting…",

@@ -31,9 +31,11 @@ interface Props {
   snap: Snapshot;
   at: number;
   onExit: () => void;
+  /** solo: salir a Categorías (en la pestaña de lo que se jugaba) */
+  onCats: (cat?: string | null) => void;
 }
 
-export default function GameScreen({ client, snap, at, onExit }: Props) {
+export default function GameScreen({ client, snap, at, onExit, onCats }: Props) {
   const q = snap.qid && BANK.byId[snap.qid] ? localizeQuestion(BANK.byId[snap.qid]) : null;
   const cat = snap.cat ? (describe(snap.cat)?.cover ?? null) : null;
   const reduce = useReducedMotion();
@@ -110,7 +112,7 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
   const answeredCount = snap.answered.length;
   const online = snap.players.filter((p) => p.online);
 
-  if (snap.phase === "final") return <FinalScreen client={client} snap={snap} onExit={onExit} />;
+  if (snap.phase === "final") return <FinalScreen client={client} snap={snap} onExit={onExit} onCats={onCats} />;
   if (!q || !cat) return null;
 
   return (
@@ -352,6 +354,11 @@ export default function GameScreen({ client, snap, at, onExit }: Props) {
                 <button type="button" className="btn" onClick={() => setConfirmExit(false)} autoFocus>
                   {t("Seguir jugando")}
                 </button>
+                {snap.mode === "solo" && (
+                  <button type="button" className="btn" onClick={() => onCats(snap.cat)}>
+                    {t("Ir a categorías")}
+                  </button>
+                )}
                 <button type="button" className="btn" onClick={onExit}>
                   {t("Salir")}
                 </button>
@@ -808,7 +815,7 @@ const GRADES: [number, string][] = [
   [0, "F"],
 ];
 
-function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snapshot; onExit: () => void }) {
+function FinalScreen({ client, snap, onExit, onCats }: { client: GameClient; snap: Snapshot; onExit: () => void; onCats: (cat?: string | null) => void }) {
   const me = snap.players.find((p) => p.id === client.me.id);
   const sorted = [...snap.players].sort((a, b) => b.score - a.score);
   const total = snap.ids.length;
@@ -919,6 +926,11 @@ function FinalScreen({ client, snap, onExit }: { client: GameClient; snap: Snaps
           {snap.mode === "group" && (
             <button type="button" className="btn btn--ghost" onClick={() => setDetails(false)}>
               {t("Ver el podio")}
+            </button>
+          )}
+          {snap.mode === "solo" && (
+            <button type="button" className="btn" onClick={() => onCats(snap.cat)}>
+              {t("Volver a categorías")}
             </button>
           )}
           <button type="button" className="btn" onClick={share}>

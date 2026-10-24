@@ -8,6 +8,7 @@ import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-mot
 import { GROUPS, categoriesOf, familiesOf } from "../data/categories";
 import type { Category, GroupId } from "../data/types";
 import { describe, mixId, partsOf, playable, randomId } from "../game/mix";
+import { saveTab, savedTab } from "../lib/catsTab";
 import { Cover } from "./Cover";
 import "../pages/categories.css";
 import { t } from "../i18n";
@@ -29,7 +30,7 @@ interface Props {
 
 export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, current }: Props) {
   const reduce = useReducedMotion();
-  const [tab, setTab] = useState<GroupId>("anime");
+  const [tab, setTab] = useState<GroupId>(savedTab);
   const [dir, setDir] = useState(1);
   const startMix = current?.startsWith("mix-") ? partsOf(current) : [];
   const [picking, setPicking] = useState(startMix.length > 0);
@@ -39,6 +40,7 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
   const go = (g: GroupId) => {
     setDir(GROUPS.findIndex((x) => x.id === g) > GROUPS.findIndex((x) => x.id === tab) ? 1 : -1);
     setTab(g);
+    saveTab(g);
   };
   const mode = (many: boolean) => {
     setPicking(many);

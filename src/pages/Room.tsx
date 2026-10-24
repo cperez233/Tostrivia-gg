@@ -25,10 +25,10 @@ import { DEFAULT_RULES, saveRules } from "../game/rules";
 import "./room.css";
 import { t } from "../i18n";
 
-export default function Room({ client, onExit }: { client: GameClient; onExit: () => void }) {
+export default function Room({ client, onExit, onCats }: { client: GameClient; onExit: () => void; onCats: (cat?: string | null) => void }) {
   const { snap, at, status } = useGame(client);
   if (status !== "open" || !snap) return <NetState status={status} code={client.code} onExit={onExit} />;
-  const screen = snap.phase === "lobby" ? <Lobby client={client} snap={snap} onExit={onExit} /> : <GameScreen client={client} snap={snap} at={at} onExit={onExit} />;
+  const screen = snap.phase === "lobby" ? <Lobby client={client} snap={snap} onExit={onExit} /> : <GameScreen client={client} snap={snap} at={at} onExit={onExit} onCats={onCats} />;
   if (snap.mode !== "group") return screen;
   // el chat sigue montado entre la sala y la partida: no se pierden los mensajes ni el contador
   return (
