@@ -64,9 +64,11 @@
   font-family: var(--display);
   font-size: 16px;
   line-height: 1.15;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .game__right {
   display: flex;
@@ -305,7 +307,8 @@
 }
 .qpanel__n {
   font-family: var(--display);
-  font-size: 17px;
+  font-size: clamp(13px, 3.6vw + 2px, 17px);
+  white-space: nowrap;
   line-height: 1;
   padding: 5px 10px 6px;
   background: var(--ink);
@@ -440,11 +443,12 @@
   opacity: 0.4;
   box-shadow: none;
 }
+.opt--correct,
+.opt--wrong {
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+}
 .opt__stamp {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  margin-top: -16px;
+  margin-left: 4px;
   padding: 4px 9px;
   font-family: var(--display);
   font-size: 15px;
@@ -456,10 +460,6 @@
 .opt__stamp.is-bad {
   background: var(--ink);
   color: var(--hanko);
-}
-.opt--correct .opt__text,
-.opt--wrong .opt__text {
-  padding-right: 92px;
 }
 .opt__who {
   position: absolute;
@@ -659,7 +659,7 @@
   margin-top: 6px;
 }
 .dialog__actions .btn {
-  flex: 1;
+  flex: 1 1 150px;
 }
 
 /* final: página de splash en negro */
