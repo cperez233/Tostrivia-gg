@@ -36,7 +36,10 @@ export function buildRound(cat: string, seed: number, seen: Set<string> = new Se
   const audioOnly = pool.length > 0 && pool.every((q) => q.media);
   // con una dificultad fija, las de esa dificultad van primero (las otras solo rellenan si faltan)
   const inDiff = (q: Question) => rules.diff === "mix" || q.d === rules.diff;
-  const fresh = pool.filter((q) => !seen.has(q.id));
+  // un póster cuenta como visto si salió en cualquier efecto (pixelado, borroso, detalle): que no vuelva la misma obra en la ronda siguiente
+  const seenPosters = new Set([...seen].map((id) => BANK.byId[id]).filter((q): q is Question => !!q).map(posterOf).filter((p): p is string => !!p));
+  const wasSeen = (q: Question) => seen.has(q.id) || (posterOf(q) !== null && seenPosters.has(posterOf(q)!));
+  const fresh = pool.filter((q) => !wasSeen(q));
   const restart = fresh.length < Math.min(size, pool.length);
 
   // variedad: entre el 10 % y el 30 % de video en categorías normales (1 a 3 con 10), todas en Openings y OST gaming
@@ -47,12 +50,12 @@ export function buildRound(cat: string, seed: number, seen: Set<string> = new Se
     // de las ya vistas, primero las que salieron hace más tiempo
     const order = [...seen];
     const rest = pool.filter((q) => !picked.includes(q)).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
-    picked.push(...pick(rest, size - picked.length, Math.max(0, mediaWanted - used), audioOnly, rules.diff));
+    picked.push(...pick(rest, size - picked.length, Math.max(0, mediaWanted - used), audioOnly, rules.diff, picked));
   }
   // de menos a más; dentro de cada dificultad, en orden al azar (barajar y luego ordenar estable: sin sesgo)
   const chosen = shuffle(picked, rand).sort((a, b) => a.d - b.d);
   // reservas para cuando un video no carga: también primero las que no han salido y de la dificultad elegida
-  const byFreshness = [...fresh.filter(inDiff), ...fresh.filter((q) => !inDiff(q)), ...pool.filter((q) => seen.has(q.id))];
+  const byFreshness = [...fresh.filter(inDiff), ...fresh.filter((q) => !inDiff(q)), ...pool.filter((q) => wasSeen(q))];
   const reserves = byFreshness.filter((q) => !chosen.includes(q) && (audioOnly || !q.media)).slice(0, Math.max(6, Math.ceil(size / 2)));
   return { ids: chosen.map((q) => q.id), reserves: reserves.map((q) => q.id), restart };
 }
@@ -68,25 +71,47 @@ export function poolFor(cat: string, rand: () => number): Question[] {
   return out;
 }
 
-/** hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad */
-function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boolean, diff: Difficulty): Question[] {
+/** de qué obra es el póster de una pregunta de "Adivina el póster": solo puede salir una vez por ronda, sea cual sea el efecto */
+const posterOf = (q: Question) => (q.visual?.v === "poster" ? q.visual.id : null);
+
+/**
+ * hasta `n` preguntas de `from`: unas de video y el resto repartido por dificultad.
+ * `have` son las que ya van en la ronda: no se repite la obra de un póster (JJK pixelado y JJK borroso en la misma ronda),
+ * salvo que no quede otra para llenarla.
+ */
+function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boolean, diff: Difficulty, have: Question[] = []): Question[] {
   const out: Question[] = [];
+  const posters = new Set(have.map(posterOf).filter((p): p is string => !!p));
+  const free = (q: Question) => {
+    const p = posterOf(q);
+    return !p || !posters.has(p);
+  };
+  const take = (q: Question) => {
+    out.push(q);
+    const p = posterOf(q);
+    if (p) posters.add(p);
+  };
   const fits = (q: Question) => diff === "mix" || q.d === diff;
-  if (!audioOnly) out.push(...from.filter((q) => q.media && fits(q)).slice(0, Math.min(mediaWanted, n)));
+  if (!audioOnly) for (const q of from.filter((q) => q.media && fits(q) && free(q)).slice(0, Math.min(mediaWanted, n))) take(q);
   const want = mixFor(n, diff);
   for (const q of out) want[q.d] = Math.max(0, want[q.d] - 1);
   const rest = audioOnly ? from : from.filter((q) => !q.media);
   for (const d of [1, 2, 3]) {
     for (const q of rest) {
       if (want[d] <= 0 || out.length >= n) break;
-      if (q.d === d && !out.includes(q)) {
-        out.push(q);
+      if (q.d === d && !out.includes(q) && free(q)) {
+        take(q);
         want[d]--;
       }
     }
   }
-  // si faltan de alguna dificultad, se completa primero con las de la dificultad elegida y luego con lo que haya
+  // si faltan de alguna dificultad, se completa primero con las de la dificultad elegida y luego con lo que haya (sin repetir póster)
   for (const q of [...rest.filter(fits), ...rest]) {
+    if (out.length >= n) break;
+    if (!out.includes(q) && free(q)) take(q);
+  }
+  // último recurso (categoría chica): se acepta repetir la obra
+  for (const q of rest) {
     if (out.length >= n) break;
     if (!out.includes(q)) out.push(q);
   }

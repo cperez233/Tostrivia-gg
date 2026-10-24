@@ -104,13 +104,20 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
   const poster = posterOf(id);
   const [ready, setReady] = useState(false);
   const running = startAt > 0 && !revealed;
-  // dónde cae el recorte del detalle: arriba y al medio, lejos del título
+  // dónde cae el recorte del detalle: una orilla o esquina con algo de dibujo (no la cara), lejos del título
   const h = useMemo(() => hash(`${id}:${qkey}`), [id, qkey]);
   const [zoomTo, spots] = ZOOMS[id] ?? [2.3, [[50, 50]]];
   const [ox, oy] = spots[h % spots.length];
   // lo que falta del reloj en el momento en que empieza la transición
   const left = useMemo(() => (running ? Math.max(0.2, (startAt + duration - Date.now()) / 1000) : 0), [running, startAt, duration]);
   const instant = reduce ? { duration: 0 } : undefined;
+  // desde dónde empieza cada efecto: la capa nace así y de ahí se aclara con el reloj (si naciera ya en su valor final, nunca se movería)
+  const from =
+    fx === "blur"
+      ? { filter: `blur(${BLUR_FROM}px)`, scale: 1.08 }
+      : fx === "zblur"
+        ? { scale: zoomTo * ZBLUR_ZOOM, filter: `blur(${BLUR_FROM / (zoomTo * ZBLUR_ZOOM)}px)` }
+        : { scale: zoomTo * 2 };
 
   if (!poster) return null;
   return (
@@ -123,7 +130,7 @@ export function PosterStage({ id, fx, startAt, duration, revealed, qkey }: Poste
             <motion.div
               className="pstage__layer"
               style={{ originX: `${revealed ? 50 : ox}%`, originY: `${revealed ? 50 : oy}%` }}
-              initial={false}
+              initial={from}
               animate={
                 fx === "blur"
                   ? { filter: `blur(${revealed ? 0 : running ? BLUR_TO : BLUR_FROM}px)`, scale: revealed ? 1 : 1.08 }

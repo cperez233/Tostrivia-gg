@@ -71,10 +71,10 @@ const POSTER_Q: Record<keyof typeof POSTER_CATS, string> = {
 const NO_POSTER = new Set(["pelea", "pixar", "disney", "ghibli", "nolan", "mcu", "undertale", "jurassic"]);
 /**
  * Dificultad de "Adivina el póster": depende de qué tan reconocible es la obra (src/data/posterLevel.json) y del efecto.
- * 0 icono que todos conocen, 1 muy famosa, 2 conocida, 3 de nicho. Un icono es fácil hasta con el detalle.
+ * 0 icono que todos conocen, 1 muy famosa, 2 conocida, 3 de nicho. El detalle cae en una orilla o esquina (sin la cara), así que nunca es de lo más fácil.
  */
 const POSTER_D: Record<number, Record<PosterFx, Difficulty>> = {
-  0: { blur: 1, pixel: 1, zblur: 1, zoom: 1 },
+  0: { blur: 1, pixel: 1, zblur: 1, zoom: 2 },
   1: { blur: 1, pixel: 1, zblur: 1, zoom: 2 },
   2: { blur: 1, pixel: 2, zblur: 2, zoom: 3 },
   3: { blur: 2, pixel: 3, zblur: 3, zoom: 3 },

@@ -34,6 +34,7 @@ T={
 "lotr":[[3,3,97,27]],"shrek":[[5,66,95,92]],"rapidos":[[10,3,60,22],[10,82,95,99]],"batman":[[20,90,80,98]],"piratas":[[3,4,97,16]],"jurassic":[[3,18,97,58]],
 "matrix":[[3,83,97,99]],"pokemonanime":[[3,44,97,72]],"indiana":[[3,3,97,28],[3,90,97,100]],
 }
+FLOOR=10  # detalle mínimo de la ventana inicial: menos que eso es cielo, fondo liso
 ids=list(T)
 def win(o,s): return o*(1-1/s), o*(1-1/s)+100/s
 out={};none=[]
@@ -41,7 +42,7 @@ for id in ids:
     im=np.asarray(Image.open(f"src/assets/covers/{id}.webp").convert("L").resize((200,300)),dtype=float)
     gy,gx=np.gradient(im);edge=np.hypot(gx,gy)
     got=None
-    for ZT in (2.3,2.8,3.4):
+    for ZT in (2.6,3.0,3.4):
         ZF=ZT*2
         cands=[]
         for ox in range(0,101,4):
@@ -55,11 +56,15 @@ for id in ids:
                 a0,a1=win(ox,ZF);c0,c1=win(oy,ZF)
                 sub=edge[int(c0*3):int(c1*3),int(a0*2):int(a1*2)];sub2=im[int(c0*3):int(c1*3),int(a0*2):int(a1*2)]
                 cands.append((sub.mean()+0.5*sub2.std(),ox,oy))
-        cands.sort(reverse=True)
+        # el detalle no debe regalar la obra: solo orillas y esquinas del póster (rara vez ahí está la cara), con algo de detalle
+        # (ni cielo liso ni negro), sin tomar lo más cargado de esa franja, y lo más lejos posible entre sí
+        ring=[c for c in cands if c[0]>=FLOOR and (min(c[1],100-c[1])<=14 or min(c[2],100-c[2])<=14)]
+        ring.sort()
+        if len(ring)>=6:
+            ring=ring[int(len(ring)*0.3):int(len(ring)*0.85)]
         pick=[]
-        for sc,ox,oy in cands:
-            if sc<6: break
-            if all(abs(ox-p[0])+abs(oy-p[1])>=16 for p in pick): pick.append((ox,oy,round(sc,1)))
+        for sc,ox,oy in ring:
+            if all(abs(ox-p[0])+abs(oy-p[1])>=28 for p in pick): pick.append((ox,oy,round(sc,1)))
             if len(pick)==3: break
         if pick: got=[ZT,[[p[0],p[1]] for p in pick]];break
     if got: out[id]=got
