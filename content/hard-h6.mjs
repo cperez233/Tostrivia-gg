@@ -22,7 +22,7 @@ export default {
   stardew: [
     [3, "¿Cuántos pisos tiene la Mina?", "120", "100", "80", "150", ["How many floors does the Mines have?", N, N, N, N]],
     [3, "¿Cuántas nueces doradas hay en total?", "130", "100", "150", "200", ["How many golden walnuts are there in total?", N, N, N, N]],
-    [3, "¿Cómo se llama el bosque al sur del pueblo?", "Bosque Cindersap", "Bosque Pelícano", "Bosque Marnie", "Bosque Junimo", ["What is the forest south of the town called?", "Cindersap Forest", "Pelican Forest", "Marnie's Forest", "Junimo Forest"]],
+    [3, "¿Cómo se llama el gran bosque del suroeste del valle?", "Bosque Cindersap", "Bosque Pelícano", "Bosque Marnie", "Bosque Junimo", ["What is the large forest in the southwest of the valley called?", "Cindersap Forest", "Pelican Forest", "Marnie's Forest", "Junimo Forest"]],
     [3, "¿Cuántas salas tiene el Centro Comunitario?", "Seis", "Cuatro", "Cinco", "Siete", ["How many rooms does the Community Center have?", "Six", "Four", "Five", "Seven"]],
   ],
   bobesponja: [

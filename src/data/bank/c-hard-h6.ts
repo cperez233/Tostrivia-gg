@@ -24,7 +24,7 @@ const bank: Record<string, RawQuestion[]> = {
   stardew: [
     [3,"¿Cuántos pisos tiene la Mina?","120","100","80","150"],
     [3,"¿Cuántas nueces doradas hay en total?","130","100","150","200"],
-    [3,"¿Cómo se llama el bosque al sur del pueblo?","Bosque Cindersap","Bosque Pelícano","Bosque Marnie","Bosque Junimo"],
+    [3,"¿Cómo se llama el gran bosque del suroeste del valle?","Bosque Cindersap","Bosque Pelícano","Bosque Marnie","Bosque Junimo"],
     [3,"¿Cuántas salas tiene el Centro Comunitario?","Seis","Cuatro","Cinco","Siete"],
   ],
   bobesponja: [
