@@ -99,7 +99,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Qué apodo tiene Kodachi Kuno?","La Rosa Negra","La Rosa Azul","La Rosa Blanca","La Dama Negra"],
     [2,"¿Qué arma usa Tatewaki Kuno?","Una espada de madera","Una espada de acero","Un arco","Una lanza"],
     [3,"¿Quién dirige el instituto Furinkan?","El director Kuno","Soun Tendo","Happosai","Genma Saotome"],
-    [2,"¿Qué otra chica persigue Kuno además de Akane?","De la chica de la trenza","De Kasumi","De Shampoo","De Nabiki"],
   ],
   doraemon: [
     [1,"¿Qué invento permite ir al instante a cualquier lugar?","La Puerta Mágica","La Máquina del Tiempo","El Sombrero Volador","El Mapa Mágico"],

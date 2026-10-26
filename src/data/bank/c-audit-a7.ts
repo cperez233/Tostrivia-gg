@@ -77,8 +77,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién interpretó al Oráculo en la primera película?","Gloria Foster","Jada Pinkett Smith","Carrie-Anne Moss","Monica Bellucci"],
     [3,"¿Quién capitanea la nave Logos en Reloaded?","Niobe","Trinity","Switch","Persephone"],
     [2,"¿Cuántas películas de acción real tiene Matrix hasta 2021?","Cuatro","Tres","Cinco","Dos"],
-    [2,"¿Qué le pasa al cuerpo real si mueres dentro de la Matrix?","Muere también","Despierta ileso","Queda en coma","Se libera de la Matrix"],
-    [1,"¿Cómo se conectan los humanos a la Matrix?","Con un conector en la nuca","Con un casco","Con unas gafas","Con un cable en el brazo"],
   ],
   konosuba: [
     [3,"¿Cómo se llama el gato negro de Megumin?","Chomusuke","Gary","Kuro","Mochi"],

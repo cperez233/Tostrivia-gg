@@ -26,7 +26,6 @@ const bank: Record<string, RawQuestion[]> = {
     [1,"¿Quiénes son los primos de Frodo en la Comunidad?","Merry y Pippin","Sam y Merry","Sam y Pippin","Bilbo y Pippin"],
     [1,"👁️🔥🗼\n¿Quién es?","Sauron","Saruman","Gollum","El Rey Brujo de Angmar",{"v":"emoji"}],
     [2,"🧝‍♂️🏹\n¿Quién es?","Legolas","Elrond","Celeborn","Thranduil",{"v":"emoji"}],
-    [2,"¿Qué regalo de Galadriel sirve contra Ella-Laraña?","El Frasco de Galadriel","El Palantír","El cuerno de Boromir","La Estrella de la Tarde"],
     [2,"¿Quién ayuda a Gondor en los Campos del Pelennor?","Los Rohirrim","Los Elfos de Lórien","Los Enanos de Erebor","Los Hombres de Dunland"],
     [3,"¿Qué uruk-hai mata a Boromir en la película?","Lurtz","Uglúk","Gothmog","Grishnákh"],
     [3,"¿Cuántos anillos recibieron los señores enanos?","Siete","Tres","Nueve","Veinte"],
@@ -97,7 +96,6 @@ const bank: Record<string, RawQuestion[]> = {
   nolan: [
     [1,"¿Qué tótem usa Cobb?","Un trompo","Un dado cargado","Una pieza de ajedrez","Una moneda"],
     [2,"¿De qué evento histórico trata Dunkerque?","La evacuación de soldados aliados en 1940","El desembarco de Normandía en 1944","El asedio de Leningrado","El bombardeo de Dresde"],
-    [3,"¿Quién coescribió con Nolan El caballero oscuro?","Jonathan Nolan","Wally Pfister","Hoyte van Hoytema","Lee Smith"],
     [2,"¿Qué película usa la entropía invertida?","Tenet","Memento","Interstellar","El origen"],
     [2,"¿Quién interpreta a Mal en El origen?","Marion Cotillard","Rebecca Hall","Anne Hathaway","Emily Blunt"],
     [2,"¿Qué villano interpreta Cillian Murphy en Batman Begins?","El Espantapájaros","El Joker","Bane","Ra's al Ghul"],

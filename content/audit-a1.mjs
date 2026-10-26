@@ -6,7 +6,7 @@ export default {
     [3, "¿Qué técnica selló al Rey Piccolo?", "Mafuba", "Kienzan", "Taiyōken", "Dodonpa", ["Which technique sealed King Piccolo?", "Mafuba", "Kienzan", "Solar Flare", "Dodon Ray"]],
     [2, "¿Cuántas estrellas tiene la esfera que heredó Goku?", "Cuatro", "Una", "Tres", "Siete", ["How many stars does the Dragon Ball Goku inherited have?", "Four", "One", "Three", "Seven"]],
     [2, "¿Quién ayuda a Kamisama en el Templo Sagrado?", "Mr. Popo", "Yajirobe", "Karin", "Upa", ["Who assists Kami at the Lookout?", "Mr. Popo", "Yajirobe", "Korin", "Upa"]],
-    [2, "¿Cuál es el disco cortante de Krilin?", "Kienzan", "Masenko", "Makankosappo", "Dodonpa", ["What is Krillin's cutting disc technique?", "Destructo Disc (Kienzan)", "Masenko", "Special Beam Cannon", "Dodon Ray"]],
+    [2, "¿Cuál es el disco cortante de Krilin?", "Kienzan", "Masenko", "Makankosappo", "Dodonpa", ["What is Krillin's cutting energy technique?", "Destructo Disc (Kienzan)", "Masenko", "Special Beam Cannon", "Dodon Ray"]],
     [3, "¿Quién mata a Krilin en la saga del Rey Piccolo?", "Tambourine", "Cymbal", "Drum", "Piano", ["Who kills Krillin in the King Piccolo saga?", "Tambourine", "Cymbal", "Drum", "Piano"]],
   ],
   mario: [
@@ -22,7 +22,6 @@ export default {
     [1, "¿Quiénes son los primos de Frodo en la Comunidad?", "Merry y Pippin", "Sam y Merry", "Sam y Pippin", "Bilbo y Pippin", ["Who are Frodo's cousins in the Fellowship?", "Merry and Pippin", "Sam and Merry", "Sam and Pippin", "Bilbo and Pippin"]],
     [1, "👁️🔥🗼\n¿Quién es?", "Sauron", "Saruman", "Gollum", "El Rey Brujo de Angmar", ["👁️🔥🗼\nWho is it?", "Sauron", "Saruman", "Gollum", "The Witch-king of Angmar"], E],
     [2, "🧝‍♂️🏹\n¿Quién es?", "Legolas", "Elrond", "Celeborn", "Thranduil", ["🧝‍♂️🏹\nWho is it?", N, N, N, N], E],
-    [2, "¿Qué regalo de Galadriel sirve contra Ella-Laraña?", "El Frasco de Galadriel", "El Palantír", "El cuerno de Boromir", "La Estrella de la Tarde", ["Which gift from Galadriel helps against Shelob?", "The Phial of Galadriel", "The Palantír", "Boromir's horn", "The Evenstar"]],
     [2, "¿Quién ayuda a Gondor en los Campos del Pelennor?", "Los Rohirrim", "Los Elfos de Lórien", "Los Enanos de Erebor", "Los Hombres de Dunland", ["Who comes to Gondor's aid on the Pelennor Fields?", "The Rohirrim", "The Elves of Lórien", "The Dwarves of Erebor", "The Dunlendings"]],
     [3, "¿Qué uruk-hai mata a Boromir en la película?", "Lurtz", "Uglúk", "Gothmog", "Grishnákh", ["Which Uruk-hai kills Boromir in the film?", N, N, N, N]],
     [3, "¿Cuántos anillos recibieron los señores enanos?", "Siete", "Tres", "Nueve", "Veinte", ["How many rings did the dwarf lords receive?", "Seven", "Three", "Nine", "Twenty"]],
@@ -63,7 +62,7 @@ export default {
     [3, "¿Quién es el jefe del piso 75?", "The Skull Reaper", "Illfang the Kobold Lord", "The Gleam Eyes", "Nicholas the Renegade", ["Who is the boss of floor 75?", N, N, N, N]],
     [3, "¿Cómo se llama la espada de Eugeo?", "Blue Rose Sword", "Night Sky Sword", "Fragrant Olive Sword", "Elucidator", ["What is Eugeo's sword called?", N, N, N, N]],
     [3, "¿Cómo se llama el estoque de Asuna?", "Lambent Light", "Elucidator", "Dark Repulser", "Night Sky Sword", ["What is Asuna's rapier called?", N, N, N, N]],
-    [3, "¿Cuál es la ciudad inicial de Aincrad?", "Town of Beginnings", "Algade", "Selmburg", "Tolbana", ["What is Aincrad's starting town?", N, N, N, N]],
+    [3, "¿Cuál es la ciudad inicial de Aincrad?", "Town of Beginnings", "Algade", "Selmburg", "Tolbana", ["Where do players first appear when they log into Aincrad?", N, N, N, N]],
   ],
   musica: [
     [2, "¿Quién compuso Las cuatro estaciones?", "Antonio Vivaldi", "Tomaso Albinoni", "Arcangelo Corelli", "Georg Friedrich Händel", ["Who composed The Four Seasons?", N, N, N, N]],
@@ -93,7 +92,6 @@ export default {
   nolan: [
     [1, "¿Qué tótem usa Cobb?", "Un trompo", "Un dado cargado", "Una pieza de ajedrez", "Una moneda", ["What totem does Cobb use?", "A spinning top", "A loaded die", "A chess piece", "A coin"]],
     [2, "¿De qué evento histórico trata Dunkerque?", "La evacuación de soldados aliados en 1940", "El desembarco de Normandía en 1944", "El asedio de Leningrado", "El bombardeo de Dresde", ["What historical event is Dunkirk about?", "The evacuation of Allied soldiers in 1940", "The Normandy landings in 1944", "The siege of Leningrad", "The bombing of Dresden"]],
-    [3, "¿Quién coescribió con Nolan El caballero oscuro?", "Jonathan Nolan", "Wally Pfister", "Hoyte van Hoytema", "Lee Smith", ["Who co-wrote The Dark Knight with Nolan?", N, N, N, N]],
     [2, "¿Qué película usa la entropía invertida?", "Tenet", "Memento", "Interstellar", "El origen", ["Which film uses inverted entropy?", "Tenet", "Memento", "Interstellar", "Inception"]],
     [2, "¿Quién interpreta a Mal en El origen?", "Marion Cotillard", "Rebecca Hall", "Anne Hathaway", "Emily Blunt", ["Who plays Mal in Inception?", N, N, N, N]],
     [2, "¿Qué villano interpreta Cillian Murphy en Batman Begins?", "El Espantapájaros", "El Joker", "Bane", "Ra's al Ghul", ["Which villain is Cillian Murphy in Batman Begins?", "The Scarecrow", "The Joker", "Bane", "Ra's al Ghul"]],

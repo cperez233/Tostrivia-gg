@@ -92,8 +92,6 @@ export default {
     [3, "¿Quién interpretó al Oráculo en la primera película?", "Gloria Foster", "Jada Pinkett Smith", "Carrie-Anne Moss", "Monica Bellucci", ["Who played the Oracle in the first movie?", N, N, N, N]],
     [3, "¿Quién capitanea la nave Logos en Reloaded?", "Niobe", "Trinity", "Switch", "Persephone", ["Who captains the ship Logos in Reloaded?", N, N, N, N]],
     [2, "¿Cuántas películas de acción real tiene Matrix hasta 2021?", "Cuatro", "Tres", "Cinco", "Dos", ["How many live-action Matrix movies are there as of 2021?", "Four", "Three", "Five", "Two"]],
-    [2, "¿Qué le pasa al cuerpo real si mueres dentro de la Matrix?", "Muere también", "Despierta ileso", "Queda en coma", "Se libera de la Matrix", ["What happens to your real body if you die inside the Matrix?", "It dies too", "It wakes up unharmed", "It falls into a coma", "It is freed from the Matrix"]],
-    [1, "¿Cómo se conectan los humanos a la Matrix?", "Con un conector en la nuca", "Con un casco", "Con unas gafas", "Con un cable en el brazo", ["How are humans connected to the Matrix?", "With a plug in the back of the neck", "With a helmet", "With goggles", "With a cable in the arm"]],
   ],
 
   konosuba: [

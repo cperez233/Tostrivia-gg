@@ -9,7 +9,6 @@ export default {
     [2, "¿Cómo se llama el droide redondo de Poe Dameron?", "BB-8", "R2-D2", "BB-9E", "D-O", ["What is Poe Dameron's round droid called?", N, N, N, N]],
     [1, "¿Quién interpreta a Han Solo en la trilogía original?", "Harrison Ford", "Mark Hamill", "Alec Guinness", "Billy Dee Williams", ["Who plays Han Solo in the original trilogy?", N, N, N, N]],
     [3, "¿Qué senadora de Chandrila funda la Alianza Rebelde?", "Mon Mothma", "Bail Organa", "Padmé Amidala", "Leia Organa", ["Which senator from Chandrila founds the Rebel Alliance?", N, N, N, N]],
-    [2, "¿Qué general cyborg tose y colecciona sables de luz de los Jedi?", "General Grievous", "Conde Dooku", "Asajj Ventress", "Nute Gunray", ["Which cyborg general coughs and collects Jedi lightsabers?", N, "Count Dooku", N, N]],
   ],
   fortnite: [
     // reescritas
@@ -18,7 +17,6 @@ export default {
     [2, "¿Cómo se llama el personaje con forma de plátano?", "Peely", "Fishstick", "Jonesy", "Raven", ["What is the banana character called?", N, N, N, N]],
     [2, "¿Cómo se llama el modo cooperativo contra zombis?", "Salvar el Mundo", "Creativo", "Arena", "Festival", ["What is the co-op mode against zombies called?", "Save the World", "Creative", "Arena", "Festival"]],
     [2, "¿Qué temporada de noviembre de 2023 devolvió el mapa del Capítulo 1?", "Fortnite OG", "Fortnite Remix", "Capítulo 5", "Fortnite Festival", ["Which November 2023 season brought back the Chapter 1 map?", "Fortnite OG", "Fortnite Remix", "Chapter 5", "Fortnite Festival"]],
-    [2, "¿Qué objeto azul se bebe para recuperar escudo?", "La poción de escudo", "El botiquín", "La venda", "La manzana", ["Which blue item do you drink to restore shield?", "The shield potion", "The med kit", "The bandage", "The apple"]],
     [2, "¿Cómo se llamó el evento que cerró el Capítulo 1 con un agujero negro?", "El Fin", "El Eclipse", "La Grieta", "El Big Bang", ["What was the event that closed Chapter 1 with a black hole called?", "The End", "The Eclipse", "The Rift", "The Big Bang"]],
     // nuevas
     [1, "¿Qué animal de cartón esconde botín?", "La llama", "El unicornio", "El dragón", "El oso", ["Which cardboard animal hides loot inside?", "The llama", "The unicorn", "The dragon", "The bear"]],
@@ -57,7 +55,6 @@ export default {
     [2, "¿Para qué sirven las cajas con una C?", "Para reaparecer allí si pierdes una vida", "Para ganar una vida extra", "Para pasar de nivel", "Para activar una máscara", ["What are the boxes with a C for?", "To respawn there if you lose a life", "To gain an extra life", "To skip the level", "To activate a mask"]],
     [1, "¿Quién es el villano principal de la saga?", "El doctor Neo Cortex", "Uka Uka", "N. Tropy", "Ripper Roo", ["Who is the main villain of the series?", "Doctor Neo Cortex", N, N, N]],
     [3, "¿Cómo se llama la novia de Crash en el primer juego?", "Tawna", "Coco", "Nina", "Pura", ["What is Crash's girlfriend called in the first game?", N, N, N, N]],
-    [3, "¿Cómo se llama la sobrina de Neo Cortex?", "Nina Cortex", "Coco Bandicoot", "Tawna", "Pasadena O'Possum", ["What is Neo Cortex's niece called?", N, N, N, N]],
     // nuevas
     [3, "¿Cómo se llama el jefe tribal del primer Crash Bandicoot?", "Papu Papu", "Pinstripe", "Koala Kong", "Ripper Roo", ["What is the tribal chief boss of the first Crash Bandicoot called?", N, N, N, N]],
     [3, "¿Qué jefe mafioso del primer juego dispara con una ametralladora?", "Pinstripe Potoroo", "Papu Papu", "Tiny Tiger", "Nitrus Brio", ["Which gangster boss of the first game fires a machine gun?", N, N, N, N]],

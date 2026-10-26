@@ -12,7 +12,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo se llama el droide redondo de Poe Dameron?","BB-8","R2-D2","BB-9E","D-O"],
     [1,"¿Quién interpreta a Han Solo en la trilogía original?","Harrison Ford","Mark Hamill","Alec Guinness","Billy Dee Williams"],
     [3,"¿Qué senadora de Chandrila funda la Alianza Rebelde?","Mon Mothma","Bail Organa","Padmé Amidala","Leia Organa"],
-    [2,"¿Qué general cyborg tose y colecciona sables de luz de los Jedi?","General Grievous","Conde Dooku","Asajj Ventress","Nute Gunray"],
   ],
   fortnite: [
     [1,"Tras saltar del autobús de batalla, ¿qué usas para bajar a la isla?","El planeador","El jetpack","Un trampolín","Una moto"],
@@ -20,7 +19,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cómo se llama el personaje con forma de plátano?","Peely","Fishstick","Jonesy","Raven"],
     [2,"¿Cómo se llama el modo cooperativo contra zombis?","Salvar el Mundo","Creativo","Arena","Festival"],
     [2,"¿Qué temporada de noviembre de 2023 devolvió el mapa del Capítulo 1?","Fortnite OG","Fortnite Remix","Capítulo 5","Fortnite Festival"],
-    [2,"¿Qué objeto azul se bebe para recuperar escudo?","La poción de escudo","El botiquín","La venda","La manzana"],
     [2,"¿Cómo se llamó el evento que cerró el Capítulo 1 con un agujero negro?","El Fin","El Eclipse","La Grieta","El Big Bang"],
     [1,"¿Qué animal de cartón esconde botín?","La llama","El unicornio","El dragón","El oso"],
     [2,"¿Qué personaje es un gato musculoso?","Meowscles","Fishstick","Peely","Jonesy"],
@@ -53,7 +51,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Para qué sirven las cajas con una C?","Para reaparecer allí si pierdes una vida","Para ganar una vida extra","Para pasar de nivel","Para activar una máscara"],
     [1,"¿Quién es el villano principal de la saga?","El doctor Neo Cortex","Uka Uka","N. Tropy","Ripper Roo"],
     [3,"¿Cómo se llama la novia de Crash en el primer juego?","Tawna","Coco","Nina","Pura"],
-    [3,"¿Cómo se llama la sobrina de Neo Cortex?","Nina Cortex","Coco Bandicoot","Tawna","Pasadena O'Possum"],
     [3,"¿Cómo se llama el jefe tribal del primer Crash Bandicoot?","Papu Papu","Pinstripe","Koala Kong","Ripper Roo"],
     [3,"¿Qué jefe mafioso del primer juego dispara con una ametralladora?","Pinstripe Potoroo","Papu Papu","Tiny Tiger","Nitrus Brio"],
     [3,"¿En qué año salió Crash Bandicoot 2: Cortex Strikes Back?","1997","1996","1998","1999"],

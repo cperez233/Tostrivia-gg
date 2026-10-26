@@ -50,7 +50,7 @@ export default {
     [2, "¿Cómo se llama el santuario donde descansa el protagonista en Bloodborne?", "El Sueño del Cazador", "La Hoguera Eterna", "El Santuario de Yharnam", "La Catedral Oculta", ["What is the name of the safe haven where the player rests in Bloodborne?", "The Hunter's Dream", "The Eternal Bonfire", "The Yharnam Sanctuary", "The Hidden Cathedral"]],
     [2, "¿En qué año salió el primer Dark Souls?", "2011", "2009", "2013", "2015", ["In what year was the first Dark Souls released?", N, N, N, N]],
     [3, "¿Cómo se llama la expansión de Bloodborne lanzada en 2015?", "The Old Hunters", "Lost Cathedral", "Blood Moon", "Hunter's Return", ["What is the name of the Bloodborne expansion released in 2015?", N, N, N, N]],
-    [3, "¿Qué dragón albino sin escamas busca la inmortalidad en Dark Souls?", "Seath", "Kalameet", "Nito", "Gwyndolin", ["Which scaleless albino dragon seeks immortality in Dark Souls?", "Seath the Scaleless", "Kalameet", "Nito", "Gwyndolin"]],
+    [3, "¿Qué dragón albino sin escamas busca la inmortalidad en Dark Souls?", "Seath", "Kalameet", "Nito", "Gwyndolin", ["Which albino dragon with no scales seeks immortality in Dark Souls?", "Seath", "Kalameet", "Nito", "Gwyndolin"]],
   ],
   bebop: [
     [3, "¿Cómo se llama el primer episodio de Cowboy Bebop?", "Asteroid Blues", "Honky Tonk Women", "Gateway Shuffle", "Ballad of Fallen Angels", ["What is the title of the first episode of Cowboy Bebop?", N, N, N, N]],
@@ -92,7 +92,7 @@ export default {
     [2, "¿Cuál es el rango más alto del matchmaking competitivo de CS:GO?", "Global Elite", "Supreme Master First Class", "Legendary Eagle Master", "Distinguished Master Guardian", ["What is the highest rank in CS:GO's competitive matchmaking?", N, N, N, N]],
     [3, "¿En qué equipo pasó s1mple la mayor parte de su carrera profesional?", "Natus Vincere", "FaZe Clan", "G2 Esports", "Astralis", ["Which team did s1mple spend most of his professional career with?", N, N, N, N]],
     [1, "¿Cómo se llama la ronda en la que un equipo no compra armas para ahorrar dinero?", "Ronda eco", "Ronda force", "Ronda pistola", "Ronda full buy", ["What do you call a round in which a team skips buying weapons to save money?", "Eco round", "Force round", "Pistol round", "Full buy round"]],
-    [2, "¿Cómo se llama el sistema antitrampas de Valve?", "VAC", "Easy Anti-Cheat", "BattlEye", "FACEIT AC", ["What is Valve's anti-cheat system called?", "VAC (Valve Anti-Cheat)", "Easy Anti-Cheat", "BattlEye", "FACEIT AC"]],
+    [2, "¿Cómo se llama el sistema antitrampas de Valve?", "VAC", "Easy Anti-Cheat", "BattlEye", "FACEIT AC", ["What is Steam's anti-cheat system called?", "VAC", "Easy Anti-Cheat", "BattlEye", "FACEIT AC"]],
     [3, "¿Cuántos segundos tarda un antiterrorista en desactivar la bomba sin kit?", "10", "5", "15", "20", ["How many seconds does a Counter-Terrorist need to defuse the bomb without a kit?", N, N, N, N]],
   ],
   blackclover: [

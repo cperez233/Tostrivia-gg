@@ -68,7 +68,7 @@ export default {
     [1, "¿Quién es el Rey Helado, antes de su transformación?", "Simon Petrikov", "Billy", "Gunter", "Hunson Abadeer", ["Who is the Ice King, before his transformation?", N, N, N, N]],
     [2, "¿Cómo se llama la consola parlante?", "BMO", "Bob", "Neptr", "Peppermint Butler", ["What is the talking game console called?", N, N, N, N]],
     [2, "¿Cómo se llama la tierra donde ocurre la historia?", "Ooo", "Oz", "Aaa", "Eee", ["What is the land where the story takes place called?", N, N, N, N]],
-    [2, "¿De qué está hecha la Dulce Princesa?", "De chicle", "De azúcar", "De hielo", "De fuego", ["What is Princess Bubblegum made of?", "Bubblegum", "Sugar", "Ice", "Fire"]],
+    [2, "¿De qué está hecha la Dulce Princesa?", "De chicle", "De azúcar", "De hielo", "De fuego", ["What is the ruler of the Candy Kingdom made of?", "Bubblegum", "Sugar", "Ice", "Fire"]],
     [2, "¿Quién creó Hora de Aventura?", "Pendleton Ward", "Alex Hirsch", "Rebecca Sugar", "Dan Harmon", ["Who created Adventure Time?", N, N, N, N]],
     [2, "¿En qué canal se estrenó?", "Cartoon Network", "Disney Channel", "Nickelodeon", "Adult Swim", ["On which channel did it premiere?", N, N, N, N]],
     [3, "¿Cómo se llama la novia de Jake, una unicornio arcoíris?", "Arcoíris", "Chica Arcoíris", "Mary", "Arco", ["What is Jake's rainbow unicorn girlfriend called?", "Lady Rainicorn", "Rainbow Girl", "Mary", "Arco"]],

@@ -94,7 +94,6 @@ export default {
     [3, "¿Qué apodo tiene Kodachi Kuno?", "La Rosa Negra", "La Rosa Azul", "La Rosa Blanca", "La Dama Negra", ["What is Kodachi Kuno's nickname?", "The Black Rose", "The Blue Rose", "The White Rose", "The Black Lady"]],
     [2, "¿Qué arma usa Tatewaki Kuno?", "Una espada de madera", "Una espada de acero", "Un arco", "Una lanza", ["Which weapon does Tatewaki Kuno use?", "A wooden sword", "A steel sword", "A bow", "A spear"]],
     [3, "¿Quién dirige el instituto Furinkan?", "El director Kuno", "Soun Tendo", "Happosai", "Genma Saotome", ["Who runs Furinkan High?", "Principal Kuno", N, N, N]],
-    [2, "¿Qué otra chica persigue Kuno además de Akane?", "De la chica de la trenza", "De Kasumi", "De Shampoo", "De Nabiki", ["Which other girl does Kuno chase besides Akane?", "The pigtailed girl", "Kasumi", "Shampoo", "Nabiki"]],
   ],
   doraemon: [
     [1, "¿Qué invento permite ir al instante a cualquier lugar?", "La Puerta Mágica", "La Máquina del Tiempo", "El Sombrero Volador", "El Mapa Mágico", ["Which gadget lets you reach any place instantly?", "The Anywhere Door", "The Time Machine", "The Flying Hat", "The Magic Map"]],

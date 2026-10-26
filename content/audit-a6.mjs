@@ -55,7 +55,6 @@ export default {
     // Nuevas
     [3, "¿Qué cargo tiene Kaeya en los Caballeros de Favonius?", "Capitán de Caballería", "Caballero Explorador", "Alquimista jefe", "Gran Maestro interino", ["What is Kaeya's position in the Knights of Favonius?", "Cavalry Captain", "Reconnaissance Knight", "Chief Alchemist", "Acting Grand Master"]],
     [2, "¿Quién es la sacerdotisa principal del Santuario Narukami?", "Yae Miko", "Kujou Sara", "Sangonomiya Kokomi", "Kamisato Ayaka", ["Who is the head priestess of the Grand Narukami Shrine?", "Yae Miko", "Kujou Sara", "Sangonomiya Kokomi", "Kamisato Ayaka"]],
-    [2, "¿Quién es la hermana de Kamisato Ayato?", "Kamisato Ayaka", "Kujou Sara", "Yoimiya", "Sangonomiya Kokomi", ["Who is Kamisato Ayato's sister?", "Kamisato Ayaka", "Kujou Sara", "Yoimiya", "Sangonomiya Kokomi"]],
     [2, "¿Qué personaje de Sumeru es una bailarina del Teatro Zubayr?", "Nilou", "Dehya", "Layla", "Candace", ["Which Sumeru character is a dancer at the Zubayr Theater?", "Nilou", "Dehya", "Layla", "Candace"]],
     [3, "¿Quién es la Arconte Pyro de Natlan?", "Mavuika", "Citlali", "Xilonen", "Kinich", ["Who is Natlan's Pyro Archon?", "Mavuika", "Citlali", "Xilonen", "Kinich"]],
   ],
@@ -97,7 +96,6 @@ export default {
     [2, "¿Qué actriz interpreta a Elizabeth Swann?", "Keira Knightley", "Naomie Harris", "Kaya Scodelario", "Penélope Cruz", ["Which actress plays Elizabeth Swann?", "Keira Knightley", "Naomie Harris", "Kaya Scodelario", "Penélope Cruz"]],
     // Nuevas
     [2, "¿Qué pirata de la tripulación de Barbossa tiene un ojo de madera?", "Ragetti", "Pintel", "Gibbs", "Cotton", ["Which pirate in Barbossa's crew has a wooden eye?", "Ragetti", "Pintel", "Gibbs", "Cotton"]],
-    [2, "¿Quién es el padre de Elizabeth Swann?", "Weatherby Swann", "James Norrington", "Lord Beckett", "Joshamee Gibbs", ["Who is Elizabeth Swann's father?", "Weatherby Swann", "James Norrington", "Lord Beckett", "Joshamee Gibbs"]],
     [1, "¿Cómo se llama la segunda película de la saga?", "El cofre del hombre muerto", "En el fin del mundo", "La venganza de Salazar", "Navegando aguas misteriosas", ["What is the second movie in the saga called?", "Dead Man's Chest", "At World's End", "Dead Men Tell No Tales", "On Stranger Tides"]],
     [3, "¿Quién es el padre de Carina Smyth?", "Barbossa", "Jack Sparrow", "Davy Jones", "Will Turner", ["Who is Carina Smyth's father?", "Barbossa", "Jack Sparrow", "Davy Jones", "Will Turner"]],
     [2, "¿Qué actor interpreta a Joshamee Gibbs?", "Kevin McNally", "Jack Davenport", "Jonathan Pryce", "Stellan Skarsgård", ["Which actor plays Joshamee Gibbs?", "Kevin McNally", "Jack Davenport", "Jonathan Pryce", "Stellan Skarsgård"]],
@@ -105,7 +103,6 @@ export default {
 
   kingdomhearts: [
     // Reescrituras
-    [2, "¿Cómo se llama la nave en la que viajan Sora, Donald y Goofy?", "Nave Gumi", "Highwind", "Ragnarok", "Invincible", ["What is the ship Sora, Donald and Goofy travel in called?", "Gummi Ship", "Highwind", "Ragnarok", "Invincible"]],
     [2, "¿Quién es el entrenador de héroes del Coliseo del Olimpo?", "Phil", "Hércules", "Hades", "Zeus", ["Who is the hero trainer at the Olympus Coliseum?", "Phil", "Hercules", "Hades", "Zeus"]],
     [1, "¿Qué dos compañías crearon Kingdom Hearts?", "Square Enix y Disney", "Square Enix y Pixar", "Capcom y Disney", "Nintendo y Disney", ["Which two companies created Kingdom Hearts?", "Square Enix and Disney", "Square Enix and Pixar", "Capcom and Disney", "Nintendo and Disney"]],
     [1, "¿Cómo se llaman las criaturas de oscuridad que devoran corazones?", "Los sincorazón", "Los incorpóreos", "Los Dream Eaters", "Los Unversed", ["What are the creatures of darkness that devour hearts called?", "The Heartless", "The Nobodies", "The Dream Eaters", "The Unversed"]],

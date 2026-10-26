@@ -10,7 +10,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"En Valiente, ¿en qué animal se convierte la reina Elinor?","En un oso","En un lobo","En un ciervo","En un águila"],
     [2,"En Intensa-Mente, ¿con qué funciona el carrito-cohete de Bing Bong?","Con canciones","Con risas","Con recuerdos","Con ideas"],
     [2,"Según Edna Moda, ¿qué jamás debe llevar un superhéroe?","Capa","Máscara","Botas","Guantes"],
-    [2,"En Coco, ¿qué flor guía a las almas de los muertos hasta el mundo de los vivos?","La flor de cempasúchil","La rosa roja","El girasol","La orquídea"],
     [2,"¿Cómo se llama la tortuga surfera que lleva a Marlin y Dory por la corriente?","Crush","Bruce","Gill","Nigel"],
     [2,"En Ratatouille, ¿cuál es el lema de Gusteau?","Cualquiera puede cocinar","La cocina es para los valientes","Comer bien es vivir bien","Cada plato cuenta una historia"],
     [3,"¿Qué musical ve WALL-E una y otra vez en su cinta de video?","¡Hello, Dolly!","Cantando bajo la lluvia","Grease","El mago de Oz"],
@@ -104,13 +103,10 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   yugioh: [
     [2,"¿Cómo se llama el monstruo peludo y marrón de ojos verdes que protege a Yugi?","Kuriboh","Guardián Celta","Gaia el Caballero Feroz","Mago Oscuro"],
-    [2,"¿Cómo se llama la fusión de tres Dragones Blancos de Ojos Azules?","Dragón de Ojos Azules Definitivo","Dragón Alado de Ra","Exodia el Prohibido","Dragón Negro de Ojos Rojos"],
     [1,"¿Cómo se llama el hermano menor de Seto Kaiba?","Mokuba","Roland","Duke","Tristan"],
-    [2,"¿Quién adoptó a Seto Kaiba cuando era niño?","Gozaburo Kaiba","Roland","Maximillion Pegasus","Solomon Muto"],
     [2,"¿Qué Objeto del Milenio posee Maximillion Pegasus?","El Ojo del Milenio","El Collar del Milenio","La Vara del Milenio","La Balanza del Milenio"],
   ],
   stardew: [
-    [2,"¿Qué festival de primavera consiste en buscar huevos?","El Festival del Huevo","La Danza de las Flores","El Luau","El Baile de las Medusas Lunares"],
     [2,"¿Qué vecino trabaja en JojaMart y vive en el rancho de Marnie?","Shane","Sam","Alex","Harvey"],
     [2,"¿Quién vive en una tienda de campaña en las montañas?","Linus","Krobus","El Mago","George"],
     [2,"¿Qué vecina es escultora y vive en una cabaña en el bosque?","Leah","Abigail","Haley","Penny"],

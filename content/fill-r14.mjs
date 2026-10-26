@@ -2,7 +2,7 @@ const N = null;
 export default {
   overwatch: [
     [2, "¿Qué corporación india usó luz sólida y terminó explotando a los habitantes de Río de Janeiro?", "Vishkar", "Omnica", "Lucheng Interstellar", "Lumérico", ["Which Indian corporation used hard light and ended up exploiting the people of Rio de Janeiro?", N, N, N, N]],
-    [2, "¿A qué banda de traficantes de armas perteneció Cassidy antes de entrar en Blackwatch?", "Los Deadlock", "Los Muertos", "Los Junkers", "El clan Shimada", ["Which arms-trafficking gang did Cassidy belong to before joining Blackwatch?", "The Deadlock Gang", "Los Muertos", "The Junkers", "The Shimada clan"]],
+    [2, "¿A qué banda de traficantes de armas perteneció Cassidy antes de entrar en Blackwatch?", "Los Deadlock", "Los Muertos", "Los Junkers", "El clan Shimada", ["Which arms-trafficking outfit did Cassidy belong to before joining Blackwatch?", "The Deadlock Gang", "Los Muertos", "The Junkers", "The Shimada clan"]],
     [2, "¿Qué astrofísico holandés adquirió poderes de gravedad tras un experimento con un agujero negro?", "Sigma", "Winston", "Mei", "Moira", ["Which Dutch astrophysicist gained gravity powers after a black hole experiment?", N, N, N, N]],
     [3, "¿Quién construyó a la robot guardiana Orisa para proteger Numbani?", "Efi Oladele", "Torbjörn", "Brigitte", "Winston", ["Who built the guardian robot Orisa to protect Numbani?", N, N, N, N]],
     [2, "¿A qué pandilla mexicana perteneció la hacker Sombra antes de unirse a Talon?", "Los Muertos", "Los Deadlock", "Los Junkers", "El clan Shimada", ["Which Mexican gang did the hacker Sombra belong to before joining Talon?", N, "The Deadlock Gang", "The Junkers", "The Shimada clan"]],

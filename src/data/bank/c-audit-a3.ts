@@ -26,7 +26,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién vuela en escoba?","Momo Nishimiya","Mai Zen'in","Kasumi Miwa","Mei Mei"],
     [3,"¿Cómo se llama la condición de Toji?","Restricción Celestial","Técnica Inversa","Cuerpo Maldito","Expansión de Dominio"],
     [2,"¿Qué comida adora Gojo?","Los dulces","Los onigiri","El ramen","La carne asada"],
-    [2,"¿Quién es la hermana gemela de Maki Zen'in?","Mai Zen'in","Kasumi Miwa","Momo Nishimiya","Nobara Kugisaki"],
   ],
   friends: [
     [3,"¿Qué número tiene el departamento de Monica?","20","19","21","22"],

@@ -76,7 +76,6 @@ export default {
     [3, "¿Quién destruyó el pueblo de Genos?", "Mad Cyborg", "Dr. Genus", "Metal Knight", "Orochi", ["Who destroyed Genos' town?", N, N, N, N]],
     [3, "¿Quién reconstruyó a Genos?", "Dr. Kuseno", "Dr. Genus", "Metal Knight", "Child Emperor", ["Who rebuilt Genos?", N, N, N, N]],
     [2, "¿Cuántos años tiene Saitama?", "25", "21", "29", "33", ["How old is Saitama?", N, N, N, N]],
-    [2, "¿Qué héroe de Clase S es un niño genio?", "Child Emperor", "Metal Knight", "Tanktop Master", "Puri-Puri Prisoner", ["Which S-Class hero is a child genius?", N, N, N, N]],
   ],
 
   cyberpunk: [

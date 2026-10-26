@@ -64,7 +64,6 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién destruyó el pueblo de Genos?","Mad Cyborg","Dr. Genus","Metal Knight","Orochi"],
     [3,"¿Quién reconstruyó a Genos?","Dr. Kuseno","Dr. Genus","Metal Knight","Child Emperor"],
     [2,"¿Cuántos años tiene Saitama?","25","21","29","33"],
-    [2,"¿Qué héroe de Clase S es un niño genio?","Child Emperor","Metal Knight","Tanktop Master","Puri-Puri Prisoner"],
   ],
   cyberpunk: [
     [3,"¿Quién creó el juego de rol original de Cyberpunk?","Mike Pondsmith","Gary Gygax","Warren Spector","Richard Garriott"],

@@ -23,6 +23,13 @@ const sources = JSON.parse(fs.readFileSync(path.join(root, "src/data/video-sourc
 const catsSrc = fs.readFileSync(path.join(root, "src/data/categories.ts"), "utf8");
 const catIds = [...catsSrc.matchAll(/\{ id: "([a-z0-9]+)", name: "([^"]+)", short: "[^"]+", family: "([A-Za-z0-9]+)"/g)].map((m) => ({ id: m[1], name: m[2], family: m[3] }));
 
+// palabras con peso (4+ letras, sin tildes y recortadas para que "costas" y "Costa" cuenten igual)
+const STOP = new Set("para como cual quien donde cuando esta este estos estas tiene tienen hace llama llaman nombre juego serie pelicula anime saga primera primer segunda final temporada parte personaje entre sobre desde hasta todos todas cada otro otra otros otras porque dice tras durante antes despues mismo misma nuevo nueva gran mejor mayor menor real pasa pone".split(" "));
+const words = (s) =>
+  (s.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "").match(/[a-z0-9']+/g) || [])
+    .filter((w) => w.length >= 4 && !STOP.has(w))
+    .map((w) => w.replace(/^'+|'+$/g, "").slice(0, Math.max(4, w.length - 2)));
+
 let problems = 0;
 const warn = (m) => {
   problems++;
@@ -44,6 +51,12 @@ for (const c of catIds) {
     if (q.media && q.media.e - q.media.s < 8) warn(`${q.id}: fragmento muy corto`);
     // la respuesta no debe estar escrita en la pregunta
     if (!q.visual && q.o[0].length >= 4 && q.q.toLowerCase().includes(q.o[0].toLowerCase())) console.log(`  ! ${q.id}: ¿la pregunta ya dice la respuesta? → ${q.q}`);
+    // ni una palabra que solo tenga la correcta (el "O'Driscoll" de "líder de los O'Driscoll" → "Colm O'Driscoll")
+    else if (q.visual?.v !== "poster") {
+      const inQ = new Set(words(q.q));
+      const clue = words(q.o[0]).find((w) => inQ.has(w) && !q.o.slice(1).some((o) => words(o).includes(w)));
+      if (clue) console.log(`  ! ${q.id}: «${clue}» sale en la pregunta y solo en la correcta → ${q.q} → ${q.o[0]}`);
+    }
     if (q.q.length > 140) warn(`${q.id}: pregunta larga (${q.q.length})`);
   }
 }

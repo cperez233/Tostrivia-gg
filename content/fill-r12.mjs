@@ -8,7 +8,7 @@ export default {
     [2, "¿De quién es la nave Halberd en Brawl?", "De Meta Knight", "De King Dedede", "De Wario", "De Falco", ["Whose ship is the Halberd in Brawl?", "Meta Knight's", "King Dedede's", "Wario's", "Falco's"]],
     [2, "¿Qué luchadora DLC de Smash 4 viene de un juego de PlatinumGames?", "Bayonetta", "Corrin", "Palutena", "Rosalina", ["Which DLC fighter in Smash 4 comes from a PlatinumGames game?", N, N, N, N]],
     [1, "¿Qué diosa de la luz guía a Pit?", "Palutena", "Medusa", "Zelda", "Peach", ["Which goddess of light guides Pit?", N, N, N, N]],
-    [2, "¿De qué juego del NES son el perro y el pato de Smash 4?", "Duck Hunt", "Excitebike", "Balloon Fight", "Kid Icarus", ["Which NES game are the dog and duck from in Smash 4?", N, N, N, N]],
+    [2, "¿De qué juego del NES son el perro y el pato de Smash 4?", "Duck Hunt", "Excitebike", "Balloon Fight", "Kid Icarus", ["Which NES game is Smash 4's hunting-dog fighter from?", N, N, N, N]],
     [2, "¿Qué sustituye a los trofeos coleccionables en Ultimate?", "Los espíritus", "Las pegatinas", "Los amiibo", "Las cartas", ["What replaces collectible trophies in Ultimate?", "Spirits", "Stickers", "Amiibo", "Cards"]],
     [3, "Según Sakurai, ¿qué fue lo último que le pidió Satoru Iwata?", "Un Smash Bros. para Switch", "Un Smash Bros. para móviles", "Un nuevo Kirby", "Un remake de Melee", ["According to Sakurai, what was the last thing Satoru Iwata asked of him?", "A Smash Bros. for Switch", "A Smash Bros. for mobile", "A new Kirby game", "A Melee remake"]],
     [3, "¿Para qué luchador de Ultimate dejaron un hueco libre porque aún no existía?", "Incineroar", "Greninja", "Lucario", "Mewtwo", ["For which Ultimate fighter did the team leave an open slot because he didn't exist yet?", N, N, N, N]],

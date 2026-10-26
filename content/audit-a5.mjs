@@ -6,7 +6,6 @@ export default {
     [2, "En Valiente, ¿en qué animal se convierte la reina Elinor?", "En un oso", "En un lobo", "En un ciervo", "En un águila", ["In Brave, what animal does Queen Elinor turn into?", "A bear", "A wolf", "A deer", "An eagle"]],
     [2, "En Intensa-Mente, ¿con qué funciona el carrito-cohete de Bing Bong?", "Con canciones", "Con risas", "Con recuerdos", "Con ideas", ["In Inside Out, what powers Bing Bong's rocket wagon?", "Songs", "Laughter", "Memories", "Ideas"]],
     [2, "Según Edna Moda, ¿qué jamás debe llevar un superhéroe?", "Capa", "Máscara", "Botas", "Guantes", ["According to Edna Mode, what should a superhero never wear?", "A cape", "A mask", "Boots", "Gloves"]],
-    [2, "En Coco, ¿qué flor guía a las almas de los muertos hasta el mundo de los vivos?", "La flor de cempasúchil", "La rosa roja", "El girasol", "La orquídea", ["In Coco, what flower guides the souls of the dead to the world of the living?", "The marigold", "The red rose", "The sunflower", "The orchid"]],
     [2, "¿Cómo se llama la tortuga surfera que lleva a Marlin y Dory por la corriente?", "Crush", "Bruce", "Gill", "Nigel", ["What is the name of the surfer turtle who carries Marlin and Dory along the current?", "Crush", "Bruce", "Gill", "Nigel"]],
     [2, "En Ratatouille, ¿cuál es el lema de Gusteau?", "Cualquiera puede cocinar", "La cocina es para los valientes", "Comer bien es vivir bien", "Cada plato cuenta una historia", ["In Ratatouille, what is Gusteau's motto?", "Anyone can cook", "Cooking is for the brave", "Eating well is living well", "Every dish tells a story"]],
     [3, "¿Qué musical ve WALL-E una y otra vez en su cinta de video?", "¡Hello, Dolly!", "Cantando bajo la lluvia", "Grease", "El mago de Oz", ["What musical does WALL-E watch over and over on his videotape?", "Hello, Dolly!", "Singin' in the Rain", "Grease", "The Wizard of Oz"]],
@@ -131,14 +130,11 @@ export default {
     // reescritura
     [2, "¿Cómo se llama el monstruo peludo y marrón de ojos verdes que protege a Yugi?", "Kuriboh", "Guardián Celta", "Gaia el Caballero Feroz", "Mago Oscuro", ["What is the name of the furry brown green-eyed monster that protects Yugi?", "Kuriboh", "Celtic Guardian", "Gaia the Fierce Knight", "Dark Magician"]],
     // nuevas
-    [2, "¿Cómo se llama la fusión de tres Dragones Blancos de Ojos Azules?", "Dragón de Ojos Azules Definitivo", "Dragón Alado de Ra", "Exodia el Prohibido", "Dragón Negro de Ojos Rojos", ["What is the fusion of three Blue-Eyes White Dragons called?", "Blue-Eyes Ultimate Dragon", "Winged Dragon of Ra", "Exodia the Forbidden One", "Red-Eyes Black Dragon"]],
     [1, "¿Cómo se llama el hermano menor de Seto Kaiba?", "Mokuba", "Roland", "Duke", "Tristan", ["What is the name of Seto Kaiba's younger brother?", "Mokuba", "Roland", "Duke", "Tristan"]],
-    [2, "¿Quién adoptó a Seto Kaiba cuando era niño?", "Gozaburo Kaiba", "Roland", "Maximillion Pegasus", "Solomon Muto", ["Who adopted Seto Kaiba as a child?", "Gozaburo Kaiba", "Roland", "Maximillion Pegasus", "Solomon Muto"]],
     [2, "¿Qué Objeto del Milenio posee Maximillion Pegasus?", "El Ojo del Milenio", "El Collar del Milenio", "La Vara del Milenio", "La Balanza del Milenio", ["Which Millennium Item does Maximillion Pegasus own?", "The Millennium Eye", "The Millennium Necklace", "The Millennium Rod", "The Millennium Scales"]],
   ],
 
   stardew: [
-    [2, "¿Qué festival de primavera consiste en buscar huevos?", "El Festival del Huevo", "La Danza de las Flores", "El Luau", "El Baile de las Medusas Lunares", ["Which spring festival is about hunting for eggs?", "The Egg Festival", "The Flower Dance", "The Luau", "The Dance of the Moonlight Jellies"]],
     [2, "¿Qué vecino trabaja en JojaMart y vive en el rancho de Marnie?", "Shane", "Sam", "Alex", "Harvey", ["Which villager works at JojaMart and lives at Marnie's ranch?", "Shane", "Sam", "Alex", "Harvey"]],
     [2, "¿Quién vive en una tienda de campaña en las montañas?", "Linus", "Krobus", "El Mago", "George", ["Who lives in a tent in the mountains?", "Linus", "Krobus", "The Wizard", "George"]],
     [2, "¿Qué vecina es escultora y vive en una cabaña en el bosque?", "Leah", "Abigail", "Haley", "Penny", ["Which villager is a sculptor who lives in a cottage in the forest?", "Leah", "Abigail", "Haley", "Penny"]],

@@ -121,7 +121,7 @@ export default {
     [3, "¿Qué dos agentes federales investigan Gravity Falls?", "Powers y Trigger", "Mulder y Scully", "Smith y Wesson", "Johnson y Johnson", ["Which two federal agents investigate Gravity Falls?", "Powers and Trigger", "Mulder and Scully", "Smith and Wesson", "Johnson and Johnson"]],
     [2, "¿Cómo se llama la rica rival de Mabel?", "Pacifica Northwest", "Candy Chiu", "Grenda", "Lazy Susan", ["What is the name of Mabel's rich rival?", N, "Candy Chiu", "Grenda", "Lazy Susan"]],
     [3, "¿En qué año se estrenó Gravity Falls?", "2012", "2010", "2014", "2016", ["In what year did Gravity Falls premiere?", N, N, N, N]],
-    [2, "¿Qué forma tiene la marca de nacimiento de Dipper en la frente?", "La Osa Mayor", "La Cruz del Sur", "Orión", "Casiopea", ["What shape is the birthmark on Dipper's forehead?", "The Big Dipper", "The Southern Cross", "Orion", "Cassiopeia"]],
+    [2, "¿Qué forma tiene la marca de nacimiento de Dipper en la frente?", "La Osa Mayor", "La Cruz del Sur", "Orión", "Casiopea", ["What shape is the birthmark on Mason Pines's forehead?", "The Big Dipper", "The Southern Cross", "Orion", "Cassiopeia"]],
     [2, "¿De quién está enamorado Dipper al principio de la serie?", "Wendy", "Pacifica", "Candy", "Mabel", ["Who does Dipper have a crush on at the start of the series?", "Wendy", "Pacifica", "Candy", "Mabel"]],
     [2, "¿Detrás de qué objeto de la Cabaña del Misterio se esconde la entrada al laboratorio secreto?", "Una máquina expendedora", "Un cuadro", "Un armario", "La chimenea", ["Behind which object in the Mystery Shack is the entrance to the secret lab hidden?", "A vending machine", "A painting", "A wardrobe", "The fireplace"]],
   ],

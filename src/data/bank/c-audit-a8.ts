@@ -68,7 +68,6 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué villano llega a Nueva York en Spider-Man 2 buscando un rival digno?","Kraven","Mysterio","El Escorpión","Shocker"],
     [2,"¿Qué poder de Miles le permite volverse invisible?","Camuflaje","Descargas bioeléctricas","Superfuerza","Volar"],
     [2,"¿A qué villano arresta Spider-Man al inicio del juego de 2018?","Kingpin","Mister Negativo","Shocker","Electro"],
-    [2,"¿Cómo se llama la madre de Miles Morales?","Rio Morales","Yuri Watanabe","Hailey Cooper","Mary Jane Watson"],
     [3,"¿Quién es el Tinkerer en Miles Morales?","Phin Mason","Hailey Cooper","Aaron Davis","Ganke Lee"],
     [2,"¿Qué dos distritos de Nueva York se suman al mapa en Spider-Man 2?","Brooklyn y Queens","El Bronx y Staten Island","Newark y Jersey City","Long Island y Yonkers"],
   ],

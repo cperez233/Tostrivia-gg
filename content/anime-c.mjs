@@ -43,7 +43,7 @@ export default {
     [1, "¿Qué es Inuyasha?", "Un semidemonio perro", "Un humano", "Un demonio total", "Un lobo", ["What is Inuyasha?", "A half-dog demon", "A human", "A full demon", "A wolf"]],
     [1, "¿Cómo se llama la chica que viaja del presente al pasado?", "Kagome Higurashi", "Kikyo", "Sango", "Rin", ["What is the girl who travels from the present to the past called?", N, N, N, N]],
     [1, "¿Por dónde viaja Kagome al pasado?", "Por el pozo del templo", "Por un espejo", "Por un árbol", "Por una puerta", ["How does Kagome travel to the past?", "Through the well at the shrine", "Through a mirror", "Through a tree", "Through a door"]],
-    [1, "¿Cómo se llama la joya que todos buscan?", "La Perla de Shikon", "La Perla de Jade", "El Cristal del Alma", "La Gema Roja", ["What is the jewel everyone is searching for called?", "The Shikon Jewel", "The Jade Pearl", "The Soul Crystal", "The Red Gem"]],
+    [1, "¿Cómo se llama la joya que todos buscan?", "La Perla de Shikon", "La Perla de Jade", "El Cristal del Alma", "La Gema Roja", ["What is the sacred gem everyone is searching for called?", "The Shikon Jewel", "The Jade Pearl", "The Soul Crystal", "The Red Gem"]],
     [1, "¿Cómo se llama la espada de Inuyasha?", "Tessaiga", "Tenseiga", "Bakusaiga", "Kusanagi", ["What is Inuyasha's sword called?", N, N, N, N]],
     [1, "¿Cómo se llama el hermano mayor de Inuyasha?", "Sesshomaru", "Naraku", "Miroku", "Koga", ["What is Inuyasha's older half-brother called?", N, N, N, N]],
     [1, "¿Quién es el villano principal?", "Naraku", "Sesshomaru", "Koga", "Kagura", ["Who is the main villain?", N, N, N, N]],

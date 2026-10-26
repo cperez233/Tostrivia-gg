@@ -26,7 +26,6 @@ export default {
     [3, "¿Quién vuela en escoba?", "Momo Nishimiya", "Mai Zen'in", "Kasumi Miwa", "Mei Mei", ["Who flies on a broom?", N, N, N, N]],
     [3, "¿Cómo se llama la condición de Toji?", "Restricción Celestial", "Técnica Inversa", "Cuerpo Maldito", "Expansión de Dominio", ["What is Toji's condition called?", "Heavenly Restriction", "Reverse Technique", "Cursed Body", "Domain Expansion"]],
     [2, "¿Qué comida adora Gojo?", "Los dulces", "Los onigiri", "El ramen", "La carne asada", ["What food does Gojo love?", "Sweets", "Onigiri", "Ramen", "Grilled beef"]],
-    [2, "¿Quién es la hermana gemela de Maki Zen'in?", "Mai Zen'in", "Kasumi Miwa", "Momo Nishimiya", "Nobara Kugisaki", ["Who is Maki Zen'in's twin sister?", N, N, N, N]],
   ],
 
   friends: [
