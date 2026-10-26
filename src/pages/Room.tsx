@@ -177,7 +177,8 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                   <span className="roster__tag">
                     {p.id === snap.hostId ? t("Anfitrión") : leaders.includes(p.id) ? t("Líder") : p.id === client.me.id ? t("Tú") : p.online ? "" : t("Desconectado")}
                   </span>
-                  {client.isHost && p.id !== snap.hostId && (
+                  {/* corona: dorada para el anfitrión y los líderes (la ven todos); gris para que el anfitrión se la ponga a alguien */}
+                  {client.isHost && p.id !== snap.hostId ? (
                     <button
                       type="button"
                       className={`roster__lead ${leaders.includes(p.id) ? "is-on" : ""}`}
@@ -186,10 +187,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                       aria-label={leaders.includes(p.id) ? t("Quitarle el mando a {name}", { name: p.name }) : t("Hacer líder a {name}", { name: p.name })}
                       title={leaders.includes(p.id) ? t("Quitarle el mando a {name}", { name: p.name }) : t("Hacer líder a {name}", { name: p.name })}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
-                        <path d="M3 18h18l-1.5-10-5 4L12 5l-2.5 7-5-4z" fill={leaders.includes(p.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
-                      </svg>
+                      <Crown on={leaders.includes(p.id)} />
                     </button>
+                  ) : (
+                    (p.id === snap.hostId || leaders.includes(p.id)) && (
+                      <span className="roster__lead is-on is-badge" title={p.id === snap.hostId ? t("Anfitrión") : t("Líder")}>
+                        <Crown on />
+                      </span>
+                    )
                   )}
                   {lead && p.id !== snap.hostId && p.id !== client.me.id && (
                     <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={t("Sacar a {name}", { name: p.name })}>
@@ -299,6 +304,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
         </div>
       </div>
     </div>
+  );
+}
+
+function Crown({ on }: { on: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+      <path d="M3 18h18l-1.5-10-5 4L12 5l-2.5 7-5-4z" fill={on ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round" />
+    </svg>
   );
 }
 

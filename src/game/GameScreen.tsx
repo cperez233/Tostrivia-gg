@@ -197,8 +197,8 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
                   ))}
                   {t(DIFF[q.d])}
                 </span>
-                {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && (
-                  // en las mezclas: de qué obra sale esta pregunta, bien visible
+                {CATEGORY_BY_ID[q.cat] && (
+                  // de qué obra sale esta pregunta, bien visible (en una sola categoría y en las mezclas)
                   <span className="qpanel__from">
                     <span className="qpanel__from-k">{t("Pregunta de")}</span>
                     <b className="qpanel__from-v">{CATEGORY_BY_ID[q.cat].name}</b>

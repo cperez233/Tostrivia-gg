@@ -185,9 +185,19 @@
   background: var(--ink);
   color: var(--on-ink-2);
 }
+.roster__lead:not(.is-on) {
+  color: var(--on-ink-3);
+}
 .roster__lead.is-on {
   border-color: var(--signal);
   color: var(--signal);
+}
+.roster__lead.is-badge {
+  border-color: transparent;
+  background: none;
+}
+.roster__lead.is-badge::after {
+  content: none;
 }
 .roster li:has(.roster__lead) .roster__tag {
   padding-right: 28px;

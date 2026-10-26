@@ -83,7 +83,7 @@ export const WEIGHT: Record<PowerId, number> = {
   blink: 3,
 };
 /** los que se ven en la pantalla de los demás y cuánto duran (el Susto con screamer de YouTube dura SCARE_CLIP_MS) */
-export const FX_MS: Record<FxId, number> = { ink: 7_000, scare: 1_400, shuffle: 10_000, flip: 10_000, dark: 11_000, mirror: 11_000, quake: 10_000, tiny: 11_000, blur: 10_000, spin: 9_000, party: 10_000, scramble: 11_000, blink: 10_000 };
+export const FX_MS: Record<FxId, number> = { ink: 15_000, scare: 1_400, shuffle: 15_000, flip: 15_000, dark: 15_000, mirror: 15_000, quake: 15_000, tiny: 15_000, blur: 15_000, spin: 15_000, party: 15_000, scramble: 15_000, blink: 15_000 };
 /** la Tinta no deja responder: siempre quedan al menos estos ms libres al final de la pregunta */
 export const INK_FREE_MS = 4_000;
 export const SCARE_CLIP_MS = 4_500;
