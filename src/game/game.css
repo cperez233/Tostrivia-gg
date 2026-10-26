@@ -335,8 +335,28 @@
   margin-right: 4px;
 }
 .qpanel__from {
-  padding: 1px 8px;
-  border: 2px solid var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 100%;
+  padding: 4px 12px 5px;
+  border: 3px solid var(--ink);
+  background: var(--signal);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.qpanel__from-k {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.qpanel__from-v {
+  font-family: var(--display);
+  font-size: clamp(17px, 1.2vw + 12px, 22px);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 .qpanel__q {
   font-size: clamp(1.45rem, 1.05rem + 1.9vw, 2.45rem);
@@ -1046,6 +1066,11 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--signal);
+}
+.powers__more {
+  color: var(--on-ink);
+  text-transform: none;
+  letter-spacing: 0;
 }
 .powers__empty {
   margin: 0;

@@ -83,6 +83,9 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   const [filter, setFilter] = useState<Filter>("todo");
   const link = `${location.origin}/sala/${client.code}`;
   const host = snap.players.find((p) => p.id === snap.hostId);
+  const leaders = snap.leaders ?? [];
+  // el anfitrión y los líderes que nombró manejan la sala
+  const lead = client.isHost || leaders.includes(client.me.id);
   const info = snap.cat ? describe(snap.cat) : null;
   const cat = info?.cover ?? null;
   const online = snap.players.filter((p) => p.online);
@@ -171,8 +174,24 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                     <Avatar animal={p.seal} size={58} title={animalName(p.seal)} />
                   </span>
                   <span className="roster__name">{p.name}</span>
-                  <span className="roster__tag">{p.id === snap.hostId ? t("Anfitrión") : p.id === client.me.id ? t("Tú") : p.online ? "" : t("Desconectado")}</span>
+                  <span className="roster__tag">
+                    {p.id === snap.hostId ? t("Anfitrión") : leaders.includes(p.id) ? t("Líder") : p.id === client.me.id ? t("Tú") : p.online ? "" : t("Desconectado")}
+                  </span>
                   {client.isHost && p.id !== snap.hostId && (
+                    <button
+                      type="button"
+                      className={`roster__lead ${leaders.includes(p.id) ? "is-on" : ""}`}
+                      onClick={() => client.setLeader(p.id, !leaders.includes(p.id))}
+                      aria-pressed={leaders.includes(p.id)}
+                      aria-label={leaders.includes(p.id) ? t("Quitarle el mando a {name}", { name: p.name }) : t("Hacer líder a {name}", { name: p.name })}
+                      title={leaders.includes(p.id) ? t("Quitarle el mando a {name}", { name: p.name }) : t("Hacer líder a {name}", { name: p.name })}
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+                        <path d="M3 18h18l-1.5-10-5 4L12 5l-2.5 7-5-4z" fill={leaders.includes(p.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                  )}
+                  {lead && p.id !== snap.hostId && p.id !== client.me.id && (
                     <button type="button" className="roster__kick" onClick={() => client.kick(p.id)} aria-label={t("Sacar a {name}", { name: p.name })}>
                       <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden>
                         <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" />
@@ -195,7 +214,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
           <h2 id="cat-t" className="sr-only">
             {t("Categoría")}
           </h2>
-          {client.isHost && (
+          {lead && (
             <div className="filters lobby__filters" role="radiogroup" aria-label={t("Qué entra en la ruleta")}>
               {FILTERS.map((f) => (
                 <button key={f.id} type="button" role="radio" aria-checked={filter === f.id} className={`filter ${filter === f.id ? "is-on" : ""}`} onClick={() => pickFilter(f.id)} disabled={spinShown}>
@@ -206,8 +225,8 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
             </div>
           )}
           <div className="wheelbox">
-            <Wheel size="compact" deck={deck} spin={snap.spin} canSpin={client.isHost} onRequest={() => client.setSpin(makeSpin(deck))} onLanded={(s) => setLanded(s.nonce)} />
-            {client.isHost && filter !== "cultura" && <Reshuffle onClick={reshuffle} disabled={spinShown} />}
+            <Wheel size="compact" deck={deck} spin={snap.spin} canSpin={lead} onRequest={() => client.setSpin(makeSpin(deck))} onLanded={(s) => setLanded(s.nonce)} />
+            {lead && filter !== "cultura" && <Reshuffle onClick={reshuffle} disabled={spinShown} />}
           </div>
           <div className="lobby__chosen" aria-live="polite">
             <AnimatePresence mode="wait">
@@ -223,14 +242,14 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                 </motion.div>
               ) : (
                 <motion.p key="wait" className="lobby__waiting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  {spinShown ? t("Girando…") : client.isHost ? t("Gira la ruleta o elige de la lista.") : t("{name} está eligiendo la categoría.", { name: host?.name ?? t("El anfitrión") })}
+                  {spinShown ? t("Girando…") : lead ? t("Gira la ruleta o elige de la lista.") : t("{name} está eligiendo la categoría.", { name: host?.name ?? t("El anfitrión") })}
                 </motion.p>
               )}
             </AnimatePresence>
           </div>
           <MatchSetup
             idp="lobby"
-            readOnly={!client.isHost}
+            readOnly={!lead}
             variant={snap.variant}
             rules={snap.rules ?? DEFAULT_RULES}
             onVariant={(v) => {
@@ -243,7 +262,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
             }}
             disabled={spinShown}
           />
-          {client.isHost && (
+          {lead && (
             <>
               <button type="button" className="btn lobby__choose" onClick={() => setChoosing(true)} disabled={spinShown}>
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
@@ -267,7 +286,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
 
       <div className="lobby__dock">
         <div className="wrap lobby__dock-in">
-          {client.isHost ? (
+          {lead ? (
             <>
               <p className="lobby__hint">{!cat ? t("Falta la categoría.") : online.length < 2 ? t("Puedes empezar solo o esperar a los demás.") : t("Listos: {n}.", { n: online.length })}</p>
               <button type="button" className="btn btn--hanko" disabled={!cat || spinShown} onClick={() => client.start(newSeed())}>

@@ -6,7 +6,7 @@ import { loadYouTube, type YTNamespace, type YTPlayer } from "../lib/youtube";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
 import type { Pick, Player, Snapshot } from "./match";
-import { FX_POWERS, POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
+import { FX_POWERS, POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, hasPowers, powerRules, type PowerId, type Variant } from "./powers";
 import { multiplier } from "./round";
 import { DEFAULT_RULES } from "./rules";
 import { fmt } from "./useGame";
@@ -53,8 +53,8 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
   const deadline = localStart + snap.duration;
 
   // modo Poderes: lo que usé en esta pregunta y lo que me echaron encima (Tinta, Susto, Revoltijo, De cabeza)
-  const used = snap.used?.[client.me.id];
-  const cut = (snap.phase === "question" && used?.cut) || [];
+  const used = snap.used?.[client.me.id] ?? [];
+  const cut = snap.phase === "question" ? used.flatMap((u) => u.cut ?? []) : [];
   const fx = snap.phase === "question" ? snap.fx?.[client.me.id] : undefined;
   const fxFrom = fx ? localStart + fx.from : 0;
   const fxUntil = fx ? localStart + fx.until : 0;
@@ -71,6 +71,8 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
   }, [fxPending, fxOn, fxFrom, fxUntil, fx?.p, tick]);
   const inked = fxOn && fx?.p === "ink";
   const shuffled = fxOn && fx?.p === "shuffle" ? shuffle([0, 1, 2, 3], rng(Math.floor(now / 750))) : null;
+  // el anfitrión y los líderes que nombró pasan de pregunta
+  const lead = client.isHost || !!snap.leaders?.includes(client.me.id);
   const nameOf = (pid: string) => snap.players.find((p) => p.id === pid)?.name ?? "?";
 
   const answer = (i: number) => {
@@ -85,7 +87,7 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
       if (e.target instanceof HTMLInputElement) return;
       const n = "1234".indexOf(e.key) + 1 || "abcd".indexOf(e.key.toLowerCase()) + 1;
       if (n && snap.phase === "question") answer(n - 1);
-      if (e.key === "Enter" && snap.phase === "reveal" && client.isHost) client.next();
+      if (e.key === "Enter" && snap.phase === "reveal" && lead) client.next();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -129,7 +131,7 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
             <Cover cat={cat} sizes="30px" />
           </span>
           <span className="game__cat-name">{cat.name}</span>
-          {snap.variant === "powers" && <span className="game__variant">{VARIANT_TEXT.powers.name}</span>}
+          {hasPowers(snap.variant) && <span className="game__variant">{VARIANT_TEXT[snap.variant].name}</span>}
           {rules.mult !== 1 && (
             <span className="game__variant game__mult" aria-label={t("Puntos ×{n}", { n: rules.mult.toLocaleString(locale()) })}>
               ×{rules.mult.toLocaleString(locale())}
@@ -195,7 +197,13 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
                   ))}
                   {t(DIFF[q.d])}
                 </span>
-                {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && <span className="qpanel__from">{t("De {c}", { c: CATEGORY_BY_ID[q.cat].name })}</span>}
+                {q.cat !== snap.cat && CATEGORY_BY_ID[q.cat] && (
+                  // en las mezclas: de qué obra sale esta pregunta, bien visible
+                  <span className="qpanel__from">
+                    <span className="qpanel__from-k">{t("Pregunta de")}</span>
+                    <b className="qpanel__from-v">{CATEGORY_BY_ID[q.cat].name}</b>
+                  </span>
+                )}
               </div>
               <QuestionText q={q.q} visual={q.visual} />
               {q.visual?.v === "poster" && (
@@ -279,14 +287,15 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
             </AnimatePresence>
           </div>
 
-          {snap.variant === "powers" && me && snap.phase !== "reveal" && (
+          {hasPowers(snap.variant) && me && snap.phase !== "reveal" && (
             <PowerBar
+              variant={snap.variant}
               hand={me.powers ?? []}
-              used={used?.p}
+              used={used.map((u) => u.p)}
               closed={snap.phase !== "question" || myPick != null}
-              spent={!!used}
+              left={powerRules(snap.variant).uses - used.length}
               // los de pantalla solo le llegan a quien sigue sin responder (y sin Escudo ni Estrella)
-              noTarget={!online.some((p) => p.id !== client.me.id && !snap.answered.includes(p.id) && snap.used?.[p.id]?.p !== "shield" && snap.used?.[p.id]?.p !== "star")}
+              noTarget={!online.some((p) => p.id !== client.me.id && !snap.answered.includes(p.id) && !snap.used?.[p.id]?.some((u) => u.p === "shield" || u.p === "star"))}
               onUse={(p) => client.power(snap.index, p)}
             />
           )}
@@ -311,7 +320,7 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
 
           {reveal && (
             <div className="game__next">
-              {client.isHost ? (
+              {lead ? (
                 <button type="button" className="btn btn--hanko" onClick={() => client.next()} autoFocus>
                   {snap.index + 1 >= snap.ids.length ? t("Ver resultado") : t("Siguiente pregunta")}
                   <Arrow />
@@ -594,19 +603,38 @@ function Scare({ who }: { who: string }) {
   );
 }
 
-/** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
-function PowerBar({ hand, used, closed, spent, noTarget, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; noTarget: boolean; onUse: (p: PowerId) => void }) {
+/** modo Poderes: barra con los poderes en la mano; se usan antes de responder (uno por pregunta, dos en Ultra Locura) */
+function PowerBar({
+  variant,
+  hand,
+  used,
+  closed,
+  left,
+  noTarget,
+  onUse,
+}: {
+  variant: Variant;
+  hand: PowerId[];
+  used: PowerId[];
+  closed: boolean;
+  /** cuántos más puede tirar en esta pregunta */
+  left: number;
+  noTarget: boolean;
+  onUse: (p: PowerId) => void;
+}) {
+  const spent = left <= 0;
   return (
     <section className="powers" aria-label={POWER_LINES.label}>
       <p className="powers__label">
-        <span aria-hidden>⚡</span> {used ? POWER_LINES.used(POWER_TEXT[used].name) : POWER_LINES.label}
+        <span aria-hidden>⚡</span> {used.length ? POWER_LINES.used(used.map((p) => POWER_TEXT[p].name).join(" + ")) : POWER_LINES.label}
+        {used.length > 0 && !spent && !closed && hand.length > 0 && <span className="powers__more"> {POWER_LINES.more(left)}</span>}
       </p>
-      {hand.length === 0 && !used && <p className="powers__empty">{POWER_LINES.empty}</p>}
+      {hand.length === 0 && !used.length && <p className="powers__empty">{POWER_LINES.empty(variant)}</p>}
       <ul className="powers__hand">
         {hand.map((p, i) => {
           // el Bloque ? se puede abrir aunque ya hayas usado otro
           const idle = noTarget && (FX_POWERS as PowerId[]).includes(p);
-          const disabled = closed || (spent && p !== "mystery") || idle;
+          const disabled = closed || (p !== "mystery" && (spent || used.includes(p))) || idle;
           return (
             <li key={`${p}-${i}`}>
               <motion.button
@@ -641,19 +669,22 @@ const POINT_ATTACKS: PowerId[] = ["steal", "redShell", "blueShell", "lightning",
 
 function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string, picks: Record<string, Pick>): string[] {
   const out: string[] = [];
-  if (pick.power === "double" && pick.bonus) out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
-  if (pick.power === "dice" && pick.roll) out.push(`${POWER_ICON.dice} ${POWER_LINES.dice(pick.roll, pick.bonus ?? 0)}`);
-  if (pick.power === "mushroom" && pick.bonus) out.push(`${POWER_ICON.mushroom} ${POWER_LINES.mushroom(pick.bonus)}`);
-  if (pick.power === "star" && pick.bonus) out.push(`${POWER_ICON.star} ${POWER_LINES.star}`);
+  for (const b of pick.boosts ?? []) {
+    if (b.p === "double" && b.pts) out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
+    if (b.p === "dice" && b.roll) out.push(`${POWER_ICON.dice} ${POWER_LINES.dice(b.roll, b.pts)}`);
+    if (b.p === "mushroom" && b.pts) out.push(`${POWER_ICON.mushroom} ${POWER_LINES.mushroom(b.pts)}`);
+    if (b.p === "star" && b.pts) out.push(`${POWER_ICON.star} ${POWER_LINES.star}`);
+  }
   if (pick.shielded) out.push(POWER_LINES.shielded);
   for (const d of pick.dealt ?? []) out.push(d.p === "swapScore" ? POWER_LINES.swappedUp(nameOf(d.to), d.pts) : POWER_LINES.dealt(d.p, nameOf(d.to), d.pts));
   for (const h of pick.hits ?? [])
     out.push(h.p === "swapScore" ? POWER_LINES.swappedDown(nameOf(h.by), h.pts) : h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
   for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(b.p, nameOf(b.by), b.with));
   // el Robo solo se intenta si aciertas; los demás siempre
-  if (pick.power && POINT_ATTACKS.includes(pick.power) && (pick.power !== "steal" || pick.ok)) {
-    const landed = pick.dealt?.length || pick.hits?.some((h) => h.by === me) || Object.values(picks).some((x) => x.blocked?.some((b) => b.by === me));
-    if (!landed) out.push(POWER_LINES.missed(pick.power));
+  for (const p of pick.powers ?? []) {
+    if (!POINT_ATTACKS.includes(p) || (p === "steal" && !pick.ok)) continue;
+    const landed = pick.dealt?.some((d) => d.p === p) || pick.hits?.some((h) => h.by === me && h.p === p) || Object.values(picks).some((x) => x.blocked?.some((b) => b.by === me && b.p === p));
+    if (!landed) out.push(POWER_LINES.missed(p));
   }
   if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${(pick.consolation ? POWER_LINES.consolation : POWER_LINES.earned)(POWER_TEXT[pick.earned].name)}`);
   return out;
@@ -839,7 +870,7 @@ function FinalScreen({ client, snap, onExit, onCats }: { client: GameClient; sna
   // en grupo primero va el podio animado; desde ahí se puede ver el detalle de cada uno
   const [details, setDetails] = useState(snap.mode !== "group");
   const again = () => client.start(newSeed());
-  const groupActions = client.isHost ? (
+  const groupActions = client.isHost || snap.leaders?.includes(client.me.id) ? (
     <>
       <button type="button" className="btn btn--hanko" onClick={again}>
         {t("Otra ronda")}

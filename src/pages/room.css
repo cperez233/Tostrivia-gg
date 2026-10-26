@@ -172,7 +172,28 @@
   background: var(--ink);
   color: var(--on-ink-2);
 }
-.roster__kick::after {
+/* corona: el anfitrión le da el mando de la sala a alguien */
+.roster__lead {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink-line);
+  background: var(--ink);
+  color: var(--on-ink-2);
+}
+.roster__lead.is-on {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+.roster li:has(.roster__lead) .roster__tag {
+  padding-right: 28px;
+}
+.roster__kick::after,
+.roster__lead::after {
   content: "";
   position: absolute;
   inset: -7px;

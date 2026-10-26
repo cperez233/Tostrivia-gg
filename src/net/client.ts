@@ -6,7 +6,8 @@
  */
 import type { DataConnection, Peer as PeerType, PeerOptions } from "peerjs";
 import { Match, type Snapshot, type Spin } from "../game/match";
-import { isPower, type PowerId, type Variant } from "../game/powers";
+import { isPower, isVariant, type PowerId, type Variant } from "../game/powers";
+import { isValidCat } from "../game/mix";
 import type { Rules } from "../game/rules";
 import { randomInt } from "../lib/rng";
 
@@ -53,6 +54,8 @@ export interface GameClient {
   setRules(r: Rules): void;
   backToLobby(): void;
   kick(id: string): void;
+  /** solo el anfitrión: darle o quitarle el mando de la sala a alguien */
+  setLeader(id: string, on: boolean): void;
   leave(): void;
   /** chat y emotes (solo en grupo): pasan por el anfitrión, que los reparte */
   say(text: string): void;
@@ -68,7 +71,9 @@ type GuestMsg =
   | { t: "power"; i: number; p: PowerId }
   | { t: "ping" }
   | { t: "chat"; body: string }
-  | { t: "emote"; e: string };
+  | { t: "emote"; e: string }
+  /** un líder maneja la sala: el anfitrión lo ejecuta solo si de verdad es líder */
+  | { t: "ctl"; op: "start" | "next" | "lobby" | "spin" | "deck" | "cat" | "variant" | "rules" | "kick"; a?: unknown };
 
 type HostMsg =
   | { t: "snap"; s: Snapshot }
@@ -171,6 +176,7 @@ export class LocalClient implements GameClient {
     this.match.backToLobby();
   }
   kick(_id: string) {}
+  setLeader(_id: string, _on: boolean) {}
   leave() {
     this.match.destroy();
   }
@@ -284,6 +290,31 @@ export class HostClient extends LocalClient {
     else if (msg.t === "power" && isPower(msg.p)) this.match.usePower(entry.pid, msg.i, msg.p);
     else if (msg.t === "chat") this.post(entry.pid, "text", msg.body);
     else if (msg.t === "emote") this.post(entry.pid, "emote", msg.e);
+    else if (msg.t === "ctl" && this.match.isLeader(entry.pid)) this.control(msg.op, msg.a);
+  }
+
+  /** lo que manda un líder: se revisa como cualquier cosa que llega por la red */
+  private control(op: string, a: unknown) {
+    const str = (x: unknown) => (typeof x === "string" && x.length <= 80 ? x : null);
+    if (op === "start") this.match.start(typeof a === "number" && Number.isFinite(a) ? a : randomInt(2 ** 31));
+    else if (op === "next") this.match.next();
+    else if (op === "lobby") this.match.backToLobby();
+    else if (op === "cat") {
+      const c = str(a);
+      if (c && isValidCat(c)) this.match.setCategory(c);
+    } else if (op === "deck") {
+      if (Array.isArray(a) && a.length <= 60 && a.every((c) => str(c) && isValidCat(c as string))) this.match.setDeck(a as string[]);
+    } else if (op === "spin") {
+      const x = a as Partial<Spin> | null;
+      if (x && str(x.cat) && isValidCat(x.cat!) && Number.isInteger(x.index) && Number.isFinite(x.nonce)) this.match.setSpin({ cat: x.cat!, index: x.index!, nonce: x.nonce! });
+    } else if (op === "variant") {
+      if (isVariant(a)) this.match.setVariant(a);
+    } else if (op === "rules") {
+      if (a && typeof a === "object") this.match.setRules(a as Rules);
+    } else if (op === "kick") {
+      const id = str(a);
+      if (id) this.kick(id);
+    }
   }
 
   /** todo mensaje pasa por aquí: se limpia, se le pone el nombre que tiene en la partida y se reparte */
@@ -336,6 +367,10 @@ export class HostClient extends LocalClient {
         setTimeout(() => this.drop(e), 200);
       }
     this.match.kick(id);
+  }
+
+  setLeader(id: string, on: boolean) {
+    this.match.setLeader(id, on);
   }
 
   leave() {
@@ -452,15 +487,35 @@ export class GuestClient implements GameClient {
   chatLog() {
     return this.chat;
   }
-  next() {}
-  start() {}
-  setSpin() {}
-  setDeck() {}
-  setCategory() {}
-  setVariant() {}
-  setRules() {}
-  backToLobby() {}
-  kick() {}
+  // si el anfitrión lo hizo líder, puede manejar la sala; si no, el anfitrión lo ignora
+  next() {
+    this.send({ t: "ctl", op: "next" });
+  }
+  start(seed: number) {
+    this.send({ t: "ctl", op: "start", a: seed });
+  }
+  setSpin(spin: Spin) {
+    this.send({ t: "ctl", op: "spin", a: spin });
+  }
+  setDeck(deck: string[]) {
+    this.send({ t: "ctl", op: "deck", a: deck });
+  }
+  setCategory(cat: string) {
+    this.send({ t: "ctl", op: "cat", a: cat });
+  }
+  setVariant(v: Variant) {
+    this.send({ t: "ctl", op: "variant", a: v });
+  }
+  setRules(r: Rules) {
+    this.send({ t: "ctl", op: "rules", a: r });
+  }
+  backToLobby() {
+    this.send({ t: "ctl", op: "lobby" });
+  }
+  kick(id: string) {
+    this.send({ t: "ctl", op: "kick", a: id });
+  }
+  setLeader() {}
   leave() {
     if (this.watch) clearInterval(this.watch);
     try {

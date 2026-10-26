@@ -7,8 +7,10 @@
 import { t } from "../i18n";
 import { random, weightedIndex } from "../lib/rng";
 
-export type Variant = "vanilla" | "powers";
-export const VARIANTS: Variant[] = ["vanilla", "powers"];
+export type Variant = "vanilla" | "powers" | "ultra";
+export const VARIANTS: Variant[] = ["vanilla", "powers", "ultra"];
+/** Locura y Ultra Locura juegan con poderes; Estándar no */
+export const hasPowers = (v: Variant) => v !== "vanilla";
 
 export type PowerId =
   | "half"
@@ -81,7 +83,9 @@ export const WEIGHT: Record<PowerId, number> = {
   blink: 3,
 };
 /** los que se ven en la pantalla de los demás y cuánto duran (el Susto con screamer de YouTube dura SCARE_CLIP_MS) */
-export const FX_MS: Record<FxId, number> = { ink: 5_000, scare: 1_400, shuffle: 6_000, flip: 6_000, dark: 7_000, mirror: 7_000, quake: 6_000, tiny: 7_000, blur: 6_000, spin: 6_000, party: 6_000, scramble: 7_000, blink: 6_000 };
+export const FX_MS: Record<FxId, number> = { ink: 7_000, scare: 1_400, shuffle: 10_000, flip: 10_000, dark: 11_000, mirror: 11_000, quake: 10_000, tiny: 11_000, blur: 10_000, spin: 9_000, party: 10_000, scramble: 11_000, blink: 10_000 };
+/** la Tinta no deja responder: siempre quedan al menos estos ms libres al final de la pregunta */
+export const INK_FREE_MS = 4_000;
 export const SCARE_CLIP_MS = 4_500;
 /**
  * Screamers de juegos de terror. Cada clave se busca en YouTube con scripts/find-videos.mjs (src/data/video-sources.json)
@@ -102,13 +106,18 @@ export const SCARE_KEYS = [
   "scare-slender",
 ];
 
-export const START_HAND = 1;
-/** como en Mario Kart: tres en la mano */
-export const MAX_HAND = 3;
-/** cada cuántos aciertos seguidos se gana un poder */
-export const EARN_EVERY = 3;
-/** tras cuántos fallos seguidos llega un poder de consuelo */
-export const COLD_EVERY = 3;
+/**
+ * Cómo se reparten y se usan en cada modo:
+ *  - start: con cuántos se arranca · max: cuántos caben en la mano (como en Mario Kart, tres)
+ *  - earn: cada cuántos aciertos seguidos se gana uno · cold: tras cuántos fallos seguidos llega uno de consuelo
+ *  - uses: cuántos se pueden tirar en una misma pregunta (el Bloque ? no cuenta)
+ * Ultra Locura: mano grande, se gana uno con cada acierto y se tiran dos por pregunta.
+ */
+export const POWER_RULES: Record<Exclude<Variant, "vanilla">, { start: number; max: number; earn: number; cold: number; uses: number }> = {
+  powers: { start: 1, max: 3, earn: 3, cold: 3, uses: 1 },
+  ultra: { start: 3, max: 6, earn: 1, cold: 2, uses: 2 },
+};
+export const powerRules = (v: Variant) => POWER_RULES[v === "ultra" ? "ultra" : "powers"];
 /** Doble o nada: si fallas con él puesto, pierdes esto */
 export const DOUBLE_RISK = 300;
 /** Robo: lo que se le quita al líder si aciertas */
@@ -202,6 +211,7 @@ export const POWER_TEXT: Record<PowerId, { name: string; desc: string }> = {
 export const VARIANT_TEXT: Record<Variant, { name: string; desc: string }> = {
   vanilla: text("Estándar", "Solo preguntas, reloj y racha."),
   powers: text("Locura", "Caparazones, dados, hongos y más. Ganas poderes con rachas de 3."),
+  ultra: text("Ultra Locura", "Arrancas con 3 poderes, guardas hasta 6, ganas uno con cada acierto y tiras 2 por pregunta."),
 };
 
 const FX_TEXT: Record<FxId, string> = {
@@ -225,9 +235,9 @@ export const POWER_LINES = {
   get label() {
     return t("Poderes");
   },
-  get empty() {
-    return t("Sin poderes. Acierta 3 seguidas para ganar uno.");
-  },
+  empty: (v: Variant) => (v === "ultra" ? t("Sin poderes. Acierta una para ganar otro.") : t("Sin poderes. Acierta 3 seguidas para ganar uno.")),
+  /** Ultra Locura: todavía puede tirar otro en esta pregunta */
+  more: (n: number) => (n === 1 ? t("Puedes tirar uno más.") : t("Puedes tirar {n} más.", { n })),
   used: (name: string) => t("Usaste {name}.", { name }),
   inked: (who: string) => t("{who} te echó tinta", { who }),
   earned: (name: string) => t("Ganaste {name}.", { name }),
@@ -264,7 +274,7 @@ export const POWER_LINES = {
 };
 
 export const isPower = (x: unknown): x is PowerId => typeof x === "string" && x in POWER_TEXT;
-export const isVariant = (x: unknown): x is Variant => x === "vanilla" || x === "powers";
+export const isVariant = (x: unknown): x is Variant => x === "vanilla" || x === "powers" || x === "ultra";
 
 /**
  * Un poder al azar; en grupo, al que va atrás le salen más seguido los fuertes.
@@ -280,10 +290,10 @@ function weighted(pool: PowerId[], rand: () => number, hand: readonly PowerId[] 
 }
 
 /** mano inicial: distintos */
-export function startHand(mode: "solo" | "group", rand: () => number = random): PowerId[] {
+export function startHand(mode: "solo" | "group", size = 1, rand: () => number = random): PowerId[] {
   const pool = POOL[mode].slice();
   const out: PowerId[] = [];
-  while (out.length < START_HAND && pool.length) out.push(pool.splice(pool.indexOf(weighted(pool, rand)), 1)[0]);
+  while (out.length < size && pool.length) out.push(pool.splice(pool.indexOf(weighted(pool, rand)), 1)[0]);
   return out;
 }
 

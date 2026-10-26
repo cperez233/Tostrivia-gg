@@ -11,16 +11,14 @@ import { markSeen, pruneTo, restartCycle, seenIn } from "../lib/history";
 import {
   BLUE_PTS,
   BOLT_PTS,
-  COLD_EVERY,
   DICE_PTS,
   DOUBLE_RISK,
-  EARN_EVERY,
   BANANA_PTS,
   FX_MS,
   FX_POWERS,
+  INK_FREE_MS,
   SCARE_CLIP_MS,
   SCARE_KEYS,
-  MAX_HAND,
   MUSHROOM_SPEED,
   POOL,
   POWER_LINES,
@@ -28,6 +26,8 @@ import {
   STAR_MULT,
   STEAL_PTS,
   drawPower,
+  hasPowers,
+  powerRules,
   startHand,
   type FxId,
   type PowerId,
@@ -65,16 +65,15 @@ export interface Pick {
   /** el video no cargó en su dispositivo: no pierde la racha */
   excused?: boolean;
   /* modo Poderes */
-  power?: PowerId;
+  /** los que usó en esta pregunta (en Ultra Locura pueden ser dos) */
+  powers?: PowerId[];
   /** poder que ganó con esta racha (o de consuelo, tras fallar tres seguidas) */
   earned?: PowerId;
   consolation?: boolean;
   /** falló con escudo y conservó la racha */
   shielded?: boolean;
-  /** Dado: lo que salió */
-  roll?: number;
-  /** lo que sumó o restó su propio poder (Dado, Hongo, Estrella) */
-  bonus?: number;
+  /** lo que sumó o restó cada poder propio (Doble o nada, Dado, Hongo, Estrella); `roll` es lo que salió en el dado */
+  boosts?: { p: PowerId; pts: number; roll?: number }[];
   /** ataques que recibió */
   hits?: { by: string; p: PowerId; pts: number }[];
   /** ataques que hizo */
@@ -122,6 +121,8 @@ export interface Snapshot {
   rules: Rules;
   phase: Phase;
   hostId: string;
+  /** invitados a los que el anfitrión les dio el mando de la sala (ruleta, reglas, empezar, sacar gente) */
+  leaders: string[];
   cat: string | null;
   spin: Spin | null;
   /** gajos de la ruleta (ids de categoría) */
@@ -140,8 +141,8 @@ export interface Snapshot {
   players: Player[];
   notice: string | null;
   replaced: number;
-  /** poderes usados en la pregunta actual, por jugador */
-  used: Record<string, PowerUse>;
+  /** poderes usados en la pregunta actual, por jugador (en orden; Locura deja uno, Ultra Locura dos) */
+  used: Record<string, PowerUse[]>;
   /** Tinta, Susto, Revoltijo o De cabeza: lo que tiene encima cada jugador en esta pregunta */
   fx: Record<string, Fx>;
 }
@@ -177,6 +178,7 @@ export class Match {
       rules: { ...DEFAULT_RULES },
       phase: "lobby",
       hostId: host.id,
+      leaders: [],
       cat: null,
       spin: null,
       deck: [],
@@ -243,8 +245,17 @@ export class Match {
   }
   kick(id: string) {
     if (id === this.s.hostId) return;
-    this.emit({ players: this.s.players.filter((p) => p.id !== id) });
+    this.emit({ players: this.s.players.filter((p) => p.id !== id), leaders: this.s.leaders.filter((x) => x !== id) });
     this.checkAllAnswered();
+  }
+  /** el anfitrión le da (o le quita) el mando de la sala a un invitado */
+  setLeader(id: string, on: boolean) {
+    if (id === this.s.hostId || !this.s.players.some((p) => p.id === id)) return;
+    const rest = this.s.leaders.filter((x) => x !== id);
+    this.emit({ leaders: on ? [...rest, id] : rest });
+  }
+  isLeader(id: string) {
+    return id === this.s.hostId || this.s.leaders.includes(id);
   }
   private active() {
     return this.s.players.filter((p) => p.online);
@@ -298,7 +309,7 @@ export class Match {
       notice: null,
       players: this.s.players
         .filter((p) => p.online)
-        .map((p) => ({ ...p, score: 0, streak: 0, best: 0, correct: 0, powers: this.s.variant === "powers" ? startHand(this.s.mode) : [] })),
+        .map((p) => ({ ...p, score: 0, streak: 0, best: 0, correct: 0, powers: hasPowers(this.s.variant) ? startHand(this.s.mode, powerRules(this.s.variant).start) : [] })),
     });
     this.goTo(0);
   }
@@ -448,32 +459,34 @@ export class Match {
     const q = BANK.byId[this.s.qid];
     const correctDisplay = this.s.order.indexOf(0);
     const picks: Record<string, Pick> = {};
-    const powers = this.s.variant === "powers";
+    const powers = hasPowers(this.s.variant);
     const used = powers ? this.s.used : {};
+    const has = (pid: string, p: PowerId) => !!used[pid]?.some((u) => u.p === p);
+    /** Escudo o Estrella: frenan los ataques */
+    const guardOf = (pid: string) => used[pid]?.find((u) => u.p === "shield" || u.p === "star")?.p;
     // primero lo de cada uno; los ataques se cobran después, con el marcador de antes de esta pregunta
     for (const p of this.s.players) {
       const a = this.answers.get(p.id);
       const ok = !!a && this.s.order[a.choice] === 0;
       const excused = !a && this.mediaFailed.has(p.id);
-      const use = used[p.id];
-      const power = use?.p;
-      const streak = ok ? p.streak + 1 : excused || power === "shield" ? p.streak : 0;
+      const uses = used[p.id] ?? [];
+      const streak = ok ? p.streak + 1 : excused || has(p.id, "shield") ? p.streak : 0;
       const pick: Pick = { choice: a ? a.choice : null, ok, gained: 0, streak, ms: a?.ms ?? this.s.duration, excused };
       const frac = a ? Math.max(0, Math.min(1, 1 - a.ms / this.s.duration)) : 0;
-      if (ok) {
-        pick.gained = pointsFor(q.d, frac, streak, this.s.rules);
-        if (power === "mushroom") pick.bonus = Math.round((MUSHROOM_SPEED - 1) * speedBonus(q.d, frac) * multiplier(streak, this.s.rules));
-        if (power === "star") pick.bonus = Math.round(pick.gained * (STAR_MULT - 1));
-        if (power === "double") pick.bonus = pick.gained;
-      } else if (!excused && power === "double") pick.bonus = -DOUBLE_RISK;
-      if (power === "dice" && use?.roll) {
-        pick.roll = use.roll;
-        pick.bonus = ok ? use.roll * DICE_PTS : excused ? 0 : -(use.roll * DICE_PTS) / 2;
+      const base = ok ? pointsFor(q.d, frac, streak, this.s.rules) : 0;
+      // cada poder propio suma (o resta) sobre lo que vale la respuesta sola
+      const boosts: NonNullable<Pick["boosts"]> = [];
+      for (const u of uses) {
+        if (u.p === "mushroom" && ok) boosts.push({ p: u.p, pts: Math.round((MUSHROOM_SPEED - 1) * speedBonus(q.d, frac) * multiplier(streak, this.s.rules)) });
+        else if (u.p === "star" && ok) boosts.push({ p: u.p, pts: Math.round(base * (STAR_MULT - 1)) });
+        else if (u.p === "double" && (ok || !excused)) boosts.push({ p: u.p, pts: ok ? base : -DOUBLE_RISK });
+        else if (u.p === "dice" && u.roll) boosts.push({ p: u.p, roll: u.roll, pts: ok ? u.roll * DICE_PTS : excused ? 0 : -(u.roll * DICE_PTS) / 2 });
       }
-      pick.gained += pick.bonus ?? 0;
-      if (power) {
-        pick.power = power;
-        if (power === "shield" && !ok && !excused && p.streak > 0) pick.shielded = true;
+      pick.gained = base + boosts.reduce((n, b) => n + b.pts, 0);
+      if (boosts.length) pick.boosts = boosts;
+      if (uses.length) {
+        pick.powers = uses.map((u) => u.p);
+        if (has(p.id, "shield") && !ok && !excused && p.streak > 0) pick.shielded = true;
       }
       picks[p.id] = pick;
     }
@@ -484,8 +497,8 @@ export class Match {
       const hit = (from: string, to: string | undefined, p: PowerId, pts: number, transfer = false) => {
         if (!to) return;
         const theirs = picks[to];
-        const guard = used[to]?.p;
-        if (to !== from && (guard === "shield" || guard === "star")) {
+        const guard = guardOf(to);
+        if (to !== from && guard) {
           theirs.blocked = [...(theirs.blocked ?? []), { by: from, p, with: guard }];
           return;
         }
@@ -500,15 +513,17 @@ export class Match {
         const mine = picks[p.id];
         const others = ranking.filter((x) => x.id !== p.id);
         const at = ranking.findIndex((x) => x.id === p.id);
-        if (mine.power === "steal" && mine.ok) hit(p.id, others[0]?.id, "steal", STEAL_PTS, true);
-        else if (mine.power === "redShell") hit(p.id, (at > 0 ? ranking[at - 1] : others[0])?.id, "redShell", RED_PTS);
-        else if (mine.power === "blueShell") hit(p.id, ranking[0]?.id, "blueShell", BLUE_PTS);
-        else if (mine.power === "lightning") {
-          for (const o of others) if (o.online) hit(p.id, o.id, "lightning", BOLT_PTS);
-        } else if (mine.power === "banana") {
-          // resbala el primero que respondió después de que lo tiró
-          const first = [...this.answers.keys()].slice(used[p.id]?.after ?? 0).find((id) => id !== p.id);
-          hit(p.id, first, "banana", BANANA_PTS);
+        for (const u of used[p.id] ?? []) {
+          if (u.p === "steal" && mine.ok) hit(p.id, others[0]?.id, "steal", STEAL_PTS, true);
+          else if (u.p === "redShell") hit(p.id, (at > 0 ? ranking[at - 1] : others[0])?.id, "redShell", RED_PTS);
+          else if (u.p === "blueShell") hit(p.id, ranking[0]?.id, "blueShell", BLUE_PTS);
+          else if (u.p === "lightning") {
+            for (const o of others) if (o.online) hit(p.id, o.id, "lightning", BOLT_PTS);
+          } else if (u.p === "banana") {
+            // resbala el primero que respondió después de que lo tiró
+            const first = [...this.answers.keys()].slice(u.after ?? 0).find((id) => id !== p.id);
+            hit(p.id, first, "banana", BANANA_PTS);
+          }
         }
       }
     }
@@ -517,11 +532,11 @@ export class Match {
     if (powers) {
       // Cambiazo: al final de todo, cambia el puntaje con el que va justo delante
       for (const p of this.s.players) {
-        if (picks[p.id].power !== "swapScore") continue;
+        if (!has(p.id, "swapScore")) continue;
         const ahead = [...final].filter(([id, sc]) => id !== p.id && sc > final.get(p.id)!).sort((a, b) => a[1] - b[1])[0]?.[0];
         if (!ahead) continue;
-        const guard = used[ahead]?.p;
-        if (guard === "shield" || guard === "star") {
+        const guard = guardOf(ahead);
+        if (guard) {
           picks[ahead].blocked = [...(picks[ahead].blocked ?? []), { by: p.id, p: "swapScore", with: guard }];
           continue;
         }
@@ -540,9 +555,10 @@ export class Match {
       if (powers) {
         const cold = pick.ok ? 0 : pick.excused ? (this.misses.get(p.id) ?? 0) : (this.misses.get(p.id) ?? 0) + 1;
         const behind = order.findIndex((x) => x.id === p.id) >= Math.ceil(order.length / 2);
-        const earn = pick.ok && pick.streak % EARN_EVERY === 0;
-        const comfort = cold >= COLD_EVERY;
-        if ((earn || comfort) && hand.length < MAX_HAND) {
+        const pr = powerRules(this.s.variant);
+        const earn = pick.ok && pick.streak % pr.earn === 0;
+        const comfort = cold >= pr.cold;
+        if ((earn || comfort) && hand.length < pr.max) {
           pick.earned = drawPower(this.s.mode, behind, random, hand);
           if (!earn) pick.consolation = true;
           hand = [...hand, pick.earned];
@@ -557,9 +573,11 @@ export class Match {
 
   /** modo Poderes: uno por pregunta, antes de responder */
   usePower(pid: string, index: number, power: PowerId) {
-    if (this.s.variant !== "powers" || this.s.phase !== "question" || index !== this.s.index) return;
-    // el Bloque ? no gasta el turno: se puede abrir y después usar otro
-    if (this.answers.has(pid) || (this.s.used[pid] && power !== "mystery") || !POOL[this.s.mode].includes(power)) return;
+    if (!hasPowers(this.s.variant) || this.s.phase !== "question" || index !== this.s.index) return;
+    const pr = powerRules(this.s.variant);
+    const mine = this.s.used[pid] ?? [];
+    // el Bloque ? no gasta el turno: se puede abrir y después usar otro; dos iguales en la misma pregunta no
+    if (this.answers.has(pid) || (power !== "mystery" && (mine.length >= pr.uses || mine.some((u) => u.p === power))) || !POOL[this.s.mode].includes(power)) return;
     const player = this.s.players.find((p) => p.id === pid);
     if (!player || !player.powers.includes(power)) return;
     const hand = player.powers.slice();
@@ -574,7 +592,7 @@ export class Match {
         const d = drawPower(this.s.mode, behind, random, [...hand, ...prize]);
         if (d !== "mystery") prize.push(d);
       }
-      const full = [...hand, ...prize].slice(0, MAX_HAND);
+      const full = [...hand, ...prize].slice(0, pr.max);
       return this.emit({ players: this.s.players.map((p) => (p.id === pid ? { ...p, powers: full } : p)) });
     }
     // los de pantalla solo le llegan a quien aún no responde: si ya no queda nadie, no se gasta
@@ -593,21 +611,23 @@ export class Match {
       const clips = kind === "scare" ? SCARE_KEYS.filter((k) => videoFor(k)) : [];
       const clip = clips.length ? clips[randomInt(clips.length)] : undefined;
       const from = kind !== "scare" ? now : now + (clip ? 3000 + randomInt(3000) : 1000 + randomInt(2500));
-      const until = from + (clip ? SCARE_CLIP_MS : FX_MS[kind]);
+      let until = from + (clip ? SCARE_CLIP_MS : FX_MS[kind]);
+      // la Tinta no deja responder: nunca tapa el final de la pregunta
+      if (kind === "ink") until = Math.max(from + 1500, Math.min(until, this.s.duration - INK_FREE_MS));
       fx = { ...fx };
       for (const p of this.fxTargets(pid)) fx[p.id] = { p: kind, by: pid, from, until, ...(clip ? { clip } : {}) };
     } else if ((power === "shield" || power === "star") && fx[pid]) {
       fx = { ...fx };
       delete fx[pid];
     }
-    this.emit({ players, used: { ...this.s.used, [pid]: use }, fx });
+    this.emit({ players, used: { ...this.s.used, [pid]: [...mine, use] }, fx });
   }
 
   /** a quién le llega un poder de pantalla: los demás que siguen sin responder y sin Escudo ni Estrella */
   private fxTargets(pid: string) {
     return this.active().filter((p) => {
-      const guard = this.s.used[p.id]?.p;
-      return p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star";
+      const guarded = this.s.used[p.id]?.some((u) => u.p === "shield" || u.p === "star");
+      return p.id !== pid && !this.answers.has(p.id) && !guarded;
     });
   }
 
