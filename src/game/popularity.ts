@@ -17,9 +17,9 @@ const KNOWN = [
   // anime
   "hxh", "fma", "jojo", "tokyoghoul", "haikyuu", "opm", "csm", "spyfamily", "frieren", "bluelock", "digimon", "saintseiya", "sailormoon", "eva", "codegeass", "yugioh", "doraemon", "sao", "posteranime",
   // juegos
-  "ff", "witcher", "souls", "genshin", "rdr", "assassins", "gow", "tlou", "re", "spiderman", "valorant", "overwatch", "smash", "amongus", "crash", "animalcrossing", "undertale", "hollowknight", "cyberpunk", "posterjuegos", "stardew", "terraria",
+  "ff", "witcher", "souls", "genshin", "rdr", "assassins", "gow", "tlou", "re", "spiderman", "valorant", "overwatch", "smash", "amongus", "crash", "animalcrossing", "undertale", "hollowknight", "cyberpunk", "posterjuegos", "stardew", "terraria", "fnaf", "mortalkombat",
   // series y películas
-  "bettercallsaul", "monster", "casadepapel", "chavo", "theoffice", "merlina", "squidgame", "rickmorty", "bobesponja", "southpark", "avatar", "peaky", "narcos", "theboys", "lotr", "shrek", "rapidos", "batman", "piratas", "jurassic", "ghibli", "matrix", "nolan", "posterseries",
+  "bettercallsaul", "arcane", "dexter", "monster", "casadepapel", "chavo", "theoffice", "merlina", "squidgame", "rickmorty", "bobesponja", "southpark", "avatar", "peaky", "narcos", "theboys", "lotr", "shrek", "rapidos", "batman", "piratas", "jurassic", "ghibli", "matrix", "nolan", "posterseries",
 ];
 const W: Record<string, number> = {};
 for (const id of KNOWN) W[id] = 1.35;

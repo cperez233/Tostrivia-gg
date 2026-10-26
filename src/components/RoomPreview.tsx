@@ -48,7 +48,7 @@ export default function RoomPreview({ code, state, onRetry }: { code: string; st
         ))}
       </ul>
       <p className="peek__note">
-        {peek.full ? t("La sala está llena.") : peek.phase !== "lobby" ? t("Hay una partida en marcha.") : t("Esperando a que empiece. Los animales apagados ya están tomados.")}
+        {peek.full ? t("La sala está llena.") : peek.phase !== "lobby" ? t("Hay una partida en marcha.") : t("Los animales apagados ya los tiene alguien.")}
       </p>
     </motion.section>
   );

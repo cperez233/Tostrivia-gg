@@ -139,6 +139,7 @@ export const CATEGORIES: Category[] = [
   { id: "mgs", name: "Metal Gear Solid", short: "Metal Gear", family: "accion" },
   { id: "spiderman", name: "Marvel's Spider-Man", short: "Spider-Man", family: "accion" },
   { id: "hades", name: "Hades", short: "Hades", family: "accion" },
+  { id: "fnaf", name: "Five Nights at Freddy's", short: "FNAF", family: "accion" },
 
   // Shooters
   { id: "halo", name: "Halo", short: "Halo", family: "shooter" },
@@ -151,6 +152,7 @@ export const CATEGORIES: Category[] = [
   // Pelea y MOBA
   { id: "smash", name: "Super Smash Bros.", short: "Smash", family: "versus" },
   { id: "pelea", name: "Juegos de pelea", short: "Pelea", family: "versus" },
+  { id: "mortalkombat", name: "Mortal Kombat", short: "Mortal Kombat", family: "versus" },
   { id: "lol", name: "League of Legends", short: "LoL", family: "versus" },
   { id: "amongus", name: "Among Us", short: "Among Us", family: "versus" },
 
@@ -182,6 +184,8 @@ export const CATEGORIES: Category[] = [
   { id: "hotd", name: "La casa del dragón", short: "Casa del dragón", family: "series" },
   { id: "himym", name: "Cómo conocí a vuestra madre", short: "HIMYM", family: "series" },
   { id: "bettercallsaul", name: "Better Call Saul", short: "Better Call Saul", family: "series" },
+  { id: "arcane", name: "Arcane", short: "Arcane", family: "series" },
+  { id: "dexter", name: "Dexter", short: "Dexter", family: "series" },
   { id: "brooklyn99", name: "Brooklyn Nine-Nine", short: "Brooklyn 99", family: "series" },
 
   // Películas

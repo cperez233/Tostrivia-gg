@@ -146,3 +146,7 @@ Las fotos de Cultura general vienen de Wikimedia Commons con licencias libres (l
 | Pokémon (anime) | TMDB tv 60572 |
 | Monster | Póster en TMDB: https://www.themoviedb.org/tv/30981-monster |
 | Better Call Saul | Póster en TMDB: https://www.themoviedb.org/tv/60059 |
+| Five Nights at Freddy's | Steam app 732690, Help Wanted (library 600x900) |
+| Mortal Kombat | Steam app 976310, Mortal Kombat 11 (library 600x900) |
+| Arcane | Póster en TMDB: https://www.themoviedb.org/tv/94605-arcane |
+| Dexter | Póster en TMDB: https://www.themoviedb.org/tv/1405-dexter |

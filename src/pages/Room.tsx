@@ -42,7 +42,7 @@ export default function Room({ client, onExit, onCats }: { client: GameClient; o
 }
 
 const NET_TEXT: Record<NetStatus, [string, string]> = {
-  connecting: ["Conectando…", "Abriendo la línea con la sala."],
+  connecting: ["Conectando…", "Conectando con la sala."],
   open: ["", ""],
   lost: ["Se perdió la conexión", "No llegan datos del anfitrión. Si vuelve en unos segundos, seguimos donde íbamos."],
   closed: ["La sala se cerró", "El anfitrión salió o cerró la pestaña. Puedes crear una sala nueva."],

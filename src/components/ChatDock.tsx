@@ -164,7 +164,7 @@ export default function ChatDock({ client, place }: { client: GameClient; place:
               </button>
             </header>
             <ol ref={list} className="chatpanel__list" aria-live="polite">
-              {msgs.length === 0 && <li className="chatpanel__empty">{t("Nadie ha escrito todavía. Rompe el hielo.")}</li>}
+              {msgs.length === 0 && <li className="chatpanel__empty">{t("Nadie ha escrito todavía.")}</li>}
               {msgs.map((m) => (
                 <li key={m.id} className={`msg ${m.pid === client.me.id ? "is-me" : ""}`}>
                   <Avatar animal={m.seal} size={28} />

@@ -94,7 +94,7 @@ export default function Home({ onPlay }: Props) {
               </span>
             ))}
           </h1>
-          <p className="arena__sub">{t("Gira, juega y arma la partida a tu gusto.")}</p>
+          <p className="arena__sub">{t("Gira la ruleta o arma tu propia partida.")}</p>
 
           <div className="filters" role="radiogroup" aria-label={t("Qué entra en la ruleta")}>
             {FILTERS.map((f) => (

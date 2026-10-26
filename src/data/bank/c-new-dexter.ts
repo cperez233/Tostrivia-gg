@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-dexter.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  dexter: [
+    [1,"¿Quién interpreta a Dexter Morgan?","Michael C. Hall","Jennifer Carpenter","John Lithgow","James Remar"],
+    [1,"¿Cuál es el trabajo de Dexter en la policía?","Analista de manchas de sangre","Detective de homicidios","Médico forense","Experto en huellas"],
+    [1,"¿En qué ciudad transcurre la serie original?","Miami","Los Ángeles","Nueva Orleans","Houston"],
+    [1,"¿Quién enseñó a Dexter su «código»?","Su padre adoptivo, Harry","Su hermano, Brian","Su jefa, LaGuerta","Su sargento, Doakes"],
+    [1,"¿Según el código de Dexter, a quién puede matar?","Solo a criminales que escaparon de la justicia","A cualquiera que descubra su secreto","A cualquier sospechoso de un crimen","A quien él considere peligroso"],
+    [1,"¿Cómo se llama la hermana adoptiva de Dexter?","Debra","Rita","Astor","Maria"],
+    [1,"¿Cómo se llama la novia (y luego esposa) de Dexter?","Rita","Lila","Lumen","Hannah"],
+    [1,"¿Cómo llama Dexter a su impulso de matar?","El Pasajero Oscuro","El Demonio","La Sombra","El Inquilino"],
+    [1,"¿Dónde se deshace Dexter de los cuerpos?","En el mar","En un incinerador","En un pantano","En una cantera"],
+    [1,"¿Con qué cubre Dexter la sala donde mata?","Plástico","Lonas de tela","Papel de periódico","Cinta aislante"],
+    [1,"¿Qué guarda Dexter de cada víctima?","Una gota de sangre en un portaobjetos","Un mechón de pelo de la víctima","Una foto de la escena del crimen","Un anillo o una joya de la víctima"],
+    [1,"¿En qué canal se emitió la serie original?","Showtime","HBO","AMC","FX"],
+    [1,"¿En qué año se estrenó Dexter?","2006","2004","2008","2010"],
+    [2,"¿Quién es el villano de la primera temporada?","El Asesino del Camión de Hielo","El Asesino Trinity","El Carnicero de la Bahía","El Asesino del Juicio Final"],
+    [2,"¿Quién es en realidad el Asesino del Camión de Hielo?","El hermano biológico de Dexter","El mejor amigo de Dexter","Un compañero de la policía","El ex de Rita"],
+    [2,"¿A quién se sospecha del «Carnicero de la Bahía» en la segunda temporada?","Al sargento Doakes","A Debra","A Masuka","A Quinn"],
+    [2,"¿Quién es Miguel Prado en la tercera temporada?","Un fiscal que descubre su secreto y se hace su amigo","Un asesino en serie al que Dexter está cazando","El nuevo jefe del departamento de policía","Un exnovio de Debra que empieza a investigarlo"],
+    [2,"¿Quién interpreta al Asesino Trinity?","John Lithgow","Jimmy Smits","Keith Carradine","Ray Stevenson"],
+    [2,"¿Quién muere al final de la cuarta temporada?","Rita","Debra","LaGuerta","Harry"],
+    [2,"¿Cómo se llama el hijo pequeño de Dexter y Rita?","Harrison","Cody","Astor","Brian"],
+    [2,"¿Quién es Lumen Pierce?","Una mujer a la que Dexter salva de un asesino","Una policía nueva en el departamento","Una periodista que lo investiga a fondo","Una fiscal que persigue al Carnicero"],
+    [2,"¿Quién interpreta a Jordan Chase, el villano de la quinta temporada?","Jonny Lee Miller","Julia Stiles","Colin Hanks","Mos Def"],
+    [2,"¿Qué apodo reciben quienes cometen los crímenes de la sexta temporada, inspirados en el Apocalipsis?","Los Asesinos del Juicio Final","Los Cuatro Jinetes de Miami","Los Profetas del Fin del Mundo","Los Santos de la Última Hora"],
+    [2,"¿Qué es Isaak Sirko en la séptima temporada?","Un jefe de la mafia ucraniana","Un agente del FBI retirado","Un asesino a sueldo de Miami","Un detective privado de Orlando"],
+    [2,"¿Quién interpreta a Hannah McKay?","Yvonne Strahovski","Julia Stiles","Jaime Murray","Aimee Garcia"],
+    [2,"¿Quién mata a LaGuerta al final de la séptima temporada?","Debra","Dexter","Hannah","Sirko"],
+    [2,"¿Qué doctora y psiquiatra se interesa por Dexter en la octava temporada?","Evelyn Vogel","Lila Tournay","Gail Brandon","Camilla Figg"],
+    [2,"¿Dónde termina Dexter al final de la serie original?","Como leñador en Oregón","En una cárcel de Florida","En una isla de Cuba","En un barco rumbo a México"],
+    [2,"¿Cómo se llama el barco de Dexter?","Slice of Life","Dark Passenger","Blood Spatter","Code of Harry"],
+    [2,"¿En qué novela se basa la primera temporada?","Darkly Dreaming Dexter","Dexter in the Dark","Dearly Devoted Dexter","Dexter by Design"],
+    [2,"¿En qué pueblo vive Dexter en New Blood?","Iron Lake","Lake Placid","Silver Falls","Pine Ridge"],
+    [2,"¿Quién protagoniza la precuela Dexter: Original Sin como el joven Dexter?","Patrick Gibson","Jack Alcott","Michael C. Hall","Clancy Brown"],
+    [2,"¿Cómo murió la madre de Dexter?","A motosierra, ante sus ojos","En un incendio en su casa","Atropellada por un camión","Baleada en plena calle"],
+    [2,"¿Quién es el técnico de laboratorio bromista del departamento?","Vince Masuka","Angel Batista","Joey Quinn","Louis Greene"],
+    [2,"¿Quién interpreta a Debra Morgan?","Jennifer Carpenter","Julie Benz","Lauren Vélez","Julia Stiles"],
+    [3,"¿Cuál es el patrón de muertes del Asesino Trinity?","Una joven en la bañera, una madre que cae, un padre golpeado","Una familia entera ahogada en su casa","Tres mujeres sedadas dentro de una iglesia","Dos hombres y una mujer en un sótano"],
+    [3,"¿Qué alias usa Dexter para acercarse a Arthur Mitchell?","Kyle Butler","Jim Lindsay","Kurt Caldwell","Frank Lundy"],
+    [3,"¿Quién es el Hermano Sam?","Un asesino arrepentido convertido en ministro","Un policía corrupto de Miami Metro","El jefe de una pandilla callejera","Un testigo protegido del FBI"],
+    [3,"¿Cómo se llama el villano de la octava temporada, el Cirujano del Cerebro?","Oliver Saxon","Travis Marshall","Isaak Sirko","Boyd Fowler"],
+    [3,"¿Qué nombre falso usa Dexter en New Blood?","Jim Lindsay","Kyle Butler","Jim Morgan","Matt Anderson"],
+    [3,"¿Cuántos espectadores tuvo el final de la cuarta temporada, récord de Showtime hasta entonces?","2,6 millones","1,1 millones","4,8 millones","8,2 millones"],
+    [3,"¿Qué cadena abierta emitió la primera temporada, editada, en 2008?","CBS","NBC","ABC","Fox"],
+    [3,"¿Quién escribió el tema de apertura?","Rolfe Kent","Daniel Licht","Danny Elfman","Mark Snow"],
+    [3,"¿Quién fue showrunner desde la sexta temporada?","Scott Buck","Chip Johannessen","Daniel Cerone","Clyde Phillips"],
+    [3,"¿Cuántas veces seguidas fue nominada Dexter a Mejor serie dramática en los Emmy?","Cuatro","Dos","Seis","Ocho"],
+    [3,"¿A quién mata Dexter en la tercera temporada sin estar seguro de su culpabilidad?","A Oscar Prado","A Freebo","A Paul Bennett","A Boyd Fowler"],
+    [3,"¿Qué asesino mantiene secuestrada a Lumen cuando Dexter la encuentra?","Boyd Fowler","Jordan Chase","Oliver Saxon","Miguel Prado"],
+    [3,"¿En qué unidad trabaja Debra al comenzar la serie?","Antivicio","Homicidios","Tráfico","Narcóticos"],
+    [3,"¿Cómo se llama la organización de construcción de casas que dirige Arthur Mitchell?","Four Walls One Heart","Home for Hope","Hearth and Home","Faith Builders"],
+    [3,"¿Cómo apodan los medios al asesino de las cabezas cortadas de la quinta temporada?","El Asesino de la Santa Muerte","El Carnicero de Miami","El Asesino del Machete","El Decapitador"],
+  ],
+};
+
+export default bank;

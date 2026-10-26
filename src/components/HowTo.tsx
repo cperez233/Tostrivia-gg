@@ -66,7 +66,7 @@ export default function HowTo({ variant = "icon" }: { variant?: "icon" | "text" 
           <>
             <span className="howto__cardtext">
               <span className="howto__cardname">{t("¿Cómo se juega?")}</span>
-              <span className="howto__cardsub">{t("Puntos, rachas y poderes en un minuto. Léelo mientras llegan los demás.")}</span>
+              <span className="howto__cardsub">{t("Puntos, rachas y poderes en un minuto.")}</span>
             </span>
             <svg className="howto__cardgo" width="22" height="22" viewBox="0 0 24 24" aria-hidden>
               <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
@@ -143,7 +143,7 @@ function Basics() {
         { head: t("Responde antes de que se acabe el reloj"), text: t("Cada pregunta tiene 4 opciones y solo una es la buena. Las de video o audio dan {n} s más.", { n: MEDIA_EXTRA }) },
         { head: t("Entre más rápido, más puntos"), text: t("Un acierto vale {a}, {b} o {c} según qué tan difícil sea la pregunta, y le sumas un bono por rapidez.", { a: BASE_POINTS[1], b: BASE_POINTS[2], c: BASE_POINTS[3] }) },
         { head: t("La racha multiplica"), text: t("Acertar seguido sube el multiplicador: ×1,25 con 2, ×1,5 con 3, ×2 con 5 y ×3 con 8. Fallar la rompe.") },
-        { head: t("Gana el que más puntos junte"), text: t("Al final de las preguntas se cuentan los puntos. En grupo, todos juegan la misma pregunta a la vez.") },
+        { head: t("Gana el que más puntos junte"), text: t("Se cuentan al terminar la última pregunta.") },
       ]}
     />
   );

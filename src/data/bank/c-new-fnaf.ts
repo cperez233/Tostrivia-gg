@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-fnaf.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  fnaf: [
+    [1,"¿Quién creó la saga Five Nights at Freddy's?","Scott Cawthon","Markiplier","Toby Fox","Jason Blum"],
+    [1,"¿En qué año salió el primer Five Nights at Freddy's?","2014","2010","2012","2016"],
+    [1,"¿Qué trabajo tiene el protagonista del primer juego?","Guardia de seguridad nocturno","Cocinero de la pizzería","Técnico de mantenimiento","Animador de fiestas"],
+    [1,"¿De qué hora a qué hora dura cada noche en el primer juego?","De 12 a. m. a 6 a. m.","De 10 p. m. a 4 a. m.","De 11 p. m. a 7 a. m.","De 12 a. m. a 8 a. m."],
+    [1,"¿Quién es la mascota principal de la pizzería?","Freddy Fazbear","Bonnie","Chica","Foxy"],
+    [1,"¿Qué animal es Bonnie?","Un conejo","Un oso","Un gato","Un zorro"],
+    [1,"¿Qué animal es Chica?","Un pollo","Un pato","Un conejo","Un oso"],
+    [1,"¿Qué es Foxy?","Un zorro pirata","Un lobo pirata","Un conejo pirata","Un zorro astronauta"],
+    [1,"¿Qué se gasta cada vez que usas las cámaras, las luces o las puertas?","La energía","La batería de la linterna","La cordura","El dinero del turno"],
+    [1,"¿Cómo se defiende el guardia de los animatrónicos en el primer juego?","Cerrando puertas y vigilando las cámaras","Disparándoles con una pistola eléctrica","Escondiéndose bajo el escritorio de la oficina","Poniéndose una máscara de Freddy Fazbear"],
+    [1,"¿Qué actor protagoniza la película de 2023?","Josh Hutcherson","Matthew Lillard","Josh Peck","Ezra Miller"],
+    [1,"¿En qué año se estrenó la película de Five Nights at Freddy's?","2023","2019","2021","2025"],
+    [1,"¿Cómo se llama el protagonista del primer juego?","Mike Schmidt","Jeremy Fitzgerald","Gregory","Cassie"],
+    [2,"¿Qué melodía toca Freddy cuando se acaba la energía?","La Canción del Toreador","La Marcha Fúnebre","Para Elisa","La Danza de las Horas"],
+    [2,"¿Quién es el guardia de Five Nights at Freddy's 2?","Jeremy Fitzgerald","Mike Schmidt","Michael Afton","Gregory"],
+    [2,"¿Qué animatrónico de FNAF 2 sale de una caja de música si se deja de darle cuerda?","El Puppet (la Marioneta)","Mangle (la zorra rota)","Balloon Boy (el de los globos)","Toy Chica (la pollita nueva)"],
+    [2,"En FNAF 2 no se pueden cerrar puertas. ¿Qué protege al guardia de casi todos los animatrónicos?","Ponerse una máscara de animatrónico","Apagar las luces","Esconderse bajo el escritorio","Cerrar las rejillas de ventilación"],
+    [2,"¿Dónde transcurre Five Nights at Freddy's 3?","En Fazbear's Fright, una atracción de terror","En una pizzería recién inaugurada","En un hotel abandonado de carretera","En una antigua fábrica de juguetes"],
+    [2,"¿Cuántos animatrónicos pueden matarte en FNAF 3?","Solo uno","Dos","Cuatro","Seis"],
+    [2,"¿Quién eres en Five Nights at Freddy's 4?","Un niño en su habitación","Un guardia nocturno","Un técnico bajo tierra","Un animatrónico"],
+    [2,"¿Qué minijuego de FNAF 4 se parece a «luz roja, luz verde»?","El de Plushtrap","El de Mangle","El de Bonnie","El de Fredbear"],
+    [2,"¿Cómo se llama la empresa donde trabaja Mike en Sister Location?","Circus Baby's Entertainment and Rental","Fazbear Entertainment and Rental","Funtime Entertainment and Rental","Freddy Fazbear's Pizza and Rental"],
+    [2,"¿Cómo se llama la voz de IA que da las tareas en Sister Location?","HandUnit","Phone Guy","Baby","Ennard"],
+    [2,"¿Qué se hace en Freddy Fazbear's Pizzeria Simulator?","Gestionar el local de día y defenderlo de noche","Sobrevivir en un parque de atracciones","Reparar animatrónicos en un taller","Explorar un centro comercial en primera persona"],
+    [2,"¿Para qué dispositivos salió Five Nights at Freddy's: Help Wanted?","Realidad virtual","Solo móviles","Solo consolas portátiles","Máquinas arcade"],
+    [2,"¿Cómo se llama el protagonista de Security Breach?","Gregory","Cassie","Mike","Vanessa"],
+    [2,"¿Dónde se esconde Gregory en Security Breach?","En el compartimento del estómago de Freddy","En un armario de la cocina del complejo","En un conducto de ventilación del techo","En el vestuario del personal de seguridad"],
+    [2,"¿Cómo se llama el centro de entretenimiento de Security Breach?","Freddy Fazbear's Mega Pizzaplex","Fazbear's Fright Entertainment","Circus Baby's Pizza World","Freddy Fazbear's Pizza Plaza"],
+    [2,"¿Qué estudio desarrolló Security Breach?","Steel Wool Studios","Illumix","Mega Cat Studios","Blumhouse Productions"],
+    [2,"¿Qué productora hizo la película de 2023?","Blumhouse Productions","Warner Bros. Pictures","Legendary Pictures","A24"],
+    [2,"¿Quién interpreta al asesino en la película de 2023?","Matthew Lillard","Josh Hutcherson","Mary Stuart Masterson","Elizabeth Lail"],
+    [2,"¿Cómo se llama la hermana pequeña de Mike en la película?","Abby","Vanessa","Jane","Garrett"],
+    [2,"¿Cómo se llaman los trajes que sirven de animatrónico y de disfraz, y pueden fallar de forma mortal?","Trajes springlock","Trajes endoesqueleto","Trajes de mascota","Trajes Fazbear"],
+    [2,"¿Cuál de estos juegos de la saga se lanzó gratis en Steam?","Freddy Fazbear's Pizzeria Simulator","Five Nights at Freddy's: Sister Location","Five Nights at Freddy's 4","Five Nights at Freddy's: Help Wanted"],
+    [2,"Además de las cámaras y el audio, ¿qué sistema debe mantener el guardia de FNAF 3?","La ventilación","El generador","La caja de música","La calefacción"],
+    [3,"¿En qué plataforma salió primero el original, el 8 de agosto de 2014?","Desura","Steam","Game Jolt","Google Play"],
+    [3,"¿Qué juego anterior de Cawthon, criticado por sus personajes que daban miedo sin querer, lo llevó a hacer FNAF?","Chipper & Sons Lumber Co.","The Desolate Hope","Escape the Carnival","Fazbear Frights"],
+    [3,"¿Con qué motor de juego hizo Cawthon el primer FNAF?","Clickteam Fusion 2.5","Unity","Unreal Engine 4","GameMaker Studio"],
+    [3,"¿Cuántos animatrónicos incluye Ultimate Custom Night?","50","30","40","66"],
+    [3,"FNAF 2 salió antes de lo previsto, en noviembre de 2014. ¿Para qué día estaba planeado?","25 de diciembre","31 de octubre","1 de enero","14 de febrero"],
+    [3,"FNAF 4 se lanzó el 23 de julio de 2015. ¿Para qué fecha estaba anunciado?","Halloween","Navidad","Año Nuevo","El 4 de julio"],
+    [3,"¿Cómo se llama la máquina de Sister Location que extrae los endoesqueletos de los animatrónicos?","El Scooper","El Extractor","El Compactor","La Trituradora"],
+    [3,"¿Cómo se llama el arma láser de Security Breach que no se queda sin munición?","Fazerblaster","Faz Cam","Freddy Gun","Pizzablaster"],
+    [3,"¿Cómo se llama la expansión de Help Wanted que salió en octubre de 2019?","Curse of Dreadbear","Ruin","Into the Pit","Survival Crew"],
+    [3,"¿Qué animatrónico sustituye a todos los demás en la quinta noche de FNAF 4?","Nightmare Fredbear","Nightmare Freddy","Nightmare Mangle","Plushtrap"],
+    [3,"¿Qué incidente del primer juego llevó a prohibir que los animatrónicos caminaran de día?","La mordida del 87","La mordida del 83","El cierre del 85","El incendio del 87"],
+    [3,"¿Qué récord Guinness consiguió la saga con los juegos que salieron entre agosto de 2014 y junio de 2015?","Más secuelas de un videojuego en un solo año","Videojuego de terror más vendido en un mes","Más jumpscares en un juego","Juego más visto en YouTube"],
+    [3,"¿Quién protagoniza la expansión Ruin de Security Breach?","Cassie","Vanessa","Gregory","Abby"],
+    [3,"¿Qué estudio tenía el proyecto de la película cuando se anunció en 2015?","Warner Bros. Pictures","Universal Pictures","Blumhouse Productions","Lionsgate"],
+    [3,"¿Qué le pasa a Mike al terminar la séptima noche (la Custom Night) del primer juego?","Lo despiden","Lo ascienden","Lo atacan los animatrónicos","Se queda con el turno de día"],
+  ],
+};
+
+export default bank;

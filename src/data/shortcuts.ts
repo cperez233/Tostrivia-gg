@@ -29,29 +29,32 @@ export const SHORTCUTS: Shortcut[] = [
 
   // Videojuegos
   { id: "nintendo", group: "juegos", name: "Nintendo", blurb: "Mario, Zelda, Pokémon, Smash y Animal Crossing", cats: ["mario", "zelda", "pokemon", "smash", "animalcrossing"] },
-  { id: "todosjuegan", group: "juegos", name: "Los que todos jugaron", blurb: "Minecraft, GTA, Fortnite, Mario, Pokémon…", cats: ["minecraft", "gta", "fortnite", "mario", "pokemon", "zelda", "sonic", "cod"] },
-  { id: "abiertos", group: "juegos", name: "Mundos abiertos épicos", blurb: "GTA, Red Dead, Witcher, Skyrim, Elden Ring…", cats: ["gta", "rdr", "witcher", "skyrim", "assassins", "cyberpunk", "souls"] },
+  { id: "todosjuegan", group: "juegos", name: "Los que todos jugaron", blurb: "Minecraft, GTA, Fortnite, FNAF, Mario…", cats: ["minecraft", "gta", "fortnite", "fnaf", "mario", "pokemon", "zelda", "sonic", "cod"] },
+  { id: "abiertos", group: "juegos", name: "Mundos abiertos", blurb: "GTA, Red Dead, Witcher, Skyrim, Elden Ring…", cats: ["gta", "rdr", "witcher", "skyrim", "assassins", "cyberpunk", "souls"] },
   { id: "cine", group: "juegos", name: "Juegos de película", blurb: "Last of Us, God of War, Spider-Man, RDR, MGS…", cats: ["tlou", "gow", "spiderman", "rdr", "mgs", "re"] },
+  { id: "pelea", group: "juegos", name: "Pelea", blurb: "Mortal Kombat, Smash y juegos de pelea", cats: ["mortalkombat", "smash", "pelea"] },
+  { id: "terror", group: "juegos", name: "Sustos y supervivencia", blurb: "FNAF, Resident Evil, Last of Us y Fallout", cats: ["fnaf", "re", "tlou", "fallout"] },
   { id: "competitivo", group: "juegos", name: "Competitivos", blurb: "Valorant, Overwatch, CS, LoL y Fortnite", cats: ["valorant", "overwatch", "counterstrike", "lol", "fortnite", "cod"] },
-  { id: "indie", group: "juegos", name: "Indies que enamoran", blurb: "Hollow Knight, Undertale, Stardew, Hades, Cuphead…", cats: ["hollowknight", "undertale", "stardew", "terraria", "cuphead", "hades"] },
+  { id: "indie", group: "juegos", name: "Indies", blurb: "Hollow Knight, Undertale, Stardew, Hades, Cuphead…", cats: ["hollowknight", "undertale", "stardew", "terraria", "cuphead", "hades"] },
   { id: "artemando", group: "juegos", name: "Arte con mando", blurb: "Los más aclamados: Witcher, Red Dead, Last of Us…", cats: ["witcher", "rdr", "tlou", "gow", "souls", "hades", "hollowknight", "undertale", "portal", "zelda"] },
   { id: "retro", group: "juegos", name: "Infancia gamer", blurb: "Mario, Sonic, Crash, Pokémon y Los Sims", cats: ["mario", "sonic", "crash", "pokemon", "zelda", "sims", "minecraft"] },
 
   // Series y películas
   { id: "sitcoms", group: "series", name: "Sitcoms", blurb: "Friends, The Office, HIMYM y Brooklyn 99", cats: ["friends", "theoffice", "himym", "brooklyn99", "betty"] },
-  { id: "netflix", group: "series", name: "Las de maratón", blurb: "Stranger Things, La casa de papel, Calamar…", cats: ["strangerthings", "bettercallsaul", "casadepapel", "squidgame", "merlina", "narcos", "peaky", "theboys"] },
-  { id: "animadas", group: "series", name: "Animadas", blurb: "Simpson, South Park, Rick y Morty, Bob Esponja…", cats: ["simpsons", "southpark", "rickmorty", "bobesponja", "gravityfalls", "adventuretime", "avatar"] },
+  { id: "netflix", group: "series", name: "Las de maratón", blurb: "Stranger Things, La casa de papel, Arcane…", cats: ["strangerthings", "bettercallsaul", "arcane", "casadepapel", "squidgame", "merlina", "narcos", "peaky", "theboys"] },
+  { id: "animadas", group: "series", name: "Animadas", blurb: "Simpson, South Park, Rick y Morty, Arcane…", cats: ["simpsons", "southpark", "rickmorty", "bobesponja", "gravityfalls", "adventuretime", "avatar", "arcane"] },
   { id: "blockbusters", group: "series", name: "Taquillazos", blurb: "Star Wars, Harry Potter, Vengadores, Jurassic…", cats: ["starwars", "harrypotter", "mcu", "lotr", "jurassic", "piratas", "rapidos"] },
-  { id: "escine", group: "series", name: "¡Es cine!", blurb: "Lo mejor según la crítica: Breaking Bad, Saul, Nolan…", cats: ["breakingbad", "bettercallsaul", "got", "peaky", "nolan", "lotr", "ghibli", "matrix", "pixar"] },
+  { id: "escine", group: "series", name: "¡Es cine!", blurb: "Lo mejor según la crítica: Breaking Bad, Saul, Nolan…", cats: ["breakingbad", "bettercallsaul", "got", "peaky", "arcane", "nolan", "lotr", "ghibli", "matrix", "pixar"] },
+  { id: "antiheroes", group: "series", name: "Antihéroes", blurb: "Walter White, Saul, Dexter, Tommy Shelby…", cats: ["breakingbad", "bettercallsaul", "dexter", "peaky", "narcos", "theboys"] },
   { id: "familia", group: "series", name: "Para toda la familia", blurb: "Pixar, Disney, Shrek y Ghibli", cats: ["pixar", "disney", "shrek", "ghibli"] },
-  { id: "epicas", group: "series", name: "Fantasía épica", blurb: "Juego de Tronos, Casa del dragón, Anillos, Harry Potter", cats: ["got", "hotd", "lotr", "harrypotter"] },
+  { id: "epicas", group: "series", name: "Fantasía", blurb: "Juego de Tronos, Casa del dragón, Anillos, Harry Potter", cats: ["got", "hotd", "lotr", "harrypotter"] },
 
   // Cultura general
   { id: "escuela", group: "cultura", name: "Lo de la escuela", blurb: "Historia, Geografía y Ciencia", cats: ["historia", "geografia", "ciencia"] },
   { id: "entretiene", group: "cultura", name: "Entretenimiento", blurb: "Cine, Música y Deportes", cats: ["cine", "musica", "deportes"] },
 
   // En todas las pestañas
-  { id: "famosos", group: "todas", name: "Lo más famoso de todo", blurb: "Naruto, Mario, Minecraft, Los Simpson, Star Wars…", cats: ["naruto", "dragonball", "onepiece", "mario", "pokemon", "minecraft", "simpsons", "starwars", "harrypotter"] },
+  { id: "famosos", group: "todas", name: "Lo más famoso de todo", blurb: "Naruto, Mario, Minecraft, Los Simpson, Star Wars…", cats: ["naruto", "dragonball", "onepiece", "aot", "mario", "pokemon", "minecraft", "zelda", "gta", "fortnite", "simpsons", "starwars", "harrypotter", "mcu", "friends", "strangerthings", "deportes", "musica"] },
 ];
 
 // los nombres se leen en el idioma de la interfaz (ver src/i18n)

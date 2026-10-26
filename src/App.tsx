@@ -193,9 +193,9 @@ export default function App() {
       >
         {view.k === "home" && <Home onPlay={playSolo} />}
         {view.k === "cats" && <Categories onPlay={playSolo} />}
-        {view.k === "group" && <Group onHost={host} onJoin={join} />}
+        {view.k === "group" && <Group onHost={host} onCode={(code) => go({ k: "join", code }, `/sala/${code}`, { label: t("Sala") })} />}
         {view.k === "room" && <Room client={view.client} onExit={exitRoom} onCats={toCats} />}
-        {view.k === "join" && <JoinScreen code={view.code} taken={view.taken} first={{ name: view.name, seal: view.seal }} onJoin={(n, s) => join(view.code, n, s)} onHome={() => go({ k: "home" }, "/")} />}
+        {view.k === "join" && <JoinScreen code={view.code} taken={view.taken} first={{ name: view.name, seal: view.seal }} onJoin={(n, s) => join(view.code, n, s)} onHome={() => go({ k: "home" }, "/")} onOtherCode={() => go({ k: "group" }, "/grupo")} />}
         {view.k === "solo-start" && <SoloStart cat={view.cat} onPlay={() => playSolo(view.cat)} onHome={() => go({ k: "cats" }, "/categorias")} />}
         {view.k === "404" && <NotFound onGo={(t) => tab(t)} />}
       </motion.div>
@@ -204,7 +204,7 @@ export default function App() {
   );
 }
 
-function JoinScreen({ code, taken = [], first, onJoin, onHome }: { code: string; taken?: number[]; first?: { name?: string; seal?: number }; onJoin: (name: string, seal: number) => void; onHome: () => void }) {
+function JoinScreen({ code, taken = [], first, onJoin, onHome, onOtherCode }: { code: string; taken?: number[]; first?: { name?: string; seal?: number }; onJoin: (name: string, seal: number) => void; onHome: () => void; onOtherCode: () => void }) {
   const [profile, setProfile] = useState(() => {
     const p = savedProfile();
     return { name: first?.name ?? p.name, seal: first?.seal ?? p.seal };
@@ -244,6 +244,9 @@ function JoinScreen({ code, taken = [], first, onJoin, onHome }: { code: string;
         )}
         <button type="submit" className="btn btn--hanko btn--block" disabled={!canJoin}>
           {t("Entrar a la sala")}
+        </button>
+        <button type="button" className="link" onClick={onOtherCode}>
+          {t("Probar con otro código")}
         </button>
       </motion.form>
     </div>

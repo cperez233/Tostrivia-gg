@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-arcane.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  arcane: [
+    [1,"¿De qué videojuego sale Arcane?","League of Legends","Valorant","Dota 2","Overwatch"],
+    [1,"¿En qué plataforma se estrenó Arcane?","Netflix","HBO Max","Disney+","Prime Video"],
+    [1,"¿Cómo se llaman las hermanas protagonistas?","Vi y Jinx","Caitlyn y Vi","Mel y Ambessa","Jinx y Sevika"],
+    [1,"¿Cuáles son las dos ciudades enfrentadas de la serie?","Piltover y Zaun","Noxus y Demacia","Ionia y Freljord","Bilgewater y Shurima"],
+    [1,"¿Cómo se llamaba Jinx antes de convertirse en Jinx?","Powder","Violet","Ekko","Mylo"],
+    [1,"¿De qué color es el pelo de Jinx?","Azul","Rosa","Negro","Rubio"],
+    [1,"¿Quién es el criminal de Zaun que adopta a Jinx?","Silco","Vander","Marcus","Singed"],
+    [1,"¿Cómo se llama el bar de Vander?","The Last Drop","The Sump","The Black Rose","The Firelight"],
+    [1,"¿Cómo se llama la tecnología que mezcla ciencia y magia y que crean Jayce y Viktor?","Hextech","Chemtech","Runetech","Arcanotech"],
+    [1,"¿Cómo se llama la sustancia morada que consumen en Zaun?","Shimmer","Hextech","Dust","Glow"],
+    [1,"¿En qué año se estrenó la primera temporada?","2021","2019","2020","2022"],
+    [1,"¿Quién es la agente de Piltover que se enamora de Vi?","Caitlyn","Mel","Sevika","Sky"],
+    [1,"¿Cuántas temporadas tiene Arcane?","Dos","Una","Tres","Cuatro"],
+    [2,"¿Quién pone la voz original de Vi?","Hailee Steinfeld","Ella Purnell","Katie Leung","Amirah Vann"],
+    [2,"¿Quién pone la voz original de Jinx adulta?","Ella Purnell","Hailee Steinfeld","Toks Olagundoye","Mia Sinclair Jenness"],
+    [2,"¿Qué es Jayce?","Un científico e inventor","Un general de Noxus","Un jefe criminal","Un agente de Piltover"],
+    [2,"¿Qué busca Viktor con la magia?","Perfeccionar a la humanidad","Vengar a Zaun","Gobernar Piltover","Revivir a su familia"],
+    [2,"¿En qué criatura convierte Singed a Vander en la segunda temporada?","Warwick","Fiddlesticks","Mundo","Nasus"],
+    [2,"¿Quién es la mano derecha de Silco?","Sevika","Renni","Marcus","Margot"],
+    [2,"¿A quién lidera Ekko?","A los Firelights","A los Chem-Barons","A los Jinxers","A la Rosa Negra"],
+    [2,"¿De dónde es la general Ambessa Medarda?","De Noxus","De Demacia","De Ionia","De Freljord"],
+    [2,"¿Quién lidera la Rosa Negra?","LeBlanc","Ambessa","Mel","Singed"],
+    [2,"¿Quién es Isha?","Una huérfana de Zaun que adopta Jinx","La hija pequeña de Vander","Una hermana menor de Ekko","Una aprendiz de Jayce en Piltover"],
+    [2,"¿Cómo se llaman los hermanos adoptivos de Vi y Jinx?","Mylo y Claggor","Ekko y Scar","Benzo y Deckard","Huck y Smeech"],
+    [2,"¿Qué banda real toca en The Last Drop en la primera temporada?","Imagine Dragons","Coldplay","Linkin Park","Twenty One Pilots"],
+    [2,"¿Cómo se llama el lanzacohetes en forma de tiburón de Jinx?","Fishbones","Pow-Pow","Zap","Chomper"],
+    [2,"¿Qué usa Vi para pelear?","Unos guanteletes gigantes","Un martillo de energía","Un rifle de largo alcance","Dos cuchillas retráctiles"],
+    [2,"¿Qué fiesta celebran en Piltover?","El Día del Progreso","El Día de la Unión","La Noche de los Inventores","El Festival Hextech"],
+    [2,"¿Cuántos episodios tiene la primera temporada?","9","6","8","10"],
+    [2,"¿Quién pone la voz de Silco?","Jason Spisak","Kevin Alejandro","Harry Lloyd","JB Blanc"],
+    [2,"¿Quién pone la voz de Caitlyn?","Katie Leung","Toks Olagundoye","Amirah Vann","Minnie Driver"],
+    [2,"¿Qué es Mel Medarda?","Miembro del consejo de Piltover","Jefa de los Chem-Barons","Agente de Piltover","Directora de la Academia"],
+    [2,"¿Qué estilo de ambientación tiene Arcane?","Steampunk","Ciberpunk","Medieval","Postapocalíptico"],
+    [2,"¿Quién es el mentor de Jayce y Viktor, fundador y líder del consejo de Piltover?","Heimerdinger","Singed","Silco","Marcus"],
+    [2,"¿Qué relación tenían Vander y Silco antes del conflicto?","Eran compañeros de armas en una rebelión","Eran hermanos de sangre en Zaun","Eran socios en el negocio del bar","Eran rivales desde que eran niños"],
+    [3,"¿Qué estudio francés produjo la animación?","Fortiche","Ankama","Studio Mir","Cartoon Saloon"],
+    [3,"¿De quién fue la idea original de Arcane, que le surgió en 2015?","Christian Linke","Alex Yee","Mark Merrill","Nicolo Laurent"],
+    [3,"¿Para qué año estaba prevista originalmente la primera temporada?","2020","2019","2022","2018"],
+    [3,"¿Cuál es el presupuesto combinado, según lo reportado, de las dos temporadas?","250 millones de dólares","80 millones de dólares","120 millones de dólares","400 millones de dólares"],
+    [3,"¿Qué canción de apertura tuvo la serie en China?","«Lonely Warrior», de Eason Chan","«Enemy», de Imagine Dragons","«Sucker», de Jonas Brothers","«Snakes», de PUP"],
+    [3,"¿Cuántos episodios de la segunda temporada se filtraron en agosto de 2024?","Tres","Uno","Cinco","Todos"],
+    [3,"¿Cómo se llama en realidad Singed?","Dr. Corin Reveck","Dr. Cecil Heimerdinger","Dr. Viktor Talis","Dr. Marcus Reveck"],
+    [3,"¿Quién es el sheriff corrupto de Piltover que trabaja para Silco?","Marcus","Grayson","Deckard","Loris"],
+    [3,"¿Qué distribuidora tiene los derechos de video doméstico de la serie?","GKIDS","Criterion","Shout! Factory","Funimation"],
+    [3,"¿En cuántos países fue la serie número 1 de Netflix en su estreno?","52","30","75","90"],
+    [3,"¿Qué porcentaje de aprobación tiene la primera temporada en Rotten Tomatoes?","100 %","95 %","88 %","92 %"],
+    [3,"¿Qué campeón de League of Legends aparece en la segunda temporada sin voz acreditada?","Orianna","Ahri","Lux","Ekko"],
+    [3,"¿Quién es la madre de Jayce, que fue rescatada por un misterioso mago?","Ximena Talis","Cassandra Kiramman","Elora","Babette"],
+    [3,"¿Cómo se llama el padre adoptivo de Ekko, dueño de una casa de empeño?","Benzo","Vander","Scar","Heenot"],
+    [3,"¿Cómo se llama el rapero que actúa junto a Imagine Dragons en The Last Drop?","JID","Joyner Lucas","Denzel Curry","Vince Staples"],
+  ],
+};
+
+export default bank;

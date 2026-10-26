@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-mortalkombat.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  mortalkombat: [
+    [1,"¿Quiénes crearon Mortal Kombat?","Ed Boon y John Tobias","Ed Boon y Yu Suzuki","John Romero y John Tobias","Eugene Jarvis y Katsuhiro Harada"],
+    [1,"¿En qué año salió el primer Mortal Kombat?","1992","1994","1996","1998"],
+    [1,"¿Cómo se llama el remate brutal con el que se mata al rival al terminar la pelea?","Fatality","Brutality","Babality","Friendship"],
+    [1,"¿Qué dice el anunciador cuando ya puedes hacer un Fatality?","«¡Finish Him!»","«¡Fight!»","«¡Flawless Victory!»","«¡Round One!»"],
+    [1,"¿Qué frase grita Scorpion al lanzar su cadena?","«¡Get over here!»","«¡Come here!»","«¡You're mine!»","«¡Hunt him down!»"],
+    [1,"¿Qué poder tiene Sub-Zero?","Controla el hielo","Controla el fuego","Controla los rayos","Controla el veneno"],
+    [1,"¿De qué es dios Raiden?","Del trueno","Del fuego","De la guerra","Del hielo"],
+    [1,"¿A qué se dedica Johnny Cage?","Es actor de cine","Es policía","Es cazarrecompensas","Es monje"],
+    [1,"¿Cuántos brazos tiene Goro?","Cuatro","Tres","Seis","Dos"],
+    [1,"¿Qué era Liu Kang antes del torneo?","Un monje shaolin","Un soldado","Un ladrón","Un luchador de circo"],
+    [1,"¿Quién organiza el torneo del primer juego en su isla?","Shang Tsung","Shao Kahn","Quan Chi","Shinnok"],
+    [1,"¿Qué animal aparece en el logo de Mortal Kombat?","Un dragón","Un tigre","Un lobo","Un águila"],
+    [1,"¿Qué color de traje lleva Scorpion?","Amarillo","Azul","Verde","Rojo"],
+    [2,"¿Qué organización nació en parte por la polémica que causó la violencia de Mortal Kombat?","El ESRB","El PEGI","El CERO","El USK"],
+    [2,"¿Cómo se llama el minijuego de romper bloques de madera, piedra y acero?","Test Your Might","Break the Wall","Kombat Kode","Konquest"],
+    [2,"¿Qué entrega añadió los Babalities y las Friendships?","Mortal Kombat II","Mortal Kombat","Mortal Kombat 3","Mortal Kombat 4"],
+    [2,"¿Cómo se llama el remate en el que el ganador se transforma en un animal?","Animality","Brutality","Babality","Friendship"],
+    [2,"¿Quién es el emperador de Outworld?","Shao Kahn","Shang Tsung","Goro","Quan Chi"],
+    [2,"¿Qué entrega fue la primera con gráficos 3D?","Mortal Kombat 4","Mortal Kombat 3","Mortal Kombat: Deadly Alliance","Mortal Kombat (2011)"],
+    [2,"¿Qué estudio desarrolla los Mortal Kombat desde 2011?","NetherRealm Studios","Midway Games","Epic Games","Capcom"],
+    [2,"¿Qué estudio creó el primer Mortal Kombat en 1992?","Midway","Capcom","SNK","Acclaim"],
+    [2,"¿Cómo se llama el ataque de Mortal Kombat (2011) que muestra los huesos y órganos del rival rompiéndose?","Rayos X","Fatal Blow","Brutality","Krushing Blow"],
+    [2,"¿Qué mecánica nueva de Mortal Kombat 1 (2023) hace que otro luchador te ayude en la pelea?","Los Kameo Fighters","El Tag Team","Los Strikers","Los Assists"],
+    [2,"¿Cuántos años después de Mortal Kombat (2011) transcurre Mortal Kombat X?","25 años","10 años","100 años","5 años"],
+    [2,"¿Quién dirigió la película de 1995?","Paul W. S. Anderson","Roland Emmerich","Michael Bay","Paul Verhoeven"],
+    [2,"¿Qué actor interpreta a Raiden en la película de 1995?","Christopher Lambert","Jean-Claude Van Damme","Cary-Hiroyuki Tagawa","Linden Ashby"],
+    [2,"¿Qué se oye cuando haces un uppercut en Mortal Kombat II?","«¡Toasty!»","«¡Excellent!»","«¡Outstanding!»","«¡Brutal!»"],
+    [2,"¿A qué clan pertenece Scorpion?","Shirai Ryu","Lin Kuei","Dragón Negro","Loto Blanco"],
+    [2,"¿Cómo se llama el modo en primera persona de Mortal Kombat X donde se exploran zonas para desbloquear objetos?","La Krypt","El Laberinto","La Torre","Konquest"],
+    [2,"¿Quién es la villana principal de Mortal Kombat 11?","Kronika","Shao Kahn","Shinnok","Onaga"],
+    [2,"¿Cuál es el nombre real de Scorpion?","Hanzo Hasashi","Bi-Han","Kuai Liang","Takeda Takahashi"],
+    [2,"¿Qué Sub-Zero es el hermano mayor, el que muere a manos de Scorpion?","Bi-Han","Kuai Liang","Cyrax","Smoke"],
+    [2,"¿Cómo se llaman los remates que usan el escenario, como mandar al rival contra unas púas?","Stage Fatality","Brutality","Hara-Kiri","Mercy"],
+    [2,"¿Qué entrega añadió el botón de correr (Run)?","Mortal Kombat 3","Mortal Kombat II","Mortal Kombat 4","Mortal Kombat (2011)"],
+    [2,"¿Quién es la princesa adoptada por Shao Kahn?","Kitana","Mileena","Sindel","Jade"],
+    [3,"¿Con qué estrella de acción quería Midway hacer un juego antes de que existiera Mortal Kombat?","Jean-Claude Van Damme","Bruce Lee","Chuck Norris","Jackie Chan"],
+    [3,"¿Cuál es la única entrega principal en la que no sale Scorpion?","Mortal Kombat 3","Mortal Kombat II","Mortal Kombat 4","Mortal Kombat X"],
+    [3,"¿En qué país se prohibió Mortal Kombat (2011) por no haber una clasificación adecuada para él?","Australia","Canadá","Japón","Brasil"],
+    [3,"¿Cuántos torneos seguidos había ganado Goro antes del primer juego?","Nueve","Cinco","Siete","Diez"],
+    [3,"¿Cuál es el material más duro que se rompe en Test Your Might del primer juego?","Diamante","Acero","Rubí","Granito"],
+    [3,"¿En qué entrega apareció por primera vez el Brutality?","Ultimate Mortal Kombat 3","Mortal Kombat II","Mortal Kombat 4","Mortal Kombat X"],
+    [3,"¿Qué entrega añadió el Hara-Kiri, con el que el perdedor se suicida?","Mortal Kombat: Deception","Mortal Kombat: Armageddon","Mortal Kombat: Deadly Alliance","Mortal Kombat vs. DC Universe"],
+    [3,"¿Qué entrega permitía crear tus propios Fatalities con la opción Kreate-A-Fatality?","Mortal Kombat: Armageddon","Mortal Kombat: Deception","Mortal Kombat 4","Mortal Kombat X"],
+    [3,"¿Cuánto costó hacer la película de 1995?","20 millones de dólares","5 millones de dólares","60 millones de dólares","120 millones de dólares"],
+    [3,"¿En qué juego se inspira el minijuego «Motor Kombat»?","Mario Kart","Crash Team Racing","F-Zero","Sonic Riders"],
+    [3,"¿Qué juego de acción de 2005 transcurre durante los hechos de Mortal Kombat II?","Shaolin Monks","Special Forces","Mythologies: Sub-Zero","Deception"],
+    [3,"¿Qué actor posó para el Johnny Cage original?","Daniel Pesina","Ed Boon","John Vogel","Dan Forden"],
+    [3,"¿Cuántos personajes jugables tenía el primer Mortal Kombat?","Siete","Cinco","Diez","Doce"],
+    [3,"¿Cómo escapa Kano de la isla de Shang Tsung al final del primer juego?","En un bote","En un helicóptero","Por un portal","Nadando"],
+    [3,"¿Qué dios anciano caído es el villano de Mortal Kombat 4?","Shinnok","Onaga","Blaze","Kronika"],
+  ],
+};
+
+export default bank;
