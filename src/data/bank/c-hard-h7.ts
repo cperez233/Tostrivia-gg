@@ -6,14 +6,13 @@ import type { RawQuestion } from "../types";
 
 const bank: Record<string, RawQuestion[]> = {
   kimetsu: [
-    [3,"¿En qué era japonesa transcurre Demon Slayer?","La era Taishō","La era Edo","La era Meiji","La era Shōwa"],
-    [3,"¿Qué puesto ocupa Akaza entre las Lunas Superiores?","El tercero","El primero","El segundo","El quinto"],
+    [2,"¿En qué era japonesa transcurre Demon Slayer?","La era Taishō","La era Edo","La era Meiji","La era Shōwa"],
+    [2,"¿Qué puesto ocupa Akaza entre las Lunas Superiores?","El tercero","El primero","El segundo","El quinto"],
     [3,"¿Qué puesto ocupa Doma entre las Lunas Superiores?","El segundo","El tercero","El cuarto","El sexto"],
   ],
   gta: [
     [3,"¿En qué año salió el primer Grand Theft Auto?","1997","1995","1999","2001"],
     [3,"¿Cómo se llama el pueblo desértico donde vive Trevor en GTA V?","Sandy Shores","Paleto Bay","Grapeseed","Blaine County"],
-    [3,"¿Cómo se llama la gaseosa verde del universo GTA, parodia de Sprite?","Sprunk","eCola","Pisswasser","Cluckin' Soda"],
     [3,"¿Quién es el cofundador de Rockstar Games y guionista de la saga?","Dan Houser","Sam Houser","Leslie Benzies","Ed Zitron"],
   ],
   lol: [
@@ -31,8 +30,8 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Cuántos episodios tiene el anime de Death Note?","37","26","52","24"],
   ],
   zelda: [
-    [3,"¿Cómo se llama el comerciante de Majora's Mask al que Skull Kid le roba?","El Vendedor de Máscaras Felices","El Vendedor Sheikah","El Vendedor Ambulante","El Vendedor de Clock Town"],
-    [3,"¿En qué año salió Ocarina of Time?","1998","1996","2000","2002"],
+    [2,"¿Cómo se llama el comerciante de Majora's Mask al que Skull Kid le roba?","El Vendedor de Máscaras Felices","El Vendedor Sheikah","El Vendedor Ambulante","El Vendedor de Clock Town"],
+    [2,"¿En qué año salió Ocarina of Time?","1998","1996","2000","2002"],
   ],
 };
 

@@ -14,7 +14,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿En qué año salió Sonic CD?","1993","1991","1992","1994"],
     [3,"¿Quién fue el programador principal del primer Sonic the Hedgehog?","Yuji Naka","Naoto Ohshima","Hirokazu Yasuhara","Takashi Iizuka"],
     [3,"¿Quién compuso la música de Sonic the Hedgehog 1 y 2?","Masato Nakamura","Jun Senoue","Tomoya Ohtani","Yuzo Koshiro"],
-    [3,"¿Qué edad tiene Sonic?","15 años","12 años","17 años","21 años"],
+    [2,"¿Qué edad tiene Sonic?","15 años","12 años","17 años","21 años"],
   ],
   opm: [
     [3,"¿Qué puesto ocupa Saitama en la Clase C al registrarse en la Asociación de Héroes?","El 388","El 1","El 100","El 1.000"],

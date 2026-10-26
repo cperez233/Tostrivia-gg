@@ -6,9 +6,7 @@ import type { RawQuestion } from "../types";
 
 const bank: Record<string, RawQuestion[]> = {
   lotr: [
-    [3,"¿Cuántos años cumple Bilbo en su fiesta de cumpleaños?","111","99","101","121"],
     [3,"¿Cómo se llama la posada de Bree donde se encuentran Frodo y Aragorn?","El Poney Pisador","El Dragón Verde","El Árbol Dorado","La Jarra Rota"],
-    [3,"¿Cuál es el nombre élfico de Gandalf?","Mithrandir","Olórin","Incánus","Tharkûn"],
     [3,"¿Qué edad tiene Frodo cuando sale de la Comarca, en el libro?","50 años","33 años","111 años","21 años"],
   ],
   cod: [
@@ -18,7 +16,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Qué entrega introdujo las rachas de bajas y las ventajas (perks)?","Call of Duty 4: Modern Warfare","Call of Duty 2","World at War","Modern Warfare 2"],
   ],
   fma: [
-    [3,"¿Qué pecado capital encarna King Bradley?","La Ira","El Orgullo","La Envidia","La Gula"],
+    [2,"¿Qué pecado capital encarna King Bradley?","La Ira","El Orgullo","La Envidia","La Gula"],
     [3,"¿Quién compuso la música de Fullmetal Alchemist: Brotherhood?","Akira Senju","Yoko Kanno","Joe Hisaishi","Michiru Oshima"],
     [3,"¿Quién canta «Again», el primer opening de Brotherhood?","Yui","Aimer","Lisa","Nana Mizuki"],
     [3,"¿Cuántos tomos tiene el manga de Fullmetal Alchemist?","27","18","36","42"],
@@ -38,7 +36,6 @@ const bank: Record<string, RawQuestion[]> = {
   jojo: [
     [3,"¿En qué año se publicó el primer capítulo de JoJo's Bizarre Adventure?","1987","1983","1990","1995"],
     [3,"¿Cuál es el Stand de Johnny Joestar en Steel Ball Run?","Tusk","Ball Breaker","Soft & Wet","Spin"],
-    [3,"¿Cuál es el Stand de Funny Valentine?","D4C","Tusk","Made in Heaven","Whitesnake"],
     [3,"¿Cómo se llama la evolución del Stand de Giorno Giovanna?","Gold Experience Requiem","Golden Wind","Gold Experience Plus","Stand Requiem"],
   ],
 };

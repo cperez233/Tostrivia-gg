@@ -4,14 +4,13 @@ const N = null;
 
 export default {
   kimetsu: [
-    [3, "¿En qué era japonesa transcurre Demon Slayer?", "La era Taishō", "La era Edo", "La era Meiji", "La era Shōwa", ["In which Japanese era is Demon Slayer set?", "The Taishō era", "The Edo era", "The Meiji era", "The Shōwa era"]],
-    [3, "¿Qué puesto ocupa Akaza entre las Lunas Superiores?", "El tercero", "El primero", "El segundo", "El quinto", ["What rank does Akaza hold among the Upper Moons?", "Third", "First", "Second", "Fifth"]],
+    [2, "¿En qué era japonesa transcurre Demon Slayer?", "La era Taishō", "La era Edo", "La era Meiji", "La era Shōwa", ["In which Japanese era is Demon Slayer set?", "The Taishō era", "The Edo era", "The Meiji era", "The Shōwa era"]],
+    [2, "¿Qué puesto ocupa Akaza entre las Lunas Superiores?", "El tercero", "El primero", "El segundo", "El quinto", ["What rank does Akaza hold among the Upper Moons?", "Third", "First", "Second", "Fifth"]],
     [3, "¿Qué puesto ocupa Doma entre las Lunas Superiores?", "El segundo", "El tercero", "El cuarto", "El sexto", ["What rank does Doma hold among the Upper Moons?", "Second", "Third", "Fourth", "Sixth"]],
   ],
   gta: [
     [3, "¿En qué año salió el primer Grand Theft Auto?", "1997", "1995", "1999", "2001", ["In what year did the first Grand Theft Auto come out?", N, N, N, N]],
     [3, "¿Cómo se llama el pueblo desértico donde vive Trevor en GTA V?", "Sandy Shores", "Paleto Bay", "Grapeseed", "Blaine County", ["What is the desert town where Trevor lives in GTA V called?", N, N, N, N]],
-    [3, "¿Cómo se llama la gaseosa verde del universo GTA, parodia de Sprite?", "Sprunk", "eCola", "Pisswasser", "Cluckin' Soda", ["What is the green soda in the GTA universe, a parody of Sprite, called?", N, N, N, N]],
     [3, "¿Quién es el cofundador de Rockstar Games y guionista de la saga?", "Dan Houser", "Sam Houser", "Leslie Benzies", "Ed Zitron", ["Who is the co-founder of Rockstar Games and writer of the series?", N, N, N, N]],
   ],
   lol: [
@@ -29,7 +28,7 @@ export default {
     [3, "¿Cuántos episodios tiene el anime de Death Note?", "37", "26", "52", "24", ["How many episodes does the Death Note anime have?", N, N, N, N]],
   ],
   zelda: [
-    [3, "¿Cómo se llama el comerciante de Majora's Mask al que Skull Kid le roba?", "El Vendedor de Máscaras Felices", "El Vendedor Sheikah", "El Vendedor Ambulante", "El Vendedor de Clock Town", ["What is the merchant in Majora's Mask whom Skull Kid robs called?", "The Happy Mask Salesman", "The Sheikah Salesman", "The Traveling Salesman", "The Clock Town Salesman"]],
-    [3, "¿En qué año salió Ocarina of Time?", "1998", "1996", "2000", "2002", ["In what year did Ocarina of Time come out?", N, N, N, N]],
+    [2, "¿Cómo se llama el comerciante de Majora's Mask al que Skull Kid le roba?", "El Vendedor de Máscaras Felices", "El Vendedor Sheikah", "El Vendedor Ambulante", "El Vendedor de Clock Town", ["What is the merchant in Majora's Mask whom Skull Kid robs called?", "The Happy Mask Salesman", "The Sheikah Salesman", "The Traveling Salesman", "The Clock Town Salesman"]],
+    [2, "¿En qué año salió Ocarina of Time?", "1998", "1996", "2000", "2002", ["In what year did Ocarina of Time come out?", N, N, N, N]],
   ],
 };
