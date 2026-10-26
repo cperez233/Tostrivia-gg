@@ -17,7 +17,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Qué edad tiene Sonic?","15 años","12 años","17 años","21 años"],
   ],
   opm: [
-    [3,"¿Qué puesto ocupa Saitama en la Clase C al registrarse en la Asociación de Héroes?","El 388","El 1","El 100","El 1.000"],
+    [3,"¿Con qué puntaje entra Saitama a la Asociación de Héroes, pese a romper todos los récords físicos?","71","46","88","100"],
     [3,"¿Cuántos kilómetros corre Saitama cada día en su entrenamiento?","10","5","20","42"],
     [3,"¿En qué año empezó ONE a publicar One Punch Man como webcómic?","2009","2005","2012","2015"],
   ],
@@ -28,7 +28,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién dirigió Reto Tokio?","Justin Lin","Rob Cohen","James Wan","John Singleton"],
   ],
   jjk: [
-    [3,"¿Qué día cumple años Gojo?","El 7 de diciembre","El 25 de diciembre","El 1 de enero","El 7 de julio"],
+    [3,"¿Quién da voz a Gojo en japonés?","Yūichi Nakamura","Hiroshi Kamiya","Junichi Suwabe","Tomokazu Sugita"],
     [3,"¿Cómo se llama el shikigami con forma de pájaro y rayos de Megumi?","Nue","Max Elefante","Gran Serpiente","Mahoraga"],
     [3,"¿Cómo se llaman los golpes que distorsionan el espacio y sueltan chispas al impactar?","Destello Negro","Rayo Oscuro","Corte Dimensional","Puño Maldito"],
     [3,"¿Cómo se llama la técnica de Gojo que combina el Azul y el Rojo?","Púrpura (Hollow Purple)","Vacío Infinito","Santuario Malévolo","Resonancia"],
@@ -37,7 +37,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Cuál es el nombre real de Hawks?","Keigo Takami","Keigo Shimura","Tenya Takami","Toya Todoroki"],
     [3,"¿El portador número cuántos de One For All es Deku?","El noveno","El octavo","El séptimo","El décimo"],
     [3,"¿Cuál es el nombre real de Shigaraki?","Tenko Shimura","Tomura Shimura","Toya Shimura","Tenya Shigaraki"],
-    [3,"¿Qué día cumple años Bakugo?","El 20 de abril","El 15 de julio","El 11 de enero","El 1 de abril"],
+    [3,"¿Quién da voz a Bakugo en japonés?","Nobuhiko Okamoto","Daiki Yamashita","Yūki Kaji","Yūichi Nakamura"],
   ],
   pokemonanime: [
     [3,"¿Cómo se llama el primer episodio del anime?","¡Pokémon, te elijo a ti!","¡Una aventura comienza!","Pueblo Paleta","El Pokémon eléctrico"],

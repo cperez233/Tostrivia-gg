@@ -5,7 +5,6 @@ const N = null;
 export default {
   naruto: [
     [3, "¿Cómo se llama el padre de Gaara, el Cuarto Kazekage?", "Rasa", "Kankuro", "Baki", "Yashamaru", ["What is the name of Gaara's father, the Fourth Kazekage?", N, N, N, N]],
-    [3, "¿Cuántos años tenía Itachi cuando masacró al clan Uchiha?", "13", "10", "16", "18", ["How old was Itachi when he massacred the Uchiha clan?", N, N, N, N]],
     [3, "¿Qué rasgo distingue a Iruka en el rostro?", "Una cicatriz que le cruza la nariz", "Un tatuaje en cada mejilla", "Una cicatriz sobre el ojo izquierdo", "Unas marcas rojas en las mejillas", ["What distinguishing feature does Iruka have on his face?", "A scar across his nose", "A tattoo on each cheek", "A scar over his left eye", "Red marks on his cheeks"]],
     [3, "¿Cómo se llama la hija de Asuma y Kurenai?", "Mirai Sarutobi", "Himawari Uzumaki", "Sarada Uchiha", "Chōchō Akimichi", ["What is the daughter of Asuma and Kurenai called?", N, N, N, N]],
     [3, "¿Cuántas colas tiene Matatabi, la gata de llamas azules?", "Dos", "Una", "Tres", "Cinco", ["How many tails does Matatabi, the cat with blue flames, have?", "Two", "One", "Three", "Five"]],

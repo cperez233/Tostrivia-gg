@@ -6,7 +6,7 @@ import type { RawQuestion } from "../types";
 
 const bank: Record<string, RawQuestion[]> = {
   aot: [
-    [2,"¿Qué nación infiltra guerreros en Paradis?","Marley","Hizuru","Paradis","Eldia"],
+    [2,"¿Qué nación infiltra guerreros en Paradis?","Marley","Hizuru","Liberio","Eldia"],
     [2,"¿Quién manda la Legión de Reconocimiento al principio?","Erwin Smith","Dot Pixis","Keith Shadis","Kenny Ackerman"],
     [3,"¿De qué aldea es Sasha Braus?","Dauper","Ragako","Trost","Stohess"],
     [2,"¿Qué cadete de la 104.ª promoción tiene la cabeza rapada?","Connie Springer","Jean Kirstein","Floch Forster","Marco Bott"],

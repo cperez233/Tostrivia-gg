@@ -17,7 +17,7 @@ export default {
     [3, "¿Cuál es la capital de Myanmar (Birmania)?", "Naipyidó", "Rangún", "Mandalay", "Bangkok", ["What is the capital of Myanmar (Burma)?", "Naypyidaw", "Yangon", "Mandalay", "Bangkok"]],
     [3, "¿Cuál es la capital de Nigeria?", "Abuya", "Lagos", "Accra", "Kano", ["What is the capital of Nigeria?", "Abuja", "Lagos", "Accra", "Kano"]],
     [3, "¿Cuántos países independientes tiene Sudamérica?", "12", "10", "13", "14", ["How many independent countries does South America have?", N, N, N, N]],
-    [3, "¿Cuál es el pico más alto de Colombia?", "Pico Cristóbal Colón", "Pico Simón Bolívar", "Nevado del Huila", "Nevado del Ruiz", ["What is Colombia's highest peak?", N, N, N, N]],
+    [3, "¿Cuál es la capital de Eritrea?", "Asmara", "Adís Abeba", "Yibuti", "Jartum", ["What is the capital of Eritrea?", "Asmara", "Addis Ababa", "Djibouti", "Khartoum"]],
     [3, "¿Cuál es el país más pequeño de África?", "Seychelles", "Gambia", "Mauricio", "Esuatini", ["What is the smallest country in Africa?", N, "The Gambia", "Mauritius", "Eswatini"]],
   ],
   musica: [

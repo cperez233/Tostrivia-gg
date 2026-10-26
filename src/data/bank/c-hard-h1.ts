@@ -7,7 +7,6 @@ import type { RawQuestion } from "../types";
 const bank: Record<string, RawQuestion[]> = {
   naruto: [
     [3,"¿Cómo se llama el padre de Gaara, el Cuarto Kazekage?","Rasa","Kankuro","Baki","Yashamaru"],
-    [3,"¿Cuántos años tenía Itachi cuando masacró al clan Uchiha?","13","10","16","18"],
     [3,"¿Qué rasgo distingue a Iruka en el rostro?","Una cicatriz que le cruza la nariz","Un tatuaje en cada mejilla","Una cicatriz sobre el ojo izquierdo","Unas marcas rojas en las mejillas"],
     [3,"¿Cómo se llama la hija de Asuma y Kurenai?","Mirai Sarutobi","Himawari Uzumaki","Sarada Uchiha","Chōchō Akimichi"],
     [3,"¿Cuántas colas tiene Matatabi, la gata de llamas azules?","Dos","Una","Tres","Cinco"],

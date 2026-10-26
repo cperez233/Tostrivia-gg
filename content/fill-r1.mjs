@@ -3,8 +3,6 @@ export default {
   kaguya: [
     [2, "¿A qué club pertenece Kaguya además del consejo estudiantil?", "Tiro con arco", "Esgrima", "Natación", "Tenis", ["Which club is Kaguya in besides the student council?", "Archery", "Fencing", "Swimming", "Tennis"]],
     [2, "¿Cómo se disfraza Hayasaka cuando Chika visita la mansión?", "De mayordomo", "De cocinera", "De doctora", "De guardaespaldas", ["How does Hayasaka disguise herself when Chika visits the mansion?", "As a butler", "As a cook", "As a doctor", "As a bodyguard"]],
-    [3, "¿De qué país es un cuarto de la ascendencia de Hayasaka?", "Irlanda", "Rusia", "Francia", "Inglaterra", ["Which country makes up a quarter of Hayasaka's ancestry?", "Ireland", "Russia", "France", "England"]],
-    [3, "¿Qué familiar de Kaguya usó a Hayasaka para espiarla?", "Oko Shinomiya", "Un'yo Shinomiya", "Gan'an Shinomiya", "Mikado Shijo", ["Which relative of Kaguya used Hayasaka to spy on her?", N, N, N, N]],
     [3, "¿En qué se vuelve exitoso el padre de Miyuki más adelante?", "En el streaming en vivo", "En la novela policiaca", "En la cocina", "En el boxeo", ["What does Miyuki's father later become successful at?", "Livestreaming", "Crime novels", "Cooking", "Boxing"]],
     [2, "¿Qué sueña ser Miyuki de mayor?", "Astrónomo profesional", "Abogado", "Médico", "Ingeniero", ["What does Miyuki dream of becoming?", "A professional astronomer", "A lawyer", "A doctor", "An engineer"]],
     [2, "¿A qué le tiene un miedo paralizante Miyuki?", "A las cucarachas", "A las alturas", "Al agua", "A los perros", ["What is Miyuki paralyzed with fear of?", "Cockroaches", "Heights", "Water", "Dogs"]],

@@ -15,7 +15,7 @@ export default {
     [2, "¿Qué edad tiene Sonic?", "15 años", "12 años", "17 años", "21 años", ["How old is Sonic?", "15", "12", "17", "21"]],
   ],
   opm: [
-    [3, "¿Qué puesto ocupa Saitama en la Clase C al registrarse en la Asociación de Héroes?", "El 388", "El 1", "El 100", "El 1.000", ["What rank does Saitama hold in Class C when he registers with the Hero Association?", "388th", "1st", "100th", "1,000th"]],
+    [3, "¿Con qué puntaje entra Saitama a la Asociación de Héroes, pese a romper todos los récords físicos?", "71", "46", "88", "100", ["What score does Saitama get when he enters the Hero Association, despite breaking every physical record?", N, N, N, N]],
     [3, "¿Cuántos kilómetros corre Saitama cada día en su entrenamiento?", "10", "5", "20", "42", ["How many kilometers does Saitama run every day in his training?", N, N, N, N]],
     [3, "¿En qué año empezó ONE a publicar One Punch Man como webcómic?", "2009", "2005", "2012", "2015", ["In what year did ONE start publishing One Punch Man as a webcomic?", N, N, N, N]],
   ],
@@ -26,7 +26,7 @@ export default {
     [3, "¿Quién dirigió Reto Tokio?", "Justin Lin", "Rob Cohen", "James Wan", "John Singleton", ["Who directed Tokyo Drift?", N, N, N, N]],
   ],
   jjk: [
-    [3, "¿Qué día cumple años Gojo?", "El 7 de diciembre", "El 25 de diciembre", "El 1 de enero", "El 7 de julio", ["What day is Gojo's birthday?", "December 7", "December 25", "January 1", "July 7"]],
+    [3, "¿Quién da voz a Gojo en japonés?", "Yūichi Nakamura", "Hiroshi Kamiya", "Junichi Suwabe", "Tomokazu Sugita", ["Who voices Gojo in Japanese?", N, N, N, N]],
     [3, "¿Cómo se llama el shikigami con forma de pájaro y rayos de Megumi?", "Nue", "Max Elefante", "Gran Serpiente", "Mahoraga", ["What is Megumi's bird-like shikigami with lightning called?", N, "Max Elephant", "Great Serpent", N]],
     [3, "¿Cómo se llaman los golpes que distorsionan el espacio y sueltan chispas al impactar?", "Destello Negro", "Rayo Oscuro", "Corte Dimensional", "Puño Maldito", ["What are the hits that distort space and give off sparks on impact called?", "Black Flash", "Dark Bolt", "Dimensional Cut", "Cursed Fist"]],
     [3, "¿Cómo se llama la técnica de Gojo que combina el Azul y el Rojo?", "Púrpura (Hollow Purple)", "Vacío Infinito", "Santuario Malévolo", "Resonancia", ["What is Gojo's technique that combines Blue and Red called?", "Hollow Purple", "Infinite Void", "Malevolent Shrine", "Resonance"]],
@@ -35,7 +35,7 @@ export default {
     [3, "¿Cuál es el nombre real de Hawks?", "Keigo Takami", "Keigo Shimura", "Tenya Takami", "Toya Todoroki", ["What is Hawks' real name?", N, N, N, N]],
     [3, "¿El portador número cuántos de One For All es Deku?", "El noveno", "El octavo", "El séptimo", "El décimo", ["Which holder of One For All is Deku?", "The ninth", "The eighth", "The seventh", "The tenth"]],
     [3, "¿Cuál es el nombre real de Shigaraki?", "Tenko Shimura", "Tomura Shimura", "Toya Shimura", "Tenya Shigaraki", ["What is Shigaraki's real name?", N, N, N, N]],
-    [3, "¿Qué día cumple años Bakugo?", "El 20 de abril", "El 15 de julio", "El 11 de enero", "El 1 de abril", ["What day is Bakugo's birthday?", "April 20", "July 15", "January 11", "April 1"]],
+    [3, "¿Quién da voz a Bakugo en japonés?", "Nobuhiko Okamoto", "Daiki Yamashita", "Yūki Kaji", "Yūichi Nakamura", ["Who voices Bakugo in Japanese?", N, N, N, N]],
   ],
   pokemonanime: [
     [3, "¿Cómo se llama el primer episodio del anime?", "¡Pokémon, te elijo a ti!", "¡Una aventura comienza!", "Pueblo Paleta", "El Pokémon eléctrico", ["What is the first episode of the anime called?", "Pokémon, I Choose You!", "An Adventure Begins!", "Pallet Town", "The Electric Pokémon"]],

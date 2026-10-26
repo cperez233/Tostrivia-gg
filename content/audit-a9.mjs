@@ -1,7 +1,7 @@
 const N = null;
 export default {
   aot: [
-    [2, "¿Qué nación infiltra guerreros en Paradis?", "Marley", "Hizuru", "Paradis", "Eldia", ["Which nation infiltrates warriors into Paradis?", N, N, N, N]],
+    [2, "¿Qué nación infiltra guerreros en Paradis?", "Marley", "Hizuru", "Liberio", "Eldia", ["Which nation infiltrates warriors into Paradis?", N, N, N, N]],
     [2, "¿Quién manda la Legión de Reconocimiento al principio?", "Erwin Smith", "Dot Pixis", "Keith Shadis", "Kenny Ackerman", ["Who leads the Survey Corps at the start of the story?", N, N, N, N]],
     [3, "¿De qué aldea es Sasha Braus?", "Dauper", "Ragako", "Trost", "Stohess", ["Which village is Sasha Braus from?", N, N, N, N]],
     [2, "¿Qué cadete de la 104.ª promoción tiene la cabeza rapada?", "Connie Springer", "Jean Kirstein", "Floch Forster", "Marco Bott", ["Which 104th Corps cadet has a shaved head?", N, N, N, N]],

@@ -19,7 +19,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Cuál es la capital de Myanmar (Birmania)?","Naipyidó","Rangún","Mandalay","Bangkok"],
     [3,"¿Cuál es la capital de Nigeria?","Abuya","Lagos","Accra","Kano"],
     [3,"¿Cuántos países independientes tiene Sudamérica?","12","10","13","14"],
-    [3,"¿Cuál es el pico más alto de Colombia?","Pico Cristóbal Colón","Pico Simón Bolívar","Nevado del Huila","Nevado del Ruiz"],
+    [3,"¿Cuál es la capital de Eritrea?","Asmara","Adís Abeba","Yibuti","Jartum"],
     [3,"¿Cuál es el país más pequeño de África?","Seychelles","Gambia","Mauricio","Esuatini"],
   ],
   musica: [

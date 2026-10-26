@@ -8,8 +8,6 @@ const bank: Record<string, RawQuestion[]> = {
   kaguya: [
     [2,"¿A qué club pertenece Kaguya además del consejo estudiantil?","Tiro con arco","Esgrima","Natación","Tenis"],
     [2,"¿Cómo se disfraza Hayasaka cuando Chika visita la mansión?","De mayordomo","De cocinera","De doctora","De guardaespaldas"],
-    [3,"¿De qué país es un cuarto de la ascendencia de Hayasaka?","Irlanda","Rusia","Francia","Inglaterra"],
-    [3,"¿Qué familiar de Kaguya usó a Hayasaka para espiarla?","Oko Shinomiya","Un'yo Shinomiya","Gan'an Shinomiya","Mikado Shijo"],
     [3,"¿En qué se vuelve exitoso el padre de Miyuki más adelante?","En el streaming en vivo","En la novela policiaca","En la cocina","En el boxeo"],
     [2,"¿Qué sueña ser Miyuki de mayor?","Astrónomo profesional","Abogado","Médico","Ingeniero"],
     [2,"¿A qué le tiene un miedo paralizante Miyuki?","A las cucarachas","A las alturas","Al agua","A los perros"],
