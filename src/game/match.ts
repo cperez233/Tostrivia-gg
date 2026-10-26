@@ -36,7 +36,8 @@ import {
 import { random, randomInt, shuffle } from "../lib/rng";
 
 export const MAX_PLAYERS = 10;
-const MEDIA_WAIT_MS = 33_000; // tiempo máximo para que el video empiece a sonar en todos
+const MEDIA_WAIT_MS = 33_000; // tiempo máximo para que el video empiece a sonar en alguien
+const MEDIA_LAG_MS = 4_000; // cuando ya suena en uno, lo que se espera a los demás antes de arrancar igual
 const GRACE_MS = 700; // margen de red para respuestas que llegan justo al final
 const AUTO_NEXT_MS = 7_000; // en grupo, la revelación pasa sola
 
@@ -162,6 +163,8 @@ export class Match {
   private nextTimer: ReturnType<typeof setTimeout> | null = null;
   private answers = new Map<string, { choice: number; ms: number }>();
   private mediaFailed = new Set<string>();
+  /** ya suena en alguien: corre la espera corta para los rezagados */
+  private lagging = false;
   /** modo Poderes: fallos seguidos de cada jugador, para el poder de consuelo */
   private misses = new Map<string, number>();
   private listeners = new Set<Listener>();
@@ -310,6 +313,7 @@ export class Match {
     const q = BANK.byId[qid];
     this.answers.clear();
     this.mediaFailed.clear();
+    this.lagging = false;
     const order = optionOrder(qid, this.s.seed);
     const duration = durationFor(this.s.rules, !!q.media);
     if (q.media && this.mediaFails >= this.failLimit) {
@@ -343,7 +347,12 @@ export class Match {
     if (index !== this.s.index || !this.s.qid) return;
     if (status === "error") {
       this.mediaFailed.add(pid);
-      if (this.s.phase === "loading") return this.replaceCurrent();
+      if (this.s.phase === "loading") {
+        // en grupo, si falla en un invitado ese invitado queda excusado y los demás siguen
+        if (this.s.mode === "solo" || pid === this.s.hostId) return this.replaceCurrent();
+        if (this.active().every((p) => this.mediaFailed.has(p.id))) return this.replaceCurrent();
+        return this.checkMediaReady();
+      }
       // a mitad de pregunta: si es en el anfitrión (o jugando solo) se cambia para todos;
       // si es en un invitado, ese invitado queda excusado y no pierde la racha
       if (this.s.phase === "question" && (pid === this.s.hostId || this.s.mode === "solo") && this.answers.size === 0) return this.replaceCurrent();
@@ -358,7 +367,18 @@ export class Match {
     if (this.s.phase !== "loading") return;
     const q = this.s.qid ? BANK.byId[this.s.qid] : null;
     if (!q?.media) return;
-    if (this.active().every((p) => this.s.mediaReady.includes(p.id))) this.beginQuestion();
+    if (!this.s.mediaReady.length) return;
+    const act = this.active();
+    if (act.every((p) => this.s.mediaReady.includes(p.id) || this.mediaFailed.has(p.id))) return this.beginQuestion();
+    // un celular que no arranca (el navegador bloqueó el sonido, la pestaña está de fondo…)
+    // no deja a todos sin poder responder: se le da un margen corto y la pregunta empieza igual
+    if (this.lagging) return;
+    this.lagging = true;
+    if (this.waitTimer) clearTimeout(this.waitTimer);
+    const index = this.s.index;
+    this.waitTimer = setTimeout(() => {
+      if (this.s.phase === "loading" && this.s.index === index) this.beginQuestion();
+    }, MEDIA_LAG_MS);
   }
 
   private mediaTimeout() {
