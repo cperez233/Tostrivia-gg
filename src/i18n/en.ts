@@ -264,6 +264,7 @@ export const EN: Record<string, string> = {
   "Eligieron: {list}": "Picked by: {list}",
   "Preparando el video en todos los celulares ({a}/{b})…": "Getting the video ready on every phone ({a}/{b})…",
   "Preparando el video…": "Getting the video ready…",
+  "Ya respondieron todos: no le llegaría a nadie.": "Everyone already answered: it wouldn't hit anyone.",
   "Respondiste. Faltan {a} de {b}.": "Answered. Waiting on {a} of {b}.",
   "Ver resultado": "See results",
   "Siguiente pregunta": "Next question",

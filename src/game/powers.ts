@@ -251,6 +251,9 @@ export const POWER_LINES = {
   dealt: (p: PowerId, who: string, pts: number) =>
     `${POWER_ICON[p]} ${p === "steal" ? t("Le robaste {n} a {who}.", { n: pts, who }) : t("{power} a {who}: −{n}.", { power: POWER_TEXT[p].name, who, n: pts })}`,
   blocked: (p: PowerId, who: string, by: PowerId) => `${POWER_ICON[by]} ${t("Frenaste {power} de {who}.", { power: POWER_TEXT[p].name, who })}`,
+  get noTarget() {
+    return t("Ya respondieron todos: no le llegaría a nadie.");
+  },
   missed: (p: PowerId) => `${POWER_ICON[p]} ${t("{power} no le hizo nada a nadie.", { power: POWER_TEXT[p].name })}`,
   swappedUp: (who: string, pts: number) => `${POWER_ICON.swapScore} ${t("Cambiazo con {who}: +{n}.", { who, n: pts })}`,
   swappedDown: (who: string, pts: number) => `${POWER_ICON.swapScore} ${t("{who} te hizo cambiazo: −{n}.", { who, n: pts })}`,

@@ -577,6 +577,8 @@ export class Match {
       const full = [...hand, ...prize].slice(0, MAX_HAND);
       return this.emit({ players: this.s.players.map((p) => (p.id === pid ? { ...p, powers: full } : p)) });
     }
+    // los de pantalla solo le llegan a quien aún no responde: si ya no queda nadie, no se gasta
+    if ((FX_POWERS as PowerId[]).includes(power) && !this.fxTargets(pid).length) return;
     const now = Date.now() - this.startedAt;
     const use: PowerUse = { p: power, at: now };
     if (power === "banana") use.after = this.answers.size;
@@ -593,15 +595,20 @@ export class Match {
       const from = kind !== "scare" ? now : now + (clip ? 3000 + randomInt(3000) : 1000 + randomInt(2500));
       const until = from + (clip ? SCARE_CLIP_MS : FX_MS[kind]);
       fx = { ...fx };
-      for (const p of this.active()) {
-        const guard = this.s.used[p.id]?.p;
-        if (p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star") fx[p.id] = { p: kind, by: pid, from, until, ...(clip ? { clip } : {}) };
-      }
+      for (const p of this.fxTargets(pid)) fx[p.id] = { p: kind, by: pid, from, until, ...(clip ? { clip } : {}) };
     } else if ((power === "shield" || power === "star") && fx[pid]) {
       fx = { ...fx };
       delete fx[pid];
     }
     this.emit({ players, used: { ...this.s.used, [pid]: use }, fx });
+  }
+
+  /** a quién le llega un poder de pantalla: los demás que siguen sin responder y sin Escudo ni Estrella */
+  private fxTargets(pid: string) {
+    return this.active().filter((p) => {
+      const guard = this.s.used[p.id]?.p;
+      return p.id !== pid && !this.answers.has(p.id) && guard !== "shield" && guard !== "star";
+    });
   }
 
   /** Cambio (solo): otra pregunta, mejor sin video y de la misma dificultad */

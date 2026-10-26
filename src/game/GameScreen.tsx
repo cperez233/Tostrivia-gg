@@ -6,7 +6,7 @@ import { loadYouTube, type YTNamespace, type YTPlayer } from "../lib/youtube";
 import { CATEGORY_BY_ID } from "../data/categories";
 import type { GameClient } from "../net/client";
 import type { Pick, Player, Snapshot } from "./match";
-import { POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
+import { FX_POWERS, POWER_ICON, POWER_LINES, POWER_TEXT, VARIANT_TEXT, type PowerId } from "./powers";
 import { multiplier } from "./round";
 import { DEFAULT_RULES } from "./rules";
 import { fmt } from "./useGame";
@@ -285,6 +285,8 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
               used={used?.p}
               closed={snap.phase !== "question" || myPick != null}
               spent={!!used}
+              // los de pantalla solo le llegan a quien sigue sin responder (y sin Escudo ni Estrella)
+              noTarget={!online.some((p) => p.id !== client.me.id && !snap.answered.includes(p.id) && snap.used?.[p.id]?.p !== "shield" && snap.used?.[p.id]?.p !== "star")}
               onUse={(p) => client.power(snap.index, p)}
             />
           )}
@@ -305,7 +307,7 @@ export default function GameScreen({ client, snap, at, onExit, onCats }: Props) 
             )}
           </div>
 
-          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf)} streakOn={rules.streak} />}</AnimatePresence>
+          <AnimatePresence>{reveal && mine && <Verdict key={key} pick={mine} notes={powerNotes(mine, client.me.id, nameOf, reveal.picks)} streakOn={rules.streak} />}</AnimatePresence>
 
           {reveal && (
             <div className="game__next">
@@ -593,7 +595,7 @@ function Scare({ who }: { who: string }) {
 }
 
 /** modo Poderes: barra con los poderes en la mano; se usa uno por pregunta, antes de responder */
-function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; onUse: (p: PowerId) => void }) {
+function PowerBar({ hand, used, closed, spent, noTarget, onUse }: { hand: PowerId[]; used?: PowerId; closed: boolean; spent: boolean; noTarget: boolean; onUse: (p: PowerId) => void }) {
   return (
     <section className="powers" aria-label={POWER_LINES.label}>
       <p className="powers__label">
@@ -603,7 +605,8 @@ function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?
       <ul className="powers__hand">
         {hand.map((p, i) => {
           // el Bloque ? se puede abrir aunque ya hayas usado otro
-          const disabled = closed || (spent && p !== "mystery");
+          const idle = noTarget && (FX_POWERS as PowerId[]).includes(p);
+          const disabled = closed || (spent && p !== "mystery") || idle;
           return (
             <li key={`${p}-${i}`}>
               <motion.button
@@ -611,7 +614,7 @@ function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?
                 className="power"
                 onClick={() => onUse(p)}
                 disabled={disabled}
-                title={POWER_TEXT[p].desc}
+                title={idle ? POWER_LINES.noTarget : POWER_TEXT[p].desc}
                 aria-label={`${POWER_TEXT[p].name}: ${POWER_TEXT[p].desc}`}
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -633,7 +636,10 @@ function PowerBar({ hand, used, closed, spent, onUse }: { hand: PowerId[]; used?
 }
 
 /** lo que pasó con los poderes en esta pregunta, en frases cortas para el veredicto */
-function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): string[] {
+/** ataques que se cobran al revelar: pueden no hacer nada (el otro tenía 0, nadie respondió después del Plátano…) */
+const POINT_ATTACKS: PowerId[] = ["steal", "redShell", "blueShell", "lightning", "banana", "swapScore"];
+
+function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string, picks: Record<string, Pick>): string[] {
   const out: string[] = [];
   if (pick.power === "double" && pick.bonus) out.push(pick.ok ? POWER_LINES.doubled : POWER_LINES.doubleLost);
   if (pick.power === "dice" && pick.roll) out.push(`${POWER_ICON.dice} ${POWER_LINES.dice(pick.roll, pick.bonus ?? 0)}`);
@@ -644,6 +650,11 @@ function powerNotes(pick: Pick, me: string, nameOf: (pid: string) => string): st
   for (const h of pick.hits ?? [])
     out.push(h.p === "swapScore" ? POWER_LINES.swappedDown(nameOf(h.by), h.pts) : h.by === me ? POWER_LINES.selfHit(h.p, h.pts) : POWER_LINES.hit(h.p, nameOf(h.by), h.pts));
   for (const b of pick.blocked ?? []) out.push(POWER_LINES.blocked(b.p, nameOf(b.by), b.with));
+  // el Robo solo se intenta si aciertas; los demás siempre
+  if (pick.power && POINT_ATTACKS.includes(pick.power) && (pick.power !== "steal" || pick.ok)) {
+    const landed = pick.dealt?.length || pick.hits?.some((h) => h.by === me) || Object.values(picks).some((x) => x.blocked?.some((b) => b.by === me));
+    if (!landed) out.push(POWER_LINES.missed(pick.power));
+  }
   if (pick.earned) out.push(`${POWER_ICON[pick.earned]} ${(pick.consolation ? POWER_LINES.consolation : POWER_LINES.earned)(POWER_TEXT[pick.earned].name)}`);
   return out;
 }
