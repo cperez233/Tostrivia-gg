@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useTransform, useVelocity } from "framer-motion";
 import { CATEGORY_BY_ID } from "../data/categories";
 import { coversOf } from "../lib/covers";
+import { rng } from "../lib/rng";
 import type { Spin } from "../game/match";
 import "./wheel.css";
 import { t } from "../i18n";
@@ -19,6 +20,16 @@ interface Props {
   onLanded?: (spin: Spin) => void;
   size?: "hero" | "compact";
 }
+
+/** curvas de frenado: arranque seco y cola larga, la clásica, y una más pesada que se arrastra al final */
+const CURVES: [number, number, number, number][] = [
+  [0.08, 0.7, 0.08, 1],
+  [0.12, 0.62, 0.09, 1],
+  [0.22, 0.48, 0.1, 1],
+];
+type Ending = "clean" | "spring" | "push" | "wobble";
+/** cómo se asienta: limpia (30 %), se pasa un poco y vuelve (30 %), casi cambia de gajo y la empujan de vuelta (20 %), rebota varias veces (20 %) */
+const pickEnding = (x: number): Ending => (x < 0.3 ? "clean" : x < 0.6 ? "spring" : x < 0.8 ? "push" : "wobble");
 
 const FS = 3.8;
 /** del borde al botón central caben unas 28 unidades */
@@ -88,11 +99,14 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     lastNonce.current = spin.nonce;
     if (deck[spin.index] !== spin.cat) return;
     // dónde cae dentro del gajo y cuántas vueltas da salen del nonce: igual en todos los celulares, distinto en cada giro
-    const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * slice * 0.7;
-    const turns = 4 + (Math.floor(spin.nonce / 1000) % 3);
-    // cada giro dura distinto (4,2 a 5,4 s) y pasa un pelín del punto, como una rueda de verdad que se asienta: todo sale del nonce
-    const long = 4.2 + (Math.floor(spin.nonce / 3000) % 13) / 10;
-    const over = (spin.nonce % 2 ? 1 : -1) * slice * 0.09;
+    // todo sale del nonce (igual en todos los celulares) pero cada giro es distinto: vueltas, duración, curva, impulso inicial y cómo se asienta
+    const r = rng(spin.nonce ^ 0x9e3779b9);
+    const jitter = (r() - 0.5) * slice * 0.7;
+    const turns = 4 + Math.floor(r() * 3);
+    const long = 3.8 + r() * 1.3;
+    const curve = CURVES[Math.floor(r() * CURVES.length)];
+    const windup = r() < 0.6 ? 5 + r() * 8 : 0;
+    const ending = pickEnding(r());
     const cur = rot.get();
     const base = cur + 360 * turns;
     const desired = (((-spin.index * slice + jitter) % 360) + 360) % 360;
@@ -107,23 +121,31 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
       landedCb.current?.(spin);
     };
     let current: ReturnType<typeof animate>;
+    const settle = () => {
+      // el punto de la rueda dentro de su gajo es `jitter` desde el centro; el borde está a slice/2
+      if (ending === "clean") return done();
+      if (ending === "push") {
+        // casi cambia de gajo: la lengüeta la frena y la empuja de vuelta
+        const room = slice / 2 - jitter;
+        current = animate(rot, target + room * 0.9, { duration: 0.35, ease: "easeOut", onComplete: () => {
+          if (pointer.current) animate(pointer.current, { rotate: [-26, 0] }, { type: "spring", stiffness: 240, damping: 8 });
+          current = animate(rot, target, { type: "spring", stiffness: 110, damping: 13, mass: 0.9, onComplete: done });
+        } });
+        return;
+      }
+      const wobble = ending === "wobble";
+      current = animate(rot, target, wobble ? { type: "spring", stiffness: 95, damping: 5.5, mass: 0.9, onComplete: done } : { type: "spring", stiffness: 150, damping: 12, mass: 0.8, onComplete: done });
+    };
     if (reduce) {
       current = animate(rot, target, { duration: 0, onComplete: done });
     } else {
-      // 1) se echa hacia atrás un poco, 2) arranca y frena largo, 3) se pasa un poco y se asienta con un resorte
-      current = animate(rot, cur - 7, {
-        duration: 0.24,
-        ease: [0.3, 0, 0.45, 1],
-        onComplete: () => {
-          current = animate(rot, target + over, {
-            duration: long,
-            ease: [0.11, 0.62, 0.08, 1],
-            onComplete: () => {
-              current = animate(rot, target, { type: "spring", stiffness: 150, damping: 12, mass: 0.8, onComplete: done });
-            },
-          });
-        },
-      });
+      // 1) a veces se echa hacia atrás para tomar impulso, 2) arranca y frena largo, 3) se asienta de una de cuatro maneras
+      const over = ending === "spring" ? slice * 0.09 : ending === "wobble" ? slice * 0.2 : 0;
+      const run = () => {
+        current = animate(rot, ending === "push" ? target - slice * 0.02 : target + over, { duration: long, ease: curve, onComplete: settle });
+      };
+      if (windup) current = animate(rot, cur - windup, { duration: 0.22 + windup / 80, ease: [0.3, 0, 0.45, 1], onComplete: run });
+      else run();
     }
     return () => {
       current.stop();

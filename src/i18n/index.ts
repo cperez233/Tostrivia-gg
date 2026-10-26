@@ -98,14 +98,18 @@ export function questionKey(q: string, o: readonly string[]) {
 }
 
 /** pregunta y opciones en el idioma actual (mismo orden: la 0 sigue siendo la correcta) */
-export function localizeQuestion<T extends { q: string; o: [string, string, string, string]; visual?: { v: string } }>(question: T): T {
+export function localizeQuestion<T extends { q: string; o: [string, string, string, string]; visual?: { v: string }; ko?: string; enFix?: { q?: string; o?: [string, string, string, string] } }>(question: T): T {
   if (lang !== "en") return question;
   // Adivina el póster: la pregunta y los nombres de las categorías ya están en el diccionario de la interfaz
   if (question.visual?.v === "poster") return { ...question, q: t(question.q), o: question.o.map((n) => t(n)) as T["o"] };
   if (!questionsEn) return question;
-  const tr = questionsEn[questionKey(question.q, question.o)];
-  if (!tr) return question;
-  return { ...question, q: tr[0], o: [tr[1], tr[2], tr[3], tr[4]] };
+  // una pregunta corregida a mano sigue buscando su traducción por el texto original (ko) y puede traer la suya (enFix)
+  const tr = questionsEn[question.ko ?? questionKey(question.q, question.o)];
+  const fix = question.enFix;
+  if (!tr && !fix) return question;
+  // las opciones: las de la corrección si trae las suyas; si no, las de la traducción de siempre
+  const o = fix?.o ?? (tr ? [tr[1], tr[2], tr[3], tr[4]] : question.o);
+  return { ...question, q: fix?.q ?? tr?.[0] ?? question.q, o: o as T["o"] };
 }
 
 /** nombres de datos (categorías, familias) que se leen en el momento: el objeto no cambia, el texto sí */

@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-bettercallsaul.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  bettercallsaul: [
+    [1,"¿Quién interpreta a Jimmy McGill / Saul Goodman?","Bob Odenkirk","Bryan Cranston","Aaron Paul","Jonathan Banks"],
+    [1,"¿De qué serie es spin-off Better Call Saul?","Breaking Bad","The Wire","Los Soprano","Ozark"],
+    [1,"¿En qué ciudad de EE. UU. transcurre la mayor parte de la serie?","Albuquerque","Phoenix","Las Vegas","Denver"],
+    [1,"¿Cómo se llama el hermano mayor de Jimmy?","Chuck McGill","Howard Hamlin","Marco Pasternak","Hank Schrader"],
+    [1,"¿Cómo se llama la abogada que acaba siendo la pareja de Jimmy?","Kim Wexler","Stacey Ehrmantraut","Cheryl Hamlin","Francesca Liddy"],
+    [1,"¿Qué cadena de comida usa Gus Fring como fachada?","Los Pollos Hermanos","Taco Loco","Burger Hermanos","El Pollo Loco"],
+    [1,"¿Quién interpreta a Mike Ehrmantraut?","Jonathan Banks","Giancarlo Esposito","Michael McKean","Patrick Fabian"],
+    [1,"¿Qué alias usa Jimmy en Omaha tras los hechos de Breaking Bad?","Gene Takavic","Saul Hill","Jimmy Walker","Slippin' Jimmy"],
+    [1,"¿Dónde trabaja Gene en Omaha?","En una tienda Cinnabon","En un Burger King","En un casino","En una gasolinera"],
+    [1,"¿Qué apodo tenía Jimmy cuando era estafador en Chicago?","Slippin' Jimmy","Smooth Jimmy","Quick Jimmy","Lucky Jimmy"],
+    [1,"¿Quiénes crearon Better Call Saul?","Vince Gilligan y Peter Gould","Vince Gilligan y Bob Odenkirk","Peter Gould y Giancarlo Esposito","Matthew Weiner y David Chase"],
+    [1,"¿Cuántas temporadas tiene la serie?","6","5","7","4"],
+    [1,"¿En qué cadena de televisión se emitió originalmente?","AMC","HBO","Showtime","FX"],
+    [2,"¿Qué condición dice tener Chuck?","Hipersensibilidad electromagnética","Insomnio crónico","Fobia a la luz del sol","Alergia al polvo"],
+    [2,"¿Cómo se llama el bufete donde trabaja Chuck?","Hamlin, Hamlin & McGill","Davis & Main","Schweikart & Cokely","Wexler & Goodman"],
+    [2,"¿Cómo se llama el socio principal de ese bufete, rival de Jimmy?","Howard Hamlin","Clifford Main","Rich Schweikart","Kevin Wachtell"],
+    [2,"¿De qué universidad obtiene Jimmy su título de abogado?","Universidad de Samoa Americana","Universidad de Nuevo México","Universidad de Chicago","Harvard"],
+    [2,"¿Qué residencia de ancianos defrauda a sus clientes y da pie a una demanda colectiva?","Sandpiper Crossing","Sunny Pines","Desert Palms","Mesa Verde"],
+    [2,"¿Dónde está el despacho de Jimmy en las primeras temporadas?","En el cuarto de servicio de un salón de uñas","En un sótano","En un contenedor de carga","En un motel"],
+    [2,"¿Cómo termina la vida de Chuck?","En un incendio al derribar una lámpara de gas","De un infarto en el juicio","En un accidente de coche","Por una sobredosis"],
+    [2,"¿Cómo se llama el banco que es cliente de Kim?","Mesa Verde Bank & Trust","Madrigal Bank","First National Bank","Wells Fargo"],
+    [2,"¿Qué empresa alemana, matriz de Los Pollos Hermanos, contrata a Mike como consultor?","Madrigal Electromotive","Vamonos Pest","Gray Matter","Schweikart & Cokely"],
+    [2,"¿Quién llega a Albuquerque para dirigir el negocio de Hector tras su derrame?","Lalo Salamanca","Tuco Salamanca","Marco Salamanca","Nacho Varga"],
+    [2,"¿Qué le pasa a Hector Salamanca tras su derrame cerebral?","No puede hablar ni caminar y solo mueve un dedo","Pierde la memoria","Se queda ciego","Queda sordo"],
+    [2,"¿Cómo se llama el ingeniero alemán contratado para construir el superlaboratorio?","Werner Ziegler","Gale Boetticher","Peter Schuler","Kai"],
+    [2,"¿Quién mata a Howard Hamlin?","Lalo Salamanca","Mike Ehrmantraut","Gus Fring","Nacho Varga"],
+    [2,"¿Dónde termina viviendo Kim tras dejar a Jimmy?","En Florida","En Omaha","En Chicago","En Texas"],
+    [2,"¿Cómo se llama el taxista que reconoce a Gene como Saul Goodman?","Jeff","Buddy","Frank","Everett"],
+    [2,"¿Quién interpreta a Gus Fring?","Giancarlo Esposito","Mark Margolis","Steven Bauer","Raymond Cruz"],
+    [2,"¿Quién interpreta a Kim Wexler?","Rhea Seehorn","Kerry Condon","Laura Fraser","Poorna Jagannathan"],
+    [2,"¿Quién es el jefe del cártel para el que trabajan los Salamanca?","Don Eladio Vuente","Juan Bolsa","Gus Fring","Hector Salamanca"],
+    [2,"¿Cómo se llaman los primos gemelos sicarios de los Salamanca?","Leonel y Marco","Tuco y Lalo","Víctor y Tyrus","Juan y Eladio"],
+    [2,"¿Cómo se llama la nieta de Mike?","Kaylee","Stacey","Francesca","Wendy"],
+    [2,"¿Quiénes ayudan a Jimmy a grabar sus anuncios?","Estudiantes de cine de la UNM","Actores de teatro","Alumnos de derecho","Becarios del bufete"],
+    [3,"¿Qué récord negativo tiene la serie en los premios Emmy?","Es la más nominada sin haber ganado ni uno","Perdió todas las categorías de actuación","Fue retirada de la lista de nominadas","Ganó y le quitaron el premio"],
+    [3,"¿Qué hace Gus para que Nacho trabaje en contra de los Salamanca?","Lo chantajea tras descubrir que intentó matar a Hector","Le ofrece un puesto en su cadena","Secuestra a su padre","Lo nombra socio"],
+    [3,"¿Cómo intenta Nacho matar a Hector?","Sabotea su medicina para la angina","Pone una bomba en su coche","Lo envenena con tequila","Le dispara en la tienda"],
+    [3,"¿Cómo se llama el episodio final de la serie?","Saul Gone","Lantern","Point and Shoot","Fun and Games"],
+    [3,"¿Cómo se llama el último episodio de la tercera temporada, en el que muere Chuck?","Lantern","Chicanery","Bagman","Plan and Execution"],
+    [3,"¿A cuántos años de prisión lo sentencian al final?","86 años","7 años","25 años","Cadena perpetua"],
+    [3,"¿Qué comparten Jimmy y Kim cuando ella lo visita en prisión?","Un cigarrillo","Una carta","Un café","Una llamada"],
+    [3,"¿Qué veterinario con vínculos criminales ayuda a Mike y a Jimmy?","Dr. Caldera","Dr. Barry Goodman","Dr. Cruz","Dr. Ziegler"],
+    [3,"¿Cómo se llama el matrimonio acusado de malversación, uno de los primeros clientes de Jimmy?","Kettleman","Landry","Lindholm","Wachtell"],
+    [3,"¿Quién interpreta a Chuck McGill?","Michael McKean","Patrick Fabian","Ed Begley Jr.","Dennis Boutsikaris"],
+    [3,"¿Quién interpreta a Nacho Varga?","Michael Mando","Tony Dalton","Juan Carlos Cantu","Steven Bauer"],
+    [3,"¿Quiénes de Breaking Bad visitan a Saul en la sexta temporada?","Walter White y Jesse Pinkman","Hank Schrader y Gómez","Skyler y Walt Jr.","Todd y Lydia"],
+    [3,"¿Cuántos episodios tiene la serie en total?","63","62","73","50"],
+    [3,"¿Quién es Marion, la mujer que se encariña con Gene y acaba delatándolo?","La madre de Jeff","La esposa de Mike","La vecina de Kim","La secretaria de Howard"],
+    [3,"¿Cómo se llama la empresa de Florida donde trabaja Kim?","Palm Coast Sprinklers","Gulf Pools","Sunshine Realty","Coast Legal"],
+    [3,"¿Qué hace Mike con Werner Ziegler cuando este se va por su cuenta?","Lo mata por orden de Gus","Lo despide","Lo entrega a la policía","Lo ayuda a escapar"],
+  ],
+};
+
+export default bank;

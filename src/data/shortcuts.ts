@@ -22,7 +22,7 @@ export const SHORTCUTS: Shortcut[] = [
   { id: "shonen", group: "anime", name: "Shonen top", blurb: "Los que todo el mundo vio", cats: ["dragonball", "onepiece", "naruto", "bleach", "hxh", "mha", "jjk", "kimetsu", "aot"] },
   { id: "infancia", group: "anime", name: "Infancia de tarde", blurb: "Caballeros, Pokémon, Digimon, Sailor Moon…", cats: ["dragonball", "saintseiya", "pokemonanime", "digimon", "sailormoon", "yugioh", "doraemon"] },
   { id: "ahora", group: "anime", name: "Los del momento", blurb: "Lo más visto de los últimos años", cats: ["jjk", "csm", "spyfamily", "frieren", "bluelock", "dandadan", "sololeveling", "kimetsu"] },
-  { id: "obras", group: "anime", name: "Obras maestras", blurb: "Death Note, FMA, HxH, Code Geass, Steins;Gate…", cats: ["deathnote", "fma", "hxh", "codegeass", "steinsgate", "bebop", "eva", "vinland"] },
+  { id: "obras", group: "anime", name: "Obras maestras", blurb: "Death Note, Monster, FMA, HxH, Code Geass…", cats: ["deathnote", "monster", "fma", "hxh", "codegeass", "steinsgate", "bebop", "eva", "vinland"] },
   { id: "isekai", group: "anime", name: "Isekai y fantasía", blurb: "SAO, Re:Zero, KonoSuba, Black Clover, Frieren…", cats: ["sao", "rezero", "konosuba", "blackclover", "frieren", "sololeveling", "fairytail"] },
   { id: "risas", group: "anime", name: "Comedia y romance", blurb: "Kaguya, KonoSuba, Ranma, Spy×Family, Bocchi…", cats: ["kaguya", "konosuba", "ranma", "spyfamily", "bocchi", "oshinoko", "doraemon"] },
   { id: "deporte", group: "anime", name: "Anime deportivo", blurb: "Haikyuu, Slam Dunk y Blue Lock", cats: ["haikyuu", "slamdunk", "bluelock"] },
@@ -39,10 +39,10 @@ export const SHORTCUTS: Shortcut[] = [
 
   // Series y películas
   { id: "sitcoms", group: "series", name: "Sitcoms", blurb: "Friends, The Office, HIMYM y Brooklyn 99", cats: ["friends", "theoffice", "himym", "brooklyn99", "betty"] },
-  { id: "netflix", group: "series", name: "Las de maratón", blurb: "Stranger Things, La casa de papel, Calamar…", cats: ["strangerthings", "casadepapel", "squidgame", "merlina", "narcos", "peaky", "theboys"] },
+  { id: "netflix", group: "series", name: "Las de maratón", blurb: "Stranger Things, La casa de papel, Calamar…", cats: ["strangerthings", "bettercallsaul", "casadepapel", "squidgame", "merlina", "narcos", "peaky", "theboys"] },
   { id: "animadas", group: "series", name: "Animadas", blurb: "Simpson, South Park, Rick y Morty, Bob Esponja…", cats: ["simpsons", "southpark", "rickmorty", "bobesponja", "gravityfalls", "adventuretime", "avatar"] },
   { id: "blockbusters", group: "series", name: "Taquillazos", blurb: "Star Wars, Harry Potter, Vengadores, Jurassic…", cats: ["starwars", "harrypotter", "mcu", "lotr", "jurassic", "piratas", "rapidos"] },
-  { id: "escine", group: "series", name: "¡Es cine!", blurb: "Lo mejor según la crítica: Breaking Bad, Nolan, Ghibli…", cats: ["breakingbad", "got", "peaky", "nolan", "lotr", "ghibli", "matrix", "pixar"] },
+  { id: "escine", group: "series", name: "¡Es cine!", blurb: "Lo mejor según la crítica: Breaking Bad, Saul, Nolan…", cats: ["breakingbad", "bettercallsaul", "got", "peaky", "nolan", "lotr", "ghibli", "matrix", "pixar"] },
   { id: "familia", group: "series", name: "Para toda la familia", blurb: "Pixar, Disney, Shrek y Ghibli", cats: ["pixar", "disney", "shrek", "ghibli"] },
   { id: "epicas", group: "series", name: "Fantasía épica", blurb: "Juego de Tronos, Casa del dragón, Anillos, Harry Potter", cats: ["got", "hotd", "lotr", "harrypotter"] },
 

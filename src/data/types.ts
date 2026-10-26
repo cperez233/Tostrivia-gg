@@ -41,6 +41,10 @@ export interface Question {
   o: [string, string, string, string];
   media?: Media;
   visual?: Visual;
+  /** si la pregunta se corrigió a mano (src/data/bank/fix): la clave de su traducción, calculada con el texto original */
+  ko?: string;
+  /** y la traducción de lo corregido, cuando no coincide con la que ya había */
+  enFix?: { q?: string; o?: [string, string, string, string] };
 }
 
 export type FamilyId =

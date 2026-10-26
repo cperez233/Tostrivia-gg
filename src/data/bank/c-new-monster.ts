@@ -1,0 +1,62 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me
+ * Generado por scripts/build-content.mjs a partir de content/new-monster.mjs: no se edita a mano.
+ * Formato: [dificultad, pregunta, correcta, mala, mala, mala, media o visual?]
+ */
+import type { RawQuestion } from "../types";
+
+const bank: Record<string, RawQuestion[]> = {
+  monster: [
+    [1,"¿Quién es el autor de Monster?","Naoki Urasawa","Eiichiro Oda","Tsugumi Ohba","Hirohiko Araki"],
+    [1,"¿Qué profesión tiene el protagonista, Kenzo Tenma?","Neurocirujano","Detective de homicidios","Psicólogo forense","Abogado penalista"],
+    [1,"¿En qué ciudad alemana trabaja Tenma al comenzar la historia?","Düsseldorf","Berlín","Múnich","Hamburgo"],
+    [1,"¿Cómo se llama el “monstruo” que da título a la historia?","Johan Liebert","Franz Bonaparta","Roberto","Wolfgang Grimmer"],
+    [1,"¿A quién salva Tenma, desobedeciendo las órdenes del director?","A un niño con un disparo en la cabeza","Al alcalde de la ciudad","A su prometida","Al propio director del hospital"],
+    [1,"¿Con qué nombre vive la hermana gemela de Johan tras ser adoptada?","Nina Fortner","Eva Heinemann","Lotte Frank","Margot Langer"],
+    [1,"¿Cómo se llama la prometida de Tenma al principio de la historia?","Eva Heinemann","Nina Fortner","Lotte Frank","Věra Černá"],
+    [1,"¿Qué inspector de la policía federal persigue a Tenma creyéndolo culpable de los asesinatos?","Heinrich Lunge","Benjamin Weisbach","Jan Suk","Rudi Gillen"],
+    [1,"¿Qué estudio de animación hizo el anime de Monster?","Madhouse","Bones","MAPPA","Wit Studio"],
+    [1,"¿En qué país se ambienta buena parte de la historia?","Alemania","Japón","Estados Unidos","Italia"],
+    [1,"¿De qué nacionalidad es Tenma?","Japonesa","Alemana","Checa","Austriaca"],
+    [1,"¿A qué género pertenece Monster?","Thriller psicológico","Comedia romántica","Shonen de peleas","Mecha"],
+    [1,"¿Qué otra obra famosa escribió el creador de Monster?","20th Century Boys","Death Note","Berserk","Vagabond"],
+    [2,"¿Cómo se llama el hospital donde trabaja Tenma al principio?","Eisler Memorial","Charité","Clínica Universitaria de Heidelberg","San Marcos"],
+    [2,"¿Cómo se llama el director del hospital y padre de Eva?","Udo Heinemann","Dr. Oppenheim","Dr. Reichwein","Dr. Becker"],
+    [2,"¿Cuántos episodios tiene el anime?","74","26","52","100"],
+    [2,"¿En qué ciudad vive Nina con su familia adoptiva cuando Tenma la encuentra?","Heidelberg","Múnich","Fráncfort","Hamburgo"],
+    [2,"¿Qué estudia Nina Fortner?","Derecho","Medicina","Psicología","Periodismo"],
+    [2,"¿Cómo se llama el niño maltratado que Tenma rescata y que acaba acompañándolo?","Dieter","Wim","Martin","Karl"],
+    [2,"¿Cómo se llama el orfanato experimental donde se crió Johan?","Kinderheim 511","Hogar Eisler","Casa Ruhenheim","Instituto Liebert"],
+    [2,"¿Quién escribe los libros ilustrados que marcan a los gemelos?","Franz Bonaparta","Peter Čapek","Wolfgang Grimmer","Rudi Gillen"],
+    [2,"¿Cuál es el libro ilustrado que marca la vida de Johan?","El monstruo sin nombre","La casa de las rosas","El niño del espejo","El último cuento"],
+    [2,"¿En qué pueblo ocurre la masacre del clímax?","Ruhenheim","Praga","Heidelberg","Fráncfort"],
+    [2,"¿Qué se ve en la última página del manga?","La cama de Johan vacía y la ventana abierta","Tenma operando a Johan","La tumba de Johan","Nina recibiéndose de abogada"],
+    [2,"¿A qué se dedica Wolfgang Grimmer?","Periodista freelance","Policía de Praga","Cirujano","Abogado defensor"],
+    [2,"¿Cómo se llama la mansión cubierta de rosas donde vivía Bonaparta?","La Mansión de la Rosa Roja","La Mansión de la Rosa Blanca","La Casa de las Rosas Negras","El Jardín de la Rosa Roja"],
+    [2,"¿Qué plataforma estrenó el anime completo en muchos países en 2023?","Netflix","Disney+","Max","Prime Video"],
+    [2,"¿Cuántos tomos tiene el manga original?","18","12","24","30"],
+    [2,"¿A qué ciudad viaja Tenma siguiendo el origen de Johan?","Praga","Viena","Budapest","Varsovia"],
+    [2,"¿Qué le pasa al alcalde cuando Tenma opera a Johan en su lugar?","Muere","Se salva con otro cirujano","Lo trasladan a otro hospital","Demanda a Tenma"],
+    [3,"¿Quién es “El Bebé”?","Un anciano bajito, líder neonazi","Un niño prodigio del Kinderheim","Un asesino a sueldo","Un detective checo"],
+    [3,"¿Cómo se llama el criminal que avisa a Tenma de un “monstruo” antes de ser asesinado?","Adolf Junkers","Roberto","Herbert Gnaup","Otto Heckel"],
+    [3,"¿Cómo se llama el alcalde que muere mientras Tenma opera a Johan?","Roedecker","Heinemann","Oppenheim","Boyer"],
+    [3,"¿Quién compuso la música del anime?","Kuniaki Haishima","Yoko Kanno","Joe Hisaishi","Yuki Kajiura"],
+    [3,"¿Qué músico británico creó el primer ending, “For the Love of Life”?","David Sylvian","David Bowie","Sting","Peter Gabriel"],
+    [3,"¿Cómo se llama el opening del anime?","Grain","Rain","Shadow","Requiem"],
+    [3,"¿Quién dirigió el anime de Monster?","Masayuki Kojima","Satoshi Kon","Shinichiro Watanabe","Mamoru Hosoda"],
+    [2,"¿Quién dispara a Johan en el clímax?","Herbert Gnaup, el padre borracho de Wim","Tenma","Nina","El inspector Lunge"],
+    [2,"¿A qué organización se une Tenma al final de la historia?","Médicos Sin Fronteras","Cruz Roja","Interpol","Naciones Unidas"],
+    [3,"¿Cómo llama Grimmer a su otra personalidad?","Magnificent Steiner","Capitán Hans","Superhéroe Roberto","El Fantasma del 511"],
+    [2,"¿Qué profesión tiene Rudi Gillen, excompañero de universidad de Tenma?","Criminólogo","Periodista","Piloto","Arquitecto"],
+    [3,"¿Con qué identidad vuelve Roberto como abogado de Tenma?","Alfred Baul","Fritz Verdemann","Jan Suk","Hans Schuwald"],
+    [2,"¿Cómo se llama el ladrón dientón que acaba ayudando a Tenma y a Dieter?","Otto Heckel","Gunter Milch","Martin Reest","Karel Lanke"],
+    [3,"¿Qué psicólogo se convierte en tutor de Dieter?","Dr. Reichwein","Dr. Gillen","Dr. Becker","Dr. Boyer"],
+    [3,"¿Qué apodo recibe el empresario Hans Georg Schuwald?","El Vampiro de Baviera","El Lobo de Múnich","El Rey de Bohemia","El Conde de Ruhenheim"],
+    [3,"¿Cómo se llama la novela de Urasawa que cuenta los hechos desde el punto de vista de un periodista?","Another Monster","Monster: Origins","El diario de Johan","La carta de Nina"],
+    [3,"¿Qué serie estadounidense de los años 60 inspiró a Urasawa?","El fugitivo","Kojak","Perry Mason","Alfred Hitchcock presenta"],
+    [3,"¿En qué revista se publicó el manga?","Big Comic Original","Weekly Shonen Jump","Young Magazine","Afternoon"],
+    [3,"¿Qué arte marcial practica Nina?","Aikido","Judo","Karate","Kendo"],
+    [2,"¿En qué año ocurre el prólogo, cuando Tenma opera a Johan?","1986","1983","1989","1991"],
+  ],
+};
+
+export default bank;

@@ -75,6 +75,25 @@ export function poolFor(cat: string, rand: () => number): Question[] {
   return out;
 }
 
+/** texto sin tildes ni signos, para comparar */
+const flat = (s: string) => s.toLowerCase().normalize("NFD").replace(/\p{M}/gu, "").replace(/[^a-z0-9]+/g, " ").trim();
+const flatCache = new Map<string, { q: string; a: string }>();
+function flatOf(q: Question) {
+  let f = flatCache.get(q.id);
+  if (!f) flatCache.set(q.id, (f = { q: ` ${flat(q.q)} `, a: flat(q.o[0]) }));
+  return f;
+}
+/**
+ * ¿Una de las dos preguntas escribe la respuesta de la otra? Entonces no deben ir en la misma ronda: la segunda se resuelve leyendo la primera.
+ * Solo cuentan respuestas de 5 letras o más que no sean un número (un "4" o un "Sí" aparecen en cualquier lado).
+ */
+function leaks(a: Question, b: Question) {
+  const fa = flatOf(a);
+  const fb = flatOf(b);
+  const hit = (ans: string, text: string) => ans.length >= 5 && !/^\d/.test(ans) && text.includes(` ${ans} `);
+  return hit(fa.a, fb.q) || hit(fb.a, fa.q);
+}
+
 /** de qué obra es el póster de una pregunta de "Adivina el póster": solo puede salir una vez por ronda, sea cual sea el efecto */
 const posterOf = (q: Question) => (q.visual?.v === "poster" ? q.visual.id : null);
 
@@ -88,7 +107,7 @@ function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boole
   const posters = new Set(have.map(posterOf).filter((p): p is string => !!p));
   const free = (q: Question) => {
     const p = posterOf(q);
-    return !p || !posters.has(p);
+    return (!p || !posters.has(p)) && !out.some((x) => leaks(q, x)) && !have.some((x) => leaks(q, x));
   };
   const take = (q: Question) => {
     out.push(q);
@@ -96,7 +115,13 @@ function pick(from: Question[], n: number, mediaWanted: number, audioOnly: boole
     if (p) posters.add(p);
   };
   const fits = (q: Question) => diff === "mix" || q.d === diff;
-  if (!audioOnly) for (const q of from.filter((q) => q.media && fits(q) && free(q)).slice(0, Math.min(mediaWanted, n))) take(q);
+  if (!audioOnly) {
+    let withMedia = 0;
+    for (const q of from) {
+      if (withMedia >= Math.min(mediaWanted, n)) break;
+      if (q.media && fits(q) && free(q)) (take(q), withMedia++);
+    }
+  }
   const want = mixFor(n, diff);
   for (const q of out) want[q.d] = Math.max(0, want[q.d] - 1);
   const rest = audioOnly ? from : from.filter((q) => !q.media);

@@ -5,7 +5,7 @@
  *  - GuestClient: recibe fotos del estado del anfitrión y le manda respuestas.
  */
 import type { DataConnection, Peer as PeerType, PeerOptions } from "peerjs";
-import { Match, type Snapshot, type Spin } from "../game/match";
+import { MAX_PLAYERS, Match, type Snapshot, type Spin } from "../game/match";
 import { isPower, isVariant, type PowerId, type Variant } from "../game/powers";
 import { isValidCat } from "../game/mix";
 import type { Rules } from "../game/rules";
@@ -66,6 +66,8 @@ export interface GameClient {
 
 type GuestMsg =
   | { t: "hello"; me: Me }
+  /** mirar quién hay en la sala sin entrar */
+  | { t: "peek" }
   | { t: "answer"; i: number; c: number; ms: number }
   | { t: "media"; i: number; st: "playing" | "error" }
   | { t: "power"; i: number; p: PowerId }
@@ -80,6 +82,7 @@ type HostMsg =
   | { t: "full" }
   /** el animal que traías ya lo tiene otra persona: estos son los ocupados */
   | { t: "taken"; seals: number[] }
+  | { t: "preview"; hostId: string; players: { id: string; name: string; seal: number; online: boolean }[]; max: number; phase: string }
   | { t: "ping" }
   | { t: "bye" }
   | { t: "kicked" }
@@ -272,6 +275,11 @@ export class HostClient extends LocalClient {
   private onGuest(entry: { conn: DataConnection; pid: string | null; seen: number }, msg: GuestMsg) {
     entry.seen = Date.now();
     if (!msg || typeof msg !== "object") return;
+    if (msg.t === "peek") {
+      const s = this.match.snapshot();
+      safeSend(entry.conn, { t: "preview", hostId: s.hostId, players: s.players.map((p) => ({ id: p.id, name: p.name, seal: p.seal, online: p.online })), max: MAX_PLAYERS, phase: s.phase });
+      return;
+    }
     if (msg.t === "hello") {
       const me = sanitizeMe(msg.me);
       if (!me) return;
@@ -578,4 +586,55 @@ function sanitizeMe(me: unknown): Me | null {
   const seal = Number.isInteger(m.seal) ? Math.min(11, Math.max(0, m.seal as number)) : 0;
   if (!id || !name) return null;
   return { id, name, seal };
+}
+
+/* ───────────────── Mirar una sala sin entrar ───────────────── */
+export interface RoomPeek {
+  hostName: string;
+  players: { name: string; seal: number; online: boolean; host: boolean }[];
+  max: number;
+  /** "lobby" = sala de espera; cualquier otra cosa = hay partida en marcha */
+  phase: string;
+  /** ya no cabe nadie más conectado */
+  full: boolean;
+}
+
+/** Abre una conexión corta con el anfitrión, le pregunta quién hay y la cierra. Falla con "missing" (no existe) o "error". */
+export async function peekRoom(code: string, signal?: AbortSignal): Promise<RoomPeek> {
+  const Peer = await loadPeer();
+  return new Promise<RoomPeek>((resolve, reject) => {
+    const peer = new Peer(peerOptions());
+    let over = false;
+    const finish = (fn: () => void) => {
+      if (over) return;
+      over = true;
+      clearTimeout(timer);
+      try {
+        peer.destroy();
+      } catch {
+        /* ya cerrado */
+      }
+      fn();
+    };
+    const timer = setTimeout(() => finish(() => reject(new Error("missing"))), 12_000);
+    signal?.addEventListener("abort", () => finish(() => reject(new Error("abort"))));
+    peer.on("error", (err: { type?: string }) => finish(() => reject(new Error(err.type === "peer-unavailable" ? "missing" : "error"))));
+    peer.on("open", () => {
+      const conn = peer.connect(PREFIX + code, { reliable: true, serialization: "json" });
+      conn.on("open", () => safeSend(conn, { t: "peek" }));
+      conn.on("data", (raw) => {
+        const m = raw as HostMsg;
+        if (m?.t !== "preview" || !Array.isArray(m.players)) return;
+        const players = m.players.slice(0, 40).map((p) => ({
+          name: typeof p.name === "string" ? p.name.replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 18) : "",
+          seal: Number.isInteger(p.seal) ? Math.min(11, Math.max(0, p.seal)) : 0,
+          online: !!p.online,
+          host: p.id === m.hostId,
+        }));
+        const max = Number.isInteger(m.max) ? m.max : 10;
+        const host = players.find((p) => p.host);
+        finish(() => resolve({ hostName: host?.name || "", players, max, phase: typeof m.phase === "string" ? m.phase : "lobby", full: players.filter((p) => p.online).length >= max }));
+      });
+    });
+  });
 }

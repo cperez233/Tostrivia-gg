@@ -13,6 +13,8 @@ import { describe, isValidCat } from "./game/mix";
 import { Logo } from "./components/Seal";
 import { Cover } from "./components/Cover";
 import ProfilePicker from "./components/ProfilePicker";
+import RoomPreview from "./components/RoomPreview";
+import { useRoomPeek } from "./lib/useRoomPeek";
 import Nav, { TABS, type Tab } from "./components/Nav";
 import Foot from "./components/Foot";
 import Wipe, { type WipeState } from "./components/Wipe";
@@ -191,7 +193,7 @@ export default function App() {
       >
         {view.k === "home" && <Home onPlay={playSolo} />}
         {view.k === "cats" && <Categories onPlay={playSolo} />}
-        {view.k === "group" && <Group onHost={host} onJoin={(code) => go({ k: "join", code }, `/sala/${code}`)} />}
+        {view.k === "group" && <Group onHost={host} onJoin={join} />}
         {view.k === "room" && <Room client={view.client} onExit={exitRoom} onCats={toCats} />}
         {view.k === "join" && <JoinScreen code={view.code} taken={view.taken} first={{ name: view.name, seal: view.seal }} onJoin={(n, s) => join(view.code, n, s)} onHome={() => go({ k: "home" }, "/")} />}
         {view.k === "solo-start" && <SoloStart cat={view.cat} onPlay={() => playSolo(view.cat)} onHome={() => go({ k: "cats" }, "/categorias")} />}
@@ -207,13 +209,16 @@ function JoinScreen({ code, taken = [], first, onJoin, onHome }: { code: string;
     const p = savedProfile();
     return { name: first?.name ?? p.name, seal: first?.seal ?? p.seal };
   });
-  const clash = taken.includes(profile.seal);
   const [err, setErr] = useState("");
+  const { state, retry } = useRoomPeek(code);
+  // lo que sabe la mini sala manda; si la entrada falló por el animal, también cuenta lo que dijo el anfitrión
+  const busy = [...new Set([...taken, ...(state.k === "found" ? state.peek.players.map((p) => p.seal) : [])])];
+  const clash = busy.includes(profile.seal);
+  const canJoin = (state.k === "found" ? !state.peek.full : state.k !== "missing") && !clash;
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!profile.name.trim()) return setErr(t("Escribe tu nombre para que te reconozcan."));
-    if (clash) return;
-    onJoin(profile.name.trim(), profile.seal);
+    if (canJoin) onJoin(profile.name.trim(), profile.seal);
   };
   return (
     <div className="solo wrap">
@@ -225,18 +230,19 @@ function JoinScreen({ code, taken = [], first, onJoin, onHome }: { code: string;
         <h1 className="solo__title">
           {t("Sala")} <span className="solo__code">{code}</span>
         </h1>
-        {taken.length > 0 && (
+        <RoomPreview code={code} state={state} onRetry={retry} />
+        <ProfilePicker value={profile} onChange={(v) => (setProfile(v), setErr(""))} taken={busy} />
+        {clash && (
           <p className="form-err form-err--paper" role="alert">
-            {clash ? t("Ese animal ya está en la sala. Elige otro para entrar.") : t("Listo, ese animal está libre. Ya puedes entrar.")}
+            {t("Ese animal ya está en la sala. Elige otro para entrar.")}
           </p>
         )}
-        <ProfilePicker value={profile} onChange={setProfile} taken={taken} />
         {err && (
           <p className="form-err form-err--paper" role="alert">
             {err}
           </p>
         )}
-        <button type="submit" className="btn btn--hanko btn--block" disabled={clash}>
+        <button type="submit" className="btn btn--hanko btn--block" disabled={!canJoin}>
           {t("Entrar a la sala")}
         </button>
       </motion.form>

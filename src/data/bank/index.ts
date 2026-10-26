@@ -4,6 +4,7 @@ import { CATEGORIES, FAMILY_BY_ID, NAME_ES } from "../categories";
 import posterLevel from "../posterLevel.json";
 import posterZoom from "../posterZoom.json";
 import { rng, shuffle } from "../../lib/rng";
+import { questionKey } from "../../i18n";
 import videosFile from "../videos.json";
 import cultura from "./cultura";
 import leyenda from "./leyenda";
@@ -91,6 +92,20 @@ for (const m of Object.values(import.meta.glob<{ default: { d?: Record<string, D
   Object.assign(RERATE.d, m.default.d);
 }
 
+/**
+ * Correcciones hechas a mano (src/data/bank/fix/*.json): { idDePregunta: { q?, o?, d?, en?: { q?, o? } } }.
+ * Cambian el enunciado, las cuatro opciones (la 0 es la correcta) o la dificultad sin tocar el archivo de origen.
+ * `en` trae la traducción de lo que cambió; la clave de la traducción vieja se sigue calculando con el texto original (`ko`).
+ */
+interface Fix {
+  q?: string;
+  o?: [string, string, string, string];
+  d?: Difficulty;
+  en?: { q?: string; o?: [string, string, string, string] };
+}
+const FIXES: Record<string, Fix> = {};
+for (const m of Object.values(import.meta.glob<{ default: Record<string, Fix> }>("./fix/*.json", { eager: true }))) Object.assign(FIXES, m.default);
+
 /** preguntas retiradas a mano (src/data/bank/drop/*.json: { "ids": [...] }), por ejemplo las que se soplaban solas */
 const DROPPED = new Set<string>();
 for (const m of Object.values(import.meta.glob<{ default: { ids?: string[] } }>("./drop/*.json", { eager: true }))) m.default.ids?.forEach((id) => DROPPED.add(id));
@@ -152,6 +167,14 @@ function build(): Bank {
       const baseId = id;
       while (byId[id]) id += "x";
       const question: Question = { id, cat, d: RERATE.d[id] ?? d, q, o: [a, b, c, e], media: media || undefined, visual };
+      const fix = FIXES[id];
+      if (fix) {
+        question.ko = questionKey(q, [a, b, c, e]);
+        if (fix.q) question.q = fix.q;
+        if (fix.o) question.o = fix.o;
+        if (fix.d) question.d = fix.d;
+        if (fix.en) question.enFix = fix.en;
+      }
       if (media) {
         const v = VIDEOS[media.k];
         if (!v) {

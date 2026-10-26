@@ -61,6 +61,7 @@ export const CATEGORIES: Category[] = [
   { id: "inuyasha", name: "Inuyasha", short: "Inuyasha", family: "clasicos", sfx: "ザシュ" },
   { id: "rurouni", name: "Samurái X (Rurouni Kenshin)", short: "Samurái X", family: "clasicos", sfx: "シャキン" },
   { id: "ranma", name: "Ranma ½", short: "Ranma ½", family: "clasicos", sfx: "ドタバタ" },
+  { id: "monster", name: "Monster", short: "Monster", family: "clasicos", sfx: "ゾッ" },
   { id: "doraemon", name: "Doraemon", short: "Doraemon", family: "clasicos", sfx: "ポン" },
 
   // Década de 2010
@@ -180,6 +181,7 @@ export const CATEGORIES: Category[] = [
   { id: "theboys", name: "The Boys", short: "The Boys", family: "series" },
   { id: "hotd", name: "La casa del dragón", short: "Casa del dragón", family: "series" },
   { id: "himym", name: "Cómo conocí a vuestra madre", short: "HIMYM", family: "series" },
+  { id: "bettercallsaul", name: "Better Call Saul", short: "Better Call Saul", family: "series" },
   { id: "brooklyn99", name: "Brooklyn Nine-Nine", short: "Brooklyn 99", family: "series" },
 
   // Películas
