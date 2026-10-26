@@ -177,6 +177,14 @@ export default function MatchSetup({ variant, rules, onVariant, onRules, disable
 function Sheet({ open, onClose, idp, reduce, children }: { open: boolean; onClose: () => void; idp: string; reduce: boolean; children: ReactNode }) {
   const doneRef = useRef<HTMLButtonElement>(null);
   const controls = useDragControls();
+  // red de seguridad: si la animación de salida se traba (pasó al cambiar la página detrás mientras se cerraba),
+  // la hoja se quita igual poco después y nunca se queda tapando la pantalla
+  const [mounted, setMounted] = useState(open);
+  useEffect(() => {
+    if (open) return setMounted(true);
+    const t = setTimeout(() => setMounted(false), 600);
+    return () => clearTimeout(t);
+  }, [open]);
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -189,48 +197,52 @@ function Sheet({ open, onClose, idp, reduce, children }: { open: boolean; onClos
       window.removeEventListener("keydown", key);
     };
   }, [open, onClose]);
-  if (typeof document === "undefined") return null;
+  if (typeof document === "undefined" || (!open && !mounted)) return null;
   return createPortal(
-    <AnimatePresence>
-      {open && (
-        <div className="rsheet" key="rsheet">
-          <motion.div className="rsheet__back" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }} />
-          <motion.section
-            id={`${idp}-rules`}
-            className="rsheet__card"
-            role="dialog"
-            aria-modal="true"
-            aria-label={t("Personalizar")}
-            initial={reduce ? { opacity: 0 } : { y: "100%" }}
-            animate={reduce ? { opacity: 1 } : { y: 0 }}
-            exit={reduce ? { opacity: 0 } : { y: "100%" }}
-            transition={reduce ? { duration: 0.15 } : { type: "spring", stiffness: 380, damping: 38, mass: 0.9 }}
-            drag={reduce ? false : "y"}
-            dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={{ top: 0, bottom: 0.6 }}
-            dragListener={false}
-            dragControls={controls}
-            onDragEnd={(_, i) => (i.offset.y > 110 || i.velocity.y > 600) && onClose()}
-          >
-            <header className="rsheet__head" onPointerDown={(e) => controls.start(e)}>
-              <span className="rsheet__grip" aria-hidden />
-              <h2 className="rsheet__title">{t("Personalizar")}</h2>
-              <button type="button" className="rsheet__x" onClick={onClose} aria-label={t("Cerrar")}>
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
-                </svg>
-              </button>
-            </header>
-            <div className="rsheet__body">{children}</div>
-            <footer className="rsheet__foot">
-              <button type="button" ref={doneRef} className="rsheet__done" onClick={onClose}>
-                {t("Listo")}
-              </button>
-            </footer>
-          </motion.section>
-        </div>
-      )}
-    </AnimatePresence>,
+    // mientras se cierra ya no atrapa toques: lo de detrás se puede usar de inmediato
+    // (va por fuera de AnimatePresence, que congela las props de lo que está saliendo)
+    <div className="rsheet-root" style={{ pointerEvents: open ? undefined : "none" }}>
+      <AnimatePresence>
+        {open && (
+          <div className="rsheet" key="rsheet">
+            <motion.div className="rsheet__back" onClick={onClose} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.22 }} />
+            <motion.section
+              id={`${idp}-rules`}
+              className="rsheet__card"
+              role="dialog"
+              aria-modal="true"
+              aria-label={t("Personalizar")}
+              initial={reduce ? { opacity: 0 } : { y: "100%" }}
+              animate={reduce ? { opacity: 1 } : { y: 0 }}
+              exit={reduce ? { opacity: 0 } : { y: "100%" }}
+              transition={reduce ? { duration: 0.15 } : { type: "spring", stiffness: 380, damping: 38, mass: 0.9 }}
+              drag={reduce || !open ? false : "y"}
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0, bottom: 0.6 }}
+              dragListener={false}
+              dragControls={controls}
+              onDragEnd={(_, i) => (i.offset.y > 110 || i.velocity.y > 600) && onClose()}
+            >
+              <header className="rsheet__head" onPointerDown={(e) => controls.start(e)}>
+                <span className="rsheet__grip" aria-hidden />
+                <h2 className="rsheet__title">{t("Personalizar")}</h2>
+                <button type="button" className="rsheet__x" onClick={onClose} aria-label={t("Cerrar")}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+                    <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" strokeWidth="3.4" strokeLinecap="square" />
+                  </svg>
+                </button>
+              </header>
+              <div className="rsheet__body">{children}</div>
+              <footer className="rsheet__foot">
+                <button type="button" ref={doneRef} className="rsheet__done" onClick={onClose}>
+                  {t("Listo")}
+                </button>
+              </footer>
+            </motion.section>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>,
     document.body
   );
 }
