@@ -205,7 +205,7 @@ function RandomTile({ g, verb, onPick }: { g: GroupId; verb: string; onPick: (ca
       </span>
       <span className="azar__text">
         <span className="azar__name">{info.name}</span>
-        <span className="azar__sub">{t("Preguntas de las {n} categorías, mezcladas", { n: count })}</span>
+        <span className="azar__sub">{t("Mezcla de las {n} categorías, con más peso a las más conocidas", { n: count })}</span>
       </span>
       <svg className="azar__go" width="22" height="22" viewBox="0 0 24 24" aria-hidden>
         <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />

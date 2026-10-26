@@ -53,3 +53,14 @@ export function weightedIndex(weights: readonly number[], rand: () => number = r
   for (let i = 0; i < weights.length; i++) if ((r -= Math.max(0, weights[i])) < 0) return i;
   return weights.length - 1;
 }
+
+/**
+ * Baraja con pesos (sin repetir): cada elemento tiene más probabilidad de quedar al principio mientras más pesa,
+ * pero ninguno queda fuera por completo. Es el método de Efraimidis y Spirakis: se ordena por u^(1/peso).
+ */
+export function weightedShuffle<T>(items: readonly T[], weightOf: (x: T) => number, rand: () => number): T[] {
+  return items
+    .map((x) => ({ x, k: Math.pow(Math.max(rand(), 1e-12), 1 / Math.max(weightOf(x), 1e-6)) }))
+    .sort((a, b) => b.k - a.k)
+    .map((e) => e.x);
+}

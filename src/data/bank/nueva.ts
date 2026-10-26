@@ -189,7 +189,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2, "¿Qué poder despierta Momo?", "Psicoquinesis", "Volar", "Leer mentes", "Fuego espiritual"],
     [2, "¿Quién es Jiji?", "El amigo de la infancia de Momo", "El hermano de Okarun", "Un alienígena Serpo", "El profesor de Momo"],
     [2, "¿Por qué Momo se fija en el nombre de Okarun?", "Se llama igual que su actor favorito, Ken Takakura", "Es el nombre de su padre", "Es el nombre de un alienígena", "Es el nombre de un yōkai"],
-    [2, "¿Cómo empiezan a hablar Momo y Okarun?", "Momo lo defiende de unos abusones", "Se sientan juntos en clase", "Los dos ven un fantasma", "Se encuentran en un túnel"],
+    [2, "¿Cómo empiezan a hablar Momo y Okarun?", "Momo lo defiende de unos abusones", "Okarun la defiende de unos abusones", "Se sientan juntos en clase", "Momo le pide ayuda con un examen"],
     [2, "¿En qué se transforma Okarun al usar el poder de la Turbo Abuela?", "En un chico de pelo blanco muy veloz", "En un monstruo gigante", "En un alienígena", "En una abuela"],
     [3, "¿Cómo se llaman los alienígenas que secuestran a Momo al principio?", "Los Serpo", "Los Kur", "Los Mantis", "Los Grises de Nazca"],
     [3, "¿Qué compañera de clase cree ser la elegida y lucha contra Momo?", "Aira Shiratori", "Vamola", "Rin", "Mai"],

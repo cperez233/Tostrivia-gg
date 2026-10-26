@@ -34,6 +34,7 @@ export const SHORTCUTS: Shortcut[] = [
   { id: "cine", group: "juegos", name: "Juegos de película", blurb: "Last of Us, God of War, Spider-Man, RDR, MGS…", cats: ["tlou", "gow", "spiderman", "rdr", "mgs", "re"] },
   { id: "competitivo", group: "juegos", name: "Competitivos", blurb: "Valorant, Overwatch, CS, LoL y Fortnite", cats: ["valorant", "overwatch", "counterstrike", "lol", "fortnite", "cod"] },
   { id: "indie", group: "juegos", name: "Indies que enamoran", blurb: "Hollow Knight, Undertale, Stardew, Hades, Cuphead…", cats: ["hollowknight", "undertale", "stardew", "terraria", "cuphead", "hades"] },
+  { id: "artemando", group: "juegos", name: "Arte con mando", blurb: "Los más aclamados: Witcher, Red Dead, Last of Us…", cats: ["witcher", "rdr", "tlou", "gow", "souls", "hades", "hollowknight", "undertale", "portal", "zelda"] },
   { id: "retro", group: "juegos", name: "Infancia gamer", blurb: "Mario, Sonic, Crash, Pokémon y Los Sims", cats: ["mario", "sonic", "crash", "pokemon", "zelda", "sims", "minecraft"] },
 
   // Series y películas
@@ -41,6 +42,7 @@ export const SHORTCUTS: Shortcut[] = [
   { id: "netflix", group: "series", name: "Las de maratón", blurb: "Stranger Things, La casa de papel, Calamar…", cats: ["strangerthings", "casadepapel", "squidgame", "merlina", "narcos", "peaky", "theboys"] },
   { id: "animadas", group: "series", name: "Animadas", blurb: "Simpson, South Park, Rick y Morty, Bob Esponja…", cats: ["simpsons", "southpark", "rickmorty", "bobesponja", "gravityfalls", "adventuretime", "avatar"] },
   { id: "blockbusters", group: "series", name: "Taquillazos", blurb: "Star Wars, Harry Potter, Vengadores, Jurassic…", cats: ["starwars", "harrypotter", "mcu", "lotr", "jurassic", "piratas", "rapidos"] },
+  { id: "escine", group: "series", name: "¡Es cine!", blurb: "Lo mejor según la crítica: Breaking Bad, Nolan, Ghibli…", cats: ["breakingbad", "got", "peaky", "nolan", "lotr", "ghibli", "matrix", "pixar"] },
   { id: "familia", group: "series", name: "Para toda la familia", blurb: "Pixar, Disney, Shrek y Ghibli", cats: ["pixar", "disney", "shrek", "ghibli"] },
   { id: "epicas", group: "series", name: "Fantasía épica", blurb: "Juego de Tronos, Casa del dragón, Anillos, Harry Potter", cats: ["got", "hotd", "lotr", "harrypotter"] },
 

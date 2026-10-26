@@ -4,7 +4,8 @@
 import { playable } from "./mix";
 import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import type { GroupId } from "../data/types";
-import { randomInt, rng, shuffle, weightedIndex } from "../lib/rng";
+import { randomInt, rng, shuffle, weightedIndex, weightedShuffle } from "../lib/rng";
+import { popularity } from "./popularity";
 import type { Spin } from "./match";
 
 export type Filter = "todo" | GroupId;
@@ -24,19 +25,26 @@ const poolOf = (g: GroupId) => CATEGORIES.filter((c) => FAMILY_BY_ID[c.family].g
 const MUSIC = { anime: "openings", juegos: "soundtracks" } as const;
 const isMusic = (cat: string) => cat === MUSIC.anime || cat === MUSIC.juegos;
 
+/**
+ * Qué gajos entran: se prefieren las categorías conocidas (src/game/popularity.ts) y las que no salieron en los últimos giros,
+ * sin que lo raro desaparezca del todo. Cada mazo sale de una semilla nueva, así que casi nunca se repite.
+ */
 export function makeDeck(filter: Filter, seed: number): string[] {
   const rand = rng(seed);
+  const recent = recentSpins();
+  const weight = (c: string) => popularity(c) * (recent.includes(c) ? 0.4 : 1);
+  const pick = (list: string[], n: number) => weightedShuffle(list, weight, rand).slice(0, n);
   if (filter === "cultura") return shuffle(poolOf("cultura"), rand);
-  if (filter === "series") return shuffle(poolOf("series"), rand).slice(0, 8);
+  if (filter === "series") return pick(poolOf("series"), 8);
   if (filter === "anime" || filter === "juegos") {
     const music = playable(MUSIC[filter]) ? [MUSIC[filter]] : [];
-    const rest = shuffle(poolOf(filter).filter((c) => !isMusic(c)), rand).slice(0, 8 - music.length);
+    const rest = pick(poolOf(filter).filter((c) => !isMusic(c)), 8 - music.length);
     return shuffle([...music, ...rest], rand);
   }
   // todo: tres de anime, tres de juegos, dos de series o películas, uno de cultura y uno de música (openings u OST), intercalados
-  const a = shuffle(poolOf("anime").filter((c) => !isMusic(c)), rand).slice(0, 3);
-  const j = shuffle(poolOf("juegos").filter((c) => !isMusic(c)), rand).slice(0, 3);
-  const s = shuffle(poolOf("series"), rand).slice(0, 2);
+  const a = pick(poolOf("anime").filter((c) => !isMusic(c)), 3);
+  const j = pick(poolOf("juegos").filter((c) => !isMusic(c)), 3);
+  const s = pick(poolOf("series"), 2);
   const c = shuffle(poolOf("cultura"), rand)[0];
   const o = shuffle([MUSIC.anime, MUSIC.juegos].filter(playable), rand)[0];
   return [a[0], j[0], s[0], a[1], c, j[1], a[2], s[1], j[2], o].filter(Boolean);

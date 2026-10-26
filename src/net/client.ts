@@ -11,7 +11,7 @@ import { isValidCat } from "../game/mix";
 import type { Rules } from "../game/rules";
 import { randomInt } from "../lib/rng";
 
-export type NetStatus = "connecting" | "open" | "lost" | "closed" | "full" | "missing" | "error";
+export type NetStatus = "connecting" | "open" | "lost" | "closed" | "full" | "taken" | "missing" | "error";
 
 export interface Me {
   id: string;
@@ -56,8 +56,6 @@ export interface GameClient {
   kick(id: string): void;
   /** solo el anfitrión: darle o quitarle el mando de la sala a alguien */
   setLeader(id: string, on: boolean): void;
-  /** cambia tu animal en la sala de espera (el anfitrión lo rechaza si otro ya lo tiene) */
-  setSeal(seal: number): void;
   leave(): void;
   /** chat y emotes (solo en grupo): pasan por el anfitrión, que los reparte */
   say(text: string): void;
@@ -72,7 +70,6 @@ type GuestMsg =
   | { t: "media"; i: number; st: "playing" | "error" }
   | { t: "power"; i: number; p: PowerId }
   | { t: "ping" }
-  | { t: "seal"; a: number }
   | { t: "chat"; body: string }
   | { t: "emote"; e: string }
   /** un líder maneja la sala: el anfitrión lo ejecuta solo si de verdad es líder */
@@ -81,6 +78,8 @@ type GuestMsg =
 type HostMsg =
   | { t: "snap"; s: Snapshot }
   | { t: "full" }
+  /** el animal que traías ya lo tiene otra persona: estos son los ocupados */
+  | { t: "taken"; seals: number[] }
   | { t: "ping" }
   | { t: "bye" }
   | { t: "kicked" }
@@ -180,9 +179,6 @@ export class LocalClient implements GameClient {
   }
   kick(_id: string) {}
   setLeader(_id: string, _on: boolean) {}
-  setSeal(seal: number) {
-    if (this.match.setSeal(this.me.id, seal)) this.me = { ...this.me, seal };
-  }
   leave() {
     this.match.destroy();
   }
@@ -285,6 +281,12 @@ export class HostClient extends LocalClient {
         setTimeout(() => entry.conn.close(), 300);
         return;
       }
+      if (res === "taken") {
+        // no entra: se le dice qué animales están ocupados y la conexión se cierra y vuelve a entrar con otro animal
+        safeSend(entry.conn, { t: "taken", seals: this.match.takenSeals() });
+        setTimeout(() => entry.conn.close(), 300);
+        return;
+      }
       entry.pid = me.id;
       safeSend(entry.conn, { t: "snap", s: this.match.snapshot() });
       if (this.chat.length) safeSend(entry.conn, { t: "chatlog", list: this.chat.filter((m) => m.kind === "text") });
@@ -294,7 +296,6 @@ export class HostClient extends LocalClient {
     if (msg.t === "answer") this.match.answer(entry.pid, msg.i, msg.c, msg.ms);
     else if (msg.t === "media") this.match.media(entry.pid, msg.i, msg.st);
     else if (msg.t === "power" && isPower(msg.p)) this.match.usePower(entry.pid, msg.i, msg.p);
-    else if (msg.t === "seal" && typeof msg.a === "number") this.match.setSeal(entry.pid, msg.a);
     else if (msg.t === "chat") this.post(entry.pid, "text", msg.body);
     else if (msg.t === "emote") this.post(entry.pid, "emote", msg.e);
     else if (msg.t === "ctl" && this.match.isLeader(entry.pid)) this.control(msg.op, msg.a);
@@ -405,6 +406,9 @@ export class GuestClient implements GameClient {
   private chatE = new Emitter<ChatMsg>();
   private chat: ChatMsg[] = [];
 
+  /** si la sala no lo dejó entrar por el animal: los que ya están ocupados */
+  takenSeals: number[] = [];
+
   constructor(public me: Me, public code: string) {}
 
   async connect(): Promise<void> {
@@ -446,9 +450,13 @@ export class GuestClient implements GameClient {
           } else if (msg.t === "chatlog" && Array.isArray(msg.list)) {
             this.chat = msg.list.map(cleanChat).filter((m): m is ChatMsg => !!m).slice(-CHAT_KEEP);
           } else if (msg.t === "full") fail("full");
+          else if (msg.t === "taken") {
+            this.takenSeals = Array.isArray(msg.seals) ? msg.seals.filter((x) => Number.isInteger(x)) : [];
+            fail("taken");
+          }
           else if (msg.t === "bye" || msg.t === "kicked") this.setStatus("closed");
         });
-        conn.on("close", () => this.status !== "full" && this.setStatus("closed"));
+        conn.on("close", () => this.status !== "full" && this.status !== "taken" && this.setStatus("closed"));
       });
       this.watch = setInterval(() => {
         if (this.conn?.open) safeSend(this.conn, { t: "ping" });
@@ -523,9 +531,6 @@ export class GuestClient implements GameClient {
     this.send({ t: "ctl", op: "kick", a: id });
   }
   setLeader() {}
-  setSeal(seal: number) {
-    this.send({ t: "seal", a: seal });
-  }
   leave() {
     if (this.watch) clearInterval(this.watch);
     try {

@@ -86,7 +86,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Quién se esconde tras el niño enmascarado que roba cartas en el Reino de los Duelistas?","Mokuba","Roland","Duke","Tristan"],
     [2,"¿A quién le gana Joey su Dragón Negro de Ojos Rojos en el Reino de los Duelistas?","A Rex Raptor","A Weevil Underwood","A Bonz","A Mako Tsunami"],
     [1,"¿Qué tipo de monstruos usa Mako Tsunami?","Marinos","Zombis","Máquinas","Dinosaurios"],
-    [2,"¿Por qué Rebecca reta a Yugi a un duelo?","Cree que el abuelo de Yugi le robó un Dragón Blanco a su abuelo","Quiere vengar la derrota de Kaiba","Quiere el Rompecabezas del Milenio","Se lo ordenó Pegasus"],
+    [2,"¿Por qué Rebecca reta a Yugi a un duelo?","Cree que el abuelo de Yugi le robó un Dragón Blanco a su abuelo","Quiere vengar a Kaiba por la derrota que le dio Yugi","Quiere el Rompecabezas del Milenio","Se lo ordenó Pegasus"],
     [2,"¿Qué juego inventó Duke Devlin?","Dungeon Dice Monsters","Capsule Monster Chess","Monster World","Virtual VS"],
     [2,"¿Qué humillación le impone Duke a Joey tras ganarle?","Vestirse con un disfraz de perro","Bailar en público","Barrer la escuela","Cargarle los libros"],
     [2,"¿De dónde sacó el abuelo de Yugi el Rompecabezas del Milenio?","De la tumba de un faraón en Egipto","De una subasta en Londres","De un museo de Domino","De la mansión de Pegasus"],

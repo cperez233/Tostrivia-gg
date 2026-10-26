@@ -3,7 +3,8 @@ import { BANK } from "../data/bank";
 import { CATEGORIES, FAMILY_BY_ID } from "../data/categories";
 import { partsOf } from "./mix";
 import type { Question } from "../data/types";
-import { rng, shuffle } from "../lib/rng";
+import { rng, shuffle, weightedShuffle } from "../lib/rng";
+import { popularity } from "./popularity";
 import { DEFAULT_RULES, MEDIA_EXTRA, type Difficulty, type Rules } from "./rules";
 
 export const ROUND_SIZE = DEFAULT_RULES.count;
@@ -65,7 +66,10 @@ export function buildRound(cat: string, seed: number, seen: Set<string> = new Se
  * en orden al azar) para que la ronda no quede llena de la que más preguntas tiene.
  */
 export function poolFor(cat: string, rand: () => number): Question[] {
-  const lists = shuffle(partsOf(cat), rand).map((c) => shuffle(BANK.byCat[c] || [], rand));
+  // en un "al azar" la ronda sale de las primeras categorías del orden: ahí lo más conocido pesa más.
+  // Lo que la persona marcó a mano (una mezcla) va parejo, sin pesos.
+  const order = cat.startsWith("azar-") ? weightedShuffle(partsOf(cat), popularity, rand) : shuffle(partsOf(cat), rand);
+  const lists = order.map((c) => shuffle(BANK.byCat[c] || [], rand));
   const out: Question[] = [];
   for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) out.push(l[i]);
   return out;

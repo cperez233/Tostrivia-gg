@@ -3,7 +3,6 @@
  * y es la única fuente de verdad: los invitados solo reciben fotos (Snapshot) del estado.
  */
 import { BANK, videoFor } from "../data/bank";
-import { ANIMAL_COUNT } from "../components/Avatar";
 import { TEXT_MS, buildRound, durationFor, multiplier, optionOrder, pointsFor, speedBonus, textBackups } from "./round";
 import { DEFAULT_RULES, cleanRules, type Rules } from "./rules";
 import { partsOf } from "./mix";
@@ -217,7 +216,7 @@ export class Match {
   }
 
   /* ───────── jugadores ───────── */
-  join(p: { id: string; name: string; seal: number }): "ok" | "full" {
+  join(p: { id: string; name: string; seal: number }): "ok" | "full" | "taken" {
     const existing = this.s.players.find((x) => x.id === p.id);
     if (existing) {
       // quien vuelve (o recarga) conserva el animal que ya tiene en la sala, aunque traiga otro guardado
@@ -225,24 +224,14 @@ export class Match {
       return "ok";
     }
     if (this.s.players.filter((x) => x.online).length >= MAX_PLAYERS) return "full";
-    this.emit({ players: [...this.s.players, newPlayer({ ...p, seal: this.freeAnimal(p.seal, p.id) })] });
+    // un animal por persona: si ya lo tiene otra, no entra hasta que elija uno libre
+    if (this.takenSeals().includes(p.seal)) return "taken";
+    this.emit({ players: [...this.s.players, newPlayer(p)] });
     return "ok";
   }
-  /** cambia el animal de alguien en la sala de espera; no pasa si otro ya lo tiene */
-  setSeal(id: string, seal: number): boolean {
-    if (this.s.phase !== "lobby" || !Number.isInteger(seal) || seal < 0 || seal >= ANIMAL_COUNT) return false;
-    if (!this.s.players.some((p) => p.id === id) || this.s.players.some((p) => p.id !== id && p.seal === seal)) return false;
-    this.emit({ players: this.s.players.map((p) => (p.id === id ? { ...p, seal } : p)) });
-    return true;
-  }
-  /** una raza por jugador: si el animal ya lo tiene otro, le toca el siguiente libre */
-  private freeAnimal(want: number, id: string) {
-    const taken = new Set(this.s.players.filter((x) => x.id !== id).map((x) => x.seal));
-    for (let k = 0; k < ANIMAL_COUNT; k++) {
-      const a = (want + k) % ANIMAL_COUNT;
-      if (!taken.has(a)) return a;
-    }
-    return want;
+  /** los animales que ya tiene alguien en la sala (también los de quienes se desconectaron: vuelven con el suyo) */
+  takenSeals(): number[] {
+    return this.s.players.map((p) => p.seal);
   }
   setOnline(id: string, online: boolean) {
     if (!this.s.players.some((p) => p.id === id)) return;

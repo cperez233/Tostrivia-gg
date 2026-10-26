@@ -11,7 +11,7 @@ import GameScreen from "../game/GameScreen";
 import Wheel from "../components/Wheel";
 import Reshuffle from "../components/Reshuffle";
 import { Logo } from "../components/Seal";
-import { ANIMALS, Avatar, animalName } from "../components/Avatar";
+import { Avatar, animalName } from "../components/Avatar";
 import { Cover } from "../components/Cover";
 import { describe } from "../game/mix";
 import CategoryBrowser from "../components/CategoryBrowser";
@@ -23,7 +23,6 @@ import { usePauseOffscreen } from "../lib/usePauseOffscreen";
 import MatchSetup from "../components/MatchSetup";
 import { saveVariant, type Variant } from "../game/powers";
 import type { Preset } from "../lib/presets";
-import { saveProfile } from "../lib/identity";
 import { DEFAULT_RULES, saveRules, type Rules } from "../game/rules";
 import "./room.css";
 import { t } from "../i18n";
@@ -48,6 +47,7 @@ const NET_TEXT: Record<NetStatus, [string, string]> = {
   lost: ["Se perdió la conexión", "No llegan datos del anfitrión. Si vuelve en unos segundos, seguimos donde íbamos."],
   closed: ["La sala se cerró", "El anfitrión salió o cerró la pestaña. Puedes crear una sala nueva."],
   full: ["La sala está llena", "Ya hay {n} personas jugando. Pídele al anfitrión que abra otra."],
+  taken: ["Ese animal ya está en la sala", "Vuelve atrás y elige otro."],
   missing: ["No encontramos esa sala", "Revisa el código. Si el anfitrión cerró la pestaña, la sala ya no existe."],
   error: ["No se pudo conectar", "La red bloqueó la conexión entre navegadores o el servidor de enlace no respondió. Prueba con otra red o vuelve a intentarlo."],
 };
@@ -83,7 +83,6 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   const rosterRef = usePauseOffscreen<HTMLUListElement>();
   const [copied, setCopied] = useState(false);
   const [choosing, setChoosing] = useState(false);
-  const [pickingSeal, setPickingSeal] = useState(false);
   const [filter, setFilter] = useState<Filter>("todo");
   const link = `${location.origin}/sala/${client.code}`;
   const host = snap.players.find((p) => p.id === snap.hostId);
@@ -93,24 +92,6 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
   const info = snap.cat ? describe(snap.cat) : null;
   const cat = info?.cover ?? null;
   const online = snap.players.filter((p) => p.online);
-  const mine = snap.players.find((p) => p.id === client.me.id);
-  // si el animal que traías ya lo tenía otro, la sala te dio uno libre: se avisa una vez y se deja cambiarlo
-  const [moved, setMoved] = useState<number | null>(null);
-  const wanted = useRef(client.me.seal);
-  useEffect(() => {
-    if (!mine) return;
-    if (mine.seal !== wanted.current && moved === null) setMoved(wanted.current);
-    wanted.current = mine.seal;
-    client.me.seal = mine.seal;
-  }, [client, mine?.seal]); // eslint-disable-line react-hooks/exhaustive-deps
-  const takenSeals = snap.players.filter((p) => p.id !== client.me.id).map((p) => p.seal);
-  const chooseSeal = (a: number) => {
-    wanted.current = a;
-    client.setSeal(a);
-    saveProfile(client.me.name, a);
-    setMoved(null);
-    setPickingSeal(false);
-  };
   const [landed, setLanded] = useState<number | null>(null);
   const spinShown = !!snap.spin && landed !== snap.spin.nonce;
   const deck = snap.deck.length ? snap.deck : makeDeck("todo", 1);
@@ -153,7 +134,6 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
       <header className="lobby__top wrap">
         <Logo size={34} />
         <div className="lobby__top-end">
-          <HowTo variant="text" />
           <button type="button" className="btn btn--ghost btn--small" onClick={onExit}>
             {client.isHost ? t("Cerrar sala") : t("Salir")}
           </button>
@@ -196,13 +176,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
                   transition={{ type: "spring", stiffness: 480, damping: 22 }}
                 >
                   <span className="roster__face anim-bob" style={{ "--d": `${5.3 + ((i * 1.37) % 3.4)}s`, "--delay": `${-i * 0.9}s` } as React.CSSProperties}>
-                    {p.id === client.me.id ? (
-                      <button type="button" className="roster__swap" onClick={() => setPickingSeal((o) => !o)} aria-expanded={pickingSeal} aria-controls="sealpick" aria-label={t("Cambiar mi animal ({name})", { name: animalName(p.seal) })} title={t("Cambiar mi animal")}>
-                        <Avatar animal={p.seal} size={58} />
-                      </button>
-                    ) : (
-                      <Avatar animal={p.seal} size={58} title={animalName(p.seal)} />
-                    )}
+                    <Avatar animal={p.seal} size={58} title={animalName(p.seal)} />
                   </span>
                   <span className="roster__name">{p.name}</span>
                   <span className="roster__tag">
@@ -244,32 +218,7 @@ function Lobby({ client, snap, onExit }: { client: GameClient; snap: Snapshot; o
               </li>
             )}
           </ul>
-          {moved !== null && mine && (
-            <p className="lobby__moved" role="status">
-              {t("{a} ya lo tenía otra persona: te tocó {b}.", { a: animalName(moved), b: animalName(mine.seal) })}{" "}
-              <button type="button" className="linkish" onClick={() => setPickingSeal(true)}>
-                {t("Cambiar")}
-              </button>
-            </p>
-          )}
-          <AnimatePresence initial={false}>
-            {pickingSeal && mine && (
-              <motion.div id="sealpick" className="sealpick" initial={reduce ? false : { opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.18 }}>
-                <p className="sealpick__title">{t("Elige tu animal")}</p>
-                <div className="sealpick__grid" role="radiogroup" aria-label={t("Elige tu animal")}>
-                  {ANIMALS.map((a, i) => {
-                    const used = takenSeals.includes(i);
-                    return (
-                      <button key={a.name} type="button" role="radio" aria-checked={mine.seal === i} disabled={used} className={`sealpick__opt ${mine.seal === i ? "is-on" : ""}`} onClick={() => chooseSeal(i)} title={used ? t("{name}: ya lo tiene otra persona", { name: a.name }) : a.name} aria-label={used ? t("{name}: ya lo tiene otra persona", { name: a.name }) : a.name}>
-                        <Avatar animal={i} size={52} />
-                      </button>
-                    );
-                  })}
-                </div>
-                <p className="sealpick__hint">{t("Cada persona tiene su propio animal. Los que ya están tomados salen apagados.")}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <HowTo variant="card" />
         </section>
 
         <section className="lobby__cat" aria-labelledby="cat-t">

@@ -23,7 +23,7 @@ const EXAMPLES: { title: string; blurb: string; list: PowerId[] }[] = [
   { title: "Caos en su pantalla", blurb: "Les estorban 15 s mientras responden.", list: ["ink", "flip", "dark", "scramble"] },
 ];
 
-export default function HowTo({ variant = "icon" }: { variant?: "icon" | "text" }) {
+export default function HowTo({ variant = "icon" }: { variant?: "icon" | "text" | "card" }) {
   useLang();
   const ref = useRef<HTMLDialogElement>(null);
   const [open, setOpen] = useState(false);
@@ -62,6 +62,17 @@ export default function HowTo({ variant = "icon" }: { variant?: "icon" | "text" 
           ?
         </span>
         {variant === "text" && <span>{t("¿Cómo se juega?")}</span>}
+        {variant === "card" && (
+          <>
+            <span className="howto__cardtext">
+              <span className="howto__cardname">{t("¿Cómo se juega?")}</span>
+              <span className="howto__cardsub">{t("Puntos, rachas y poderes en un minuto. Léelo mientras llegan los demás.")}</span>
+            </span>
+            <svg className="howto__cardgo" width="22" height="22" viewBox="0 0 24 24" aria-hidden>
+              <path d="M4 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="3" />
+            </svg>
+          </>
+        )}
       </button>
 
       <dialog

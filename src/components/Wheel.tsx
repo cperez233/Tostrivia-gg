@@ -58,12 +58,17 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
   const deckKey = deck.join(",");
   const clipId = `wedge-${size}-${n}`;
 
-  // el puntero da un golpecito cada vez que pasa un borde
+  // el puntero es una lengüeta: cada borde que pasa lo dobla, más fuerte y más rápido cuanto más rápido gira la rueda;
+  // cuando va despacio se queda doblado un instante y vuelve con un pequeño rebote
   useMotionValueEvent(rot, "change", (v) => {
     const i = Math.round((((-v % 360) + 360) % 360) / slice) % n;
     if (i !== lastIdx.current) {
       lastIdx.current = i;
-      if (pointer.current && !reduce) animate(pointer.current, { rotate: [-18, 0] }, { duration: 0.16, ease: "easeOut" });
+      if (!pointer.current || reduce) return;
+      const speed = Math.abs(vel.get());
+      const bend = Math.min(34, 10 + speed / 38);
+      if (speed > 520) animate(pointer.current, { rotate: [-bend, 0] }, { duration: 0.11, ease: "easeOut" });
+      else animate(pointer.current, { rotate: [-bend, 0] }, { type: "spring", stiffness: 260, damping: 9, mass: 0.7 });
     }
   });
 
@@ -85,6 +90,9 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     // dónde cae dentro del gajo y cuántas vueltas da salen del nonce: igual en todos los celulares, distinto en cada giro
     const jitter = ((spin.nonce % 1000) / 1000 - 0.5) * slice * 0.7;
     const turns = 4 + (Math.floor(spin.nonce / 1000) % 3);
+    // cada giro dura distinto (4,2 a 5,4 s) y pasa un pelín del punto, como una rueda de verdad que se asienta: todo sale del nonce
+    const long = 4.2 + (Math.floor(spin.nonce / 3000) % 13) / 10;
+    const over = (spin.nonce % 2 ? 1 : -1) * slice * 0.09;
     const cur = rot.get();
     const base = cur + 360 * turns;
     const desired = (((-spin.index * slice + jitter) % 360) + 360) % 360;
@@ -92,18 +100,33 @@ export default function Wheel({ deck, spin, canSpin, onRequest, onLanded, size =
     setLanded(null);
     setSpinning(true);
     let finished = false;
-    const controls = animate(rot, target, {
-      duration: reduce ? 0 : 4.4,
-      ease: [0.15, 0.6, 0.08, 1],
-      onComplete: () => {
-        finished = true;
-        setSpinning(false);
-        setLanded(spin.index);
-        landedCb.current?.(spin);
-      },
-    });
+    const done = () => {
+      finished = true;
+      setSpinning(false);
+      setLanded(spin.index);
+      landedCb.current?.(spin);
+    };
+    let current: ReturnType<typeof animate>;
+    if (reduce) {
+      current = animate(rot, target, { duration: 0, onComplete: done });
+    } else {
+      // 1) se echa hacia atrás un poco, 2) arranca y frena largo, 3) se pasa un poco y se asienta con un resorte
+      current = animate(rot, cur - 7, {
+        duration: 0.24,
+        ease: [0.3, 0, 0.45, 1],
+        onComplete: () => {
+          current = animate(rot, target + over, {
+            duration: long,
+            ease: [0.11, 0.62, 0.08, 1],
+            onComplete: () => {
+              current = animate(rot, target, { type: "spring", stiffness: 150, damping: 12, mass: 0.8, onComplete: done });
+            },
+          });
+        },
+      });
+    }
     return () => {
-      controls.stop();
+      current.stop();
       if (!finished) {
         // si se cortó (X, cambio de mazo, desmontaje) no puede quedar "girando"
         setSpinning(false);

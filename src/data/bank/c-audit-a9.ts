@@ -39,7 +39,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quién fundó Umbrella junto a Marcus y Ashford?","Oswell E. Spencer","Albert Wesker","William Birkin","Osmund Saddler"],
   ],
   saintseiya: [
-    [3,"¿Qué caballero dorado es el hermano mayor de Aioria?","Aioros de Sagitario","Shura de Capricornio","Milo de Escorpio","Mu de Aries"],
+    [3,"¿Qué caballero dorado es el hermano mayor de Aioria?","Aioros de Sagitario","Shura de Capricornio","Milo de Escorpio","Aiacos de Garuda"],
     [2,"¿Qué caballero dorado protege la casa de Piscis?","Afrodita","Camus","Shaka","Máscara de la Muerte"],
     [3,"¿Qué caballero dorado protege la casa de Cáncer?","Máscara de la Muerte","Aldebarán","Shura","Afrodita"],
     [3,"¿Quién gobierna Asgard como representante de Odín?","Hilda de Polaris","Pandora","Saori Kido","Shaina"],

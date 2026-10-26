@@ -34,7 +34,7 @@ export default {
     [3, "¿Quién fundó Umbrella junto a Marcus y Ashford?", "Oswell E. Spencer", "Albert Wesker", "William Birkin", "Osmund Saddler", ["Who founded Umbrella with Marcus and Ashford?", N, N, N, N]],
   ],
   saintseiya: [
-    [3, "¿Qué caballero dorado es el hermano mayor de Aioria?", "Aioros de Sagitario", "Shura de Capricornio", "Milo de Escorpio", "Mu de Aries", ["Which Gold Saint is Aiolia's older brother?", "Aiolos of Sagittarius", "Shura of Capricorn", "Milo of Scorpio", "Mu of Aries"]],
+    [3, "¿Qué caballero dorado es el hermano mayor de Aioria?", "Aioros de Sagitario", "Shura de Capricornio", "Milo de Escorpio", "Aiacos de Garuda", ["Which Gold Saint is Aiolia's older brother?", "Aiolos of Sagittarius", "Shura of Capricorn", "Milo of Scorpio", "Aiacos of Garuda"]],
     [2, "¿Qué caballero dorado protege la casa de Piscis?", "Afrodita", "Camus", "Shaka", "Máscara de la Muerte", ["Which Gold Saint guards the Pisces house?", "Aphrodite", "Camus", "Shaka", "Death Mask"]],
     [3, "¿Qué caballero dorado protege la casa de Cáncer?", "Máscara de la Muerte", "Aldebarán", "Shura", "Afrodita", ["Which Gold Saint guards the Cancer house?", "Death Mask", "Aldebaran", "Shura", "Aphrodite"]],
     [3, "¿Quién gobierna Asgard como representante de Odín?", "Hilda de Polaris", "Pandora", "Saori Kido", "Shaina", ["Who rules Asgard as Odin's representative?", "Hilda of Polaris", "Pandora", "Saori Kido", "Shaina"]],

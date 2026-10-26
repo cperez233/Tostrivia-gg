@@ -160,3 +160,10 @@
     max-width: 1040px;
   }
 }
+
+/* animal que ya tiene otra persona en la sala */
+.profile__animal.is-taken {
+  opacity: 0.28;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}

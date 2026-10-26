@@ -83,7 +83,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1,"¿Cómo se llama el niño que siempre muere y vuelve en el siguiente capítulo?","Kenny McCormick","Stan Marsh","Kyle Broflovski","Butters Stotch"],
     [1,"¿Cómo se llama el niño gordo y malcriado?","Eric Cartman","Kyle","Butters","Craig"],
     [1,"¿Cuáles son los dos mejores amigos de Stan?","Kyle y Cartman","Kenny y Butters","Token y Craig","Tweek y Clyde"],
-    [2,"¿Quiénes crearon South Park?","Trey Parker y Matt Stone","Seth MacFarlane","Matt Groening","Mike Judge"],
+    [2,"¿Quiénes crearon South Park?","Trey Parker y Matt Stone","Seth MacFarlane y Mike Judge","Matt Groening y Trey Parker","Dan Harmon y Justin Roiland"],
     [2,"¿En qué canal se emite?","Comedy Central","HBO","Adult Swim","Fox"],
     [2,"¿Cómo se llama la caca navideña que habla?","Sr. Hankey","Sr. Mackey","Towelie","Chef"],
     [2,"¿Cómo se llama el consejero escolar con la muletilla \"¿M'kay?\"?","Sr. Mackey","Sr. Garrison","Sr. Hat","Chef"],
