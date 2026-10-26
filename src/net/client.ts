@@ -56,6 +56,8 @@ export interface GameClient {
   kick(id: string): void;
   /** solo el anfitrión: darle o quitarle el mando de la sala a alguien */
   setLeader(id: string, on: boolean): void;
+  /** cambia tu animal en la sala de espera (el anfitrión lo rechaza si otro ya lo tiene) */
+  setSeal(seal: number): void;
   leave(): void;
   /** chat y emotes (solo en grupo): pasan por el anfitrión, que los reparte */
   say(text: string): void;
@@ -70,6 +72,7 @@ type GuestMsg =
   | { t: "media"; i: number; st: "playing" | "error" }
   | { t: "power"; i: number; p: PowerId }
   | { t: "ping" }
+  | { t: "seal"; a: number }
   | { t: "chat"; body: string }
   | { t: "emote"; e: string }
   /** un líder maneja la sala: el anfitrión lo ejecuta solo si de verdad es líder */
@@ -177,6 +180,9 @@ export class LocalClient implements GameClient {
   }
   kick(_id: string) {}
   setLeader(_id: string, _on: boolean) {}
+  setSeal(seal: number) {
+    if (this.match.setSeal(this.me.id, seal)) this.me = { ...this.me, seal };
+  }
   leave() {
     this.match.destroy();
   }
@@ -288,6 +294,7 @@ export class HostClient extends LocalClient {
     if (msg.t === "answer") this.match.answer(entry.pid, msg.i, msg.c, msg.ms);
     else if (msg.t === "media") this.match.media(entry.pid, msg.i, msg.st);
     else if (msg.t === "power" && isPower(msg.p)) this.match.usePower(entry.pid, msg.i, msg.p);
+    else if (msg.t === "seal" && typeof msg.a === "number") this.match.setSeal(entry.pid, msg.a);
     else if (msg.t === "chat") this.post(entry.pid, "text", msg.body);
     else if (msg.t === "emote") this.post(entry.pid, "emote", msg.e);
     else if (msg.t === "ctl" && this.match.isLeader(entry.pid)) this.control(msg.op, msg.a);
@@ -295,7 +302,7 @@ export class HostClient extends LocalClient {
 
   /** lo que manda un líder: se revisa como cualquier cosa que llega por la red */
   private control(op: string, a: unknown) {
-    const str = (x: unknown) => (typeof x === "string" && x.length <= 80 ? x : null);
+    const str = (x: unknown) => (typeof x === "string" && x.length <= 400 ? x : null);
     if (op === "start") this.match.start(typeof a === "number" && Number.isFinite(a) ? a : randomInt(2 ** 31));
     else if (op === "next") this.match.next();
     else if (op === "lobby") this.match.backToLobby();
@@ -516,6 +523,9 @@ export class GuestClient implements GameClient {
     this.send({ t: "ctl", op: "kick", a: id });
   }
   setLeader() {}
+  setSeal(seal: number) {
+    this.send({ t: "seal", a: seal });
+  }
   leave() {
     if (this.watch) clearInterval(this.watch);
     try {

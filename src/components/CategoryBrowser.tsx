@@ -9,6 +9,10 @@ import { GROUPS, categoriesOf, familiesOf } from "../data/categories";
 import type { Category, GroupId } from "../data/types";
 import { describe, mixId, partsOf, playable, randomId } from "../game/mix";
 import { saveTab, savedTab } from "../lib/catsTab";
+import { addPreset, MAX_PRESETS, NAME_MAX, savedPresets, type Preset } from "../lib/presets";
+import { savedVariant, type Variant } from "../game/powers";
+import { savedRules, type Rules } from "../game/rules";
+import { PresetShelf, ShortcutShelf } from "./Shelves";
 import { Cover } from "./Cover";
 import "../pages/categories.css";
 import { t } from "../i18n";
@@ -26,15 +30,22 @@ interface Props {
   inSheet?: boolean;
   /** la elección actual: si es una mezcla, el modo "varias" arranca con ella marcada */
   current?: string | null;
+  /** tocar una partida guardada: por defecto solo elige su categoría; la página la usa para cargar también el modo y las reglas */
+  onPreset?: (p: Preset) => void;
+  /** modo y reglas que se guardan junto a las categorías (por defecto, los que recuerda el navegador para jugar solo) */
+  getSetup?: () => { variant: Variant; rules: Rules };
 }
 
-export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, current }: Props) {
+export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, current, onPreset, getSetup }: Props) {
   const reduce = useReducedMotion();
   const [tab, setTab] = useState<GroupId>(savedTab);
   const [dir, setDir] = useState(1);
   const startMix = current?.startsWith("mix-") ? partsOf(current) : [];
   const [picking, setPicking] = useState(startMix.length > 0);
   const [sel, setSel] = useState<string[]>(startMix);
+  const [naming, setNaming] = useState(false);
+  const [name, setName] = useState("");
+  const [saved, setSaved] = useState<string | null>(null);
   const toggle = (id: string) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
   const tap = (id: string) => (picking ? toggle(id) : onPick(id));
   const go = (g: GroupId) => {
@@ -44,7 +55,27 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
   };
   const mode = (many: boolean) => {
     setPicking(many);
-    if (!many) setSel([]);
+    if (!many) {
+      setSel([]);
+      setNaming(false);
+    }
+  };
+  const addAll = (cats: string[]) => setSel((s) => [...new Set([...s, ...cats])]);
+  const save = () => {
+    const setup = getSetup?.() ?? { variant: savedVariant(), rules: savedRules() };
+    const made = addPreset({ name, cat: mixId(sel), ...setup });
+    if (!made) return;
+    setSaved(made.name);
+    setTimeout(() => setSaved(null), 2600);
+    setNaming(false);
+    setName("");
+  };
+  const tapPreset = (p: Preset) => {
+    if (picking) {
+      setSel(partsOf(p.cat));
+      return;
+    }
+    (onPreset ?? ((x: Preset) => onPick(x.cat)))(p);
   };
 
   return (
@@ -87,6 +118,8 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
             exit={reduce ? { opacity: 0 } : { opacity: 0, x: dir * -50 }}
             transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
           >
+            <PresetShelf idp={idp} picking={picking} onTap={tapPreset} />
+            <ShortcutShelf g={tab} idp={idp} picking={picking} selected={sel} onTap={(cats, mix) => (picking ? addAll(cats) : onPick(mix))} />
             {picking ? (
               <p className="cats__hint">{t("Toca las que quieras mezclar. Puedes cambiar de pestaña sin perder lo marcado.")}</p>
             ) : (
@@ -119,13 +152,40 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
           <motion.div className="pickbar" initial={{ y: "120%" }} animate={{ y: 0 }} exit={{ y: "120%" }} transition={{ type: "spring", stiffness: 420, damping: 34 }}>
             <div className="pickbar__in wrap">
               <p className="pickbar__text" aria-live="polite">
-                {sel.length === 0 ? t("Ninguna marcada todavía.") : sel.length === 1 ? t("1 marcada: {c}. Marca otra para mezclar.", { c: describe(sel[0])?.short ?? "" }) : t("{n} marcadas: {list}", { n: sel.length, list: sel.map((c) => describe(c)?.short).join(", ") })}
+                {saved ? t("Guardada: {name}", { name: saved }) : sel.length === 0 ? t("Ninguna marcada todavía.") : sel.length === 1 ? t("1 marcada: {c}. Marca otra para mezclar.", { c: describe(sel[0])?.short ?? "" }) : t("{n} marcadas: {list}", { n: sel.length, list: sel.map((c) => describe(c)?.short).join(", ") })}
               </p>
+              {sel.length > 0 && (
+                <button type="button" className="btn btn--small btn--ghost" onClick={() => setSel([])}>
+                  {t("Limpiar")}
+                </button>
+              )}
+              {sel.length > 0 && savedPresets().length < MAX_PRESETS && (
+                <button type="button" className="btn btn--small btn--ghost" aria-expanded={naming} onClick={() => setNaming((n) => !n)}>
+                  {t("Guardar")}
+                </button>
+              )}
               <button type="button" className="btn btn--hanko" disabled={!sel.length} onClick={() => onPick(mixId(sel))}>
                 {verb}
                 {sel.length > 1 ? ` ${sel.length}` : ""}
               </button>
             </div>
+            {naming && (
+              <form
+                className="pickbar__name wrap"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  save();
+                }}
+              >
+                <label className="sr-only" htmlFor={`${idp}-presetname`}>
+                  {t("Nombre de la partida")}
+                </label>
+                <input id={`${idp}-presetname`} className="input" value={name} maxLength={NAME_MAX} onChange={(e) => setName(e.target.value)} placeholder={t("Nombre: Noche de anime")} autoComplete="off" enterKeyHint="done" autoFocus />
+                <button type="submit" className="btn btn--small" disabled={!name.trim()}>
+                  {t("Guardar partida")}
+                </button>
+              </form>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

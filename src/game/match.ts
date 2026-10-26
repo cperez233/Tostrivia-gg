@@ -220,13 +220,20 @@ export class Match {
   join(p: { id: string; name: string; seal: number }): "ok" | "full" {
     const existing = this.s.players.find((x) => x.id === p.id);
     if (existing) {
-      const seal = this.freeAnimal(p.seal, p.id);
-      this.emit({ players: this.s.players.map((x) => (x.id === p.id ? { ...x, name: p.name, seal, online: true } : x)) });
+      // quien vuelve (o recarga) conserva el animal que ya tiene en la sala, aunque traiga otro guardado
+      this.emit({ players: this.s.players.map((x) => (x.id === p.id ? { ...x, name: p.name, online: true } : x)) });
       return "ok";
     }
     if (this.s.players.filter((x) => x.online).length >= MAX_PLAYERS) return "full";
     this.emit({ players: [...this.s.players, newPlayer({ ...p, seal: this.freeAnimal(p.seal, p.id) })] });
     return "ok";
+  }
+  /** cambia el animal de alguien en la sala de espera; no pasa si otro ya lo tiene */
+  setSeal(id: string, seal: number): boolean {
+    if (this.s.phase !== "lobby" || !Number.isInteger(seal) || seal < 0 || seal >= ANIMAL_COUNT) return false;
+    if (!this.s.players.some((p) => p.id === id) || this.s.players.some((p) => p.id !== id && p.seal === seal)) return false;
+    this.emit({ players: this.s.players.map((p) => (p.id === id ? { ...p, seal } : p)) });
+    return true;
   }
   /** una raza por jugador: si el animal ya lo tiene otro, le toca el siguiente libre */
   private freeAnimal(want: number, id: string) {

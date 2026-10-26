@@ -395,3 +395,97 @@
 .lobby__cat .setup__reset {
   justify-self: center;
 }
+
+/* cambiar mi animal: la foto propia es un botón, y la hoja deja apagados los que ya tiene otra persona */
+.roster__swap {
+  display: block;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.roster__swap:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+}
+.lobby__moved {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--on-ink-2);
+}
+.linkish {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--signal);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.sealpick {
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--ink-2);
+  border: 2px solid var(--signal);
+}
+.sealpick__title {
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+.sealpick__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 6px;
+}
+.sealpick__opt {
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  min-height: 56px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.sealpick__opt.is-on {
+  border-color: var(--signal);
+}
+.sealpick__opt:disabled {
+  opacity: 0.25;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+.sealpick__opt:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+}
+.sealpick__hint {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--on-ink-3);
+}
+
+.lobby__top-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 420px) {
+  /* en pantallas muy angostas el botón queda solo con el "?" */
+  .lobby__top-end .howto__open--text span:not(.howto__mark) {
+    display: none;
+  }
+  .lobby__top-end .howto__open--text {
+    padding: 0 7px;
+  }
+}
+.lobby__top-end {
+  margin-left: auto;
+}
+.lobby__top-end .btn {
+  white-space: nowrap;
+}

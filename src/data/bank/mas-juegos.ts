@@ -58,7 +58,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1, "¿Qué es un Persona?", "La manifestación del interior de un personaje, que pelea por él", "Un tipo de arma", "Un demonio domesticado", "Una máscara de fiesta"],
     [2, "¿De qué saga nació Persona?", "Shin Megami Tensei", "Final Fantasy", "Dragon Quest", "Tales of"],
     [2, "¿Cómo se llama la habitación azul donde se fusionan Personas?", "La Sala Terciopelo", "El Salón Azul", "El Cuarto Lunar", "La Cámara del Alma"],
-    [2, "¿Cómo se llama el anfitrión de nariz larga de esa habitación?", "Igor", "Philemon", "Nyx", "Theodore"],
+    [2, "¿Cómo se llama el anfitrión de nariz larga de la Habitación de Terciopelo?", "Igor", "Philemon", "Nyx", "Theodore"],
     [2, "¿En qué ciudad transcurre Persona 5?", "Tokio", "Kioto", "Osaka", "Inaba"],
     [2, "¿En qué pueblo transcurre Persona 4?", "Inaba", "Iwatodai", "Sumaru", "Mikage"],
     [2, "¿Cómo se llama la mascota con forma de oso de Persona 4?", "Teddie", "Morgana", "Jack Frost", "Koromaru"],

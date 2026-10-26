@@ -123,3 +123,9 @@
     --dock-h: calc(84px + var(--safe-b));
   }
 }
+
+.topnav__end {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}

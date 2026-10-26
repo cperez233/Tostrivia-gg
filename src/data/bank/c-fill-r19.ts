@@ -24,7 +24,7 @@ const bank: Record<string, RawQuestion[]> = {
     [1,"¿Por qué destierra Viserys a Daemon de Desembarco del Rey al principio de la serie?","Por burlarse del hijo recién muerto del rey","Por robar un huevo de dragón","Por asesinar a su esposa","Por aliarse con la Triarquía"],
     [2,"¿Cómo muere Laena Velaryon?","Pide a Vhagar que la incinere tras un parto imposible","Muere en el parto sin ayuda","Cae de su dragona en batalla","La envenena Alicent"],
     [2,"¿De qué color es el vestido con que Alicent irrumpe en la fiesta de compromiso de Rhaenyra y Laenor?","Verde","Negro","Rojo","Dorado"],
-    [3,"¿Quién mata a Joffrey Lonmouth, amante de Laenor, en esa misma fiesta?","Criston Cole","Harwin Strong","Daemon Targaryen","Qarl Correy"],
+    [3,"¿Quién mata a Joffrey Lonmouth, amante de Laenor, en el banquete de la boda de Rhaenyra?","Criston Cole","Harwin Strong","Daemon Targaryen","Qarl Correy"],
     [2,"¿Qué le ocurre a Vaemond Velaryon al llamar bastardos a los hijos de Rhaenyra ante la corte?","Daemon lo decapita","Viserys lo destierra","Corlys lo encierra","Lo mata un dragón"],
     [2,"¿A quién eligen como regente cuando Aegon queda en coma tras la batalla en que muere Rhaenys?","Aemond","Alicent","Criston Cole","Otto Hightower"],
     [3,"¿A quiénes busca Rhaenyra en Desembarco del Rey para que monten dragones sin jinete?","A bastardos con sangre valyria","A antiguos jinetes en el exilio","A hijos de lores del Norte","A soldados leales a Daemon"],

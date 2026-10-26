@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import { Logo } from "./Seal";
 import LangSwitch from "./LangSwitch";
+import HowTo from "./HowTo";
 import "./nav.css";
 import { t, t as tr } from "../i18n";
 
@@ -60,7 +61,10 @@ export default function Nav({ active, onGo }: { active: Tab | null; onGo: (t: Ta
               </a>
             ))}
           </nav>
-          <LangSwitch />
+          <div className="topnav__end">
+            <HowTo />
+            <LangSwitch />
+          </div>
         </div>
       </header>
       <nav className="dock" aria-label={t("Secciones")}>

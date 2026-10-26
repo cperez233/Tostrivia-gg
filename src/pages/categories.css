@@ -386,3 +386,127 @@
 .browser--sheet .cats__head {
   padding-top: 4px;
 }
+
+/* repisas: atajos y partidas guardadas, en una fila que se desliza */
+.shelf {
+  margin-bottom: 26px;
+}
+.shelf__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin-bottom: 10px;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+}
+.shelf__sub {
+  font-family: var(--text);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--on-ink-3);
+}
+.shelf__row {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 4px 4px 12px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+.shelf__row > li {
+  flex: none;
+  scroll-snap-align: start;
+}
+.chip {
+  display: grid;
+  gap: 2px;
+  align-content: center;
+  width: 210px;
+  min-height: 64px;
+  padding: 9px 12px;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+  color: var(--on-ink);
+  text-align: left;
+  transition: background 0.15s, color 0.15s, translate 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.chip__name {
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 1.15;
+}
+.chip__sub {
+  font-weight: 700;
+  font-size: 12.5px;
+  line-height: 1.25;
+  color: var(--on-ink-3);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.chip.is-on {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--hanko);
+}
+.chip.is-on .chip__sub {
+  color: var(--on-paper-2);
+}
+@media (hover: hover) and (pointer: fine) {
+  button.chip:hover {
+    translate: -2px -2px;
+    box-shadow: 4px 4px 0 var(--hanko);
+  }
+}
+/* las guardadas llevan el borde del sello y una X para borrarlas */
+.chip--mine {
+  position: relative;
+  grid-template-columns: 1fr auto;
+  gap: 0;
+  padding: 0;
+  border-color: var(--signal);
+}
+.chip__main {
+  display: grid;
+  gap: 2px;
+  padding: 9px 4px 9px 12px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  min-width: 0;
+}
+.chip__del {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  border: 0;
+  border-left: 2px solid var(--ink-line);
+  background: none;
+  color: var(--on-ink-3);
+}
+@media (hover: hover) and (pointer: fine) {
+  .chip__del:hover {
+    color: var(--hanko);
+  }
+}
+
+/* guardar la selección: nombre y botón bajo la barra */
+.pickbar__in {
+  flex-wrap: wrap;
+}
+.pickbar__text {
+  flex: 1 1 160px;
+}
+.pickbar__name {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 12px;
+}
+.pickbar__name .input {
+  flex: 1;
+  min-width: 0;
+}

@@ -1,0 +1,267 @@
+/* editorial-ui · Cristian Pérez · cristianperez.me */
+.howto__open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--on-ink-2);
+  font-weight: 800;
+  font-size: 15px;
+  touch-action: manipulation;
+  transition: color 0.15s;
+}
+.howto__open:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+}
+.howto__open:active .howto__mark {
+  transform: scale(0.92);
+}
+.howto__mark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--display);
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.15s var(--ease), background 0.15s, color 0.15s;
+}
+@media (hover: hover) and (pointer: fine) {
+  .howto__open:hover {
+    color: var(--on-ink);
+  }
+  .howto__open:hover .howto__mark {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: var(--ink);
+  }
+}
+/* en la sala: botón con texto, con borde, como los demás de esa barra */
+.howto__open--text {
+  padding: 0 14px 0 8px;
+  border: 2px solid var(--ink-line);
+}
+
+/* la hoja: sube desde abajo en celular y es un cuadro centrado en pantalla grande */
+.howto {
+  width: min(100vw, 640px);
+  max-width: none;
+  max-height: min(88dvh, 760px);
+  margin: auto auto 0;
+  padding: 0;
+  border: 3px solid var(--paper);
+  border-bottom: 0;
+  background: var(--ink);
+  color: var(--on-ink);
+  overflow: hidden;
+}
+.howto::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+.howto[open] {
+  animation: howto-in 0.3s var(--ease);
+}
+@keyframes howto-in {
+  from {
+    transform: translateY(28px);
+    opacity: 0;
+  }
+}
+@media (min-width: 720px) {
+  .howto {
+    margin: auto;
+    border-bottom: 3px solid var(--paper);
+    box-shadow: 8px 8px 0 var(--hanko);
+  }
+}
+.howto__card {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  max-height: inherit;
+  padding-bottom: var(--safe-b);
+}
+.howto__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 12px;
+}
+.howto__title {
+  margin-top: 4px;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem);
+  line-height: 1.1;
+}
+.howto__x {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+  color: var(--on-ink);
+}
+.howto__tabs {
+  display: flex;
+  margin: 0 18px;
+  border: 2px solid var(--paper);
+  background: var(--ink-2);
+}
+.howto__tab {
+  flex: 1 1 0;
+  min-height: 46px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: var(--on-ink);
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 1.15;
+  touch-action: manipulation;
+}
+.howto__tab + .howto__tab {
+  border-left: 2px solid var(--ink-line);
+}
+.howto__tab.is-on {
+  background: var(--paper);
+  color: var(--ink);
+}
+.howto__tab:focus-visible,
+.howto__x:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+}
+.howto__body {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px;
+  animation: howto-swap 0.22s var(--ease);
+}
+@keyframes howto-swap {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.howto__foot {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 18px 16px;
+  border-top: 2px solid var(--ink-3);
+}
+
+/* pasos: el número va en un sello, el texto a 16 px */
+.howto__steps {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: paso;
+}
+.howto__steps li {
+  position: relative;
+  padding-left: 46px;
+  counter-increment: paso;
+}
+.howto__steps li::before {
+  content: counter(paso);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: var(--hanko);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--paper);
+  font-family: var(--display);
+  font-size: 16px;
+}
+.howto__steps h3,
+.howto__group h3 {
+  font-size: 17px;
+  line-height: 1.25;
+}
+.howto__steps p {
+  margin: 3px 0 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--on-ink-2);
+}
+.howto__stack {
+  display: grid;
+  gap: 20px;
+}
+.howto__lead {
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--hanko);
+  background: var(--ink-2);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--on-ink-2);
+}
+.howto__group {
+  padding: 14px;
+  border: 2px solid var(--ink-line);
+  background: var(--ink-2);
+}
+.howto__group > p {
+  margin: 2px 0 10px;
+  font-size: 15px;
+  color: var(--on-ink-3);
+}
+.howto__group ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.howto__group li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--on-ink-2);
+}
+.howto__group strong {
+  color: var(--on-ink);
+}
+.howto__ico {
+  flex: none;
+  width: 26px;
+  text-align: center;
+  font-size: 19px;
+  line-height: 1.2;
+}
+.howto__note {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--on-ink-3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .howto[open],
+  .howto__body {
+    animation: none;
+  }
+  .howto__mark {
+    transition: none;
+  }
+}

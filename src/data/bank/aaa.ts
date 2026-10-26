@@ -149,7 +149,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2, "¿Quién es la novia de Ellie en Part II?", "Dina", "Riley", "Abby", "Yara"],
     [2, "¿En qué año salió The Last of Us?", "2013", "2011", "2015", "2016"],
     [3, "¿Qué expansión narra el pasado de Ellie?", "Left Behind", "Grounded", "The Lost Levels", "Before Dawn"],
-    [3, "¿Cómo se llama la amiga de Ellie en esa expansión?", "Riley", "Dina", "Sarah", "Tess"],
+    [3, "¿Cómo se llama la amiga de Ellie en la expansión Left Behind?", "Riley", "Dina", "Sarah", "Tess"],
     [3, "¿Qué instrumento le enseña Joel a tocar a Ellie?", "La guitarra", "El piano", "La armónica", "El violín"],
     [3, "¿Quién interpreta a Joel en la serie de HBO?", "Pedro Pascal", "Oscar Isaac", "Troy Baker", "Nikolaj Coster-Waldau"],
     [3, "¿Quién interpreta a Ellie en la serie de HBO?", "Bella Ramsey", "Ashley Johnson", "Millie Bobby Brown", "Kaitlyn Dever"],
