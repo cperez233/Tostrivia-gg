@@ -55,7 +55,7 @@ export default {
     [3, "¿Quiénes de Breaking Bad visitan a Saul en la sexta temporada?", "Walter White y Jesse Pinkman", "Hank Schrader y Gómez", "Skyler y Walt Jr.", "Todd y Lydia", ["Who from Breaking Bad visits Saul in the sixth season?", "Walter White and Jesse Pinkman", "Hank Schrader and Gomez", "Skyler and Walt Jr.", "Todd and Lydia"]],
     [3, "¿Cuántos episodios tiene la serie en total?", "63", "62", "73", "50", ["How many episodes does the series have in total?", N, N, N, N]],
     [3, "¿Quién es Marion, la mujer que se encariña con Gene y acaba delatándolo?", "La madre de Jeff", "La esposa de Mike", "La vecina de Kim", "La secretaria de Howard", ["Who is Marion, the woman who grows fond of Gene and ends up turning him in?", "Jeff's mother", "Mike's wife", "Kim's neighbor", "Howard's secretary"]],
-    [3, "¿Cómo se llama la empresa de Florida donde trabaja Kim?", "Palm Coast Sprinklers", "Gulf Pools", "Sunshine Realty", "Coast Legal", ["What is the name of the Florida company where Kim works?", N, N, N, N]],
+    [3, "¿Cómo se llama la empresa de Florida donde trabaja Kim?", "Palm Coast Sprinkler", "Gulf Pools", "Sunshine Realty", "Coast Legal", ["What is the name of the Florida company where Kim works?", N, N, N, N]],
     [3, "¿Qué hace Mike con Werner Ziegler cuando este se va por su cuenta?", "Lo mata por orden de Gus", "Lo despide", "Lo entrega a la policía", "Lo ayuda a escapar", ["What does Mike do to Werner Ziegler when he goes off on his own?", "He kills him on Gus's orders", "He fires him", "He turns him in to the police", "He helps him escape"]],
   ],
 };

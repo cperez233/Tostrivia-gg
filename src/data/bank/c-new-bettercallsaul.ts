@@ -54,7 +54,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Quiénes de Breaking Bad visitan a Saul en la sexta temporada?","Walter White y Jesse Pinkman","Hank Schrader y Gómez","Skyler y Walt Jr.","Todd y Lydia"],
     [3,"¿Cuántos episodios tiene la serie en total?","63","62","73","50"],
     [3,"¿Quién es Marion, la mujer que se encariña con Gene y acaba delatándolo?","La madre de Jeff","La esposa de Mike","La vecina de Kim","La secretaria de Howard"],
-    [3,"¿Cómo se llama la empresa de Florida donde trabaja Kim?","Palm Coast Sprinklers","Gulf Pools","Sunshine Realty","Coast Legal"],
+    [3,"¿Cómo se llama la empresa de Florida donde trabaja Kim?","Palm Coast Sprinkler","Gulf Pools","Sunshine Realty","Coast Legal"],
     [3,"¿Qué hace Mike con Werner Ziegler cuando este se va por su cuenta?","Lo mata por orden de Gus","Lo despide","Lo entrega a la policía","Lo ayuda a escapar"],
   ],
 };

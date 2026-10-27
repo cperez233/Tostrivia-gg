@@ -9,7 +9,6 @@ export default {
   ],
   cod: [
     [3, "¿Qué estudio fundaron los antiguos jefes de Infinity Ward tras salir de Activision?", "Respawn Entertainment", "Treyarch", "Sledgehammer Games", "Raven Software", ["Which studio did Infinity Ward's former heads found after leaving Activision?", N, N, N, N]],
-    [3, "¿Qué compositor de Hollywood hizo el tema principal de Modern Warfare 2 (2009)?", "Hans Zimmer", "Harry Gregson-Williams", "Jack Wall", "Ramin Djawadi", ["Which Hollywood composer wrote the main theme of Modern Warfare 2 (2009)?", N, N, N, N]],
     [3, "¿En qué entrega está el mapa de Zombis Mob of the Dead, ambientado en Alcatraz?", "Black Ops II", "Black Ops", "World at War", "Black Ops III", ["Which installment has the Zombies map Mob of the Dead, set in Alcatraz?", N, N, N, N]],
     [3, "¿Qué entrega introdujo las rachas de bajas y las ventajas (perks)?", "Call of Duty 4: Modern Warfare", "Call of Duty 2", "World at War", "Modern Warfare 2", ["Which installment introduced killstreaks and perks?", N, N, N, N]],
   ],
