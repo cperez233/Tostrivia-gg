@@ -7,12 +7,12 @@ import type { RawQuestion } from "../types";
 const bank: Record<string, RawQuestion[]> = {
   deportes: [
     [3,"¿Quién ganó el Balón de Oro de 2007?","Kaká","Cristiano Ronaldo","Lionel Messi","Ronaldinho"],
-    [3,"¿Cuántos Mundiales de fútbol masculino ha ganado Italia?","Cuatro","Tres","Cinco","Dos"],
+    [3,"Hasta Catar 2022, ¿cuántos Mundiales de fútbol masculino había ganado Italia?","Cuatro","Tres","Cinco","Dos"],
     [3,"¿Cuántos puntos anotó Wilt Chamberlain en su famoso partido de 1962?","100","81","73","69"],
-    [3,"¿Qué selección es la única que ha jugado todos los Mundiales de fútbol masculino?","Brasil","Alemania","Italia","Argentina"],
+    [3,"Hasta Catar 2022, ¿qué selección era la única que había jugado todos los Mundiales masculinos?","Brasil","Alemania","Italia","Argentina"],
     [3,"¿Qué maratonista etíope ganó descalzo el oro olímpico en Roma 1960?","Abebe Bikila","Haile Gebrselassie","Kipchoge Keino","Emil Zátopek"],
     [2,"¿Cuántas medallas de oro olímpicas ganó Michael Phelps?","23","18","28","15"],
-    [3,"¿Qué club tiene más títulos de Copa Libertadores?","Independiente","Boca Juniors","Peñarol","River Plate"],
+    [3,"¿Qué club argentino ganó siete Copas Libertadores, cuatro de ellas seguidas entre 1972 y 1975?","Independiente","Boca Juniors","Peñarol","River Plate"],
   ],
   geografia: [
     [3,"¿Cuál es la capital de Bután?","Timbu","Katmandú","Daca","Colombo"],

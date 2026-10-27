@@ -5,12 +5,12 @@ const N = null;
 export default {
   deportes: [
     [3, "¿Quién ganó el Balón de Oro de 2007?", "Kaká", "Cristiano Ronaldo", "Lionel Messi", "Ronaldinho", ["Who won the 2007 Ballon d'Or?", N, N, N, N]],
-    [3, "¿Cuántos Mundiales de fútbol masculino ha ganado Italia?", "Cuatro", "Tres", "Cinco", "Dos", ["How many men's football World Cups has Italy won?", "Four", "Three", "Five", "Two"]],
+    [3, "Hasta Catar 2022, ¿cuántos Mundiales de fútbol masculino había ganado Italia?", "Cuatro", "Tres", "Cinco", "Dos", ["Up to Qatar 2022, how many men's football World Cups had Italy won?", "Four", "Three", "Five", "Two"]],
     [3, "¿Cuántos puntos anotó Wilt Chamberlain en su famoso partido de 1962?", "100", "81", "73", "69", ["How many points did Wilt Chamberlain score in his famous 1962 game?", N, N, N, N]],
-    [3, "¿Qué selección es la única que ha jugado todos los Mundiales de fútbol masculino?", "Brasil", "Alemania", "Italia", "Argentina", ["Which team is the only one to have played in every men's football World Cup?", "Brazil", "Germany", "Italy", "Argentina"]],
+    [3, "Hasta Catar 2022, ¿qué selección era la única que había jugado todos los Mundiales masculinos?", "Brasil", "Alemania", "Italia", "Argentina", ["Up to Qatar 2022, which team was the only one to have played every men's World Cup?", "Brazil", "Germany", "Italy", "Argentina"]],
     [3, "¿Qué maratonista etíope ganó descalzo el oro olímpico en Roma 1960?", "Abebe Bikila", "Haile Gebrselassie", "Kipchoge Keino", "Emil Zátopek", ["Which Ethiopian marathon runner won Olympic gold barefoot in Rome 1960?", N, N, N, N]],
     [2, "¿Cuántas medallas de oro olímpicas ganó Michael Phelps?", "23", "18", "28", "15", ["How many Olympic gold medals did Michael Phelps win?", N, N, N, N]],
-    [3, "¿Qué club tiene más títulos de Copa Libertadores?", "Independiente", "Boca Juniors", "Peñarol", "River Plate", ["Which club has the most Copa Libertadores titles?", N, N, N, N]],
+    [3, "¿Qué club argentino ganó siete Copas Libertadores, cuatro de ellas seguidas entre 1972 y 1975?", "Independiente", "Boca Juniors", "Peñarol", "River Plate", ["Which Argentine club won seven Copa Libertadores titles, four of them in a row from 1972 to 1975?", N, N, N, N]],
   ],
   geografia: [
     [3, "¿Cuál es la capital de Bután?", "Timbu", "Katmandú", "Daca", "Colombo", ["What is the capital of Bhutan?", "Thimphu", "Kathmandu", "Dhaka", "Colombo"]],

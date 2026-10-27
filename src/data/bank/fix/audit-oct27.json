@@ -1,0 +1,96 @@
+{
+ "onepiece-71tm0c": {
+  "q": "¿En qué saga se despiden los Sombrero de Paja del Going Merry?",
+  "en": {
+   "q": "In which saga do the Straw Hats say goodbye to the Going Merry?"
+  }
+ },
+ "mha-z0088z": {
+  "o": [
+   "Yoichi Shigaraki",
+   "Nana Shimura",
+   "Toshinori Yagi",
+   "Gran Torino"
+  ],
+  "en": {
+   "o": [
+    "Yoichi Shigaraki",
+    "Nana Shimura",
+    "Toshinori Yagi",
+    "Gran Torino"
+   ]
+  }
+ },
+ "deathnote-6da2sz": {
+  "q": "¿Quién queda al frente del equipo de investigación tras la caída de Light?",
+  "en": {
+   "q": "Who takes charge of the investigation team after Light's downfall?"
+  }
+ },
+ "deathnote-u77f0p": {
+  "q": "En el capítulo especial de C-Kira, ¿qué hace el humano al que Midora le da una Death Note tras ser despreciado por Near?",
+  "o": [
+   "Se quita la vida",
+   "Se entrega a la policía",
+   "Le devuelve la libreta",
+   "Quema la libreta"
+  ],
+  "en": {
+   "q": "In the C-Kira special chapter, what does the human Midora gives a Death Note to do after Near dismisses them?",
+   "o": [
+    "Takes their own life",
+    "Turns themselves in",
+    "Gives the notebook back",
+    "Burns the notebook"
+   ]
+  }
+ },
+ "pokemonanime-1smjbll": {
+  "q": "¿Qué Pokémon legendario ve Ash volar hacia un arcoíris en el primer episodio?",
+  "en": {
+   "q": "Which legendary Pokémon does Ash see flying toward a rainbow in the first episode?"
+  }
+ },
+ "simpsons-1ghj19u": {
+  "q": "¿Cómo se llaman las gemelas de la clase de Bart?",
+  "en": {
+   "q": "What are the names of the twins in Bart's class?"
+  }
+ },
+ "deportes-96mbhr": {
+  "q": "¿En qué torneo ganó Novak Djokovic su Grand Slam número 24?",
+  "o": [
+   "El US Open de 2023",
+   "Wimbledon 2023",
+   "Roland Garros 2023",
+   "El Abierto de Australia de 2024"
+  ],
+  "en": {
+   "q": "At which tournament did Novak Djokovic win his 24th Grand Slam?",
+   "o": [
+    "The 2023 US Open",
+    "Wimbledon 2023",
+    "Roland Garros 2023",
+    "The 2024 Australian Open"
+   ]
+  }
+ },
+ "saintseiya-vecr5g": {
+  "q": "¿Qué caballero dorado es el hermano mayor del caballero de Leo?",
+  "o": [
+   "Aioros de Sagitario",
+   "Shura de Capricornio",
+   "Milo de Escorpio",
+   "Mu de Aries"
+  ],
+  "en": {
+   "q": "Which Gold Saint is the older brother of the Leo Saint?",
+   "o": [
+    "Aioros of Sagittarius",
+    "Shura of Capricorn",
+    "Milo of Scorpio",
+    "Mu of Aries"
+   ]
+  }
+ }
+}
