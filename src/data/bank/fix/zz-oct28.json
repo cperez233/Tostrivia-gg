@@ -4329,5 +4329,97 @@
     "Eleven"
    ]
   }
+ },
+ "bebop-6oa0ps": {
+  "o": [
+   "Un joven hacker en coma",
+   "Una inteligencia artificial militar",
+   "Vicious",
+   "Un científico de Cherious"
+  ],
+  "en": {
+   "o": [
+    "A young hacker in a coma",
+    "A military AI",
+    "Vicious",
+    "A scientist from Cherious"
+   ]
+  }
+ },
+ "rurouni-b2juuo": {
+  "q": "¿Qué muletilla pone Kenshin al final de sus frases en japonés?",
+  "o": [
+   "De gozaru",
+   "Dattebayo",
+   "Desu wa",
+   "Nanoda"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What verbal tic does Kenshin add to the end of his sentences in Japanese?",
+   "o": [
+    "De gozaru",
+    "Dattebayo",
+    "Desu wa",
+    "Nanoda"
+   ]
+  }
+ },
+ "rurouni-1px4sj2": {
+  "q": "¿Cómo se llamaba Kenshin de niño, antes de que Hiko lo rebautizara?",
+  "o": [
+   "Shinta",
+   "Kenji",
+   "Shinji",
+   "Yahiko"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What was Kenshin called as a child, before Hiko renamed him?",
+   "o": [
+    "Shinta",
+    "Kenji",
+    "Shinji",
+    "Yahiko"
+   ]
+  }
+ },
+ "sailormoon-1fsg4hv": {
+  "q": "¿En qué escuela estudia Serena en la primera temporada?",
+  "o": [
+   "La Secundaria Juban",
+   "La Academia Mugen",
+   "La Escuela T.A.",
+   "El Colegio Shiba"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which school does Serena attend in the first season?",
+   "o": [
+    "Juban Middle School",
+    "Mugen Academy",
+    "T.A. Academy",
+    "Shiba School"
+   ]
+  }
+ },
+ "steinsgate-h81m0e": {
+  "q": "¿Qué número de miembro del laboratorio es Mayuri?",
+  "o": [
+   "002",
+   "001",
+   "003",
+   "004"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What lab member number is Mayuri?",
+   "o": [
+    "002",
+    "001",
+    "003",
+    "004"
+   ]
+  }
  }
 }
