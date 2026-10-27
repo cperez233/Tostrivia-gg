@@ -51,6 +51,54 @@ npm run dev      # http://localhost:5173
 
 Es una web estática. Se despliega en Vercel sin configuración ni API keys.
 
+## Stack
+
+React 18, TypeScript y Vite, con Framer Motion para las animaciones y [PeerJS](https://peerjs.com/) (WebRTC) para las salas. Sin backend: el anfitrión de cada sala corre la partida en su navegador.
+
+## Scripts
+
+| Comando | Qué hace |
+|---|---|
+| `npm run dev` | Servidor de desarrollo en `localhost:5173` |
+| `npm run build` | Revisa tipos y genera el build de producción en `dist/` |
+| `npm run typecheck` | Solo revisión de tipos |
+| `npm run content` | Convierte `content/*.mjs` en el banco de preguntas y sus traducciones |
+| `npm run check:bank` | Cuenta preguntas por categoría y avisa de problemas |
+| `npm run check:i18n` | Revisa que las traducciones estén completas |
+| `npm run videos` | Resuelve y verifica los videos de YouTube (necesita `YOUTUBE_API_KEY`) |
+| `npm run videos:sin-key` | Lo mismo sin API key, buscando en YouTube directamente |
+| `npm run peer:local` | Servidor PeerJS local para probar salas |
+
+## Estructura
+
+```
+content/            preguntas fuente, en español e inglés
+public/             favicon e imagen para compartir
+scripts/            herramientas de contenido y videos
+src/
+├── assets/         portadas y animales
+├── components/     piezas de interfaz
+├── data/           categorías, banco de preguntas y videos
+├── game/           motor de partida, ruleta, poderes y reglas
+├── i18n/           traducciones al inglés
+├── lib/            utilidades (azar, historial, YouTube…)
+├── net/            conexión de salas con PeerJS
+└── pages/          inicio, categorías, sala y grupo
+```
+
+## Variables de entorno
+
+Ninguna es obligatoria. Estas son opcionales (ver `.env.example`):
+
+- `YOUTUBE_API_KEY`: solo para `npm run videos`, nunca se incluye en el build.
+- `VITE_PEER_HOST`, `VITE_PEER_PORT`, `VITE_PEER_PATH`, `VITE_PEER_SECURE`: para usar tu propio servidor PeerJS en vez del público. Si lo haces, añade ese host a `connect-src` en la CSP de `vercel.json`.
+
+## Despliegue
+
+El repo trae `vercel.json` (framework Vite, salida `dist`, reescritura SPA y cabeceras de seguridad). Importa el repo en Vercel y despliega.
+
+Las salas usan solo servidores STUN, sin TURN, así que en redes muy cerradas dos dispositivos pueden no conectarse.
+
 ## Colaborar
 
 - Las preguntas están en `content/*.mjs`, escritas una sola vez en español e inglés. `npm run content` las convierte en datos del juego.

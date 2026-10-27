@@ -51,6 +51,54 @@ npm run dev      # http://localhost:5173
 
 It is a static web app. It deploys to Vercel without configuration or API keys.
 
+## Stack
+
+React 18, TypeScript and Vite, with Framer Motion for animation and [PeerJS](https://peerjs.com/) (WebRTC) for rooms. There is no backend: each room's host runs the match in their own browser.
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Dev server on `localhost:5173` |
+| `npm run build` | Type-checks and builds for production into `dist/` |
+| `npm run typecheck` | Type-check only |
+| `npm run content` | Turns `content/*.mjs` into the question bank and its translations |
+| `npm run check:bank` | Counts questions per category and reports problems |
+| `npm run check:i18n` | Checks that translations are complete |
+| `npm run videos` | Resolves and verifies YouTube videos (needs `YOUTUBE_API_KEY`) |
+| `npm run videos:sin-key` | Same without an API key, searching YouTube directly |
+| `npm run peer:local` | Local PeerJS server for testing rooms |
+
+## Project structure
+
+```
+content/            source questions, in Spanish and English
+public/             favicon and share image
+scripts/            content and video tooling
+src/
+├── assets/         covers and animals
+├── components/     UI pieces
+├── data/           categories, question bank and videos
+├── game/           match engine, wheel, power-ups and rules
+├── i18n/           English translations
+├── lib/            utilities (randomness, history, YouTube…)
+├── net/            PeerJS room networking
+└── pages/          home, categories, room and group
+```
+
+## Environment variables
+
+None are required. These are optional (see `.env.example`):
+
+- `YOUTUBE_API_KEY`: only for `npm run videos`, never bundled into the build.
+- `VITE_PEER_HOST`, `VITE_PEER_PORT`, `VITE_PEER_PATH`, `VITE_PEER_SECURE`: to use your own PeerJS server instead of the public one. If you do, add that host to `connect-src` in the CSP in `vercel.json`.
+
+## Deployment
+
+The repo ships a `vercel.json` (Vite framework, `dist` output, SPA rewrite and security headers). Import the repo in Vercel and deploy.
+
+Rooms use STUN servers only, with no TURN, so on very restrictive networks two devices may fail to connect.
+
 ## Contributing
 
 - Questions live in `content/*.mjs`, written once in Spanish and English. `npm run content` turns them into game data.
