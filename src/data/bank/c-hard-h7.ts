@@ -13,7 +13,7 @@ const bank: Record<string, RawQuestion[]> = {
   gta: [
     [3,"¿En qué año salió el primer Grand Theft Auto?","1997","1995","1999","2001"],
     [3,"¿Cómo se llama el pueblo desértico donde vive Trevor en GTA V?","Sandy Shores","Paleto Bay","Grapeseed","Blaine County"],
-    [3,"¿Quién es el cofundador de Rockstar Games y guionista de la saga?","Dan Houser","Sam Houser","Leslie Benzies","Ed Zitron"],
+    [3,"¿Quién es el cofundador de Rockstar Games y guionista de la saga?","Dan Houser","Sam Houser","Leslie Benzies","Terry Donovan"],
   ],
   lol: [
     [3,"¿Cuántas torretas tiene cada equipo en la Grieta del Invocador?","11","9","13","15"],

@@ -29,7 +29,7 @@ export default {
   ],
   lotr: [
     [3, "¿Cómo se llama la espada de Gandalf?", "Glamdring", "Orcrist", "Narsil", "Anglachel", ["What is Gandalf's sword called?", N, N, N, N]],
-    [3, "¿Cómo se llama el caballo de Aragorn en las películas?", "Brego", "Sombragrís", "Asfaloth", "Hasufel", ["What is Aragorn's horse called in the movies?", N, "Shadowfax", N, N]],
+    [3, "¿Cómo se llama el caballo de Aragorn en las películas?", "Brego", "Sombragrís", "Asfaloth", "Crinblanca", ["What is Aragorn's horse called in the movies?", N, "Shadowfax", N, "Snowmane"]],
   ],
   kimetsu: [
     [3, "¿Qué día cumple años Tanjiro?", "El 14 de julio", "El 3 de septiembre", "El 22 de abril", "El 28 de diciembre", ["What day is Tanjiro's birthday?", "July 14", "September 3", "April 22", "December 28"]],

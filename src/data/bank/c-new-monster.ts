@@ -40,7 +40,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"¿Cómo se llama el criminal que avisa a Tenma de un “monstruo” antes de ser asesinado?","Adolf Junkers","Roberto","Herbert Gnaup","Otto Heckel"],
     [3,"¿Cómo se llama el alcalde que muere mientras Tenma opera a Johan?","Roedecker","Heinemann","Oppenheim","Boyer"],
     [3,"¿Quién compuso la música del anime?","Kuniaki Haishima","Yoko Kanno","Joe Hisaishi","Yuki Kajiura"],
-    [3,"¿Qué músico británico creó el primer ending, “For the Love of Life”?","David Sylvian","David Bowie","Sting","Peter Gabriel"],
+    [3,"¿Qué músico británico interpreta el primer ending, “For the Love of Life”?","David Sylvian","David Bowie","Sting","Peter Gabriel"],
     [3,"¿Cómo se llama el opening del anime?","Grain","Rain","Shadow","Requiem"],
     [3,"¿Quién dirigió el anime de Monster?","Masayuki Kojima","Satoshi Kon","Shinichiro Watanabe","Mamoru Hosoda"],
     [2,"¿Quién dispara a Johan en el clímax?","Herbert Gnaup, el padre borracho de Wim","Tenma","Nina","El inspector Lunge"],

@@ -45,7 +45,7 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   mario: [
     [3,"¿De qué juego japonés es una adaptación el Super Mario Bros. 2 que salió en Occidente?","Doki Doki Panic","Adventure Island","Wrecking Crew","Kid Icarus"],
-    [3,"¿Cómo se llamaba Mario originalmente, en Donkey Kong?","Jumpman","Mr. Video","Jumpy","Carpenter Mario"],
+    [3,"¿Cómo se llamaba Mario originalmente, en Donkey Kong?","Jumpman","Mr. Game","Jumpy","Carpenter Mario"],
     [2,"¿En qué nivel te enfrentas a Bowser al final del Super Mario Bros. original?","8-4","7-4","8-3","9-1"],
     [3,"¿En qué año salió el primer Mario Party?","1998","1996","2000","2002"],
     [2,"¿Quién dio voz a Mario durante más de 30 años, hasta 2023?","Charles Martinet","Kevin Afghani","Chris Pratt","Billy West"],

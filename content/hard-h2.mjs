@@ -43,7 +43,7 @@ export default {
   ],
   mario: [
     [3, "¿De qué juego japonés es una adaptación el Super Mario Bros. 2 que salió en Occidente?", "Doki Doki Panic", "Adventure Island", "Wrecking Crew", "Kid Icarus", ["Which Japanese game was the Western Super Mario Bros. 2 adapted from?", N, N, N, N]],
-    [3, "¿Cómo se llamaba Mario originalmente, en Donkey Kong?", "Jumpman", "Mr. Video", "Jumpy", "Carpenter Mario", ["What was Mario originally called, in Donkey Kong?", N, N, N, N]],
+    [3, "¿Cómo se llamaba Mario originalmente, en Donkey Kong?", "Jumpman", "Mr. Game", "Jumpy", "Carpenter Mario", ["What was Mario originally called, in Donkey Kong?", N, N, N, N]],
     [2, "¿En qué nivel te enfrentas a Bowser al final del Super Mario Bros. original?", "8-4", "7-4", "8-3", "9-1", ["Which level do you face Bowser in at the end of the original Super Mario Bros.?", N, N, N, N]],
     [3, "¿En qué año salió el primer Mario Party?", "1998", "1996", "2000", "2002", ["In what year did the first Mario Party come out?", N, N, N, N]],
     [2, "¿Quién dio voz a Mario durante más de 30 años, hasta 2023?", "Charles Martinet", "Kevin Afghani", "Chris Pratt", "Billy West", ["Who voiced Mario for over 30 years, until 2023?", N, N, N, N]],

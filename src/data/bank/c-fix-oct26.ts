@@ -12,7 +12,7 @@ const bank: Record<string, RawQuestion[]> = {
     [3,"En la ruta de Luka de la novela visual, ¿qué decide Okabe al final?","No enviar el D-Mail que devolvería a Luka a ser chico","Destruir la Microondas Telefónica","Viajar al pasado para salvar a Mayuri","Pedirle a Luka que lo ayude a viajar al pasado"],
   ],
   sao: [
-    [3,"¿Qué cómplice de Death Gun reaparece meses después y apuñala a Kirito antes de ser capturado?","Johnny Black","Kyouji Shinkawa","Shouichi Shinkawa (XaXa)","PoH"],
+    [3,"¿Qué cómplice de Death Gun reaparece meses después y ataca a Kirito con una jeringa de succinilcolina?","Johnny Black","Kyouji Shinkawa","Shouichi Shinkawa (XaXa)","PoH"],
   ],
 };
 

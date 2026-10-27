@@ -54,6 +54,6 @@ export default {
     [2, "¿Cuánto mide Levi?", "1,60 m", "1,70 m", "1,50 m", "1,85 m", ["How tall is Levi?", "1.60 m (5'3\")", "1.70 m (5'7\")", "1.50 m (4'11\")", "1.85 m (6'1\")"]],
     [3, "¿Cuántos tomos tiene el manga de Attack on Titan?", "34", "24", "30", "40", ["How many volumes does the Attack on Titan manga have?", N, N, N, N]],
     [3, "¿Quién hereda el Titán Mandíbula de Porco Galliard?", "Falco Grice", "Gabi Braun", "Pieck Finger", "Reiner Braun", ["Who inherits the Jaw Titan from Porco Galliard?", N, N, N, N]],
-    [3, "¿Cómo se llama el espacio donde se conectan todos los eldianos?", "Las Coordenadas", "El Retumbar", "El Sótano", "El Árbol de Ymir", ["What is the space where all Eldians are connected called?", "The Coordinate", "The Rumbling", "The Basement", "Ymir's Tree"]],
+    [3, "¿Cómo se llama el espacio donde se conectan todos los eldianos?", "Los Caminos", "El Retumbar", "El Sótano", "El Bosque de Árboles Gigantes", ["What is the space where all Eldians are connected called?", "The Paths", "The Rumbling", "The Basement", "The Forest of Giant Trees"]],
   ],
 };

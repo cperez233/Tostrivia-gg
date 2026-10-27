@@ -11,7 +11,7 @@ export default {
   gta: [
     [3, "¿En qué año salió el primer Grand Theft Auto?", "1997", "1995", "1999", "2001", ["In what year did the first Grand Theft Auto come out?", N, N, N, N]],
     [3, "¿Cómo se llama el pueblo desértico donde vive Trevor en GTA V?", "Sandy Shores", "Paleto Bay", "Grapeseed", "Blaine County", ["What is the desert town where Trevor lives in GTA V called?", N, N, N, N]],
-    [3, "¿Quién es el cofundador de Rockstar Games y guionista de la saga?", "Dan Houser", "Sam Houser", "Leslie Benzies", "Ed Zitron", ["Who is the co-founder of Rockstar Games and writer of the series?", N, N, N, N]],
+    [3, "¿Quién es el cofundador de Rockstar Games y guionista de la saga?", "Dan Houser", "Sam Houser", "Leslie Benzies", "Terry Donovan", ["Who is the co-founder of Rockstar Games and writer of the series?", N, N, N, N]],
   ],
   lol: [
     [3, "¿Cuántas torretas tiene cada equipo en la Grieta del Invocador?", "11", "9", "13", "15", ["How many turrets does each team have on Summoner's Rift?", N, N, N, N]],

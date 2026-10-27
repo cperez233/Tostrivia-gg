@@ -31,7 +31,7 @@ const bank: Record<string, RawQuestion[]> = {
   ],
   lotr: [
     [3,"¿Cómo se llama la espada de Gandalf?","Glamdring","Orcrist","Narsil","Anglachel"],
-    [3,"¿Cómo se llama el caballo de Aragorn en las películas?","Brego","Sombragrís","Asfaloth","Hasufel"],
+    [3,"¿Cómo se llama el caballo de Aragorn en las películas?","Brego","Sombragrís","Asfaloth","Crinblanca"],
   ],
   kimetsu: [
     [3,"¿Qué día cumple años Tanjiro?","El 14 de julio","El 3 de septiembre","El 22 de abril","El 28 de diciembre"],

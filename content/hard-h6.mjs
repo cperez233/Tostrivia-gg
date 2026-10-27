@@ -9,7 +9,7 @@ export default {
   ],
   cod: [
     [3, "¿Qué estudio fundaron los antiguos jefes de Infinity Ward tras salir de Activision?", "Respawn Entertainment", "Treyarch", "Sledgehammer Games", "Raven Software", ["Which studio did Infinity Ward's former heads found after leaving Activision?", N, N, N, N]],
-    [3, "¿Qué compositor hizo la banda sonora de Modern Warfare 2 (2009)?", "Hans Zimmer", "Harry Gregson-Williams", "Jack Wall", "Ramin Djawadi", ["Which composer scored Modern Warfare 2 (2009)?", N, N, N, N]],
+    [3, "¿Qué compositor de Hollywood hizo el tema principal de Modern Warfare 2 (2009)?", "Hans Zimmer", "Harry Gregson-Williams", "Jack Wall", "Ramin Djawadi", ["Which Hollywood composer wrote the main theme of Modern Warfare 2 (2009)?", N, N, N, N]],
     [3, "¿En qué entrega está el mapa de Zombis Mob of the Dead, ambientado en Alcatraz?", "Black Ops II", "Black Ops", "World at War", "Black Ops III", ["Which installment has the Zombies map Mob of the Dead, set in Alcatraz?", N, N, N, N]],
     [3, "¿Qué entrega introdujo las rachas de bajas y las ventajas (perks)?", "Call of Duty 4: Modern Warfare", "Call of Duty 2", "World at War", "Modern Warfare 2", ["Which installment introduced killstreaks and perks?", N, N, N, N]],
   ],
@@ -28,7 +28,7 @@ export default {
   bobesponja: [
     [3, "¿En qué dirección está la casa de Bob Esponja?", "124 Conch Street", "120 Conch Street", "1 Bikini Road", "742 Evergreen Terrace", ["What is the address of SpongeBob's house?", N, N, N, N]],
     [3, "¿Cómo se llama de nombre Plankton?", "Sheldon", "Eugene", "Harold", "Squidward", ["What is Plankton's first name?", N, N, "Howard", N]],
-    [3, "¿Cómo se llama de nombre Don Cangrejo?", "Eugene", "Sheldon", "Harold", "Mervin", ["What is Mr. Krabs' first name?", N, N, N, N]],
+    [3, "¿Cómo se llama de nombre Don Cangrejo?", "Eugene", "Sheldon", "Stanley", "Mervin", ["What is Mr. Krabs' first name?", N, N, N, N]],
     [3, "¿Cómo se llama la película de Bob Esponja de 2015?", "Un héroe fuera del agua", "Bob Esponja: Al rescate", "La película de Bob Esponja", "Bob Esponja y la ciudad perdida", ["What is the 2015 SpongeBob movie called?", "Sponge Out of Water", "Sponge on the Run", "The SpongeBob Movie", "SpongeBob and the Lost City"]],
   ],
   jojo: [

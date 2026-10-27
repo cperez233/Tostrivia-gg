@@ -56,7 +56,7 @@ const bank: Record<string, RawQuestion[]> = {
     [2,"¿Cuánto mide Levi?","1,60 m","1,70 m","1,50 m","1,85 m"],
     [3,"¿Cuántos tomos tiene el manga de Attack on Titan?","34","24","30","40"],
     [3,"¿Quién hereda el Titán Mandíbula de Porco Galliard?","Falco Grice","Gabi Braun","Pieck Finger","Reiner Braun"],
-    [3,"¿Cómo se llama el espacio donde se conectan todos los eldianos?","Las Coordenadas","El Retumbar","El Sótano","El Árbol de Ymir"],
+    [3,"¿Cómo se llama el espacio donde se conectan todos los eldianos?","Los Caminos","El Retumbar","El Sótano","El Bosque de Árboles Gigantes"],
   ],
 };
 

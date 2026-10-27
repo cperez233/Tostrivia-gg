@@ -41,7 +41,7 @@ export default {
     [3, "¿Cómo se llama el criminal que avisa a Tenma de un “monstruo” antes de ser asesinado?", "Adolf Junkers", "Roberto", "Herbert Gnaup", "Otto Heckel", ["What is the name of the criminal who warns Tenma about a “monster” before being murdered?", N, N, N, N]],
     [3, "¿Cómo se llama el alcalde que muere mientras Tenma opera a Johan?", "Roedecker", "Heinemann", "Oppenheim", "Boyer", ["What is the name of the mayor who dies while Tenma operates on Johan?", N, N, N, N]],
     [3, "¿Quién compuso la música del anime?", "Kuniaki Haishima", "Yoko Kanno", "Joe Hisaishi", "Yuki Kajiura", ["Who composed the anime's music?", N, N, N, N]],
-    [3, "¿Qué músico británico creó el primer ending, “For the Love of Life”?", "David Sylvian", "David Bowie", "Sting", "Peter Gabriel", ["Which British musician created the first ending, “For the Love of Life”?", N, N, N, N]],
+    [3, "¿Qué músico británico interpreta el primer ending, “For the Love of Life”?", "David Sylvian", "David Bowie", "Sting", "Peter Gabriel", ["Which British musician performs the first ending, “For the Love of Life”?", N, N, N, N]],
     [3, "¿Cómo se llama el opening del anime?", "Grain", "Rain", "Shadow", "Requiem", ["What is the anime's opening theme called?", N, N, N, N]],
     [3, "¿Quién dirigió el anime de Monster?", "Masayuki Kojima", "Satoshi Kon", "Shinichiro Watanabe", "Mamoru Hosoda", ["Who directed the Monster anime?", N, N, N, N]],
     [2, "¿Quién dispara a Johan en el clímax?", "Herbert Gnaup, el padre borracho de Wim", "Tenma", "Nina", "El inspector Lunge", ["Who shoots Johan in the climax?", "Herbert Gnaup, Wim's drunken father", "Tenma", "Nina", "Inspector Lunge"]],

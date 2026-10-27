@@ -10,6 +10,6 @@ export default {
     [3, "En la ruta de Luka de la novela visual, ¿qué decide Okabe al final?", "No enviar el D-Mail que devolvería a Luka a ser chico", "Destruir la Microondas Telefónica", "Viajar al pasado para salvar a Mayuri", "Pedirle a Luka que lo ayude a viajar al pasado", ["In Luka's route of the visual novel, what does Okabe decide at the end?", "Not to send the D-Mail that would turn Luka back into a boy", "To destroy the Phone Microwave", "To travel to the past to save Mayuri", "To ask Luka to help him travel to the past"]],
   ],
   sao: [
-    [3, "¿Qué cómplice de Death Gun reaparece meses después y apuñala a Kirito antes de ser capturado?", "Johnny Black", "Kyouji Shinkawa", "Shouichi Shinkawa (XaXa)", "PoH", ["Which Death Gun accomplice resurfaces months later and stabs Kirito before being captured?", "Johnny Black", "Kyouji Shinkawa", "Shouichi Shinkawa (XaXa)", "PoH"]],
+    [3, "¿Qué cómplice de Death Gun reaparece meses después y ataca a Kirito con una jeringa de succinilcolina?", "Johnny Black", "Kyouji Shinkawa", "Shouichi Shinkawa (XaXa)", "PoH", ["Which Death Gun accomplice resurfaces months later and attacks Kirito with a succinylcholine syringe?", "Johnny Black", "Kyouji Shinkawa", "Shouichi Shinkawa (XaXa)", "PoH"]],
   ],
 };
