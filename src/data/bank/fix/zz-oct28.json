@@ -4421,5 +4421,768 @@
     "004"
    ]
   }
+ },
+ "disney-1vxundy": {
+  "q": "¿Cómo se llaman las tres hienas de El rey león (1994)?",
+  "o": [
+   "Shenzi, Banzai y Ed",
+   "Zira, Nuka y Vitani",
+   "Kovu, Kiara y Nuka",
+   "Timón, Pumba y Rafiki"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What are the names of the three hyenas in The Lion King (1994)?",
+   "o": [
+    "Shenzi, Banzai and Ed",
+    "Zira, Nuka and Vitani",
+    "Kovu, Kiara and Nuka",
+    "Timon, Pumbaa and Rafiki"
+   ]
+  }
+ },
+ "disney-iuugrr": {
+  "q": "¿Cómo se llama el padre de Moana?",
+  "o": [
+   "Tui",
+   "Maui",
+   "Tamatoa",
+   "Tala"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Moana's father?",
+   "o": [
+    "Tui",
+    "Maui",
+    "Tamatoa",
+    "Tala"
+   ]
+  }
+ },
+ "lotr-4xhcch": {
+  "q": "¿A cambio de qué lucha el Ejército de los Muertos por Aragorn?",
+  "o": [
+   "De quedar libres de su juramento",
+   "Del oro de Gondor",
+   "De la espada de Isildur",
+   "De volver a la vida"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In exchange for what does the Army of the Dead fight for Aragorn?",
+   "o": [
+    "Release from their oath",
+    "Gondor's gold",
+    "Isildur's sword",
+    "Returning to life"
+   ]
+  }
+ },
+ "lotr-a1f7qa": {
+  "q": "¿Qué hace Sam cuando Frodo ya no puede subir el Monte del Destino?",
+  "o": [
+   "Lo carga en la espalda",
+   "Lleva él el Anillo",
+   "Pide ayuda a las águilas",
+   "Lo espera abajo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Sam do when Frodo can no longer climb Mount Doom?",
+   "o": [
+    "Carries him on his back",
+    "Carries the Ring himself",
+    "Calls the eagles for help",
+    "Waits for him below"
+   ]
+  }
+ },
+ "bocchi-d7ak4h": {
+  "o": [
+   "12",
+   "11",
+   "10",
+   "13"
+  ],
+  "en": {
+   "o": [
+    "12",
+    "11",
+    "10",
+    "13"
+   ]
+  }
+ },
+ "rickmorty-kpvzf7": {
+  "q": "¿Qué canción improvisan Rick y Morty para salvar la Tierra ante los Cromulons?",
+  "o": [
+   "Get Schwifty",
+   "Wubba Lubba",
+   "Head Bent Over",
+   "Goodbye Moonmen"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which song do Rick and Morty improvise to save Earth from the Cromulons?",
+   "o": [
+    "Get Schwifty",
+    "Wubba Lubba",
+    "Head Bent Over",
+    "Goodbye Moonmen"
+   ]
+  }
+ },
+ "vinland-1iveyh4": {
+  "d": 2
+ },
+ "vinland-1s8d4yz": {
+  "q": "¿Qué era Einar antes de que lo esclavizaran?",
+  "o": [
+   "Un granjero de Inglaterra",
+   "Un soldado danés",
+   "Un pescador islandés",
+   "Un monje irlandés"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What was Einar before he was enslaved?",
+   "o": [
+    "A farmer in England",
+    "A Danish soldier",
+    "An Icelandic fisherman",
+    "An Irish monk"
+   ]
+  }
+ },
+ "arcane-4wj03g": {
+  "q": "¿Qué tatuaje lleva Vi en la cara?",
+  "o": [
+   "Las letras VI en la mejilla",
+   "Una calavera en la frente",
+   "Un rayo bajo el ojo",
+   "Una rosa en el cuello"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What tattoo does Vi have on her face?",
+   "o": [
+    "The letters VI on her cheek",
+    "A skull on her forehead",
+    "A lightning bolt under her eye",
+    "A rose on her neck"
+   ]
+  }
+ },
+ "arcane-3t0lnl": {
+  "q": "¿Qué le pasa a Silco al final de la primera temporada?",
+  "o": [
+   "Jinx lo mata",
+   "Vi lo arresta",
+   "Huye a Noxus",
+   "Lo mata Sevika"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What happens to Silco at the end of season one?",
+   "o": [
+    "Jinx kills him",
+    "Vi arrests him",
+    "He flees to Noxus",
+    "Sevika kills him"
+   ]
+  }
+ },
+ "arcane-es6kpo": {
+  "q": "¿Qué secuela le dejó a Silco el ataque de Vander?",
+  "o": [
+   "Un ojo dañado",
+   "Una mano de metal",
+   "Una pierna rota",
+   "Quemaduras en la espalda"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What lasting injury did Vander's attack leave on Silco?",
+   "o": [
+    "A damaged eye",
+    "A metal hand",
+    "A broken leg",
+    "Burns on his back"
+   ]
+  }
+ },
+ "arcane-1bv2v8l": {
+  "q": "¿Qué arma usa Caitlyn?",
+  "o": [
+   "Un rifle de francotirador",
+   "Unos guanteletes",
+   "Un martillo",
+   "Dos pistolas"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What weapon does Caitlyn use?",
+   "o": [
+    "A sniper rifle",
+    "Gauntlets",
+    "A hammer",
+    "Twin pistols"
+   ]
+  }
+ },
+ "arcane-17jz8ja": {
+  "q": "¿Qué hace Jinx al final de la primera temporada, durante la reunión del consejo?",
+  "o": [
+   "Dispara un cohete contra el consejo",
+   "Se entrega a Piltover",
+   "Le devuelve la gema a Jayce",
+   "Huye con Vi a Zaun"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Jinx do at the end of season one, during the council meeting?",
+   "o": [
+    "Fires a rocket at the council",
+    "Surrenders to Piltover",
+    "Returns the gem to Jayce",
+    "Flees to Zaun with Vi"
+   ]
+  }
+ },
+ "bettercallsaul-axbngd": {
+  "q": "¿Qué rescate escenifica Jimmy para hacerse famoso?",
+  "o": [
+   "Salvar a un obrero colgado de una valla",
+   "Detener un robo en un banco",
+   "Salvar a un niño en una piscina",
+   "Atrapar a un ladrón de autos"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What rescue does Jimmy stage to get famous?",
+   "o": [
+    "Saving a worker hanging from a billboard",
+    "Stopping a bank robbery",
+    "Saving a child in a pool",
+    "Catching a car thief"
+   ]
+  }
+ },
+ "bettercallsaul-1lk0wc2": {
+  "q": "¿Por qué Kim deja la abogacía en la sexta temporada?",
+  "o": [
+   "Por la muerte de Howard",
+   "Por una demanda de Mesa Verde",
+   "Por una enfermedad",
+   "Porque Jimmy se lo pide"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Why does Kim quit law in season six?",
+   "o": [
+    "Because of Howard's death",
+    "Because of a Mesa Verde lawsuit",
+    "Because of an illness",
+    "Because Jimmy asks her to"
+   ]
+  }
+ },
+ "bettercallsaul-8k041i": {
+  "q": "¿Qué usa Jimmy en el juicio para desmentir la enfermedad de Chuck?",
+  "o": [
+   "Una batería escondida en su bolsillo",
+   "Un celular encendido en la sala",
+   "Una grabación de Howard",
+   "Un informe médico falso"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Jimmy use at the hearing to disprove Chuck's illness?",
+   "o": [
+    "A battery hidden in his pocket",
+    "A phone turned on in the room",
+    "A recording of Howard",
+    "A fake medical report"
+   ]
+  }
+ },
+ "bettercallsaul-1y3qlia": {
+  "q": "¿Qué negocio tiene el padre de Nacho Varga?",
+  "o": [
+   "Una tapicería",
+   "Un taller mecánico",
+   "Una panadería",
+   "Una lavandería"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What business does Nacho Varga's father run?",
+   "o": [
+    "An upholstery shop",
+    "A car repair shop",
+    "A bakery",
+    "A laundromat"
+   ]
+  }
+ },
+ "dexter-2huu8u": {
+  "q": "¿Cuál es el verdadero nombre del Asesino Trinity?",
+  "o": [
+   "Arthur Mitchell",
+   "Jordan Chase",
+   "Travis Marshall",
+   "Brian Moser"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the Trinity Killer's real name?",
+   "o": [
+    "Arthur Mitchell",
+    "Jordan Chase",
+    "Travis Marshall",
+    "Brian Moser"
+   ]
+  }
+ },
+ "dexter-s8mqa6": {
+  "q": "¿A qué se dedica Jordan Chase, el villano de la quinta temporada?",
+  "o": [
+   "Es un gurú de autoayuda",
+   "Es un pastor evangélico",
+   "Es un jefe de la mafia",
+   "Es un cirujano famoso"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Jordan Chase, the season five villain, do for a living?",
+   "o": [
+    "He's a self-help guru",
+    "He's an evangelical pastor",
+    "He's a mob boss",
+    "He's a famous surgeon"
+   ]
+  }
+ },
+ "dexter-pwzwh0": {
+  "q": "¿Con qué suele matar Hannah McKay?",
+  "o": [
+   "Con veneno",
+   "Con un cuchillo",
+   "Con una pistola",
+   "Con las manos"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Hannah McKay usually kill with?",
+   "o": [
+    "Poison",
+    "A knife",
+    "A gun",
+    "Her bare hands"
+   ]
+  }
+ },
+ "dexter-1ga9e3n": {
+  "q": "¿A qué rango asciende Debra en la sexta temporada?",
+  "o": [
+   "Teniente",
+   "Sargento",
+   "Capitana",
+   "Detective"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What rank is Debra promoted to in season six?",
+   "o": [
+    "Lieutenant",
+    "Sergeant",
+    "Captain",
+    "Detective"
+   ]
+  }
+ },
+ "bluelock-ykx2cc": {
+  "o": [
+   "14",
+   "16",
+   "18",
+   "12"
+  ],
+  "en": {
+   "o": [
+    "14",
+    "16",
+    "18",
+    "12"
+   ]
+  }
+ },
+ "deportes-iuuumy": {
+  "o": [
+   "3",
+   "2",
+   "5",
+   "4"
+  ],
+  "en": {
+   "o": [
+    "3",
+    "2",
+    "5",
+    "4"
+   ]
+  }
+ },
+ "deportes-1qvmy4c": {
+  "o": [
+   "8",
+   "7",
+   "6",
+   "5"
+  ],
+  "en": {
+   "o": [
+    "8",
+    "7",
+    "6",
+    "5"
+   ],
+   "q": "As of 2025, how many Ballon d'Or awards had Lionel Messi won?"
+  },
+  "q": "Hasta 2025, ¿cuántos Balones de Oro había ganado Lionel Messi?"
+ },
+ "ff-q0nuo5": {
+  "o": [
+   "Artemisa",
+   "Edea",
+   "Rinoa",
+   "Adel"
+  ],
+  "en": {
+   "o": [
+    "Ultimecia",
+    "Edea",
+    "Rinoa",
+    "Adel"
+   ]
+  }
+ },
+ "souls-diedj7": {
+  "d": 2
+ },
+ "lol-y02qmt": {
+  "o": [
+   "3",
+   "4",
+   "2",
+   "5"
+  ],
+  "en": {
+   "o": [
+    "3",
+    "4",
+    "2",
+    "5"
+   ]
+  }
+ },
+ "lol-1smmbb6": {
+  "q": "¿Quién mata a Silco al final de la primera temporada de Arcane?",
+  "en": {
+   "q": "Who kills Silco at the end of the first season of Arcane?"
+  }
+ },
+ "sonic-jv6pol": {
+  "o": [
+   "50",
+   "25",
+   "12",
+   "100"
+  ],
+  "en": {
+   "o": [
+    "50",
+    "25",
+    "12",
+    "100"
+   ]
+  }
+ },
+ "fortnite-hhvys3": {
+  "o": [
+   "100",
+   "150",
+   "200",
+   "50"
+  ],
+  "en": {
+   "o": [
+    "100",
+    "150",
+    "200",
+    "50"
+   ]
+  }
+ },
+ "assassins-1qjhk2u": {
+  "q": "En la película de 2016, ¿cómo se llama el protagonista, descendiente del asesino Aguilar?",
+  "o": [
+   "Callum Lynch",
+   "Desmond Miles",
+   "Alan Rikkin",
+   "Joseph Lynch"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In the 2016 film, what is the name of the protagonist, descendant of the assassin Aguilar?",
+   "o": [
+    "Callum Lynch",
+    "Desmond Miles",
+    "Alan Rikkin",
+    "Joseph Lynch"
+   ]
+  }
+ },
+ "cyberpunk-5ykouj": {
+  "q": "¿Qué mercenario casi totalmente cibernético es el perro de presa de Arasaka?",
+  "o": [
+   "Adam Smasher",
+   "Placide",
+   "Royce",
+   "Sasquatch"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which almost fully cybernetic mercenary is Arasaka's attack dog?",
+   "o": [
+    "Adam Smasher",
+    "Placide",
+    "Royce",
+    "Sasquatch"
+   ]
+  }
+ },
+ "fallout-hcgfvk": {
+  "q": "En la serie de Prime Video, ¿cómo se llamaba el Necrófago antes de la guerra?",
+  "o": [
+   "Cooper Howard",
+   "Hank MacLean",
+   "Bud Askins",
+   "Steph Harper"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In the Prime Video series, what was the Ghoul's name before the war?",
+   "o": [
+    "Cooper Howard",
+    "Hank MacLean",
+    "Bud Askins",
+    "Steph Harper"
+   ]
+  }
+ },
+ "witcher-h99cmk": {
+  "q": "¿Con qué batalla termina la primera temporada de la serie de Netflix?",
+  "o": [
+   "La batalla de Sodden",
+   "La batalla de Brenna",
+   "El asedio de Cintra",
+   "La batalla de Aretuza"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which battle ends the first season of the Netflix series?",
+   "o": [
+    "The Battle of Sodden",
+    "The Battle of Brenna",
+    "The Siege of Cintra",
+    "The Battle of Aretuza"
+   ]
+  }
+ },
+ "witcher-1s0tm4u": {
+  "q": "En la serie de Netflix, ¿qué hechicera abandona Aretuza y se pone del lado de Nilfgaard?",
+  "o": [
+   "Fringilla Vigo",
+   "Tissaia de Vries",
+   "Sabrina Glevissig",
+   "Triss Merigold"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In the Netflix series, which sorceress leaves Aretuza and sides with Nilfgaard?",
+   "o": [
+    "Fringilla Vigo",
+    "Tissaia de Vries",
+    "Sabrina Glevissig",
+    "Triss Merigold"
+   ]
+  }
+ },
+ "re-13ytkng": {
+  "o": [
+   "A Ashley Graham",
+   "A Claire Redfield",
+   "A Ada Wong",
+   "A Sherry Birkin"
+  ],
+  "en": {
+   "o": [
+    "Ashley Graham",
+    "Claire Redfield",
+    "Ada Wong",
+    "Sherry Birkin"
+   ]
+  }
+ },
+ "fallout-qvc3s9": {
+  "d": 2
+ },
+ "fallout-pafqi1": {
+  "d": 2
+ },
+ "rdr-4cjr42": {
+  "d": 2
+ },
+ "rdr-1jumyhi": {
+  "d": 2
+ },
+ "re-6x8ohf": {
+  "d": 2
+ },
+ "witcher-vdblb0": {
+  "d": 2
+ },
+ "crash-kri7a3": {
+  "q": "¿Cómo se llama la sobrina de Neo Cortex?",
+  "en": {
+   "q": "What is the name of Neo Cortex's niece?"
+  }
+ },
+ "crash-actjeu": {
+  "q": "¿Qué jefe de Crash Bandicoot 2 es un tigre enorme, fuerte y poco listo?",
+  "o": [
+   "Tiny Tiger",
+   "Ripper Roo",
+   "Koala Kong",
+   "Dingodile"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which Crash Bandicoot 2 boss is a huge, strong and not very bright tiger?",
+   "o": [
+    "Tiny Tiger",
+    "Ripper Roo",
+    "Koala Kong",
+    "Dingodile"
+   ]
+  }
+ },
+ "crash-18d26a8": {
+  "d": 2
+ },
+ "crash-1si1gh4": {
+  "d": 2
+ },
+ "hades-wnl0gj": {
+  "d": 2
+ },
+ "pelea-13qqbu3": {
+  "d": 2
+ },
+ "sims-1tu4qkp": {
+  "d": 2
+ },
+ "sims-71cmal": {
+  "d": 2
+ },
+ "smash-p914iv": {
+  "d": 2
+ },
+ "undertale-78ablg": {
+  "d": 2
+ },
+ "fnaf-9hm18k": {
+  "q": "En la película de 2023, ¿qué policía ayuda a Mike y resulta ser hija de William Afton?",
+  "o": [
+   "Vanessa",
+   "Jane",
+   "Max",
+   "Abby"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In the 2023 film, which police officer helps Mike and turns out to be William Afton's daughter?",
+   "o": [
+    "Vanessa",
+    "Jane",
+    "Max",
+    "Abby"
+   ]
+  }
+ },
+ "fnaf-ifrezn": {
+  "q": "En la película de 2023, ¿bajo qué nombre se oculta William Afton como orientador laboral de Mike?",
+  "o": [
+   "Steve Raglan",
+   "Henry Emily",
+   "Fritz Smith",
+   "Phone Guy"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In the 2023 film, under what name does William Afton hide as Mike's career counselor?",
+   "o": [
+    "Steve Raglan",
+    "Henry Emily",
+    "Fritz Smith",
+    "Phone Guy"
+   ]
+  }
+ },
+ "fnaf-17pkab1": {
+  "o": [
+   "Abby",
+   "Vanessa",
+   "Jane",
+   "Max"
+  ],
+  "en": {
+   "o": [
+    "Abby",
+    "Vanessa",
+    "Jane",
+    "Max"
+   ]
+  }
+ },
+ "mortalkombat-1glr43j": {
+  "q": "En la película de 1995, ¿quién derrota a Shang Tsung en el combate final?",
+  "o": [
+   "Liu Kang",
+   "Johnny Cage",
+   "Sonya Blade",
+   "Raiden"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In the 1995 film, who defeats Shang Tsung in the final fight?",
+   "o": [
+    "Liu Kang",
+    "Johnny Cage",
+    "Sonya Blade",
+    "Raiden"
+   ]
+  }
+ },
+ "gow-12d6pdk": {
+  "d": 3
+ },
+ "hollowknight-25i9np": {
+  "d": 2
+ },
+ "hollowknight-7by5ea": {
+  "d": 2
  }
 }
