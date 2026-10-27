@@ -5103,25 +5103,6 @@
  "undertale-78ablg": {
   "d": 2
  },
- "fnaf-9hm18k": {
-  "q": "En la película de 2023, ¿qué policía ayuda a Mike y resulta ser hija de William Afton?",
-  "o": [
-   "Vanessa",
-   "Jane",
-   "Max",
-   "Abby"
-  ],
-  "d": 2,
-  "en": {
-   "q": "In the 2023 film, which police officer helps Mike and turns out to be William Afton's daughter?",
-   "o": [
-    "Vanessa",
-    "Jane",
-    "Max",
-    "Abby"
-   ]
-  }
- },
  "fnaf-ifrezn": {
   "q": "En la película de 2023, ¿bajo qué nombre se oculta William Afton como orientador laboral de Mike?",
   "o": [
@@ -5184,5 +5165,388 @@
  },
  "hollowknight-7by5ea": {
   "d": 2
+ },
+ "fnaf-9hm18k": {
+  "d": 2
+ },
+ "mario-1ngwvqn": {
+  "q": "¿Quién es la villana principal de Paper Mario: La Puerta Milenaria?",
+  "o": [
+   "La Reina de las Sombras",
+   "El Conde Cenizo",
+   "Fawful",
+   "Smithy"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who is the main villain of Paper Mario: The Thousand-Year Door?",
+   "o": [
+    "The Shadow Queen",
+    "Count Bleck",
+    "Fawful",
+    "Smithy"
+   ]
+  }
+ },
+ "assassins-29xrc1": {
+  "q": "¿Qué gonfaloniero de Florencia traiciona a la familia de Ezio y hace ahorcar a su padre y sus hermanos?",
+  "o": [
+   "Uberto Alberti",
+   "Francesco de' Pazzi",
+   "Lorenzo de' Medici",
+   "Rodrigo Borgia"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which gonfaloniere of Florence betrays Ezio's family and has his father and brothers hanged?",
+   "o": [
+    "Uberto Alberti",
+    "Francesco de' Pazzi",
+    "Lorenzo de' Medici",
+    "Rodrigo Borgia"
+   ]
+  }
+ },
+ "rdr-1rzejgr": {
+  "q": "¿Quién mata a Hosea Matthews durante el atraco al banco de Saint Denis?",
+  "o": [
+   "El agente Andrew Milton",
+   "El agente Edgar Ross",
+   "Micah Bell",
+   "Angelo Bronte"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who kills Hosea Matthews during the Saint Denis bank robbery?",
+   "o": [
+    "Agent Andrew Milton",
+    "Agent Edgar Ross",
+    "Micah Bell",
+    "Angelo Bronte"
+   ]
+  }
+ },
+ "ff-eolwll": {
+  "q": "En Final Fantasy VII, ¿qué espada hereda Cloud de Zack?",
+  "o": [
+   "La Espada Mortal (Buster Sword)",
+   "La Masamune",
+   "La Ultima Weapon",
+   "La Lionheart"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Final Fantasy VII, which sword does Cloud inherit from Zack?",
+   "o": [
+    "The Buster Sword",
+    "The Masamune",
+    "The Ultima Weapon",
+    "The Lionheart"
+   ]
+  }
+ },
+ "fallout-fp1wo5": {
+  "q": "¿Qué virus convierte a los humanos en supermutantes?",
+  "o": [
+   "El Virus de Evolución Forzada",
+   "El Virus Necrófago",
+   "El Virus del Yermo",
+   "El Virus Nuka"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which virus turns humans into super mutants?",
+   "o": [
+    "The Forced Evolutionary Virus",
+    "The Ghoul Virus",
+    "The Wasteland Virus",
+    "The Nuka Virus"
+   ]
+  }
+ },
+ "sonic-lmshqv": {
+  "q": "¿Qué criatura libera Eggman al partir el planeta en Sonic Unleashed?",
+  "o": [
+   "Dark Gaia",
+   "Chaos",
+   "Solaris",
+   "Infinite"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which creature does Eggman unleash when he splits the planet in Sonic Unleashed?",
+   "o": [
+    "Dark Gaia",
+    "Chaos",
+    "Solaris",
+    "Infinite"
+   ]
+  }
+ },
+ "sonic-11cyuvm": {
+  "q": "¿En qué juego de 2006 aparecen Silver y la princesa Elise?",
+  "o": [
+   "Sonic the Hedgehog (2006)",
+   "Sonic Rivals",
+   "Sonic Heroes",
+   "Shadow the Hedgehog"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which 2006 game features Silver and Princess Elise?",
+   "o": [
+    "Sonic the Hedgehog (2006)",
+    "Sonic Rivals",
+    "Sonic Heroes",
+    "Shadow the Hedgehog"
+   ]
+  }
+ },
+ "portal-wro160": {
+  "q": "¿Qué hace GLaDOS con Chell al final de Portal 2?",
+  "o": [
+   "La deja libre en la superficie",
+   "La vuelve a dormir en estasis",
+   "La convierte en una IA",
+   "La manda a la Luna"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does GLaDOS do with Chell at the end of Portal 2?",
+   "o": [
+    "Lets her go free on the surface",
+    "Puts her back into stasis",
+    "Turns her into an AI",
+    "Sends her to the Moon"
+   ]
+  }
+ },
+ "portal-kc1ph6": {
+  "q": "¿Qué ópera cantan las torretas al final de Portal 2?",
+  "o": [
+   "Cara Mia Addio",
+   "Still Alive",
+   "Want You Gone",
+   "Exile Vilify"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which opera do the turrets sing at the end of Portal 2?",
+   "o": [
+    "Cara Mia Addio",
+    "Still Alive",
+    "Want You Gone",
+    "Exile Vilify"
+   ]
+  }
+ },
+ "kingdomhearts-dkapn7": {
+  "q": "¿Qué personaje de Final Fantasy VII es un jefe secreto opcional en el Coliseo del Olimpo?",
+  "o": [
+   "Sephiroth",
+   "Cloud",
+   "Zack",
+   "Vincent"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Final Fantasy VII character is an optional secret boss in the Olympus Coliseum?",
+   "o": [
+    "Sephiroth",
+    "Cloud",
+    "Zack",
+    "Vincent"
+   ]
+  }
+ },
+ "kingdomhearts-1idz5g3": {
+  "q": "¿Qué mundo de Kingdom Hearts II está en blanco y negro, basado en los primeros cortos de Mickey?",
+  "o": [
+   "El Río Atemporal",
+   "Ciudad Halloween",
+   "Villa Crepúsculo",
+   "Port Royal"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Kingdom Hearts II world is in black and white, based on Mickey's early shorts?",
+   "o": [
+    "Timeless River",
+    "Halloween Town",
+    "Twilight Town",
+    "Port Royal"
+   ]
+  }
+ },
+ "gta-no4emv": {
+  "q": "¿Por qué vuelve CJ a Los Santos al inicio de San Andreas?",
+  "o": [
+   "Por el asesinato de su madre",
+   "Por la boda de su hermana",
+   "Por una llamada de Big Smoke",
+   "Por una deuda con Tenpenny"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Why does CJ return to Los Santos at the start of San Andreas?",
+   "o": [
+    "Because of his mother's murder",
+    "For his sister's wedding",
+    "Because Big Smoke called him",
+    "To pay a debt to Tenpenny"
+   ]
+  }
+ },
+ "gta-1q571nj": {
+  "q": "¿Cómo se llama el final de GTA V en el que sobreviven los tres protagonistas?",
+  "o": [
+   "The Third Way (Opción C)",
+   "Something Sensible (Opción A)",
+   "The Time's Come (Opción B)",
+   "The Big Score"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the GTA V ending in which all three protagonists survive called?",
+   "o": [
+    "The Third Way (Option C)",
+    "Something Sensible (Option A)",
+    "The Time's Come (Option B)",
+    "The Big Score"
+   ]
+  }
+ },
+ "halo-d8ctfz": {
+  "q": "¿Quién mata al Profeta de la Verdad en Halo 3?",
+  "o": [
+   "El Árbitro",
+   "El Jefe Maestro",
+   "Avery Johnson",
+   "Miranda Keyes"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who kills the Prophet of Truth in Halo 3?",
+   "o": [
+    "The Arbiter",
+    "Master Chief",
+    "Avery Johnson",
+    "Miranda Keyes"
+   ]
+  }
+ },
+ "halo-1jnwur6": {
+  "q": "¿Quién es el líder del Equipo Noble en Halo Reach?",
+  "o": [
+   "Carter-A259",
+   "Kat-B320",
+   "Emile-A239",
+   "Jun-A266"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who leads Noble Team in Halo Reach?",
+   "o": [
+    "Carter-A259",
+    "Kat-B320",
+    "Emile-A239",
+    "Jun-A266"
+   ]
+  }
+ },
+ "mgs-5lm14p": {
+  "q": "¿Qué tiene que hacer Naked Snake al final de Metal Gear Solid 3?",
+  "o": [
+   "Matar a The Boss",
+   "Capturar vivo a Volgin",
+   "Rescatar de nuevo a Sokolov",
+   "Destruir Mother Base"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What must Naked Snake do at the end of Metal Gear Solid 3?",
+   "o": [
+    "Kill The Boss",
+    "Capture Volgin alive",
+    "Rescue Sokolov again",
+    "Destroy Mother Base"
+   ]
+  }
+ },
+ "gow-lmm464": {
+  "q": "¿Con qué se apuñala Kratos al final de God of War III?",
+  "o": [
+   "Con la Espada del Olimpo",
+   "Con las Espadas del Exilio",
+   "Con las Espadas del Caos",
+   "Con el Hacha Leviatán"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Kratos stab himself with at the end of God of War III?",
+   "o": [
+    "The Blade of Olympus",
+    "The Blades of Exile",
+    "The Blades of Chaos",
+    "The Leviathan Axe"
+   ]
+  }
+ },
+ "witcher-18hplpa": {
+  "q": "¿Por qué ley queda Ciri destinada a Geralt desde antes de nacer?",
+  "o": [
+   "La Ley de la Sorpresa",
+   "La Ley del Destino",
+   "La Ley de Sangre",
+   "La Ley del Brujo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "By which law is Ciri bound to Geralt before she is even born?",
+   "o": [
+    "The Law of Surprise",
+    "The Law of Destiny",
+    "The Law of Blood",
+    "The Witcher's Law"
+   ]
+  }
+ },
+ "hades-6mwpjq": {
+  "q": "¿Qué titán, padre de Zeus y Hades, es el villano de Hades II?",
+  "o": [
+   "Cronos",
+   "Tifón",
+   "Atlas",
+   "Prometeo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Titan, father of Zeus and Hades, is the villain of Hades II?",
+   "o": [
+    "Chronos",
+    "Typhon",
+    "Atlas",
+    "Prometheus"
+   ]
+  }
+ },
+ "mortalkombat-oxa7uv": {
+  "q": "¿Qué mercenario del Dragón Negro, con un ojo cibernético, pelea en el primer Mortal Kombat?",
+  "o": [
+   "Kano",
+   "Jax",
+   "Kabal",
+   "Stryker"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which Black Dragon mercenary with a cybernetic eye fights in the first Mortal Kombat?",
+   "o": [
+    "Kano",
+    "Jax",
+    "Kabal",
+    "Stryker"
+   ]
+  }
  }
 }
