@@ -1,0 +1,4333 @@
+{
+ "naruto-1076sj3": {
+  "d": 2
+ },
+ "naruto-1drm3fj": {
+  "d": 2
+ },
+ "naruto-9b0q7d": {
+  "q": "¿Cómo se llama la técnica del Mangekyō de Shisui que manipula la mente sin que la víctima lo note?",
+  "o": [
+   "Kotoamatsukami",
+   "Izanagi",
+   "Tsukuyomi",
+   "Kamui"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Shisui's Mangekyō technique that manipulates a mind without the victim noticing?",
+   "o": [
+    "Kotoamatsukami",
+    "Izanagi",
+    "Tsukuyomi",
+    "Kamui"
+   ]
+  }
+ },
+ "naruto-omurkm": {
+  "q": "¿Cuántos corazones llega a tener Kakuzu dentro de su cuerpo?",
+  "o": [
+   "Cinco",
+   "Tres",
+   "Cuatro",
+   "Seis"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How many hearts does Kakuzu keep inside his body?",
+   "o": [
+    "Five",
+    "Three",
+    "Four",
+    "Six"
+   ]
+  }
+ },
+ "onepiece-10xqex5": {
+  "d": 2
+ },
+ "onepiece-15p8vc7": {
+  "o": [
+   "El Archipiélago Sabaody",
+   "La Isla Gyojin",
+   "Amazon Lily",
+   "Punk Hazard"
+  ],
+  "en": {
+   "o": [
+    "The Sabaody Archipelago",
+    "Fish-Man Island",
+    "Amazon Lily",
+    "Punk Hazard"
+   ]
+  }
+ },
+ "onepiece-19khxo9": {
+  "q": "¿Cómo se llama el bandido de la montaña que humilla a Shanks en el bar del pueblo de Luffy?",
+  "o": [
+   "Higuma",
+   "Wapol",
+   "Morgan",
+   "Kuro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the mountain bandit who humiliates Shanks in the bar in Luffy's village?",
+   "o": [
+    "Higuma",
+    "Wapol",
+    "Morgan",
+    "Kuro"
+   ]
+  }
+ },
+ "dragonball-v1dveq": {
+  "o": [
+   "La Teletransportación",
+   "El Kaiōken",
+   "La Genki Dama",
+   "El Taiyōken"
+  ],
+  "en": {
+   "o": [
+    "Instant Transmission",
+    "The Kaioken",
+    "The Spirit Bomb",
+    "The Solar Flare"
+   ]
+  }
+ },
+ "dragonball-13kiy91": {
+  "q": "¿Cómo se llama el hermano menor de Vegeta?",
+  "o": [
+   "Tarble",
+   "Raditz",
+   "Cabba",
+   "Nappa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Vegeta's younger brother?",
+   "o": [
+    "Tarble",
+    "Raditz",
+    "Cabba",
+    "Nappa"
+   ]
+  }
+ },
+ "kimetsu-1o37xb6": {
+  "q": "¿Qué número tiene Rui entre las Lunas Inferiores?",
+  "o": [
+   "El quinto",
+   "El primero",
+   "El tercero",
+   "El sexto"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What rank does Rui hold among the Lower Moons?",
+   "o": [
+    "Fifth",
+    "First",
+    "Third",
+    "Sixth"
+   ]
+  }
+ },
+ "kimetsu-27m4dy": {
+  "q": "¿Qué Luna Superior vive y se esconde dentro de jarrones?",
+  "o": [
+   "Gyokko",
+   "Hantengu",
+   "Nakime",
+   "Kaigaku"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Upper Moon lives and hides inside vases?",
+   "o": [
+    "Gyokko",
+    "Hantengu",
+    "Nakime",
+    "Kaigaku"
+   ]
+  }
+ },
+ "kimetsu-lssjt2": {
+  "q": "¿Qué pierde Tengen Uzui en la pelea del Distrito Rojo?",
+  "o": [
+   "Un ojo y una mano",
+   "Las dos piernas",
+   "Un brazo entero",
+   "El oído"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Tengen Uzui lose in the Entertainment District fight?",
+   "o": [
+    "An eye and a hand",
+    "Both legs",
+    "A whole arm",
+    "His hearing"
+   ]
+  }
+ },
+ "mha-1eyvoxx": {
+  "q": "¿Con el cuerpo de qué antiguo alumno de la U.A. fue creado Kurogiri?",
+  "o": [
+   "Oboro Shirakumo",
+   "Hizashi Yamada",
+   "Tensei Iida",
+   "Shota Aizawa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "The body of which former U.A. student was used to create Kurogiri?",
+   "o": [
+    "Oboro Shirakumo",
+    "Hizashi Yamada",
+    "Tensei Iida",
+    "Shota Aizawa"
+   ]
+  }
+ },
+ "mha-1k86mu0": {
+  "q": "¿Qué Don de un antiguo portador de One For All despierta primero en Deku?",
+  "o": [
+   "Látigo Negro",
+   "Flotar",
+   "Humo",
+   "Sentido del Peligro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Quirk of a past One For All user awakens first in Deku?",
+   "o": [
+    "Blackwhip",
+    "Float",
+    "Smokescreen",
+    "Danger Sense"
+   ]
+  }
+ },
+ "mha-1a8z7y1": {
+  "q": "¿Qué puesto ocupa Hawks en el ranking de héroes tras el retiro de All Might?",
+  "o": [
+   "El segundo",
+   "El primero",
+   "El tercero",
+   "El cuarto"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What place does Hawks hold in the hero rankings after All Might's retirement?",
+   "o": [
+    "Second",
+    "First",
+    "Third",
+    "Fourth"
+   ]
+  }
+ },
+ "aot-1k9femi": {
+  "q": "¿Quién era en realidad el Titán Sonriente que devora a Carla Jaeger?",
+  "o": [
+   "Dina Fritz",
+   "Frieda Reiss",
+   "Faye Jaeger",
+   "Kiyomi Azumabito"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who was the Smiling Titan that devours Carla Jaeger really?",
+   "o": [
+    "Dina Fritz",
+    "Frieda Reiss",
+    "Faye Jaeger",
+    "Kiyomi Azumabito"
+   ]
+  }
+ },
+ "jjk-1j4j8hg": {
+  "q": "¿Qué «hermano» de Yuji pelea contra él en Shibuya con técnicas de sangre?",
+  "en": {
+   "q": "Which of Yuji's \"brothers\" fights him in Shibuya using blood techniques?"
+  }
+ },
+ "jjk-4cwwnn": {
+  "q": "¿Cómo se llama el golpe de Yuji en el que su energía maldita impacta un instante después que el puño?",
+  "o": [
+   "Puño Divergente",
+   "Destello Negro",
+   "Golpe Resonante",
+   "Impacto Diferido"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is Yuji's punch called in which his cursed energy lands a moment after his fist?",
+   "o": [
+    "Divergent Fist",
+    "Black Flash",
+    "Resonant Strike",
+    "Delayed Impact"
+   ]
+  }
+ },
+ "jjk-x9agln": {
+  "q": "¿Qué hechicera de la escuela de Tokio cura a los demás con la técnica inversa?",
+  "o": [
+   "Shoko Ieiri",
+   "Utahime Iori",
+   "Mei Mei",
+   "Momo Nishimiya"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Tokyo school sorcerer heals others with reverse cursed technique?",
+   "o": [
+    "Shoko Ieiri",
+    "Utahime Iori",
+    "Mei Mei",
+    "Momo Nishimiya"
+   ]
+  }
+ },
+ "bleach-1nee8jj": {
+  "d": 2
+ },
+ "fairytail-1dg8k1j": {
+  "d": 2
+ },
+ "bleach-1fn7dx6": {
+  "q": "¿Qué ex Espada número 3 aparece en Hueco Mundo convertida en una niña pequeña?",
+  "en": {
+   "q": "Which former Espada number 3 shows up in Hueco Mundo turned into a little girl?"
+  }
+ },
+ "hxh-1v3zogt": {
+  "q": "¿Qué número de araña lleva tatuado Hisoka, falso, en la Tropa Fantasma?",
+  "o": [
+   "El 4",
+   "El 11",
+   "El 8",
+   "El 1"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which spider number does Hisoka wear as a fake tattoo in the Phantom Troupe?",
+   "o": [
+    "4",
+    "11",
+    "8",
+    "1"
+   ]
+  }
+ },
+ "fairytail-1h6jp6f": {
+  "q": "¿Qué Dragon Slayer de Oración Seis oye los pensamientos de sus rivales?",
+  "o": [
+   "Cobra",
+   "Racer",
+   "Midnight",
+   "Angel"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Oración Seis Dragon Slayer can hear his opponents' thoughts?",
+   "o": [
+    "Cobra",
+    "Racer",
+    "Midnight",
+    "Angel"
+   ]
+  }
+ },
+ "pokemonanime-hmp9kz": {
+  "q": "¿Qué Pokémon de Ash se queda a entrenar en el Valle Charicific?",
+  "o": [
+   "Charizard",
+   "Pidgeot",
+   "Lapras",
+   "Squirtle"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which of Ash's Pokémon stays behind to train in the Charicific Valley?",
+   "o": [
+    "Charizard",
+    "Pidgeot",
+    "Lapras",
+    "Squirtle"
+   ]
+  }
+ },
+ "pokemonanime-kagc0g": {
+  "q": "¿Por qué Ash deja libre a su Pidgeot en Kanto?",
+  "o": [
+   "Para que proteja a su bandada",
+   "Para que forme pareja",
+   "Porque no le obedecía",
+   "Porque perdió en la Liga"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Why does Ash release his Pidgeot in Kanto?",
+   "o": [
+    "So it can protect its flock",
+    "So it can find a mate",
+    "Because it disobeyed him",
+    "Because it lost in the League"
+   ]
+  }
+ },
+ "friends-1ihung6": {
+  "q": "¿Qué tatuaje se hace Rachel?",
+  "o": [
+   "Un corazón",
+   "Una mariposa",
+   "Una rosa",
+   "Una estrella"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What tattoo does Rachel get?",
+   "o": [
+    "A heart",
+    "A butterfly",
+    "A rose",
+    "A star"
+   ]
+  }
+ },
+ "friends-1p6vmlr": {
+  "q": "¿Qué nombre falso usa Phoebe cuando se hace pasar por otra persona?",
+  "o": [
+   "Regina Phalange",
+   "Princess Consuela",
+   "Ken Adams",
+   "Helena Handbasket"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What fake name does Phoebe use when she pretends to be someone else?",
+   "o": [
+    "Regina Phalange",
+    "Princess Consuela",
+    "Ken Adams",
+    "Helena Handbasket"
+   ]
+  }
+ },
+ "simpsons-ygc28o": {
+  "o": [
+   "Encías Sangrantes Murphy",
+   "Dewey Largo",
+   "Lenny Leonard",
+   "Otto Mann"
+  ],
+  "en": {
+   "o": [
+    "Bleeding Gums Murphy",
+    "Dewey Largo",
+    "Lenny Leonard",
+    "Otto Mann"
+   ]
+  }
+ },
+ "simpsons-eizw4h": {
+  "o": [
+   "En el Departamento de Tránsito",
+   "En el banco de Springfield",
+   "En la escuela primaria",
+   "En la planta nuclear"
+  ],
+  "en": {
+   "o": [
+    "At the DMV",
+    "At the Springfield bank",
+    "At the elementary school",
+    "At the nuclear plant"
+   ]
+  }
+ },
+ "simpsons-7ui4gt": {
+  "q": "¿Cómo se llama el perro que añaden a Tomy y Daly, con la voz de Homero?",
+  "o": [
+   "Poochie",
+   "Roy",
+   "Laddie",
+   "Ayudante de Santa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the dog added to Itchy & Scratchy, voiced by Homer?",
+   "o": [
+    "Poochie",
+    "Roy",
+    "Laddie",
+    "Santa's Little Helper"
+   ]
+  }
+ },
+ "simpsons-tz13tc": {
+  "q": "¿Qué físico famoso le dice a Homero en la taberna que le robará su teoría del universo en forma de dona?",
+  "o": [
+   "Stephen Hawking",
+   "Albert Einstein",
+   "Carl Sagan",
+   "Neil deGrasse Tyson"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which famous physicist tells Homer at the bar he may steal his donut-shaped universe theory?",
+   "o": [
+    "Stephen Hawking",
+    "Albert Einstein",
+    "Carl Sagan",
+    "Neil deGrasse Tyson"
+   ]
+  }
+ },
+ "harrypotter-1f5w3jf": {
+  "o": [
+   "Imperius",
+   "Cruciatus",
+   "Avada Kedavra",
+   "Expelliarmus"
+  ],
+  "en": {
+   "o": [
+    "Imperius",
+    "Cruciatus",
+    "Avada Kedavra",
+    "Expelliarmus"
+   ]
+  }
+ },
+ "harrypotter-1gflq16": {
+  "q": "¿Qué forma tiene el patronus de Snape?",
+  "o": [
+   "Una cierva",
+   "Un ciervo",
+   "Una nutria",
+   "Un fénix"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What form does Snape's Patronus take?",
+   "o": [
+    "A doe",
+    "A stag",
+    "An otter",
+    "A phoenix"
+   ]
+  }
+ },
+ "harrypotter-3xk3fy": {
+  "q": "¿Qué contraseña abre el despacho de Dumbledore en La cámara secreta?",
+  "o": [
+   "Sorbete de limón",
+   "Grageas de todos los sabores",
+   "Ranas de chocolate",
+   "Meigas fritas"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What password opens Dumbledore's office in Chamber of Secrets?",
+   "o": [
+    "Sherbet lemon",
+    "Every Flavour Beans",
+    "Chocolate Frogs",
+    "Fizzing Whizzbees"
+   ]
+  }
+ },
+ "starwars-48kdfu": {
+  "q": "¿Qué unidad de clones comanda el capitán Rex?",
+  "o": [
+   "La 501.ª",
+   "La 212.ª",
+   "La 104.ª",
+   "La 327.ª"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which clone unit does Captain Rex command?",
+   "o": [
+    "The 501st",
+    "The 212th",
+    "The 104th",
+    "The 327th"
+   ]
+  }
+ },
+ "starwars-19mbtwi": {
+  "q": "¿En menos de cuántos pársecs dice Han Solo que hizo la Carrera de Kessel?",
+  "o": [
+   "12",
+   "10",
+   "15",
+   "20"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In less than how many parsecs does Han Solo say he made the Kessel Run?",
+   "o": [
+    "12",
+    "10",
+    "15",
+    "20"
+   ]
+  }
+ },
+ "starwars-1dts3sx": {
+  "q": "¿Quién fue el maestro Sith de Palpatine?",
+  "o": [
+   "Darth Plagueis",
+   "Darth Bane",
+   "Darth Tyranus",
+   "Darth Revan"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who was Palpatine's Sith master?",
+   "o": [
+    "Darth Plagueis",
+    "Darth Bane",
+    "Darth Tyranus",
+    "Darth Revan"
+   ]
+  }
+ },
+ "starwars-7tpla0": {
+  "q": "¿Qué le corta Darth Vader a Luke en la Ciudad de las Nubes?",
+  "o": [
+   "La mano derecha",
+   "La mano izquierda",
+   "Una pierna",
+   "El brazo izquierdo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Darth Vader cut off Luke in Cloud City?",
+   "o": [
+    "His right hand",
+    "His left hand",
+    "A leg",
+    "His left arm"
+   ]
+  }
+ },
+ "got-pkc7bv": {
+  "q": "¿Quién empuja a Bran desde la torre en el primer episodio?",
+  "o": [
+   "Jaime Lannister",
+   "Cersei Lannister",
+   "Joffrey Baratheon",
+   "Theon Greyjoy"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who pushes Bran from the tower in the first episode?",
+   "o": [
+    "Jaime Lannister",
+    "Cersei Lannister",
+    "Joffrey Baratheon",
+    "Theon Greyjoy"
+   ]
+  }
+ },
+ "got-1q2f4no": {
+  "q": "¿Cómo se llama el hermano de Ned Stark que sirve en la Guardia de la Noche?",
+  "o": [
+   "Benjen Stark",
+   "Brandon Stark",
+   "Rickard Stark",
+   "Edmure Tully"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Ned Stark's brother who serves in the Night's Watch?",
+   "o": [
+    "Benjen Stark",
+    "Brandon Stark",
+    "Rickard Stark",
+    "Edmure Tully"
+   ]
+  }
+ },
+ "got-140rk8d": {
+  "q": "¿A qué dios sirven los Hombres sin Rostro de Braavos?",
+  "o": [
+   "Al Dios de Muchos Rostros",
+   "Al Señor de la Luz",
+   "Al Dios Ahogado",
+   "A los Siete"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which god do the Faceless Men of Braavos serve?",
+   "o": [
+    "The Many-Faced God",
+    "The Lord of Light",
+    "The Drowned God",
+    "The Seven"
+   ]
+  }
+ },
+ "got-1mghc94": {
+  "q": "¿Quién ejecuta a Meñique en Invernalia?",
+  "o": [
+   "Arya Stark",
+   "Sansa Stark",
+   "Bran Stark",
+   "Brienne de Tarth"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who executes Littlefinger at Winterfell?",
+   "o": [
+    "Arya Stark",
+    "Sansa Stark",
+    "Bran Stark",
+    "Brienne of Tarth"
+   ]
+  }
+ },
+ "mcu-10ig7d3": {
+  "q": "En Los Vengadores, ¿cuál es el secreto de Bruce Banner para transformarse a voluntad?",
+  "o": [
+   "Siempre está enojado",
+   "Cuenta hasta diez",
+   "Nunca se enoja",
+   "Piensa en Betty"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In The Avengers, what is Bruce Banner's secret for turning into Hulk at will?",
+   "o": [
+    "He's always angry",
+    "He counts to ten",
+    "He never gets angry",
+    "He thinks of Betty"
+   ]
+  }
+ },
+ "mcu-1taakak": {
+  "q": "¿Qué planta le da sus poderes a Black Panther?",
+  "o": [
+   "La hierba corazón",
+   "La flor de loto negra",
+   "La raíz de vibranio",
+   "La orquídea púrpura"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which plant gives Black Panther his powers?",
+   "o": [
+    "The heart-shaped herb",
+    "The black lotus",
+    "The vibranium root",
+    "The purple orchid"
+   ]
+  }
+ },
+ "mcu-1wcrd25": {
+  "q": "¿Qué levanta Visión sin esfuerzo en La era de Ultrón, para sorpresa de todos?",
+  "o": [
+   "El martillo de Thor",
+   "El escudo del Capitán América",
+   "El cetro de Loki",
+   "La armadura Hulkbuster"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Vision lift effortlessly in Age of Ultron, to everyone's surprise?",
+   "o": [
+    "Thor's hammer",
+    "Captain America's shield",
+    "Loki's scepter",
+    "The Hulkbuster armor"
+   ]
+  }
+ },
+ "mcu-15yp34": {
+  "q": "¿Quién le saca un ojo a Thor en Thor: Ragnarok?",
+  "o": [
+   "Hela",
+   "Surtur",
+   "Loki",
+   "El Gran Maestro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who takes out one of Thor's eyes in Thor: Ragnarok?",
+   "o": [
+    "Hela",
+    "Surtur",
+    "Loki",
+    "The Grandmaster"
+   ]
+  }
+ },
+ "mcu-ms2gol": {
+  "q": "¿En qué pueblo transcurre WandaVision?",
+  "o": [
+   "Westview",
+   "Sokovia",
+   "Pleasantville",
+   "Eastwood"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In which town is WandaVision set?",
+   "o": [
+    "Westview",
+    "Sokovia",
+    "Pleasantville",
+    "Eastwood"
+   ]
+  }
+ },
+ "mcu-yab2jl": {
+  "q": "¿Qué número de cazadora usa Valkiria en Sakaar?",
+  "o": [
+   "142",
+   "121",
+   "86",
+   "300"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What scrapper number does Valkyrie go by on Sakaar?",
+   "o": [
+    "142",
+    "121",
+    "86",
+    "300"
+   ]
+  }
+ },
+ "mcu-zn1xyz": {
+  "q": "¿Qué clase de ser es Ego, el padre de Star-Lord?",
+  "o": [
+   "Un Celestial",
+   "Un Eterno",
+   "Un Kree",
+   "Un Skrull"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What kind of being is Ego, Star-Lord's father?",
+   "o": [
+    "A Celestial",
+    "An Eternal",
+    "A Kree",
+    "A Skrull"
+   ]
+  }
+ },
+ "mcu-1jl46w6": {
+  "q": "¿Quién le dice a Tony Stark «Te amo tres mil»?",
+  "o": [
+   "Su hija Morgan",
+   "Pepper Potts",
+   "Peter Parker",
+   "Happy Hogan"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who tells Tony Stark \"I love you 3000\"?",
+   "o": [
+    "His daughter Morgan",
+    "Pepper Potts",
+    "Peter Parker",
+    "Happy Hogan"
+   ]
+  }
+ },
+ "breakingbad-51otw7": {
+  "q": "¿A quién mata Walter estrangulándolo con un candado de bicicleta en el sótano de Jesse?",
+  "o": [
+   "A Krazy-8",
+   "A Emilio",
+   "A Tuco",
+   "A Gonzo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who does Walter strangle with a bike lock in Jesse's basement?",
+   "o": [
+    "Krazy-8",
+    "Emilio",
+    "Tuco",
+    "Gonzo"
+   ]
+  }
+ },
+ "breakingbad-17jo7oj": {
+  "q": "¿Qué le obligan a hacer a Jesse cuando lo captura la banda de Jack?",
+  "o": [
+   "Cocinar encadenado",
+   "Cavar tumbas",
+   "Vender en la calle",
+   "Entrenar a Todd en peleas"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Jesse forced to do when Jack's gang captures him?",
+   "o": [
+    "Cook while chained",
+    "Dig graves",
+    "Deal on the street",
+    "Train Todd to fight"
+   ]
+  }
+ },
+ "breakingbad-1704qvt": {
+  "q": "En el final, ¿qué le confiesa Walter a Skyler sobre por qué se volvió criminal?",
+  "o": [
+   "Que lo hizo por él y le gustaba",
+   "Que lo hizo solo por la familia",
+   "Que Gus lo obligó",
+   "Que quería pagar el tratamiento"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In the finale, what does Walter admit to Skyler about why he became a criminal?",
+   "o": [
+    "He did it for himself and liked it",
+    "He did it only for the family",
+    "Gus forced him",
+    "He wanted to pay for treatment"
+   ]
+  }
+ },
+ "breakingbad-9v18nx": {
+  "q": "¿Qué empresa de fumigación usan Walter y Jesse para cocinar en casas ajenas?",
+  "o": [
+   "Vamonos Pest",
+   "Gray Matter",
+   "Madrigal",
+   "A1A Car Wash"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which pest control company do Walter and Jesse use to cook in other people's houses?",
+   "o": [
+    "Vamonos Pest",
+    "Gray Matter",
+    "Madrigal",
+    "A1A Car Wash"
+   ]
+  }
+ },
+ "strangerthings-whgxuj": {
+  "q": "¿Qué nombre deja Max en el récord de la máquina de arcade?",
+  "o": [
+   "MADMAX",
+   "MAXIMUS",
+   "ZOOMER",
+   "MAXZILLA"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What name does Max leave on the arcade high score?",
+   "o": [
+    "MADMAX",
+    "MAXIMUS",
+    "ZOOMER",
+    "MAXZILLA"
+   ]
+  }
+ },
+ "strangerthings-e9woal": {
+  "q": "¿Qué periodista conspiranoico ayuda a Nancy y Jonathan a destapar el laboratorio?",
+  "o": [
+   "Murray Bauman",
+   "Scott Clarke",
+   "Sam Owens",
+   "Bob Newby"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which conspiracy-minded journalist helps Nancy and Jonathan expose the lab?",
+   "o": [
+    "Murray Bauman",
+    "Scott Clarke",
+    "Sam Owens",
+    "Bob Newby"
+   ]
+  }
+ },
+ "strangerthings-jw1zl1": {
+  "q": "¿Qué número tenía Henry Creel en el laboratorio de Hawkins?",
+  "o": [
+   "001",
+   "000",
+   "002",
+   "012"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What number did Henry Creel have at the Hawkins lab?",
+   "o": [
+    "001",
+    "000",
+    "002",
+    "012"
+   ]
+  }
+ },
+ "strangerthings-tk1ayv": {
+  "q": "¿En qué campamento de verano conoce Dustin a Suzie?",
+  "o": [
+   "Camp Know Where",
+   "Camp Crystal Lake",
+   "Camp Hawkins",
+   "Camp Starcourt"
+  ],
+  "d": 3,
+  "en": {
+   "q": "At which summer camp does Dustin meet Suzie?",
+   "o": [
+    "Camp Know Where",
+    "Camp Crystal Lake",
+    "Camp Hawkins",
+    "Camp Starcourt"
+   ]
+  }
+ },
+ "strangerthings-n53pcq": {
+  "q": "¿Qué doctor dirige el laboratorio de Hawkins en la segunda temporada?",
+  "o": [
+   "Sam Owens",
+   "Martin Brenner",
+   "Larry Kline",
+   "Victor Creel"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which doctor runs the Hawkins lab in season two?",
+   "o": [
+    "Sam Owens",
+    "Martin Brenner",
+    "Larry Kline",
+    "Victor Creel"
+   ]
+  }
+ },
+ "strangerthings-1yt1aoy": {
+  "q": "¿Cómo se llama el alcalde corrupto de Hawkins en la tercera temporada?",
+  "o": [
+   "Larry Kline",
+   "Sam Owens",
+   "Tom Holloway",
+   "Bruce Lowe"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the corrupt mayor of Hawkins in season three?",
+   "o": [
+    "Larry Kline",
+    "Sam Owens",
+    "Tom Holloway",
+    "Bruce Lowe"
+   ]
+  }
+ },
+ "jurassic-5udsl5": {
+  "q": "¿Qué hace Ellie Sattler en el cobertizo de mantenimiento mientras la acechan los raptores?",
+  "o": [
+   "Vuelve a encender la electricidad",
+   "Repara la cerca del T. rex",
+   "Llama por radio al barco",
+   "Borra el virus de Nedry"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Ellie Sattler do in the maintenance shed while the raptors stalk her?",
+   "o": [
+    "Turns the power back on",
+    "Fixes the T. rex fence",
+    "Radios the boat",
+    "Wipes out Nedry's virus"
+   ]
+  }
+ },
+ "jurassic-z1nwdm": {
+  "q": "¿Qué calzado lleva Claire Dearing mientras huye del T. rex en Jurassic World?",
+  "o": [
+   "Tacones altos",
+   "Botas de montaña",
+   "Zapatillas deportivas",
+   "Sandalias"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What footwear is Claire Dearing wearing while she runs from the T. rex in Jurassic World?",
+   "o": [
+    "High heels",
+    "Hiking boots",
+    "Sneakers",
+    "Sandals"
+   ]
+  }
+ },
+ "jurassic-1ixy6hg": {
+  "q": "En Jurassic World: Renace, ¿qué van a buscar los protagonistas?",
+  "o": [
+   "Sangre de dinosaurio para un fármaco cardíaco",
+   "Un huevo de T. rex para clonarlo",
+   "Los embriones perdidos de Nedry",
+   "Un raptor para domesticarlo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In Jurassic World Rebirth, what are the protagonists sent to get?",
+   "o": [
+    "Dinosaur blood for a heart drug",
+    "A T. rex egg to clone",
+    "Nedry's lost embryos",
+    "A raptor to tame"
+   ]
+  }
+ },
+ "jurassic-1trqau6": {
+  "q": "¿Qué repite la pantalla de Nedry cuando Ray Arnold intenta entrar al sistema?",
+  "o": [
+   "«No dijiste la palabra mágica»",
+   "«Acceso denegado para siempre»",
+   "«Nedry te está mirando»",
+   "«Inténtalo otra vez, amigo»"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Nedry's screen keep repeating when Ray Arnold tries to get into the system?",
+   "o": [
+    "\"You didn't say the magic word\"",
+    "\"Access denied forever\"",
+    "\"Nedry is watching you\"",
+    "\"Try again, buddy\""
+   ]
+  }
+ },
+ "jurassic-lh5v7s": {
+  "q": "¿Qué dinosaurios atacan a la niña en la playa al inicio de El mundo perdido?",
+  "o": [
+   "Compsognathus",
+   "Velociraptores",
+   "Dilofosaurios",
+   "Gallimimus"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which dinosaurs attack the girl on the beach at the start of The Lost World?",
+   "o": [
+    "Compsognathus",
+    "Velociraptors",
+    "Dilophosaurus",
+    "Gallimimus"
+   ]
+  }
+ },
+ "jurassic-91lvnc": {
+  "q": "En Jurassic World, ¿cómo se llama la atracción de esferas de vidrio en la que pasean Zach y Gray?",
+  "o": [
+   "La Girosfera",
+   "El Monorriel",
+   "El Teleférico",
+   "El Safari Raptor"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Jurassic World, what is the glass ball ride Zach and Gray take called?",
+   "o": [
+    "The Gyrosphere",
+    "The Monorail",
+    "The Cable Car",
+    "The Raptor Safari"
+   ]
+  }
+ },
+ "jurassic-1fxx6y3": {
+  "q": "¿Qué frase repite John Hammond para presumir de su parque?",
+  "o": [
+   "«No reparamos en gastos»",
+   "«La vida se abre camino»",
+   "«Hay que tener paciencia»",
+   "«El orden es lo primero»"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which line does John Hammond keep repeating to boast about his park?",
+   "o": [
+    "\"Spared no expense\"",
+    "\"Life finds a way\"",
+    "\"Patience is key\"",
+    "\"Order comes first\""
+   ]
+  }
+ },
+ "walkingdead-1xdxzba": {
+  "q": "¿Cómo se llama la comunidad que gobierna el rey Ezekiel?",
+  "o": [
+   "El Reino",
+   "Hilltop",
+   "Alexandría",
+   "Oceanside"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the community ruled by King Ezekiel called?",
+   "o": [
+    "The Kingdom",
+    "Hilltop",
+    "Alexandria",
+    "Oceanside"
+   ]
+  }
+ },
+ "walkingdead-9jagzb": {
+  "q": "¿Qué le dice Carol a Lizzie justo antes de dispararle?",
+  "o": [
+   "«Mira las flores»",
+   "«Cierra los ojos»",
+   "«Todo estará bien»",
+   "«Cuenta hasta diez»"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Carol tell Lizzie right before shooting her?",
+   "o": [
+    "\"Look at the flowers\"",
+    "\"Close your eyes\"",
+    "\"Everything will be okay\"",
+    "\"Count to ten\""
+   ]
+  }
+ },
+ "walkingdead-qzkadm": {
+  "q": "¿Dónde se esconde Glenn para salvarse de la horda en la sexta temporada?",
+  "o": [
+   "Debajo de un contenedor",
+   "Dentro de un auto",
+   "En una alcantarilla",
+   "En el techo de una tienda"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Where does Glenn hide to escape the herd in season six?",
+   "o": [
+    "Under a dumpster",
+    "Inside a car",
+    "In a sewer",
+    "On a store roof"
+   ]
+  }
+ },
+ "walkingdead-195cjlw": {
+  "q": "¿Cómo se llama la comunidad costera de mujeres que descubre Tara?",
+  "o": [
+   "Oceanside",
+   "Hilltop",
+   "El Reino",
+   "El Santuario"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the coastal community of women that Tara discovers called?",
+   "o": [
+    "Oceanside",
+    "Hilltop",
+    "The Kingdom",
+    "The Sanctuary"
+   ]
+  }
+ },
+ "batman-1bz3d6i": {
+  "q": "En Batman inicia, ¿qué le provoca a Bruce su miedo a los murciélagos?",
+  "o": [
+   "Caer de niño a un pozo lleno de ellos",
+   "Ver murciélagos en la ópera",
+   "Una pesadilla recurrente",
+   "Un ataque en el Himalaya"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In Batman Begins, what gives Bruce his fear of bats?",
+   "o": [
+    "Falling into a well full of them as a child",
+    "Seeing bats at the opera",
+    "A recurring nightmare",
+    "An attack in the Himalayas"
+   ]
+  }
+ },
+ "batman-zgd28c": {
+  "q": "En El caballero de la noche, ¿qué condición pone Lucius Fox para usar la máquina que espía los celulares de Ciudad Gótica?",
+  "o": [
+   "Que se destruya después",
+   "Un puesto en la junta",
+   "Que Batman se entregue",
+   "Que la controle la policía"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In The Dark Knight, what condition does Lucius Fox set for using the machine that spies on Gotham's phones?",
+   "o": [
+    "That it be destroyed afterward",
+    "A seat on the board",
+    "That Batman turn himself in",
+    "That the police control it"
+   ]
+  }
+ },
+ "batman-10tesfk": {
+  "q": "¿Qué hace Batman al final de El caballero de la noche para proteger la imagen de Harvey Dent?",
+  "o": [
+   "Se echa la culpa de sus crímenes",
+   "Destruye todas las pruebas",
+   "Revela su identidad",
+   "Se entrega a Gordon"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Batman do at the end of The Dark Knight to protect Harvey Dent's image?",
+   "o": [
+    "Takes the blame for his crimes",
+    "Destroys all the evidence",
+    "Reveals his identity",
+    "Turns himself in to Gordon"
+   ]
+  }
+ },
+ "batman-h3j031": {
+  "q": "En The Batman (2022), ¿qué descubre Selina Kyle sobre Carmine Falcone?",
+  "o": [
+   "Que es su padre",
+   "Que es su tío",
+   "Que mató a su hermana",
+   "Que es el Acertijo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In The Batman (2022), what does Selina Kyle find out about Carmine Falcone?",
+   "o": [
+    "He's her father",
+    "He's her uncle",
+    "He killed her sister",
+    "He's the Riddler"
+   ]
+  }
+ },
+ "batman-ovpe8a": {
+  "q": "¿Con qué decide Dos Caras el destino de sus víctimas?",
+  "o": [
+   "Lanzando una moneda",
+   "Tirando un dado",
+   "Sacando una carta",
+   "Girando una ruleta"
+  ],
+  "d": 2,
+  "en": {
+   "q": "How does Two-Face decide his victims' fate?",
+   "o": [
+    "By flipping a coin",
+    "By rolling a die",
+    "By drawing a card",
+    "By spinning a wheel"
+   ]
+  }
+ },
+ "batman-bcnyib": {
+  "q": "¿Qué deja el Acertijo para Batman en cada escena del crimen en The Batman?",
+  "o": [
+   "Tarjetas con acertijos",
+   "Cartas de póker",
+   "Monedas marcadas",
+   "Flores negras"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does the Riddler leave for Batman at each crime scene in The Batman?",
+   "o": [
+    "Cards with riddles",
+    "Playing cards",
+    "Marked coins",
+    "Black flowers"
+   ]
+  }
+ },
+ "batman-edf94y": {
+  "q": "¿Quién es en realidad Miranda Tate en El caballero de la noche asciende?",
+  "o": [
+   "Talia al Ghul",
+   "Selina Kyle",
+   "Barbara Gordon",
+   "Rachel Dawes"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who is Miranda Tate really in The Dark Knight Rises?",
+   "o": [
+    "Talia al Ghul",
+    "Selina Kyle",
+    "Barbara Gordon",
+    "Rachel Dawes"
+   ]
+  }
+ },
+ "batman-59zp9r": {
+  "q": "¿Cómo inunda el Acertijo Ciudad Gótica en The Batman?",
+  "o": [
+   "Volando el malecón con bombas",
+   "Abriendo las compuertas de la presa",
+   "Rompiendo las tuberías del metro",
+   "Hundiendo un barco petrolero"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How does the Riddler flood Gotham in The Batman?",
+   "o": [
+    "Blowing up the seawall with bombs",
+    "Opening the dam gates",
+    "Breaking the subway pipes",
+    "Sinking an oil tanker"
+   ]
+  }
+ },
+ "batman-6npr40": {
+  "q": "¿Qué tienen de raro las historias que cuenta el Joker sobre sus cicatrices?",
+  "o": [
+   "Cada vez cuenta una versión distinta",
+   "Siempre culpa a Batman",
+   "Nunca las termina",
+   "Las canta en vez de contarlas"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is odd about the stories the Joker tells about his scars?",
+   "o": [
+    "He tells a different version each time",
+    "He always blames Batman",
+    "He never finishes them",
+    "He sings them instead of telling them"
+   ]
+  }
+ },
+ "batman-dwwcob": {
+  "q": "¿Cómo escapa el Joker de la comisaría en El caballero de la noche?",
+  "o": [
+   "Con una bomba cosida dentro de otro preso",
+   "Por un túnel cavado desde la celda",
+   "Sobornando a un guardia",
+   "Con un ataque de la mafia"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How does the Joker escape the police station in The Dark Knight?",
+   "o": [
+    "With a bomb sewn inside another prisoner",
+    "Through a tunnel dug from his cell",
+    "By bribing a guard",
+    "With a mob attack"
+   ]
+  }
+ },
+ "batman-1bw7ysb": {
+  "q": "En el Batman de 1989, ¿quién mató a los padres de Bruce Wayne?",
+  "o": [
+   "Jack Napier, el futuro Joker",
+   "Joe Chill",
+   "Carmine Falcone",
+   "El Pingüino"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In 1989's Batman, who killed Bruce Wayne's parents?",
+   "o": [
+    "Jack Napier, the future Joker",
+    "Joe Chill",
+    "Carmine Falcone",
+    "The Penguin"
+   ]
+  }
+ },
+ "batman-4akccr": {
+  "q": "En Batman inicia, ¿quién destruye las vías para detener el tren de Ra's al Ghul?",
+  "o": [
+   "Gordon",
+   "Batman",
+   "Alfred",
+   "Lucius Fox"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Batman Begins, who destroys the tracks to stop Ra's al Ghul's train?",
+   "o": [
+    "Gordon",
+    "Batman",
+    "Alfred",
+    "Lucius Fox"
+   ]
+  }
+ },
+ "batman-1htv3p3": {
+  "q": "¿Cómo muere Bane en El caballero de la noche asciende?",
+  "o": [
+   "Catwoman le dispara con la Batimoto",
+   "Batman lo encierra en Blackgate",
+   "Explota con la bomba",
+   "Talia lo traiciona"
+  ],
+  "d": 2,
+  "en": {
+   "q": "How does Bane die in The Dark Knight Rises?",
+   "o": [
+    "Catwoman shoots him with the Batpod",
+    "Batman locks him in Blackgate",
+    "He blows up with the bomb",
+    "Talia betrays him"
+   ]
+  }
+ },
+ "batman-1wqbn24": {
+  "q": "¿Qué arma usa el Espantapájaros contra sus víctimas en Batman inicia?",
+  "o": [
+   "Una toxina del miedo",
+   "Gas de la risa",
+   "Un veneno paralizante",
+   "Dardos tranquilizantes"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What weapon does Scarecrow use on his victims in Batman Begins?",
+   "o": [
+    "A fear toxin",
+    "Laughing gas",
+    "A paralyzing poison",
+    "Tranquilizer darts"
+   ]
+  }
+ },
+ "nolan-if18qv": {
+  "q": "En El origen, ¿qué hace el trompo de Cobb si él sigue en un sueño?",
+  "o": [
+   "Nunca deja de girar",
+   "Se cae enseguida",
+   "Cambia de color",
+   "Desaparece"
+  ],
+  "d": 1,
+  "en": {
+   "q": "In Inception, what does Cobb's top do if he is still dreaming?",
+   "o": [
+    "It never stops spinning",
+    "It falls right away",
+    "It changes color",
+    "It disappears"
+   ]
+  }
+ },
+ "nolan-19n3nhu": {
+  "q": "En El origen, ¿cómo murió Mal, la esposa de Cobb?",
+  "o": [
+   "Se tiró de un edificio",
+   "La atropelló un tren",
+   "Se ahogó en el mar",
+   "La mató Saito"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In Inception, how did Mal, Cobb's wife, die?",
+   "o": [
+    "She jumped off a building",
+    "A train hit her",
+    "She drowned at sea",
+    "Saito killed her"
+   ]
+  }
+ },
+ "nolan-wbfwlq": {
+  "q": "En Dunkerque, ¿cuánto tiempo abarca la historia del muelle?",
+  "o": [
+   "Una semana",
+   "Un día",
+   "Una hora",
+   "Un mes"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Dunkirk, how much time does the mole storyline cover?",
+   "o": [
+    "One week",
+    "One day",
+    "One hour",
+    "One month"
+   ]
+  }
+ },
+ "nolan-1bjeee2": {
+  "q": "En Oppenheimer, ¿qué cargo busca Lewis Strauss en la audiencia del Senado?",
+  "o": [
+   "Secretario de Comercio",
+   "Secretario de Defensa",
+   "Director de la CIA",
+   "Embajador en la ONU"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Oppenheimer, what post is Lewis Strauss seeking at the Senate hearing?",
+   "o": [
+    "Secretary of Commerce",
+    "Secretary of Defense",
+    "CIA Director",
+    "UN Ambassador"
+   ]
+  }
+ },
+ "nolan-ornqvz": {
+  "q": "En Interstellar, ¿en qué planeta una hora equivale a siete años en la Tierra?",
+  "o": [
+   "En el planeta de Miller",
+   "En el planeta de Mann",
+   "En el planeta de Edmunds",
+   "En Gargantúa"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In Interstellar, on which planet does one hour equal seven years on Earth?",
+   "o": [
+    "Miller's planet",
+    "Mann's planet",
+    "Edmunds' planet",
+    "Gargantua"
+   ]
+  }
+ },
+ "nolan-1aka945": {
+  "q": "En Interstellar, ¿qué palabra le manda el «fantasma» a Murph en morse?",
+  "o": [
+   "STAY",
+   "GO",
+   "HELP",
+   "HOME"
+  ],
+  "d": 2,
+  "en": {
+   "q": "In Interstellar, what word does the \"ghost\" send Murph in Morse code?",
+   "o": [
+    "STAY",
+    "GO",
+    "HELP",
+    "HOME"
+   ]
+  }
+ },
+ "nolan-mbq03y": {
+  "q": "¿Cómo se llama el protagonista de Tenet?",
+  "o": [
+   "No tiene nombre",
+   "Neil",
+   "Ives",
+   "Sator"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the name of the protagonist of Tenet?",
+   "o": [
+    "He has no name",
+    "Neil",
+    "Ives",
+    "Sator"
+   ]
+  }
+ },
+ "piratas-19l6ged": {
+  "q": "¿Qué relación tiene Angélica con Barbanegra?",
+  "o": [
+   "Es su hija",
+   "Es su esposa",
+   "Es su hermana",
+   "Es su sobrina"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Angelica's relationship to Blackbeard?",
+   "o": [
+    "His daughter",
+    "His wife",
+    "His sister",
+    "His niece"
+   ]
+  }
+ },
+ "piratas-obgox2": {
+  "q": "Además de los cálices, ¿qué necesita el ritual de la Fuente de la Juventud?",
+  "o": [
+   "Una lágrima de sirena",
+   "Sangre de pirata",
+   "Una perla negra",
+   "Agua de luna llena"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Besides the chalices, what does the Fountain of Youth ritual require?",
+   "o": [
+    "A mermaid's tear",
+    "A pirate's blood",
+    "A black pearl",
+    "Full moon water"
+   ]
+  }
+ },
+ "piratas-hkqgui": {
+  "q": "¿Qué quiere comer Barbossa en cuanto se rompa la maldición?",
+  "o": [
+   "Una manzana",
+   "Una naranja",
+   "Un pan",
+   "Un trozo de carne"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Barbossa want to eat as soon as the curse is broken?",
+   "o": [
+    "An apple",
+    "An orange",
+    "Some bread",
+    "A piece of meat"
+   ]
+  }
+ },
+ "piratas-6c8l84": {
+  "q": "¿Qué le pasa a quien apuñala el corazón de Davy Jones?",
+  "o": [
+   "Se vuelve capitán del Holandés Errante",
+   "Queda maldito como esqueleto",
+   "Se convierte en el Kraken",
+   "Gana la inmortalidad en tierra"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What happens to whoever stabs Davy Jones' heart?",
+   "o": [
+    "They become captain of the Flying Dutchman",
+    "They are cursed as a skeleton",
+    "They become the Kraken",
+    "They gain immortality on land"
+   ]
+  }
+ },
+ "piratas-youyaf": {
+  "q": "¿Por qué el capitán Salazar odia a Jack Sparrow?",
+  "o": [
+   "Jack lo hundió en el Triángulo del Diablo",
+   "Jack le robó la brújula",
+   "Jack mató a su hijo",
+   "Jack lo traicionó en Tortuga"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Why does Captain Salazar hate Jack Sparrow?",
+   "o": [
+    "Jack sank him in the Devil's Triangle",
+    "Jack stole his compass",
+    "Jack killed his son",
+    "Jack betrayed him in Tortuga"
+   ]
+  }
+ },
+ "piratas-1qlxpuf": {
+  "q": "¿Qué le da Tia Dalma a Jack para protegerse de Davy Jones?",
+  "o": [
+   "Un frasco de tierra",
+   "Un amuleto de hueso",
+   "Un cofre vacío",
+   "Una perla negra"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Tia Dalma give Jack to protect him from Davy Jones?",
+   "o": [
+    "A jar of dirt",
+    "A bone amulet",
+    "An empty chest",
+    "A black pearl"
+   ]
+  }
+ },
+ "piratas-185kbz9": {
+  "q": "¿Qué dice Lord Beckett mientras su barco es destruido en En el fin del mundo?",
+  "o": [
+   "«Son solo negocios»",
+   "«Fuego a discreción»",
+   "«Por la Compañía»",
+   "«Esto no termina aquí»"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Lord Beckett say as his ship is destroyed in At World's End?",
+   "o": [
+    "\"It's just good business\"",
+    "\"Fire at will\"",
+    "\"For the Company\"",
+    "\"This isn't over\""
+   ]
+  }
+ },
+ "piratas-1l8ojye": {
+  "q": "¿Qué poder tiene la espada de Barbanegra?",
+  "o": [
+   "Controla los cabos de su barco",
+   "Lo vuelve invisible",
+   "Congela el agua",
+   "Invoca al Kraken"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What power does Blackbeard's sword have?",
+   "o": [
+    "It controls his ship's rigging",
+    "It makes him invisible",
+    "It freezes water",
+    "It summons the Kraken"
+   ]
+  }
+ },
+ "piratas-1dwu4am": {
+  "q": "¿Cómo apodan al padre de Will Turner?",
+  "o": [
+   "Bootstrap Bill",
+   "Billy Bones",
+   "Bill el Negro",
+   "Bill Mano de Hierro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is Will Turner's father's nickname?",
+   "o": [
+    "Bootstrap Bill",
+    "Billy Bones",
+    "Black Bill",
+    "Iron-Hand Bill"
+   ]
+  }
+ },
+ "rapidos-10t31w2": {
+  "q": "¿Para qué agencia trabajaba Gisele antes de unirse al equipo?",
+  "o": [
+   "El Mossad",
+   "La CIA",
+   "El MI6",
+   "El FBI"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which agency did Gisele work for before joining the crew?",
+   "o": [
+    "Mossad",
+    "The CIA",
+    "MI6",
+    "The FBI"
+   ]
+  }
+ },
+ "rapidos-ybvwnr": {
+  "q": "¿Qué amigo de infancia ayuda a Brian en Miami en 2 Fast 2 Furious?",
+  "o": [
+   "Roman Pearce",
+   "Tej Parker",
+   "Han Lue",
+   "Vince"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which childhood friend helps Brian in Miami in 2 Fast 2 Furious?",
+   "o": [
+    "Roman Pearce",
+    "Tej Parker",
+    "Han Lue",
+    "Vince"
+   ]
+  }
+ },
+ "rapidos-1pz0l3b": {
+  "q": "¿Qué papel cumple Tej en el equipo de Toretto?",
+  "o": [
+   "El experto en tecnología",
+   "El piloto de aviones",
+   "El francotirador",
+   "El doble de riesgo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What role does Tej play on Toretto's crew?",
+   "o": [
+    "The tech expert",
+    "The airplane pilot",
+    "The sniper",
+    "The stunt double"
+   ]
+  }
+ },
+ "rapidos-97r29j": {
+  "q": "¿Qué le pasa a Elena en Rápidos y furiosos 8?",
+  "o": [
+   "Muere por orden de Cipher",
+   "Huye con su hijo a Brasil",
+   "Se une al equipo",
+   "Termina presa"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What happens to Elena in The Fate of the Furious?",
+   "o": [
+    "She's killed on Cipher's orders",
+    "She flees to Brazil with her son",
+    "She joins the crew",
+    "She ends up in prison"
+   ]
+  }
+ },
+ "rapidos-dy8t77": {
+  "q": "¿Por qué Dom se distanció de su hermano Jakob?",
+  "o": [
+   "Lo culpaba de la muerte de su padre",
+   "Jakob se unió a la policía",
+   "Jakob le robó a Letty",
+   "Jakob delató al equipo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Why did Dom cut ties with his brother Jakob?",
+   "o": [
+    "He blamed him for their father's death",
+    "Jakob joined the police",
+    "Jakob stole Letty from him",
+    "Jakob ratted out the crew"
+   ]
+  }
+ },
+ "rapidos-n8t58a": {
+  "q": "¿Por qué quiere vengarse Dante Reyes de Toretto en Rápidos y furiosos X?",
+  "o": [
+   "Por la muerte de su padre en Río",
+   "Porque Dom le robó un auto",
+   "Porque Dom mató a su hermano",
+   "Porque perdió una carrera"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Why does Dante Reyes want revenge on Toretto in Fast X?",
+   "o": [
+    "For his father's death in Rio",
+    "Because Dom stole his car",
+    "Because Dom killed his brother",
+    "Because he lost a race"
+   ]
+  }
+ },
+ "rapidos-16xgbbk": {
+  "q": "¿Qué es Brixton, el villano de Hobbs & Shaw?",
+  "o": [
+   "Un soldado mejorado con implantes",
+   "Un mutante con superfuerza",
+   "Un clon de Shaw",
+   "Un hacker ruso"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Brixton, the villain of Hobbs & Shaw?",
+   "o": [
+    "A soldier enhanced with implants",
+    "A super-strong mutant",
+    "A clone of Shaw",
+    "A Russian hacker"
+   ]
+  }
+ },
+ "rapidos-kvmkoa": {
+  "q": "¿Cómo se llama la hacker que creó el Ojo de Dios?",
+  "o": [
+   "Ramsey",
+   "Cipher",
+   "Elena",
+   "Gisele"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the hacker who created God's Eye?",
+   "o": [
+    "Ramsey",
+    "Cipher",
+    "Elena",
+    "Gisele"
+   ]
+  }
+ },
+ "rapidos-hvrx8l": {
+  "q": "¿Qué manía tiene Han a lo largo de la saga?",
+  "o": [
+   "Siempre está picando algo de comer",
+   "Siempre fuma",
+   "Siempre toma café",
+   "Siempre masca chicle"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What habit does Han have throughout the saga?",
+   "o": [
+    "He's always snacking",
+    "He always smokes",
+    "He always drinks coffee",
+    "He always chews gum"
+   ]
+  }
+ },
+ "rapidos-1htyibl": {
+  "q": "¿Por qué mandan a Sean Boswell a vivir a Tokio?",
+  "o": [
+   "Para evitar la cárcel",
+   "Para estudiar ingeniería",
+   "Para trabajar con Han",
+   "Para escapar de la mafia"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Why is Sean Boswell sent to live in Tokyo?",
+   "o": [
+    "To avoid jail",
+    "To study engineering",
+    "To work with Han",
+    "To escape the mob"
+   ]
+  }
+ },
+ "merlina-1en8hi9": {
+  "q": "¿Qué no logra hacer Enid hasta el final de la primera temporada?",
+  "o": [
+   "Transformarse en loba",
+   "Aullar a la luna",
+   "Usar sus garras",
+   "Hablar con Dedos"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What can't Enid do until the end of season one?",
+   "o": [
+    "Turn into a wolf",
+    "Howl at the moon",
+    "Use her claws",
+    "Talk to Thing"
+   ]
+  }
+ },
+ "merlina-107dwhn": {
+  "q": "¿En qué consiste la Copa Poe de Nevermore?",
+  "o": [
+   "Una carrera de botes",
+   "Un torneo de esgrima",
+   "Una búsqueda del tesoro",
+   "Un baile de máscaras"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Nevermore's Poe Cup?",
+   "o": [
+    "A boat race",
+    "A fencing tournament",
+    "A treasure hunt",
+    "A masquerade ball"
+   ]
+  }
+ },
+ "merlina-ryxcxu": {
+  "q": "¿Cómo se llama la sociedad secreta de Nevermore que investiga Merlina?",
+  "o": [
+   "Los Nightshades",
+   "Los Cuervos",
+   "Los Peregrinos",
+   "Los Marginados"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the name of the Nevermore secret society that Wednesday investigates?",
+   "o": [
+    "The Nightshades",
+    "The Ravens",
+    "The Pilgrims",
+    "The Outcasts"
+   ]
+  }
+ },
+ "merlina-gcb2ls": {
+  "q": "¿Qué empieza a recibir Merlina en su teléfono al final de la primera temporada?",
+  "o": [
+   "Mensajes de un acosador anónimo",
+   "Llamadas de Goody Addams",
+   "Fotos de Tyler preso",
+   "Cartas de Crackstone"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Wednesday start getting on her phone at the end of season one?",
+   "o": [
+    "Messages from an anonymous stalker",
+    "Calls from Goody Addams",
+    "Photos of Tyler in custody",
+    "Letters from Crackstone"
+   ]
+  }
+ },
+ "merlina-1l6td1c": {
+  "q": "¿Qué relación tiene Tyler con el sheriff Galpin?",
+  "o": [
+   "Es su hijo",
+   "Es su sobrino",
+   "Es su ayudante",
+   "Es su hermano menor"
+  ],
+  "d": 2,
+  "en": {
+   "q": "How is Tyler related to Sheriff Galpin?",
+   "o": [
+    "He's his son",
+    "He's his nephew",
+    "He's his deputy",
+    "He's his younger brother"
+   ]
+  }
+ },
+ "merlina-118jqp9": {
+  "q": "¿Qué poder tiene la directora Larissa Weems?",
+  "o": [
+   "Cambiar de forma",
+   "Leer la mente",
+   "Volverse invisible",
+   "Hablar con los muertos"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What power does Principal Larissa Weems have?",
+   "o": [
+    "Shapeshifting",
+    "Mind reading",
+    "Invisibility",
+    "Talking to the dead"
+   ]
+  }
+ },
+ "merlina-61vlcp": {
+  "q": "¿Cómo se llama la detective de la novela que escribe Merlina?",
+  "o": [
+   "Viper",
+   "Raven",
+   "Agatha",
+   "Lenore"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the detective in the novel Wednesday writes?",
+   "o": [
+    "Viper",
+    "Raven",
+    "Agatha",
+    "Lenore"
+   ]
+  }
+ },
+ "merlina-1owygdi": {
+  "q": "¿A quién quiere resucitar Laurel Gates en la primera temporada?",
+  "o": [
+   "A Joseph Crackstone",
+   "A Garrett Gates",
+   "A Goody Addams",
+   "A Isaac Night"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who does Laurel Gates want to resurrect in season one?",
+   "o": [
+    "Joseph Crackstone",
+    "Garrett Gates",
+    "Goody Addams",
+    "Isaac Night"
+   ]
+  }
+ },
+ "shrek-1y74hj5": {
+  "q": "¿Qué tres princesas le ofrece el Espejo Mágico a Lord Farquaad?",
+  "o": [
+   "Cenicienta, Blancanieves y Fiona",
+   "Rapunzel, Bella y Fiona",
+   "Ariel, Cenicienta y Fiona",
+   "Aurora, Blancanieves y Fiona"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which three princesses does the Magic Mirror offer Lord Farquaad?",
+   "o": [
+    "Cinderella, Snow White and Fiona",
+    "Rapunzel, Belle and Fiona",
+    "Ariel, Cinderella and Fiona",
+    "Aurora, Snow White and Fiona"
+   ]
+  }
+ },
+ "shrek-c9n5wb": {
+  "q": "En Shrek Tercero, ¿dónde recluta Encantador a los villanos de los cuentos?",
+  "o": [
+   "En la taberna La Manzana Envenenada",
+   "En la prisión de Muy Muy Lejano",
+   "En el castillo de Duloc",
+   "En la fábrica del Hada Madrina"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In Shrek the Third, where does Charming recruit the fairy-tale villains?",
+   "o": [
+    "At the Poison Apple tavern",
+    "In the Far Far Away prison",
+    "At Duloc castle",
+    "At the Fairy Godmother's factory"
+   ]
+  }
+ },
+ "shrek-wbvu8z": {
+  "q": "¿Qué hace Shrek con la cera de sus oídos al inicio de la primera película?",
+  "o": [
+   "Una vela",
+   "Un jabón",
+   "Una pomada",
+   "Pegamento"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Shrek make with his earwax at the start of the first film?",
+   "o": [
+    "A candle",
+    "Soap",
+    "An ointment",
+    "Glue"
+   ]
+  }
+ },
+ "shrek-hrdndb": {
+  "o": [
+   "El Flautista de Hamelín",
+   "El Capitán Garfio",
+   "El Lobo Feroz",
+   "Rumpelstiltskin"
+  ],
+  "en": {
+   "o": [
+    "The Pied Piper",
+    "Captain Hook",
+    "The Big Bad Wolf",
+    "Rumpelstiltskin"
+   ]
+  }
+ },
+ "shrek-13l42b9": {
+  "o": [
+   "El Príncipe Encantador",
+   "Lord Farquaad",
+   "Arturo",
+   "Pinocho"
+  ],
+  "en": {
+   "o": [
+    "Prince Charming",
+    "Lord Farquaad",
+    "Arthur",
+    "Pinocchio"
+   ]
+  }
+ },
+ "chavo-1iia401": {
+  "q": "¿Qué quiere evitar siempre Jaimito el cartero?",
+  "o": [
+   "La fatiga",
+   "El calor",
+   "La lluvia",
+   "Los perros"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Jaimito the mailman always want to avoid?",
+   "o": [
+    "Fatigue",
+    "The heat",
+    "The rain",
+    "Dogs"
+   ]
+  }
+ },
+ "chavo-j3s2uh": {
+  "q": "¿Qué dice el Chavo cuando se le escapa algo que no debía decir?",
+  "o": [
+   "«¡Se me chispoteó!»",
+   "«¡Fue sin querer queriendo!»",
+   "«¡Ay, qué bonito!»",
+   "«¡Pácatelas!»"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does El Chavo say when he lets slip something he shouldn't?",
+   "o": [
+    "\"It slipped out!\"",
+    "\"I didn't mean to, but I did!\"",
+    "\"Oh, how nice!\"",
+    "\"Wham!\""
+   ]
+  }
+ },
+ "chavo-13jd547": {
+  "q": "¿Qué le pasa al Señor Barriga casi cada vez que llega a la vecindad?",
+  "o": [
+   "El Chavo lo golpea sin querer",
+   "Se tropieza con el barril",
+   "Lo muerde Satanás",
+   "Le cae agua encima"
+  ],
+  "d": 1,
+  "en": {
+   "q": "What happens to Señor Barriga almost every time he arrives at the neighborhood?",
+   "o": [
+    "El Chavo accidentally hits him",
+    "He trips over the barrel",
+    "Satanás bites him",
+    "He gets soaked with water"
+   ]
+  }
+ },
+ "chavo-sfxi70": {
+  "q": "¿Qué vende Doña Florinda en el famoso episodio en que el Chavo se antoja?",
+  "o": [
+   "Churros",
+   "Tamales",
+   "Elotes",
+   "Paletas"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Doña Florinda sell in the famous episode where El Chavo craves them?",
+   "o": [
+    "Churros",
+    "Tamales",
+    "Corn on the cob",
+    "Popsicles"
+   ]
+  }
+ },
+ "chavo-rwz6r7": {
+  "q": "¿Cómo le dice Doña Florinda a Quico?",
+  "o": [
+   "Tesoro",
+   "Mi rey",
+   "Corazón",
+   "Bebé"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Doña Florinda call Quico?",
+   "o": [
+    "Treasure",
+    "My king",
+    "Sweetheart",
+    "Baby"
+   ]
+  }
+ },
+ "chavo-xm5nfg": {
+  "q": "¿Qué frase repite el Chavo cuando está de acuerdo con algo?",
+  "o": [
+   "«¡Eso, eso, eso!»",
+   "«¡Chanfle!»",
+   "«¡Ta, ta, ta, ta, ta!»",
+   "«¡Pácatelas!»"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What phrase does El Chavo repeat when he agrees with something?",
+   "o": [
+    "\"That's it, that's it, that's it!\"",
+    "\"Chanfle!\"",
+    "\"Ta, ta, ta, ta, ta!\"",
+    "\"Wham!\""
+   ]
+  }
+ },
+ "chavo-1gq56ym": {
+  "q": "¿Qué lleva siempre Jaimito el cartero, aunque nunca lo maneja?",
+  "o": [
+   "Una bicicleta",
+   "Una motocicleta",
+   "Un triciclo",
+   "Un burro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Jaimito the mailman always have with him, even though he never rides it?",
+   "o": [
+    "A bicycle",
+    "A motorcycle",
+    "A tricycle",
+    "A donkey"
+   ]
+  }
+ },
+ "chavo-1q1gf48": {
+  "q": "¿Qué parte de la cara de Quico es la más famosa?",
+  "o": [
+   "Sus cachetes",
+   "Su nariz",
+   "Sus orejas",
+   "Sus pecas"
+  ],
+  "d": 1,
+  "en": {
+   "q": "Which part of Quico's face is the most famous?",
+   "o": [
+    "His cheeks",
+    "His nose",
+    "His ears",
+    "His freckles"
+   ]
+  }
+ },
+ "chavo-6o132i": {
+  "q": "¿En qué número de departamento vive Doña Florinda?",
+  "o": [
+   "En el 14",
+   "En el 72",
+   "En el 71",
+   "En el 8"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which apartment number does Doña Florinda live in?",
+   "o": [
+    "14",
+    "72",
+    "71",
+    "8"
+   ]
+  }
+ },
+ "peaky-1k01jox": {
+  "q": "¿Qué encargado de los partidos de fútbol amañados acaba asesinado por Duke?",
+  "en": {
+   "q": "Which man running the fixed football racket ends up killed by Duke?"
+  }
+ },
+ "peaky-e6bxbj": {
+  "q": "¿Cómo se llama la comandante del IRA conocida como Captain Swing?",
+  "en": {
+   "q": "What is the name of the IRA commander known as Captain Swing?"
+  }
+ },
+ "peaky-1t6ryi5": {
+  "q": "¿Cómo muere Grace, la esposa de Tommy?",
+  "o": [
+   "Le disparan en una gala",
+   "Muere en el parto",
+   "La envenenan",
+   "En un incendio"
+  ],
+  "d": 2,
+  "en": {
+   "q": "How does Grace, Tommy's wife, die?",
+   "o": [
+    "She's shot at a gala",
+    "In childbirth",
+    "She's poisoned",
+    "In a fire"
+   ]
+  }
+ },
+ "peaky-1nutrfe": {
+  "q": "¿Quién mata a Polly Gray?",
+  "o": [
+   "El IRA",
+   "Los Changretta",
+   "Oswald Mosley",
+   "Alfie Solomons"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who kills Polly Gray?",
+   "o": [
+    "The IRA",
+    "The Changrettas",
+    "Oswald Mosley",
+    "Alfie Solomons"
+   ]
+  }
+ },
+ "peaky-18qtygw": {
+  "q": "¿Qué negocio usa Alfie Solomons como fachada para su destilería?",
+  "o": [
+   "Una panadería",
+   "Una carnicería",
+   "Una sastrería",
+   "Una taberna"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What business does Alfie Solomons use as a front for his distillery?",
+   "o": [
+    "A bakery",
+    "A butcher's shop",
+    "A tailor's shop",
+    "A tavern"
+   ]
+  }
+ },
+ "peaky-1pufuh0": {
+  "q": "¿De qué enfermedad muere Ruby, la hija de Tommy?",
+  "o": [
+   "De tuberculosis",
+   "De gripe española",
+   "De sarampión",
+   "De difteria"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What illness does Ruby, Tommy's daughter, die of?",
+   "o": [
+    "Tuberculosis",
+    "Spanish flu",
+    "Measles",
+    "Diphtheria"
+   ]
+  }
+ },
+ "peaky-4owreu": {
+  "q": "¿Qué le diagnostica su médico a Tommy en la sexta temporada?",
+  "o": [
+   "Un tuberculoma en el cerebro",
+   "Cáncer de pulmón",
+   "Tuberculosis pulmonar",
+   "Una falla del corazón"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Tommy's doctor diagnose him with in season six?",
+   "o": [
+    "A tuberculoma in the brain",
+    "Lung cancer",
+    "Pulmonary tuberculosis",
+    "Heart failure"
+   ]
+  }
+ },
+ "peaky-bg20gz": {
+  "q": "¿Qué le hace Tommy a Alfie Solomons en una playa al final de la cuarta temporada?",
+  "o": [
+   "Le dispara en la cara",
+   "Lo deja libre",
+   "Lo entrega a la policía",
+   "Lo obliga a irse a Nueva York"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Tommy do to Alfie Solomons on a beach at the end of season four?",
+   "o": [
+    "Shoots him in the face",
+    "Lets him go",
+    "Hands him to the police",
+    "Forces him to leave for New York"
+   ]
+  }
+ },
+ "theboys-14bbl9p": {
+  "q": "¿Qué hace Homelander con los pasajeros del vuelo 37?",
+  "o": [
+   "Los deja morir",
+   "Los salva a todos",
+   "Salva solo a los niños",
+   "Aterriza el avión en el mar"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Homelander do with the passengers of Flight 37?",
+   "o": [
+    "Lets them die",
+    "Saves them all",
+    "Saves only the children",
+    "Lands the plane in the sea"
+   ]
+  }
+ },
+ "theboys-1jggpix": {
+  "q": "¿Cómo se llama el pulpo amigo de The Deep?",
+  "o": [
+   "Timothy",
+   "Tentáculo",
+   "Marvin",
+   "Oliver"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of The Deep's octopus friend?",
+   "o": [
+    "Timothy",
+    "Tentacle",
+    "Marvin",
+    "Oliver"
+   ]
+  }
+ },
+ "theboys-1dx80e6": {
+  "q": "¿De dónde saca su poder Starlight?",
+  "o": [
+   "Absorbe la luz y la electricidad",
+   "Controla el fuego",
+   "Lee la mente",
+   "Vuela a gran velocidad"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Where does Starlight get her power from?",
+   "o": [
+    "She absorbs light and electricity",
+    "She controls fire",
+    "She reads minds",
+    "She flies at high speed"
+   ]
+  }
+ },
+ "theboys-1r5lwjz": {
+  "q": "¿En qué trabajaba Hughie antes de unirse a Los Chicos?",
+  "o": [
+   "En una tienda de electrónica",
+   "En un periódico",
+   "En la policía",
+   "En un hospital"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Where did Hughie work before joining The Boys?",
+   "o": [
+    "At an electronics store",
+    "At a newspaper",
+    "In the police",
+    "At a hospital"
+   ]
+  }
+ },
+ "theboys-1jh9niu": {
+  "q": "¿Qué poder oculta Victoria Neuman?",
+  "o": [
+   "Hacer estallar cabezas",
+   "Leer la mente",
+   "Volverse invisible",
+   "Controlar a la gente"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What power does Victoria Neuman hide?",
+   "o": [
+    "Making heads explode",
+    "Reading minds",
+    "Turning invisible",
+    "Controlling people"
+   ]
+  }
+ },
+ "theoffice-hglm64": {
+  "q": "¿Dónde le propone matrimonio Jim a Pam?",
+  "o": [
+   "En una gasolinera bajo la lluvia",
+   "En la azotea de la oficina",
+   "En una cena en Nueva York",
+   "En la fiesta de Navidad"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Where does Jim propose to Pam?",
+   "o": [
+    "At a gas station in the rain",
+    "On the office roof",
+    "At a dinner in New York",
+    "At the Christmas party"
+   ]
+  }
+ },
+ "theoffice-s3f16w": {
+  "q": "Cuando Jim imita a Dwight, ¿qué oso dice que es el mejor?",
+  "o": [
+   "El oso negro",
+   "El oso pardo",
+   "El oso polar",
+   "El panda"
+  ],
+  "d": 2,
+  "en": {
+   "q": "When Jim impersonates Dwight, which bear does he say is best?",
+   "o": [
+    "Black bear",
+    "Brown bear",
+    "Polar bear",
+    "Panda"
+   ]
+  }
+ },
+ "theoffice-12ngnf6": {
+  "q": "¿Cómo se llama el grupo a capela de Andy en Cornell?",
+  "o": [
+   "Here Comes Treble",
+   "Scrantonicity",
+   "The Dundies",
+   "Cornell Tones"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Andy's a cappella group at Cornell?",
+   "o": [
+    "Here Comes Treble",
+    "Scrantonicity",
+    "The Dundies",
+    "Cornell Tones"
+   ]
+  }
+ },
+ "theoffice-113lxyq": {
+  "q": "¿Qué promesa incumple Michael con los alumnos de «Scott's Tots»?",
+  "o": [
+   "Pagarles la universidad",
+   "Comprarles computadoras",
+   "Llevarlos a Disney",
+   "Darles trabajo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What promise does Michael break with the kids in \"Scott's Tots\"?",
+   "o": [
+    "Paying for their college",
+    "Buying them computers",
+    "Taking them to Disney",
+    "Giving them jobs"
+   ]
+  }
+ },
+ "casadepapel-ikqxzp": {
+  "q": "¿De qué rehén se enamora Denver durante el primer atraco?",
+  "o": [
+   "Mónica Gaztambide",
+   "Ariadna Cascales",
+   "Raquel Murillo",
+   "Alison Parker"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which hostage does Denver fall for during the first heist?",
+   "o": [
+    "Mónica Gaztambide",
+    "Ariadna Cascales",
+    "Raquel Murillo",
+    "Alison Parker"
+   ]
+  }
+ },
+ "casadepapel-146hcwr": {
+  "q": "¿Qué tarea dirige Nairobi dentro de la Fábrica de Moneda?",
+  "o": [
+   "La impresión de los billetes",
+   "La vigilancia de los rehenes",
+   "Las comunicaciones con el Profesor",
+   "La excavación del túnel"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What task does Nairobi run inside the Royal Mint?",
+   "o": [
+    "Printing the money",
+    "Guarding the hostages",
+    "Communications with the Professor",
+    "Digging the tunnel"
+   ]
+  }
+ },
+ "casadepapel-112fd58": {
+  "q": "¿Qué enfermedad padece Berlín?",
+  "o": [
+   "Una miopatía degenerativa",
+   "Un cáncer de pulmón",
+   "Una cardiopatía",
+   "Esclerosis múltiple"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What illness does Berlin suffer from?",
+   "o": [
+    "A degenerative myopathy",
+    "Lung cancer",
+    "A heart condition",
+    "Multiple sclerosis"
+   ]
+  }
+ },
+ "casadepapel-ar8hjb": {
+  "q": "¿Cómo se llama el hijo de Nairobi?",
+  "o": [
+   "Axel",
+   "Rafael",
+   "Cincinnati",
+   "Paulo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Nairobi's son?",
+   "o": [
+    "Axel",
+    "Rafael",
+    "Cincinnati",
+    "Paulo"
+   ]
+  }
+ },
+ "casadepapel-ejekyz": {
+  "q": "¿Cómo apodan al hijo de Denver y Estocolmo?",
+  "o": [
+   "Cincinnati",
+   "Axel",
+   "Miami",
+   "Detroit"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the nickname of Denver and Stockholm's son?",
+   "o": [
+    "Cincinnati",
+    "Axel",
+    "Miami",
+    "Detroit"
+   ]
+  }
+ },
+ "hotd-tnvxe9": {
+  "q": "¿Qué le pasa al cuerpo de Viserys a lo largo de la primera temporada?",
+  "o": [
+   "Se va pudriendo por una enfermedad",
+   "Se queda ciego",
+   "Pierde la voz",
+   "Queda paralizado"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What happens to Viserys' body over the first season?",
+   "o": [
+    "A disease slowly rots it",
+    "He goes blind",
+    "He loses his voice",
+    "He becomes paralyzed"
+   ]
+  }
+ },
+ "hotd-1i6h5gz": {
+  "q": "¿Qué cree Alicent que significan las últimas palabras de Viserys?",
+  "o": [
+   "Que quería a su hijo Aegon como rey",
+   "Que perdonaba a Daemon",
+   "Que Rhaenyra debía casarse otra vez",
+   "Que temía a los Velaryon"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Alicent believe Viserys' last words meant?",
+   "o": [
+    "That he wanted her son Aegon as king",
+    "That he forgave Daemon",
+    "That Rhaenyra should remarry",
+    "That he feared the Velaryons"
+   ]
+  }
+ },
+ "hotd-aft30n": {
+  "q": "¿Qué profecía de Aegon el Conquistador se transmiten los herederos Targaryen?",
+  "o": [
+   "La Canción de Hielo y Fuego",
+   "La Danza de los Dragones",
+   "El Valonqar",
+   "La Larga Noche"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which prophecy of Aegon the Conqueror is passed down among Targaryen heirs?",
+   "o": [
+    "The Song of Ice and Fire",
+    "The Dance of the Dragons",
+    "The Valonqar",
+    "The Long Night"
+   ]
+  }
+ },
+ "hotd-ivafek": {
+  "q": "¿Qué maqueta construye Viserys a lo largo de la serie?",
+  "o": [
+   "Una de la antigua Valyria",
+   "Una de Desembarco del Rey",
+   "Una de Rocadragón",
+   "Una de Poniente entero"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What model does Viserys build throughout the series?",
+   "o": [
+    "One of Old Valyria",
+    "One of King's Landing",
+    "One of Dragonstone",
+    "One of all Westeros"
+   ]
+  }
+ },
+ "narcos-xiqhe4": {
+  "q": "¿Quién narra la tercera temporada de Narcos?",
+  "o": [
+   "Javier Peña",
+   "Steve Murphy",
+   "Jorge Salcedo",
+   "Gilberto Rodríguez"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who narrates the third season of Narcos?",
+   "o": [
+    "Javier Peña",
+    "Steve Murphy",
+    "Jorge Salcedo",
+    "Gilberto Rodríguez"
+   ]
+  }
+ },
+ "narcos-zibkpc": {
+  "q": "¿Qué cultivo hace rico a Rafael Caro Quintero en Narcos: México?",
+  "o": [
+   "La marihuana sin semilla",
+   "La amapola",
+   "La hoja de coca",
+   "El peyote"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which crop makes Rafael Caro Quintero rich in Narcos: Mexico?",
+   "o": [
+    "Seedless marijuana",
+    "Poppy",
+    "Coca leaf",
+    "Peyote"
+   ]
+  }
+ },
+ "narcos-1p6ovoj": {
+  "q": "¿Qué quema Escobar para calentar a su hija mientras se esconde?",
+  "o": [
+   "Dos millones de dólares",
+   "Los muebles de la casa",
+   "Sus documentos",
+   "La ropa de Tata"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Escobar burn to keep his daughter warm while hiding?",
+   "o": [
+    "Two million dollars",
+    "The furniture",
+    "His documents",
+    "Tata's clothes"
+   ]
+  }
+ },
+ "narcos-b984wh": {
+  "q": "¿Cómo muere Gustavo Gaviria en la serie?",
+  "o": [
+   "Lo mata el Bloque de Búsqueda",
+   "Lo envenena el Cartel de Cali",
+   "Muere en la cárcel",
+   "Se quita la vida"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How does Gustavo Gaviria die in the series?",
+   "o": [
+    "The Search Bloc kills him",
+    "The Cali Cartel poisons him",
+    "He dies in prison",
+    "He takes his own life"
+   ]
+  }
+ },
+ "narcos-1nsn2kh": {
+  "q": "¿Qué país le niega la entrada a la familia de Escobar en la segunda temporada?",
+  "o": [
+   "Alemania",
+   "Estados Unidos",
+   "España",
+   "Venezuela"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which country refuses entry to Escobar's family in season two?",
+   "o": [
+    "Germany",
+    "The United States",
+    "Spain",
+    "Venezuela"
+   ]
+  }
+ },
+ "squidgame-11p06l": {
+  "q": "¿Qué símbolos lleva la tarjeta que reparte el Reclutador?",
+  "o": [
+   "Círculo, triángulo y cuadrado",
+   "Una estrella y un paraguas",
+   "Un calamar y una muñeca",
+   "El número 456"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What symbols are on the card the Recruiter hands out?",
+   "o": [
+    "Circle, triangle and square",
+    "A star and an umbrella",
+    "A squid and a doll",
+    "The number 456"
+   ]
+  }
+ },
+ "squidgame-25wm4f": {
+  "q": "¿Qué hace Il-nam con Gi-hun en su lecho de muerte?",
+  "o": [
+   "Apuesta por un hombre tirado en la nieve",
+   "Le entrega su testamento",
+   "Le confiesa que mató a Sang-woo",
+   "Le pide que dirija los juegos"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Il-nam do with Gi-hun on his deathbed?",
+   "o": [
+    "Bets on a man lying in the snow",
+    "Hands him his will",
+    "Confesses he killed Sang-woo",
+    "Asks him to run the games"
+   ]
+  }
+ },
+ "indiana-1cy2m78": {
+  "q": "¿De dónde saca Indiana Jones su apodo?",
+  "o": [
+   "Del perro de la familia",
+   "Del estado donde nació",
+   "De su caballo",
+   "De su abuelo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Where does Indiana Jones get his nickname from?",
+   "o": [
+    "The family dog",
+    "The state where he was born",
+    "His horse",
+    "His grandfather"
+   ]
+  }
+ },
+ "indiana-8fxlnc": {
+  "q": "En La última cruzada, ¿cómo se hace el joven Indy la cicatriz de la barbilla?",
+  "o": [
+   "Con un látigo en el tren del circo",
+   "Peleando con un león",
+   "En una caída a caballo",
+   "Con una espada en un barco"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In The Last Crusade, how does young Indy get the scar on his chin?",
+   "o": [
+    "With a whip on the circus train",
+    "Fighting a lion",
+    "Falling off a horse",
+    "With a sword on a ship"
+   ]
+  }
+ },
+ "indiana-5mbwwp": {
+  "q": "¿Qué postre le sirven a Willie en el banquete del palacio de Pankot?",
+  "o": [
+   "Sesos de mono helados",
+   "Ojos de cabra fritos",
+   "Lengua de búfalo",
+   "Caracoles al curry"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What dessert is served to Willie at the Pankot Palace banquet?",
+   "o": [
+    "Chilled monkey brains",
+    "Fried goat eyes",
+    "Buffalo tongue",
+    "Curried snails"
+   ]
+  }
+ },
+ "indiana-1wjcw51": {
+  "q": "¿Cómo se llama el amigo de Indy que dirige el museo de su universidad?",
+  "o": [
+   "Marcus Brody",
+   "Abner Ravenwood",
+   "Walter Donovan",
+   "René Belloq"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of Indy's friend who runs his university's museum?",
+   "o": [
+    "Marcus Brody",
+    "Abner Ravenwood",
+    "Walter Donovan",
+    "René Belloq"
+   ]
+  }
+ },
+ "matrix-1eyusky": {
+  "o": [
+   "Rage Against the Machine",
+   "Marilyn Manson",
+   "Rammstein",
+   "The Prodigy"
+  ],
+  "en": {
+   "o": [
+    "Rage Against the Machine",
+    "Marilyn Manson",
+    "Rammstein",
+    "The Prodigy"
+   ]
+  }
+ },
+ "matrix-6m9oid": {
+  "q": "¿Qué come Cypher dentro de la Matrix mientras pacta con el agente Smith?",
+  "o": [
+   "Un filete",
+   "Una langosta",
+   "Una hamburguesa",
+   "Un plato de pasta"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Cypher eat inside the Matrix while making his deal with Agent Smith?",
+   "o": [
+    "A steak",
+    "A lobster",
+    "A burger",
+    "A plate of pasta"
+   ]
+  }
+ },
+ "matrix-1jrvw2s": {
+  "q": "¿Qué le dijo el Oráculo a Trinity sobre su futuro?",
+  "o": [
+   "Que se enamoraría del Elegido",
+   "Que moriría en Zion",
+   "Que ella sería la Elegida",
+   "Que traicionaría a Morfeo"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What did the Oracle tell Trinity about her future?",
+   "o": [
+    "She would fall in love with the One",
+    "She would die in Zion",
+    "She would be the One",
+    "She would betray Morpheus"
+   ]
+  }
+ },
+ "matrix-1okumk7": {
+  "q": "¿Qué rompe Neo en la cocina del Oráculo?",
+  "o": [
+   "Un jarrón",
+   "Una taza",
+   "Una ventana",
+   "Un plato"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Neo break in the Oracle's kitchen?",
+   "o": [
+    "A vase",
+    "A cup",
+    "A window",
+    "A plate"
+   ]
+  }
+ },
+ "matrix-1hx2vuq": {
+  "q": "Según Trinity, ¿qué significa un déjà vu como el del gato negro?",
+  "o": [
+   "Que cambiaron algo en la Matrix",
+   "Que alguien está despertando",
+   "Que va a morir alguien",
+   "Que el Oráculo te observa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "According to Trinity, what does a déjà vu like the black cat mean?",
+   "o": [
+    "They changed something in the Matrix",
+    "Someone is waking up",
+    "Someone is about to die",
+    "The Oracle is watching you"
+   ]
+  }
+ },
+ "betty-1q7897k": {
+  "q": "¿Qué intenta Patricia cuando cree que Nicolás es rico?",
+  "o": [
+   "Enamorarlo para sacarle dinero",
+   "Denunciarlo ante Daniel",
+   "Contratarlo en Ecomoda",
+   "Presentárselo a Marcela"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Patricia try when she thinks Nicolás is rich?",
+   "o": [
+    "Seduce him to get his money",
+    "Report him to Daniel",
+    "Hire him at Ecomoda",
+    "Introduce him to Marcela"
+   ]
+  }
+ },
+ "betty-1le7yg": {
+  "q": "¿Quién le lee las cartas a Betty en el cuartel de las feas?",
+  "o": [
+   "Mariana",
+   "Aura María",
+   "Inesita",
+   "Sandra"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who reads Betty's cards in the \"ugly girls' headquarters\"?",
+   "o": [
+    "Mariana",
+    "Aura María",
+    "Inesita",
+    "Sandra"
+   ]
+  }
+ },
+ "betty-ldzejz": {
+  "q": "¿Cómo se llama la canción de la entrada de la telenovela?",
+  "o": [
+   "«Se dice de mí»",
+   "«La fea más bella»",
+   "«Bésame mucho»",
+   "«Contigo aprendí»"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the telenovela's opening song?",
+   "o": [
+    "\"Se dice de mí\"",
+    "\"La fea más bella\"",
+    "\"Bésame mucho\"",
+    "\"Contigo aprendí\""
+   ]
+  }
+ },
+ "betty-1r8zug2": {
+  "q": "¿Qué le pide Armando a Betty que haga con los informes para la junta?",
+  "o": [
+   "Maquillarlos",
+   "Destruirlos",
+   "Firmarlos ella",
+   "Entregárselos a Daniel"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Armando ask Betty to do with the board reports?",
+   "o": [
+    "Doctor them",
+    "Destroy them",
+    "Sign them herself",
+    "Hand them to Daniel"
+   ]
+  }
+ },
+ "betty-1kfhrz5": {
+  "q": "¿Qué cargo le da Betty a Nicolás Mora?",
+  "o": [
+   "Gerente general de Terramoda",
+   "Contador de Ecomoda",
+   "Asistente de presidencia",
+   "Abogado de la empresa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What job does Betty give Nicolás Mora?",
+   "o": [
+    "General manager of Terramoda",
+    "Ecomoda's accountant",
+    "Presidential assistant",
+    "The company's lawyer"
+   ]
+  }
+ },
+ "tlou-164vgzt": {
+  "d": 2
+ },
+ "tlou-b7md89": {
+  "d": 2
+ },
+ "tlou-1qknuri": {
+  "d": 2
+ },
+ "tlou-1finohg": {
+  "q": "¿Qué lee Ellie en voz alta para hacer reír a Joel?",
+  "o": [
+   "Un libro de chistes",
+   "Una novela de terror",
+   "Un manual de supervivencia",
+   "El diario de Riley"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Ellie read aloud to make Joel laugh?",
+   "o": [
+    "A joke book",
+    "A horror novel",
+    "A survival manual",
+    "Riley's diary"
+   ]
+  }
+ },
+ "tlou-1kbcx64": {
+  "q": "¿Qué regalo de cumpleaños le hace Joel a Ellie en Part II?",
+  "o": [
+   "Una visita a un museo con dinosaurios",
+   "Un cachorro",
+   "Una navaja",
+   "Un caballo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What birthday present does Joel give Ellie in Part II?",
+   "o": [
+    "A visit to a museum with dinosaurs",
+    "A puppy",
+    "A switchblade",
+    "A horse"
+   ]
+  }
+ },
+ "tlou-z68zgk": {
+  "q": "¿Qué hace Tess cuando descubre que está infectada?",
+  "o": [
+   "Se sacrifica para que Joel y Ellie escapen",
+   "Huye sola a Boston",
+   "Le pide a Joel que la mate",
+   "Se une a las Luciérnagas"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What does Tess do when she finds out she's infected?",
+   "o": [
+    "Sacrifices herself so Joel and Ellie can escape",
+    "Flees alone to Boston",
+    "Asks Joel to kill her",
+    "Joins the Fireflies"
+   ]
+  }
+ },
+ "brooklyn99-1h9skf7": {
+  "q": "¿Qué les pasa a Jake y a Rosa al final de la cuarta temporada?",
+  "o": [
+   "Van presos tras una trampa",
+   "Los ascienden a sargentos",
+   "Los mandan a Florida",
+   "Se infiltran en la mafia"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What happens to Jake and Rosa at the end of season four?",
+   "o": [
+    "They're sent to prison after being framed",
+    "They're promoted to sergeant",
+    "They're sent to Florida",
+    "They go undercover in the mob"
+   ]
+  }
+ },
+ "brooklyn99-rv63jq": {
+  "q": "¿Qué le pasa a Gina al final de la tercera temporada?",
+  "o": [
+   "La atropella un autobús",
+   "La despiden",
+   "Se va a vivir a Florida",
+   "La secuestran"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What happens to Gina at the end of season three?",
+   "o": [
+    "She gets hit by a bus",
+    "She's fired",
+    "She moves to Florida",
+    "She's kidnapped"
+   ]
+  }
+ },
+ "himym-j5u3zy": {
+  "q": "¿Cuál es el apellido de Robin?",
+  "o": [
+   "Scherbatsky",
+   "Aldrin",
+   "Eriksen",
+   "Stinson"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Robin's last name?",
+   "o": [
+    "Scherbatsky",
+    "Aldrin",
+    "Eriksen",
+    "Stinson"
+   ]
+  }
+ },
+ "himym-12px63l": {
+  "q": "¿Qué tatuaje se hace Ted en la espalda baja y luego tiene que quitarse?",
+  "o": [
+   "Una mariposa",
+   "Un corazón",
+   "Una estrella",
+   "Un delfín"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What tattoo does Ted get on his lower back and later has to remove?",
+   "o": [
+    "A butterfly",
+    "A heart",
+    "A star",
+    "A dolphin"
+   ]
+  }
+ },
+ "inuyasha-bn40dx": {
+  "q": "¿De qué está forjada Tessaiga?",
+  "o": [
+   "De un colmillo de su padre",
+   "De una garra de Naraku",
+   "Del acero de un volcán",
+   "De un fragmento de la Perla"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is Tessaiga forged from?",
+   "o": [
+    "One of his father's fangs",
+    "One of Naraku's claws",
+    "Volcanic steel",
+    "A shard of the Jewel"
+   ]
+  }
+ },
+ "kaguya-1gjs1pm": {
+  "o": [
+   "Dejó a la familia y se llevó a Kei",
+   "Se fue al extranjero por trabajo",
+   "Falleció cuando eran niños",
+   "Los dejó con los abuelos"
+  ],
+  "en": {
+   "o": [
+    "She left the family and took Kei",
+    "She moved abroad for work",
+    "She died when they were kids",
+    "She left them with their grandparents"
+   ]
+  }
+ },
+ "kaguya-1ihw2b4": {
+  "q": "¿Qué relación tiene el padre de Hayasaka con Kaguya?",
+  "o": [
+   "Es su padrino",
+   "Es su tío",
+   "Es su profesor",
+   "Es su mayordomo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How is Hayasaka's father related to Kaguya?",
+   "o": [
+    "He's her godfather",
+    "He's her uncle",
+    "He's her teacher",
+    "He's her butler"
+   ]
+  }
+ },
+ "kaguya-a8e0f4": {
+  "q": "¿Qué fue la madre de Hayasaka para Kaguya cuando era bebé?",
+  "o": [
+   "Su nodriza",
+   "Su niñera de noche",
+   "Su médica",
+   "Su madrina"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What was Hayasaka's mother to Kaguya when she was a baby?",
+   "o": [
+    "Her wet nurse",
+    "Her night nanny",
+    "Her doctor",
+    "Her godmother"
+   ]
+  }
+ },
+ "kaguya-1qfrowd": {
+  "q": "¿Cómo se llama el baile viral de Chika en el ending de la primera temporada?",
+  "o": [
+   "Chikatto Chika Chika",
+   "Love Detective Chika",
+   "Chika Chika Dance",
+   "Fujiwara Step"
+  ],
+  "d": 2,
+  "en": {
+   "q": "What is the name of Chika's viral dance in the first season's ending?",
+   "o": [
+    "Chikatto Chika Chika",
+    "Love Detective Chika",
+    "Chika Chika Dance",
+    "Fujiwara Step"
+   ]
+  }
+ },
+ "kaguya-1nl1i8n": {
+  "q": "¿Qué parentesco tiene Mikado Shijo con Maki?",
+  "o": [
+   "Es su hermano gemelo",
+   "Es su primo",
+   "Es su hermano mayor",
+   "Es su prometido"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How is Mikado Shijo related to Maki?",
+   "o": [
+    "He's her twin brother",
+    "He's her cousin",
+    "He's her older brother",
+    "He's her fiancé"
+   ]
+  }
+ },
+ "kaguya-14rumoy": {
+  "q": "¿De quién estuvo enamorada Maki durante siete años?",
+  "o": [
+   "De Tsubasa",
+   "De Ishigami",
+   "De Miyuki",
+   "De Mikado"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Who was Maki in love with for seven years?",
+   "o": [
+    "Tsubasa",
+    "Ishigami",
+    "Miyuki",
+    "Mikado"
+   ]
+  }
+ },
+ "kaguya-kvpylw": {
+  "q": "¿A qué se dedicaba antes el padre de Miyuki?",
+  "o": [
+   "Era dueño de una fábrica",
+   "Era profesor",
+   "Era policía",
+   "Era cocinero"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What did Miyuki's father do before?",
+   "o": [
+    "He owned a factory",
+    "He was a teacher",
+    "He was a police officer",
+    "He was a cook"
+   ]
+  }
+ },
+ "konosuba-1kk548x": {
+  "q": "¿Qué diosa recibe a Kazuma en el más allá cuando muere en el mundo de fantasía?",
+  "o": [
+   "Eris",
+   "Aqua",
+   "Wolbach",
+   "Regina"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which goddess greets Kazuma in the afterlife when he dies in the fantasy world?",
+   "o": [
+    "Eris",
+    "Aqua",
+    "Wolbach",
+    "Regina"
+   ]
+  }
+ },
+ "oshinoko-im7ftu": {
+  "o": [
+   "Kaguya-sama: Love Is War",
+   "Chainsaw Man",
+   "Haikyuu!!",
+   "Blue Lock"
+  ],
+  "en": {
+   "o": [
+    "Kaguya-sama: Love Is War",
+    "Chainsaw Man",
+    "Haikyuu!!",
+    "Blue Lock"
+   ]
+  }
+ },
+ "rezero-7wzi0g": {
+  "q": "¿Cómo se llamaba la esposa de Wilhelm, abuela de Reinhard?",
+  "o": [
+   "Theresia van Astrea",
+   "Carol Remendo",
+   "Fortuna",
+   "Pandora"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What was the name of Wilhelm's wife, Reinhard's grandmother?",
+   "o": [
+    "Theresia van Astrea",
+    "Carol Remendo",
+    "Fortuna",
+    "Pandora"
+   ]
+  }
+ },
+ "rezero-14ug9ka": {
+  "o": [
+   "Capella Emerada Lugunica",
+   "Regulus Corneas",
+   "Lye Batenkaitos",
+   "Roy Alphard"
+  ],
+  "en": {
+   "o": [
+    "Capella Emerada Lugunica",
+    "Regulus Corneas",
+    "Lye Batenkaitos",
+    "Roy Alphard"
+   ]
+  }
+ },
+ "rezero-13et2ac": {
+  "q": "¿Qué percibe Rem en Subaru que la hace desconfiar de él?",
+  "o": [
+   "El olor de la Bruja",
+   "Un aura de demonio",
+   "Una marca en la mano",
+   "Una voz extraña"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Rem sense on Subaru that makes her distrust him?",
+   "o": [
+    "The Witch's scent",
+    "A demon's aura",
+    "A mark on his hand",
+    "A strange voice"
+   ]
+  }
+ },
+ "slamdunk-1v6te8w": {
+  "d": 2
+ },
+ "slamdunk-937n1g": {
+  "q": "¿En qué partido se lastima la espalda Sakuragi?",
+  "o": [
+   "Contra Sannoh",
+   "Contra Kainan",
+   "Contra Ryonan",
+   "Contra Toyotama"
+  ],
+  "d": 3,
+  "en": {
+   "q": "In which game does Sakuragi hurt his back?",
+   "o": [
+    "Against Sannoh",
+    "Against Kainan",
+    "Against Ryonan",
+    "Against Toyotama"
+   ]
+  }
+ },
+ "yugioh-ttpm96": {
+  "q": "¿Qué carta completa Yugi para vencer a Kaiba en su primer duelo?",
+  "o": [
+   "Exodia",
+   "Mago Oscuro",
+   "Kuriboh",
+   "Slifer"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which card does Yugi complete to beat Kaiba in their first duel?",
+   "o": [
+    "Exodia",
+    "Dark Magician",
+    "Kuriboh",
+    "Slifer"
+   ]
+  }
+ },
+ "yuyuhakusho-e1jaxt": {
+  "q": "¿Qué pidió Toguro Menor como premio al ganar el Torneo Oscuro hace cincuenta años?",
+  "o": [
+   "Convertirse en demonio",
+   "Revivir a sus alumnos",
+   "Ser inmortal",
+   "Casarse con Genkai"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What did the Younger Toguro ask for as his prize when he won the Dark Tournament fifty years ago?",
+   "o": [
+    "To become a demon",
+    "To revive his students",
+    "To be immortal",
+    "To marry Genkai"
+   ]
+  }
+ },
+ "blackclover-1u1rqt2": {
+  "q": "¿Cómo se llama la primera espada que saca Asta de su grimorio?",
+  "o": [
+   "La Espada Matademonios",
+   "La Espada Moradora de Demonios",
+   "La Espada Destructora de Demonios",
+   "La Espada Absorbedemonios"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the first sword Asta pulls from his grimoire called?",
+   "o": [
+    "The Demon-Slayer Sword",
+    "The Demon-Dweller Sword",
+    "The Demon-Destroyer Sword",
+    "The Demon-Absorber Sword"
+   ]
+  }
+ },
+ "blackclover-1740c8o": {
+  "q": "¿Quién es en realidad Nero, el pájaro que sigue a Asta?",
+  "o": [
+   "Una humana llamada Secre",
+   "Un demonio menor",
+   "El espíritu de Yuno",
+   "Una creación de Liebe"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Who is Nero, the bird that follows Asta, really?",
+   "o": [
+    "A human named Secre",
+    "A lesser devil",
+    "Yuno's spirit",
+    "One of Liebe's creations"
+   ]
+  }
+ },
+ "blackclover-135c46w": {
+  "q": "¿Cómo se llama el espíritu del viento que acompaña a Yuno?",
+  "o": [
+   "Sylph",
+   "Salamandra",
+   "Undine",
+   "Gnomo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the wind spirit that accompanies Yuno?",
+   "o": [
+    "Sylph",
+    "Salamander",
+    "Undine",
+    "Gnome"
+   ]
+  }
+ },
+ "codegeass-spub21": {
+  "q": "¿En qué parte del cuerpo tiene C.C. la marca del Geass?",
+  "o": [
+   "En la frente",
+   "En la mano",
+   "En el cuello",
+   "En el ojo"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Where on her body does C.C. have the Geass mark?",
+   "o": [
+    "On her forehead",
+    "On her hand",
+    "On her neck",
+    "In her eye"
+   ]
+  }
+ },
+ "dandadan-9q2fok": {
+  "q": "¿Qué actor famoso adora Momo?",
+  "o": [
+   "Ken Takakura",
+   "Toshiro Mifune",
+   "Takeshi Kitano",
+   "Ken Watanabe"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which famous actor does Momo adore?",
+   "o": [
+    "Ken Takakura",
+    "Toshiro Mifune",
+    "Takeshi Kitano",
+    "Ken Watanabe"
+   ]
+  }
+ },
+ "dandadan-7gfp75": {
+  "q": "¿Cuántas «joyas» le roba la Turbo Abuela a Okarun?",
+  "o": [
+   "Dos",
+   "Una",
+   "Tres",
+   "Cuatro"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How many \"family jewels\" does Turbo Granny steal from Okarun?",
+   "o": [
+    "Two",
+    "One",
+    "Three",
+    "Four"
+   ]
+  }
+ },
+ "doraemon-7aus8b": {
+  "q": "¿Qué gadget de Doraemon encoge a las personas y las cosas?",
+  "o": [
+   "La linterna reductora",
+   "El pañuelo del tiempo",
+   "La hélice de bambú",
+   "El pan para memorizar"
+  ],
+  "d": 2,
+  "en": {
+   "q": "Which of Doraemon's gadgets shrinks people and things?",
+   "o": [
+    "The Shrink Ray Flashlight",
+    "The Time Cloth",
+    "The Bamboo Copter",
+    "The Memory Bread"
+   ]
+  }
+ },
+ "doraemon-w9gy5d": {
+  "q": "¿Cuánto pesa Doraemon según su ficha oficial?",
+  "o": [
+   "129,3 kg",
+   "100 kg",
+   "95,5 kg",
+   "150 kg"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How much does Doraemon weigh according to his official profile?",
+   "o": [
+    "129.3 kg",
+    "100 kg",
+    "95.5 kg",
+    "150 kg"
+   ]
+  }
+ },
+ "doraemon-1l81403": {
+  "q": "¿Cómo se llama el dinosaurio que cría Nobita en la primera película?",
+  "o": [
+   "Pisuke",
+   "Muku",
+   "Pero",
+   "Chiruchiru"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is the name of the dinosaur Nobita raises in the first film?",
+   "o": [
+    "Pisuke",
+    "Muku",
+    "Pero",
+    "Chiruchiru"
+   ]
+  }
+ },
+ "doraemon-s04tpe": {
+  "q": "¿En qué es un experto Nobita, aunque falle en todo lo demás?",
+  "o": [
+   "En el tiro al blanco",
+   "En el béisbol",
+   "En las matemáticas",
+   "En la natación"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What is Nobita an expert at, even though he fails at everything else?",
+   "o": [
+    "Target shooting",
+    "Baseball",
+    "Math",
+    "Swimming"
+   ]
+  }
+ },
+ "doraemon-1dbgjk2": {
+  "q": "¿En qué barrio de Tokio vive Nobita?",
+  "o": [
+   "Nerima",
+   "Shibuya",
+   "Shinjuku",
+   "Asakusa"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Tokyo ward does Nobita live in?",
+   "o": [
+    "Nerima",
+    "Shibuya",
+    "Shinjuku",
+    "Asakusa"
+   ]
+  }
+ },
+ "drstone-1s631fc": {
+  "q": "¿Qué medicina fabrica Senku para curar la neumonía de Ruri?",
+  "o": [
+   "Una sulfamida",
+   "Penicilina",
+   "Aspirina",
+   "Insulina"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What medicine does Senku make to cure Ruri's pneumonia?",
+   "o": [
+    "A sulfa drug",
+    "Penicillin",
+    "Aspirin",
+    "Insulin"
+   ]
+  }
+ },
+ "drstone-sywfre": {
+  "q": "¿De qué fruta saca Senku el alcohol para el primer líquido de revivir?",
+  "o": [
+   "De uvas",
+   "De manzanas",
+   "De higos",
+   "De fresas"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What fruit does Senku use for the alcohol in the first revival fluid?",
+   "o": [
+    "Grapes",
+    "Apples",
+    "Figs",
+    "Strawberries"
+   ]
+  }
+ },
+ "eva-1hfmw13": {
+  "q": "¿Qué Ángel es en realidad Kaworu Nagisa?",
+  "o": [
+   "Tabris",
+   "Armisael",
+   "Bardiel",
+   "Zeruel"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which Angel is Kaworu Nagisa really?",
+   "o": [
+    "Tabris",
+    "Armisael",
+    "Bardiel",
+    "Zeruel"
+   ]
+  }
+ },
+ "haikyuu-1ytq01k": {
+  "q": "¿Contra qué escuela cae Karasuno en el Nacional de Primavera?",
+  "o": [
+   "Kamomedai",
+   "Inarizaki",
+   "Nekoma",
+   "Fukurodani"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which school knocks Karasuno out of the Spring Nationals?",
+   "o": [
+    "Kamomedai",
+    "Inarizaki",
+    "Nekoma",
+    "Fukurodani"
+   ]
+  }
+ },
+ "ranma-14etbcs": {
+  "q": "¿Qué técnica le enseña Cologne a Ranma usando el calor del rival en su contra?",
+  "o": [
+   "Hiryu Shoten Ha",
+   "Shi Shi Hokodan",
+   "Moko Takabisha",
+   "Kachu Tenshin Amaguriken"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which technique does Cologne teach Ranma that turns the opponent's heat against them?",
+   "o": [
+    "Hiryu Shoten Ha",
+    "Shi Shi Hokodan",
+    "Moko Takabisha",
+    "Kachu Tenshin Amaguriken"
+   ]
+  }
+ },
+ "sao-1mryt8m": {
+  "q": "¿Contra qué jefe del piso 74 usa Kirito sus dos espadas por primera vez en público?",
+  "o": [
+   "The Gleam Eyes",
+   "The Skull Reaper",
+   "Illfang the Kobold Lord",
+   "Nicholas the Renegade"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Against which floor 74 boss does Kirito first use dual swords in front of others?",
+   "o": [
+    "The Gleam Eyes",
+    "The Skull Reaper",
+    "Illfang the Kobold Lord",
+    "Nicholas the Renegade"
+   ]
+  }
+ },
+ "csm-1xjecon": {
+  "q": "¿Qué le pide Pochita a Denji a cambio de su corazón?",
+  "o": [
+   "Que le muestre sus sueños",
+   "Que mate a Makima",
+   "Que lo alimente cada día",
+   "Que nunca se enamore"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What does Pochita ask Denji for in exchange for his heart?",
+   "o": [
+    "To show him his dreams",
+    "To kill Makima",
+    "To feed him every day",
+    "To never fall in love"
+   ]
+  }
+ },
+ "csm-v63vm4": {
+  "q": "¿Qué pasa con Denji después de que los zombis lo despedazan?",
+  "o": [
+   "Pochita se fusiona con él",
+   "Makima lo resucita",
+   "Power le da su sangre",
+   "Aki lo rescata"
+  ],
+  "d": 1,
+  "en": {
+   "q": "What happens to Denji after the zombies tear him apart?",
+   "o": [
+    "Pochita fuses with him",
+    "Makima revives him",
+    "Power gives him her blood",
+    "Aki rescues him"
+   ]
+  }
+ },
+ "csm-1l5nzym": {
+  "q": "¿Qué precio paga Aki por usar al Demonio de la Maldición?",
+  "o": [
+   "Años de vida",
+   "Un ojo",
+   "El sentido del gusto",
+   "Sus recuerdos"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What price does Aki pay for using the Curse Devil?",
+   "o": [
+    "Years of his life",
+    "An eye",
+    "His sense of taste",
+    "His memories"
+   ]
+  }
+ },
+ "csm-1ka7eg": {
+  "q": "¿Qué entregó Himeno al Demonio Fantasma por su contrato?",
+  "o": [
+   "Un ojo",
+   "Una mano",
+   "Su voz",
+   "Diez años de vida"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What did Himeno give the Ghost Devil for her contract?",
+   "o": [
+    "An eye",
+    "A hand",
+    "Her voice",
+    "Ten years of life"
+   ]
+  }
+ },
+ "frieren-1ali3ef": {
+  "q": "¿Qué flor tiene el anillo que Himmel le regala a Frieren?",
+  "o": [
+   "Un loto espejo",
+   "Una rosa blanca",
+   "Un girasol",
+   "Un lirio azul"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which flower is on the ring Himmel gives Frieren?",
+   "o": [
+    "A mirror lotus",
+    "A white rose",
+    "A sunflower",
+    "A blue lily"
+   ]
+  }
+ },
+ "frieren-qptd94": {
+  "q": "¿Con qué apodo conocen a Frieren los demonios?",
+  "o": [
+   "Frieren la Asesina",
+   "Frieren la Eterna",
+   "Frieren la Silenciosa",
+   "Frieren la Bruja"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What nickname do demons know Frieren by?",
+   "o": [
+    "Frieren the Slayer",
+    "Frieren the Eternal",
+    "Frieren the Silent",
+    "Frieren the Witch"
+   ]
+  }
+ },
+ "mob-1i1jnoq": {
+  "o": [
+   "12",
+   "13",
+   "14",
+   "24"
+  ],
+  "en": {
+   "o": [
+    "12",
+    "13",
+    "14",
+    "24"
+   ]
+  }
+ },
+ "sololeveling-1tn2km7": {
+  "q": "¿Qué mata a casi todos los cazadores en la doble mazmorra?",
+  "o": [
+   "La estatua de Dios",
+   "El Rey de las Hormigas",
+   "El caballero Igris",
+   "Un dragón"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What kills almost every hunter in the double dungeon?",
+   "o": [
+    "The God statue",
+    "The Ant King",
+    "The knight Igris",
+    "A dragon"
+   ]
+  }
+ },
+ "spyfamily-ukkrj0": {
+  "q": "¿De qué raza es Bond, el perro de los Forger?",
+  "o": [
+   "Gran pirineo",
+   "San Bernardo",
+   "Samoyedo",
+   "Terranova"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What breed is Bond, the Forgers' dog?",
+   "o": [
+    "Great Pyrenees",
+    "Saint Bernard",
+    "Samoyed",
+    "Newfoundland"
+   ]
+  }
+ },
+ "spyfamily-th2qx5": {
+  "q": "¿Qué premio le promete Loid a Anya si consigue una estrella Stella?",
+  "o": [
+   "Un perro",
+   "Una bicicleta",
+   "Un viaje a la playa",
+   "Un peluche gigante"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What reward does Loid promise Anya if she earns a Stella star?",
+   "o": [
+    "A dog",
+    "A bicycle",
+    "A beach trip",
+    "A giant plush toy"
+   ]
+  }
+ },
+ "spyfamily-4g30yw": {
+  "q": "¿Qué atentado frustra Bond gracias a sus visiones cuando lo adoptan?",
+  "o": [
+   "Uno contra un ministro extranjero",
+   "Uno contra la Academia Eden",
+   "Uno contra Donovan Desmond",
+   "Uno contra el ayuntamiento"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Which attack does Bond help foil with his visions when he is adopted?",
+   "o": [
+    "One against a foreign minister",
+    "One against Eden Academy",
+    "One against Donovan Desmond",
+    "One against city hall"
+   ]
+  }
+ },
+ "tokyoghoul-yf02dn": {
+  "d": 2
+ },
+ "tokyoghoul-15kvpn4": {
+  "q": "¿Qué alias tiene Yoshimura, el gerente de Anteiku?",
+  "o": [
+   "El Búho",
+   "El Cuervo",
+   "El Zorro",
+   "La Serpiente"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What alias does Yoshimura, Anteiku's manager, go by?",
+   "o": [
+    "The Owl",
+    "The Crow",
+    "The Fox",
+    "The Snake"
+   ]
+  }
+ },
+ "avatar-gfmebk": {
+  "q": "¿En qué parte del cuerpo recibe Aang el rayo de Azula en Ba Sing Se?",
+  "o": [
+   "En la espalda",
+   "En el pecho",
+   "En el brazo",
+   "En la pierna"
+  ],
+  "d": 3,
+  "en": {
+   "q": "Where on his body does Aang take Azula's lightning in Ba Sing Se?",
+   "o": [
+    "In the back",
+    "In the chest",
+    "In the arm",
+    "In the leg"
+   ]
+  }
+ },
+ "deathnote-1w6s1gb": {
+  "q": "¿Qué hacen Light y Misa para perder sus recuerdos de la Death Note?",
+  "o": [
+   "Renuncian a la propiedad de la libreta",
+   "Queman la libreta",
+   "Se la devuelven a Ryuk",
+   "Usan los ojos de shinigami"
+  ],
+  "d": 3,
+  "en": {
+   "q": "What do Light and Misa do to lose their memories of the Death Note?",
+   "o": [
+    "Give up ownership of the notebook",
+    "Burn the notebook",
+    "Return it to Ryuk",
+    "Use the shinigami eyes"
+   ]
+  }
+ },
+ "gravityfalls-qdsm2a": {
+  "q": "¿Cuántos años cumplen Dipper y Mabel al final del verano?",
+  "o": [
+   "Trece",
+   "Doce",
+   "Catorce",
+   "Once"
+  ],
+  "d": 3,
+  "en": {
+   "q": "How old do Dipper and Mabel turn at the end of the summer?",
+   "o": [
+    "Thirteen",
+    "Twelve",
+    "Fourteen",
+    "Eleven"
+   ]
+  }
+ }
+}
