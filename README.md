@@ -1,36 +1,34 @@
 <div align="center">
 
-# 🎡 Tostrivia
+# Tostrivia
 
-**Spin the wheel. Beat the clock. Don't break your streak.**
+Spin the wheel and answer against the clock.
 
-Anime, video games, series, movies and general knowledge trivia, solo or with friends, straight from your phone.
+Trivia about anime, video games, series, movies and general knowledge. Play solo or with friends, each on their own phone.
 
-**🇬🇧 English** · [🇪🇸 Español](#-español)
+English · [Español](#español)
 
 </div>
 
----
+## What is Tostrivia?
 
-## ✨ What is Tostrivia?
+Tostrivia is a trivia game for fans. You spin a wheel, get 10 questions and answer before time runs out. Faster answers and longer streaks earn more points.
 
-Tostrivia is a fast, colorful trivia game for fans. Spin the wheel, get 10 questions, and answer before time runs out. The faster you answer and the longer your streak, the more points you score.
+It runs in the browser, so there is nothing to download and no account to make. Open it, pick a name and play.
 
-No account, no download, no sign-up. Open it, pick a name, and play.
+## What you can do
 
-## 🎮 Why you'll love it
+- Let the wheel pick your next round. You can filter it by Anime, Games, Series & Movies or Culture, choose a category yourself, or mix several categories in one round.
+- Play over 5,300 questions across 140 categories, from JoJo and Breaking Bad to Zelda, Skyrim and FNAF. Every question is in English and Spanish.
+- Guess an anime from its opening or a game from its soundtrack. The picture stays hidden until you answer.
+- Guess a series, movie or game from its poster. It starts blurred, pixelated or zoomed in on a tiny corner, and clears up while the clock runs.
+- Open a room for up to 10 players. Everyone joins from their own phone with a code, and the room has a live scoreboard, chat, emotes and a podium at the end.
+- Play as one of 12 chibi animals, such as a capybara, shiba, corgi, pug, husky or axolotl.
+- Set your own rules: number of questions, time per question, difficulty, point multiplier, and whether streaks count.
 
-- **🎡 A wheel that picks your next round.** Filter by Anime, Games, Series & Movies or Culture, and let luck decide. Or choose a category yourself, or mix several at once.
-- **📚 5,300+ questions in 140 categories.** From JoJo and Breaking Bad to Zelda, Skyrim and FNAF. Every question is available in English and Spanish.
-- **🎧 Questions you hear before you see.** Guess the anime from its opening, or the game from its OST, with the picture hidden until you answer.
-- **🖼️ Guess the poster.** Posters and game covers show up blurred, pixelated or zoomed in on a tiny detail, and clear up as the clock ticks.
-- **👥 Rooms for up to 10 players.** Share a code, everyone joins from their own phone, and you get a live scoreboard, chat, emotes and a podium ceremony at the end.
-- **🐾 Pick your animal.** 12 chibi pets to play as: capybara, shiba, corgi, pug, husky, axolotl and more.
-- **⚙️ Make the rules yours.** Choose the number of questions, the time per question, the difficulty, point multipliers and whether streaks count.
+## Madness mode
 
-## 🔥 Madness mode
-
-Standard mode is classic trivia. **Madness** turns it into a party, in the spirit of Mario Party and Mario Kart. Earn power-ups with your streak and use them before answering:
+Standard mode is classic trivia. Madness is closer to Mario Party and Mario Kart: your streak earns power-ups, and you use them before answering.
 
 | | |
 |---|---|
@@ -40,57 +38,57 @@ Standard mode is classic trivia. **Madness** turns it into a party, in the spiri
 | 👻 Boo | 🍌 Banana |
 | 🔁 Switcheroo | 🎲 Dice |
 
-...and plenty of ways to mess with your friends' screens: flip them upside down, shake them, fog them up, black them out with a flashlight, scramble their options, or throw a jump scare at them. There's even an **Ultra Madness** mode for when regular chaos isn't enough.
+In a room, other power-ups hit your friends' screens: they can flip upside down, shake, fill with fog, go black except for a flashlight, scramble the answer options, or get a jump scare. Ultra Madness gives you more power-ups and lets you use two per question.
 
-## 🚀 Play it
+## Run it locally
 
 ```bash
 npm install
 npm run dev      # http://localhost:5173
 ```
 
-The game is a static web app and deploys to Vercel with no configuration or API keys.
+It is a static web app. It deploys to Vercel without configuration or API keys.
 
-## 🛠️ For contributors
+## Contributing
 
-- Questions live in `content/*.mjs`, written once in Spanish and English. Run `npm run content` to turn them into game data.
-- `npm run check:bank` reports questions per category and flags problems.
-- `npm run videos` finds and verifies the YouTube clips (needs your own `YOUTUBE_API_KEY` in `.env`).
-- Rooms use WebRTC through [PeerJS](https://peerjs.com/): no database and no server of our own.
+- Questions live in `content/*.mjs`, written once in Spanish and English. `npm run content` turns them into game data.
+- `npm run check:bank` counts questions per category and reports problems.
+- `npm run videos` finds and verifies the YouTube clips. It needs your own `YOUTUBE_API_KEY` in `.env`.
+- Rooms use WebRTC through [PeerJS](https://peerjs.com/), so there is no database or server of our own.
 
----
+<sub>Fan-made game, not affiliated with any of the works it mentions. Names of series, games, songs and characters belong to their owners. Videos play through YouTube's official player.</sub>
 
 <div align="center">
 
-## 🇪🇸 Español
+## Español
 
-**Gira la ruleta. Gana al reloj. No rompas la racha.**
+Gira la ruleta y responde contra el reloj.
 
-Trivia de anime, videojuegos, series, películas y cultura general. Solo o con amigos, desde el celular.
+Trivia de anime, videojuegos, series, películas y cultura general. Se juega solo o con amigos, cada quien en su celular.
 
-[🇬🇧 English](#-tostrivia)
+[English](#tostrivia) · Español
 
 </div>
 
-## ✨ ¿Qué es Tostrivia?
+## ¿Qué es Tostrivia?
 
-Tostrivia es una trivia rápida y colorida para fans. Giras la ruleta, te salen 10 preguntas y respondes antes de que se acabe el tiempo. Mientras más rápido contestes y más larga sea tu racha, más puntos sumas.
+Tostrivia es una trivia para fans. Giras una ruleta, te salen 10 preguntas y respondes antes de que se acabe el tiempo. Mientras más rápido contestes y más larga sea tu racha, más puntos sumas.
 
-Sin cuentas, sin descargas, sin registro. Abre la página, elige tu nombre y juega.
+Funciona en el navegador, así que no hay nada que descargar ni cuenta que crear. Abres la página, eliges un nombre y juegas.
 
-## 🎮 Por qué te va a gustar
+## Qué puedes hacer
 
-- **🎡 Una ruleta que elige tu próxima ronda.** Filtra por Anime, Juegos, Series y pelis o Cultura y deja que decida la suerte. O elige tú la categoría, o mezcla varias a la vez.
-- **📚 Más de 5.300 preguntas en 140 categorías.** De JoJo y Breaking Bad a Zelda, Skyrim y FNAF. Todas están en español y en inglés.
-- **🎧 Preguntas que se oyen antes de verse.** Adivina el anime por su opening o el juego por su OST, con la imagen tapada hasta que respondes.
-- **🖼️ Adivina el póster.** Pósters y portadas aparecen borrosos, pixelados o con un detalle diminuto, y se van aclarando con el reloj.
-- **👥 Salas de hasta 10 jugadores.** Comparte un código, cada quien entra desde su celular y tienen marcador en vivo, chat, emotes y un podio al final.
-- **🐾 Elige tu animal.** 12 mascotas chibi para jugar: capibara, shiba, corgi, pug, husky, ajolote y más.
-- **⚙️ Arma las reglas a tu gusto.** Cantidad de preguntas, tiempo, dificultad, multiplicador de puntos y si cuenta la racha.
+- Dejar que la ruleta elija tu próxima ronda. La puedes filtrar por Anime, Juegos, Series y pelis o Cultura, elegir tú la categoría, o mezclar varias en una misma ronda.
+- Jugar más de 5.300 preguntas en 140 categorías, de JoJo y Breaking Bad a Zelda, Skyrim y FNAF. Todas están en español y en inglés.
+- Adivinar un anime por su opening o un juego por su banda sonora. La imagen queda tapada hasta que respondes.
+- Adivinar una serie, película o juego por su póster. Empieza borroso, pixelado o con zoom a una esquina diminuta, y se va aclarando mientras corre el reloj.
+- Abrir una sala de hasta 10 jugadores. Todos entran con un código desde su celular, y la sala tiene marcador en vivo, chat, emotes y un podio al final.
+- Jugar con uno de 12 animales chibi, como capibara, shiba, corgi, pug, husky o ajolote.
+- Armar tus propias reglas: cantidad de preguntas, tiempo por pregunta, dificultad, multiplicador de puntos y si cuenta la racha.
 
-## 🔥 Modo Locura
+## Modo Locura
 
-El modo Estándar es la trivia de siempre. **Locura** la convierte en una fiesta, al estilo Mario Party y Mario Kart. Ganas poderes con tu racha y los usas antes de responder:
+El modo Estándar es la trivia de siempre. Locura se parece más a Mario Party y Mario Kart: tu racha te da poderes y los usas antes de responder.
 
 | | |
 |---|---|
@@ -100,24 +98,22 @@ El modo Estándar es la trivia de siempre. **Locura** la convierte en una fiesta
 | 👻 Boo | 🍌 Plátano |
 | 🔁 Cambiazo | 🎲 Dado |
 
-...y muchas formas de molestar a tus amigos en pantalla: voltearla, hacerla temblar, llenarla de niebla, apagarla y dejarles solo una linterna, revolverles las opciones o mandarles un susto. Y hay un **Ultra Locura** para cuando el caos normal se queda corto.
+En una sala, otros poderes caen sobre las pantallas de tus amigos: pueden voltearse, temblar, llenarse de niebla, quedar en negro con solo una linterna, revolver las opciones o recibir un susto. Ultra Locura da más poderes y deja usar dos por pregunta.
 
-## 🚀 A jugar
+## Correrlo en local
 
 ```bash
 npm install
 npm run dev      # http://localhost:5173
 ```
 
-El juego es una web estática y se despliega en Vercel sin configuración ni API keys.
+Es una web estática. Se despliega en Vercel sin configuración ni API keys.
 
-## 🛠️ Para quien quiera colaborar
+## Colaborar
 
 - Las preguntas están en `content/*.mjs`, escritas una sola vez en español e inglés. `npm run content` las convierte en datos del juego.
 - `npm run check:bank` cuenta las preguntas por categoría y avisa de problemas.
-- `npm run videos` busca y verifica los videos de YouTube (necesita tu propia `YOUTUBE_API_KEY` en `.env`).
-- Las salas usan WebRTC con [PeerJS](https://peerjs.com/): sin base de datos ni servidor propio.
+- `npm run videos` busca y verifica los videos de YouTube. Necesita tu propia `YOUTUBE_API_KEY` en `.env`.
+- Las salas usan WebRTC con [PeerJS](https://peerjs.com/), así que no hay base de datos ni servidor propio.
 
----
-
-<sub>Juego de fans sin afiliación. Los nombres de series, juegos, canciones y personajes son de sus dueños; los videos se reproducen desde YouTube con su reproductor oficial. / Fan-made game, not affiliated. All series, game, song and character names belong to their owners; videos play through YouTube's official player.</sub>
+<sub>Juego de fans sin afiliación con ninguna de las obras que menciona. Los nombres de series, juegos, canciones y personajes son de sus dueños. Los videos se reproducen con el reproductor oficial de YouTube.</sub>
