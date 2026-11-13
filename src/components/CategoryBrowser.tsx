@@ -3,7 +3,7 @@
  * Lo usan la página de Categorías (tocar = jugar) y la sala (tocar = elegir la de la partida).
  * En "Varias a la vez" las viñetas se marcan y la barra de abajo arma la mezcla.
  */
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { GROUPS, categoriesOf, familiesOf } from "../data/categories";
 import type { Category, GroupId } from "../data/types";
@@ -14,6 +14,7 @@ import { savedVariant, type Variant } from "../game/powers";
 import { savedRules, type Rules } from "../game/rules";
 import { PresetShelf, ShortcutShelf } from "./Shelves";
 import { Cover } from "./Cover";
+import TabCut, { CUT_MS, type TabCutState } from "./TabCut";
 import "../pages/categories.css";
 import { t } from "../i18n";
 
@@ -48,10 +49,26 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
   const [saved, setSaved] = useState<string | null>(null);
   const toggle = (id: string) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
   const tap = (id: string) => (picking ? toggle(id) : onPick(id));
+  /** el golpe de la pestaña: la franja cruza y las viñetas nuevas entran detrás de ella */
+  const [cut, setCut] = useState<TabCutState | null>(null);
+  /** ya se cambió de pestaña al menos una vez: las viñetas nuevas entran con golpe, no solo al verse */
+  const [swapped, setSwapped] = useState(false);
+  const cutTimer = useRef<number>();
+  useEffect(() => () => clearTimeout(cutTimer.current), []);
   const go = (g: GroupId) => {
-    setDir(GROUPS.findIndex((x) => x.id === g) > GROUPS.findIndex((x) => x.id === tab) ? 1 : -1);
+    if (g === tab) return;
+    const d = GROUPS.findIndex((x) => x.id === g) > GROUPS.findIndex((x) => x.id === tab) ? 1 : -1;
+    setDir(d);
     setTab(g);
     saveTab(g);
+    if (reduce) return;
+    setSwapped(true);
+    // en la hoja de la sala no se cruza toda la pantalla: solo entran las viñetas
+    if (inSheet) return;
+    const count = familiesOf(g).flatMap((f) => categoriesOf(f.id)).filter((c) => playable(c.id)).length;
+    setCut({ n: Date.now(), dir: d, name: GROUPS.find((x) => x.id === g)!.name, count });
+    clearTimeout(cutTimer.current);
+    cutTimer.current = window.setTimeout(() => setCut(null), CUT_MS);
   };
   const mode = (many: boolean) => {
     setPicking(many);
@@ -84,10 +101,13 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
         {title}
         <div className="cats__tabs" role="tablist" aria-label={t("Tipo de categoría")}>
           {GROUPS.map((g) => (
-            <button key={g.id} type="button" role="tab" id={`${idp}-tab-${g.id}`} aria-selected={tab === g.id} aria-controls={`${idp}-panel`} className={`cats__tab ${tab === g.id ? "is-on" : ""}`} onClick={() => go(g.id)}>
-              {tab === g.id && <motion.span layoutId={`${idp}-pill`} className="cats__pill" transition={{ type: "spring", stiffness: 500, damping: 36 }} />}
-              <span className="cats__tablabel">{g.name}</span>
-            </button>
+            <motion.button key={g.id} type="button" role="tab" id={`${idp}-tab-${g.id}`} aria-selected={tab === g.id} aria-controls={`${idp}-panel`} className={`cats__tab ${tab === g.id ? "is-on" : ""}`} onClick={() => go(g.id)} whileTap={{ scale: 0.95 }}>
+              {tab === g.id && <motion.span layoutId={`${idp}-pill`} className="cats__pill" transition={{ type: "spring", stiffness: 520, damping: 30 }} />}
+              {/* al quedar elegida, la etiqueta se estampa: baja un poco, rebota y queda */}
+              <motion.span key={tab === g.id ? "on" : "off"} className="cats__tablabel" initial={tab === g.id && swapped && !reduce ? { scale: 1.28, rotate: -4 } : false} animate={{ scale: 1, rotate: 0 }} transition={{ type: "spring", stiffness: 700, damping: 17, delay: 0.06 }}>
+                {g.name}
+              </motion.span>
+            </motion.button>
           ))}
         </div>
         <div className="cats__tools">
@@ -113,10 +133,11 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
           <motion.div
             key={tab}
             custom={dir}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, x: dir * 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, x: dir * -50 }}
-            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            // la página nueva se destapa pegada a la cola de la franja, del lado por el que esta se va
+            initial={reduce ? { opacity: 0 } : { opacity: 0, x: dir * 50, clipPath: dir === 1 ? "inset(-4% -4% -4% 104%)" : "inset(-4% 104% -4% -4%)" }}
+            animate={reduce ? { opacity: 1, x: 0 } : { opacity: 1, x: 0, clipPath: "inset(-4% -4% -4% -4%)", transitionEnd: { clipPath: "none" } }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, x: dir * -70, skewX: dir * 4, transition: { duration: 0.15, ease: [0.4, 0, 1, 1] } }}
+            transition={reduce ? { duration: 0.26 } : { duration: 0.32, delay: 0.16, ease: [0.22, 1, 0.36, 1], clipPath: { duration: 0.5, delay: 0.16, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.1, delay: 0.16 } }}
           >
             <PresetShelf idp={idp} picking={picking} onTap={tapPreset} />
             <ShortcutShelf g={tab} idp={idp} picking={picking} selected={sel} onTap={(cats, mix) => (picking ? addAll(cats) : onPick(mix))} />
@@ -137,7 +158,7 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
                   )}
                   <ul className="fam__grid">
                     {list.map((c, i) => (
-                      <Tile key={c.id} c={c} i={i} big={i === 0 && list.length >= 4} picking={picking} on={sel.includes(c.id)} verb={verb} onTap={tap} />
+                      <Tile key={c.id} c={c} i={i} slam={swapped && !reduce ? (dir as 1 | -1) : 0} big={i === 0 && list.length >= 4} picking={picking} on={sel.includes(c.id)} verb={verb} onTap={tap} />
                     ))}
                   </ul>
                 </section>
@@ -146,6 +167,8 @@ export default function CategoryBrowser({ onPick, verb, idp, title, inSheet, cur
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <TabCut cut={cut} />
 
       <AnimatePresence>
         {picking && (
@@ -215,18 +238,23 @@ function RandomTile({ g, verb, onPick }: { g: GroupId; verb: string; onPick: (ca
 }
 
 // una viñeta grande por familia, como en la página de un manga (si la familia tiene con qué rodearla)
-function Tile({ c, i, big, picking, on, verb, onTap }: { c: Category; i: number; big: boolean; picking: boolean; on: boolean; verb: string; onTap: (cat: string) => void }) {
+function Tile({ c, i, slam, big, picking, on, verb, onTap }: { c: Category; i: number; slam: 0 | 1 | -1; big: boolean; picking: boolean; on: boolean; verb: string; onTap: (cat: string) => void }) {
   const reduce = useReducedMotion();
   // se observa el <li> sin recortar; la viñeta de adentro es la que se destapa (regla 17)
   const ref = useRef<HTMLLIElement>(null);
   const seen = useInView(ref, { once: true, amount: 0.15 });
+  // tras un cambio de pestaña la viñeta entra con golpe, siguiendo a la franja; si se ve más tarde (al bajar), entra sin esperar
+  const born = useRef(performance.now());
+  const wait = useRef<number | null>(null);
+  if (seen && wait.current === null) wait.current = slam && performance.now() - born.current < 700 ? 0.22 + Math.min(i, 9) * 0.05 : 0;
+  const delay = slam ? (wait.current ?? 0) : (i % 4) * 0.06;
   return (
     <li ref={ref} className={`tile ${big ? "tile--big" : ""}`}>
       <motion.button
         // el recorte deja 3% de aire a los lados para que el borde blanco se destape junto con la viñeta
-        initial={reduce ? false : { clipPath: "inset(-3% -3% 103% -3%)", y: 24 }}
-        animate={seen || reduce ? { clipPath: "inset(-3% -3% -3% -3%)", y: 0, transitionEnd: { clipPath: "none" } } : undefined}
-        transition={{ duration: 0.55, delay: (i % 4) * 0.06, ease: [0.22, 1, 0.36, 1] }}
+        initial={reduce ? false : slam ? { clipPath: slam === 1 ? "inset(-3% -3% -3% 103%)" : "inset(-3% 103% -3% -3%)", scale: 1.16, rotate: i % 2 ? 2.5 : -2.5, y: 16 } : { clipPath: "inset(-3% -3% 103% -3%)", y: 24 }}
+        animate={seen || reduce ? { clipPath: "inset(-3% -3% -3% -3%)", y: 0, scale: 1, rotate: 0, transitionEnd: { clipPath: "none" } } : undefined}
+        transition={slam ? { clipPath: { duration: 0.42, delay, ease: [0.22, 1, 0.36, 1] }, default: { type: "spring", stiffness: 380, damping: 24, delay } } : { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
         whileTap={{ scale: 0.97 }} type="button" className={`tile__btn ${on ? "is-on" : ""}`} onClick={() => onTap(c.id)}
         aria-label={picking ? c.name : `${verb} ${c.name}`} aria-pressed={picking ? on : undefined}>
         <span className="tile__img">

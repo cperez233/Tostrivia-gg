@@ -54,6 +54,7 @@ export const EN: Record<string, string> = {
   Elegir: "Pick",
   "Tipo de categoría": "Category type",
   "Cuántas categorías": "How many categories",
+  "{n} categorías": "{n} categories",
   "Una categoría": "One category",
   "Varias a la vez": "Mix several",
   "Todo al azar": "Random everything",

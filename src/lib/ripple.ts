@@ -6,7 +6,7 @@ export function installRipple() {
   window.addEventListener(
     "pointerdown",
     (e) => {
-      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(".btn, .opt, .row, .tab, .seg");
+      const el = (e.target as HTMLElement | null)?.closest<HTMLElement>(".btn, .opt, .row, .tab, .seg, .cats__tab");
       if (!el || (el as HTMLButtonElement).disabled) return;
       const r = el.getBoundingClientRect();
       const box = document.createElement("span");

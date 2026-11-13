@@ -36,3 +36,81 @@
 .lang__label {
   position: relative;
 }
+
+/* ── el sello del cambio de idioma ── */
+.langcut {
+  position: fixed;
+  inset: 0;
+  z-index: 310;
+  pointer-events: auto; /* mientras dura, nada más se toca: el cambio no se apila */
+  overflow: hidden;
+}
+.langcut__disc {
+  position: absolute;
+  inset: 0;
+}
+.langcut__disc--ink {
+  background: var(--ink);
+}
+.langcut__disc--hanko {
+  background: var(--hanko);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+}
+/* líneas cinéticas que salen del botón: caja cuadrada centrada en él, grande como para cubrir cualquier pantalla */
+.langcut__rays {
+  position: absolute;
+  width: 300vmax;
+  height: 186vmax;
+  translate: -50% -50%;
+  will-change: transform;
+}
+.langcut__lines {
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+.langcut__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding-inline: 16px;
+}
+/* el eco en katakana, enorme y de tinta, detrás del saludo */
+.langcut__kana {
+  position: absolute;
+  inset: auto;
+  font-family: var(--display);
+  font-size: clamp(8rem, 4rem + 30vw, 26rem);
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+  user-select: none;
+}
+.langcut__word {
+  position: relative;
+  font-family: var(--display);
+  font-size: clamp(3.4rem, 1.2rem + 13vw, 11rem);
+  line-height: 1.05;
+  color: var(--paper);
+  text-shadow: 6px 6px 0 var(--ink), -3px -3px 0 var(--ink), 3px -3px 0 var(--ink), -3px 3px 0 var(--ink), 0 6px 0 var(--ink), 6px 0 0 var(--ink);
+  white-space: nowrap;
+}
+.langcut__name {
+  position: relative;
+  margin-top: 6px;
+  padding: 4px 14px 5px;
+  font-family: var(--display);
+  font-size: clamp(15px, 0.8rem + 0.8vw, 22px);
+  color: var(--ink);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  rotate: -2deg;
+}
+/* los botones también responden al toque */
+.lang__opt:active {
+  scale: 0.94;
+}
