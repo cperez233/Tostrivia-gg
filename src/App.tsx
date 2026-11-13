@@ -56,7 +56,7 @@ const TITLES: Record<View["k"], string> = {
   "404": "Tostrivia · Página no encontrada",
 };
 
-const COVER_MS = 380;
+const COVER_MS = 440;
 const scrollKey = (k: string) => `tostrivia:scroll:${k}`;
 
 export default function App() {
@@ -101,10 +101,10 @@ export default function App() {
       };
       if (reduce) return swap();
       const label = opts.label ?? (isTab(v.k) ? t(TABS.find((x) => x.id === v.k)!.wipe) : v.k === "room" ? t("¡A jugar!") : v.k === "404" ? t("¿Eh?") : t("Sala"));
-      setWipe({ n: Date.now(), dir: order(v.k) >= order(from.k) ? 1 : -1, label });
+      setWipe({ n: Date.now(), dir: order(v.k) >= order(from.k) ? 1 : -1, label, kind: isTab(v.k) ? v.k : v.k === "room" ? "room" : "other" });
       timers.current = [
         window.setTimeout(swap, COVER_MS),
-        window.setTimeout(() => setWipe(null), COVER_MS + 140),
+        window.setTimeout(() => setWipe(null), COVER_MS + 220),
       ];
     },
     [reduce],
